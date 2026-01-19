@@ -15,9 +15,9 @@ export default function GlassmorphismLandingPage() {
           muted
           playsInline
           className="background-video"
-          poster="login_poster.jpg"
+          poster="oceandatum_poster.jpg"
         >
-          <source src="login_bg_opt.mp4" type="video/mp4" />
+          <source src="oceandatum_loop_HD.mp4" type="video/mp4" />
           {/* Fallback to image if video doesn't load */}
         </video>
         {/* Overlay for better text readability */}
