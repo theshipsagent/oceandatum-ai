@@ -30,3 +30,11 @@ dist-ssr
 
 # Supabase
 .supabase
+
+# Large video files (except essential ones)
+videos/
+_user_notes/
+login_bg.mp4
+container-timelapse.html
+video-demo.html
+# Keep login_bg_opt.mp4 and login_poster.jpg (essential for landing page)
