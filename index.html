@@ -79,11 +79,25 @@
         }
 
         .navbar-brand {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: rgba(255,255,255,0.9);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.03em;
+        }
+
+        .navbar-brand a {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            font-style: normal;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand a:hover {
+            color: #64ffb4;
         }
 
         .navbar-right {
@@ -242,16 +256,16 @@
         }
 
         .logo-symbol {
-            width: 50px;
-            height: 50px;
-            color: rgba(100,255,180,0.8);
+            width: 60px;
+            height: 60px;
+            color: #ffffff;
             flex-shrink: 0;
         }
 
-        .logo-symbol:hover {
-            color: rgba(100,255,180,1);
-            filter: drop-shadow(0 0 10px rgba(100,255,180,0.5));
-            transition: all 0.3s ease;
+        .logo-symbol svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.3));
         }
 
         .brand-text {
@@ -268,7 +282,7 @@
             font-weight: 400;
             color: #ffffff;
             letter-spacing: 0.05em;
-            line-height: 1;
+            text-shadow: 0 0 40px rgba(255,255,255,0.3);
             display: flex;
             align-items: baseline;
             gap: 0.5rem;
@@ -283,11 +297,13 @@
         }
 
         .brand-tagline {
-            font-size: 0.8rem;
+            font-family: 'Georgia', serif;
+            font-size: 0.9rem;
             font-weight: 300;
-            color: rgba(255,255,255,0.6);
-            letter-spacing: 0.05em;
             font-style: italic;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 0.03em;
+            text-shadow: 0 0 20px rgba(255,255,255,0.2);
         }
 
         @media (max-width: 768px) {
@@ -343,7 +359,7 @@
     </div>
 
     <nav class="navbar">
-        <a href="/" class="navbar-brand">DATUM</a>
+        <span class="navbar-brand">An <a href="https://oceandatum.ai" target="_blank">oceandatum.ai</a> company</span>
         <div class="navbar-right">
             <div class="social-icons">
                 <a href="https://www.linkedin.com/company/oceandatum-ai" target="_blank" class="social-icon" title="LinkedIn">
@@ -363,6 +379,7 @@
                 </a>
             </div>
             <a class="navbar-link" id="contactLink">Contact</a>
+            <a href="app.html" class="navbar-link">Login</a>
         </div>
     </nav>
 
@@ -397,7 +414,7 @@
                 <span>DATUM</span>
                 <span class="brand-group">Intelligence</span>
             </div>
-            <div class="brand-tagline">charting clarity from complexity</div>
+            <div class="brand-tagline">Charting Clarity from Complexity</div>
         </div>
     </div>
 
