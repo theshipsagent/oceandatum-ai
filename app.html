@@ -1,14 +1,364 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Datum - Secure maritime data platform with TOTP 2FA authentication" />
-    <title>Datum - Secure Maritime Data Platform</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Datum Intelligence</title>
+    <meta name="description" content="Datum - Secure maritime data platform with TOTP 2FA authentication">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            min-height: 100vh;
+            background: #0a0a0a;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: #0a0a0a;
+        }
+
+        .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0.6;
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,20,40,0.4) 50%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .glass-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding: 0.8rem 2rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+        }
+
+        .navbar-brand a {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            font-style: normal;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand a:hover {
+            color: #64ffb4;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-card {
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1) inset;
+        }
+
+        .login-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .login-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(100,255,180,0.5);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(100,255,180,0.15);
+            border: 1px solid rgba(100,255,180,0.4);
+            border-radius: 8px;
+            color: #64ffb4;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: rgba(100,255,180,0.25);
+            border-color: #64ffb4;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .form-footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .form-footer a {
+            color: #64ffb4;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-footer a:hover {
+            color: rgba(100,255,180,0.8);
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .alert-error {
+            background: rgba(255,100,100,0.1);
+            border: 1px solid rgba(255,100,100,0.3);
+            color: rgba(255,150,150,0.9);
+        }
+
+        .alert-success {
+            background: rgba(100,255,180,0.1);
+            border: 1px solid rgba(100,255,180,0.3);
+            color: rgba(100,255,180,0.9);
+        }
+
+        @media (max-width: 768px) {
+            .login-card {
+                padding: 2rem;
+            }
+            .navbar {
+                padding: 0.6rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="glass-overlay"></div>
+
+    <div class="bg-container">
+        <video class="bg-video" autoplay muted playsinline loop preload="metadata" poster="oceandatum_poster.jpg">
+            <source src="oceandatum_loop_HD.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <nav class="navbar">
+        <span class="navbar-brand">An <a href="https://oceandatum.ai" target="_blank">oceandatum.ai</a> company</span>
+    </nav>
+
+    <div class="container">
+        <div class="login-card">
+            <h1 class="login-title">Sign In</h1>
+            <p class="login-subtitle">Maritime Intelligence Platform</p>
+
+            <div id="alertContainer"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-input"
+                        placeholder="you@example.com"
+                        required
+                        autocomplete="email"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="form-input"
+                        placeholder="••••••••"
+                        required
+                        autocomplete="current-password"
+                    />
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Sign In
+                </button>
+
+                <div class="form-footer">
+                    Don't have access? <a href="mailto:datum@oceandatum.ai?subject=Access Request - Datum Platform">Request Access</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const alertContainer = document.getElementById('alertContainer');
+
+        function showAlert(message, type = 'error') {
+            alertContainer.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+        }
+
+        function clearAlert() {
+            alertContainer.innerHTML = '';
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearAlert();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Signing in...';
+
+            // Placeholder for actual authentication
+            // This would integrate with Supabase or your auth backend
+            setTimeout(() => {
+                showAlert('Authentication system not yet configured. Please contact datum@oceandatum.ai for access.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Sign In';
+            }, 1000);
+
+            // Example of what real authentication would look like:
+            /*
+            try {
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email,
+                    password
+                });
+
+                if (error) {
+                    showAlert(error.message, 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Sign In';
+                    return;
+                }
+
+                // Redirect to dashboard or show TOTP prompt
+                window.location.href = '/dashboard';
+            } catch (err) {
+                showAlert('An unexpected error occurred. Please try again.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Sign In';
+            }
+            */
+        });
+    </script>
+</body>
 </html>
