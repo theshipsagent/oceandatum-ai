@@ -303,7 +303,7 @@
             </form>
 
             <div class="alert alert-info" style="margin-top: 2rem;">
-                <strong>Note:</strong> This is a placeholder UI. To enable actual user creation, you'll need to integrate with Supabase backend. Users added here will be simulated.
+                <strong>Note:</strong> User creation requires admin privileges. Users will receive a password reset email to set their own password. Make sure the Supabase service role key is configured or use the Supabase Admin API.
             </div>
 
             <div class="quick-links">
@@ -321,7 +321,15 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
+        // Initialize Supabase client
+        const { createClient } = supabase;
+        const supabaseClient = createClient(
+            'https://xxctitcsnsshmmcvyamy.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh4Y3RpdGNzbnNzaG1tY3Z5YW15Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg1OTY0MzAsImV4cCI6MjA4NDE3MjQzMH0.mGBW_O_burJOUP_fevs15CixAb6CdgLjtzsiYlm6AL4'
+        );
+
         // Check authentication
         if (sessionStorage.getItem('adminAuthenticated') !== 'true') {
             window.location.href = 'admin.html';
@@ -374,27 +382,56 @@
             e.preventDefault();
 
             const email = document.getElementById('userEmail').value;
-            const trialDays = document.getElementById('trialDays').value || 3;
+            const trialDays = parseInt(document.getElementById('trialDays').value) || 3;
 
             submitBtn.disabled = true;
             submitBtn.textContent = 'Adding User...';
 
-            // Simulate API call
-            setTimeout(() => {
-                // This is where you would integrate with Supabase
-                // Example:
-                /*
-                const { data, error } = await supabase
+            try {
+                // Create a temporary password for the user
+                const tempPassword = 'TempPass' + Math.random().toString(36).substring(2, 15);
+
+                // Create the user account
+                const { data: authData, error: authError } = await supabaseClient.auth.admin.createUser({
+                    email: email,
+                    password: tempPassword,
+                    email_confirm: true
+                });
+
+                if (authError) {
+                    showAlert(`Error creating user: ${authError.message}`, 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Add User';
+                    return;
+                }
+
+                // Calculate trial dates
+                const trialStartDate = new Date().toISOString();
+                const trialExpirationDate = new Date(Date.now() + trialDays * 24 * 60 * 60 * 1000).toISOString();
+
+                // Update the user's profile with trial information
+                const { error: profileError } = await supabaseClient
                     .from('profiles')
                     .update({
-                        trial_start_date: new Date().toISOString(),
-                        trial_expiration_date: new Date(Date.now() + trialDays * 24 * 60 * 60 * 1000).toISOString(),
+                        trial_start_date: trialStartDate,
+                        trial_expiration_date: trialExpirationDate,
                         is_trial_user: true
                     })
-                    .eq('email', email);
-                */
+                    .eq('id', authData.user.id);
 
-                showAlert(`User ${email} added successfully with ${trialDays} day trial!`, 'success');
+                if (profileError) {
+                    showAlert(`User created but profile update failed: ${profileError.message}`, 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Add User';
+                    return;
+                }
+
+                // Send password reset email so user can set their own password
+                await supabaseClient.auth.resetPasswordForEmail(email, {
+                    redirectTo: 'https://oceandatum.ai/reset-password.html'
+                });
+
+                showAlert(`User ${email} added successfully with ${trialDays} day trial! Password reset email sent.`, 'success');
                 addActivityLog(email, trialDays);
 
                 document.getElementById('userEmail').value = '';
@@ -402,7 +439,13 @@
 
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Add User';
-            }, 1000);
+
+            } catch (err) {
+                console.error('Error adding user:', err);
+                showAlert(`Unexpected error: ${err.message}`, 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Add User';
+            }
         });
     </script>
 </body>
