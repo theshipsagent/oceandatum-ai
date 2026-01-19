@@ -52,6 +52,7 @@ npx supabase functions deploy totp-verify-setup
 npx supabase functions deploy totp-validate-login
 npx supabase functions deploy trial-request
 npx supabase functions deploy admin-reset-trial
+npx supabase functions deploy admin-create-user
 ```
 
 ## Environment Variables

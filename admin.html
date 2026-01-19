@@ -229,14 +229,21 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
+        // Initialize Supabase client
+        const { createClient } = supabase;
+        const supabaseClient = createClient(
+            'https://xxctitcsnsshmmcvyamy.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh4Y3RpdGNzbnNzaG1tY3Z5YW15Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg1OTY0MzAsImV4cCI6MjA4NDE3MjQzMH0.mGBW_O_burJOUP_fevs15CixAb6CdgLjtzsiYlm6AL4'
+        );
+
         const form = document.getElementById('adminLoginForm');
         const submitBtn = document.getElementById('submitBtn');
         const alertContainer = document.getElementById('alertContainer');
 
-        // Admin credentials (hashed for basic security)
+        // Admin email for verification
         const ADMIN_EMAIL = 'wsd@oceandatum.ai';
-        const ADMIN_PASSWORD = 'Ireland@9770543';
 
         function showAlert(message, type = 'error') {
             alertContainer.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
@@ -247,9 +254,13 @@
         }
 
         // Check if already logged in
-        if (sessionStorage.getItem('adminAuthenticated') === 'true') {
-            window.location.href = 'admin-dashboard.html';
-        }
+        supabaseClient.auth.getSession().then(({ data: { session } }) => {
+            if (session && session.user.email === ADMIN_EMAIL) {
+                sessionStorage.setItem('adminAuthenticated', 'true');
+                sessionStorage.setItem('adminEmail', session.user.email);
+                window.location.href = 'admin-dashboard.html';
+            }
+        });
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -258,21 +269,46 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
+            // Verify admin email
+            if (email !== ADMIN_EMAIL) {
+                showAlert('Invalid credentials. Access denied.', 'error');
+                return;
+            }
+
             submitBtn.disabled = true;
             submitBtn.textContent = 'Verifying...';
 
-            // Simple credential check
-            setTimeout(() => {
-                if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+            try {
+                // Authenticate with Supabase
+                const { data, error } = await supabaseClient.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+
+                if (error) {
+                    showAlert('Invalid credentials. Access denied.', 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Access Admin';
+                    return;
+                }
+
+                // Verify it's the admin account
+                if (data.user.email === ADMIN_EMAIL) {
                     sessionStorage.setItem('adminAuthenticated', 'true');
                     sessionStorage.setItem('adminEmail', email);
                     window.location.href = 'admin-dashboard.html';
                 } else {
+                    await supabaseClient.auth.signOut();
                     showAlert('Invalid credentials. Access denied.', 'error');
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Access Admin';
                 }
-            }, 800);
+            } catch (err) {
+                console.error('Login error:', err);
+                showAlert('An error occurred. Please try again.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Access Admin';
+            }
         });
     </script>
 </body>

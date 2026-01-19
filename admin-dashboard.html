@@ -303,7 +303,7 @@
             </form>
 
             <div class="alert alert-info" style="margin-top: 2rem;">
-                <strong>Note:</strong> User creation requires admin privileges. Users will receive a password reset email to set their own password. Make sure the Supabase service role key is configured or use the Supabase Admin API.
+                <strong>How it works:</strong> Users are created via a secure Edge Function with trial access. They'll receive a password reset email to set their own password before logging in.
             </div>
 
             <div class="quick-links">
@@ -388,48 +388,38 @@
             submitBtn.textContent = 'Adding User...';
 
             try {
-                // Create a temporary password for the user
-                const tempPassword = 'TempPass' + Math.random().toString(36).substring(2, 15);
+                // Get the current session to use the auth token
+                const { data: { session } } = await supabaseClient.auth.getSession();
 
-                // Create the user account
-                const { data: authData, error: authError } = await supabaseClient.auth.admin.createUser({
-                    email: email,
-                    password: tempPassword,
-                    email_confirm: true
-                });
-
-                if (authError) {
-                    showAlert(`Error creating user: ${authError.message}`, 'error');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Add User';
+                if (!session) {
+                    showAlert('Session expired. Please log in again.', 'error');
+                    setTimeout(() => {
+                        window.location.href = 'admin.html';
+                    }, 2000);
                     return;
                 }
 
-                // Calculate trial dates
-                const trialStartDate = new Date().toISOString();
-                const trialExpirationDate = new Date(Date.now() + trialDays * 24 * 60 * 60 * 1000).toISOString();
-
-                // Update the user's profile with trial information
-                const { error: profileError } = await supabaseClient
-                    .from('profiles')
-                    .update({
-                        trial_start_date: trialStartDate,
-                        trial_expiration_date: trialExpirationDate,
-                        is_trial_user: true
+                // Call the Edge Function to create the user
+                const response = await fetch('https://xxctitcsnsshmmcvyamy.supabase.co/functions/v1/admin-create-user', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${session.access_token}`,
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        trialDays: trialDays
                     })
-                    .eq('id', authData.user.id);
+                });
 
-                if (profileError) {
-                    showAlert(`User created but profile update failed: ${profileError.message}`, 'error');
+                const result = await response.json();
+
+                if (!response.ok || !result.success) {
+                    showAlert(result.error || 'Failed to create user', 'error');
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Add User';
                     return;
                 }
-
-                // Send password reset email so user can set their own password
-                await supabaseClient.auth.resetPasswordForEmail(email, {
-                    redirectTo: 'https://oceandatum.ai/reset-password.html'
-                });
 
                 showAlert(`User ${email} added successfully with ${trialDays} day trial! Password reset email sent.`, 'success');
                 addActivityLog(email, trialDays);
