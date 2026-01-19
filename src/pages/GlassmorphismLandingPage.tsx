@@ -15,9 +15,9 @@ export default function GlassmorphismLandingPage() {
           muted
           playsInline
           className="background-video"
-          poster="/ocean-poster.jpg"
+          poster="login_poster.jpg"
         >
-          <source src="/ocean-drone.mp4" type="video/mp4" />
+          <source src="login_bg_opt.mp4" type="video/mp4" />
           {/* Fallback to image if video doesn't load */}
         </video>
         {/* Overlay for better text readability */}
@@ -88,12 +88,15 @@ export default function GlassmorphismLandingPage() {
             {/* CTA Buttons */}
             {!user ? (
               <div className="cta-buttons">
-                <Link to="/register" className="btn-glass btn-glass-primary">
-                  <span>Start Free Trial</span>
+                <a
+                  href="mailto:datum@oceandatum.ai?subject=Access Request - Datum Platform&body=Hi, I would like to request access to the Datum Maritime Intelligence platform.%0D%0A%0D%0AName: %0D%0ACompany: %0D%0AReason for access: "
+                  className="btn-glass btn-glass-primary"
+                >
+                  <span>Request Access</span>
                   <svg className="btn-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </Link>
+                </a>
                 <Link to="/login" className="btn-glass btn-glass-secondary">
                   <span>Sign In</span>
                 </Link>

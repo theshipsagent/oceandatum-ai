@@ -48,14 +48,34 @@ export default function RegisterForm() {
   }
 
   if (success) {
+    const isAutoApproved = email.endsWith('@oceandatum.ai')
+
     return (
       <div className="alert alert-success">
-        <h3 className="mb-2">Check your email!</h3>
+        <h3 className="mb-2">
+          {isAutoApproved ? 'Account Created!' : 'Registration Submitted'}
+        </h3>
         <p>
           We've sent you a verification link to <strong>{email}</strong>.
-          Please click the link in the email to verify your account and continue
-          to TOTP setup.
+          Please click the link in the email to verify your account.
         </p>
+        {isAutoApproved ? (
+          <p style={{ marginTop: '1rem' }}>
+            ✓ Your <strong>@oceandatum.ai</strong> email has been automatically approved.
+            After email verification, you can proceed to TOTP setup and start your 3-day trial.
+          </p>
+        ) : (
+          <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(255,255,180,0.1)', borderRadius: '6px' }}>
+            <p style={{ fontWeight: 500, marginBottom: '0.5rem' }}>⏳ Awaiting Admin Approval</p>
+            <p style={{ fontSize: '0.9rem' }}>
+              Your registration is pending approval. Please contact{' '}
+              <a href="mailto:datum@oceandatum.ai" style={{ color: '#64ffb4' }}>
+                datum@oceandatum.ai
+              </a>{' '}
+              to request access. Once approved, you'll be able to log in.
+            </p>
+          </div>
+        )}
       </div>
     )
   }

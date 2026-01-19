@@ -7,6 +7,7 @@ import TOTPSetupPage from './pages/TOTPSetupPage'
 import DashboardPage from './pages/DashboardPage'
 import TrialExpiredPage from './pages/TrialExpiredPage'
 import RequestTrialPage from './pages/RequestTrialPage'
+import AdminPage from './pages/AdminPage'
 import ProtectedRoute from './components/auth/ProtectedRoute'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<GlassmorphismLandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="/trial-expired" element={<TrialExpiredPage />} />
           <Route path="/request-trial" element={<RequestTrialPage />} />
 
