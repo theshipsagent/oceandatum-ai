@@ -258,7 +258,7 @@
             if (session && session.user.email === ADMIN_EMAIL) {
                 sessionStorage.setItem('adminAuthenticated', 'true');
                 sessionStorage.setItem('adminEmail', session.user.email);
-                window.location.href = 'admin-dashboard.html';
+                window.location.href = 'dashboard.html';
             }
         });
 
@@ -296,7 +296,7 @@
                 if (data.user.email === ADMIN_EMAIL) {
                     sessionStorage.setItem('adminAuthenticated', 'true');
                     sessionStorage.setItem('adminEmail', email);
-                    window.location.href = 'admin-dashboard.html';
+                    window.location.href = 'dashboard.html';
                 } else {
                     await supabaseClient.auth.signOut();
                     showAlert('Invalid credentials. Access denied.', 'error');
