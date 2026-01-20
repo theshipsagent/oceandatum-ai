@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William S. Davis III - Professional Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #fff;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .profile-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            background: rgba(0,0,0,0.4);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-button:hover {
+            color: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .tab-button.active {
+            color: #ffffff;
+            background: rgba(255,255,255,0.1);
+            border-bottom-color: rgba(255,255,255,0.5);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 2.5rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Common Styles */
+        .content-header {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            position: relative;
+        }
+
+        .cv-logo {
+            position: absolute;
+            top: -0.5rem;
+            right: 0;
+            width: 120px;
+            height: auto;
+            opacity: 0.9;
+            filter: invert(1) brightness(1.2);
+            mix-blend-mode: screen;
+        }
+
+        .executive-photo {
+            float: right;
+            width: 210px;
+            height: auto;
+            margin: 0 0 1.5rem 2rem;
+            border-radius: 8px;
+            filter: grayscale(100%) contrast(1.1);
+            opacity: 0.85;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.08em;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .contact-info {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+        }
+
+        .contact-info a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .contact-info a:hover {
+            color: #ffffff;
+            border-bottom-color: rgba(255,255,255,0.6);
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.95);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h4 {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.85);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.88rem;
+        }
+
+        .location, .dates {
+            color: rgba(255,255,255,0.6);
+            font-weight: 300;
+            font-size: 0.85rem;
+        }
+
+        .concurrent-role {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
+            margin-left: 1rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.4rem 1.3rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .two-column {
+            columns: 2;
+            column-gap: 1.8rem;
+        }
+
+        .two-column li {
+            break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin: 2rem 0;
+        }
+
+        /* Biography specific styles */
+        .bio-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .bio-intro {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.9);
+            font-style: italic;
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .bio-image {
+            float: right;
+            max-width: 320px;
+            height: auto;
+            margin: 0 0 1.5rem 2rem;
+            border-radius: 8px;
+            opacity: 0.9;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .bio-image.left {
+            float: left;
+            margin: 0 2rem 1.5rem 0;
+        }
+
+        /* Bibliography table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        th {
+            background: rgba(255,255,255,0.1);
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 0.9rem;
+        }
+
+        td {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .tab-content {
+                padding: 1.5rem;
+            }
+            .tab-button {
+                font-size: 0.75rem;
+                padding: 0.75rem 0.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .cv-logo {
+                width: 80px;
+            }
+            .executive-photo {
+                width: 150px;
+                margin: 0 0 1rem 1rem;
+            }
+            .two-column {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="tab-nav">
+            <button class="tab-button active" onclick="showTab('cv')">CV</button>
+            <button class="tab-button" onclick="showTab('biography')">Biography</button>
+            <button class="tab-button" onclick="showTab('bibliography')">Bibliography</button>
+        </div>
+
+        <!-- TAB 1: CV -->
+        <div id="cv" class="tab-content active">
+            <div class="content-header">
+                <img src="images/wsd_logo.png" alt="W.S.D. Logo" class="cv-logo">
+                <h1>WILLIAM S. DAVIS III</h1>
+                <div class="subtitle">Ship Agency & Terminal Operations Executive | Commercial Development | Technology Implementation</div>
+                <div class="contact-info">
+                    <strong>Chesapeake, VA</strong> | +1 (657) 477-0436 | <a href="mailto:wsd@theshipsagent.com">wsd@theshipsagent.com</a> | <a href="https://linkedin.com/in/williamsdavis" target="_blank">linkedin.com/in/williamsdavis</a>
+                </div>
+            </div>
+
+            <h2>Executive Summary</h2>
+            <!-- NOTE: Convert executive-photo.heic to .jpg using Windows Photos (right-click > Edit > Save a copy) -->
+            <img src="images/executive-photo.jpg" alt="Executive Profile" class="executive-photo">
+            <p>Senior operations executive with 30 years of progressive leadership experience in maritime logistics, supply chain optimization, and terminal development. Deep operational expertise in cargo handling, vessel operations, and port coordination combined with proven ability to establish new markets, integrate acquisitions, and deploy enterprise technology. Track record includes merger of 3 ship agency businesses and establishing 9 port offices across U.S. Atlantic and Gulf Coast, leading successful M&A integrations with high customer retention, and supporting terminal development projects representing significant infrastructure investments. Expert in leveraging data analytics, geospatial systems, and enterprise technology to transform traditional maritime operations.</p>
+
+            <hr>
+
+            <h2>Core Competencies</h2>
+            <ul class="competencies-grid">
+                <li>Executive P&L Leadership (multi-location operations)</li>
+                <li>Business Development & Market Expansion</li>
+                <li>M&A Integration & Change Management</li>
+                <li>Supply Chain Strategy & Optimization</li>
+                <li>Terminal & Infrastructure Development</li>
+                <li>Enterprise Systems (ERP/CRM) Implementation</li>
+                <li>Data Analytics & Geospatial Intelligence</li>
+                <li>Multi-Site Operations Management</li>
+            </ul>
+
+            <hr>
+
+            <h2>Professional Experience</h2>
+
+            <h3>T. PARKER HOST, INC. <span class="location">| Norfolk, VA</span></h3>
+
+            <h4>Vice President & Business Development <span class="dates">| October 2016 – May 2025</span></h4>
+            <div class="concurrent-role">Also served as Head of Agency (November 2018 – February 2021)</div>
+
+            <p><strong>Executive Leadership & P&L Responsibility</strong></p>
+            <ul>
+                <li>Led 15-location ship agency division with 110+ employees handling 4,200+ annual port calls across US Atlantic and Gulf Coasts (New York to Brownsville, TX)</li>
+                <li>Full P&L accountability for multi-location maritime services operation with ~$800 million in port expenses receivables</li>
+                <li>Served on executive committee driving corporate strategy and business development initiatives</li>
+                <li>Directed operational excellence across geographically dispersed organization</li>
+            </ul>
+
+            <p><strong>Commercial & Business Development Achievements</strong></p>
+            <ul>
+                <li>Expanded customer base including major commodity traders (Glencore, Vitol, Cargill) across grain, petcoke, oil, gas, and breakbulk trades</li>
+                <li>Built and maintained relationships with terminal operators, pilots, port authorities, and shipping lines across 15 US ports</li>
+                <li>Established performance metrics and KPIs resulting in measurable operational efficiency improvements</li>
+                <li>Developed crisis management protocols maintaining service continuity during COVID-19 pandemic without business or customer loss</li>
+            </ul>
+
+            <p><strong>Technology & Systems Leadership</strong></p>
+            <ul>
+                <li>Led digital transformation implementing NetSuite ERP and CRM systems for 100+ users</li>
+                <li>Replaced legacy systems with integrated platforms improving data visibility and operational efficiency</li>
+                <li>Deployed proprietary geospatial tracking systems for vessel monitoring and analytics</li>
+                <li>Implemented KYC due diligence platforms for compliance and regulatory requirements</li>
+            </ul>
+
+            <p><strong>M&A Leadership & Integration</strong></p>
+            <ul>
+                <li>Directed integration of three ship agency acquisitions (Barwil Agencies merger 2017)</li>
+                <li>Established 9 new port offices (Savannah, Jacksonville, Charleston, Mobile, Gulfport, New Orleans, Brownsville, Houston, Freeport)</li>
+                <li>Maintained 95%+ customer retention across all acquisitions through focused transition management</li>
+                <li>Integrated operations, systems, and teams across geographically dispersed locations</li>
+            </ul>
+
+            <h3>WILHELMSEN SHIP SERVICES <span class="location">| Norfolk, VA</span></h3>
+
+            <h4>Operations Manager – Mississippi River <span class="dates">| December 1999 – October 2016</span></h4>
+
+            <p><strong>Regional Operations & Crisis Management</strong></p>
+            <ul>
+                <li>Managed ship agency operations across Mississippi River and Gulf Coast ports handling 400+ annual port calls</li>
+                <li>Led Hurricane Katrina response (2005) coordinating vessel operations during and after the disaster—maintained service continuity and customer relationships</li>
+                <li>Established operations in new ports including Hampton Roads (first coal nomination on US East Coast), Baltimore, and Philadelphia</li>
+                <li>Developed crisis management protocols and maintained operations during major disruptions</li>
+            </ul>
+
+            <p><strong>Commercial Development & Market Expansion</strong></p>
+            <ul>
+                <li>Expanded customer base across commodity trades (grain, petcoke, coal, oil, breakbulk)</li>
+                <li>Built relationships with terminal operators, pilots, port authorities, and shipping lines</li>
+                <li>Supported terminal development projects and infrastructure investments</li>
+                <li>Developed performance metrics driving operational improvements</li>
+            </ul>
+
+            <p><strong>Systems & Process Innovation</strong></p>
+            <ul>
+                <li>Early adopter of digital cameras and data systems for enhanced operational transparency</li>
+                <li>Developed proforma and berth sheets with photos and maps improving customer communications</li>
+                <li>Implemented tracking systems and analytics for vessel operations</li>
+            </ul>
+
+            <h3>T. PARKER HOST, INC. <span class="location">| Baltimore, MD</span></h3>
+
+            <h4>Port Agent <span class="dates">| November 1995 – December 1999</span></h4>
+
+            <ul>
+                <li>Managed ship agency operations in Baltimore handling diverse cargo types and vessel operations</li>
+                <li>Coordinated with stevedores, terminal operators, customs officials, and ship's masters</li>
+                <li>Handled disbursement accounting and proforma estimation for entry-level employees</li>
+                <li>Gained foundational expertise in commercial business operations and customer service</li>
+            </ul>
+
+            <hr>
+
+            <h2>Military Service</h2>
+
+            <h3>UNITED STATES ARMY <span class="location">| Fort Campbell, KY</span></h3>
+
+            <h4>Infantryman, 101st Airborne Division <span class="dates">| 1993 – 1995</span></h4>
+
+            <ul>
+                <li>Served in long-range surveillance unit at Fort Campbell, Kentucky</li>
+                <li>Developed discipline, attention to detail, and crisis management skills</li>
+                <li>Honorable discharge with valuable leadership and team coordination experience</li>
+            </ul>
+
+            <hr>
+
+            <h2>Education & Professional Development</h2>
+
+            <p><strong>Professional Certifications & Training:</strong></p>
+            <ul class="two-column">
+                <li>Diploma in Ship Agency — Association of Ship Brokers and Agents (ASBA), 2021</li>
+                <li>Maritime Arbitration — Society of Maritime Arbitrators, 2021</li>
+                <li>Maritime Law Certification — ASBA, 2017</li>
+                <li>Commercial Trade Transactions — ASBA, 2016</li>
+                <li>Basic Principles of Chartering — ASBA, 2014</li>
+                <li>Maritime Transportation of Chemicals & LPG — Tank Assist BV, 2015</li>
+                <li>Leadership Development Program — Center for Creative Leadership, 2013</li>
+            </ul>
+
+            <p><strong>Academic Background:</strong></p>
+            <ul>
+                <li>First Colonial High School, Virginia Beach, VA</li>
+                <li>Extensive business management and commercial development training through industry associations</li>
+            </ul>
+
+            <hr>
+
+            <h2>Professional Affiliations</h2>
+
+            <ul class="two-column">
+                <li>Society of Maritime Arbitrators (Member, 2021)</li>
+                <li>Association of Ship Brokers and Agents (Member, 2014)</li>
+                <li>Propeller Club of the United States (Member, 2002)</li>
+                <li>Hampton Roads Shipping Association (Member, 2002)</li>
+                <li>Virginia Maritime Association (Member, 2012)</li>
+                <li>Port of New Orleans (Member, 2002)</li>
+            </ul>
+
+            <hr>
+
+            <h2>Additional Information</h2>
+
+            <p><strong>Technical Proficiencies:</strong> NetSuite ERP/CRM, Oracle NetSuite, geospatial tracking systems, data analytics platforms, Microsoft Office Suite, maritime operational software, KYC compliance platforms</p>
+
+            <p><strong>Publications & Thought Leadership:</strong> Authored extensive professional library covering ship agency operations, chartering, maritime law, commodity trading, supply chain management, and specialized industry literature spanning 779 works</p>
+
+            <p><strong>Personal Interests:</strong> Wood turning, vintage machining, maritime history, live music.</p>
+        </div>
+
+        <!-- TAB 2: BIOGRAPHY -->
+        <div id="biography" class="tab-content">
+            <div class="content-header">
+                <img src="images/wsd_logo.png" alt="W.S.D. Logo" class="cv-logo">
+                <h1>WILLIAM S. DAVIS III</h1>
+                <div class="subtitle">Professional Biography & Work History</div>
+            </div>
+
+            <div class="bio-intro">
+                "A water-clerk need not pass an examination in anything under the sun, but he must have Ability in the abstract and demonstrate it practically."
+                <div style="text-align: right; margin-top: 0.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.6);">— Joseph Conrad, <em>Lord Jim</em> (1900)</div>
+            </div>
+
+            <div class="bio-section">
+                <h2>Origins</h2>
+                <img src="images/origins-photo.jpg" alt="Early maritime influences" class="bio-image" style="max-width: 259px;">
+                <p>Born and raised beside the Atlantic in Virginia Beach, I grew up watching ships pass Cape Henry—sometimes finding ship's mail or chunks of coal washed ashore from passing vessels while playing in the surf. I am a second-generation maritime professional; my earliest memory of boarding a commercial vessel was in 1979 aboard the <em>Export Builder</em>, when my father was an agent for American Export Isbrandtsen Lines. He would go on to a worldwide career, following American Export through Farrell Lines, then transitioning to commercial and leadership roles for Wilhelmsen Lines in 1989 with global responsibilities, until the final corporate merger of Wallenius and Wilhelmsen in 2017, where he began work for COSCO until retirement.</p>
+
+                <p>The ocean and my father's trinkets from overseas forged a lifelong interest in maritime commerce. The smell of salt water, the sight of ships on the horizon, and stories of distant ports shaped my professional aspirations from an early age.</p>
+
+                <p>My first commercial work came at age ten, selling stationery for prizes. At thirteen, I began working summers at a bicycle shop—a formative experience in commercial business built around mechanical assets that would prove beneficial later in life. I continued that job through high school graduation, working over forty hours weekly while attending school during my senior year. I have been gainfully employed for nearly forty years, with only four employers in that span.</p>
+            </div>
+
+            <div class="bio-section">
+                <h2>Military Service</h2>
+                <p>After graduating from First Colonial High School in Virginia Beach, I took a different path than most peers and enlisted in the United States Army. I served as an infantryman assigned to a military intelligence long-range surveillance unit in the 101st Airborne Division at Fort Campbell, Kentucky (1993–1995). The discipline, attention to detail, and crisis management skills developed during military service would prove more valuable throughout my maritime career than any college degree.</p>
+            </div>
+
+            <div class="bio-section">
+                <h2>Entry into Maritime (1995–1999)</h2>
+                <img src="images/balto-domino-night.jpg" alt="Baltimore harbor at night" class="bio-image" style="max-width: 160px;">
+                <p>Following my discharge, I returned to civilian life in Baltimore, where my parents were living, working as a bicycle messenger and mechanic while determining my next steps. The physical work was honest, the streets of Baltimore were educational in their own way, and the job gave me time to think. Ultimately, I applied at several agencies in Baltimore under a simple premise: ship agency is the greatest entry-level job in shipping, and I was willing to work long, flexible hours for modest pay to earn my place in the industry. I was immediately hired.</p>
+
+                <p>At T. Parker Host in Baltimore, I learned the fundamentals—coordinating with stevedores, customs officials, pilots, terminal operators, and ship's masters. The work demanded precision, clear communication, and the ability to manage multiple moving parts simultaneously. Every vessel call was a lesson in logistics, timing, and problem-solving.</p>
+            </div>
+
+            <div class="bio-section">
+                <h2>Wilhelmsen Years: Mississippi River and Hurricane Katrina (1999–2006)</h2>
+                <img src="images/beth-b-anchor.jpg" alt="Beth B at anchor" class="bio-image" style="max-width: 160px;">
+                <p>In December 1999, I joined Wilhelmsen Ships Agency (operating as Barwil Agencies) as Operations Manager in Norfolk. Following the merger of Wilhelmsen and Wallenius liner services, Wilhelmsen had to bifurcate all domestic assets and businesses away from the merged liner pool. Overnight, they needed a manager to handle Pan Ocean's tramp liner service to Norfolk and attend the RoRo vessels in liner service. It was a great opportunity—I built the office from scratch: IT systems, forms, processes, and accounting, until Barwil could reorganize their US headquarters to New Orleans.</p>
+
+                <p>During this time, I helped reestablish their presence in neighboring Baltimore and North Carolina ports. I handled Hampton Roads' first-ever semi-submersible operation loading floating military stock and a 700-foot floating dry dock. I also achieved Barwil's first coal nomination on the US East Coast. This quickly drew attention from both local and worldwide corporate management. I established a sub-agency agreement with Host and worked on a one-year project to develop Barwil's global coal services package, attending strategy meetings in South Africa and Singapore with the global executive team.</p>
+
+                <p>During this era, I was among the first agents to use a digital camera and cellular modems for increased responsiveness while onboard vessels, and I developed a new format of proforma and berth sheets with photos and maps— innovations that would be widely copied once made famous by Host's adoption of the formats.</p>
+
+                <p>In early 2002, I requested a transfer to Barwil's Mississippi River office in New Orleans. I had always viewed the Mississippi River as the doctorate program for ship agency—the holy grail of on-the-job education. My primary responsibility was river operations, a different world from coastal ports: more complex vessel movements, tighter margins, and unpredictable challenges that demanded constant adaptation.</p>
+            </div>
+
+            <div class="bio-section">
+                <h2>Hurricane Katrina: August 2005</h2>
+                <img src="images/P7300073.jpg" alt="Hurricane Katrina aftermath" class="bio-image" style="max-width: 160px;">
+                <p>When Hurricane Katrina made landfall in New Orleans on August 29, 2005, the world changed. Most staff evacuated, leaving only essential employees. I volunteered to remain so colleagues with families could leave safely. I didn't fully anticipate what would unfold—none of us did. New Orleans flooded, communications failed, and normal infrastructure collapsed. For nearly two weeks, I coordinated vessel operations under conditions I'd never imagined in a U.S. port.</p>
+
+                <p>I managed vessel attendance during the storm itself and its immediate aftermath. As disaster response ramped up, I moved in and out of armed checkpoints and curfews, navigating encounters with police ensuring I wasn't a looter— the city was nearly evacuated except for first responders. I coordinated operations for three FEMA-chartered cruise ships that served as floating bases for emergency response teams, providing housing, food service, and staging areas when land-based facilities were underwater.</p>
+
+                <p>Perhaps most significantly, I managed the first deep-draft vessel to depart from the Mississippi River after the storm, once the Army had dragged the entire federal channel to sea for weeks and sunken obstacles. Dozens of barges and tugs had sunk; ships sat on levees; tugboats were in the middle of highways. Getting that vessel safely out required coordination with Coast Guard, pilots, terminal operators, and salvage teams—all operating under emergency conditions with limited communications.</p>
+
+                <p>Crisis leadership became part of my professional identity. I learned that I could function effectively under extreme pressure, coordinate complex operations with degraded infrastructure, and maintain focus when everything around me was in chaos.</p>
+            </div>
+
+            <div class="bio-section">
+                <h2>Building the South Atlantic and Gulf Coast (2006–2016)</h2>
+                <img src="images/P1000137.jpg" alt="South Atlantic port operations" class="bio-image" style="max-width: 160px;">
+                <p>In May 2006, conditions in New Orleans remained extremely difficult. I accepted a position as Operations Manager in Fernandina Beach, Florida, for Amelia Maritime Services, then a joint venture owned by Host and the Quinn family of Miami. The company was ready to expand aggressively into Gulf Coast and southern Atlantic ports, and they wanted someone who knew those markets and could build from scratch.</p>
+
+                <p>I participated in a complete reorganization of Amelia and its absorption into Host once the Quinns sold their interests. We then purchased Atlantic Ship Agencies in Savannah, which I was responsible for integrating and growing. During this period, I oversaw complete staff reorganization and expansion of operations in Fernandina, Jacksonville, and Brunswick, and opened Savannah and Charleston offices. I progressed from boarding agent to operations manager to vice president to a seat on the board of directors, until the business was integrated by Host, where I was promoted to Vice President of Business Development.</p>
+
+                <p>During the transition, I developed the beginnings of Host's first ERP using Google's platform and set up domain and email services for Amelia to streamline administrative and accounting functions between offices.</p>
+            </div>
+
+            <div class="bio-section">
+                <h2>Gulf Coast Expansion and M&A Integration</h2>
+                <img src="images/gulf-coast.jpg" alt="Gulf Coast operations" class="bio-image" style="max-width: 160px;">
+                <p>In 2011, Host purchased NSA Agencies. I led on-the-ground management and restructuring of their Mobile, New Orleans, and Houston offices, commuting weekly from Jacksonville for eight months. Again, I turned over staff, integrated and built processes, and hired and trained new employees handling weekly operations while coordinating with existing staff to ensure seamless transitions.</p>
+            </div>
+
+            <div class="bio-section">
+                <h2>Terminal Development and ERP Integration</h2>
+                <img src="images/terminal-dev.jpg" alt="Terminal development" class="bio-image" style="max-width: 160px;">
+                <p>At Host, I was the company representative of the former Bethlehem Steel site into a multimodal logistics and terminal complex. I conducted market analysis and supply chain modeling for steel, wind energy, and bulk commodity strategies—infrastructure investment at massive scale requiring analysis defensible to investors, lenders, and regulators.</p>
+
+                <p>I helped Host develop a sabermetics-style system using the world's most advanced data subscriptions and services to build complex operational and financial models, market studies, and geospatial modeling for various terminal operations, including due diligence research on counterparties. I was viewed as Host's internal consultant and also handled special assignments: reestablishing inventory for 500,000 tons of alumina at their Baltimore terminal after an inventory system failure, shutting down a logistics business in New York, and closing Host's agency in Colombia.</p>
+
+                <p>I worked on projects including an RFP to develop floating stevedoring and barging infrastructure for Russal's bauxite mine in Guinea, redevelopment of a former fertilizer plant into a dedicated petcoke terminal for CITGO's Pascagoula refinery, and a tank storage, barge, pipeline, and truck rack terminal at the former Philadelphia refinery on the Delaware River. I was chief architect of Host's "Solutions Network" business model and pitch books that led to Metalmark Capital's $75 million investment.</p>
+            </div>
+
+            <div class="bio-section">
+                <h2>Executive Leadership (2016–2025)</h2>
+                <img src="images/executive-leadership.jpg" alt="Executive leadership" class="bio-image" style="max-width: 160px;">
+                <p>In October 2016, while continuing regional management responsibilities, I took on an additional role as Director of Business Development focusing terminal development projects. This was a strategic pivot, leveraging operational expertise to support clients planning major terminal infrastructure investments.</p>
+
+                <p>Despite expensive degrees and MBAs on the business development team, two essential elements were lacking: experience and digitization—both proven skills of mine over time. This would be my second family relocation, from Jacksonville to Norfolk.</p>
+
+                <p>In November 2018, following the abrupt exit of Finn Host after the sale from the Host family to Adam Anderson and investors, I was assigned responsibility as interim head of agency. Overnight, in addition to my day job, I had over 100 employees, $22 million in revenue, and $800 million in receivables. I was promoted to Vice President & Head of Agency with full executive responsibility for T. Parker Host's ship agency division—oversight of all 15 locations, P&L accountability, and a seat on the executive committee shaping corporate strategy.</p>
+
+                <p>The initial goal was immediate stabilization of both morale and commercial relationships at risk of shifting to Host's new agency operating under a required license. This required extensive team building and change management. In the first six months, I reduced overhead by nearly $2 million through operational efficiencies alone.</p>
+
+                <p>The scope was substantial: 110+ employees, 4,200+ annual port calls, operations spanning from New York to Brownsville, Texas, with full responsibility for service quality, customer relationships, financial performance, and operational excellence.</p>
+            </div>
+
+            <div class="bio-section">
+                <h2>Digital Transformation</h2>
+                <p>I led the company's digital transformation, implementing Oracle NetSuite as our enterprise-wide ERP and CRM system for 100+ users, replacing legacy systems cobbled together over decades. I also developed proprietary geospatial tracking systems for vessel monitoring, data reporting platforms for operational optimization, and KYC due diligence platforms.</p>
+            </div>
+
+            <div class="bio-section">
+                <h2>COVID-19 Crisis Management</h2>
+                <p>We maintained 100% operational continuity throughout the pandemic without losing business, customers, or employees. Keeping a 24-hour business and a team of over 100 employees on point and motivated during the worst climate any American business could find itself operating in will remain one of my proudest achievements.</p>
+            </div>
+
+            <div class="bio-section">
+                <h2>Professional Development</h2>
+                <p>Throughout my career, continuous learning has been central to my development. I've systematically studied maritime operations, logistics, supply chain management, and related disciplines through specialized industry literature. Over 30 years, I've built a professional library of 779 works spanning ship agency, chartering, maritime law, port operations, supply chain econometrics, and commodity markets.</p>
+
+                <p>I have extensive interest and knowledge in chartered vessel operations, charter parties, laytime, and typical associated claims and bill of lading issues. At Host, I was the company representative for the Society of Maritime Arbitrators in New York and led several pieces of agency litigation, fines, and claims. I have a future goal of becoming a regular maritime arbitrator under SDNY and have taken preliminary training.</p>
+            </div>
+
+            <div class="bio-section">
+                <h2>Looking Forward</h2>
+                <p>In May 2025, with terminal operations now fully matured and a long-term hire trained and implemented as head of agency, I sought the horizons. I parted ways on good terms with Host as part of their acquisition of Transmarine, exiting gardening leave in December 2025.</p>
+
+                <p>After 30 years focused primarily on maritime operations, I'm interested in applying this experience to broader logistics, supply chain, or infrastructure roles. The skills are transferable: operational leadership, crisis management, technology implementation, market development, stakeholder management, and team building.</p>
+            </div>
+        </div>
+
+        <!-- TAB 3: BIBLIOGRAPHY -->
+        <div id="bibliography" class="tab-content">
+            <div class="content-header">
+                <img src="images/wsd_logo.png" alt="W.S.D. Logo" class="cv-logo">
+                <h1>WILLIAM S. DAVIS III</h1>
+                <div class="subtitle">Professional Bibliography</div>
+            </div>
+
+            <p>Throughout my career, continuous learning has been central to professional development. Over 30 years, I've built a comprehensive professional library of 779 works spanning ship agency, chartering, maritime law, port operations, supply chain management, and commodity markets.</p>
+
+            <h2>Library Overview</h2>
+            <p>This collection represents systematic study across multiple domains:</p>
+            <ul>
+                <li><strong>Ship Agency Operations:</strong> Comprehensive texts on agency practices, port operations, and vessel coordination</li>
+                <li><strong>Maritime Law & Regulation:</strong> Charter parties, bills of lading, admiralty law, and international conventions</li>
+                <li><strong>Commodity Trading:</strong> Grain, coal, petroleum, breakbulk, and specialized cargo handling</li>
+                <li><strong>Supply Chain Management:</strong> Logistics optimization, terminal operations, and multimodal transportation</li>
+                <li><strong>Industry Economics:</strong> Shipping markets, freight rates, and maritime business strategy</li>
+            </ul>
+
+            <h2>Selected Works</h2>
+            <p><em>Detailed bibliography table to be added here with titles, authors, and subject areas.</em></p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Works</th>
+                        <th>Focus Areas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ship Agency & Operations</td>
+                        <td>~150 works</td>
+                        <td>Port operations, agency practice, vessel coordination</td>
+                    </tr>
+                    <tr>
+                        <td>Maritime Law</td>
+                        <td>~120 works</td>
+                        <td>Charter parties, admiralty law, bills of lading</td>
+                    </tr>
+                    <tr>
+                        <td>Commodity Trading</td>
+                        <td>~180 works</td>
+                        <td>Grain, coal, oil, breakbulk cargo handling</td>
+                    </tr>
+                    <tr>
+                        <td>Supply Chain & Logistics</td>
+                        <td>~200 works</td>
+                        <td>Terminal operations, multimodal transport, optimization</td>
+                    </tr>
+                    <tr>
+                        <td>Industry Economics</td>
+                        <td>~129 works</td>
+                        <td>Shipping markets, freight economics, business strategy</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="margin-top: 2rem; font-style: italic; color: rgba(255,255,255,0.7);">
+                This bibliography demonstrates commitment to continuous professional development and deep domain expertise across maritime commerce, operations, and business management.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Deactivate all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Activate clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
