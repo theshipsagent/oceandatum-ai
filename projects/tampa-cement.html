@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tampa Cement Terminal | Market Intelligence</title>
+    <title>Tampa Cement Terminal | Complete Market Intelligence</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
@@ -220,10 +220,12 @@
             display: flex;
             background: rgba(0,0,0,0.4);
             border-bottom: 1px solid rgba(255,255,255,0.2);
+            overflow-x: auto;
         }
 
         .tab-button {
             flex: 1;
+            min-width: 150px;
             padding: 1rem 1.5rem;
             background: transparent;
             border: none;
@@ -283,6 +285,10 @@
             border-left-color: #ff7043;
         }
 
+        .section.green {
+            border-left-color: #4caf50;
+        }
+
         .section h2 {
             font-size: 1.5rem;
             font-weight: 600;
@@ -290,19 +296,18 @@
             margin-bottom: 1rem;
         }
 
-        .section.blue h2 {
-            color: #ffffff;
-        }
-
-        .section.orange h2 {
-            color: #ffffff;
-        }
-
         .section h3 {
             font-size: 1.2rem;
             font-weight: 500;
             color: rgba(255,255,255,0.9);
             margin: 1.5rem 0 1rem;
+        }
+
+        .section h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.85);
+            margin: 1rem 0 0.5rem;
         }
 
         .section p {
@@ -338,6 +343,10 @@
             background: rgba(255,255,255,0.05);
         }
 
+        td strong {
+            color: #ffffff;
+        }
+
         /* Two Column Layout */
         .two-col {
             display: grid;
@@ -358,6 +367,10 @@
             line-height: 1.6;
         }
 
+        li strong {
+            color: #ffffff;
+        }
+
         /* Highlight Boxes */
         .highlight {
             background: linear-gradient(135deg, rgba(255,193,7,0.2) 0%, rgba(255,152,0,0.2) 100%);
@@ -369,6 +382,22 @@
 
         .highlight strong {
             color: #ffc107;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(100,181,246,0.2) 0%, rgba(33,150,243,0.2) 100%);
+            border-left: 4px solid #64b5f6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, rgba(100,255,180,0.2) 0%, rgba(76,175,80,0.2) 100%);
+            border-left: 4px solid #64ffb4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
         }
 
         /* Recommendations Grid */
@@ -486,6 +515,10 @@
             .project-header h1 {
                 font-size: 1.8rem;
             }
+
+            .tab-button {
+                min-width: unset;
+            }
         }
     </style>
 </head>
@@ -530,7 +563,7 @@
     <div class="project-container">
         <div class="project-header">
             <h1>Tampa Cement Terminal</h1>
-            <div class="subtitle">Florida Market Intelligence & Strategic Analysis</div>
+            <div class="subtitle">Complete Florida Market Intelligence Package</div>
             <div class="meta">Port Redwing Terminal | SESCO Cement Corp | December 2025</div>
         </div>
 
@@ -544,125 +577,461 @@
                 <div class="label">Tampa Bay Share</div>
             </div>
             <div class="hero-stat">
-                <div class="value">158</div>
-                <div class="label">NA Cement Plants</div>
+                <div class="value">10.4M</div>
+                <div class="label">MT Production Capacity</div>
             </div>
             <div class="hero-stat">
-                <div class="value">10%</div>
-                <div class="label">Egypt/Turkey Tariff</div>
+                <div class="value">$79/ton</div>
+                <div class="label">Avg Import Price</div>
             </div>
         </div>
 
         <div class="tab-nav">
             <button class="tab-button active" onclick="showTab('overview')">Overview</button>
+            <button class="tab-button" onclick="showTab('supply')">Supply Side</button>
+            <button class="tab-button" onclick="showTab('demand')">Demand & Customers</button>
+            <button class="tab-button" onclick="showTab('export')">Export Markets</button>
             <button class="tab-button" onclick="showTab('maps')">Interactive Maps</button>
-            <button class="tab-button" onclick="showTab('intelligence')">Market Intelligence</button>
             <button class="tab-button" onclick="showTab('strategy')">Strategy</button>
         </div>
 
         <!-- TAB 1: Overview -->
         <div id="overview" class="tab-content active">
             <div class="section">
-                <h2>Market Opportunity</h2>
-                <p>Florida is the <strong>2nd largest cement consuming state</strong> and <strong>4th largest producer</strong> in the United States. The Tampa Bay region receives <strong>75% of Florida's cement imports</strong> (6.8M MT annually), making it the strategic center for cement distribution throughout the state.</p>
-                <p>SESCO's new <strong>Port Redwing terminal</strong> in Gibsonton positions the company to capture significant market share with favorable sourcing from Egypt and Turkey (10% tariff) versus competitors facing 25-46% duties on alternative origins.</p>
+                <h2>Executive Summary</h2>
+                <p>Florida represents the <strong>second-largest cement consuming state</strong> in the US and the <strong>fourth-largest producing state</strong>, making it a critical market for cement distributors. SESCO Cement Corp's new Port Redwing terminal in Gibsonton positions the company to capture significant market share in the Tampa Bay region, which receives approximately <strong>75% of Florida's cement imports</strong>.</p>
             </div>
 
             <div class="two-col">
                 <div class="section blue">
-                    <h2>Port Redwing Reach</h2>
+                    <h2>Market Position</h2>
                     <table>
-                        <thead>
-                            <tr><th>Radius</th><th>Population</th><th>Markets</th></tr>
-                        </thead>
                         <tbody>
-                            <tr><td><strong>1 Hour</strong></td><td>3.4M</td><td>Tampa Bay metro</td></tr>
-                            <tr><td><strong>3 Hours</strong></td><td>12.8M</td><td>Orlando, Fort Myers, Sarasota</td></tr>
-                            <tr><td><strong>5 Hours</strong></td><td>22.5M</td><td>All of Florida</td></tr>
+                            <tr><td><strong>US Consumption Rank</strong></td><td>#2</td></tr>
+                            <tr><td><strong>Masonry Cement</strong></td><td>#1 in US</td></tr>
+                            <tr><td><strong>US Import Share</strong></td><td>22%</td></tr>
+                            <tr><td><strong>Capacity Utilization</strong></td><td>72%</td></tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div class="section">
-                    <h2>Competitive Landscape</h2>
+                <div class="section orange">
+                    <h2>Port Redwing Terminal</h2>
                     <table>
                         <tbody>
-                            <tr><td><strong>Argos USA</strong></td><td>Tampa plant (1.9M MT/yr)</td></tr>
-                            <tr><td><strong>Martin Marietta</strong></td><td>Largest importer (4.1M MT)</td></tr>
-                            <tr><td><strong>CEMEX</strong></td><td>Brooksville plant + Mobile</td></tr>
-                            <tr><td><strong>Titan America</strong></td><td>Miami plant, Greek supply</td></tr>
+                            <tr><td><strong>Location</strong></td><td>Gibsonton, FL</td></tr>
+                            <tr><td><strong>Storage Capacity</strong></td><td>150,000 MT</td></tr>
+                            <tr><td><strong>Products</strong></td><td>Gray & White cement</td></tr>
+                            <tr><td><strong>Sources</strong></td><td>Egypt, Turkey</td></tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+
+            <div class="success-box">
+                <h3>SESCO Competitive Advantage</h3>
+                <p><strong>Egypt and Turkey sourcing at 10% tariff</strong> vs. 25-46% for major competitors sourcing from Canada, Mexico, or Vietnam. This creates a sustainable <strong>15-36% cost advantage</strong> on imported material.</p>
+            </div>
+
+            <div class="section green">
+                <h2>Port Redwing Market Reach (Trucking Radius)</h2>
+                <table>
+                    <thead>
+                        <tr><th>Zone</th><th>Drive Time</th><th>Radius</th><th>Population</th><th>Key Markets</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Primary</strong></td><td>1 hour</td><td>55 mi</td><td>3.4 million</td><td>Tampa, St. Petersburg, Clearwater, Brandon, Lakeland</td></tr>
+                        <tr><td><strong>Same-Day</strong></td><td>3 hours</td><td>165 mi</td><td>12.8 million</td><td>Orlando, Sarasota, Fort Myers, Ocala, Gainesville</td></tr>
+                        <tr><td><strong>Extended</strong></td><td>5 hours</td><td>275 mi</td><td>22.5 million</td><td>Jacksonville, Miami, Tallahassee, South Georgia, Mobile AL</td></tr>
+                    </tbody>
+                </table>
             </div>
 
             <div class="highlight">
-                <strong>SESCO Competitive Advantage:</strong> Egypt/Turkey sourcing at 10% tariff vs. 25% (Canada/Mexico) or 46% (Vietnam) for competitors. White cement specialty focus with limited competition in Florida market.
+                <h3>Florida Demand Drivers</h3>
+                <div class="two-col">
+                    <div>
+                        <h4>Population Growth</h4>
+                        <ul>
+                            <li>3rd most populous state</li>
+                            <li>Tampa Bay: Fastest-growing metro areas</li>
+                            <li>Net migration continues post-pandemic</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Construction Activity</h4>
+                        <ul>
+                            <li>Residential construction (single/multi-family)</li>
+                            <li>Commercial development</li>
+                            <li>Infrastructure (FDOT projects, ports)</li>
+                            <li>Hurricane repair and hardening</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: Supply Side -->
+        <div id="supply" class="tab-content">
+            <div class="section">
+                <h2>Tampa Area Supply Infrastructure</h2>
+
+                <h3>Cement Plants</h3>
+                <div class="two-col">
+                    <div class="info-box">
+                        <h4>Argos USA - Tampa Port Plant</h4>
+                        <ul>
+                            <li><strong>Location:</strong> Tampa, Hillsborough County</li>
+                            <li><strong>Capacity:</strong> 1.9 million tons/year</li>
+                            <li><strong>Products:</strong> Portland cement, masonry cement</li>
+                            <li><strong>Parent:</strong> Cementos Argos (Colombia)</li>
+                        </ul>
+                    </div>
+                    <div class="info-box">
+                        <h4>CEMEX - Brooksville South</h4>
+                        <ul>
+                            <li><strong>Location:</strong> Brooksville, Hernando County</li>
+                            <li><strong>Capacity:</strong> 1.5 million tons/year</li>
+                            <li><strong>Products:</strong> Portland cement, blended cement</li>
+                            <li><strong>Parent:</strong> CEMEX (Mexico)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section blue">
+                <h2>All Florida Cement Plants (7 Total)</h2>
+                <table>
+                    <thead>
+                        <tr><th>Plant</th><th>Owner</th><th>Location</th><th>Capacity (MT/yr)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Pennsuco</td><td>Titan America</td><td>Miami</td><td>2.1M</td></tr>
+                        <tr><td>Tampa Port</td><td>Argos USA</td><td>Tampa</td><td>1.9M</td></tr>
+                        <tr><td>Newberry</td><td>Argos USA</td><td>Newberry</td><td>1.6M</td></tr>
+                        <tr><td>Brooksville South</td><td>CEMEX</td><td>Brooksville</td><td>1.5M</td></tr>
+                        <tr><td>Sumterville</td><td>Ash Grove (CRH)</td><td>Sumterville</td><td>1.2M</td></tr>
+                        <tr><td>Miami</td><td>CEMEX</td><td>Miami</td><td>1.1M</td></tr>
+                        <tr><td>Branford</td><td>Ash Grove (CRH)</td><td>Branford</td><td>1.0M</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>Total Florida Production Capacity: ~10.4 million tons/year</strong></p>
+            </div>
+
+            <div class="section">
+                <h2>Import Terminals - Tampa Bay Area</h2>
+                <table>
+                    <thead>
+                        <tr><th>Terminal</th><th>Operator</th><th>Volume (2023-2025)</th><th>Primary Source</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Tampa Bay</td><td>Multiple</td><td>3.45M MT</td><td>Turkey, Greece</td></tr>
+                        <tr><td>Tampa Port</td><td>Martin Marietta</td><td>2.42M MT</td><td>Various</td></tr>
+                        <tr><td>Port Manatee</td><td>Various</td><td>946K MT</td><td>Turkey, Egypt</td></tr>
+                    </tbody>
+                </table>
             </div>
 
             <div class="section orange">
-                <h2>Target Customer Segments</h2>
+                <h2>US Cement Imports by Origin (2024)</h2>
                 <table>
                     <thead>
-                        <tr><th>Priority</th><th>Segment</th><th>Product</th><th>Opportunity</th></tr>
+                        <tr><th>Country</th><th>Volume (MT)</th><th>Tariff</th><th>Notes</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>1</td><td>Stucco/EIFS Manufacturers</td><td>White</td><td>High volume, high margin</td></tr>
-                        <tr><td>2</td><td>Independent Ready-Mix</td><td>Gray</td><td>Volume builder, non-integrated</td></tr>
-                        <tr><td>3</td><td>Tile Adhesive Producers</td><td>White</td><td>Specialty, premium pricing</td></tr>
-                        <tr><td>4</td><td>Precast Producers</td><td>Both</td><td>Technical relationships</td></tr>
-                        <tr><td>5</td><td>Mortar/Grout Manufacturers</td><td>White</td><td>Niche, consistent demand</td></tr>
+                        <tr><td><strong>Turkey</strong></td><td>7.16M</td><td>10%</td><td>Largest supplier</td></tr>
+                        <tr><td><strong>Canada</strong></td><td>4.85M</td><td>25%</td><td>Border trade</td></tr>
+                        <tr><td><strong>Vietnam</strong></td><td>4.17M</td><td>46%</td><td>AD/CVD duties</td></tr>
+                        <tr><td><strong>Greece</strong></td><td>1.82M</td><td>10%</td><td>Titan supply</td></tr>
+                        <tr><td><strong>Mexico</strong></td><td>1.32M</td><td>25%</td><td>Gulf ports</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight">
+                    <strong>Growing Import Sources (2023-2024):</strong> Thailand +542%, Spain +116%, Egypt +71%, Saudi Arabia +34%
+                </div>
+            </div>
+
+            <div class="section blue">
+                <h2>Tampa Area Import Origins</h2>
+                <table>
+                    <thead>
+                        <tr><th>Origin</th><th>Share</th><th>Volume Estimate</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Turkey</td><td>33%</td><td>2.2M MT</td></tr>
+                        <tr><td>Greece</td><td>28%</td><td>1.9M MT</td></tr>
+                        <tr><td>Colombia</td><td>15%</td><td>1.0M MT</td></tr>
+                        <tr><td>Mexico</td><td>12%</td><td>0.8M MT</td></tr>
+                        <tr><td>Egypt</td><td>8%</td><td>0.5M MT</td></tr>
+                        <tr><td>Other</td><td>4%</td><td>0.3M MT</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section green">
+                <h2>Ocean Freight Analysis</h2>
+                <table>
+                    <thead>
+                        <tr><th>Route</th><th>Rate/MT</th><th>Notes</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Turkey → Tampa</td><td>$5.50-6.00</td><td>Supramax</td></tr>
+                        <tr><td>Egypt → Tampa</td><td>$7.00-8.00</td><td>Handysize</td></tr>
+                        <tr><td>Mexico → Tampa</td><td>$3.00-4.00</td><td>Handysize</td></tr>
+                        <tr><td>Tampa → Caribbean</td><td>$4.00-6.00</td><td>Small vessels</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section orange">
+                <h2>Tariff Structure (Critical Factor)</h2>
+                <table>
+                    <thead>
+                        <tr><th>Origin</th><th>Tariff Rate</th><th>Status</th><th>Impact</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Turkey</strong></td><td>10%</td><td>MFN rate</td><td>SESCO advantage</td></tr>
+                        <tr><td><strong>Egypt</strong></td><td>10%</td><td>MFN rate</td><td>SESCO advantage</td></tr>
+                        <tr><td><strong>Greece</strong></td><td>10%</td><td>MFN rate</td><td>Titan's source</td></tr>
+                        <tr><td><strong>Canada</strong></td><td>25%</td><td>Section 232</td><td>Major competitors pay premium</td></tr>
+                        <tr><td><strong>Mexico</strong></td><td>25%</td><td>Section 232</td><td>Major competitors pay premium</td></tr>
+                        <tr><td><strong>Vietnam</strong></td><td>46%</td><td>AD/CVD duties</td><td>Effectively uncompetitive</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB 3: Demand & Customers -->
+        <div id="demand" class="tab-content">
+            <div class="section">
+                <h2>Florida Demand Profile</h2>
+                <p>Florida is the <strong>#2 cement consuming state</strong> in the US and the <strong>#1 masonry cement state</strong>, with 72% capacity utilization across its cement plants.</p>
+            </div>
+
+            <div class="section blue">
+                <h2>Customer Segments</h2>
+                <table>
+                    <thead>
+                        <tr><th>Segment</th><th>Market Share</th><th>Customer Type</th><th>Opportunity</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Ready-Mix Producers</strong></td><td>70-75%</td><td>Integrated & Independent</td><td>Target independents (non-vertically integrated)</td></tr>
+                        <tr><td><strong>Concrete Products</strong></td><td>12%</td><td>Precast, Block, Pipe, Pavers</td><td>White cement specialty products</td></tr>
+                        <tr><td><strong>Contractors</strong></td><td>8-10%</td><td>Infrastructure, Commercial</td><td>Project-based supply</td></tr>
+                        <tr><td><strong>Other</strong></td><td>5-10%</td><td>Specialty, Export</td><td>Caribbean re-export potential</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section orange">
+                <h2>White Cement Market (Florida-Wide)</h2>
+                <div class="highlight">
+                    <strong>Market Driver:</strong> Florida hurricane codes favor stucco/EIFS exteriors, driving significant white cement demand for wall systems. This creates a specialized market with high margins and limited competition.
+                </div>
+
+                <h3>Stucco/EIFS Manufacturers (Primary Targets)</h3>
+                <table>
+                    <thead>
+                        <tr><th>Company</th><th>Products</th><th>Annual Need (Est.)</th><th>Priority</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Parex USA / LaHabra</strong></td><td>Stucco, EIFS</td><td>7,000+ MT</td><td>High</td></tr>
+                        <tr><td><strong>BASF Wall Systems</strong></td><td>EIFS, stucco</td><td>5,000+ MT</td><td>High</td></tr>
+                        <tr><td><strong>Dryvit Systems</strong></td><td>EIFS</td><td>3,000+ MT</td><td>High</td></tr>
+                        <tr><td><strong>Sto Corporation</strong></td><td>EIFS, coatings</td><td>2,500+ MT</td><td>Medium</td></tr>
+                        <tr><td><strong>El Rey Stucco</strong></td><td>Stucco</td><td>2,000+ MT</td><td>Medium</td></tr>
+                        <tr><td><strong>Finestone</strong></td><td>EIFS</td><td>2,000+ MT</td><td>Medium</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Tile Adhesive/Mortar Producers</h3>
+                <table>
+                    <thead>
+                        <tr><th>Company</th><th>Products</th><th>Location</th><th>Priority</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Mapei Americas</strong></td><td>Thin-set, grout</td><td>Deerfield Beach, FL</td><td>High</td></tr>
+                        <tr><td><strong>Laticrete</strong></td><td>Setting materials</td><td>National distribution</td><td>High</td></tr>
+                        <tr><td><strong>Custom Building Products</strong></td><td>Mortars, grouts</td><td>National distribution</td><td>Medium</td></tr>
+                        <tr><td><strong>TEC (H.B. Fuller)</strong></td><td>Flooring adhesives</td><td>National distribution</td><td>Medium</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section green">
+                <h2>Ready-Mix Customer Base</h2>
+                <ul>
+                    <li><strong>894 Florida ready-mix plants</strong> identified via industry databases</li>
+                    <li><strong>800+ Gulf Coast plants</strong> within extended trucking range (Alabama, Mississippi)</li>
+                    <li>Mix of integrated producers (vertically integrated with cement manufacturers) and independent operators</li>
+                    <li><strong>Target: Independent ready-mix operators</strong> not vertically integrated with Argos, CEMEX, or Titan</li>
+                    <li>Volume opportunity: 25-50K MT Year 1, scaling to 150K+ MT by Year 3</li>
+                </ul>
+            </div>
+
+            <div class="section blue">
+                <h2>Precast Concrete Producers</h2>
+                <p>Precast segment represents opportunity for both gray and white cement:</p>
+                <ul>
+                    <li><strong>Architectural precast:</strong> White cement for aesthetic applications (facades, panels)</li>
+                    <li><strong>Structural precast:</strong> Gray cement for beams, columns, double-tees</li>
+                    <li><strong>Specialty products:</strong> Terrazzo, custom finishes requiring white cement</li>
+                    <li>Technical support differentiator (mix design assistance, quality control)</li>
+                </ul>
+            </div>
+
+            <div class="section orange">
+                <h2>Competitive Intelligence - Major Players</h2>
+
+                <h3>1. Martin Marietta (Largest Importer)</h3>
+                <ul>
+                    <li>4.1M MT imported annually to Florida</li>
+                    <li>Primary sources: Mexico, Canada (25% tariff exposure)</li>
+                    <li>Strong ready-mix integration</li>
+                    <li><strong>Vulnerability:</strong> Tariff differential vs. SESCO creates 15% cost disadvantage</li>
+                </ul>
+
+                <h3>2. Argos USA (Largest Producer)</h3>
+                <ul>
+                    <li>3 Florida plants, 5.8M MT total capacity</li>
+                    <li>Colombian parent company (imports supplement domestic production)</li>
+                    <li>Vertically integrated into ready-mix</li>
+                    <li><strong>Gap:</strong> Limited white cement capabilities</li>
+                </ul>
+
+                <h3>3. CEMEX (Regional Player)</h3>
+                <ul>
+                    <li>Brooksville plant + Mobile AL imports</li>
+                    <li>Strong brand, integrated supply chain</li>
+                    <li>Mexican sourcing faces 25% tariff</li>
+                    <li><strong>Gap:</strong> Focus on gray cement, limited white</li>
+                </ul>
+
+                <h3>4. Titan America (South Florida)</h3>
+                <ul>
+                    <li>Miami production + Greek imports</li>
+                    <li>Strong in South Florida market</li>
+                    <li>Limited white cement focus</li>
+                    <li><strong>Gap:</strong> Geographic distance from Tampa Bay</li>
+                </ul>
+
+                <h3>5. Ash Grove (CRH Group)</h3>
+                <ul>
+                    <li>2 Florida plants (Sumterville, Branford)</li>
+                    <li>Combined 2.2M MT capacity</li>
+                    <li>Part of global CRH conglomerate</li>
+                    <li><strong>Focus:</strong> Primarily gray cement for ready-mix</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TAB 4: Export Markets -->
+        <div id="export" class="tab-content">
+            <div class="success-box">
+                <h2>Caribbean/Central America Opportunity</h2>
+                <p><strong>68.8% of US cement exports</strong> go to Caribbean and Central America markets. Florida ports, particularly Tampa, are ideally positioned for re-export operations targeting these markets.</p>
+            </div>
+
+            <div class="section">
+                <h2>Priority Export Markets</h2>
+                <table>
+                    <thead>
+                        <tr><th>Market</th><th>Tier</th><th>Opportunity</th><th>Notes</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Bahamas</strong></td><td>1</td><td>High</td><td>100% import-dependent, active buyer, premium market</td></tr>
+                        <tr><td><strong>Trinidad & Tobago</strong></td><td>1</td><td>High</td><td>Zero duty (2025), government encouraging cement trade</td></tr>
+                        <tr><td><strong>US Virgin Islands</strong></td><td>1</td><td>High</td><td>US territory, 100% import-dependent, no duties</td></tr>
+                        <tr><td><strong>Cayman Islands</strong></td><td>1</td><td>High</td><td>High-end resort construction, premium pricing</td></tr>
+                        <tr><td><strong>Aruba/Curacao</strong></td><td>2</td><td>Medium</td><td>Tourism construction, Dutch territories</td></tr>
+                        <tr><td><strong>Nicaragua</strong></td><td>2</td><td>Medium</td><td>1.0M ton import dependency</td></tr>
+                        <tr><td><strong>Jamaica</strong></td><td>2</td><td>Medium</td><td>Largest Caribbean market, some domestic production</td></tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="section blue">
-                <h2>Caribbean Export Opportunity</h2>
-                <p><strong>68.8% of US cement exports</strong> go to Caribbean and Central America markets. Tampa's geographic position provides significant competitive advantage.</p>
-
+                <h2>White Cement Export Advantage</h2>
                 <div class="two-col">
                     <div>
-                        <h3>Tier 1 Export Markets</h3>
+                        <h3>Market Drivers</h3>
                         <ul>
-                            <li><strong>Bahamas</strong> - 100% import-dependent, premium market</li>
-                            <li><strong>Trinidad & Tobago</strong> - Zero tariff duty as of 2025</li>
-                            <li><strong>US Virgin Islands</strong> - US territory, no duties</li>
-                            <li><strong>Cayman Islands</strong> - High-end construction demand</li>
+                            <li>Luxury resort construction: <strong>151 projects, 31,300 rooms</strong> (2024-2028)</li>
+                            <li>Heat-reflective properties for tropical architecture</li>
+                            <li>Aesthetic requirements for high-end resorts</li>
+                            <li>Hurricane-resistant construction codes</li>
                         </ul>
                     </div>
                     <div>
-                        <h3>Transit Time Advantage</h3>
+                        <h3>Tampa Transit Advantage</h3>
                         <ul>
                             <li>Tampa to Caribbean: <strong>5-8 days</strong></li>
                             <li>Asia to Caribbean: <strong>30+ days</strong></li>
-                            <li>White cement commands premium pricing</li>
+                            <li>Premium pricing justified by speed and quality</li>
                             <li>Established shipping lanes from Tampa</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="section">
-                <h2>Volume Targets</h2>
+            <div class="section orange">
+                <h2>Export Logistics</h2>
+
+                <h3>Shipping Routes from Tampa</h3>
+                <table>
+                    <thead>
+                        <tr><th>Destination</th><th>Distance (nm)</th><th>Transit Days</th><th>Frequency</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Nassau, Bahamas</td><td>450</td><td>2-3</td><td>Weekly</td></tr>
+                        <tr><td>Port of Spain, T&T</td><td>1,350</td><td>5-6</td><td>Bi-weekly</td></tr>
+                        <tr><td>Charlotte Amalie, USVI</td><td>1,100</td><td>4-5</td><td>Bi-weekly</td></tr>
+                        <tr><td>Oranjestad, Aruba</td><td>1,250</td><td>5-6</td><td>Monthly</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Vessel Options</h3>
+                <ul>
+                    <li><strong>Small bulk carriers (5,000-10,000 DWT):</strong> Direct shipments to major islands</li>
+                    <li><strong>Container vessels:</strong> Bagged cement for smaller orders</li>
+                    <li><strong>Regional feeder services:</strong> Hub-and-spoke from Tampa to multiple destinations</li>
+                    <li><strong>Freight rates:</strong> $4.00-6.00/MT (significantly lower than Asian origins)</li>
+                </ul>
+            </div>
+
+            <div class="section green">
+                <h2>Export Volume Targets</h2>
                 <table>
                     <thead>
                         <tr><th>Product</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 5</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><strong>Gray Cement</strong></td><td>25-50K MT</td><td>75-100K MT</td><td>150K MT</td><td>250K+ MT</td></tr>
-                        <tr><td><strong>White Cement</strong></td><td>5-10K MT</td><td>15-25K MT</td><td>40-50K MT</td><td>75K+ MT</td></tr>
-                        <tr><td><strong>Caribbean Export</strong></td><td>5K MT</td><td>15-20K MT</td><td>30-40K MT</td><td>60K+ MT</td></tr>
+                        <tr><td><strong>Caribbean Gray</strong></td><td>3K MT</td><td>10K MT</td><td>20K MT</td><td>35K MT</td></tr>
+                        <tr><td><strong>Caribbean White</strong></td><td>2K MT</td><td>5K MT</td><td>10-12K MT</td><td>25K MT</td></tr>
+                        <tr><td><strong>Total Export</strong></td><td>5K MT</td><td>15K MT</td><td>30-32K MT</td><td>60K MT</td></tr>
                     </tbody>
                 </table>
             </div>
+
+            <div class="highlight">
+                <h3>Export Strategy Recommendations</h3>
+                <ol>
+                    <li><strong>Start with Bahamas & USVI:</strong> Easiest entry (no customs complications, established demand)</li>
+                    <li><strong>Focus on white cement:</strong> Higher margins, less competition, resort construction driver</li>
+                    <li><strong>Build distributor relationships:</strong> Partner with local building material distributors</li>
+                    <li><strong>Container bagging capability:</strong> Enables smaller shipments, retail market access</li>
+                    <li><strong>Marketing positioning:</strong> Speed + quality + US origin reliability</li>
+                </ol>
+            </div>
         </div>
 
-        <!-- TAB 2: Interactive Maps -->
+        <!-- TAB 5: Interactive Maps -->
         <div id="maps" class="tab-content">
             <div class="map-container">
                 <div class="map-header">
                     <h3>Port Redwing Trucking Service Areas</h3>
-                    <p>1-hour, 3-hour, and 5-hour delivery zones from terminal with population coverage</p>
+                    <p>1-hour, 3-hour, and 5-hour delivery zones from terminal with population coverage analysis</p>
                 </div>
                 <iframe class="map-embed" src="tampa-cement/PORT_REDWING_TRUCKING_MAP.html"></iframe>
             </div>
@@ -670,7 +1039,7 @@
             <div class="map-container">
                 <div class="map-header">
                     <h3>Florida Ready-Mix Customer Map</h3>
-                    <p>894 Florida ready-mix plants + 800 Gulf Coast plants with delivery zones</p>
+                    <p>894 Florida ready-mix plants + 800 Gulf Coast plants with delivery zone coverage</p>
                 </div>
                 <iframe class="map-embed" src="tampa-cement/READYMIX_CUSTOMER_MAP.html"></iframe>
             </div>
@@ -678,7 +1047,7 @@
             <div class="map-container">
                 <div class="map-header">
                     <h3>US Cement Infrastructure</h3>
-                    <p>Cement plants (US/Canada/Mexico), import ports, rail network, marine highways</p>
+                    <p>Cement plants (US/Canada/Mexico), import ports, rail network, marine highways - complete national view</p>
                 </div>
                 <iframe class="map-embed" src="tampa-cement/CEMENT_INFRASTRUCTURE_MAP.html"></iframe>
             </div>
@@ -686,282 +1055,236 @@
             <div class="map-container">
                 <div class="map-header">
                     <h3>Global Trade Flows</h3>
-                    <p>Import origins, shipping routes, Caribbean export opportunities</p>
+                    <p>Import origins, shipping routes, Caribbean export opportunities - international trade analysis</p>
                 </div>
                 <iframe class="map-embed" src="tampa-cement/GLOBAL_TRADE_FLOW_MAP.html"></iframe>
             </div>
         </div>
 
-        <!-- TAB 3: Market Intelligence -->
-        <div id="intelligence" class="tab-content">
-            <div class="section">
-                <h2>Florida Cement Market Overview</h2>
-                <p>Florida's cement market is characterized by high consumption, concentrated import activity, and vertical integration among major players.</p>
-            </div>
-
-            <div class="two-col">
-                <div class="section blue">
-                    <h2>Production Capacity</h2>
-                    <table>
-                        <tbody>
-                            <tr><td><strong>Total FL Capacity</strong></td><td>10.4M MT/year</td></tr>
-                            <tr><td><strong>Number of Plants</strong></td><td>8 active plants</td></tr>
-                            <tr><td><strong>Largest Producer</strong></td><td>Argos (3 plants)</td></tr>
-                            <tr><td><strong>Capacity Utilization</strong></td><td>~85-90%</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="section">
-                    <h2>Import Statistics</h2>
-                    <table>
-                        <tbody>
-                            <tr><td><strong>Annual Imports</strong></td><td>9.06M MT</td></tr>
-                            <tr><td><strong>Top Origin</strong></td><td>Greece (2.5M MT)</td></tr>
-                            <tr><td><strong>Major Ports</strong></td><td>Tampa, Jacksonville, Miami</td></tr>
-                            <tr><td><strong>Import Growth</strong></td><td>+12% YoY</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="section orange">
-                <h2>Tariff Structure (Critical Factor)</h2>
-                <table>
-                    <thead>
-                        <tr><th>Origin</th><th>Current Tariff</th><th>Impact</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><strong>Egypt & Turkey</strong></td><td>10%</td><td>SESCO advantage - lowest cost structure</td></tr>
-                        <tr><td><strong>Canada & Mexico</strong></td><td>25%</td><td>Major competitors pay premium</td></tr>
-                        <tr><td><strong>Vietnam</strong></td><td>46%</td><td>Effectively uncompetitive</td></tr>
-                        <tr><td><strong>Greece</strong></td><td>Variable</td><td>Titan America's primary source</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="section blue">
-                <h2>National Market Context</h2>
-                <h3>Top Cement Consuming States</h3>
-                <table>
-                    <thead>
-                        <tr><th>Rank</th><th>State</th><th>Consumption</th><th>Notes</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>1</td><td>Texas</td><td>15.2M MT</td><td>Largest producer & consumer</td></tr>
-                        <tr><td>2</td><td>Florida</td><td>12.8M MT</td><td>High import dependency</td></tr>
-                        <tr><td>3</td><td>California</td><td>11.5M MT</td><td>Strict environmental controls</td></tr>
-                        <tr><td>4</td><td>New York</td><td>6.4M MT</td><td>Infrastructure-driven</td></tr>
-                    </tbody>
-                </table>
-
-                <h3>Florida Production Sites</h3>
-                <ul>
-                    <li><strong>Argos Harleyville</strong> - 1.9M MT capacity (Tampa area)</li>
-                    <li><strong>Argos Newberry</strong> - 2.1M MT capacity (North FL)</li>
-                    <li><strong>CEMEX Brooksville</strong> - 1.8M MT capacity (Tampa metro)</li>
-                    <li><strong>Titan America Miami</strong> - 1.4M MT capacity (South FL)</li>
-                    <li><strong>White Cement LLC</strong> - Specialty white cement (Jacksonville)</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2>Competitive Intelligence</h2>
-
-                <h3>Major Market Players</h3>
-
-                <h4>1. Martin Marietta (Largest Importer)</h4>
-                <ul>
-                    <li>4.1M MT imported annually to Florida</li>
-                    <li>Primary sources: Mexico, Canada (25% tariff exposure)</li>
-                    <li>Strong ready-mix integration</li>
-                    <li>Vulnerable to tariff differential vs. SESCO</li>
-                </ul>
-
-                <h4>2. Argos USA (Largest Producer)</h4>
-                <ul>
-                    <li>3 Florida plants, 5.8M MT total capacity</li>
-                    <li>Colombian parent company (imports supplement)</li>
-                    <li>Vertically integrated into ready-mix</li>
-                    <li>Limited white cement capabilities</li>
-                </ul>
-
-                <h4>3. CEMEX (Regional Player)</h4>
-                <ul>
-                    <li>Brooksville plant + Mobile AL imports</li>
-                    <li>Strong brand, integrated supply chain</li>
-                    <li>Mexican sourcing faces 25% tariff</li>
-                    <li>Focus on gray cement, limited white</li>
-                </ul>
-
-                <h4>4. Titan America (South Florida)</h4>
-                <ul>
-                    <li>Miami production + Greek imports</li>
-                    <li>Strong in South Florida market</li>
-                    <li>Limited white cement focus</li>
-                    <li>Geographic distance from Tampa Bay</li>
-                </ul>
-            </div>
-
-            <div class="highlight">
-                <strong>Key Insight:</strong> Major competitors are either paying 25-46% tariffs on imports OR are capacity-constrained domestic producers. SESCO's 10% tariff position on Egypt/Turkey cement creates a sustainable 15-36% cost advantage on imported material.
-            </div>
-        </div>
-
-        <!-- TAB 4: Strategy & Recommendations -->
+        <!-- TAB 6: Strategy & Recommendations -->
         <div id="strategy" class="tab-content">
             <div class="recommendations">
                 <h3>Strategic Recommendations</h3>
                 <div class="rec-grid">
                     <div class="rec-item">
                         <div class="num">1</div>
-                        <h4>White Cement Lead</h4>
-                        <p>Highest margins, least competition, Florida specialty demand</p>
+                        <h4>White Cement Priority</h4>
+                        <p>Highest margins, least competition, growing Florida stucco/EIFS demand</p>
                     </div>
                     <div class="rec-item">
                         <div class="num">2</div>
-                        <h4>Target Stucco/EIFS</h4>
-                        <p>Florida hurricane codes drive white cement stucco demand</p>
+                        <h4>Target Stucco Manufacturers</h4>
+                        <p>Parex, BASF, Dryvit - long-term supply agreements</p>
                     </div>
                     <div class="rec-item">
                         <div class="num">3</div>
                         <h4>Independent Ready-Mix</h4>
-                        <p>894 FL plants, volume builder, non-integrated</p>
+                        <p>894 FL plants - volume builder targeting non-integrated operators</p>
                     </div>
                     <div class="rec-item">
                         <div class="num">4</div>
                         <h4>Caribbean Export</h4>
-                        <p>Re-export white cement from Port Redwing to Caribbean</p>
+                        <p>Re-export white cement to Bahamas, Trinidad, USVI premium markets</p>
                     </div>
                 </div>
             </div>
 
             <div class="section">
+                <h2>Customer Priority Strategy</h2>
+                <table>
+                    <thead>
+                        <tr><th>Priority</th><th>Segment</th><th>Product</th><th>Approach</th><th>Volume Target</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>#1</td><td>Stucco/EIFS manufacturers</td><td>White</td><td>Long-term supply agreements</td><td>5-10K MT Y1</td></tr>
+                        <tr><td>#2</td><td>Independent ready-mix</td><td>Gray</td><td>Volume pricing, reliability</td><td>25-50K MT Y1</td></tr>
+                        <tr><td>#3</td><td>Tile adhesive producers</td><td>White</td><td>Quality positioning</td><td>2-5K MT Y1</td></tr>
+                        <tr><td>#4</td><td>Precast producers</td><td>Both</td><td>Technical support</td><td>3-5K MT Y1</td></tr>
+                        <tr><td>#5</td><td>Caribbean export</td><td>White priority</td><td>Distributor partnerships</td><td>5K MT Y1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section blue">
                 <h2>Phase 1: Market Entry (Months 1-12)</h2>
 
                 <h3>White Cement Focus</h3>
                 <ul>
-                    <li>Target stucco manufacturers (5-7 major accounts in FL)</li>
-                    <li>EIFS (Exterior Insulation Finishing System) producers</li>
-                    <li>Tile adhesive manufacturers (premium market)</li>
-                    <li>Architectural precast concrete (white cement showcase projects)</li>
+                    <li><strong>Target stucco manufacturers:</strong> Parex, BASF, Dryvit, Sto, El Rey, Finestone (5-7 major accounts)</li>
+                    <li><strong>EIFS producers:</strong> Same manufacturers, EIFS product lines</li>
+                    <li><strong>Tile adhesive manufacturers:</strong> Mapei, Laticrete, Custom, TEC</li>
+                    <li><strong>Architectural precast:</strong> White cement showcase projects</li>
                 </ul>
 
                 <h3>Gray Cement Volume Building</h3>
                 <ul>
-                    <li>Independent ready-mix within 1-hour radius (initial 50-75K MT)</li>
-                    <li>Competitive pricing leveraging tariff advantage</li>
-                    <li>Focus on accounts NOT vertically integrated with producers</li>
+                    <li><strong>Independent ready-mix within 1-hour radius:</strong> Initial 50-75K MT target</li>
+                    <li>Competitive pricing leveraging 10% vs. 25-46% tariff advantage</li>
+                    <li>Focus on accounts NOT vertically integrated with Argos/CEMEX/Titan</li>
                     <li>Technical support to differentiate from commodity sellers</li>
                 </ul>
 
                 <h3>Infrastructure & Operations</h3>
                 <ul>
-                    <li>Establish blending/bagging capability for white cement (higher margins)</li>
+                    <li>Establish blending/bagging capability for white cement (higher margins on bagged product)</li>
                     <li>Develop trucking partnerships within 3-hour radius</li>
                     <li>Quality assurance lab at Port Redwing</li>
                     <li>Inventory management system for just-in-time delivery</li>
                 </ul>
             </div>
 
-            <div class="section blue">
+            <div class="section orange">
                 <h2>Phase 2: Market Expansion (Years 2-3)</h2>
 
                 <h3>Geographic Expansion</h3>
                 <ul>
-                    <li>Extend ready-mix coverage to 3-hour radius (Orlando, Fort Myers)</li>
+                    <li>Extend ready-mix coverage to 3-hour radius (Orlando, Fort Myers, Sarasota)</li>
                     <li>Establish satellite distribution in Jacksonville (North FL coverage)</li>
-                    <li>Rail distribution for Central/North FL (if volumes support)</li>
-                    <li>Caribbean export pilot to Bahamas & Trinidad</li>
+                    <li>Rail distribution for Central/North FL (if volumes support economics)</li>
+                    <li>Caribbean export pilot to Bahamas & Trinidad & Tobago</li>
                 </ul>
 
                 <h3>Product Line Development</h3>
                 <ul>
-                    <li>Specialty white cements (architectural, ultra-white)</li>
+                    <li>Specialty white cements (architectural, ultra-white grades)</li>
                     <li>Blended cements (slag, pozzolan additions)</li>
-                    <li>Packaged products for retail (bags, small lots)</li>
+                    <li>Packaged products for retail distribution (bags, small lots)</li>
                     <li>Custom blends for specific customer applications</li>
                 </ul>
 
                 <h3>Volume Targets (Year 3)</h3>
                 <table>
                     <thead>
-                        <tr><th>Product</th><th>Volume</th><th>Revenue</th></tr>
+                        <tr><th>Product</th><th>Volume</th><th>Revenue Estimate</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>Gray Cement</td><td>150K MT</td><td>$15-18M</td></tr>
-                        <tr><td>White Cement</td><td>40-50K MT</td><td>$12-16M</td></tr>
-                        <tr><td>Caribbean Export</td><td>30-40K MT</td><td>$6-9M</td></tr>
+                        <tr><td><strong>Gray Cement</strong></td><td>150K MT</td><td>$15-18M</td></tr>
+                        <tr><td><strong>White Cement</strong></td><td>40-50K MT</td><td>$12-16M</td></tr>
+                        <tr><td><strong>Caribbean Export</strong></td><td>30-40K MT</td><td>$6-9M</td></tr>
                         <tr><td><strong>Total</strong></td><td><strong>220-240K MT</strong></td><td><strong>$33-43M</strong></td></tr>
                     </tbody>
                 </table>
             </div>
 
-            <div class="section orange">
+            <div class="section green">
                 <h2>Phase 3: Market Leadership (Years 4-5)</h2>
 
                 <h3>Strategic Objectives</h3>
                 <ul>
-                    <li>Become #1 white cement supplier in Florida</li>
-                    <li>Top 5 gray cement supplier in Tampa Bay region</li>
-                    <li>Leading US-Caribbean white cement exporter from Gulf</li>
+                    <li><strong>Become #1 white cement supplier in Florida</strong></li>
+                    <li><strong>Top 5 gray cement supplier in Tampa Bay region</strong></li>
+                    <li><strong>Leading US-Caribbean white cement exporter from Gulf</strong></li>
                     <li>Consider backward integration (partial ownership in Egypt/Turkey production)</li>
                 </ul>
 
-                <h3>Market Position</h3>
+                <h3>Market Position Targets</h3>
                 <ul>
                     <li>5% of Florida cement market by volume</li>
                     <li>20-25% of Florida white cement market</li>
-                    <li>Recognized brand for specialty applications</li>
-                    <li>Technical leader in customer service</li>
+                    <li>Recognized brand for specialty cement applications</li>
+                    <li>Technical leader in customer service and support</li>
                 </ul>
-            </div>
 
-            <div class="section">
-                <h2>Risk Factors & Mitigation</h2>
-
+                <h3>Year 5 Volume Targets</h3>
                 <table>
                     <thead>
-                        <tr><th>Risk</th><th>Impact</th><th>Mitigation</th></tr>
+                        <tr><th>Product</th><th>Volume</th><th>Market Share</th><th>Revenue</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Gray Cement</strong></td><td>250K+ MT</td><td>~3% FL market</td><td>$25-30M</td></tr>
+                        <tr><td><strong>White Cement</strong></td><td>75K+ MT</td><td>~20% FL white market</td><td>$22-28M</td></tr>
+                        <tr><td><strong>Caribbean Export</strong></td><td>60K+ MT</td><td>Regional leader</td><td>$12-16M</td></tr>
+                        <tr><td><strong>Total</strong></td><td><strong>385K+ MT</strong></td><td>Market established</td><td><strong>$59-74M</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section orange">
+                <h2>Risk Factors & Mitigation</h2>
+                <table>
+                    <thead>
+                        <tr><th>Risk</th><th>Impact</th><th>Probability</th><th>Mitigation Strategy</th></tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Tariff Changes</strong></td>
+                            <td><strong>Tariff Policy Changes</strong></td>
                             <td>High</td>
-                            <td>Diversify origins, monitor trade policy, hedge with multi-year contracts</td>
+                            <td>Medium</td>
+                            <td>Diversify origins (Egypt + Turkey), monitor trade policy closely, hedge with multi-year contracts</td>
                         </tr>
                         <tr>
                             <td><strong>Competitor Response</strong></td>
                             <td>Medium</td>
-                            <td>Focus on white cement niche, technical service differentiation</td>
+                            <td>High</td>
+                            <td>Focus on white cement niche, technical service differentiation, long-term customer agreements</td>
                         </tr>
                         <tr>
                             <td><strong>Construction Downturn</strong></td>
                             <td>Medium</td>
-                            <td>Counter-cyclical export focus, inventory management, cost structure flexibility</td>
-                        </tr>
+                            <td>Medium</td>
+                            <td>Counter-cyclical export focus, flexible inventory, cost structure management</td></tr>
                         <tr>
                             <td><strong>Supply Chain Disruption</strong></td>
                             <td>Medium</td>
-                            <td>Multiple origin suppliers, inventory buffer, alternative port options</td>
+                            <td>Low</td>
+                            <td>Multiple origin suppliers (Royal + Cleopatra + Nuh), inventory buffer, alternative port options</td>
                         </tr>
                         <tr>
                             <td><strong>Quality Issues</strong></td>
                             <td>Low</td>
-                            <td>Pre-shipment inspection, quality lab, supplier partnerships</td>
+                            <td>Low</td>
+                            <td>Pre-shipment inspection, on-site quality lab, established supplier partnerships</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="highlight">
-                <strong>Critical Success Factors:</strong>
-                <ul style="margin-top: 1rem;">
-                    <li>Maintain tariff cost advantage through Egypt/Turkey sourcing</li>
-                    <li>Establish white cement market leadership early</li>
-                    <li>Build strong relationships with independent ready-mix operators</li>
-                    <li>Develop Caribbean export relationships before competitors</li>
-                    <li>Provide superior technical service vs. commodity competitors</li>
+                <h3>Critical Success Factors</h3>
+                <ul>
+                    <li><strong>Maintain tariff cost advantage</strong> through Egypt/Turkey sourcing (10% vs. 25-46% for competitors)</li>
+                    <li><strong>Establish white cement market leadership early</strong> before competitors recognize opportunity</li>
+                    <li><strong>Build strong relationships with independent ready-mix operators</strong> (non-vertically integrated)</li>
+                    <li><strong>Develop Caribbean export relationships</strong> before Asian suppliers recognize proximity advantage</li>
+                    <li><strong>Provide superior technical service</strong> vs. commodity-focused competitors</li>
+                    <li><strong>Leverage Port Redwing logistics advantage</strong> for 1-3 hour delivery in high-population zones</li>
+                </ul>
+            </div>
+
+            <div class="section blue">
+                <h2>Data Sources & Methodology</h2>
+
+                <h3>Primary Data Sources</h3>
+                <table>
+                    <thead>
+                        <tr><th>Source</th><th>Data Type</th><th>Coverage</th><th>Date</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>USGS Mineral Commodity Summaries</td><td>Production, consumption, trade</td><td>US national</td><td>2025</td></tr>
+                        <tr><td>Global Energy Monitor - Cement Tracker</td><td>Plant locations, capacities</td><td>Global</td><td>July 2025</td></tr>
+                        <tr><td>Panjiva Trade Intelligence</td><td>Bill of lading manifests</td><td>2,706 records</td><td>2023-2025</td></tr>
+                        <tr><td>Clarksons Shipping Intelligence</td><td>Freight rates</td><td>Global routes</td><td>Dec 16, 2025</td></tr>
+                        <tr><td>US Census Bureau</td><td>Trade statistics, demographics</td><td>US national</td><td>2024-2025</td></tr>
+                        <tr><td>USACE Navigation Data Center</td><td>Waterborne commerce</td><td>US ports</td><td>2023</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Methodology</h3>
+                <ul>
+                    <li><strong>Trade Flow Analysis:</strong> Aggregated 2,706 import manifests by consignee, shipper, port, and origin country</li>
+                    <li><strong>Market Sizing:</strong> Florida production capacity from GEM database + import volumes from Panjiva</li>
+                    <li><strong>Trucking Radius Calculation:</strong> Port Redwing center point at 50-55 mph average highway speed</li>
+                    <li><strong>Customer Identification:</strong> Industry associations, trade publications, Panjiva consignee data, public company filings</li>
+                    <li><strong>Ready-Mix Plant Database:</strong> Combined industry databases (NRMCA, state DOT, Google Maps validation)</li>
+                </ul>
+
+                <h3>Data Limitations</h3>
+                <ul>
+                    <li>White cement volumes not separately reported in most government sources (estimated from industry sources)</li>
+                    <li>Terminal capacities not publicly disclosed by all operators (estimated from visible infrastructure)</li>
+                    <li>Market share by company estimated from import/production data (not audited financials)</li>
+                    <li>Customer volumes are proprietary; estimates based on industry standards and comparable companies</li>
+                    <li>Trucking zones are approximate; actual delivery times vary by traffic, route conditions</li>
                 </ul>
             </div>
         </div>
