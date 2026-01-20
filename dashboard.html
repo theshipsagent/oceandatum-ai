@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Datum Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            min-height: 100vh;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-y: auto;
+        }
+
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: #0a0a0a;
+        }
+
+        .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0.3;
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding: 0.8rem 2rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 0.05em;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .admin-email {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .logout-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255,100,100,0.15);
+            border: 1px solid rgba(255,100,100,0.4);
+            border-radius: 6px;
+            color: rgba(255,150,150,0.9);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255,100,100,0.25);
+            border-color: rgba(255,100,100,0.6);
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .dashboard-card {
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .dashboard-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .dashboard-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(100,255,180,0.5);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            background: rgba(100,255,180,0.15);
+            border: 1px solid rgba(100,255,180,0.4);
+            border-radius: 8px;
+            color: #64ffb4;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: rgba(100,255,180,0.25);
+            border-color: #64ffb4;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .alert-error {
+            background: rgba(255,100,100,0.1);
+            border: 1px solid rgba(255,100,100,0.3);
+            color: rgba(255,150,150,0.9);
+        }
+
+        .alert-success {
+            background: rgba(100,255,180,0.1);
+            border: 1px solid rgba(100,255,180,0.3);
+            color: rgba(100,255,180,0.9);
+        }
+
+        .alert-info {
+            background: rgba(100,180,255,0.1);
+            border: 1px solid rgba(100,180,255,0.3);
+            color: rgba(100,180,255,0.9);
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .quick-link {
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            text-decoration: none;
+            color: rgba(255,255,255,0.8);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .quick-link:hover {
+            background: rgba(100,255,180,0.1);
+            border-color: rgba(100,255,180,0.3);
+            color: #64ffb4;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.6rem 1rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .dashboard-card {
+                padding: 2rem;
+            }
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-container">
+        <video class="bg-video" autoplay muted playsinline loop preload="metadata" poster="oceandatum_poster.jpg">
+            <source src="oceandatum_loop_HD.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <nav class="navbar">
+        <div class="navbar-brand">DATUM Admin</div>
+        <div class="navbar-right">
+            <span class="admin-email" id="adminEmail"></span>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-card">
+            <h1 class="dashboard-title">User Management</h1>
+            <p class="dashboard-subtitle">Add test users to the platform</p>
+
+            <div id="alertContainer"></div>
+
+            <form id="addUserForm">
+                <div class="form-group">
+                    <label class="form-label" for="userEmail">User Email</label>
+                    <input
+                        type="email"
+                        id="userEmail"
+                        name="userEmail"
+                        class="form-input"
+                        placeholder="user@example.com"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="trialDays">Trial Days (optional)</label>
+                    <input
+                        type="number"
+                        id="trialDays"
+                        name="trialDays"
+                        class="form-input"
+                        placeholder="3"
+                        value="3"
+                        min="1"
+                        max="365"
+                    />
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Add User
+                </button>
+            </form>
+
+            <div class="alert alert-info" style="margin-top: 2rem;">
+                <strong>How it works:</strong> Users are created via a secure Edge Function with trial access. They'll receive a password reset email to set their own password before logging in.
+            </div>
+
+            <div class="quick-links">
+                <a href="https://supabase.com/dashboard" target="_blank" class="quick-link">Supabase Dashboard</a>
+                <a href="index.html" class="quick-link">View Landing Page</a>
+                <a href="app.html" class="quick-link">View Login Page</a>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <h2 class="dashboard-title" style="font-size: 1.5rem;">Recent Actions</h2>
+            <div id="activityLog">
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">No recent activity</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Initialize Supabase client
+        const { createClient } = supabase;
+        const supabaseClient = createClient(
+            'https://xxctitcsnsshmmcvyamy.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh4Y3RpdGNzbnNzaG1tY3Z5YW15Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg1OTY0MzAsImV4cCI6MjA4NDE3MjQzMH0.mGBW_O_burJOUP_fevs15CixAb6CdgLjtzsiYlm6AL4'
+        );
+
+        // Check authentication
+        if (sessionStorage.getItem('adminAuthenticated') !== 'true') {
+            window.location.href = 'admin.html';
+        }
+
+        // Display admin email
+        const adminEmail = sessionStorage.getItem('adminEmail');
+        document.getElementById('adminEmail').textContent = adminEmail;
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            sessionStorage.removeItem('adminAuthenticated');
+            sessionStorage.removeItem('adminEmail');
+            window.location.href = 'admin.html';
+        });
+
+        // Form handling
+        const form = document.getElementById('addUserForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const alertContainer = document.getElementById('alertContainer');
+        const activityLog = document.getElementById('activityLog');
+
+        function showAlert(message, type = 'error') {
+            alertContainer.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+            setTimeout(() => {
+                alertContainer.innerHTML = '';
+            }, 5000);
+        }
+
+        function addActivityLog(email, days) {
+            const timestamp = new Date().toLocaleString();
+            const logEntry = document.createElement('div');
+            logEntry.style.padding = '0.75rem';
+            logEntry.style.background = 'rgba(255,255,255,0.05)';
+            logEntry.style.borderRadius = '6px';
+            logEntry.style.marginBottom = '0.5rem';
+            logEntry.style.fontSize = '0.85rem';
+            logEntry.innerHTML = `
+                <div style="color: #64ffb4; margin-bottom: 0.25rem;">${email}</div>
+                <div style="color: rgba(255,255,255,0.5);">${days} day trial • ${timestamp}</div>
+            `;
+
+            if (activityLog.firstChild && activityLog.firstChild.textContent.includes('No recent activity')) {
+                activityLog.innerHTML = '';
+            }
+            activityLog.insertBefore(logEntry, activityLog.firstChild);
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('userEmail').value;
+            const trialDays = parseInt(document.getElementById('trialDays').value) || 3;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Adding User...';
+
+            try {
+                // Get the current session to use the auth token
+                const { data: { session } } = await supabaseClient.auth.getSession();
+
+                if (!session) {
+                    showAlert('Session expired. Please log in again.', 'error');
+                    setTimeout(() => {
+                        window.location.href = 'admin.html';
+                    }, 2000);
+                    return;
+                }
+
+                // Call the Edge Function to create the user
+                const response = await fetch('https://xxctitcsnsshmmcvyamy.supabase.co/functions/v1/admin-create-user', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${session.access_token}`,
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        trialDays: trialDays
+                    })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok || !result.success) {
+                    showAlert(result.error || 'Failed to create user', 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Add User';
+                    return;
+                }
+
+                showAlert(`User ${email} added successfully with ${trialDays} day trial! Password reset email sent.`, 'success');
+                addActivityLog(email, trialDays);
+
+                document.getElementById('userEmail').value = '';
+                document.getElementById('trialDays').value = '3';
+
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Add User';
+
+            } catch (err) {
+                console.error('Error adding user:', err);
+                showAlert(`Unexpected error: ${err.message}`, 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Add User';
+            }
+        });
+    </script>
+</body>
+</html>
