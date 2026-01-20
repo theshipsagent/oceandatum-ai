@@ -12,6 +12,8 @@ A production-ready authentication system with TOTP (Time-based One-Time Password
 - ✅ **Modern Frontend** - React + TypeScript + Vite
 - ✅ **Email Notifications** - Admin alerts for trial requests
 - ✅ **GitHub Pages Hosting** - Free, secure SSL hosting
+- ✅ **Professional CV/Bio Page** - Mobile-optimized with print/PDF export
+- ✅ **Responsive Navigation** - Touch-friendly dropdowns for mobile devices
 
 ## Tech Stack
 
@@ -360,7 +362,41 @@ For issues or questions:
 - Create GitHub issue
 - Email: support@datum.example.com
 
+## CV/Bio Page Features
+
+The site includes a professional CV/Biography page (`cv.html`) with advanced features:
+
+### Design Features
+- **Tabbed Interface** - Three sections: CV, Biography, Bibliography
+- **Professional Styling** - Space Grotesk font, glassmorphic design
+- **Mobile-Optimized** - Responsive navigation with touch-friendly dropdowns
+- **Social Integration** - LinkedIn, X/Twitter, Instagram icons with website links
+
+### Print/PDF Export
+- **One-Click Export** - Floating "Download PDF" button
+- **Optimized Layout** - Clean, professional print formatting
+- **Compact Headers** - Efficient use of page space
+- **Text-Only Links** - Social icons convert to readable text in print
+- **High-Quality Output** - Letter size with proper margins (0.5in/0.75in)
+
+### Mobile Navigation
+- **Touch-Friendly Dropdowns** - Click/tap to open on mobile devices
+- **Auto-Close** - Tap outside to close menus
+- **Responsive Design** - Adapts to all screen sizes
+
+### Content Management
+- **Biography Section** - Complete professional history with Joseph Conrad quote
+- **CV Section** - Executive summary, competencies, experience, education
+- **Bibliography Section** - Professional reading list and knowledge base
+
 ## Changelog
+
+### v1.1.0 (2026-01-20)
+- Enhanced CV/Bio page with mobile navigation fixes
+- Added professional print/PDF export functionality
+- Optimized contact information display with social icons
+- Improved responsive design for mobile devices
+- Added floating download button for easy PDF export
 
 ### v1.0.0 (2026-01-16)
 - Initial release
