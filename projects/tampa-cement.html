@@ -1496,6 +1496,17 @@
                     });
                 }
             });
+
+            // Tab button touch support for mobile
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                // Add touch event handler
+                button.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    // Trigger the onclick handler
+                    this.click();
+                }, { passive: false });
+            });
         });
 
         // Hamburger menu toggle
