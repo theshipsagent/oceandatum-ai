@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Sulphur Terminal | MM 39 Development Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #fff;
+            padding: 2rem;
+            padding-top: 5rem;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding: 0.8rem 2rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+        }
+
+        .navbar-brand a {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            font-style: normal;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand a:hover {
+            color: #64ffb4;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .social-icon {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            color: #64ffb4;
+        }
+
+        .navbar-link {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+        }
+
+        .navbar-link:hover {
+            color: #64ffb4;
+            border-color: rgba(100,255,180,0.4);
+            background: rgba(100,255,180,0.05);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #64ffb4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .hero-stat {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .hero-stat:hover {
+            background: rgba(100,255,180,0.1);
+            border-color: rgba(100,255,180,0.3);
+            transform: translateY(-2px);
+        }
+
+        .hero-stat .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-stat .label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.3;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            background: rgba(0,0,0,0.4);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,0.3) rgba(0,0,0,0.2);
+        }
+
+        .tab-nav::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .tab-nav::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.2);
+        }
+
+        .tab-nav::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 3px;
+        }
+
+        .tab-button {
+            flex: 1 0 auto;
+            min-width: 150px;
+            padding: 1rem 1.5rem;
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+        }
+
+        .tab-button:hover {
+            color: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .tab-button.active {
+            color: #ffffff;
+            background: rgba(100,255,180,0.1);
+            border-bottom-color: #64ffb4;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 2.5rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            border-left: 4px solid #64ffb4;
+        }
+
+        .section.blue {
+            border-left-color: #64b5f6;
+        }
+
+        .section.orange {
+            border-left-color: #ff7043;
+        }
+
+        .section.green {
+            border-left-color: #4caf50;
+        }
+
+        .section.red {
+            border-left-color: #ef5350;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .section h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.9);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .section h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.85);
+            margin: 1rem 0 0.5rem;
+        }
+
+        .section p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section ul li {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .section ul li:before {
+            content: "▸";
+            color: #64ffb4;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: rgba(100,255,180,0.1);
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            border-bottom: 2px solid rgba(100,255,180,0.3);
+        }
+
+        td {
+            padding: 0.75rem;
+            color: rgba(255,255,255,0.8);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        tr:hover {
+            background: rgba(255,255,255,0.03);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge.success {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .badge.warning {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+
+        .badge.danger {
+            background: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+            border: 1px solid rgba(244, 67, 54, 0.3);
+        }
+
+        .badge.info {
+            background: rgba(100, 181, 246, 0.2);
+            color: #64b5f6;
+            border: 1px solid rgba(100, 181, 246, 0.3);
+        }
+
+        /* Metric Grid */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            background: rgba(100,255,180,0.05);
+            border-color: rgba(100,255,180,0.2);
+            transform: translateY(-2px);
+        }
+
+        .metric-card .metric-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .metric-card .metric-value {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #64ffb4;
+        }
+
+        .metric-card .metric-note {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-content {
+                padding: 1.5rem;
+            }
+
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .navbar, .tab-nav {
+                display: none;
+            }
+
+            .tab-content {
+                display: block !important;
+                page-break-after: always;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            Project for <a href="/">oceandatum.ai</a>
+        </div>
+        <div class="navbar-right">
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/williamsdavis" target="_blank" class="social-icon" title="LinkedIn">in</a>
+                <a href="https://theshipsagent.com" target="_blank" class="social-icon" title="Website">@</a>
+            </div>
+            <a href="/" class="navbar-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Port Sulphur Terminal</h1>
+            <p class="subtitle">Mississippi River Mile 39 Development Analysis</p>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="value">106.99 ac</div>
+                    <div class="label">Total Acreage</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="value">52 ft</div>
+                    <div class="label">Draft Capability</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="value">MM 39</div>
+                    <div class="label">River Mile Marker</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="value">2,800 LF</div>
+                    <div class="label">River Frontage</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-button active" onclick="showTab('overview')">Overview</button>
+            <button class="tab-button" onclick="showTab('market')">Market Analysis</button>
+            <button class="tab-button" onclick="showTab('environmental')">Environmental</button>
+            <button class="tab-button" onclick="showTab('financial')">Financial</button>
+            <button class="tab-button" onclick="showTab('infrastructure')">Infrastructure</button>
+            <button class="tab-button" onclick="showTab('maps')">Maps</button>
+            <button class="tab-button" onclick="showTab('executive')">Executive Summary</button>
+            <button class="tab-button" onclick="showTab('report')">Full Report</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="section">
+                <h2>Project Overview</h2>
+                <p>The former Freeport-McMoRan Port Sulphur facility represents a strategic deep-water terminal development opportunity at Mississippi River Mile Marker 39. The 106.99-acre site features 2,800 linear feet of Mississippi River frontage and 52-foot draft capability, presenting unique advantages for maritime commerce despite environmental legacy considerations and flood risk exposure.</p>
+
+                <p><strong>Location:</strong> 28310 Highway 23, Port Sulphur, LA 70083, Plaquemines Parish<br>
+                <strong>River Position:</strong> Left Descending Bank, Mile Marker 39<br>
+                <strong>Key Infrastructure:</strong> 24' × 433' concrete dock, 5,000 SF warehouse, Industrial District 3 zoning</p>
+            </div>
+
+            <div class="section blue">
+                <h2>Site Specifications</h2>
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Total Acreage</div>
+                        <div class="metric-value">106.99 ac</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Asking Price</div>
+                        <div class="metric-value">$14.7M</div>
+                        <div class="metric-note">$137,400/acre</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">River Frontage</div>
+                        <div class="metric-value">2,800 LF</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Draft Capability</div>
+                        <div class="metric-value">52 feet</div>
+                        <div class="metric-note">Deep water advantage</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Dock Dimensions</div>
+                        <div class="metric-value">24' × 433'</div>
+                        <div class="metric-note">Concrete construction</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Dock Age</div>
+                        <div class="metric-value">92 years</div>
+                        <div class="metric-note">Built 1933</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section green">
+                <h2>Historical Background</h2>
+                <p>The Port Sulphur site operated as a major sulfur processing terminal from 1933 to 1978, utilizing the Frasch Process for sulfur extraction and handling. The facility was constructed by Freeport Sulphur Company and represented a significant industrial operation in Plaquemines Parish for over 70 years.</p>
+
+                <h3>Key Historical Milestones</h3>
+                <ul>
+                    <li><strong>1933:</strong> Facility construction and operations commenced</li>
+                    <li><strong>1933-1978:</strong> Active sulfur processing using Frasch Process</li>
+                    <li><strong>2005:</strong> Hurricane Katrina caused 22-foot storm surge and facility damage</li>
+                    <li><strong>2009:</strong> Emergency response for 5.8 million pounds acidic water release</li>
+                    <li><strong>Present:</strong> Site marketed for redevelopment as marine terminal</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Market Analysis Tab -->
+        <div id="market" class="tab-content">
+            <div class="section">
+                <h2>Market Opportunity</h2>
+                <p>The Mississippi River System handles over 500 million tons of cargo annually, making it the nation's most critical inland waterway. While 85-90% constitutes captive or through traffic, the remaining 50-100 million tons annually presents substantial opportunity for terminals positioned to capture even modest market share.</p>
+            </div>
+
+            <div class="section blue">
+                <h2>Traffic Analysis</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Volume</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total MRS Annual Traffic</td>
+                            <td>500+ million tons</td>
+                            <td>Entire Mississippi River System</td>
+                        </tr>
+                        <tr>
+                            <td>Captive Traffic</td>
+                            <td>425-450 million tons (85-90%)</td>
+                            <td>Origin-destination committed</td>
+                        </tr>
+                        <tr>
+                            <td>Available Traffic</td>
+                            <td>50-100 million tons (10-20%)</td>
+                            <td>Potential market opportunity</td>
+                        </tr>
+                        <tr>
+                            <td>MM 39 Capture Potential</td>
+                            <td>1-5 million tons</td>
+                            <td>0.6-1.0% market share</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section green">
+                <h2>Competitive Positioning</h2>
+                <h3>Key Advantages</h3>
+                <ul>
+                    <li><strong>52-foot draft capability</strong> provides operational flexibility during low-water periods when shallow terminals face restrictions</li>
+                    <li><strong>Closest deepwater terminals to open water</strong> on Mississippi River system; 3+ hour shipping time advantage over upriver competitors</li>
+                    <li><strong>No air draft restrictions</strong> unlike upriver locations constrained by bridge clearances</li>
+                    <li><strong>Proximity premium:</strong> Shorter haul distance creates cost savings of $3-5/ton versus Gulf delivery</li>
+                </ul>
+
+                <h3>Crisis Pricing Validation</h3>
+                <p>September 2025 low-water events demonstrated market dynamics favoring lower-river terminals:</p>
+                <ul>
+                    <li>Barge rates reached $23-24/ton during low-water restrictions</li>
+                    <li>Baseline rates typically $4-5/ton</li>
+                    <li>5-6x price spike validates importance of alternative terminal capacity</li>
+                    <li>Deep-draft terminals maintained operations when shallow facilities restricted</li>
+                </ul>
+            </div>
+
+            <div class="section orange">
+                <h2>Revenue Potential</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Use Case</th>
+                            <th>Annual Throughput</th>
+                            <th>Rate/Ton</th>
+                            <th>Annual Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bulk Commodity Storage</td>
+                            <td>500,000 - 1,000,000 tons</td>
+                            <td>$8-$15</td>
+                            <td>$4M - $15M</td>
+                        </tr>
+                        <tr>
+                            <td>Container Transload</td>
+                            <td>10,000 - 25,000 TEU</td>
+                            <td>$150-$300/TEU</td>
+                            <td>$1.5M - $7.5M</td>
+                        </tr>
+                        <tr>
+                            <td>Project Cargo Staging</td>
+                            <td>Lease-based</td>
+                            <td>$50K-$200K/month</td>
+                            <td>$600K - $2.4M</td>
+                        </tr>
+                        <tr>
+                            <td>Industrial Land Lease</td>
+                            <td>50-100 acres</td>
+                            <td>$5K-$10K/acre/year</td>
+                            <td>$250K - $1M</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Environmental Tab -->
+        <div id="environmental" class="tab-content">
+            <div class="section red">
+                <h2>Environmental Status</h2>
+                <p>The site operated for 72 years (1933-2005) as a sulfur processing facility using the Frasch Process, which involved superheated water injection, sulfuric acid generation, and potential heavy metals mobilization. Understanding the environmental legacy is critical for acquisition due diligence.</p>
+            </div>
+
+            <div class="section orange">
+                <h2>Historical Operations & Contamination Profile</h2>
+
+                <h3>Sulfur Processing (1933-1978)</h3>
+                <ul>
+                    <li><strong>Process:</strong> Frasch Process using superheated water (300°F+) to melt underground sulfur deposits</li>
+                    <li><strong>Contaminants:</strong> Elemental sulfur, sulfur dioxide, acid drainage from oxidation</li>
+                    <li><strong>Soil Impact:</strong> Acidification (pH <3.0 in some areas), residual sulfur up to 50,900 mg/kg in vatting areas</li>
+                    <li><strong>Metals:</strong> Elevated iron, aluminum, zinc, lead, arsenic from acid mobilization</li>
+                </ul>
+
+                <h3>Barge Loading Operations (1933-1978)</h3>
+                <ul>
+                    <li><strong>Activities:</strong> Loading molten sulfur onto river barges</li>
+                    <li><strong>Potential Contaminants:</strong> Petroleum products, hydraulic fluids, sulfur residues</li>
+                    <li><strong>Risk Level:</strong> <span class="badge warning">Medium</span></li>
+                </ul>
+
+                <h3>Infrastructure Contamination</h3>
+                <ul>
+                    <li><strong>Dock & Piles:</strong> Creosote-treated timber, heavy metals from coatings</li>
+                    <li><strong>Underground Storage:</strong> Potential petroleum hydrocarbons if USTs present</li>
+                    <li><strong>Assessment Status:</strong> Requires Phase I/II ESA verification</li>
+                </ul>
+            </div>
+
+            <div class="section blue">
+                <h2>Regulatory Status</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Regulatory Program</th>
+                            <th>ID Number</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>EPA FRS (Facility Registry)</td>
+                            <td>110022408321</td>
+                            <td><span class="badge info">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>RCRA Generator</td>
+                            <td>LAD072609795</td>
+                            <td><span class="badge warning">Small Quantity</span></td>
+                        </tr>
+                        <tr>
+                            <td>LDEQ Agency Interest</td>
+                            <td>AI #168766</td>
+                            <td><span class="badge warning">Verification Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Superfund (NPL) Listing</td>
+                            <td>N/A</td>
+                            <td><span class="badge success">Not Listed</span></td>
+                        </tr>
+                        <tr>
+                            <td>NPDES Permits</td>
+                            <td>LAR05P368, LAR10G702</td>
+                            <td><span class="badge info">Terminated</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section green">
+                <h2>Due Diligence Requirements</h2>
+
+                <h3>Phase I Environmental Site Assessment (ESA)</h3>
+                <ul>
+                    <li><strong>Scope:</strong> ASTM E1527-21 standards compliance</li>
+                    <li><strong>Timeline:</strong> 3-4 weeks</li>
+                    <li><strong>Cost:</strong> $15,000 - $25,000</li>
+                    <li><strong>Priority:</strong> <span class="badge danger">HIGH - Critical Path</span></li>
+                </ul>
+
+                <h3>Phase II ESA (If Phase I Identifies RECs)</h3>
+                <ul>
+                    <li><strong>Scope:</strong> Soil and groundwater sampling, laboratory analysis</li>
+                    <li><strong>Timeline:</strong> 4-8 weeks</li>
+                    <li><strong>Cost:</strong> $150,000 - $300,000</li>
+                    <li><strong>Priority:</strong> <span class="badge warning">Conditional on Phase I</span></li>
+                </ul>
+
+                <h3>Additional Assessments</h3>
+                <ul>
+                    <li><strong>Geotechnical Investigation:</strong> $20,000 - $75,000 (4-6 weeks)</li>
+                    <li><strong>Bulkhead/Wharf Structural:</strong> $15,000 - $40,000</li>
+                    <li><strong>Sediment Testing (if dredging):</strong> $10,000 - $30,000</li>
+                    <li><strong>LDEQ Records Review:</strong> Critical for AI #168766 status</li>
+                </ul>
+
+                <p><strong>Total Initial Due Diligence Budget:</strong> $50,000 - $150,000</p>
+            </div>
+
+            <div class="section orange">
+                <h2>Remediation Cost Estimates</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Remediation Approach</th>
+                            <th>Cost Range</th>
+                            <th>Timeline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>In-Situ Stabilization</td>
+                            <td>$2M - $5M</td>
+                            <td>6-12 months</td>
+                        </tr>
+                        <tr>
+                            <td>Excavation & Disposal</td>
+                            <td>$5M - $15M</td>
+                            <td>12-24 months</td>
+                        </tr>
+                        <tr>
+                            <td>Cap & Institutional Controls</td>
+                            <td>$500K - $2M</td>
+                            <td>3-6 months</td>
+                        </tr>
+                        <tr>
+                            <td>Ongoing Monitoring (annual)</td>
+                            <td>$85K - $175K/year</td>
+                            <td>5-30 years</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section red">
+                <h2>Flood & Hurricane Risk</h2>
+
+                <h3>Hurricane Katrina Impact (2005)</h3>
+                <ul>
+                    <li><strong>Storm Surge:</strong> 22 feet at 8-foot base elevation</li>
+                    <li><strong>Wind Speed:</strong> 75 knots sustained</li>
+                    <li><strong>Damage:</strong> Catastrophic infrastructure destruction</li>
+                    <li><strong>Insurance:</strong> Annual costs $100,000+ for adequate coverage</li>
+                </ul>
+
+                <h3>Current Exposure</h3>
+                <ul>
+                    <li><strong>FEMA Zone:</strong> AE (high-risk flood zone)</li>
+                    <li><strong>Storm Surge Vulnerability:</strong> Category 3+ hurricanes</li>
+                    <li><strong>Sea Level Rise:</strong> 1-3 feet projected by 2100</li>
+                    <li><strong>Land Loss:</strong> Louisiana loses football field equivalent every 38 minutes</li>
+                </ul>
+
+                <h3>Mitigation Requirements</h3>
+                <ul>
+                    <li><strong>Elevated Facilities:</strong> $2M - $5M for critical infrastructure</li>
+                    <li><strong>Seawall Construction:</strong> $20M - $50M for comprehensive protection</li>
+                    <li><strong>HSDRRS Integration:</strong> Alignment with regional hurricane protection</li>
+                    <li><strong>Ongoing Maintenance:</strong> Regular inspection and reinforcement</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Financial Tab -->
+        <div id="financial" class="tab-content">
+            <div class="section">
+                <h2>Financial Analysis</h2>
+                <p>The Port Sulphur terminal presents multiple development pathways with varying capital requirements and return profiles. Financial modeling indicates break-even at approximately 1.5-2 million tons annually at $5-8/ton handling rates, achievable within 3-5 years given the site's strategic positioning.</p>
+            </div>
+
+            <div class="section blue">
+                <h2>Development Scenarios</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Capex Investment</th>
+                            <th>Throughput Capacity</th>
+                            <th>Revenue Potential</th>
+                            <th>IRR Range</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Scenario A: Midstream Berthing</strong></td>
+                            <td>$12-18 million</td>
+                            <td>Vessel services</td>
+                            <td>$10-20 million/year</td>
+                            <td>18-45%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scenario B: Bulk Terminal</strong></td>
+                            <td>$15-25 million</td>
+                            <td>500K-1M tons</td>
+                            <td>$25-40 million/year</td>
+                            <td>22-38%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scenario C: Container/Breakbulk</strong></td>
+                            <td>$30-50 million</td>
+                            <td>10K-25K TEU</td>
+                            <td>$30-60 million/year</td>
+                            <td>15-28%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section green">
+                <h2>Acquisition Costs</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Property Purchase Price</td>
+                            <td style="text-align: right;"><strong>$14,700,000</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Environmental Due Diligence</td>
+                            <td style="text-align: right;">$50,000</td>
+                        </tr>
+                        <tr>
+                            <td>Title, Survey, Legal</td>
+                            <td style="text-align: right;">$150,000</td>
+                        </tr>
+                        <tr>
+                            <td>Transaction Costs (2%)</td>
+                            <td style="text-align: right;">$294,000</td>
+                        </tr>
+                        <tr style="background: rgba(100,255,180,0.1);">
+                            <td><strong>Total Acquisition</strong></td>
+                            <td style="text-align: right;"><strong>$15,194,000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section orange">
+                <h2>Operating Assumptions</h2>
+
+                <h3>Revenue Drivers</h3>
+                <ul>
+                    <li><strong>Throughput Target:</strong> 1-5 million tons annually</li>
+                    <li><strong>Handling Rates:</strong> $5-10/ton base rate, $15-25/ton premium services</li>
+                    <li><strong>Storage Revenue:</strong> $0.50-2.00/ton/month for bulk commodities</li>
+                    <li><strong>Ancillary Services:</strong> Vessel services, barge fleeting, project cargo</li>
+                </ul>
+
+                <h3>Operating Costs</h3>
+                <ul>
+                    <li><strong>Labor:</strong> 250-500 direct employees, $15M-30M annual payroll</li>
+                    <li><strong>Equipment:</strong> Material handling, maintenance, $5M-12M annually</li>
+                    <li><strong>Insurance:</strong> $500K-1M annually (flood, liability, property)</li>
+                    <li><strong>Environmental Monitoring:</strong> $85K-175K annually</li>
+                    <li><strong>Utilities & Overhead:</strong> $2M-5M annually</li>
+                </ul>
+
+                <h3>Break-Even Analysis</h3>
+                <p>Conservative throughput assumptions indicate break-even at approximately 1.5-2 million tons annually at $5-8/ton handling rates, achievable within 3-5 years given:</p>
+                <ul>
+                    <li>Regional cargo growth trends (2-4% annually)</li>
+                    <li>Competitive advantages in draft and location</li>
+                    <li>Infrastructure investment in Plaquemines Parish</li>
+                    <li>Potential rail integration (NOGC 8-mile spur feasibility)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Economic Impact</h2>
+
+                <h3>Construction Phase</h3>
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Direct Jobs</div>
+                        <div class="metric-value">1,000-3,000</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Total Jobs (with multiplier)</div>
+                        <div class="metric-value">2,500-6,000</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Regional Earnings</div>
+                        <div class="metric-value">$1.8B</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Tax Generation</div>
+                        <div class="metric-value">$50-100M</div>
+                    </div>
+                </div>
+
+                <h3>Operations Phase (Annual)</h3>
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Direct Jobs</div>
+                        <div class="metric-value">250-500</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Total Jobs (with multiplier)</div>
+                        <div class="metric-value">625-2,000</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Annual Payroll</div>
+                        <div class="metric-value">$15-30M</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Annual Tax Revenue</div>
+                        <div class="metric-value">$10-25M</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Infrastructure Tab -->
+        <div id="infrastructure" class="tab-content">
+            <div class="section">
+                <h2>Regional Infrastructure Context</h2>
+                <p>Port Sulphur is positioned within a rapidly developing industrial corridor along the Lower Mississippi River. Major infrastructure projects in Plaquemines Parish demonstrate regional commitment to maritime and energy logistics, creating a favorable environment for terminal development.</p>
+            </div>
+
+            <div class="section blue">
+                <h2>Major Regional Projects</h2>
+
+                <h3>APM Terminals (MM 51)</h3>
+                <ul>
+                    <li><strong>Investment:</strong> $500 million</li>
+                    <li><strong>Capacity:</strong> 1.0 million TEU annually</li>
+                    <li><strong>Acreage:</strong> 200-900 acres planned</li>
+                    <li><strong>Status:</strong> Under development</li>
+                    <li><strong>Significance:</strong> Demonstrates container demand and infrastructure investment confidence</li>
+                </ul>
+
+                <h3>Venture Global LNG (Plaquemines)</h3>
+                <ul>
+                    <li><strong>Investment:</strong> $21 billion</li>
+                    <li><strong>Capacity:</strong> 20 million tonnes/year LNG export</li>
+                    <li><strong>Status:</strong> Under construction (largest U.S. construction project)</li>
+                    <li><strong>Significance:</strong> Massive workforce influx, regional economic catalyst</li>
+                </ul>
+
+                <h3>Belle Chasse Bridge (MM 76)</h3>
+                <ul>
+                    <li><strong>Investment:</strong> $169 million</li>
+                    <li><strong>Completed:</strong> 2023</li>
+                    <li><strong>Impact:</strong> Eliminated air draft restriction at 73 feet</li>
+                    <li><strong>Benefit:</strong> Unrestricted barge tow access between Port Sulphur and Gulf</li>
+                </ul>
+
+                <h3>NOGC Railway</h3>
+                <ul>
+                    <li><strong>Asset:</strong> 32-mile shortline railroad</li>
+                    <li><strong>Utilization:</strong> <10% current capacity</li>
+                    <li><strong>Opportunity:</strong> 8-mile spur extension feasibility to Port Sulphur</li>
+                    <li><strong>Impact:</strong> Rail integration could increase throughput potential to 3-5M tons</li>
+                </ul>
+            </div>
+
+            <div class="section green">
+                <h2>Transportation Infrastructure</h2>
+
+                <h3>River Access</h3>
+                <ul>
+                    <li><strong>Mississippi River Mile 39:</strong> Left Descending Bank</li>
+                    <li><strong>Channel Depth:</strong> 45-foot federal channel, 52-foot site capability</li>
+                    <li><strong>Navigation:</strong> Unrestricted deep-draft vessel access</li>
+                    <li><strong>Distance to Gulf:</strong> 39 nautical miles via Southwest Pass</li>
+                </ul>
+
+                <h3>Highway Access</h3>
+                <ul>
+                    <li><strong>Highway 23:</strong> Primary north-south corridor through Plaquemines Parish</li>
+                    <li><strong>Improvements:</strong> $2B+ planned corridor enhancements</li>
+                    <li><strong>Distance to New Orleans:</strong> ~55 miles via Highway 23 and LA-39</li>
+                </ul>
+
+                <h3>Rail Potential</h3>
+                <ul>
+                    <li><strong>NOGC Railway:</strong> 8-mile extension feasibility</li>
+                    <li><strong>Class I Connection:</strong> CN/UP interchange available</li>
+                    <li><strong>Investment Required:</strong> $15M-30M estimated for spur construction</li>
+                </ul>
+            </div>
+
+            <div class="section orange">
+                <h2>Competitive Terminal Analysis</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Terminal</th>
+                            <th>River Mile</th>
+                            <th>Draft (ft)</th>
+                            <th>Key Advantages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Port Sulphur (Project Site)</strong></td>
+                            <td>MM 39</td>
+                            <td>52</td>
+                            <td>Deep draft, no air draft limits, closest to Gulf</td>
+                        </tr>
+                        <tr>
+                            <td>APM Terminals</td>
+                            <td>MM 51</td>
+                            <td>45</td>
+                            <td>New construction, container focus, $500M investment</td>
+                        </tr>
+                        <tr>
+                            <td>Port of Plaquemines</td>
+                            <td>MM 50-60</td>
+                            <td>45</td>
+                            <td>Established operations, diverse cargo</td>
+                        </tr>
+                        <tr>
+                            <td>Port of New Orleans</td>
+                            <td>MM 90-110</td>
+                            <td>45</td>
+                            <td>Major container hub, extensive rail/road connections</td>
+                        </tr>
+                        <tr>
+                            <td>Port of South Louisiana</td>
+                            <td>MM 115-160</td>
+                            <td>45</td>
+                            <td>Largest tonnage in Western Hemisphere, petrochemical focus</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Maps Tab -->
+        <div id="maps" class="tab-content">
+            <div class="section">
+                <h2>Interactive Mapping</h2>
+                <p>Geographic intelligence and spatial analysis for the Port Sulphur terminal site and regional infrastructure context.</p>
+            </div>
+
+            <div class="section blue">
+                <h2>ESRI ArcGIS Web Map - Port Sulphur Terminal</h2>
+                <div style="border: 2px dashed rgba(100,255,180,0.3); padding: 3rem; text-align: center; background: rgba(100,255,180,0.05); border-radius: 8px; min-height: 600px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div style="font-size: 3rem; color: rgba(100,255,180,0.5); margin-bottom: 1rem;">🗺️</div>
+                    <h3 style="color: #64ffb4; margin-bottom: 1rem;">ESRI Map Placeholder</h3>
+                    <p style="color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto;">
+                        Interactive ESRI ArcGIS map will be embedded here showing:<br><br>
+                        • Port Sulphur site boundary and parcels<br>
+                        • Mississippi River navigation channel<br>
+                        • Regional terminals and infrastructure<br>
+                        • APM Terminals, Venture Global LNG, Belle Chasse Bridge<br>
+                        • NOGC Railway alignment and potential spur<br>
+                        • FEMA flood zones and hurricane exposure<br>
+                        • Environmental monitoring points
+                    </p>
+                    <div style="margin-top: 2rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
+                        <code style="color: rgba(100,255,180,0.8); font-size: 0.85rem;">
+                            &lt;iframe src="https://arcg.is/[YOUR_MAP_ID]" width="100%" height="600px"&gt;&lt;/iframe&gt;
+                        </code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section green">
+                <h2>Supplementary Mapping Layers</h2>
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Site Coordinates</div>
+                        <div class="metric-value" style="font-size: 1rem;">29.473414°N, 89.686632°W</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">River Mile</div>
+                        <div class="metric-value">MM 39 LDB</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Distance to Gulf</div>
+                        <div class="metric-value">39 nm</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Distance to NOLA</div>
+                        <div class="metric-value">55 miles</div>
+                    </div>
+                </div>
+
+                <h3>Available Map Layers</h3>
+                <ul>
+                    <li><strong>Navigation:</strong> USACE channel depth soundings, turning basins, anchorages</li>
+                    <li><strong>Infrastructure:</strong> Terminals, pipelines, rail lines, highways</li>
+                    <li><strong>Environmental:</strong> LDEQ sites, wetlands, critical habitat</li>
+                    <li><strong>Flood Risk:</strong> FEMA zones, storm surge models, historical inundation</li>
+                    <li><strong>Ownership:</strong> Parcel boundaries, zoning, easements</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Executive Summary Tab -->
+        <div id="executive" class="tab-content">
+            <div class="section">
+                <h2>Executive Summary</h2>
+                <p>This comprehensive analysis validates the Port Sulphur terminal opportunity while providing critical intelligence on environmental legacy, flood risk, market dynamics, and development economics. The following synthesis integrates 12 GB of source research into actionable recommendations.</p>
+            </div>
+
+            <div class="section blue">
+                <h2>Investment Thesis</h2>
+
+                <h3>Strategic Advantages</h3>
+                <ul>
+                    <li><strong>Location Premium:</strong> MM 39 positioning provides 3+ hour time advantage and $3-5/ton cost savings versus upriver alternatives</li>
+                    <li><strong>Deep Draft Capability:</strong> 52-foot capability maintains operations during low-water restrictions affecting shallow terminals</li>
+                    <li><strong>Infrastructure Momentum:</strong> $21B+ regional investments (Venture Global LNG, APM Terminals, Belle Chasse Bridge) validate industrial corridor growth</li>
+                    <li><strong>Market Opportunity:</strong> 50-100M tons annual "available" Mississippi River traffic; 1-5M ton capture potential represents 0.6-1.0% market share</li>
+                </ul>
+
+                <h3>Critical Risk Factors</h3>
+                <ul>
+                    <li><strong>Environmental Legacy:</strong> 72-year sulfur operations; $2-5M potential remediation; Phase I/II ESA required</li>
+                    <li><strong>Flood Exposure:</strong> FEMA Zone AE; 22-foot Katrina surge; $20-50M seawall investment needed</li>
+                    <li><strong>Market Competition:</strong> APM Terminals $500M investment at MM 51; competitive terminal landscape</li>
+                    <li><strong>Captive Traffic Reality:</strong> 85-90% of MRS traffic origin-destination committed; realistic capture rates critical</li>
+                </ul>
+            </div>
+
+            <div class="section green">
+                <h2>Financial Framework</h2>
+
+                <h3>Base Case Assumptions</h3>
+                <ul>
+                    <li><strong>Acquisition:</strong> $15.2M total (including transaction costs)</li>
+                    <li><strong>Development:</strong> $15-25M (Scenario B: Bulk Terminal)</li>
+                    <li><strong>Environmental:</strong> $2-5M remediation + $85-175K/year monitoring</li>
+                    <li><strong>Flood Protection:</strong> $5M elevated facilities (minimum); $20-50M seawall (comprehensive)</li>
+                    <li><strong>Total Investment:</strong> $37M-95M depending on scenario and protection level</li>
+                </ul>
+
+                <h3>Revenue Potential</h3>
+                <ul>
+                    <li><strong>Throughput:</strong> 1-5 million tons annually (conservative: 1-2M, optimistic: 3-5M with rail)</li>
+                    <li><strong>Handling Rates:</strong> $5-10/ton base; $15-25/ton premium services</li>
+                    <li><strong>Annual Revenue:</strong> $10-50M depending on throughput and service mix</li>
+                    <li><strong>Break-Even:</strong> 1.5-2M tons at $5-8/ton rates</li>
+                </ul>
+
+                <h3>Return Profile</h3>
+                <ul>
+                    <li><strong>Scenario A (Midstream):</strong> 18-45% IRR on $12-18M capex</li>
+                    <li><strong>Scenario B (Bulk):</strong> 22-38% IRR on $15-25M capex</li>
+                    <li><strong>Scenario C (Container):</strong> 15-28% IRR on $30-50M capex</li>
+                    <li><strong>Payback Period:</strong> 5-8 years for bulk terminal scenario</li>
+                </ul>
+            </div>
+
+            <div class="section orange">
+                <h2>Immediate Actions Required</h2>
+
+                <h3>Critical Path Items (0-30 days)</h3>
+                <ul>
+                    <li><strong>Phase I ESA:</strong> Commission ASTM E1527-21 compliant assessment ($15K-25K, 3-4 weeks)</li>
+                    <li><strong>LDEQ Records:</strong> Obtain all documentation for Agency Interest #168766</li>
+                    <li><strong>Title Search:</strong> Verify clean title and absence of environmental liens</li>
+                    <li><strong>Structural Assessment:</strong> 1933 dock condition evaluation ($15K-40K)</li>
+                    <li><strong>Preliminary Discussions:</strong> Plaquemines Parish Port Authority, USACE, LDEQ</li>
+                </ul>
+
+                <h3>Phase II Due Diligence (30-90 days)</h3>
+                <ul>
+                    <li><strong>Phase II ESA:</strong> If Phase I identifies RECs ($150K-300K, 4-8 weeks)</li>
+                    <li><strong>Geotechnical:</strong> Borings, soil bearing capacity, foundation design ($20K-75K)</li>
+                    <li><strong>Market Validation:</strong> Shipper interviews, rate confirmation, throughput commitments</li>
+                    <li><strong>Engineering Study:</strong> Concept-level development plans for preferred scenario</li>
+                    <li><strong>Permit Pathway:</strong> USACE Section 10/404, LDEQ air/water, Plaquemines Parish zoning</li>
+                </ul>
+
+                <h3>Investment Decision (90-120 days)</h3>
+                <ul>
+                    <li><strong>Risk-Adjusted Valuation:</strong> Incorporate environmental, flood, market risks into pricing</li>
+                    <li><strong>Development Timeline:</strong> Phased approach with go/no-go gates</li>
+                    <li><strong>Financing Strategy:</strong> Equity/debt structure, potential partners, public incentives</li>
+                    <li><strong>Transaction Structure:</strong> Purchase price negotiation based on due diligence findings</li>
+                </ul>
+            </div>
+
+            <div class="section red">
+                <h2>Deal-Breaker Scenarios</h2>
+
+                <p>The following findings from Phase I/II due diligence would fundamentally alter the investment thesis:</p>
+
+                <ul>
+                    <li><strong>Superfund-Level Contamination:</strong> If soil/groundwater contamination exceeds $15M+ remediation threshold</li>
+                    <li><strong>Active LDEQ Enforcement:</strong> Ongoing corrective action orders or unresolved violations</li>
+                    <li><strong>Structural Failure:</strong> If 1933 dock requires complete replacement (>$25M)</li>
+                    <li><strong>Market Access Blocked:</strong> USACE denial of future dredging or dock permits</li>
+                    <li><strong>Environmental Liens:</strong> Undisclosed contamination liability transfer</li>
+                    <li><strong>Wetlands Designation:</strong> If redevelopment triggers Section 404 denial</li>
+                </ul>
+            </div>
+
+            <div class="section green">
+                <h2>Recommendation</h2>
+
+                <p><strong>Proceed with Phase I Due Diligence</strong> with clear go/no-go decision criteria based on environmental findings, structural assessment, and market validation.</p>
+
+                <h3>Decision Framework</h3>
+                <ul>
+                    <li><strong>Green Light:</strong> Phase I shows no RECs or manageable contamination <$2M; dock structurally sound with <$5M repairs; confirmed shipper interest for 1M+ tons annually</li>
+                    <li><strong>Yellow Light:</strong> Phase II required but contamination likely <$5M; dock needs significant work but salvageable; market interest requires rail integration</li>
+                    <li><strong>Red Light:</strong> Superfund-level contamination; dock requires replacement; no credible path to 1M+ tons throughput</li>
+                </ul>
+
+                <h3>Recommended Transaction Structure</h3>
+                <ul>
+                    <li><strong>Initial Offer:</strong> $12M-13M (10-15% below asking) with environmental contingencies</li>
+                    <li><strong>Due Diligence Period:</strong> 120 days with right to extend for Phase II</li>
+                    <li><strong>Price Adjustment:</strong> Dollar-for-dollar reduction for identified environmental liabilities >$1M</li>
+                    <li><strong>Earnout Structure:</strong> Consider deferred payment tied to successful permitting or throughput milestones</li>
+                </ul>
+
+                <h3>Success Probability Assessment</h3>
+                <ul>
+                    <li><strong>Environmental Clearance:</strong> 60-70% (manageable contamination, no Superfund)</li>
+                    <li><strong>Permit Approval:</strong> 75-85% (Industrial District 3, existing dock, USACE precedent)</li>
+                    <li><strong>Market Capture:</strong> 50-70% (1M tons within 5 years; 3M+ with rail integration)</li>
+                    <li><strong>Overall Success:</strong> 30-45% of achieving full development vision; 60-70% of achieving midstream/flex terminal scenario</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Conclusion</h2>
+                <p>The Port Sulphur terminal represents a calculated risk with asymmetric upside potential. The site's strategic location, deep-draft capability, and regional infrastructure momentum create a compelling acquisition opportunity—provided environmental liabilities prove manageable and market capture assumptions are validated through shipper commitments.</p>
+
+                <p>The $14.7M asking price appears reasonable on a $/acre basis ($137K/acre) compared to recent Lower Mississippi terminal transactions ($30K-$1.3M/acre), but significant environmental and flood risk discounts are warranted. A risk-adjusted valuation in the $10M-13M range better reflects the site's condition and required investment.</p>
+
+                <p><strong>Recommended Next Step:</strong> Authorize $50K-75K Phase I due diligence package (ESA, structural, preliminary market validation) with decision gate at 60 days to determine whether to proceed with full Phase II investigation and formal offer.</p>
+            </div>
+        </div>
+
+        <!-- Full Report Tab -->
+        <div id="report" class="tab-content">
+            <div class="section">
+                <h2 style="font-size: 2rem; text-align: center; margin-bottom: 2rem;">Port Sulphur Terminal Development Analysis</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem;">
+                    Comprehensive Due Diligence Report<br>
+                    Mississippi River Mile Marker 39, Plaquemines Parish, Louisiana
+                </p>
+            </div>
+
+            <!-- Chapter 1: Executive Summary -->
+            <div class="section green">
+                <h2>Chapter 1: Executive Summary</h2>
+
+                <h3>Project Overview</h3>
+                <p>This comprehensive analysis validates and expands the assessment of the former Freeport-McMoRan Port Sulphur facility as a strategic deep-water terminal development opportunity at Mississippi River Mile Marker 39. The 106.99-acre site, featuring 2,800 linear feet of Mississippi River frontage and 52-foot draft capability, presents unique advantages for maritime commerce despite environmental legacy considerations and flood risk exposure.</p>
+
+                <p><strong>Location:</strong> 28310 Highway 23, Port Sulphur, LA 70083, Plaquemines Parish<br>
+                <strong>River Position:</strong> Left Descending Bank, Mile Marker 39<br>
+                <strong>Key Infrastructure:</strong> 24' × 433' concrete dock (10,000-ton capacity), 5,000 SF warehouse, Industrial District 3 zoning</p>
+
+                <h3>Key Findings</h3>
+
+                <h4>Market Opportunity</h4>
+                <ul>
+                    <li><strong>Captive Traffic Reality:</strong> 85-90% of 500+ million tons annual Mississippi River System (MRS) traffic constitutes captive or through traffic, but the remaining 50-100 million tons annually presents substantial opportunity</li>
+                    <li><strong>MM 39 Capture Potential:</strong> 1-2 million tons annually without rail integration, escalating to 3-5 million tons with rail connectivity (0.6-1.0% of MRS traffic)</li>
+                    <li><strong>Barge Rate Volatility:</strong> September 2025 rates reached $23-24/ton during low-water restrictions versus $4-5/ton baseline, validating the importance of alternative terminal capacity</li>
+                    <li><strong>Revenue Potential:</strong> $10-50 million annually in handling fees (estimated $5-10/ton) based on conservative throughput assumptions</li>
+                </ul>
+
+                <h4>Competitive Positioning</h4>
+                <ul>
+                    <li><strong>Draft Advantage:</strong> 52-foot draft capability provides operational flexibility during low-water periods when shallow terminals face restrictions</li>
+                    <li><strong>Location Benefits:</strong> Closest deepwater terminals to open water on Mississippi River system; 3+ hour shipping time advantage over upriver competitors</li>
+                    <li><strong>No Air Draft Restrictions:</strong> Unlike upriver locations constrained by bridge clearances, enabling access for largest vessel classes</li>
+                    <li><strong>Proximity Premium:</strong> Shorter haul distance from upper river origins creates cost savings opportunity of $3-5/ton versus Gulf delivery under normal conditions</li>
+                </ul>
+
+                <h4>Environmental Status</h4>
+                <ul>
+                    <li><strong>Historical Operations:</strong> 72 years of sulfur processing (1933-2005) using Frasch Process with superheated water, sulfuric acid generation, and heavy metals mobilization</li>
+                    <li><strong>Contamination Profile:</strong> Soil acidification (pH <3.0), residual sulfur concentrations up to 50,900 mg/kg in vatting areas, elevated metals (iron, aluminum, zinc, lead, arsenic)</li>
+                    <li><strong>Regulatory Status:</strong> Active RCRA Small Quantity Generator (LAD072609795); no current Superfund (NPL) listing; apparent remediation completion requires verification through LDEQ Agency Interest #168766</li>
+                    <li><strong>2009 Emergency Response:</strong> Successfully neutralized 5.8 million pounds acidic water release; closeout filed July 10, 2009 (LDEQ-EDMS Document 6484954)</li>
+                    <li><strong>Risk Mitigation Costs:</strong> Phase I ESA $15-25K, Phase II $150-300K; potential remediation $2-5M for in-situ stabilization; ongoing monitoring $85-175K annually</li>
+                </ul>
+
+                <h4>Hurricane and Flood Risk</h4>
+                <ul>
+                    <li><strong>Hurricane Katrina Impact (2005):</strong> 22 feet storm surge, catastrophic infrastructure destruction, 75 kt winds at 8-foot base elevation</li>
+                    <li><strong>Current Exposure:</strong> FEMA high-risk flood zone AE; annual insurance costs $100K+; storm surge vulnerability for Category 3+ hurricanes</li>
+                    <li><strong>Mitigation Requirements:</strong> Elevated facilities ($2-5M), seawall construction ($20-50M), comprehensive flood protection systems integrated with regional HSDRRS</li>
+                    <li><strong>Long-term Challenges:</strong> Sea level rise, coastal erosion (Louisiana loses football field equivalent every 38 minutes), subsidence (1-3 feet projected by 2100)</li>
+                </ul>
+
+                <h3>Financial Projections</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Capex</th>
+                            <th>Throughput</th>
+                            <th>Revenue</th>
+                            <th>IRR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Scenario A: Midstream Berthing</td>
+                            <td>$12-18M</td>
+                            <td>Vessel services</td>
+                            <td>$10-20M/year</td>
+                            <td>18-45%</td>
+                        </tr>
+                        <tr>
+                            <td>Scenario B: Bulk Terminal</td>
+                            <td>$15-25M</td>
+                            <td>500K-1M tons</td>
+                            <td>$25-40M/year</td>
+                            <td>22-38%</td>
+                        </tr>
+                        <tr>
+                            <td>Scenario C: Container/Breakbulk</td>
+                            <td>$30-50M</td>
+                            <td>10K-25K TEU</td>
+                            <td>$30-60M/year</td>
+                            <td>15-28%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Workforce and Economic Impact</h3>
+                <p><strong>Construction Phase:</strong> 1,000-3,000 direct jobs, 2,500-6,000 total with multiplier effects; $1.8 billion regional earnings; $50-100M tax generation</p>
+                <p><strong>Operations Phase:</strong> 250-500 direct jobs, 625-2,000 total; $15-30M annual payroll; $10-25M annual tax revenue</p>
+
+                <h3>Regional Infrastructure Context</h3>
+                <ul>
+                    <li><strong>APM Terminals (MM 51):</strong> $500M investment, 200-900 acres, 1.0M TEU capacity</li>
+                    <li><strong>Venture Global LNG:</strong> $21B investment, 20M tonnes/year, largest U.S. construction project</li>
+                    <li><strong>Belle Chasse Bridge:</strong> $169M completed 2023, eliminated 73-foot air draft restriction</li>
+                    <li><strong>NOGC Railway:</strong> 32-mile shortline, <10% utilized, 8-mile spur feasibility to Port Sulphur</li>
+                </ul>
+            </div>
+
+            <!-- Chapter 2: Property & Site Analysis -->
+            <div class="section blue">
+                <h2>Chapter 2: Property & Site Analysis</h2>
+
+                <h3>Legal Description</h3>
+                <p><strong>Address:</strong> 28310 Highway 23, Port Sulphur, LA 70083<br>
+                <strong>Parish:</strong> Plaquemines Parish<br>
+                <strong>Total Acreage:</strong> 106.99 acres<br>
+                <strong>River Frontage:</strong> 2,800 linear feet (Left Descending Bank)<br>
+                <strong>Zoning:</strong> Industrial District 3</p>
+
+                <h3>Physical Site Characteristics</h3>
+                <ul>
+                    <li><strong>Elevation:</strong> Approximately 8 feet above sea level (base grade)</li>
+                    <li><strong>Topography:</strong> Generally flat with minimal slope toward river</li>
+                    <li><strong>Soil Type:</strong> Alluvial deposits, Mississippi River deltaic sediments</li>
+                    <li><strong>Drainage:</strong> Natural drainage to Mississippi River; industrial stormwater system present</li>
+                    <li><strong>Vegetation:</strong> Minimal; cleared industrial site with limited revegetation</li>
+                </ul>
+
+                <h3>Existing Infrastructure</h3>
+                <ul>
+                    <li><strong>Concrete Dock:</strong> 24' × 433' structure, constructed 1933, 10,000-ton berthing capacity</li>
+                    <li><strong>Warehouse:</strong> 5,000 SF metal building, condition unknown</li>
+                    <li><strong>Internal Roads:</strong> Gravel and compacted earth access roads throughout site</li>
+                    <li><strong>Utilities:</strong> Electric service present; water/sewer status requires verification</li>
+                    <li><strong>Fencing:</strong> Partial perimeter security fencing, condition varies</li>
+                </ul>
+
+                <h3>Access & Transportation</h3>
+                <ul>
+                    <li><strong>Highway 23:</strong> Primary access route, 2-lane state highway</li>
+                    <li><strong>Distance to New Orleans:</strong> ~55 miles via Highway 23 and LA-39</li>
+                    <li><strong>Distance to Interstate:</strong> I-10 accessible via US-90 and LA-45</li>
+                    <li><strong>Rail:</strong> No current rail service; NOGC Railway 8 miles north</li>
+                </ul>
+
+                <h3>Title & Ownership</h3>
+                <p><strong>Current Owner:</strong> Freeport-McMoRan Inc. (or successor entity)<br>
+                <strong>Asking Price:</strong> $14,700,000 ($137,400/acre)<br>
+                <strong>Title Status:</strong> Requires comprehensive title search and examination<br>
+                <strong>Liens/Encumbrances:</strong> Must verify absence of environmental liens, tax liens, easements</p>
+            </div>
+
+            <!-- Chapter 3: Market & Commercial Analysis -->
+            <div class="section orange">
+                <h2>Chapter 3: Market & Commercial Analysis</h2>
+
+                <h3>Mississippi River System Traffic Overview</h3>
+                <p>The Mississippi River System (MRS) is the most critical inland waterway in North America, handling over 500 million tons of cargo annually. This traffic consists primarily of agricultural products (grain, soybeans), petroleum products, coal, chemicals, aggregates, and manufactured goods.</p>
+
+                <h4>Traffic Composition</h4>
+                <ul>
+                    <li><strong>Total Annual Traffic:</strong> 500-550 million tons (entire MRS)</li>
+                    <li><strong>Lower Mississippi (Cairo to Gulf):</strong> 300-350 million tons</li>
+                    <li><strong>Captive Traffic:</strong> 85-90% origin-destination committed</li>
+                    <li><strong>Available/Discretionary:</strong> 50-100 million tons (10-20%)</li>
+                </ul>
+
+                <h3>Cargo Categories & Potential</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cargo Type</th>
+                            <th>Annual Volume</th>
+                            <th>MM 39 Suitability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Agricultural (grain, soybeans)</td>
+                            <td>150-200M tons</td>
+                            <td>Medium - requires storage silos</td>
+                        </tr>
+                        <tr>
+                            <td>Petroleum products</td>
+                            <td>80-100M tons</td>
+                            <td>High - existing infrastructure</td>
+                        </tr>
+                        <tr>
+                            <td>Coal</td>
+                            <td>40-60M tons</td>
+                            <td>High - bulk handling capability</td>
+                        </tr>
+                        <tr>
+                            <td>Chemicals</td>
+                            <td>60-80M tons</td>
+                            <td>Medium - requires specialized tanks</td>
+                        </tr>
+                        <tr>
+                            <td>Aggregates/Construction</td>
+                            <td>50-70M tons</td>
+                            <td>Very High - minimal equipment needed</td>
+                        </tr>
+                        <tr>
+                            <td>Steel/Project Cargo</td>
+                            <td>20-30M tons</td>
+                            <td>Very High - deepwater advantage</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Competitive Analysis</h3>
+                <p>Port Sulphur competes with established terminals along the Lower Mississippi River corridor, each with distinct advantages and specializations. Key differentiators include draft capability, location relative to Gulf access, infrastructure investment, and operational flexibility.</p>
+
+                <h3>Market Capture Scenarios</h3>
+                <ul>
+                    <li><strong>Conservative (1-2M tons):</strong> Bulk aggregates, project cargo staging, midstream services</li>
+                    <li><strong>Base Case (2-3M tons):</strong> Above plus steel/pipe handling, select agricultural transload</li>
+                    <li><strong>Optimistic (3-5M tons):</strong> Rail integration enabling grain/fertilizer terminal operations</li>
+                </ul>
+            </div>
+
+            <!-- Chapter 4: Environmental Due Diligence -->
+            <div class="section red">
+                <h2>Chapter 4: Environmental Due Diligence</h2>
+
+                <h3>Historical Operations Summary</h3>
+                <p>The Port Sulphur facility operated as a major sulfur extraction and processing terminal from 1933 to 2005, representing 72 years of industrial activity. The Frasch Process, used extensively at this site, involved injecting superheated water (300°F+) into underground sulfur deposits, melting the sulfur, and pumping it to the surface for processing and barge loading.</p>
+
+                <h3>Contamination Concerns</h3>
+
+                <h4>Soil Contamination</h4>
+                <ul>
+                    <li><strong>Acidification:</strong> Sulfur oxidation creates sulfuric acid; soil pH <3.0 in some areas</li>
+                    <li><strong>Residual Sulfur:</strong> Up to 50,900 mg/kg in former vatting areas (EPA industrial soil screening level: 3,900 mg/kg)</li>
+                    <li><strong>Heavy Metals:</strong> Acid mobilization of iron, aluminum, zinc, lead, arsenic from natural sediments</li>
+                    <li><strong>Petroleum Hydrocarbons:</strong> Potential contamination from equipment operations, hydraulic fluids</li>
+                </ul>
+
+                <h4>Groundwater Concerns</h4>
+                <ul>
+                    <li><strong>Acidic Plume:</strong> Historical low-pH groundwater from sulfuric acid generation</li>
+                    <li><strong>Dissolved Metals:</strong> Iron, aluminum, manganese mobilized in acidic conditions</li>
+                    <li><strong>Sulfate Concentrations:</strong> Elevated sulfate from sulfur oxidation processes</li>
+                </ul>
+
+                <h4>Structural/Infrastructure Contamination</h4>
+                <ul>
+                    <li><strong>Creosote-Treated Timber:</strong> Dock pilings, bulkhead likely treated with creosote (PAH contamination)</li>
+                    <li><strong>Lead-Based Paint:</strong> Historical structures likely contain lead paint</li>
+                    <li><strong>Asbestos:</strong> Building materials in warehouse/office structures</li>
+                </ul>
+
+                <h3>Regulatory Status Details</h3>
+                <p><strong>EPA Facility Registry Service (FRS ID: 110022408321):</strong> Active registration for facility</p>
+                <p><strong>RCRA Generator Status (LAD072609795):</strong> Small Quantity Generator classification</p>
+                <p><strong>LDEQ Agency Interest #168766:</strong> Critical to obtain all documentation and verify remediation status</p>
+                <p><strong>2009 Emergency Response:</strong> 5.8 million pounds acidic water neutralized; LDEQ Document 6484954</p>
+
+                <h3>Required Environmental Assessments</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Assessment</th>
+                            <th>Cost</th>
+                            <th>Timeline</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Phase I ESA (ASTM E1527-21)</td>
+                            <td>$15K-25K</td>
+                            <td>3-4 weeks</td>
+                            <td><span class="badge danger">Critical</span></td>
+                        </tr>
+                        <tr>
+                            <td>Phase II ESA (if RECs identified)</td>
+                            <td>$150K-300K</td>
+                            <td>4-8 weeks</td>
+                            <td><span class="badge warning">Conditional</span></td>
+                        </tr>
+                        <tr>
+                            <td>Geotechnical Investigation</td>
+                            <td>$20K-75K</td>
+                            <td>4-6 weeks</td>
+                            <td><span class="badge info">High</span></td>
+                        </tr>
+                        <tr>
+                            <td>Structural Assessment (Dock)</td>
+                            <td>$15K-40K</td>
+                            <td>2-3 weeks</td>
+                            <td><span class="badge danger">Critical</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sediment Testing (if dredging)</td>
+                            <td>$10K-30K</td>
+                            <td>3-4 weeks</td>
+                            <td><span class="badge warning">Medium</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Remediation Cost Estimates</h3>
+                <p>Remediation costs are highly dependent on Phase II findings, contamination extent, selected remedy, and regulatory requirements. The following represents industry-standard cost ranges for comparable sites:</p>
+
+                <ul>
+                    <li><strong>In-Situ Stabilization:</strong> $2M-5M (lime/cement amendment, encapsulation)</li>
+                    <li><strong>Excavation & Disposal:</strong> $5M-15M (remove contaminated soil to RCRA Subtitle D facility)</li>
+                    <li><strong>Cap & Institutional Controls:</strong> $500K-2M (geomembrane cap, deed restrictions)</li>
+                    <li><strong>Monitored Natural Attenuation:</strong> $85K-175K/year for 5-30 years</li>
+                </ul>
+            </div>
+
+            <!-- Chapter 5: Risk Assessment & Mitigation -->
+            <div class="section orange">
+                <h2>Chapter 5: Risk Assessment & Mitigation</h2>
+
+                <h3>Primary Risk Categories</h3>
+
+                <h4>1. Environmental Liability Risk</h4>
+                <ul>
+                    <li><strong>Probability:</strong> High (70-85%) that Phase I identifies RECs</li>
+                    <li><strong>Impact:</strong> $2M-15M+ remediation costs depending on contamination extent</li>
+                    <li><strong>Mitigation:</strong> Comprehensive Phase I/II ESA; environmental insurance; price adjustment provisions</li>
+                </ul>
+
+                <h4>2. Flood & Hurricane Risk</h4>
+                <ul>
+                    <li><strong>Probability:</strong> High (90%+) for Category 3+ hurricane impact over 20-year period</li>
+                    <li><strong>Impact:</strong> $10M-50M+ catastrophic loss without hardening</li>
+                    <li><strong>Mitigation:</strong> Elevated facilities, seawall, comprehensive insurance ($100K+ annual premium)</li>
+                </ul>
+
+                <h4>3. Market/Throughput Risk</h4>
+                <ul>
+                    <li><strong>Probability:</strong> Medium (40-60%) that throughput targets not achieved within 5 years</li>
+                    <li><strong>Impact:</strong> Extended break-even period, reduced IRR, potential project failure</li>
+                    <li><strong>Mitigation:</strong> Shipper commitments/contracts, phased development, flexible use scenarios</li>
+                </ul>
+
+                <h4>4. Regulatory/Permit Risk</h4>
+                <ul>
+                    <li><strong>Probability:</strong> Low-Medium (20-40%) for permit denial or significant delay</li>
+                    <li><strong>Impact:</strong> 6-24 month delay, additional costs, potential project abandonment</li>
+                    <li><strong>Mitigation:</strong> Early USACE/LDEQ consultation, experienced permit counsel, community engagement</li>
+                </ul>
+
+                <h4>5. Structural/Infrastructure Risk</h4>
+                <ul>
+                    <li><strong>Probability:</strong> Medium-High (50-70%) that 1933 dock requires major repairs</li>
+                    <li><strong>Impact:</strong> $5M-25M for repair/replacement</li>
+                    <li><strong>Mitigation:</strong> Structural engineering assessment pre-acquisition; phased reconstruction</li>
+                </ul>
+
+                <h3>Risk Matrix Summary</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Risk Category</th>
+                            <th>Probability</th>
+                            <th>Impact</th>
+                            <th>Risk Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Environmental Liability</td>
+                            <td>High (75%)</td>
+                            <td>High ($5M)</td>
+                            <td><span class="badge danger">Critical</span></td>
+                        </tr>
+                        <tr>
+                            <td>Flood/Hurricane</td>
+                            <td>High (90%)</td>
+                            <td>Very High ($25M)</td>
+                            <td><span class="badge danger">Critical</span></td>
+                        </tr>
+                        <tr>
+                            <td>Market/Throughput</td>
+                            <td>Medium (50%)</td>
+                            <td>High (IRR reduction)</td>
+                            <td><span class="badge warning">High</span></td>
+                        </tr>
+                        <tr>
+                            <td>Regulatory/Permit</td>
+                            <td>Low-Med (30%)</td>
+                            <td>Medium (delay)</td>
+                            <td><span class="badge warning">Medium</span></td>
+                        </tr>
+                        <tr>
+                            <td>Structural</td>
+                            <td>Medium (60%)</td>
+                            <td>High ($10M)</td>
+                            <td><span class="badge warning">High</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="section green">
+                <h2>Final Recommendations</h2>
+
+                <h3>Proceed with Phased Due Diligence</h3>
+                <p>Based on comprehensive analysis of market opportunity, environmental legacy, flood risk, and development economics, the recommended course of action is to proceed with Phase I due diligence with clearly defined go/no-go decision criteria at each stage.</p>
+
+                <h3>Phase I Go/No-Go Criteria (60 days, $50K-75K budget)</h3>
+                <ul>
+                    <li><strong>GREEN:</strong> Phase I ESA shows no RECs or manageable contamination <$2M; dock structurally sound with repairs <$5M; confirmed shipper interest 1M+ tons</li>
+                    <li><strong>YELLOW:</strong> Phase II required but contamination likely <$5M; dock salvageable; market requires rail integration</li>
+                    <li><strong>RED:</strong> Superfund-level contamination; dock replacement required; no credible path to 1M+ tons</li>
+                </ul>
+
+                <h3>Recommended Offer Structure</h3>
+                <ul>
+                    <li><strong>Initial Offer:</strong> $12M-13M (10-15% below asking)</li>
+                    <li><strong>Environmental Contingency:</strong> Dollar-for-dollar reduction for liabilities >$1M</li>
+                    <li><strong>Due Diligence Period:</strong> 120 days with extension rights for Phase II</li>
+                    <li><strong>Earnout Consideration:</strong> Deferred payment tied to permit approval or throughput milestones</li>
+                </ul>
+
+                <p style="margin-top: 2rem; padding: 1.5rem; background: rgba(100,255,180,0.1); border-left: 4px solid #64ffb4; border-radius: 6px;">
+                    <strong>Bottom Line:</strong> The Port Sulphur terminal represents a calculated risk with asymmetric upside. Success requires rigorous environmental due diligence, realistic market capture assumptions, and comprehensive flood risk mitigation. A risk-adjusted acquisition price of $10M-13M better reflects the site's condition and required investment compared to the $14.7M asking price.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Highlight selected button
+            event.target.classList.add('active');
+
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
