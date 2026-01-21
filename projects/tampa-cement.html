@@ -1461,7 +1461,19 @@
             const buttons = document.querySelectorAll('.tab-button');
             buttons.forEach(button => button.classList.remove('active'));
             document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
+
+            // Activate clicked button (works with both click and programmatic calls)
+            if (window.event && window.event.target) {
+                window.event.target.classList.add('active');
+            } else {
+                // Find and activate the button that matches this tab
+                buttons.forEach(button => {
+                    const onclickAttr = button.getAttribute('onclick');
+                    if (onclickAttr && onclickAttr.includes(tabName)) {
+                        button.classList.add('active');
+                    }
+                });
+            }
         }
 
         // Mobile dropdown handling
@@ -1501,10 +1513,19 @@
             const tabButtons = document.querySelectorAll('.tab-button');
             tabButtons.forEach(button => {
                 // Add touch event handler
-                button.addEventListener('touchstart', function(e) {
+                button.addEventListener('touchend', function(e) {
                     e.preventDefault();
-                    // Trigger the onclick handler
-                    this.click();
+
+                    // Get the tab name from the onclick attribute
+                    const onclickAttr = this.getAttribute('onclick');
+                    if (onclickAttr) {
+                        const match = onclickAttr.match(/showTab\('(.+?)'\)/);
+                        if (match) {
+                            const tabName = match[1];
+                            // Call showTab directly
+                            showTab(tabName);
+                        }
+                    }
                 }, { passive: false });
             });
         });
