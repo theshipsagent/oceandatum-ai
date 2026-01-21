@@ -121,7 +121,8 @@
             margin-top: 0.5rem;
         }
 
-        .dropdown:hover .dropdown-content {
+        .dropdown:hover .dropdown-content,
+        .dropdown.active .dropdown-content {
             display: block;
         }
 
@@ -221,11 +222,27 @@
             background: rgba(0,0,0,0.4);
             border-bottom: 1px solid rgba(255,255,255,0.2);
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,0.3) rgba(0,0,0,0.2);
+        }
+
+        .tab-nav::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .tab-nav::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.2);
+        }
+
+        .tab-nav::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 3px;
         }
 
         .tab-button {
-            flex: 1;
-            min-width: 150px;
+            flex: 1 0 auto;
+            min-width: 130px;
             padding: 1rem 1.5rem;
             background: transparent;
             border: none;
@@ -238,6 +255,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border-bottom: 2px solid transparent;
+            white-space: nowrap;
         }
 
         .tab-button:hover {
@@ -500,6 +518,45 @@
                 padding-top: 4rem;
             }
 
+            .navbar {
+                padding: 0.8rem 1rem;
+            }
+
+            .navbar-right {
+                gap: 0.5rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                flex-wrap: nowrap;
+                max-width: calc(100vw - 2rem);
+            }
+
+            .navbar-link {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .dropdown {
+                flex-shrink: 0;
+            }
+
+            .dropdown-content {
+                position: fixed;
+                right: 1rem;
+                left: auto;
+                min-width: 200px;
+            }
+
+            .social-icons {
+                gap: 0.5rem;
+                flex-shrink: 0;
+            }
+
+            .social-icon {
+                font-size: 1rem;
+            }
+
             .hero-stats {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -509,7 +566,7 @@
             }
 
             .tab-nav {
-                flex-direction: column;
+                scroll-snap-type: x mandatory;
             }
 
             .project-header h1 {
@@ -517,7 +574,10 @@
             }
 
             .tab-button {
-                min-width: unset;
+                min-width: 110px;
+                padding: 0.75rem 1rem;
+                font-size: 0.8rem;
+                scroll-snap-align: start;
             }
         }
     </style>
@@ -1299,6 +1359,40 @@
             document.getElementById(tabName).classList.add('active');
             event.target.classList.add('active');
         }
+
+        // Mobile dropdown handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('.navbar-link');
+
+                // Toggle dropdown on click (for mobile)
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // Close other dropdowns
+                    dropdowns.forEach(d => {
+                        if (d !== dropdown) {
+                            d.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>

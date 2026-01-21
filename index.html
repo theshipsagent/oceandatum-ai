@@ -163,7 +163,8 @@
             margin-top: 0.5rem;
         }
 
-        .dropdown:hover .dropdown-content {
+        .dropdown:hover .dropdown-content,
+        .dropdown.active .dropdown-content {
             display: block;
         }
 
@@ -354,10 +355,32 @@
 
             .navbar-right {
                 gap: 0.8rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                flex-wrap: nowrap;
+                width: 100%;
+                padding-bottom: 0.5rem;
+            }
+
+            .navbar-link {
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .dropdown {
+                flex-shrink: 0;
             }
 
             .social-icons {
                 gap: 0.6rem;
+                flex-shrink: 0;
+            }
+
+            .dropdown-content {
+                position: fixed;
+                right: 1rem;
+                left: auto;
+                min-width: 200px;
             }
 
             .contact-box {
@@ -499,6 +522,40 @@
             if (e.key === 'Escape' && contactModal.classList.contains('active')) {
                 contactModal.classList.remove('active');
             }
+        });
+
+        // Mobile dropdown handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('.navbar-link');
+
+                // Toggle dropdown on click (for mobile)
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // Close other dropdowns
+                    dropdowns.forEach(d => {
+                        if (d !== dropdown) {
+                            d.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
         });
     </script>
 
