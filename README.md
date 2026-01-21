@@ -10,8 +10,9 @@ A professional static website showcasing maritime expertise, terminal developmen
 
 ✅ **Professional Landing Page** - Video background with maritime branding
 ✅ **CV/Biography Page** - Interactive tabbed interface with print/PDF export
+✅ **Professional Bibliography** - 362 curated maritime works in 11 categories
 ✅ **Project Portfolio** - Tampa Cement Terminal market intelligence
-✅ **Mobile-Optimized** - Responsive navigation and touch-friendly dropdowns
+✅ **Mobile-Optimized** - Horizontal scrolling navigation and touch-friendly interface
 ✅ **Print/PDF Export** - One-click professional document generation
 ✅ **Analytics** - Cloudflare Web Analytics for visitor tracking
 ✅ **Zero Maintenance** - Pure HTML/CSS/JS, no build process
@@ -41,16 +42,42 @@ oceandatum.ai/
 - **Three Tabbed Sections:**
   - CV - Professional experience and qualifications
   - Biography - Career narrative and history
-  - Bibliography - Professional reading list
+  - Bibliography - 362 curated works across 11 maritime categories
 - **Features:**
-  - Mobile-responsive navigation
-  - Print/PDF export button
-  - Professional formatting for print
+  - Mobile-responsive navigation with horizontal scrolling
+  - Collapsible bibliography sections with expand/collapse controls
+  - Table of contents with jump links
+  - Print/PDF export button (bibliography auto-expands for print)
+  - Professional formatting optimized for both screen and print
   - Social media icons and website links
+  - Touch-friendly navigation on all devices
 
 ### Projects
 - Tampa Cement Terminal - Comprehensive market intelligence report
 - Future projects to be added
+
+## Bibliography Categories
+
+The CV/Bio page includes a comprehensive professional bibliography with 362 curated works organized into 11 categories:
+
+1. **Business of Shipping** (21 works) - Ship agency, management, operations, strategy
+2. **Cargo Operations** (25 works) - Stowage, handling, tankers, specialized cargo
+3. **Chartering** (27 works) - Charter parties, laytime, demurrage, fixtures
+4. **Claims & Insurance** (18 works) - P&I, marine insurance, cargo claims
+5. **Commodities** (16 works) - Grain, petroleum, steel, bulk commodities
+6. **Econometrics** (46 works) - Transport economics, shipping markets, analytics
+7. **Historical** (88 works) - Maritime history, regional development
+8. **Maritime Law** (34 works) - Legal, regulations, conventions, admiralty
+9. **Port Operations** (33 works) - Terminals, stevedoring, port management
+10. **Supply Chain** (36 works) - Logistics, distribution, multimodal transport
+11. **Trade Documentation** (18 works) - Bills of lading, export/import, customs
+
+**Features:**
+- Collapsible sections (default collapsed for easy navigation)
+- Expand All / Collapse All controls
+- Table of contents with jump links
+- Alphabetical sorting by author within each category
+- Print/PDF optimized (auto-expands all sections)
 
 ## Analytics
 
@@ -133,5 +160,5 @@ https://linkedin.com/in/williamsdavis
 
 ---
 
-*Last Updated: January 2026*
-*Version: 2.0 (Static Site)*
+*Last Updated: January 21, 2026*
+*Version: 2.1 (Bibliography & Mobile Nav Update)*
