@@ -1,0 +1,515 @@
+{
+  "metadata": {
+    "document_title": "Port Sulphur Terminal - Permitting & Regulatory Data",
+    "extraction_date": "2026-01-22",
+    "source_document": "permitting_SYNTHESIS.md",
+    "source_generated": "2026-01-22 01:21:07",
+    "total_source_files": 5,
+    "data_status": "draft",
+    "author": "William S. Davis III"
+  },
+  "regulatory_framework": {
+    "federal_agencies": [
+      {
+        "agency": "U.S. Army Corps of Engineers (USACE)",
+        "district": "New Orleans District",
+        "jurisdiction": [
+          "Section 408 Permission (Federal Project Modifications)",
+          "Section 10 Permits (Navigable Waters)",
+          "Section 404 Permits (Wetlands)",
+          "Federal Navigation Channel Maintenance",
+          "Revetment System Approvals"
+        ],
+        "primary_contact_role": "Primary regulatory authority for dock expansion",
+        "pre_application_consultation": "Available through USACE New Orleans District",
+        "notes": "2025 Programmatic Environmental Assessment streamlines review process with standardized criteria in Appendix B"
+      },
+      {
+        "agency": "Environmental Protection Agency (EPA)",
+        "region": "Region 6",
+        "jurisdiction": [
+          "Superfund Oversight",
+          "Soil Contamination Standards",
+          "Environmental Compliance"
+        ],
+        "involvement_trigger": "If Superfund involvement required",
+        "guidance_documents": [
+          {
+            "title": "Superfund Soil Screening Guidance",
+            "document_id": "EPA/540/R-96/018"
+          },
+          {
+            "title": "Regional Screening Levels (RSLs)",
+            "purpose": "Metal contamination assessment"
+          },
+          {
+            "title": "Use of Soil Amendments for Remediation",
+            "document_id": "EPA-542-R-07-013"
+          }
+        ]
+      },
+      {
+        "agency": "U.S. Coast Guard (USCG)",
+        "jurisdiction": [
+          "Navigation Safety Standards",
+          "Aids to Navigation",
+          "Maritime Security"
+        ]
+      },
+      {
+        "agency": "Customs and Border Protection (CBP)",
+        "jurisdiction": [
+          "International Cargo Operations",
+          "Port Security"
+        ]
+      },
+      {
+        "agency": "Department of Energy (DOE)",
+        "jurisdiction": [
+          "LNG Export Approvals"
+        ],
+        "recent_activity": "2025 DOE approvals for gas exports influence regional development",
+        "regional_impact": "$21B in tax breaks for LNG facilities regionally"
+      }
+    ],
+    "state_agencies": [
+      {
+        "agency": "Louisiana Department of Environmental Quality (LDEQ)",
+        "role": "Primary state regulatory oversight",
+        "jurisdiction": [
+          "Soil Remediation Standards",
+          "Groundwater Protection Standards",
+          "Risk-Based Corrective Action (RBCA) Protocols",
+          "Environmental Compliance"
+        ],
+        "regulatory_code": "LAC 33",
+        "requirements": [
+          "Soil remediation standards under LAC 33",
+          "Groundwater protection standards",
+          "Risk-based corrective action (RBCA) protocols"
+        ]
+      }
+    ],
+    "local_agencies": [
+      {
+        "agency": "Plaquemines Parish Government",
+        "jurisdiction": [
+          "Local Building Permits",
+          "Development Permits",
+          "Zoning Approvals",
+          "Land Use Approvals"
+        ]
+      }
+    ]
+  },
+  "permit_types": {
+    "federal_permits": [
+      {
+        "permit_type": "Section 408 Permission",
+        "issuing_authority": "USACE New Orleans District",
+        "purpose": "Modification or alteration of federal flood control/navigation projects",
+        "status": "Required for dock expansion",
+        "priority": "Primary regulatory pathway",
+        "regulatory_process": "Integrated with Section 10 and Section 404 permits",
+        "streamlining": "2025 Programmatic Environmental Assessment provides standardized evaluation criteria",
+        "design_standards": "Appendix B contains specific engineering criteria for revetment interactions",
+        "coordination_approach": "Early coordination through pre-application consultation recommended",
+        "timeline_factor": "Concurrent processing with other USACE permits reduces regulatory uncertainty"
+      },
+      {
+        "permit_type": "Section 10 Permit",
+        "issuing_authority": "USACE New Orleans District",
+        "purpose": "Work in or affecting navigable waters",
+        "status": "Required for dock construction/expansion",
+        "coordination": "Processed concurrently with Section 408",
+        "applicability": "All dock and berthing facility work in Mississippi River"
+      },
+      {
+        "permit_type": "Section 404 Permit",
+        "issuing_authority": "USACE New Orleans District",
+        "purpose": "Discharge of dredged or fill material into waters/wetlands",
+        "status": "Required if wetland impacts occur",
+        "coordination": "Processed concurrently with Section 408",
+        "environmental_overlays": [
+          "CERCLA compliance",
+          "Wetlands protection",
+          "Endangered species consultation"
+        ]
+      },
+      {
+        "permit_type": "Surface Water Discharge Permits",
+        "issuing_authority": "USACE New Orleans District",
+        "purpose": "Stormwater and process water discharge",
+        "status": "Required for terminal operations"
+      }
+    ],
+    "state_permits": [
+      {
+        "permit_type": "Environmental Compliance Permits",
+        "issuing_authority": "Louisiana DEQ",
+        "regulatory_basis": "LAC 33",
+        "coverage": [
+          "Soil remediation",
+          "Groundwater protection",
+          "Air quality (if applicable)",
+          "Water quality"
+        ]
+      }
+    ],
+    "local_permits": [
+      {
+        "permit_type": "Building Permits",
+        "issuing_authority": "Plaquemines Parish",
+        "purpose": "Construction of terminal facilities and structures"
+      },
+      {
+        "permit_type": "Development Permits",
+        "issuing_authority": "Plaquemines Parish",
+        "purpose": "Land use and site development"
+      },
+      {
+        "permit_type": "Zoning Approvals",
+        "issuing_authority": "Plaquemines Parish",
+        "purpose": "Compliance with local land use regulations"
+      }
+    ]
+  },
+  "required_studies": [
+    {
+      "study_name": "Phase I Environmental Site Assessment (ESA)",
+      "sequence": 1,
+      "purpose": "Historical review and visual assessment",
+      "scope": "Review of historical site usage, potential contamination sources, regulatory database search, site reconnaissance",
+      "status": "Required - not yet initiated",
+      "regulatory_driver": "EPA/LDEQ environmental compliance"
+    },
+    {
+      "study_name": "Phase II Environmental Site Assessment (ESA)",
+      "sequence": 2,
+      "purpose": "Soil/groundwater sampling and analysis",
+      "scope": "Subsurface investigation, chemical analysis, contamination delineation",
+      "status": "Required - follows Phase I if contamination indicators found",
+      "regulatory_driver": "EPA/LDEQ environmental compliance",
+      "triggers": "Positive findings in Phase I ESA"
+    },
+    {
+      "study_name": "Risk Assessment",
+      "sequence": 3,
+      "purpose": "Human health and ecological risk evaluation",
+      "scope": "Exposure pathway analysis, toxicity evaluation, risk characterization",
+      "status": "Required if contamination identified",
+      "regulatory_driver": "EPA Regional Screening Levels (RSLs), LDEQ RBCA protocols"
+    },
+    {
+      "study_name": "Remedial Investigation",
+      "sequence": 4,
+      "purpose": "Detailed contamination characterization",
+      "scope": "Extent of contamination, media affected, migration pathways",
+      "status": "Required if remediation necessary",
+      "regulatory_driver": "EPA Superfund guidance, LDEQ oversight"
+    },
+    {
+      "study_name": "Feasibility Study",
+      "sequence": 5,
+      "purpose": "Technology evaluation and selection for remediation",
+      "scope": "Alternative remedial technologies, cost-benefit analysis, remedy selection",
+      "status": "Required if remediation necessary",
+      "regulatory_driver": "EPA guidance EPA-542-R-07-013, LDEQ approval required"
+    },
+    {
+      "study_name": "Remedial Design",
+      "sequence": 6,
+      "purpose": "Engineering design for selected remedy",
+      "scope": "Final engineering plans, specifications, implementation schedule",
+      "status": "Required if remediation necessary",
+      "regulatory_driver": "LDEQ approval required for implementation"
+    }
+  ],
+  "permitting_strategy": {
+    "approach": "Integrated permitting with Section 408 as primary pathway",
+    "concurrent_processing": [
+      "Section 408 Permission",
+      "Section 10 Permit",
+      "Section 404 Permit"
+    ],
+    "coordinating_agency": "USACE New Orleans District",
+    "benefits": [
+      "Reduces regulatory uncertainty",
+      "Provides predictable timelines",
+      "Single point of coordination for federal permits",
+      "Streamlined environmental review through 2025 Programmatic EA"
+    ],
+    "success_factors": [
+      "Early coordination with regulatory authorities",
+      "Pre-application consultation with USACE",
+      "Comprehensive application packages",
+      "Proper technical documentation",
+      "Early identification of design constraints",
+      "Cost-effective design modifications during planning phase"
+    ],
+    "pre_application_consultation": {
+      "availability": "USACE New Orleans District established procedures",
+      "benefits": [
+        "Understand regulatory requirements before design commitment",
+        "Identify potential issues early",
+        "Reduce design modification costs",
+        "Clarify engineering standards and criteria"
+      ]
+    }
+  },
+  "regulatory_timeline": {
+    "phases": [
+      {
+        "phase": "Pre-Application Consultation",
+        "sequence": 1,
+        "activities": [
+          "Initial coordination with USACE New Orleans District",
+          "Review of Programmatic EA requirements",
+          "Discussion of project scope and design approach",
+          "Identification of regulatory constraints"
+        ],
+        "duration_estimate": "Not specified",
+        "status": "Recommended as first step"
+      },
+      {
+        "phase": "Environmental Assessment Phase",
+        "sequence": 2,
+        "activities": [
+          "Phase I ESA",
+          "Phase II ESA (if triggered)",
+          "Risk Assessment (if needed)",
+          "Endangered species consultation",
+          "Wetlands delineation (if applicable)"
+        ],
+        "duration_estimate": "Not specified",
+        "dependencies": "Completion before permit applications",
+        "status": "Required before comprehensive permit package"
+      },
+      {
+        "phase": "Integrated Permit Application",
+        "sequence": 3,
+        "activities": [
+          "Section 408 application preparation",
+          "Section 10 permit application",
+          "Section 404 permit application (if needed)",
+          "Comprehensive technical documentation",
+          "Engineering drawings and specifications"
+        ],
+        "duration_estimate": "Not specified",
+        "coordination": "USACE New Orleans District concurrent processing",
+        "status": "Follows completion of environmental studies"
+      },
+      {
+        "phase": "Regulatory Review",
+        "sequence": 4,
+        "activities": [
+          "USACE technical review",
+          "Public notice period (if required)",
+          "Agency coordination and comments",
+          "Response to regulatory questions"
+        ],
+        "duration_estimate": "Not specified",
+        "streamlining_factor": "2025 Programmatic EA standardized criteria reduce review time"
+      },
+      {
+        "phase": "Permit Issuance",
+        "sequence": 5,
+        "activities": [
+          "Final permit conditions developed",
+          "Permit documentation issued",
+          "Compliance requirements established"
+        ],
+        "duration_estimate": "Not specified",
+        "notes": "Predictable timelines when proper coordination maintained"
+      },
+      {
+        "phase": "State and Local Permits",
+        "sequence": 6,
+        "activities": [
+          "LDEQ environmental permits",
+          "Plaquemines Parish building permits",
+          "Zoning and development approvals"
+        ],
+        "duration_estimate": "Not specified",
+        "coordination": "Can be processed in parallel with federal permits",
+        "status": "Required before construction"
+      }
+    ],
+    "overall_timeline": "Not specified - depends on project complexity and early coordination",
+    "timeline_optimization_factors": [
+      "Early pre-application consultation",
+      "Comprehensive initial application packages",
+      "Proper technical documentation",
+      "Concurrent processing of multiple permits",
+      "Use of standardized Programmatic EA criteria"
+    ]
+  },
+  "engineering_considerations": {
+    "dock_expansion_feasibility": {
+      "technical_status": "Confirmed feasible through previous engineering studies",
+      "economic_status": "Confirmed economically viable",
+      "expansion_capacity": "At least two additional ship berths beyond existing capabilities",
+      "expansion_locations": [
+        {
+          "location": "Upstream",
+          "status": "Identified as viable",
+          "advantages": "Allows phased development maintaining operational continuity"
+        },
+        {
+          "location": "Downstream",
+          "status": "Identified as viable",
+          "advantages": "Allows phased development maintaining operational continuity"
+        }
+      ],
+      "site_advantages": [
+        "Deep natural water",
+        "Stable bank conditions from revetment protection",
+        "Adequate upland areas",
+        "Flexibility for various development scenarios",
+        "Phased development possible"
+      ]
+    },
+    "design_requirements": {
+      "environmental_factors": [
+        {
+          "factor": "Mississippi River Dynamics",
+          "considerations": [
+            "Seasonal variations in current velocity",
+            "Potential scour conditions",
+            "Extreme event loading from floods",
+            "Extreme event loading from hurricanes",
+            "High-water period structural loading exceeds typical marine facility standards"
+          ]
+        },
+        {
+          "factor": "Revetment System Integration",
+          "requirements": [
+            "Approved revetment penetration procedures required",
+            "Bank stability advantages reduce foundation risks",
+            "Engineering criteria in Programmatic EA Appendix B",
+            "Reduces need for project-specific studies when standard approaches used"
+          ]
+        },
+        {
+          "factor": "Federal Navigation Channel",
+          "requirements": [
+            "Coordination with federal channel maintenance",
+            "Compliance with navigation safety standards",
+            "Integration with channel maintenance schedules"
+          ]
+        }
+      ],
+      "regulatory_pathways": [
+        "Section 408 permission for federal project modifications",
+        "Revetment penetration approval procedures",
+        "Navigation safety compliance",
+        "Environmental protection standards"
+      ],
+      "design_standards": "Established in 2025 Programmatic EA Appendix B for revetment interactions"
+    }
+  },
+  "compliance_status": {
+    "current_status": "Pre-development - permits not yet applied for",
+    "environmental_assessments": {
+      "phase_i_esa": "Not completed",
+      "phase_ii_esa": "Not completed",
+      "contamination_status": "Unknown - assessments required"
+    },
+    "federal_permits": {
+      "section_408": "Not applied",
+      "section_10": "Not applied",
+      "section_404": "Not applied - applicability depends on wetland impacts"
+    },
+    "state_permits": {
+      "ldeq_environmental": "Not applied"
+    },
+    "local_permits": {
+      "building_permits": "Not applied",
+      "zoning_approval": "Not determined"
+    },
+    "regulatory_coordination": {
+      "pre_application_consultation": "Not initiated",
+      "agency_coordination_meetings": "Not scheduled",
+      "status": "Early coordination recommended as next step"
+    }
+  },
+  "environmental_overlays": {
+    "federal_environmental_laws": [
+      {
+        "law": "CERCLA (Comprehensive Environmental Response, Compensation, and Liability Act)",
+        "applicability": "Superfund site considerations",
+        "status": "Assessment required through Phase I/II ESA process"
+      },
+      {
+        "law": "Wetlands Protection (Clean Water Act Section 404)",
+        "applicability": "If wetlands present on site or affected by development",
+        "status": "Delineation required during permitting process"
+      },
+      {
+        "law": "Endangered Species Act",
+        "applicability": "If protected species or critical habitat present",
+        "status": "Consultation required during federal permitting process"
+      }
+    ],
+    "state_environmental_requirements": [
+      {
+        "requirement": "LAC 33 Soil Remediation Standards",
+        "agency": "Louisiana DEQ",
+        "applicability": "If contamination identified"
+      },
+      {
+        "requirement": "Groundwater Protection Standards",
+        "agency": "Louisiana DEQ",
+        "applicability": "All development activities"
+      },
+      {
+        "requirement": "Risk-Based Corrective Action (RBCA) Protocols",
+        "agency": "Louisiana DEQ",
+        "applicability": "If remediation required"
+      }
+    ]
+  },
+  "regional_context": {
+    "lng_development": {
+      "doe_approvals": "2025 DOE approvals for gas exports",
+      "regional_investment": "$21B in tax breaks for LNG facilities regionally",
+      "impact": "Influences regional development patterns and regulatory environment"
+    },
+    "navigation_channel": {
+      "federal_maintenance": "Active federal navigation channel maintenance program",
+      "coordination_requirement": "All development must coordinate with channel maintenance activities"
+    }
+  },
+  "key_findings": {
+    "regulatory_pathway": "Clear established framework through USACE New Orleans District",
+    "streamlining_available": "2025 Programmatic EA provides standardized evaluation criteria",
+    "critical_success_factor": "Early coordination with regulatory authorities before design commitment",
+    "timeline_predictability": "Achievable with proper coordination and comprehensive application packages",
+    "technical_feasibility": "Confirmed through previous engineering studies",
+    "expansion_potential": "Significant - at least two additional berths possible",
+    "environmental_unknowns": "Phase I/II ESA required to assess contamination status",
+    "permit_complexity": "Moderate - multiple agencies but integrated federal process available",
+    "primary_risk": "Environmental contamination requiring remediation could extend timeline and add costs",
+    "mitigation_strategy": "Early environmental assessment and pre-application consultation"
+  },
+  "recommendations": {
+    "immediate_actions": [
+      "Initiate pre-application consultation with USACE New Orleans District",
+      "Commission Phase I Environmental Site Assessment",
+      "Review 2025 Programmatic EA and Appendix B engineering criteria",
+      "Engage with Louisiana DEQ regarding state permitting requirements"
+    ],
+    "near_term_actions": [
+      "Complete Phase II ESA if Phase I identifies concerns",
+      "Develop preliminary engineering designs incorporating Programmatic EA criteria",
+      "Initiate coordination with Plaquemines Parish on local permits",
+      "Prepare integrated permit application strategy"
+    ],
+    "documentation_priorities": [
+      "Comprehensive technical documentation for permit applications",
+      "Engineering drawings meeting Appendix B standards",
+      "Environmental assessment reports",
+      "Revetment interaction design documentation"
+    ]
+  }
+}

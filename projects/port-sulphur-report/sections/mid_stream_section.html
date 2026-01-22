@@ -1,0 +1,1160 @@
+<!-- ============================================================================ -->
+<!-- MIDSTREAM OPERATIONS SECTION -->
+<!-- ============================================================================ -->
+<!-- Data Source: mid_stream_data.json -->
+<!-- Charts: mid_stream_charts.js -->
+<!-- Content: mid_steam_SYNTHESIS.md -->
+<!-- Generated: 2026-01-22 -->
+<!-- ============================================================================ -->
+
+<section id="midstream-operations" class="analysis-section">
+  <div class="section-header">
+    <h2>Midstream Operations</h2>
+    <div class="source-count">
+      <span class="source-badge">10 sources</span>
+    </div>
+  </div>
+
+  <!-- Executive Overview -->
+  <div class="content-block">
+    <h3>Executive Summary</h3>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="card-label">Project Type</div>
+        <div class="card-value">Midstream Dry Cargo Mooring Facility</div>
+      </div>
+      <div class="summary-card">
+        <div class="card-label">Location</div>
+        <div class="card-value">Mississippi River Mile 46.3 AHP, Plaquemines Parish, LA</div>
+      </div>
+      <div class="summary-card">
+        <div class="card-label">Permit Number</div>
+        <div class="card-value">MVN-2025-00276-EPP</div>
+      </div>
+      <div class="summary-card">
+        <div class="card-label">Coordinates</div>
+        <div class="card-value">29.551389°N, 89.764444°W</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <p><strong>Service Model:</strong> Fee-based mooring infrastructure for customer-owned vessels and barges, providing midstream mooring for supramax bulk carriers and barge fleeting operations.</p>
+      <p><strong>Jurisdiction:</strong> US Army Corps of Engineers New Orleans District</p>
+    </div>
+  </div>
+
+  <!-- Mooring System Specifications -->
+  <div class="content-block">
+    <h3>Mooring System Specifications</h3>
+
+    <div class="chart-container">
+      <canvas id="mooringSystemSpecsChart"></canvas>
+    </div>
+
+    <div class="specs-grid">
+      <div class="spec-card">
+        <h4>5-Point Anchor Configuration</h4>
+        <ul>
+          <li><strong>Anchor Piles:</strong> 5 units, 48" diameter, 200' depth</li>
+          <li><strong>Material:</strong> Steel with 16 mil coal tar epoxy coating</li>
+          <li><strong>Elevation:</strong> -200.0' NAVD 88</li>
+          <li><strong>Safety Factor:</strong> 3:1 minimum for permanent moorings</li>
+        </ul>
+      </div>
+
+      <div class="spec-card">
+        <h4>Navigation Buoy System</h4>
+        <ul>
+          <li><strong>Quantity:</strong> 5 commercial-grade units</li>
+          <li><strong>Diameter:</strong> 8-12 feet</li>
+          <li><strong>Type:</strong> Steel construction with quick-release mooring hooks</li>
+          <li><strong>Features:</strong> Fairleads, GPS-guided placement, USCG-compliant marking</li>
+        </ul>
+      </div>
+
+      <div class="spec-card">
+        <h4>Anchor Chain System</h4>
+        <ul>
+          <li><strong>Grade:</strong> Grade 70+ marine certified</li>
+          <li><strong>Link Size:</strong> 2-3 inches</li>
+          <li><strong>Strength:</strong> High-tensile strength</li>
+          <li><strong>Scope Adjustment:</strong> Accommodates 40+ foot river stage variations</li>
+        </ul>
+      </div>
+
+      <div class="spec-card">
+        <h4>Design Vessel Capacity</h4>
+        <ul>
+          <li><strong>Type:</strong> Supramax Bulk Carrier (Panamax+)</li>
+          <li><strong>Length Overall:</strong> 750' (max 800')</li>
+          <li><strong>Beam:</strong> 106' (max 75')</li>
+          <li><strong>Gross Registered Tonnage:</strong> 30,000 tons (typical)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barge Fleeting Operations -->
+  <div class="content-block">
+    <h3>Barge Fleeting Operations</h3>
+
+    <div class="chart-container">
+      <canvas id="bargeFleetingCapacityChart"></canvas>
+    </div>
+
+    <div class="fleeting-details">
+      <div class="detail-section">
+        <h4>Configuration</h4>
+        <ul>
+          <li><strong>Grid Pattern:</strong> 7-tier long by 8-wide</li>
+          <li><strong>Total Positions:</strong> 56 barge positions</li>
+          <li><strong>Footprint:</strong> 1,400' × 280' (9 acres water surface)</li>
+          <li><strong>Barge Type:</strong> Standard deck/hopper barges (open/closed), 200' × 35'</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h4>Monopile Support System</h4>
+        <ul>
+          <li><strong>Total Quantity:</strong> 12 monopiles (2 per tier)</li>
+          <li><strong>Diameter:</strong> 48 inches</li>
+          <li><strong>Depth:</strong> 100' (elevation -100.0' NAVD 88)</li>
+          <li><strong>Material:</strong> Steel with 16 mil coal tar epoxy coating</li>
+          <li><strong>Connection System:</strong> Capture yoke systems for barge fleet connections</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h4>Captive Dock Barge</h4>
+        <ul>
+          <li><strong>Purpose:</strong> Service platform for line handling and vessel coordination</li>
+          <li><strong>System:</strong> Specialized yoke welded to captive dock barge</li>
+          <li><strong>Access:</strong> Single captive barge for line handling operations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Operational Capacity -->
+  <div class="content-block">
+    <h3>Operational Capacity Analysis</h3>
+
+    <div class="chart-container">
+      <canvas id="operationalCapacityChart"></canvas>
+    </div>
+
+    <div class="capacity-overview">
+      <p><strong>Operating Days:</strong> 280 days annually</p>
+      <p><strong>Revenue per Call:</strong> $24,900 ($0.78/GRT + $1,500 security fee for 30,000 GRT vessels)</p>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Utilization Level</th>
+          <th>Calls per Week</th>
+          <th>Annual Calls</th>
+          <th>Gross Revenue</th>
+          <th>Net Revenue (after 20% OpEx)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Conservative</strong></td>
+          <td>2</td>
+          <td>104</td>
+          <td>$2,590,000</td>
+          <td>$2,070,000</td>
+        </tr>
+        <tr class="highlight-row">
+          <td><strong>Base Case</strong></td>
+          <td>3</td>
+          <td>156</td>
+          <td>$3,880,000</td>
+          <td>$3,100,000</td>
+        </tr>
+        <tr>
+          <td><strong>Optimistic</strong></td>
+          <td>4</td>
+          <td>208</td>
+          <td>$5,180,000</td>
+          <td>$4,140,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Revenue Projections -->
+  <div class="content-block">
+    <h3>Revenue Projections by Scenario</h3>
+
+    <div class="chart-container">
+      <canvas id="revenueProjectionsChart"></canvas>
+    </div>
+
+    <div class="revenue-structure">
+      <h4>Revenue Structure</h4>
+      <ul>
+        <li><strong>Dockage Rate:</strong> $0.78 per gross registered ton</li>
+        <li><strong>Security Fee:</strong> $1,500 per vessel call</li>
+        <li><strong>Calculation:</strong> (30,000 GRT × $0.78) + $1,500 = $24,900 per call</li>
+        <li><strong>Operating Expenses:</strong> 20% of gross revenue</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Infrastructure Investment -->
+  <div class="content-block">
+    <h3>Total Infrastructure Investment</h3>
+
+    <div class="chart-container">
+      <canvas id="costBreakdownChart"></canvas>
+    </div>
+
+    <div class="cost-summary">
+      <div class="cost-range">
+        <div class="cost-item">
+          <span class="cost-label">Low Estimate:</span>
+          <span class="cost-value">$5.2M</span>
+        </div>
+        <div class="cost-item">
+          <span class="cost-label">Base Case:</span>
+          <span class="cost-value">$7.5M</span>
+        </div>
+        <div class="cost-item">
+          <span class="cost-label">High Estimate:</span>
+          <span class="cost-value">$10.8M</span>
+        </div>
+      </div>
+
+      <div class="alternative-estimates">
+        <p><strong>Alternative Estimates Range:</strong> $6.9M - $27.7M</p>
+        <p><em>Note: Cost estimates vary between documents reflecting different analysis methodologies and complexity assumptions.</em></p>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Component Category</th>
+          <th>Low Estimate</th>
+          <th>High Estimate</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pile Installation & Materials</strong></td>
+          <td>$1,800,000</td>
+          <td>$4,200,000</td>
+          <td>17 piles total (12 monopiles + 5 anchor piles at 200' depth)</td>
+        </tr>
+        <tr>
+          <td><strong>Marine Construction Management</strong></td>
+          <td>$1,500,000</td>
+          <td>$3,100,000</td>
+          <td>Project management, equipment mobilization, weather delays</td>
+        </tr>
+        <tr>
+          <td><strong>Engineering/Permitting</strong></td>
+          <td>$700,000</td>
+          <td>$1,400,000</td>
+          <td>Section 408 permit, environmental compliance, professional services</td>
+        </tr>
+        <tr>
+          <td><strong>Revetment Repair</strong></td>
+          <td>$400,000</td>
+          <td>$1,200,000</td>
+          <td>Bank stabilization per USACE Standard H-18-45204-99</td>
+        </tr>
+        <tr>
+          <td><strong>Mooring/Navigation System</strong></td>
+          <td>$300,000</td>
+          <td>$800,000</td>
+          <td>5 buoys, chains, anchor hardware</td>
+        </tr>
+        <tr>
+          <td><strong>Land Improvements</strong></td>
+          <td>$300,000</td>
+          <td>$600,000</td>
+          <td>0.92 acres clearing, basic access</td>
+        </tr>
+        <tr>
+          <td><strong>Captive Dock Barge</strong></td>
+          <td>$200,000</td>
+          <td>$500,000</td>
+          <td>Service platform with capture yoke</td>
+        </tr>
+        <tr class="total-row">
+          <td><strong>TOTAL INFRASTRUCTURE</strong></td>
+          <td><strong>$5,200,000</strong></td>
+          <td><strong>$10,800,000</strong></td>
+          <td><strong>Base Case: $7,500,000</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mooring System Detailed Cost Analysis -->
+  <div class="content-block">
+    <h3>Mooring Buoy System - Detailed Cost Analysis</h3>
+
+    <div class="chart-container">
+      <canvas id="mooringSystemCostChart"></canvas>
+    </div>
+
+    <div class="mooring-cost-summary">
+      <p><strong>Total System Cost Range:</strong></p>
+      <ul>
+        <li><strong>Conservative:</strong> $2.7M (standard specifications, minimal complexity)</li>
+        <li><strong>Most Likely:</strong> $3.4M (commercial-grade, per permit specifications)</li>
+        <li><strong>High-End:</strong> $4.0M (premium components, enhanced safety margins)</li>
+      </ul>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Quantity</th>
+          <th>Unit Cost Range</th>
+          <th>Total Cost Range</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="4" class="section-header-row"><strong>Anchor Pile System</strong></td>
+        </tr>
+        <tr>
+          <td>48" Anchor Piles (200' depth)</td>
+          <td>5</td>
+          <td>$300,000 - $420,000</td>
+          <td>$1,500,000 - $2,100,000</td>
+        </tr>
+        <tr>
+          <td>Marine Installation</td>
+          <td>5</td>
+          <td>$80,000 - $120,000</td>
+          <td>$400,000 - $600,000</td>
+        </tr>
+        <tr class="subtotal-row">
+          <td colspan="3"><strong>Subtotal Anchor Piles</strong></td>
+          <td><strong>$1,900,000 - $2,700,000</strong></td>
+        </tr>
+        <tr>
+          <td colspan="4" class="section-header-row"><strong>Buoy & Chain System</strong></td>
+        </tr>
+        <tr>
+          <td>Commercial Navigation Buoys</td>
+          <td>5</td>
+          <td>$40,000 - $65,000</td>
+          <td>$200,000 - $325,000</td>
+        </tr>
+        <tr>
+          <td>Marine Anchor Chains</td>
+          <td>5 sets</td>
+          <td>$35,000 - $55,000</td>
+          <td>$175,000 - $275,000</td>
+        </tr>
+        <tr>
+          <td>Quick-Release Hardware</td>
+          <td>5 sets</td>
+          <td>$15,000 - $25,000</td>
+          <td>$75,000 - $125,000</td>
+        </tr>
+        <tr class="subtotal-row">
+          <td colspan="3"><strong>Subtotal Buoys & Chains</strong></td>
+          <td><strong>$450,000 - $725,000</strong></td>
+        </tr>
+        <tr>
+          <td colspan="4" class="section-header-row"><strong>Engineering & Installation</strong></td>
+        </tr>
+        <tr>
+          <td>Marine Engineering</td>
+          <td>-</td>
+          <td>Mooring analysis, design</td>
+          <td>$150,000 - $250,000</td>
+        </tr>
+        <tr>
+          <td>Installation Coordination</td>
+          <td>-</td>
+          <td>Specialized marine contractors</td>
+          <td>$100,000 - $180,000</td>
+        </tr>
+        <tr>
+          <td>Testing & Commissioning</td>
+          <td>-</td>
+          <td>Load testing, certification</td>
+          <td>$75,000 - $125,000</td>
+        </tr>
+        <tr class="subtotal-row">
+          <td colspan="3"><strong>Subtotal Engineering</strong></td>
+          <td><strong>$325,000 - $555,000</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Development Timeline -->
+  <div class="content-block">
+    <h3>Development Timeline</h3>
+
+    <div class="chart-container">
+      <canvas id="projectTimelineChart"></canvas>
+    </div>
+
+    <div class="timeline-overview">
+      <div class="timeline-phase">
+        <h4>Permitting Phase</h4>
+        <p><strong>Duration:</strong> 18-36 months</p>
+        <ul>
+          <li>Section 408 permit (Rivers and Harbors Act)</li>
+          <li>Section 404/Section 10 permit</li>
+          <li>Louisiana Coastal Use Permit</li>
+          <li>Water Quality Certification (LDEQ)</li>
+          <li>Cultural resources review (Section 106)</li>
+          <li>Endangered Species consultation (ESA Section 7)</li>
+        </ul>
+      </div>
+
+      <div class="timeline-phase">
+        <h4>Construction Phase</h4>
+        <p><strong>Duration:</strong> 6-15 months</p>
+        <ul>
+          <li>Pile installation (17 piles total)</li>
+          <li>Mooring system deployment</li>
+          <li>Revetment repair</li>
+          <li>Land improvements</li>
+          <li>Testing and commissioning</li>
+        </ul>
+      </div>
+
+      <div class="timeline-phase">
+        <h4>Total Project Duration</h4>
+        <p><strong>Range:</strong> 24-51 months</p>
+        <ul>
+          <li>Simple projects: 12-18 months</li>
+          <li>Standard midstream terminal: 18-36 months</li>
+          <li>Complex/controversial projects: 36+ months</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <p><strong>Critical Delay Factors:</strong> Incomplete applications, ESA consultation complexity, public opposition, multi-agency coordination issues</p>
+    </div>
+  </div>
+
+  <!-- Installation Procedures -->
+  <div class="content-block">
+    <h3>Buoy Installation Process</h3>
+
+    <div class="installation-steps">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Pre-Installation Survey</h4>
+          <p>Detailed bathymetric mapping to confirm buoy positions clear of navigation hazards and revetment</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Anchor Pile Installation</h4>
+          <p>Five 48" diameter anchor piles driven to 200' depth using specialized marine pile driving equipment</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Chain Deployment</h4>
+          <p>Heavy anchor chain laid from pile to buoy position using anchor handling vessels</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Buoy Positioning</h4>
+          <p>GPS-guided placement ensuring proper spacing and alignment with river flow patterns</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h4>Load Testing</h4>
+          <p>Full-scale testing with simulated vessel loads to verify system integrity</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="design-considerations">
+      <h4>Critical Design Considerations</h4>
+      <ul>
+        <li><strong>Revetment Clearance:</strong> Buoys positioned in main channel to avoid interference with bank protection systems</li>
+        <li><strong>River Flow Dynamics:</strong> Positioned to minimize current stress while providing optimal vessel approach angles</li>
+        <li><strong>Navigation Safety:</strong> Coordinated with USCG for proper marking, lighting, and chart notation</li>
+        <li><strong>Seasonal Adjustment:</strong> Chain scope allows for 40+ foot river stage variations without repositioning</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Regulatory Framework -->
+  <div class="content-block">
+    <h3>Regulatory Framework</h3>
+
+    <div class="regulatory-section">
+      <h4>Section 408 Permit</h4>
+      <p><strong>Authority:</strong> Section 14 of the Rivers and Harbors Act of 1899</p>
+      <p><strong>Reason:</strong> Activities would alter, occupy, or use Corps Civil Works projects</p>
+      <p><strong>Evaluation Criteria:</strong></p>
+      <ul>
+        <li>Potential to impair project usefulness</li>
+        <li>Potential to be injurious to public interest</li>
+        <li>Cumulative effects on conservation, economic development, environmental impacts, water quality, flood hazards, navigation, and recreation</li>
+      </ul>
+    </div>
+
+    <div class="regulatory-section">
+      <h4>Revetment Requirements</h4>
+      <p><strong>Standard:</strong> USACE Standard H-18-45204-99</p>
+      <p><strong>Purpose:</strong></p>
+      <ul>
+        <li>Bank stabilization using articulated concrete mattresses and stone</li>
+        <li>Prevents undermining of pile foundations</li>
+        <li>Maintains navigation channel integrity</li>
+      </ul>
+      <p><strong>Context:</strong> Below New Orleans in dynamic river environment with ongoing bank erosion concern</p>
+    </div>
+
+    <div class="regulatory-section">
+      <h4>Environmental Compliance</h4>
+      <ul>
+        <li><strong>Louisiana Coastal Zone Management:</strong> Coastal Use Permit (P20250196)</li>
+        <li><strong>Water Quality Certification:</strong> Louisiana Department of Environmental Quality (LDEQ)</li>
+        <li><strong>Essential Fish Habitat:</strong> Minimal permanent impact (0.92 acres) with NMFS coordination</li>
+        <li><strong>Endangered Species:</strong> Standard Manatee Conditions for in-water activities</li>
+        <li><strong>Wetland Impacts:</strong> 0.92 acres jurisdictional wetlands requiring mitigation bank credits</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Technical Specifications Summary -->
+  <div class="content-block">
+    <h3>Technical Specifications Summary</h3>
+
+    <div class="specs-summary-grid">
+      <div class="spec-summary-card">
+        <div class="spec-icon">🔩</div>
+        <div class="spec-label">Total Steel Piles</div>
+        <div class="spec-value">17</div>
+        <div class="spec-detail">All 48" diameter</div>
+      </div>
+
+      <div class="spec-summary-card">
+        <div class="spec-icon">📏</div>
+        <div class="spec-label">Maximum Depth</div>
+        <div class="spec-value">200 feet</div>
+        <div class="spec-detail">Below Mean Low Water</div>
+      </div>
+
+      <div class="spec-summary-card">
+        <div class="spec-icon">⚓</div>
+        <div class="spec-label">Navigation Buoys</div>
+        <div class="spec-value">5</div>
+        <div class="spec-detail">Commercial-grade units</div>
+      </div>
+
+      <div class="spec-summary-card">
+        <div class="spec-icon">🔗</div>
+        <div class="spec-label">Chain Grade</div>
+        <div class="spec-value">Grade 70+</div>
+        <div class="spec-detail">Marine certified</div>
+      </div>
+
+      <div class="spec-summary-card">
+        <div class="spec-icon">🛡️</div>
+        <div class="spec-label">Safety Factor</div>
+        <div class="spec-value">3:1</div>
+        <div class="spec-detail">Permanent moorings</div>
+      </div>
+
+      <div class="spec-summary-card">
+        <div class="spec-icon">🌿</div>
+        <div class="spec-label">Wetland Impact</div>
+        <div class="spec-value">0.92 acres</div>
+        <div class="spec-detail">Jurisdictional wetlands</div>
+      </div>
+
+      <div class="spec-summary-card">
+        <div class="spec-icon">🚢</div>
+        <div class="spec-label">Design Vessel</div>
+        <div class="spec-value">800' LOA</div>
+        <div class="spec-detail">Supramax capacity</div>
+      </div>
+
+      <div class="spec-summary-card">
+        <div class="spec-icon">📦</div>
+        <div class="spec-label">Barge Capacity</div>
+        <div class="spec-value">56 positions</div>
+        <div class="spec-detail">200' × 35' barges</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Findings -->
+  <div class="content-block">
+    <h3>Key Findings</h3>
+
+    <div class="findings-list">
+      <div class="finding-item">
+        <div class="finding-icon">✓</div>
+        <div class="finding-text">
+          <strong>Comprehensive Mooring Infrastructure:</strong> 5-point anchor system with 17 total piles (5 anchor piles at 200' depth, 12 monopiles at 100' depth) designed for supramax bulk carriers up to 800' LOA and 56 barge positions.
+        </div>
+      </div>
+
+      <div class="finding-item">
+        <div class="finding-icon">✓</div>
+        <div class="finding-text">
+          <strong>Revenue Potential:</strong> Base case scenario projects $3.88M gross annual revenue ($3.1M net) with 156 vessel calls per year at $24,900 per call.
+        </div>
+      </div>
+
+      <div class="finding-item">
+        <div class="finding-icon">✓</div>
+        <div class="finding-text">
+          <strong>Infrastructure Investment:</strong> Total project cost ranges from $5.2M to $10.8M (base case $7.5M), with alternative estimates up to $27.7M depending on complexity assumptions.
+        </div>
+      </div>
+
+      <div class="finding-item">
+        <div class="finding-icon">✓</div>
+        <div class="finding-text">
+          <strong>Development Timeline:</strong> 24-51 months total (18-36 months permitting, 6-15 months construction), requiring coordination across multiple federal and state agencies.
+        </div>
+      </div>
+
+      <div class="finding-item">
+        <div class="finding-icon">✓</div>
+        <div class="finding-text">
+          <strong>Regulatory Complexity:</strong> Requires Section 408 permit, Section 404/10 permits, Louisiana Coastal Use Permit, Water Quality Certification, ESA consultation, and revetment repair per USACE standards.
+        </div>
+      </div>
+
+      <div class="finding-item">
+        <div class="finding-icon">✓</div>
+        <div class="finding-text">
+          <strong>Environmental Impact:</strong> Minimal permanent impact (0.92 acres jurisdictional wetlands) requiring mitigation bank credits and standard manatee protection conditions.
+        </div>
+      </div>
+
+      <div class="finding-item">
+        <div class="finding-icon">✓</div>
+        <div class="finding-text">
+          <strong>River Adaptation:</strong> Mooring system designed to accommodate 40+ foot seasonal river stage variations with adjustable chain scope and GPS-guided buoy positioning.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================================ -->
+<!-- CHART INITIALIZATION SCRIPT -->
+<!-- ============================================================================ -->
+<!-- Note: This script should be placed in the main HTML file after Chart.js -->
+<!-- and mid_stream_charts.js are loaded -->
+<!-- ============================================================================ -->
+
+<script>
+// Initialize Midstream Operations Charts
+// This script should run after the DOM is loaded and Chart.js is available
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof Chart !== 'undefined') {
+    initializeMidStreamCharts({
+      mooringSpecs: 'mooringSystemSpecsChart',
+      operationalCapacity: 'operationalCapacityChart',
+      revenue: 'revenueProjectionsChart',
+      costBreakdown: 'costBreakdownChart',
+      mooringCost: 'mooringSystemCostChart',
+      timeline: 'projectTimelineChart',
+      bargeFleeting: 'bargeFleetingCapacityChart'
+    });
+  } else {
+    console.error('Chart.js not loaded - midstream charts cannot be initialized');
+  }
+});
+</script>
+
+<!-- ============================================================================ -->
+<!-- SECTION-SPECIFIC STYLES -->
+<!-- ============================================================================ -->
+<!-- Note: These styles can be moved to the main stylesheet if preferred -->
+<!-- ============================================================================ -->
+
+<style>
+/* Summary Cards Grid */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.card-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.card-value {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+/* Specs Grid */
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.spec-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.spec-card h4 {
+  color: #64ffb4;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.spec-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.spec-card ul li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.spec-card ul li:last-child {
+  border-bottom: none;
+}
+
+/* Fleeting Details */
+.fleeting-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.detail-section h4 {
+  color: #64ffb4;
+  margin-bottom: 1rem;
+}
+
+.detail-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.detail-section ul li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.detail-section ul li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #64ffb4;
+}
+
+/* Capacity Overview */
+.capacity-overview {
+  background: rgba(100, 255, 180, 0.1);
+  border: 1px solid rgba(100, 255, 180, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.capacity-overview p {
+  margin: 0.5rem 0;
+}
+
+/* Revenue Structure */
+.revenue-structure {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.revenue-structure h4 {
+  color: #64ffb4;
+  margin-bottom: 1rem;
+}
+
+/* Cost Summary */
+.cost-summary {
+  margin-bottom: 2rem;
+}
+
+.cost-range {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cost-item {
+  text-align: center;
+}
+
+.cost-label {
+  display: block;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.cost-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #64ffb4;
+}
+
+.alternative-estimates {
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+}
+
+.alternative-estimates p {
+  margin: 0.5rem 0;
+}
+
+/* Mooring Cost Summary */
+.mooring-cost-summary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.mooring-cost-summary ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.mooring-cost-summary ul li {
+  padding: 0.5rem 0;
+}
+
+/* Timeline Overview */
+.timeline-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.timeline-phase {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.timeline-phase h4 {
+  color: #64ffb4;
+  margin-bottom: 0.75rem;
+}
+
+.timeline-phase p {
+  margin: 0.5rem 0 1rem 0;
+  font-weight: 500;
+}
+
+.timeline-phase ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.timeline-phase ul li {
+  padding: 0.4rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.timeline-phase ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #64ffb4;
+}
+
+/* Installation Steps */
+.installation-steps {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: #64ffb4;
+  color: #0a0a0a;
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.step-content h4 {
+  color: #64ffb4;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.step-content p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Design Considerations */
+.design-considerations {
+  background: rgba(100, 200, 255, 0.1);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.design-considerations h4 {
+  color: #64ffb4;
+  margin-bottom: 1rem;
+}
+
+.design-considerations ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.design-considerations ul li {
+  padding: 0.75rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.design-considerations ul li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: rgba(100, 200, 255, 1);
+}
+
+/* Regulatory Sections */
+.regulatory-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.regulatory-section h4 {
+  color: #64ffb4;
+  margin-bottom: 1rem;
+}
+
+.regulatory-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.regulatory-section ul li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.regulatory-section ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #64ffb4;
+}
+
+/* Specs Summary Grid */
+.specs-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.spec-summary-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.spec-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.spec-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.spec-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #64ffb4;
+  margin-bottom: 0.5rem;
+}
+
+.spec-detail {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Findings List */
+.findings-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.finding-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.finding-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: #64ffb4;
+  color: #0a0a0a;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.finding-text {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+/* Table Specific Styles */
+.section-header-row {
+  background: rgba(100, 255, 180, 0.1) !important;
+  color: #64ffb4 !important;
+  font-weight: bold !important;
+}
+
+.subtotal-row {
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+}
+
+.total-row {
+  background: rgba(100, 255, 180, 0.15);
+  font-weight: bold;
+}
+
+.highlight-row {
+  background: rgba(100, 255, 180, 0.08);
+  border-left: 3px solid #64ffb4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .summary-grid,
+  .specs-grid,
+  .fleeting-details,
+  .timeline-overview,
+  .specs-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cost-range {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .step-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .finding-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+</style>

@@ -1,0 +1,634 @@
+{
+  "project": {
+    "name": "Port Sulphur Terminal Analysis",
+    "location": "Port Sulphur, Louisiana",
+    "coordinates": {
+      "latitude": 29.473414,
+      "longitude": -89.686632
+    },
+    "description": "Former Freeport Sulphur Company maritime terminal facility on the Mississippi River",
+    "river_mile": 39,
+    "generated": "2026-01-22",
+    "total_images": 15
+  },
+  "categories": {
+    "historical": {
+      "name": "Historical Photographs",
+      "description": "Library of Congress archival photographs from the Office of War Information collection, circa 1940s",
+      "count": 6
+    },
+    "aerial": {
+      "name": "Aerial & Satellite Views",
+      "description": "Modern aerial and satellite imagery showing property boundaries and geographic context",
+      "count": 8
+    },
+    "regulatory": {
+      "name": "Regulatory Documents",
+      "description": "EPA ECHO facility reports and environmental compliance data",
+      "count": 1
+    }
+  },
+  "images": [
+    {
+      "id": "img_001",
+      "filename": "2.11_loc_portsulhur_1.jpg",
+      "category": "historical",
+      "title": "Sulphur Conveyor Belt and Dock Infrastructure",
+      "description": "Black and white photograph showing conveyor belt systems and sulphur loading dock facilities at the Port Sulphur terminal. Visible infrastructure includes conveyor mechanisms, storage areas, and dock buildings. Catalogue reference: OWI 33875 D.",
+      "date_taken": "1940s",
+      "date_approximate": true,
+      "source": "Library of Congress - Office of War Information Collection",
+      "archive_reference": "OWI 33875 D",
+      "format": "jpg",
+      "size_bytes": 277585,
+      "dimensions": null,
+      "location": {
+        "facility": "Freeport Sulphur Company Port Sulphur Terminal",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "approximate"
+        }
+      },
+      "subjects": [
+        "conveyor systems",
+        "sulphur loading dock",
+        "maritime infrastructure",
+        "industrial facilities",
+        "World War II era"
+      ],
+      "historical_context": "Freeport Sulphur Company operated this facility from 1933-2005 as a logistics, refining, storage and shipping hub for sulphur operations. During WWII, sulphur was a critical strategic material for munitions production.",
+      "file_path": "archive/images/2.11_loc_portsulhur_1.jpg",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["historical", "sulphur_operations", "conveyor", "dock", "library_of_congress"]
+    },
+    {
+      "id": "img_002",
+      "filename": "2.12_loc_portsulhur_2.jpg",
+      "category": "historical",
+      "title": "Sulphur Barge Loading Operations",
+      "description": "Aerial view of a barge loaded with sulphur at the Port Sulphur dock facility. The image shows conveyor systems, waterway access, and adjacent storage areas. Catalogue reference: OWI 478832 IMO.",
+      "date_taken": "1940s",
+      "date_approximate": true,
+      "source": "Library of Congress - Office of War Information Collection",
+      "archive_reference": "OWI 478832 IMO",
+      "format": "jpg",
+      "size_bytes": 282171,
+      "dimensions": null,
+      "location": {
+        "facility": "Freeport Sulphur Company Port Sulphur Terminal",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "approximate"
+        }
+      },
+      "subjects": [
+        "barge loading",
+        "sulphur cargo",
+        "waterway operations",
+        "Mississippi River commerce",
+        "industrial shipping"
+      ],
+      "historical_context": "This image captures the barge loading operations that were central to the facility's mission of shipping processed sulphur via the Mississippi River to Gulf of Mexico ports.",
+      "file_path": "archive/images/2.12_loc_portsulhur_2.jpg",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["historical", "barge", "sulphur_cargo", "river_operations", "library_of_congress"]
+    },
+    {
+      "id": "img_003",
+      "filename": "2.13_loc_portsulhur_3.jpg",
+      "category": "historical",
+      "title": "Dock Pipework and Industrial Infrastructure",
+      "description": "View down the dock showing extensive pipework and industrial infrastructure including sulphur processing equipment, water tower, and facility buildings. Catalogue reference: OWI 33875 D.",
+      "date_taken": "1940s",
+      "date_approximate": true,
+      "source": "Library of Congress - Office of War Information Collection",
+      "archive_reference": "OWI 33875 D",
+      "format": "jpg",
+      "size_bytes": 286272,
+      "dimensions": null,
+      "location": {
+        "facility": "Freeport Sulphur Company Port Sulphur Terminal",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "approximate"
+        }
+      },
+      "subjects": [
+        "industrial pipework",
+        "processing facilities",
+        "water tower",
+        "dock infrastructure",
+        "sulphur refining"
+      ],
+      "historical_context": "The extensive pipework system transported hot molten sulphur from storage tanks to loading facilities. The Frasch Process required maintaining sulphur at high temperatures during transport and loading.",
+      "file_path": "archive/images/2.13_loc_portsulhur_3.jpg",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["historical", "pipework", "industrial_infrastructure", "frasch_process", "library_of_congress"]
+    },
+    {
+      "id": "img_004",
+      "filename": "2.14_loc_portsulhur_4.jpg",
+      "category": "historical",
+      "title": "Waterfront Facilities and Towboats",
+      "description": "View of waterfront showing towboats including the 'Homer A. Burnell' moored at the dock, with processing buildings and employee housing visible in the background. Catalogue reference: OWI 33880 D.",
+      "date_taken": "1940s",
+      "date_approximate": true,
+      "source": "Library of Congress - Office of War Information Collection",
+      "archive_reference": "OWI 33880 D",
+      "format": "jpg",
+      "size_bytes": 237259,
+      "dimensions": null,
+      "location": {
+        "facility": "Freeport Sulphur Company Port Sulphur Terminal",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "approximate"
+        }
+      },
+      "subjects": [
+        "towboats",
+        "waterfront",
+        "employee housing",
+        "maritime vessels",
+        "company town"
+      ],
+      "historical_context": "Port Sulphur functioned as a company town with Freeport Sulphur providing housing and infrastructure for workers. The towboat fleet was essential for managing barge traffic on the Mississippi River.",
+      "file_path": "archive/images/2.14_loc_portsulhur_4.jpg",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["historical", "towboats", "waterfront", "company_town", "library_of_congress"]
+    },
+    {
+      "id": "img_005",
+      "filename": "2.15_loc_portsulhur_5.jpg",
+      "category": "historical",
+      "title": "Port Sulphur Company Town Overview",
+      "description": "Wide-angle view of the Port Sulphur company town showing employee housing, water tower, and surrounding landscape. Catalogue reference: OWI 33881 D.",
+      "date_taken": "1940s",
+      "date_approximate": true,
+      "source": "Library of Congress - Office of War Information Collection",
+      "archive_reference": "OWI 33881 D",
+      "format": "jpg",
+      "size_bytes": 271959,
+      "dimensions": null,
+      "location": {
+        "facility": "Port Sulphur",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "approximate"
+        }
+      },
+      "subjects": [
+        "company town",
+        "residential housing",
+        "urban planning",
+        "water infrastructure",
+        "community development"
+      ],
+      "historical_context": "Freeport Sulphur developed Port Sulphur as a planned community to support its industrial operations, providing housing and amenities for workers and their families from 1933 until operations ceased.",
+      "file_path": "archive/images/2.15_loc_portsulhur_5.jpg",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["historical", "company_town", "residential", "urban_planning", "library_of_congress"]
+    },
+    {
+      "id": "img_006",
+      "filename": "2.16_loc_portsulhur_6.jpg",
+      "category": "historical",
+      "title": "Gantry Crane and Barge Loading Operations",
+      "description": "Detailed view of a gantry crane in operation loading sulphur onto a barge. Shows conveyor systems, loading mechanisms, and dry sulphur storage. Catalogue reference: OWI 33912 D.",
+      "date_taken": "1940s",
+      "date_approximate": true,
+      "source": "Library of Congress - Office of War Information Collection",
+      "archive_reference": "OWI 33912 D",
+      "format": "jpg",
+      "size_bytes": 323625,
+      "dimensions": null,
+      "location": {
+        "facility": "Freeport Sulphur Company Port Sulphur Terminal",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "approximate"
+        }
+      },
+      "subjects": [
+        "gantry crane",
+        "cargo loading",
+        "material handling",
+        "barge operations",
+        "industrial equipment"
+      ],
+      "historical_context": "The facility employed 'vatting' operations creating acres of dry sulphur storage blocks, visible in this image. Gantry cranes and conveyors moved material from storage to barges for shipment.",
+      "file_path": "archive/images/2.16_loc_portsulhur_6.jpg",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["historical", "gantry_crane", "barge_loading", "vatting", "library_of_congress"]
+    },
+    {
+      "id": "img_007",
+      "filename": "2.1_Pasted image 20250915193857.png",
+      "category": "aerial",
+      "title": "Property Boundary GIS View",
+      "description": "GIS public viewer screenshot showing property boundaries, parcel information, and aerial imagery of the Port Sulphur terminal site along the Mississippi River.",
+      "date_taken": "2025-09-15",
+      "date_approximate": false,
+      "source": "GIS Public Viewer / Property Records System",
+      "archive_reference": null,
+      "format": "png",
+      "size_bytes": 2239886,
+      "dimensions": null,
+      "location": {
+        "facility": "Former Freeport McMoRan Port Sulphur Facility",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "parish": "Plaquemines",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "high"
+        }
+      },
+      "subjects": [
+        "property boundaries",
+        "GIS data",
+        "parcel information",
+        "aerial view",
+        "Mississippi River"
+      ],
+      "historical_context": "Current property status following cessation of operations in early 2000s and Hurricane Katrina damage in 2005. Site is being evaluated for redevelopment as a maritime terminal.",
+      "file_path": "archive/images/2.1_Pasted image 20250915193857.png",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["aerial", "gis", "property_boundaries", "current", "due_diligence"]
+    },
+    {
+      "id": "img_008",
+      "filename": "2.2_Pasted image 20250915193959.png",
+      "category": "aerial",
+      "title": "Property Boundary GIS View - Alternate Angle",
+      "description": "Additional GIS public viewer screenshot showing detailed property boundary delineation and parcel data for the Port Sulphur terminal site.",
+      "date_taken": "2025-09-15",
+      "date_approximate": false,
+      "source": "GIS Public Viewer / Property Records System",
+      "archive_reference": null,
+      "format": "png",
+      "size_bytes": 2260018,
+      "dimensions": null,
+      "location": {
+        "facility": "Former Freeport McMoRan Port Sulphur Facility",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "parish": "Plaquemines",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "high"
+        }
+      },
+      "subjects": [
+        "property boundaries",
+        "GIS data",
+        "parcel information",
+        "land survey",
+        "property assessment"
+      ],
+      "historical_context": "Property records and GIS data used for due diligence analysis of the former industrial site.",
+      "file_path": "archive/images/2.2_Pasted image 20250915193959.png",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["aerial", "gis", "property_boundaries", "current", "due_diligence"]
+    },
+    {
+      "id": "img_009",
+      "filename": "2.3_Pasted image 20250915194045.png",
+      "category": "aerial",
+      "title": "Property Assessment GIS Data",
+      "description": "GIS viewer screenshot displaying property assessment data and boundary information for due diligence analysis.",
+      "date_taken": "2025-09-15",
+      "date_approximate": false,
+      "source": "GIS Public Viewer / Property Records System",
+      "archive_reference": null,
+      "format": "png",
+      "size_bytes": 2246083,
+      "dimensions": null,
+      "location": {
+        "facility": "Former Freeport McMoRan Port Sulphur Facility",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "parish": "Plaquemines",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "high"
+        }
+      },
+      "subjects": [
+        "property assessment",
+        "GIS data",
+        "tax parcel",
+        "land records",
+        "boundary survey"
+      ],
+      "historical_context": "Tax parcel and assessment data for the former Freeport McMoRan facility site.",
+      "file_path": "archive/images/2.3_Pasted image 20250915194045.png",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["aerial", "gis", "property_assessment", "current", "due_diligence"]
+    },
+    {
+      "id": "img_010",
+      "filename": "2.4_Pasted image 20250915194139.png",
+      "category": "aerial",
+      "title": "Parcel Boundary Detail View",
+      "description": "Detailed GIS view of parcel boundaries and property configuration along the Mississippi River waterfront.",
+      "date_taken": "2025-09-15",
+      "date_approximate": false,
+      "source": "GIS Public Viewer / Property Records System",
+      "archive_reference": null,
+      "format": "png",
+      "size_bytes": 2908577,
+      "dimensions": null,
+      "location": {
+        "facility": "Former Freeport McMoRan Port Sulphur Facility",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "parish": "Plaquemines",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "high"
+        }
+      },
+      "subjects": [
+        "parcel boundaries",
+        "waterfront property",
+        "river frontage",
+        "property configuration",
+        "land use"
+      ],
+      "historical_context": "Current property configuration showing waterfront access critical for maritime terminal operations.",
+      "file_path": "archive/images/2.4_Pasted image 20250915194139.png",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["aerial", "gis", "waterfront", "current", "due_diligence"]
+    },
+    {
+      "id": "img_011",
+      "filename": "2.5_Pasted image 20250915194729.png",
+      "category": "aerial",
+      "title": "Plaquemines Parish Parcel Assessor View",
+      "description": "Plaquemines Parish tax assessor parcel viewer showing detailed property information, boundaries, and surrounding parcels with color-coded land use zones.",
+      "date_taken": "2025-09-15",
+      "date_approximate": false,
+      "source": "Plaquemines Parish Assessor GIS System",
+      "archive_reference": null,
+      "format": "png",
+      "size_bytes": 3532851,
+      "dimensions": null,
+      "location": {
+        "facility": "Former Freeport McMoRan Port Sulphur Facility",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "parish": "Plaquemines",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "high"
+        }
+      },
+      "subjects": [
+        "tax parcel",
+        "parish assessor data",
+        "land use zoning",
+        "property tax",
+        "parcel map"
+      ],
+      "historical_context": "Parish tax records showing current ownership and assessment status of the former industrial facility.",
+      "file_path": "archive/images/2.5_Pasted image 20250915194729.png",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["aerial", "tax_parcel", "parish_records", "current", "due_diligence"]
+    },
+    {
+      "id": "img_012",
+      "filename": "2.6_Pasted image 20250915210317.png",
+      "category": "aerial",
+      "title": "Regional Context Aerial View",
+      "description": "Wide-area aerial/satellite view showing regional context of the Port Sulphur site in relation to surrounding properties and Mississippi River configuration.",
+      "date_taken": "2025-09-15",
+      "date_approximate": false,
+      "source": "Satellite/Aerial Imagery Platform",
+      "archive_reference": null,
+      "format": "png",
+      "size_bytes": 2998348,
+      "dimensions": null,
+      "location": {
+        "facility": "Port Sulphur Region",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "parish": "Plaquemines",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "regional"
+        }
+      },
+      "subjects": [
+        "regional context",
+        "satellite imagery",
+        "Mississippi River",
+        "surrounding area",
+        "geographic setting"
+      ],
+      "historical_context": "Regional view showing the site's strategic location on the Mississippi River between New Orleans and the Gulf of Mexico.",
+      "file_path": "archive/images/2.6_Pasted image 20250915210317.png",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["aerial", "regional", "satellite", "current", "due_diligence"]
+    },
+    {
+      "id": "img_013",
+      "filename": "2.7_Pasted image 20250915215835.png",
+      "category": "aerial",
+      "title": "Site Context Aerial Imagery",
+      "description": "Aerial view providing context for the Port Sulphur terminal site location and surrounding area.",
+      "date_taken": "2025-09-15",
+      "date_approximate": false,
+      "source": "Aerial Imagery Platform",
+      "archive_reference": null,
+      "format": "png",
+      "size_bytes": 2990871,
+      "dimensions": null,
+      "location": {
+        "facility": "Port Sulphur Terminal Site",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "parish": "Plaquemines",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "high"
+        }
+      },
+      "subjects": [
+        "site context",
+        "aerial imagery",
+        "property location",
+        "topography",
+        "land features"
+      ],
+      "historical_context": "Current aerial view showing post-Katrina site conditions and surrounding development.",
+      "file_path": "archive/images/2.7_Pasted image 20250915215835.png",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["aerial", "site_context", "current", "due_diligence"]
+    },
+    {
+      "id": "img_014",
+      "filename": "2.8_Pasted image 20250915215947.png",
+      "category": "aerial",
+      "title": "Detailed Site Aerial View",
+      "description": "Detailed aerial photograph showing the Port Sulphur terminal site configuration and immediate surroundings.",
+      "date_taken": "2025-09-15",
+      "date_approximate": false,
+      "source": "Aerial Imagery Platform",
+      "archive_reference": null,
+      "format": "png",
+      "size_bytes": 3138455,
+      "dimensions": null,
+      "location": {
+        "facility": "Port Sulphur Terminal Site",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "parish": "Plaquemines",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "high"
+        }
+      },
+      "subjects": [
+        "site detail",
+        "aerial photography",
+        "facility layout",
+        "infrastructure",
+        "property features"
+      ],
+      "historical_context": "Detailed view of current site conditions for development planning and engineering assessment.",
+      "file_path": "archive/images/2.8_Pasted image 20250915215947.png",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["aerial", "site_detail", "current", "due_diligence"]
+    },
+    {
+      "id": "img_015",
+      "filename": "2.9_Pasted image 20250919111230.png",
+      "category": "regulatory",
+      "title": "EPA ECHO Facility Report",
+      "description": "EPA ECHO (Enforcement and Compliance History Online) Detailed Facility Report for Freeport McMoRan Energy LLC - Port Sulphur Facility, showing compliance status, enforcement history, and regulatory information. Address: 28310 HWY 23, Port Sulphur, LA 70083. FRS ID: 110022408321. Latitude: 29.473414, Longitude: -89.686632.",
+      "date_taken": "2025-09-19",
+      "date_approximate": false,
+      "source": "EPA ECHO Database",
+      "archive_reference": "FRS ID: 110022408321",
+      "format": "png",
+      "size_bytes": 89047,
+      "dimensions": null,
+      "location": {
+        "facility": "Freeport McMoRan Energy LLC - Port Sulphur Facility",
+        "address": "28310 HWY 23",
+        "city": "Port Sulphur",
+        "state": "Louisiana",
+        "zip": "70083",
+        "parish": "Plaquemines",
+        "coordinates": {
+          "latitude": 29.473414,
+          "longitude": -89.686632,
+          "accuracy": "exact",
+          "source": "EPA FRS Database"
+        }
+      },
+      "subjects": [
+        "environmental compliance",
+        "EPA database",
+        "regulatory status",
+        "facility history",
+        "enforcement record"
+      ],
+      "regulatory_info": {
+        "frs_id": "110022408321",
+        "epa_region": "06",
+        "industry": "Mining (except Oil and Gas)",
+        "indian_country": "N",
+        "last_monitoring_activity": "08/11/2003",
+        "compliance_status": "No Violation Identified"
+      },
+      "historical_context": "EPA regulatory compliance history for the former Freeport McMoRan facility, showing environmental monitoring and enforcement activities through 2003 when operations were winding down.",
+      "file_path": "archive/images/2.9_Pasted image 20250919111230.png",
+      "indexed_on": "2025-09-25",
+      "author": "William S. Davis III",
+      "tags": ["regulatory", "epa_echo", "environmental_compliance", "facility_report", "due_diligence"]
+    }
+  ],
+  "gallery_config": {
+    "default_view": "grid",
+    "enable_lightbox": true,
+    "enable_filtering": true,
+    "enable_search": true,
+    "enable_map": true,
+    "map_center": {
+      "latitude": 29.473414,
+      "longitude": -89.686632,
+      "zoom": 15
+    },
+    "timeline_range": {
+      "start": "1940",
+      "end": "2025"
+    }
+  },
+  "metadata": {
+    "extraction_date": "2026-01-22",
+    "source_document": "G:\\My Drive\\LLM\\project_port_sulphur\\docs\\images_SYNTHESIS.md",
+    "total_files_cataloged": 15,
+    "historical_images": 6,
+    "aerial_images": 8,
+    "regulatory_images": 1,
+    "primary_coordinates": {
+      "latitude": 29.473414,
+      "longitude": -89.686632,
+      "datum": "WGS84"
+    },
+    "facility_info": {
+      "name": "Former Freeport Sulphur / Freeport McMoRan Port Sulphur Terminal",
+      "operational_period": "1933-2005",
+      "primary_operator": "Freeport Sulphur Company (later Freeport McMoRan)",
+      "industry": "Sulphur mining, processing, and shipping",
+      "location": "Mississippi River Mile 39, Port Sulphur, Plaquemines Parish, Louisiana"
+    },
+    "data_quality": {
+      "coordinates_accuracy": "High for modern images (EPA/GIS), approximate for historical images (facility-level)",
+      "date_accuracy": "Exact for modern images, approximate decade for historical images",
+      "metadata_completeness": "Good - includes source attribution, locations, subjects, and historical context"
+    }
+  }
+}

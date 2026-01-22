@@ -1,0 +1,744 @@
+<!-- Infrastructure & Facilities Section -->
+<!-- 79 sources from infrastructure directory -->
+<section id="infrastructure" class="report-section">
+
+    <!-- Section Header -->
+    <div class="section-header">
+        <h2>Infrastructure & Facilities</h2>
+        <div class="section-meta">
+            <span class="source-count">79 sources</span>
+            <span class="category-tag">Regional Analysis</span>
+        </div>
+        <p class="section-intro">
+            Comprehensive infrastructure assessment of the Port Sulphur Terminal and regional facilities,
+            including existing assets, planned developments, rail connectivity, and multimodal transportation networks.
+            Analysis encompasses 106.99-acre deep-water site with connections to $22.8B in regional infrastructure investment.
+        </p>
+    </div>
+
+    <!-- Site Overview Hero -->
+    <div class="info-box">
+        <h3>Port Sulphur Deep-Water Terminal - Site Overview</h3>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="stat-value">106.99</div>
+                <div class="stat-label">Total Acres</div>
+            </div>
+            <div class="hero-stat">
+                <div class="stat-value">10,693</div>
+                <div class="stat-label">Linear Ft Frontage</div>
+            </div>
+            <div class="hero-stat">
+                <div class="stat-value">52 ft</div>
+                <div class="stat-label">Natural Draft</div>
+            </div>
+            <div class="hero-stat">
+                <div class="stat-value">RM 39</div>
+                <div class="stat-label">River Mile</div>
+            </div>
+        </div>
+        <p style="margin-top: 1rem; color: rgba(255,255,255,0.8);">
+            <strong>Strategic Location:</strong> West Bank of Mississippi River at River Mile 39,
+            just 39 miles from the Gulf of Mexico. Federal channel maintained at 45 ft minimum depth.
+            Site includes 24' × 433' concrete dock and 5,000 SF warehouse on Industrial District 3 zoned land.
+        </p>
+    </div>
+
+    <!-- Regional Facilities Map -->
+    <div class="map-container" id="infrastructureMap">
+        <div class="map-header">
+            <h3>Regional Infrastructure Facilities</h3>
+            <p>Port Sulphur Terminal and surrounding developments including NOLA Terminal, APM Terminals, Venture Global LNG, and rail connections</p>
+        </div>
+        <div id="infrastructureMapCanvas" style="width: 100%; height: 600px; background: rgba(0,0,0,0.2); position: relative;">
+            <!-- Map will be initialized via Leaflet.js using GeoJSON data from infrastructure_data.json -->
+            <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: rgba(255,255,255,0.5); font-size: 0.9rem;">
+                Map initialization: Load Leaflet.js and render GeoJSON features from infrastructure_data.json
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart 1: Regional Facilities Area Comparison -->
+    <div class="chart-container">
+        <canvas id="regionalFacilitiesAreaChart"></canvas>
+    </div>
+
+    <!-- Regional Facilities Overview -->
+    <div class="content-block">
+        <h3>Regional Facilities Comparison</h3>
+        <div class="facility-grid">
+
+            <!-- Port Sulphur Terminal -->
+            <div class="facility-card">
+                <div class="facility-header" style="background: rgba(100, 255, 180, 0.15);">
+                    <h4>Port Sulphur Deep-Water Terminal</h4>
+                    <span class="facility-status status-existing">Existing</span>
+                </div>
+                <div class="facility-details">
+                    <p><strong>Location:</strong> RM 39, West Bank</p>
+                    <p><strong>Area:</strong> 106.99 acres</p>
+                    <p><strong>Frontage:</strong> 10,693 linear feet</p>
+                    <p><strong>Draft:</strong> 52 ft natural, 45 ft maintained</p>
+                    <p><strong>Infrastructure:</strong> 24' × 433' concrete dock, 5,000 SF warehouse</p>
+                    <p><strong>Anchorage:</strong> Federal designation RM 37.5-39.7</p>
+                    <p style="margin-top: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                        Closest deep-water terminal to open water on Mississippi River system with no air draft restrictions.
+                    </p>
+                </div>
+            </div>
+
+            <!-- NOLA Terminal LLC -->
+            <div class="facility-card">
+                <div class="facility-header" style="background: rgba(54, 162, 235, 0.15);">
+                    <h4>NOLA Terminal LLC</h4>
+                    <span class="facility-status status-operating">Operating</span>
+                </div>
+                <div class="facility-details">
+                    <p><strong>Location:</strong> RM 59, Mississippi River</p>
+                    <p><strong>Area:</strong> 152.8 acres</p>
+                    <p><strong>Operations Since:</strong> 2013</p>
+                    <p><strong>Berths:</strong> 3 deepwater (Capesize/Suez Max capable)</p>
+                    <p><strong>Storage:</strong> 10 million barrels crude oil with blending capability</p>
+                    <p><strong>Capacity:</strong> 2 Capesize vessels/week, 25 barges/week</p>
+                    <p><strong>Investment:</strong> $97M bond financing (2024), $300M total approved</p>
+                    <p><strong>Commodities:</strong> Aggregates, sand, bagged cement, crude oil</p>
+                    <p style="margin-top: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                        Master plan includes warehousing, silos, domes, and indoor/outdoor storage expansion.
+                    </p>
+                </div>
+            </div>
+
+            <!-- APM Terminals Container Terminal -->
+            <div class="facility-card">
+                <div class="facility-header" style="background: rgba(255, 206, 86, 0.15);">
+                    <h4>APM Terminals Container Terminal<br><small>(Louisiana Gateway Port)</small></h4>
+                    <span class="facility-status status-planned">Planned</span>
+                </div>
+                <div class="facility-details">
+                    <p><strong>Location:</strong> Port Sulphur area, West Bank (near existing site)</p>
+                    <p><strong>Phase 1 Area:</strong> 200 acres (expandable to 900 acres)</p>
+                    <p><strong>Investment:</strong> $500 million (privately funded by APM Terminals/Maersk)</p>
+                    <p><strong>Vessel Capacity:</strong> 14,000-18,000 TEU (largest Panama Canal ships)</p>
+                    <p><strong>On-Dock Rail:</strong> Yes, unit trains up to 100 cars, 20-30 trains/week initial</p>
+                    <p><strong>Timeline:</strong> Permits approved June 2025, groundbreaking Q2 2026, operational 2028</p>
+                    <p><strong>Strategic Advantages:</strong></p>
+                    <ul style="margin-left: 1.5rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                        <li>No air draft restrictions from bridges</li>
+                        <li>Proximity to LNG facilities</li>
+                        <li>3 hours shorter round trip than nearest proposed terminal</li>
+                        <li>Widest ship turning radius</li>
+                        <li>30-40% drayage cost savings via on-dock rail</li>
+                    </ul>
+                    <p style="margin-top: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                        Projected to become 5th largest U.S. port by tonnage within five years of operation.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Venture Global Plaquemines LNG -->
+            <div class="facility-card">
+                <div class="facility-header" style="background: rgba(153, 102, 255, 0.15);">
+                    <h4>Venture Global Plaquemines LNG</h4>
+                    <span class="facility-status status-construction">Under Construction</span>
+                </div>
+                <div class="facility-details">
+                    <p><strong>Location:</strong> Adjacent to Port Sulphur area, 632 acres</p>
+                    <p><strong>Investment:</strong> $21 billion</p>
+                    <p><strong>Timeline:</strong> First phase operational mid-2024, full operations 2025</p>
+                    <p><strong>Current Operations:</strong> 6,000 workers on-site, 30,000 nationally</p>
+                    <p><strong>Infrastructure:</strong> Connected via 42-inch Gator Express Pipeline (15 miles current, 27-mile expansion 2025)</p>
+                    <p style="margin-top: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                        Largest single infrastructure investment in region, borders Port Sulphur site with direct pipeline connections.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Louisiana International Terminal -->
+            <div class="facility-card">
+                <div class="facility-header" style="background: rgba(255, 99, 132, 0.15);">
+                    <h4>Louisiana International Terminal</h4>
+                    <span class="facility-status status-planned">Planned</span>
+                </div>
+                <div class="facility-details">
+                    <p><strong>Location:</strong> St. Bernard Parish</p>
+                    <p><strong>Investment:</strong> $1.8 billion</p>
+                    <p><strong>Investors:</strong> Ports America, Mediterranean Shipping Company</p>
+                    <p><strong>Capacity:</strong> 2 million TEU per year at buildout</p>
+                    <p style="margin-top: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                        Competes for same cargo flows, but Port Sulphur's rail connectivity may provide complementary opportunities.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Chart 2: Infrastructure Investment Comparison -->
+    <div class="chart-container">
+        <canvas id="infrastructureInvestmentChart"></canvas>
+    </div>
+
+    <!-- Chart 3: Storage Capacity Comparison -->
+    <div class="chart-container">
+        <canvas id="storageCapacityChart"></canvas>
+    </div>
+
+    <!-- Chart 4: Vessel Capacity & Berth Comparison -->
+    <div class="chart-container">
+        <canvas id="vesselCapacityChart"></canvas>
+    </div>
+
+    <!-- Chart 5: River Mile Location & Proximity to Gulf -->
+    <div class="chart-container">
+        <canvas id="riverMileProximityChart"></canvas>
+    </div>
+
+    <!-- Rail Infrastructure -->
+    <div class="content-block">
+        <h3>Rail Infrastructure & Connectivity</h3>
+
+        <div class="highlight">
+            <p><strong>Current Status:</strong> No direct rail access. Nearest connection is New Orleans & Gulf Coast Railway (NOGC) terminus at Myrtle Grove, 8 miles north of Port Sulphur.</p>
+        </div>
+
+        <!-- NOGC Railway Overview -->
+        <div class="info-box">
+            <h4>New Orleans & Gulf Coast Railway (NOGC)</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                <div>
+                    <p><strong>Classification:</strong> Class III Shortline</p>
+                    <p><strong>Length:</strong> 32 miles</p>
+                    <p><strong>Route:</strong> Westwego (UP interchange) → Belle Chasse → Myrtle Grove</p>
+                </div>
+                <div>
+                    <p><strong>Operations:</strong> 20+ customers, up to 3 trains/day</p>
+                    <p><strong>Speed:</strong> 10-15 MPH</p>
+                    <p><strong>Capacity Utilization:</strong> Less than 10%</p>
+                </div>
+                <div>
+                    <p><strong>Commodities:</strong> Petroleum products, oils, chemicals, food products, grains, steel</p>
+                    <p><strong>Class I Access:</strong> Direct UP interchange; BNSF, CSXT, CN, CPKC, NS via NOPB</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Planned Rail Spur Extension -->
+        <div class="success-box">
+            <h4>Port Sulphur Rail Spur Extension - $85M Project</h4>
+            <p style="margin: 0.75rem 0;"><strong>Project:</strong> 32-mile rail spur from Port Sulphur to Belle Chasse, connecting to NOGC Railway and national Class I network.</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0;">
+                <div>
+                    <p><strong>Investment:</strong> $85 million total</p>
+                    <p><strong>Federal Funding:</strong> 85% ($72M RAISE grants allocated 2025)</p>
+                    <p><strong>State Match:</strong> PPMTD unrestricted fund</p>
+                    <p><strong>Sponsor:</strong> Plaquemines Port Harbor & Terminal District</p>
+                </div>
+                <div>
+                    <p><strong>Design Study:</strong> Completed May 2025</p>
+                    <p><strong>Preliminary Engineering:</strong> $10M approved June 2025</p>
+                    <p><strong>Construction Bids:</strong> Expected Q4 2025</p>
+                    <p><strong>Completion:</strong> 2028-2029</p>
+                </div>
+            </div>
+
+            <p><strong>Benefits:</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li><strong>Highway 23 Relief:</strong> Reduce truck traffic by 500,000 loads per year</li>
+                <li><strong>National Connectivity:</strong> Direct access to Midwest/heartland markets</li>
+                <li><strong>Commodity Support:</strong> Grains, metals, consumer goods, containers</li>
+                <li><strong>Environmental Review:</strong> FERC reviews for wetland terrain</li>
+            </ul>
+
+            <p style="margin-top: 1rem; color: rgba(255,255,255,0.8); font-size: 0.95rem;">
+                <strong>Approvals:</strong> Parish ordinance (August 2024), preliminary engineering funding (June 2025),
+                public meetings on community impacts, noise, and wetland mitigation (June 26, 2025).
+            </p>
+        </div>
+
+        <!-- Chart 6: Rail Infrastructure Timeline -->
+        <div class="chart-container">
+            <canvas id="railTimelineChart"></canvas>
+        </div>
+
+        <!-- Regional Rail Network -->
+        <div class="content-subsection">
+            <h4>Regional Rail Network - New Orleans Public Belt Railroad (NOPB)</h4>
+            <div style="background: rgba(100,181,246,0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #64b5f6;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div>
+                        <p><strong>Classification:</strong> Class III Switching Railroad</p>
+                        <p><strong>National Ranking:</strong> 5th largest U.S. rail gateway by car volume</p>
+                        <p><strong>Track Miles:</strong> 180 miles</p>
+                    </div>
+                    <div>
+                        <p><strong>Annual Carloads:</strong> 177,000</p>
+                        <p><strong>Service Area:</strong> Port of New Orleans</p>
+                        <p><strong>Class I Access:</strong> All six major Class I railroads</p>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem;"><strong>Recent Improvements:</strong></p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li><strong>Huey P. Long Bridge:</strong> Third track addition planned (22,995 ft total length)</li>
+                    <li><strong>France Road Railyard:</strong> Expansion completed, 220 storage cars added along Industrial Canal</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pipeline Infrastructure -->
+    <div class="content-block">
+        <h3>Pipeline Infrastructure</h3>
+
+        <div class="pipeline-grid">
+            <div class="pipeline-card">
+                <h4>Gator Express Pipeline</h4>
+                <p><strong>Operator:</strong> Venture Global</p>
+                <p><strong>Diameter:</strong> 42 inches</p>
+                <p><strong>Current Length:</strong> 15 miles</p>
+                <p><strong>Expansion 2025:</strong> +27 miles</p>
+                <p><strong>Commodity:</strong> Natural gas</p>
+                <p><strong>Destination:</strong> Plaquemines LNG facility</p>
+            </div>
+            <div class="pipeline-card">
+                <h4>Enterprise Nautilus Pipeline</h4>
+                <p><strong>Diameter:</strong> 36 inches</p>
+                <p><strong>Status:</strong> Active regional network</p>
+            </div>
+            <div class="pipeline-card">
+                <h4>Regional Pipeline Network</h4>
+                <p><strong>Within 10 Miles:</strong> 10+ active pipelines</p>
+                <p><strong>Proposed Statewide:</strong> 2,900 miles</p>
+                <p style="margin-top: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                    <strong>Considerations:</strong> Tie-in potential for industrial development,
+                    flood rupture risks, proximity to 632-acre LNG site operational 2025.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Highway & Telecommunications -->
+    <div class="content-block">
+        <h3>Highway Infrastructure & Telecommunications</h3>
+
+        <div class="warning-box">
+            <h4>Highway 23 - Primary Access Corridor</h4>
+            <p><strong>Reliability Rating:</strong> 6/10</p>
+            <p><strong>Current Issues:</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Congestion from LNG construction traffic</li>
+                <li>Crane operations causing 2-4 hour delays (2025)</li>
+                <li>Sinkhole risks from water line issues</li>
+            </ul>
+            <p style="margin-top: 1rem;"><strong>Planned Improvements:</strong></p>
+            <p>Rail extension implementation will reduce truck traffic by 500,000 loads per year.</p>
+            <p style="margin-top: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                <strong>Alternatives:</strong> Ferry routes available but add 20-30 miles to journey.
+            </p>
+        </div>
+
+        <div class="info-box" style="margin-top: 1.5rem;">
+            <h4>Telecommunications</h4>
+            <p><strong>Corridor Service:</strong> Well-served along Highway 23</p>
+            <p><strong>Capabilities:</strong> Supports modern industrial operations and logistics coordination</p>
+        </div>
+    </div>
+
+    <!-- Utilities & Services -->
+    <div class="content-block">
+        <h3>Utilities & Services</h3>
+
+        <div class="utility-grid">
+            <div class="utility-card">
+                <h4>Electrical Service</h4>
+                <p><strong>Availability:</strong> Available</p>
+                <p><strong>Post-Katrina:</strong> Upgraded systems</p>
+                <p><strong>Backup Power:</strong> Critical for hurricane-prone environment</p>
+                <p style="margin-top: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                    Requires verification for specific industrial applications.
+                </p>
+            </div>
+            <div class="utility-card">
+                <h4>Water & Sewer</h4>
+                <p><strong>Availability:</strong> Site-specific verification required</p>
+                <p><strong>Post-Katrina:</strong> Enhancement programs completed</p>
+                <p><strong>Upgrades:</strong></p>
+                <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+                    <li>Enhanced emergency preparedness</li>
+                    <li>Improved flood protection</li>
+                    <li>Systematic upgrades for industrial operations</li>
+                </ul>
+            </div>
+            <div class="utility-card">
+                <h4>Flood Protection</h4>
+                <p><strong>Post-Katrina:</strong> Comprehensive improvements</p>
+                <p><strong>Features:</strong></p>
+                <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+                    <li>Enhanced emergency preparedness systems</li>
+                    <li>Improved flood protection measures</li>
+                    <li>Greater operational continuity during extreme weather</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Port Authority Financials -->
+    <div class="content-block">
+        <h3>Port Authority Financial Position</h3>
+
+        <div class="success-box">
+            <h4>Plaquemines Port Harbor and Terminal District (Louisiana Gateway Port)</h4>
+            <p style="margin-bottom: 1rem; color: rgba(255,255,255,0.8);"><strong>Financial Data:</strong> As of December 31, 2022</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #64ffb4;">$116.8M</div>
+                    <div class="stat-label">Net Position</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #64ffb4;">$6M</div>
+                    <div class="stat-label">Operating Revenue<br><small>(+13% YoY)</small></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #64ffb4;">$32M</div>
+                    <div class="stat-label">Non-Operating Revenue<br><small>(2022)</small></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #64ffb4;">$75.4M</div>
+                    <div class="stat-label">Capital Assets<br><small>(net depreciation)</small></div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                <div>
+                    <p><strong>Operating Revenue Sources:</strong></p>
+                    <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+                        <li>Tariff fees</li>
+                        <li>Security fees</li>
+                        <li>Harbor fees</li>
+                        <li>Docking fees</li>
+                        <li>Ferry toll revenue</li>
+                    </ul>
+                </div>
+                <div>
+                    <p><strong>Non-Operating Revenue Sources:</strong></p>
+                    <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+                        <li>Lease agreements with industrial tenants</li>
+                        <li>Oil and gas royalties</li>
+                        <li>Property taxes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;"><strong>2022 Additions:</strong></p>
+            <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+                <li>Ferry operations acquisition</li>
+                <li>Land acquisitions: $1.2M</li>
+            </ul>
+        </div>
+
+        <!-- Chart 7: Port Authority Financial Position -->
+        <div class="chart-container">
+            <canvas id="portAuthorityFinancialsChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Key Findings Summary -->
+    <div class="recommendations">
+        <h3>Infrastructure Key Findings</h3>
+        <div class="rec-grid">
+            <div class="rec-item">
+                <div class="num">1</div>
+                <h4>Optimal Location</h4>
+                <p>River Mile 39 provides closest deep-water access to Gulf with no air draft restrictions from bridges</p>
+            </div>
+            <div class="rec-item">
+                <div class="num">2</div>
+                <h4>Regional Integration</h4>
+                <p>$22.8B in surrounding infrastructure investment (APM $500M, Venture Global $21B, Louisiana Int'l $1.8B)</p>
+            </div>
+            <div class="rec-item">
+                <div class="num">3</div>
+                <h4>Rail Connectivity</h4>
+                <p>$85M rail spur extension (2028-2029) will reduce Highway 23 truck traffic by 500,000 loads/year</p>
+            </div>
+            <div class="rec-item">
+                <div class="num">4</div>
+                <h4>Multimodal Hub</h4>
+                <p>Future access to all six Class I railroads via NOGC and NOPB regional network</p>
+            </div>
+            <div class="rec-item">
+                <div class="num">5</div>
+                <h4>Pipeline Access</h4>
+                <p>10+ active pipelines within 10 miles, including 42-inch Gator Express with 27-mile expansion</p>
+            </div>
+            <div class="rec-item">
+                <div class="num">6</div>
+                <h4>Strong Financials</h4>
+                <p>Port Authority with $116.8M net position and $32M non-operating revenue demonstrates stability</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Environmental Note -->
+    <div class="warning-box">
+        <h4>Environmental Considerations</h4>
+        <p>
+            Site carries environmental liabilities from 72 years of sulfur processing operations (1933-2005).
+            Environmental assessment required for any development activities. Post-Katrina utility and flood
+            protection upgrades provide enhanced operational continuity during extreme weather events.
+        </p>
+    </div>
+
+</section>
+
+<!-- Additional CSS for Infrastructure Section Components -->
+<style>
+/* Facility Grid */
+.facility-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.facility-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.facility-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(100,255,180,0.4);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.facility-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.facility-header h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin: 0;
+    flex: 1;
+}
+
+.facility-header small {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+    margin-top: 0.25rem;
+}
+
+.facility-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.status-existing {
+    background: rgba(100,255,180,0.2);
+    color: #64ffb4;
+    border: 1px solid rgba(100,255,180,0.4);
+}
+
+.status-operating {
+    background: rgba(76,175,80,0.2);
+    color: #4caf50;
+    border: 1px solid rgba(76,175,80,0.4);
+}
+
+.status-planned {
+    background: rgba(255,206,86,0.2);
+    color: #ffc107;
+    border: 1px solid rgba(255,206,86,0.4);
+}
+
+.status-construction {
+    background: rgba(153,102,255,0.2);
+    color: #9966ff;
+    border: 1px solid rgba(153,102,255,0.4);
+}
+
+.facility-details {
+    padding: 1.5rem;
+}
+
+.facility-details p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.facility-details ul {
+    margin-top: 0.5rem;
+}
+
+/* Pipeline Grid */
+.pipeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.pipeline-card {
+    background: rgba(100,181,246,0.1);
+    border: 1px solid rgba(100,181,246,0.3);
+    border-left: 4px solid #64b5f6;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.pipeline-card:hover {
+    background: rgba(100,181,246,0.15);
+    transform: translateY(-3px);
+}
+
+.pipeline-card h4 {
+    color: #64b5f6;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.pipeline-card p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+}
+
+/* Utility Grid */
+.utility-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.utility-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.utility-card:hover {
+    background: rgba(100,255,180,0.05);
+    border-color: rgba(100,255,180,0.3);
+}
+
+.utility-card h4 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.utility-card p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.utility-card ul {
+    margin-top: 0.5rem;
+}
+
+/* Warning Box */
+.warning-box {
+    background: linear-gradient(135deg, rgba(255,152,0,0.15) 0%, rgba(255,87,34,0.15) 100%);
+    border-left: 4px solid #ff9800;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.warning-box h4 {
+    color: #ffb74d;
+    margin-bottom: 1rem;
+}
+
+.warning-box p, .warning-box ul {
+    color: rgba(255,255,255,0.85);
+}
+
+/* Stat Card (for financial data) */
+.stat-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.stat-card .stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card .stat-label {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.stat-card .stat-label small {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    color: rgba(255,255,255,0.5);
+}
+
+/* Content Subsection */
+.content-subsection {
+    margin-top: 2rem;
+}
+
+.content-subsection h4 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .facility-grid,
+    .pipeline-grid,
+    .utility-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .facility-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .facility-status {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .facility-card,
+    .pipeline-card,
+    .utility-card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}
+</style>

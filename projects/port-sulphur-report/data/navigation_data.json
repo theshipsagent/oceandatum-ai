@@ -1,0 +1,473 @@
+{
+  "metadata": {
+    "project": "Port Sulphur Terminal Analysis",
+    "location": "Port Sulphur, Louisiana",
+    "river_mile": 39.0,
+    "bank": "West Bank",
+    "datum_vertical": "NAVD 88",
+    "datum_horizontal": "NAD83 Louisiana South",
+    "source_document": "navigation_SYNTHESIS.md",
+    "last_updated": "2026-01-22"
+  },
+  "site_position": {
+    "river_mile": 39.0,
+    "river_mile_unit": "AHP (Above Head of Passes)",
+    "bank_position": "West Bank (Right Descending Bank)",
+    "distance_to_gulf": {
+      "value": 39,
+      "unit": "miles"
+    },
+    "parish": "Plaquemines Parish",
+    "address": "28310 Highway 23, Port Sulphur, LA 70083",
+    "land_area_acres": 106.99,
+    "river_frontage_feet": 10693,
+    "highway_frontage_feet": 2500
+  },
+  "navigation_channel": {
+    "federal_maintenance": true,
+    "maintaining_agency": "USACE New Orleans District",
+    "minimum_depth_feet": 45,
+    "minimum_depth_description": "Federal maintenance requirement",
+    "typical_depth_range": {
+      "min_feet": 60,
+      "max_feet": 120,
+      "description": "Natural conditions exceed federal requirements"
+    },
+    "channel_width": "Adequate for two-way large vessel traffic",
+    "chart_number": "USACE Chart No. 90",
+    "chart_coverage": {
+      "upstream_river_mile": 46.4,
+      "downstream_river_mile": 36.6
+    },
+    "chart_scale": "1:40,000",
+    "chart_last_revised": "2016-05-06"
+  },
+  "bathymetric_survey": {
+    "survey_date": "2016-05-18",
+    "surveyor": "T. Baker Smith, LLC",
+    "survey_vessel": "M/V Echotrac",
+    "equipment": "Multi-beam Echo-sounder with RTK and survey navigation system",
+    "vertical_datum": "NAVD 88 (0.0' reference)",
+    "horizontal_projection": "Louisiana South NAD83",
+    "corrections_applied": [
+      "Draft corrections",
+      "Water column sound velocity corrections"
+    ],
+    "aerial_photography_reference": "2015 imagery overlay",
+    "depth_zones": [
+      {
+        "zone_name": "Near-Shore Transition Zone",
+        "depth_range_feet": {
+          "from": 0,
+          "to": -20
+        },
+        "characteristics": "Gradual slope typical of Mississippi River banks",
+        "vessel_access": "Limited draft access in immediate shore zone",
+        "engineering_notes": "May require approach channel dredging for large vessels"
+      },
+      {
+        "zone_name": "Primary Docking Zone",
+        "depth_range_feet": {
+          "from": -20,
+          "to": -60
+        },
+        "characteristics": "Existing dock structure vicinity",
+        "vessel_access": "Suitable for medium-draft vessels",
+        "current_capability": "Supports existing McMoran dock operations",
+        "expansion_potential": "Adequate depths for additional berth development"
+      },
+      {
+        "zone_name": "Deep Navigation Channel",
+        "depth_range_feet": {
+          "from": -60,
+          "to": -120
+        },
+        "characteristics": "Main Mississippi River navigation channel",
+        "vessel_access": "Capable of accommodating Panamax and larger vessels",
+        "federal_maintenance": "Maintained by USACE to -45' minimum",
+        "strategic_advantage": "Deep water proximity provides operational flexibility"
+      }
+    ],
+    "documented_depths": {
+      "dock_vicinity_min_feet": -40,
+      "dock_vicinity_max_feet": -80,
+      "navigation_channel_min_feet": -60,
+      "navigation_channel_max_feet": -120,
+      "existing_operations_draft_feet": 52,
+      "existing_operations_notes": "52' draft at low river stage - demonstrates exceptional capability"
+    }
+  },
+  "underwater_obstructions": [
+    {
+      "obstruction_type": "Existing Dock Pilings",
+      "distribution": "Multiple locations throughout existing dock footprint",
+      "configuration": "Typical pile-supported wharf construction",
+      "condition": "Survey indicates intact structural elements",
+      "navigation_hazard": "Clearly defined and charted",
+      "removal_consideration": "May require demolition for expansion",
+      "risk_level": "Low to Moderate",
+      "impact": "Could interfere with new pile installation"
+    },
+    {
+      "obstruction_type": "Assumed Debris Fields",
+      "location": "Concentrated adjacent to existing dock structures",
+      "characteristics": "Irregular bottom features consistent with construction debris",
+      "source": "Likely remnants from McMoran industrial operations",
+      "risk_level": "Moderate",
+      "impact": "Could impact pile driving operations and complicate dredging",
+      "investigation_required": "Detailed debris characterization needed"
+    },
+    {
+      "obstruction_type": "Unidentified Large Object",
+      "survey_detail_scale": "1 inch = 50 feet",
+      "dimensions": {
+        "length_feet": 100,
+        "width_feet": 25,
+        "note": "Estimated from survey scale"
+      },
+      "characteristics": "Significant bottom feature requiring investigation",
+      "risk_level": "HIGH",
+      "recommended_action": "ROV or diver investigation before any construction",
+      "construction_risk": "Could affect project scheduling, costs, and safety"
+    }
+  ],
+  "revetment_system": {
+    "reach_name": "Port Sulphur Revetment",
+    "upstream_river_mile": 41.1,
+    "downstream_river_mile": 34.3,
+    "bank": "West Bank",
+    "site_within_revetment": true,
+    "revetment_type": "Articulated Concrete Mat (ACM) construction",
+    "project": "Mississippi River & Tributaries (MR&T)",
+    "federal_investment": "Decades of federal investment in flood control and navigation infrastructure",
+    "engineering_function": "Engineered bank protection against river erosive forces",
+    "regulatory_requirements": [
+      {
+        "requirement": "Section 408 Permission",
+        "authority": "Rivers and Harbors Act Section 408",
+        "administered_by": "USACE New Orleans District (CEMVN-ED-LC)",
+        "description": "Any development affecting MR&T project features",
+        "streamlined_process": "2025 Programmatic Environmental Assessment with standardized engineering criteria"
+      },
+      {
+        "requirement": "Section 10 Permit",
+        "authority": "Rivers and Harbors Act Section 10",
+        "administered_by": "USACE Regulatory Division",
+        "description": "Any structures placed in or over navigable waters"
+      },
+      {
+        "requirement": "Section 404 Permit",
+        "authority": "Clean Water Act Section 404",
+        "administered_by": "USACE Regulatory Division",
+        "description": "Placement of fill material including structural foundations and scour protection"
+      }
+    ],
+    "engineering_standards": {
+      "penetration_prohibition": "No penetration of concrete mat or trench-fill systems without approved repair procedures",
+      "repair_procedure_standard": "June 1999 USACE Standard Drawing - Repair Procedures when Penetrating Revetments with Piles, Caissons, and/or Pile Clusters",
+      "repair_requirements": [
+        "Engineered collar and seal systems spanning full thickness of protective mat",
+        "Toe protection provisions",
+        "Long-term performance monitoring"
+      ],
+      "anchoring_restriction": "33 CFR 207.200 prohibits anchoring over revetted banks without authorization",
+      "construction_restrictions": [
+        "Treat revetment as critical infrastructure, not work platform",
+        "Heavy construction traffic can damage mat integrity",
+        "Minimize lateral loading from equipment operations"
+      ]
+    },
+    "neighboring_reaches": {
+      "upstream_west_bank": "Point Michel (RM 45.7-41.1)",
+      "upstream_east_bank": "Nestor (RM 42.5-40.2)",
+      "downstream_east_bank": "Bayou Lamoque (RM 31.3-34.8)"
+    }
+  },
+  "river_conditions": {
+    "seasonal_patterns": [
+      {
+        "season": "Spring High Water",
+        "months": "March through June",
+        "discharge_cfs": {
+          "typical_min": 375000,
+          "typical_max": 500000,
+          "note": "Exceeding 375,000 cubic feet per second"
+        },
+        "estimated_velocity_fps": {
+          "min": 2.5,
+          "max": 4.0,
+          "extreme": 5.0
+        },
+        "characteristics": [
+          "Maximum draft access with deepest available depths",
+          "Substantial operational challenges from high current stress",
+          "Extreme current forces require enhanced mooring and additional tug assistance"
+        ],
+        "operational_notes": "Most challenging conditions; requires robust structural design"
+      },
+      {
+        "season": "Summer/Fall Normal",
+        "months": "July through October",
+        "discharge_cfs": {
+          "typical_min": 222000,
+          "typical_max": 379000
+        },
+        "estimated_velocity_fps": {
+          "min": 1.5,
+          "max": 2.5
+        },
+        "characteristics": [
+          "Optimal navigation scenarios",
+          "Balance of adequate depth with manageable current forces",
+          "Ideal conditions for construction activities"
+        ],
+        "operational_notes": "Most predictable and stable flow conditions; optimal for operations and maintenance"
+      },
+      {
+        "season": "Winter Low Water",
+        "months": "November through February",
+        "discharge_cfs": {
+          "typical_min": 131000,
+          "typical_max": 222000
+        },
+        "estimated_velocity_fps": {
+          "min": 1.0,
+          "max": 1.5
+        },
+        "characteristics": [
+          "Potential draft restrictions during extreme low water events",
+          "Port Sulphur's exceptional depths provide competitive advantage",
+          "Continued operations when shallow-draft terminals face restrictions"
+        ],
+        "operational_notes": "Site depth advantage most valuable during this period"
+      }
+    ],
+    "structural_design_criteria": {
+      "normal_operations_velocity_fps": {
+        "sustained_min": 2.0,
+        "sustained_max": 2.5
+      },
+      "extreme_event_velocity_fps": {
+        "sustained_min": 4.0,
+        "sustained_max": 5.0
+      },
+      "mooring_design_velocity_fps": 4.0,
+      "current_measurement_station": "USGS Belle Chasse monitoring station (37 miles downstream)",
+      "velocity_amplification_note": "Site at RM 39 experiences amplified velocities due to reduced tidal influence and narrower channel cross-sections"
+    }
+  },
+  "anchorage_zones": [
+    {
+      "name": "Port Sulphur Anchorage",
+      "upstream_river_mile": 39.7,
+      "downstream_river_mile": 37.5,
+      "site_within_anchorage": true,
+      "advantages": [
+        "Designated anchorage eliminates anchoring restrictions",
+        "Provides official vessel staging area for port operations",
+        "Pre-approved anchorage reduces permit complexity"
+      ],
+      "operational_use": "Vessel staging for complex cargo operations and emergency response"
+    }
+  ],
+  "navigation_aids": [
+    {
+      "aid_type": "Light",
+      "name": "Nestor Canal Light",
+      "river_mile": 39.8,
+      "proximity": "Adjacent to facility",
+      "function": "Immediate positioning reference"
+    },
+    {
+      "aid_type": "Daybeacon",
+      "name": "Port Sulphur Anchorage Upper",
+      "river_mile": 39.7,
+      "function": "Upper anchorage boundary marker"
+    },
+    {
+      "aid_type": "Daybeacon",
+      "name": "Port Sulphur Anchorage Lower",
+      "river_mile": 37.5,
+      "function": "Lower anchorage boundary marker"
+    },
+    {
+      "aid_type": "Light",
+      "name": "Home Place Lights",
+      "river_mile_range": "37.0-37.6",
+      "function": "Downstream reference points"
+    }
+  ],
+  "vessel_capabilities": {
+    "existing_facility": {
+      "dock_dimensions": "24' x 433' concrete dock",
+      "rated_capacity_tons": 10000,
+      "water_depth_feet": 52,
+      "draft_capability_feet": 52,
+      "river_stage_note": "52' draft at low river stage"
+    },
+    "vessel_types_accommodated": [
+      {
+        "vessel_class": "Panamax",
+        "accommodation": "Full capacity",
+        "notes": "Navigation channel depths 60-120 feet support Panamax vessels"
+      },
+      {
+        "vessel_class": "Post-Panamax",
+        "accommodation": "Capable",
+        "notes": "Deep channel extends to 120 feet, exceeding most vessel requirements"
+      },
+      {
+        "vessel_class": "Medium-Draft Vessels",
+        "accommodation": "Full capacity",
+        "notes": "Primary docking zone 20-60 feet supports standard operations"
+      },
+      {
+        "vessel_class": "Inland Towboats",
+        "accommodation": "Full capacity",
+        "notes": "Diverse traffic mix includes inland waterway operations"
+      }
+    ],
+    "competitive_advantages": [
+      "Deeper than most Mississippi River terminals (many limited to 40-45 feet)",
+      "Maintains operations during low-water periods when competitors face restrictions",
+      "Direct access to federal navigation channel with shared maintenance",
+      "Shorter transit to Gulf (39 miles) than upriver terminals"
+    ]
+  },
+  "turning_basin": {
+    "availability": "Natural river geometry provides vessel maneuvering space",
+    "channel_width": "Sufficient for two-way large vessel traffic",
+    "turning_capability": "Supports complex docking and departure operations under varying current conditions",
+    "notes": "No dedicated turning basin required due to natural river width"
+  },
+  "dock_expansion_potential": {
+    "expansion_feasibility": "Confirmed by previous engineering studies",
+    "additional_berths": "At least two additional ship berths beyond existing capabilities",
+    "expansion_directions": [
+      "Upstream expansion area viable",
+      "Downstream expansion area viable"
+    ],
+    "phasing_capability": "Allows phased development maintaining operational continuity during construction",
+    "considerations": [
+      "Integration with revetment penetration procedures required",
+      "Coordination with federal channel maintenance activities",
+      "Compliance with navigation safety standards",
+      "Account for seasonal current variations and scour conditions"
+    ]
+  },
+  "regulatory_contacts": {
+    "section_408": {
+      "office": "USACE New Orleans District Engineering Division",
+      "code": "CEMVN-ED-LC",
+      "phone": "+1-504-862-2952",
+      "focus": "Channel Improvement and Revetment Program"
+    },
+    "section_10_404": {
+      "office": "USACE New Orleans District Regulatory Division",
+      "focus": "Permits for structures in navigable waters and fill placement"
+    },
+    "navigation_aids": {
+      "agency": "U.S. Coast Guard",
+      "focus": "Integration with existing navigation aid system"
+    }
+  },
+  "environmental_considerations": {
+    "water_quality": {
+      "concern_level": "Primary",
+      "drinking_water_source": "River provides drinking water for downstream communities",
+      "requirements": [
+        "Turbidity controls during construction",
+        "Spill prevention systems",
+        "Emergency response capabilities"
+      ]
+    },
+    "habitat_considerations": {
+      "wildlife_corridor": "Critical corridor for migratory species",
+      "timing_considerations": "Construction timing to minimize impacts during critical wildlife periods",
+      "mitigation_approach": "Balance industrial development with environmental stewardship"
+    },
+    "post_katrina_standards": {
+      "enhanced_requirements": [
+        "Scour protection design standards",
+        "Foundation stability requirements",
+        "Flood resilience standards"
+      ],
+      "reference": "Interagency Performance Evaluation Task Force findings"
+    }
+  },
+  "flood_risk": {
+    "hurricane_katrina_2005": {
+      "storm_surge_feet": 22,
+      "impact": "Catastrophic flooding, total destruction",
+      "base_elevation_feet": 8,
+      "notes": "Nearly all structures destroyed, population displaced"
+    },
+    "hurricane_ida_2021": {
+      "storm_surge_feet_range": "9-14",
+      "impact": "Significant surge in Plaquemines Parish"
+    },
+    "fema_flood_zone": "High-risk area",
+    "sea_level_rise": "Increasing long-term risk",
+    "insurance_requirement": "High-cost flood insurance mandatory"
+  },
+  "construction_planning": {
+    "pre_construction_requirements": [
+      "Updated bathymetric surveys",
+      "Geotechnical investigation",
+      "Detailed obstruction identification and characterization",
+      "ROV or diver investigation of unidentified large object"
+    ],
+    "contractor_requirements": [
+      "Experienced marine contractors with Mississippi River expertise",
+      "Demonstrated expertise in revetment system interactions",
+      "Adherence to June 1999 repair procedures"
+    ],
+    "environmental_controls": [
+      "Address dynamic river environment",
+      "Variable current conditions management",
+      "Seasonal wildlife considerations",
+      "Water quality protection"
+    ],
+    "optimal_construction_timing": "Summer/Fall normal period (July-October) for stable flow conditions",
+    "emergency_response_planning": [
+      "Mississippi River flood conditions",
+      "Hurricane impact scenarios",
+      "Complex river traffic pattern management"
+    ]
+  },
+  "operational_considerations": {
+    "maintenance_requirements": [
+      "Regular structural system inspections",
+      "Revetment interaction monitoring",
+      "Navigation safety feature maintenance"
+    ],
+    "climate_change_factors": [
+      "Changing precipitation patterns",
+      "Extreme weather frequency changes",
+      "Multi-decade operational scenario planning"
+    ],
+    "federal_infrastructure_integration": {
+      "advantages": [
+        "Shared maintenance resources",
+        "Coordinated planning",
+        "Long-term channel maintenance commitments"
+      ],
+      "dependencies": [
+        "Federal maintenance schedules",
+        "Federal infrastructure priorities"
+      ]
+    }
+  },
+  "data_sources": [
+    "T. Baker Smith Multi-Beam Bathymetric Survey (May 18, 2016)",
+    "USACE Navigation Chart No. 90 (Revised May 6, 2016)",
+    "USACE Mississippi Valley Division Revetment Documentation",
+    "USACE New Orleans District Section 408 Programmatic EA (2025)",
+    "USACE Standard Drawing: Repair Procedures when Penetrating Revetments (June 1999)",
+    "33 CFR 207.200 (Federal Regulations)",
+    "Coast Pilot 5 - Lower Mississippi River",
+    "USGS Belle Chasse Monitoring Station Data",
+    "Port Sulphur Navigation Report",
+    "Navigation Chapter Documentation"
+  ]
+}

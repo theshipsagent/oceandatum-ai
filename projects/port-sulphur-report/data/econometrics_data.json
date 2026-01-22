@@ -1,0 +1,408 @@
+{
+  "metadata": {
+    "title": "Port Sulphur Terminal - Economic & Financial Data",
+    "generated_date": "2026-01-22",
+    "source_documents": [
+      "econometrics_SYNTHESIS.md",
+      "capex_SYNTHESIS.md",
+      "market_SYNTHESIS.md",
+      "property_SYNTHESIS.md",
+      "enviromental_SYNTHESIS.md"
+    ],
+    "location": "28310 Highway 23, Port Sulphur, LA 70083",
+    "coordinates": {
+      "latitude": 29.473414,
+      "longitude": -89.686632
+    }
+  },
+  "property_overview": {
+    "site_details": {
+      "total_acreage": 106.99,
+      "river_frontage_linear_feet": 10693,
+      "highway_23_frontage_linear_feet": 2500,
+      "river_mile_marker": 39,
+      "parish": "Plaquemines Parish",
+      "zoning": "Industrial District 3",
+      "asking_price_usd": 14700000,
+      "price_per_acre_usd": 137407
+    },
+    "existing_infrastructure": {
+      "dock_dimensions": "24' x 433'",
+      "dock_capacity_tons": 10000,
+      "water_depth_draft_feet": 52,
+      "warehouse_square_feet": 5000,
+      "dock_age_years": 92,
+      "construction_year": 1933
+    }
+  },
+  "environmental_costs": {
+    "phase_i_esa": {
+      "description": "Phase I Environmental Site Assessment",
+      "cost_min_usd": 15000,
+      "cost_max_usd": 25000,
+      "timeline_weeks": 4
+    },
+    "phase_ii_esa": {
+      "description": "Phase II Environmental Site Assessment - soil/groundwater sampling",
+      "cost_min_usd": 150000,
+      "cost_max_usd": 300000,
+      "timeline_weeks": 6
+    },
+    "initial_verification": {
+      "total_min_usd": 165000,
+      "total_max_usd": 325000
+    },
+    "potential_remediation": {
+      "in_situ_stabilization_107_acres": {
+        "cost_min_usd": 2000000,
+        "cost_max_usd": 5000000
+      },
+      "groundwater_monitoring_5_10_years": {
+        "cost_min_usd": 500000,
+        "cost_max_usd": 1000000
+      },
+      "hotspot_excavation": {
+        "cost_min_usd": 5000000,
+        "cost_max_usd": 15000000
+      },
+      "total_potential_min_usd": 8000000,
+      "total_potential_max_usd": 25000000
+    },
+    "ongoing_monitoring": {
+      "annual_cost_min_usd": 85000,
+      "annual_cost_max_usd": 175000,
+      "description": "Annual monitoring and compliance including deed restrictions"
+    },
+    "freeport_mcmoran_settlement_2019": {
+      "amount_usd": 100000000,
+      "description": "Coastal environmental damages settlement"
+    }
+  },
+  "barge_transportation_economics": {
+    "mississippi_river_system": {
+      "annual_tonnage_total": 500000000,
+      "captive_through_traffic_percentage": 85,
+      "grain_commodity_percentage": 60,
+      "petroleum_products_percentage": 17.5,
+      "coal_percentage": 12.5,
+      "local_ashore_tonnage_opportunity": 10000000,
+      "capture_rate_without_rail_percentage": 1.5
+    },
+    "barge_rates_per_ton": {
+      "baseline_normal_conditions": {
+        "st_louis_to_gulf_min_usd": 15,
+        "st_louis_to_gulf_max_usd": 20,
+        "per_ton_mile_usd": 0.055
+      },
+      "low_water_crisis_conditions": {
+        "st_louis_to_gulf_min_usd": 20,
+        "st_louis_to_gulf_max_usd": 25,
+        "per_ton_mile_usd": 0.08,
+        "historical_peak_2023_usd": 52.91
+      },
+      "mm_39_diversion_premium": {
+        "normal_conditions_min_usd": 2,
+        "normal_conditions_max_usd": 4,
+        "low_water_conditions_min_usd": 5,
+        "low_water_conditions_max_usd": 8
+      },
+      "stevedoring_cost_per_ton_usd": 1.5
+    },
+    "draft_impact": {
+      "full_draft_12_feet_tons": 1500,
+      "reduced_draft_9_feet_tons": 900,
+      "tons_lost_per_foot_draft": 200,
+      "capacity_reduction_percentage": 27
+    },
+    "fuel_costs": {
+      "diesel_per_gallon_usd": 3.50,
+      "eia_highway_diesel_july_2025_usd": 3.78
+    }
+  },
+  "market_projections": {
+    "container_terminal_teu": {
+      "current_potential_capture_teu": 400000,
+      "capture_timeline_years": 3,
+      "port_of_new_orleans_capacity_teu": 1000000,
+      "capacity_met_year": 2040,
+      "growth_scenarios": {
+        "medium_population_cagr_percentage": 1.9,
+        "high_population_cagr_percentage": 2.3,
+        "aggressive_3pct_organic_cagr_percentage": 4.45
+      },
+      "historical_performance": {
+        "port_nola_import_cagr_2003_2023_percentage": 2.3,
+        "port_nola_export_cagr_2003_2023_percentage": 3.2
+      }
+    },
+    "intermodal_cargo_cagr": {
+      "southwest_to_midwest_percentage": -0.5,
+      "northeast_to_midwest_percentage": 6.2,
+      "pacific_nw_to_midwest_percentage": -6.1,
+      "canadian_pacific_to_midwest_percentage": 7.7,
+      "southwest_to_south_central_percentage": -4.0
+    },
+    "iron_and_steel_imports": {
+      "gulf_coast_cagr_2014_2023_percentage": -4.5,
+      "south_atlantic_cagr_percentage": -0.5,
+      "north_atlantic_cagr_percentage": -10.4
+    }
+  },
+  "regional_industrial_development": {
+    "major_projects": {
+      "venture_global_plaquemines_lng": {
+        "investment_usd": 21000000000,
+        "status": "Under construction",
+        "first_phase_operational": 2024,
+        "construction_jobs": 8000,
+        "permanent_jobs_min": 500,
+        "permanent_jobs_max": 1000,
+        "co2_emissions_tons_annual": 8500000
+      },
+      "apm_terminals_container": {
+        "investment_usd": 500000000,
+        "phase_1_acres": 200,
+        "expansion_potential_acres": 1000,
+        "vessel_capacity_teu": 18000,
+        "truck_loads_diverted_annual": 500000,
+        "drayage_cost_reduction_percentage_min": 30,
+        "drayage_cost_reduction_percentage_max": 40,
+        "on_dock_rail": true
+      },
+      "louisiana_international_terminal_st_bernard": {
+        "investment_usd": 1800000000
+      },
+      "rail_spur_extension": {
+        "investment_usd": 85000000,
+        "federal_funding_percentage": 85,
+        "completion_year": 2029,
+        "connects_to": "New Orleans & Gulf Coast Railway"
+      }
+    },
+    "total_active_projects_value_usd": 21000000000,
+    "regional_lng_tax_breaks_usd": 21000000000
+  },
+  "plaquemines_port_financials": {
+    "fiscal_year": 2022,
+    "total_assets_usd": 116800000,
+    "operating_revenue_usd": 6000000,
+    "operating_revenue_growth_percentage": 13,
+    "capital_additions_usd": 75400000,
+    "venture_global_lease_monthly_usd": 738498,
+    "projected_ranking": "5th largest US port by tonnage within 5 years"
+  },
+  "land_valuation_metrics": {
+    "plaquemines_parish": {
+      "waterfront_industrial_per_acre_usd": 68000,
+      "general_parish_land_per_acre_usd": 39559,
+      "waterfront_premium_percentage": 72,
+      "active_listings_count": 26
+    },
+    "louisiana_regional": {
+      "average_industrial_per_sqft_usd": 34,
+      "mississippi_comparison_per_sqft_usd": 15,
+      "louisiana_premium_percentage": 127,
+      "southeast_louisiana_avg_per_acre_usd": 12544,
+      "mean_listing_price_usd": 1191357
+    },
+    "comparable_transactions": {
+      "port_nickel_industrial_complex": {
+        "acres": 387,
+        "river_frontage_linear_feet": 5720,
+        "dock_dimensions": "510' x 52'",
+        "warehouse_sqft": 66763,
+        "laydown_yard_sqft": 386000,
+        "class_i_rail": "Norfolk Southern"
+      },
+      "gold_river_mega_site_st_charles": {
+        "acres": 985,
+        "type": "Greenfield deep draft riverfront",
+        "class_i_rail": "Union Pacific",
+        "hydrogen_pipeline_capacity_cf_daily": 1700000000
+      },
+      "batture_project_orleans": {
+        "acres": 10,
+        "land_cost_min_usd": 5000000,
+        "zoning": "Marine Industrial",
+        "premium_type": "Urban riverfront"
+      }
+    },
+    "infrastructure_premiums": {
+      "waterfront_access_bay_percentage": 107,
+      "waterfront_access_river_percentage": 62,
+      "waterfront_access_canal_percentage": 61,
+      "waterfront_access_lake_percentage": 15,
+      "rail_access_percentage_min": 15,
+      "rail_access_percentage_max": 30,
+      "highway_access_percentage_min": 10,
+      "highway_access_percentage_max": 20,
+      "port_proximity_percentage_min": 25,
+      "port_proximity_percentage_max": 40
+    }
+  },
+  "development_cost_benchmarks": {
+    "lng_facilities": {
+      "construction_intensity_per_complex_min_usd": 25000000000,
+      "construction_intensity_per_complex_max_usd": 30000000000
+    },
+    "container_terminals": {
+      "global_benchmark_usd": 3000000000,
+      "berth_for_two_170k_ton_vessels_usd": 300000000
+    },
+    "port_infrastructure": {
+      "deep_water_minimum_depth_feet": 30,
+      "post_panamax_depth_feet": 45
+    }
+  },
+  "highway_infrastructure": {
+    "highway_23": {
+      "total_length_miles": 74,
+      "daily_traffic_venice": 5000,
+      "daily_traffic_belle_chasse": 32000,
+      "belle_chasse_bridge_replacement_usd": 169000000,
+      "belle_chasse_bridge_year": 2023,
+      "port_sulphur_widening_usd": 17000000,
+      "widening_length_miles": 4,
+      "peters_road_extension_usd": 7400000,
+      "peters_road_raise_grant": true,
+      "congestion_reduction_percentage_min": 25,
+      "congestion_reduction_percentage_max": 35
+    }
+  },
+  "rail_infrastructure": {
+    "new_orleans_gulf_coast_railway": {
+      "length_miles": 32,
+      "terminus": "Myrtle Grove",
+      "distance_from_port_sulphur_miles": 8,
+      "interchange": "Union Pacific at Westwego",
+      "capacity_utilization_percentage": 10,
+      "at_grade_crossings": 80,
+      "class_i_rail_access_count": 6,
+      "class_i_railroads": [
+        "CSX",
+        "Norfolk Southern",
+        "BNSF",
+        "Union Pacific",
+        "Canadian National",
+        "CPKC"
+      ]
+    },
+    "huey_p_long_bridge_length_feet": 22995
+  },
+  "flood_and_hurricane_risk": {
+    "hurricane_katrina_2005": {
+      "storm_surge_feet": 22,
+      "wind_speed_knots": 75,
+      "infrastructure_damage": "Total destruction",
+      "new_water_areas_created_sq_miles": 82
+    },
+    "hurricane_ida_2021": {
+      "storm_surge_feet_min": 9,
+      "storm_surge_feet_max": 14
+    },
+    "site_elevation_feet_above_sea_level": 8,
+    "fema_flood_zone": "High-risk",
+    "annual_flood_insurance_estimate_usd": 100000,
+    "subsidence_projected_2100_feet": 2
+  },
+  "workforce_economics": {
+    "construction_jobs_estimate": 250,
+    "operating_jobs_estimate": 250,
+    "regional_worker_shortage_index": 0.89,
+    "sector_shortages": [
+      "construction",
+      "maritime",
+      "industrial"
+    ]
+  },
+  "total_estimated_development_costs": {
+    "immediate_due_diligence_min_usd": 500000,
+    "immediate_due_diligence_max_usd": 750000,
+    "potential_remediation_redevelopment_min_usd": 8000000,
+    "potential_remediation_redevelopment_max_usd": 25000000,
+    "annual_ongoing_obligations_min_usd": 85000,
+    "annual_ongoing_obligations_max_usd": 175000
+  },
+  "investment_context": {
+    "historical_operations": {
+      "freeport_sulphur_company_established": 1932,
+      "operations_commenced": 1933,
+      "primary_mining_ceased": 1978,
+      "all_operations_ceased": "Early 2000s",
+      "operational_duration_years": 72,
+      "frasch_process_description": "Superheated water injection to melt sulfur (340°F/170°C)",
+      "wwii_recognition": "Army-Navy E Award for wartime production (1944)"
+    },
+    "economic_decline_factors": [
+      "Competition from recovered sulfur in oil/gas refining",
+      "Market competition from alternative sources",
+      "Recovered sulfur byproduct from oil/gas refining operations"
+    ],
+    "strategic_advantages": [
+      "Deepest water access on Lower Mississippi River (52' draft)",
+      "Closest deepwater terminals to open water",
+      "3+ hour shipping time advantage over upriver competitors",
+      "No air draft restrictions",
+      "Year-round navigation capability",
+      "Proximity to $100+ billion regional industrial development",
+      "Multimodal potential with planned rail connectivity by 2029"
+    ],
+    "strategic_challenges": [
+      "Extreme hurricane and flood vulnerability",
+      "Legacy environmental contamination requiring verification",
+      "No current direct rail access (8 miles to nearest rail)",
+      "High ongoing insurance and compliance costs",
+      "Coastal erosion and subsidence threats",
+      "Limited comparable transaction data",
+      "85-90% of river traffic is captive/through traffic"
+    ]
+  },
+  "market_conditions": {
+    "new_orleans_industrial_q3_2024": {
+      "vacancy_rate_percentage": 6.6,
+      "vacancy_rate_prior_year_percentage": 5.1,
+      "rent_growth_percentage": 3.0,
+      "rent_growth_prior_year_percentage": 7.9,
+      "net_absorption_decline_yoy_percentage": 60
+    },
+    "regional_cargo_flows": {
+      "mississippi_river_annual_tonnage": 450000000,
+      "us_waterborne_agricultural_exports_percentage": 46
+    }
+  },
+  "regulatory_agencies": {
+    "primary": [
+      "Louisiana Department of Environmental Quality (LDEQ)",
+      "EPA Region 6",
+      "US Army Corps of Engineers New Orleans District",
+      "FEMA",
+      "FERC (for LNG projects)",
+      "US Department of Energy (gas export approvals)"
+    ],
+    "frameworks": [
+      "Louisiana Administrative Code (LAC) 33",
+      "Risk-Based Corrective Action (RBCA)",
+      "RECAP (Risk Evaluation/Corrective Action Program)",
+      "CERCLA liability considerations",
+      "Bona Fide Prospective Purchaser (BFPP) protections"
+    ]
+  },
+  "key_financial_ratios": {
+    "property_acquisition": {
+      "asking_price_to_annual_barge_opportunity_ratio": 1.47,
+      "remediation_risk_as_percentage_of_asking_price_max": 170,
+      "environmental_verification_as_percentage_of_asking_price": 2.21
+    },
+    "infrastructure_premiums_applied": {
+      "river_frontage_premium_percentage": 62,
+      "port_proximity_premium_percentage_avg": 32.5,
+      "combined_location_advantage_percentage": 94.5
+    }
+  },
+  "comparable_valuation_notes": {
+    "port_sulphur_property": "106.99 acres @ $14.7M = $137,407/acre",
+    "market_average_waterfront": "$68,000/acre",
+    "premium_over_market": "102% premium justified by 52' draft, river mile 39 location, remediated status",
+    "risk_discount_factors": "Hurricane/flood risk, environmental verification needs, no rail access offset premium"
+  }
+}

@@ -1,0 +1,923 @@
+{
+  "metadata": {
+    "title": "Port Sulphur Terminal Historical Data",
+    "description": "Structured historical timeline and events for Port Sulphur Terminal and Freeport Sulphur Company operations",
+    "location": "Port Sulphur, Plaquemines Parish, Louisiana",
+    "coordinates": {
+      "latitude": 29.4669,
+      "longitude": -89.6953
+    },
+    "generated": "2026-01-22",
+    "source_document": "history_SYNTHESIS.md",
+    "total_events": 87
+  },
+  "periods": [
+    {
+      "id": "prehistoric",
+      "name": "Prehistoric and Indigenous Period",
+      "start_year": -1000,
+      "end_year": 1500,
+      "description": "Archaeological evidence of human occupation by Chitimacha and Houma tribes in the Mississippi River Delta region"
+    },
+    {
+      "id": "colonial",
+      "name": "Colonial and Antebellum Period",
+      "start_year": 1541,
+      "end_year": 1869,
+      "description": "European exploration, French and Spanish colonization, Louisiana Purchase, and pre-industrial development"
+    },
+    {
+      "id": "early_industrial",
+      "name": "Post-Civil War to Early Industrialization",
+      "start_year": 1870,
+      "end_year": 1932,
+      "description": "Commercial fishing, geological surveys, and discovery of sulfur deposits"
+    },
+    {
+      "id": "construction",
+      "name": "Facility Construction and Initial Operations",
+      "start_year": 1932,
+      "end_year": 1939,
+      "description": "Acquisition of sulfur rights, facility construction, and commencement of sulfur operations"
+    },
+    {
+      "id": "peak_operations",
+      "name": "Peak Operational Period",
+      "start_year": 1940,
+      "end_year": 1978,
+      "description": "Wartime production, expansions, and peak sulfur mining operations"
+    },
+    {
+      "id": "decline",
+      "name": "Economic Decline and Closure",
+      "start_year": 1979,
+      "end_year": 2005,
+      "description": "Market competition from recovered sulfur, operational decline, and Hurricane Katrina destruction"
+    },
+    {
+      "id": "remediation",
+      "name": "Post-Katrina Remediation and Current Status",
+      "start_year": 2005,
+      "end_year": 2025,
+      "description": "Environmental remediation, site clearance, and preparation for industrial reuse"
+    }
+  ],
+  "timeline_events": [
+    {
+      "year": -1000,
+      "date": "circa 1000 BCE",
+      "period": "prehistoric",
+      "category": "indigenous",
+      "title": "Early Human Occupation",
+      "description": "Archaeological evidence indicates human occupation with shell middens and ceramic artifacts from Marksville and Coles Creek cultures",
+      "significance": "minor"
+    },
+    {
+      "year": 1541,
+      "date": "1541",
+      "period": "colonial",
+      "category": "exploration",
+      "title": "De Soto Expedition",
+      "description": "Hernando de Soto's expedition explores the Mississippi River Delta region",
+      "significance": "minor"
+    },
+    {
+      "year": 1690,
+      "date": "circa 1690s",
+      "period": "colonial",
+      "category": "colonization",
+      "title": "French Colonization Begins",
+      "description": "French establish Plaquemines as strategic buffer against Spanish claims",
+      "significance": "minor"
+    },
+    {
+      "year": 1746,
+      "date": "1746",
+      "period": "colonial",
+      "category": "infrastructure",
+      "title": "Fort St. Philip Construction",
+      "description": "Fort St. Philip constructed near MM 39 for river defense",
+      "significance": "minor"
+    },
+    {
+      "year": 1760,
+      "date": "circa 1760s",
+      "period": "colonial",
+      "category": "settlement",
+      "title": "Isleño Settler Communities",
+      "description": "Spanish rule brings Isleño settlers from Canary Islands, establishing fishing and trapping communities",
+      "significance": "minor"
+    },
+    {
+      "year": 1803,
+      "date": "1803",
+      "period": "colonial",
+      "category": "political",
+      "title": "Louisiana Purchase",
+      "description": "Area integrated into United States territory through Louisiana Purchase",
+      "significance": "moderate"
+    },
+    {
+      "year": 1834,
+      "date": "1834",
+      "period": "early_industrial",
+      "category": "corporate",
+      "title": "Phelps, Dodge & Company Formed",
+      "description": "Phelps, Dodge & Company formed as metals and mercantile firm (eventual merger partner)",
+      "significance": "minor"
+    },
+    {
+      "year": 1870,
+      "date": "circa 1870s",
+      "period": "early_industrial",
+      "category": "economic",
+      "title": "Shift to Commercial Fishing",
+      "description": "Post-Reconstruction Plaquemines Parish shifts to commercial fishing, oyster harvesting, and citrus farming",
+      "significance": "minor"
+    },
+    {
+      "year": 1887,
+      "date": "1887",
+      "period": "early_industrial",
+      "category": "corporate",
+      "title": "American Metal Company Founded",
+      "description": "The American Metal Company founded (eventual merger partner)",
+      "significance": "minor"
+    },
+    {
+      "year": 1894,
+      "date": "1894",
+      "period": "early_industrial",
+      "category": "technology",
+      "title": "Frasch Process Patent",
+      "description": "Frasch Process patented, enabling sulfur extraction from salt domes using superheated water",
+      "significance": "major"
+    },
+    {
+      "year": 1900,
+      "date": "circa early 1900s",
+      "period": "early_industrial",
+      "category": "exploration",
+      "title": "Sulfur Deposits Identified",
+      "description": "Geological surveys identify sulfur deposits at Lake Grande Écaille",
+      "significance": "major"
+    },
+    {
+      "year": 1912,
+      "date": "1912",
+      "period": "early_industrial",
+      "category": "corporate",
+      "title": "Freeport Sulphur Company Founded",
+      "description": "Freeport Sulphur founded (renamed Freeport Minerals Company in 1971), establishing city of Freeport, Texas near sulfur mines",
+      "significance": "major"
+    },
+    {
+      "year": 1918,
+      "date": "1918",
+      "period": "early_industrial",
+      "category": "corporate",
+      "title": "Climax Molybdenum Company Founded",
+      "description": "Climax Molybdenum Company founded to mine molybdenum near Leadville, Colorado (eventual merger partner)",
+      "significance": "minor"
+    },
+    {
+      "year": 1932,
+      "date": "1932",
+      "period": "construction",
+      "category": "acquisition",
+      "title": "Sulfur Rights Acquired",
+      "description": "Freeport Sulphur Company acquires sulfur mining rights for Lake Grande Écaille (10 miles west of Port Sulphur)",
+      "significance": "critical"
+    },
+    {
+      "year": 1932,
+      "date": "1932-1933",
+      "period": "construction",
+      "category": "construction",
+      "title": "Facility Construction Begins",
+      "description": "Construction of Port Sulphur facility begins to support logistics, refining, and shipping operations",
+      "significance": "critical"
+    },
+    {
+      "year": 1933,
+      "date": "1933",
+      "period": "construction",
+      "category": "infrastructure",
+      "title": "Concrete Dock Completed",
+      "description": "24' x 433' concrete dock completed, rated for 10,000 tons with 52' draft access",
+      "significance": "major"
+    },
+    {
+      "year": 1933,
+      "date": "1933",
+      "period": "construction",
+      "category": "operations",
+      "title": "Operations Commence",
+      "description": "Port Sulphur facility begins operations processing sulfur from Grande Écaille via Frasch Process",
+      "significance": "critical"
+    },
+    {
+      "year": 1933,
+      "date": "1933-1978",
+      "period": "peak_operations",
+      "category": "operations",
+      "title": "Primary Mine Operations Period",
+      "description": "Grande Écaille serves as primary sulfur mine with Port Sulphur as logistics and shipping hub",
+      "significance": "critical"
+    },
+    {
+      "year": 1933,
+      "date": "1933-2005",
+      "period": "peak_operations",
+      "category": "operations",
+      "title": "72 Years of Continuous Operations",
+      "description": "Port Sulphur facility operates continuously as logistics, refining, storage and shipping hub for 72 years",
+      "significance": "critical"
+    },
+    {
+      "year": 1940,
+      "date": "circa 1940s-1970s",
+      "period": "peak_operations",
+      "category": "operations",
+      "title": "Multi-Site Operations Support",
+      "description": "Facility supports multiple Frasch Process sulfur mines throughout Louisiana, including offshore Main Pass Block 299 (50 miles offshore, 300' water depth)",
+      "significance": "major"
+    },
+    {
+      "year": 1943,
+      "date": "August 27, 1943",
+      "period": "peak_operations",
+      "category": "recognition",
+      "title": "Times Picayune Coverage",
+      "description": "The Times Picayune publishes article on Freeport Sulphur wartime operations",
+      "significance": "minor"
+    },
+    {
+      "year": 1944,
+      "date": "1944",
+      "period": "peak_operations",
+      "category": "recognition",
+      "title": "Army-Navy 'E' Award",
+      "description": "Facility receives Army-Navy 'E' Award for excellence in wartime defense production during WWII",
+      "significance": "major"
+    },
+    {
+      "year": 1944,
+      "date": "July 15, 1944",
+      "period": "peak_operations",
+      "category": "recognition",
+      "title": "Times Picayune Award Coverage",
+      "description": "The Times Picayune reports on Army-Navy 'E' Award presentation",
+      "significance": "minor"
+    },
+    {
+      "year": 1950,
+      "date": "circa 1950s",
+      "period": "peak_operations",
+      "category": "expansion",
+      "title": "Facility Expansions",
+      "description": "Major expansions add liquid sulfur shipment capabilities",
+      "significance": "major"
+    },
+    {
+      "year": 1955,
+      "date": "1955",
+      "period": "peak_operations",
+      "category": "operations",
+      "title": "First Liquid Sulfur Barge",
+      "description": "First liquid sulfur barge load shipped from Port Sulphur facility",
+      "significance": "moderate"
+    },
+    {
+      "year": 1957,
+      "date": "1957",
+      "period": "peak_operations",
+      "category": "corporate",
+      "title": "American Metal Climax Merger",
+      "description": "Climax Molybdenum merges with American Metal Company to form American Metal Climax Inc. (AMAX)",
+      "significance": "minor"
+    },
+    {
+      "year": 1960,
+      "date": "circa 1960s-1970s",
+      "period": "peak_operations",
+      "category": "economic",
+      "title": "Peak Operations Period",
+      "description": "Facility at peak operational capacity with extensive 'vatting' operations creating acres of dry sulfur storage blocks",
+      "significance": "major"
+    },
+    {
+      "year": 1967,
+      "date": "1967",
+      "period": "peak_operations",
+      "category": "corporate",
+      "title": "PT Freeport Indonesia Established",
+      "description": "Freeport Sulphur establishes PT Freeport Indonesia to develop Ertsberg copper deposit",
+      "significance": "minor"
+    },
+    {
+      "year": 1969,
+      "date": "1969",
+      "period": "peak_operations",
+      "category": "corporate",
+      "title": "McMoRan Exploration Formed",
+      "description": "McMoRan Exploration formed as independent oil and gas exploration company in South Louisiana (eventual merger partner)",
+      "significance": "minor"
+    },
+    {
+      "year": 1971,
+      "date": "1971",
+      "period": "peak_operations",
+      "category": "corporate",
+      "title": "Freeport Minerals Rename",
+      "description": "Freeport Sulphur Company renamed to Freeport Minerals Company",
+      "significance": "minor"
+    },
+    {
+      "year": 1978,
+      "date": "1978",
+      "period": "decline",
+      "category": "operations",
+      "title": "Grande Écaille Mine Closure",
+      "description": "Primary sulfur mining operations cease at Grande Écaille mine after 45 years",
+      "significance": "major"
+    },
+    {
+      "year": 1980,
+      "date": "1980s",
+      "period": "decline",
+      "category": "economic",
+      "title": "Economic Decline Begins",
+      "description": "Economic decline begins due to market competition from recovered sulfur (oil/gas refining byproducts)",
+      "significance": "major"
+    },
+    {
+      "year": 1981,
+      "date": "1981",
+      "period": "decline",
+      "category": "corporate",
+      "title": "Freeport-McMoRan Inc. Merger",
+      "description": "McMoRan Oil & Gas merges with Freeport Minerals to create Freeport-McMoRan Inc. (FTX), becoming major oil/gas producer with interests in sulfur, copper, and gold",
+      "significance": "major"
+    },
+    {
+      "year": 1985,
+      "date": "1985",
+      "period": "decline",
+      "category": "corporate",
+      "title": "Cyprus Minerals Spin-off",
+      "description": "Cyprus Minerals Company spun off by Amoco (eventual acquisition by Phelps Dodge)",
+      "significance": "minor"
+    },
+    {
+      "year": 1988,
+      "date": "1988",
+      "period": "decline",
+      "category": "corporate",
+      "title": "FCX NYSE Listing",
+      "description": "Freeport-McMoRan Copper Company, Inc. (FCX) lists on New York Stock Exchange following Grasberg discovery",
+      "significance": "moderate"
+    },
+    {
+      "year": 1990,
+      "date": "1990s",
+      "period": "decline",
+      "category": "operations",
+      "title": "Continued Decline",
+      "description": "Reduced operations continue through 1990s, though sulfur processing persists at diminished capacity",
+      "significance": "moderate"
+    },
+    {
+      "year": 1991,
+      "date": "1991",
+      "period": "decline",
+      "category": "corporate",
+      "title": "FCX Name Change",
+      "description": "Freeport-McMoRan changes name to Freeport-McMoRan Copper & Gold Inc. to reflect growth in gold reserves",
+      "significance": "minor"
+    },
+    {
+      "year": 1993,
+      "date": "1993",
+      "period": "decline",
+      "category": "corporate",
+      "title": "Cyprus Amax Formation",
+      "description": "AMAX merges with Cyprus Minerals to form Cyprus Amax Minerals Company",
+      "significance": "minor"
+    },
+    {
+      "year": 1995,
+      "date": "1995",
+      "period": "decline",
+      "category": "corporate",
+      "title": "FCX Spin-off from FTX",
+      "description": "Remaining 80% of FCX spun off from FTX to form independent public company",
+      "significance": "minor"
+    },
+    {
+      "year": 1997,
+      "date": "1997",
+      "period": "decline",
+      "category": "corporate",
+      "title": "FTX Merger with IMC Global",
+      "description": "FTX merges into IMC Global Inc.",
+      "significance": "minor"
+    },
+    {
+      "year": 1999,
+      "date": "1999",
+      "period": "decline",
+      "category": "corporate",
+      "title": "Phelps Dodge Acquires Cyprus Amax",
+      "description": "Phelps Dodge acquires Cyprus Amax Minerals Company, including multiple mines and Climax Molybdenum",
+      "significance": "minor"
+    },
+    {
+      "year": 2000,
+      "date": "early 2000s",
+      "period": "decline",
+      "category": "operations",
+      "title": "Operations Cease",
+      "description": "All sulfur operations at Port Sulphur facility cease due to market competition",
+      "significance": "major"
+    },
+    {
+      "year": 2000,
+      "date": "early 2000s",
+      "period": "decline",
+      "category": "environmental",
+      "title": "Environmental Concerns Emerge",
+      "description": "Environmental concerns documented including acid generation, heavy metals mobilization, and groundwater impacts from 72 years of operations",
+      "significance": "moderate"
+    },
+    {
+      "year": 2001,
+      "date": "2001",
+      "period": "decline",
+      "category": "corporate",
+      "title": "ICMM Founding Member",
+      "description": "FCX becomes founding member of International Council on Mining & Metals (ICMM)",
+      "significance": "minor"
+    },
+    {
+      "year": 2005,
+      "date": "August 29, 2005",
+      "period": "remediation",
+      "category": "disaster",
+      "title": "Hurricane Katrina Destruction",
+      "description": "Hurricane Katrina delivers catastrophic damage with 22' storm surge and 75 kt winds, destroying remaining sulfur facility infrastructure and displacing contaminants",
+      "significance": "critical"
+    },
+    {
+      "year": 2005,
+      "date": "2005",
+      "period": "remediation",
+      "category": "operations",
+      "title": "End of Freeport Operations",
+      "description": "Hurricane Katrina marks definitive end of 72-year Freeport Sulphur Company operations at Port Sulphur",
+      "significance": "critical"
+    },
+    {
+      "year": 2005,
+      "date": "post-2005",
+      "period": "remediation",
+      "category": "remediation",
+      "title": "Site Clearance Begins",
+      "description": "Post-Katrina site clearance operations begin with FEMA assistance",
+      "significance": "moderate"
+    },
+    {
+      "year": 2007,
+      "date": "2007",
+      "period": "remediation",
+      "category": "corporate",
+      "title": "FCX Acquires Phelps Dodge",
+      "description": "FCX acquires Phelps Dodge, becoming world's largest publicly traded copper producer in largest mining acquisition in history",
+      "significance": "moderate"
+    },
+    {
+      "year": 2007,
+      "date": "2007",
+      "period": "remediation",
+      "category": "recovery",
+      "title": "FEMA Water Treatment Funding",
+      "description": "FEMA provides $1.5M funding for water treatment infrastructure recovery",
+      "significance": "moderate"
+    },
+    {
+      "year": 2009,
+      "date": "2009",
+      "period": "remediation",
+      "category": "environmental",
+      "title": "Environmental Assessment Under RECAP",
+      "description": "Environmental assessments conducted under Louisiana DEQ's Risk Evaluation/Corrective Action Program (RECAP) addressing sulfuric acid and heavy metals contamination",
+      "significance": "major"
+    },
+    {
+      "year": 2013,
+      "date": "2013",
+      "period": "remediation",
+      "category": "corporate",
+      "title": "Oil & Gas Acquisitions",
+      "description": "FCX acquires Plains Exploration & Production and McMoRan Exploration Co., creating U.S.-based natural resource company",
+      "significance": "minor"
+    },
+    {
+      "year": 2014,
+      "date": "2014",
+      "period": "remediation",
+      "category": "corporate",
+      "title": "Freeport-McMoRan Inc. Name Change",
+      "description": "Corporate name simplified from Freeport-McMoRan Copper & Gold Inc. to Freeport-McMoRan Inc.",
+      "significance": "minor"
+    },
+    {
+      "year": 2015,
+      "date": "2015",
+      "period": "remediation",
+      "category": "corporate",
+      "title": "Strategic Refocus on Copper",
+      "description": "FCX announces new strategy to focus on global leading position in copper industry",
+      "significance": "minor"
+    },
+    {
+      "year": 2016,
+      "date": "2016",
+      "period": "remediation",
+      "category": "corporate",
+      "title": "Asset Sales for Debt Reduction",
+      "description": "FCX generates $8 billion cash through asset sales including Tenke Fungurume and substantially all oil & gas assets",
+      "significance": "minor"
+    },
+    {
+      "year": 2018,
+      "date": "2018",
+      "period": "remediation",
+      "category": "corporate",
+      "title": "Indonesian Partnership",
+      "description": "FCX completes transaction with Indonesian government regarding PT-FI's long-term mining rights",
+      "significance": "minor"
+    },
+    {
+      "year": 2020,
+      "date": "circa 2020-2024",
+      "period": "remediation",
+      "category": "remediation",
+      "title": "Environmental Remediation Program",
+      "description": "Freeport-McMoRan conducts comprehensive remediation involving lime neutralization, soil amendments, and groundwater treatment",
+      "significance": "major"
+    },
+    {
+      "year": 2024,
+      "date": "2024",
+      "period": "remediation",
+      "category": "remediation",
+      "title": "Remediation Completion",
+      "description": "Environmental remediation completed per Freeport-McMoRan 2024 Sustainability Report",
+      "significance": "major"
+    },
+    {
+      "year": 2024,
+      "date": "2024",
+      "period": "remediation",
+      "category": "regulatory",
+      "title": "LDEQ 'Ready for Reuse' Status",
+      "description": "Site receives verified 'ready for reuse' status from Louisiana Department of Environmental Quality (LDEQ)",
+      "significance": "major"
+    },
+    {
+      "year": 2024,
+      "date": "2024",
+      "period": "remediation",
+      "category": "regulatory",
+      "title": "EPA No Enforcement Actions",
+      "description": "EPA ECHO database confirms no ongoing enforcement actions (AI #168766)",
+      "significance": "moderate"
+    },
+    {
+      "year": 2025,
+      "date": "September 2025",
+      "period": "remediation",
+      "category": "realestate",
+      "title": "Property Listed for Sale",
+      "description": "106.99-acre industrial waterfront property listed for $14.7M, emphasizing deep-water access for potential dock expansion",
+      "significance": "major"
+    }
+  ],
+  "key_milestones": [
+    {
+      "id": "founding",
+      "year": 1912,
+      "title": "Freeport Sulphur Company Founded",
+      "description": "Establishment of the company that would develop Port Sulphur operations",
+      "impact": "critical"
+    },
+    {
+      "id": "acquisition",
+      "year": 1932,
+      "title": "Sulfur Rights Acquisition",
+      "description": "Freeport acquires Lake Grande Écaille sulfur mining rights, initiating Port Sulphur development",
+      "impact": "critical"
+    },
+    {
+      "id": "commissioning",
+      "year": 1933,
+      "title": "Facility Commissioning",
+      "description": "Port Sulphur facility begins operations with completion of concrete dock",
+      "impact": "critical"
+    },
+    {
+      "id": "wartime_peak",
+      "year": 1944,
+      "title": "Wartime Production Excellence",
+      "description": "Army-Navy 'E' Award recognizes critical defense production contributions",
+      "impact": "major"
+    },
+    {
+      "id": "liquid_sulfur",
+      "year": 1955,
+      "title": "Liquid Sulfur Shipping Begins",
+      "description": "Facility capabilities expand to include liquid sulfur barge shipments",
+      "impact": "moderate"
+    },
+    {
+      "id": "mine_closure",
+      "year": 1978,
+      "title": "Grande Écaille Mine Closure",
+      "description": "Primary sulfur mine ceases operations after 45 years, marking beginning of decline",
+      "impact": "major"
+    },
+    {
+      "id": "operations_end",
+      "year": 2000,
+      "title": "Operations Cessation",
+      "description": "All sulfur operations cease due to market competition from recovered sulfur",
+      "impact": "major"
+    },
+    {
+      "id": "katrina",
+      "year": 2005,
+      "title": "Hurricane Katrina Destruction",
+      "description": "Catastrophic hurricane destroys remaining infrastructure, ending 72-year operational history",
+      "impact": "critical"
+    },
+    {
+      "id": "remediation_complete",
+      "year": 2024,
+      "title": "Environmental Remediation Completion",
+      "description": "Site remediation completed and verified as 'ready for reuse' by LDEQ",
+      "impact": "major"
+    },
+    {
+      "id": "market_listing",
+      "year": 2025,
+      "title": "Property Listed for Industrial Reuse",
+      "description": "Site marketed for new industrial development with deep-water access",
+      "impact": "moderate"
+    }
+  ],
+  "ownership_history": [
+    {
+      "period": "Pre-1932",
+      "owner": "Undeveloped marshland / Various private owners",
+      "description": "Property status as unclaimed wetland or early plantation land"
+    },
+    {
+      "period": "1932-1981",
+      "owner": "Freeport Sulphur Company (later Freeport Minerals Company, 1971)",
+      "description": "Active sulfur mining, processing, and shipping operations"
+    },
+    {
+      "period": "1981-2005",
+      "owner": "Freeport-McMoRan Inc. (FTX/FCX)",
+      "description": "Declining operations through merger period, cessation circa 2000, Hurricane Katrina damage 2005"
+    },
+    {
+      "period": "2005-2024",
+      "owner": "Freeport-McMoRan Inc.",
+      "description": "Post-disaster remediation, environmental cleanup, site preparation for reuse"
+    },
+    {
+      "period": "2025-Present",
+      "owner": "Unknown (Listed for sale)",
+      "description": "Property marketed for industrial reuse at $14.7M"
+    }
+  ],
+  "infrastructure_development": [
+    {
+      "year": 1933,
+      "infrastructure": "Concrete Dock",
+      "specifications": "24' x 433', 10,000-ton capacity, 52' draft access",
+      "status": "Original construction"
+    },
+    {
+      "year": 1933,
+      "infrastructure": "Molten Sulfur Storage Tanks",
+      "specifications": "Large insulated heated tanks for hot molten sulfur storage",
+      "status": "Original construction"
+    },
+    {
+      "year": 1933,
+      "infrastructure": "Vatting Operations Area",
+      "specifications": "Acres of solidified sulfur storage blocks",
+      "status": "Original construction"
+    },
+    {
+      "year": 1933,
+      "infrastructure": "Refining Facilities",
+      "specifications": "Frasch Process sulfur refining equipment",
+      "status": "Original construction"
+    },
+    {
+      "year": 1933,
+      "infrastructure": "Company Town",
+      "specifications": "Worker housing and supporting infrastructure",
+      "status": "Original construction"
+    },
+    {
+      "year": 1950,
+      "infrastructure": "Liquid Sulfur Loading System",
+      "specifications": "Barge loading capabilities for liquid sulfur",
+      "status": "Expansion"
+    },
+    {
+      "year": 2005,
+      "infrastructure": "All Facilities",
+      "specifications": "Complete infrastructure",
+      "status": "Destroyed by Hurricane Katrina"
+    },
+    {
+      "year": 2024,
+      "infrastructure": "Cleared Industrial Site",
+      "specifications": "106.99 acres, Industrial District 3 zoning, deep-water access maintained",
+      "status": "Ready for reuse/redevelopment"
+    }
+  ],
+  "environmental_timeline": [
+    {
+      "year": 1933,
+      "event": "Operations Begin",
+      "description": "72-year period of sulfur processing begins with associated environmental impacts"
+    },
+    {
+      "year": 2000,
+      "event": "Environmental Concerns Documented",
+      "description": "Acid generation, heavy metals mobilization, and groundwater impacts identified"
+    },
+    {
+      "year": 2005,
+      "event": "Hurricane Katrina Contamination",
+      "description": "Storm surge and wind damage displaces contaminants across site"
+    },
+    {
+      "year": 2009,
+      "event": "LDEQ RECAP Assessment",
+      "description": "Environmental assessment under Risk Evaluation/Corrective Action Program addresses contamination"
+    },
+    {
+      "year": 2020,
+      "event": "Remediation Program Begins",
+      "description": "Comprehensive remediation with lime neutralization, soil amendments, groundwater treatment"
+    },
+    {
+      "year": 2024,
+      "event": "Remediation Completion",
+      "description": "Site verified as 'ready for reuse' by LDEQ, no ongoing EPA enforcement actions"
+    }
+  ],
+  "operations_data": {
+    "operational_period": "1933-2005 (72 years total operations)",
+    "peak_period": "1940s-1970s",
+    "primary_mine_period": "1933-1978 (Grande Écaille)",
+    "decline_period": "1980s-2000s",
+    "facility_functions": [
+      "Frasch Process sulfur refining",
+      "Hot molten sulfur storage",
+      "Solidified sulfur vatting operations",
+      "Liquid sulfur barge loading",
+      "Logistics hub for multiple Louisiana mines",
+      "Support for offshore operations (Main Pass Block 299)",
+      "Processing recovered sulfur from oil/gas refining"
+    ],
+    "acreage": "106.99 acres",
+    "dock_specifications": {
+      "dimensions": "24' x 433'",
+      "capacity": "10,000 tons",
+      "draft": "52 feet"
+    },
+    "offshore_support": {
+      "location": "Main Pass Block 299",
+      "distance": "50 miles offshore",
+      "water_depth": "300 feet"
+    }
+  },
+  "corporate_evolution": [
+    {
+      "year": 1912,
+      "entity": "Freeport Sulphur Company",
+      "event": "Founded"
+    },
+    {
+      "year": 1971,
+      "entity": "Freeport Minerals Company",
+      "event": "Renamed from Freeport Sulphur"
+    },
+    {
+      "year": 1981,
+      "entity": "Freeport-McMoRan Inc. (FTX)",
+      "event": "Merger of Freeport Minerals with McMoRan Oil & Gas"
+    },
+    {
+      "year": 1988,
+      "entity": "Freeport-McMoRan Copper Company, Inc.",
+      "event": "NYSE listing following Grasberg discovery"
+    },
+    {
+      "year": 1991,
+      "entity": "Freeport-McMoRan Copper & Gold Inc.",
+      "event": "Renamed to reflect gold reserves growth"
+    },
+    {
+      "year": 2007,
+      "entity": "Freeport-McMoRan Copper & Gold Inc.",
+      "event": "Acquires Phelps Dodge, becomes world's largest copper producer"
+    },
+    {
+      "year": 2014,
+      "entity": "Freeport-McMoRan Inc.",
+      "event": "Simplified corporate name"
+    }
+  ],
+  "references": [
+    {
+      "source": "The Times Picayune",
+      "date": "August 27, 1943",
+      "description": "Article on Freeport Sulphur wartime operations"
+    },
+    {
+      "source": "The Times Picayune",
+      "date": "July 15, 1944",
+      "description": "Coverage of Army-Navy 'E' Award presentation"
+    },
+    {
+      "source": "National Archives, MD",
+      "date": "1944",
+      "description": "Photograph of Town of Port Sulphur"
+    },
+    {
+      "source": "Freeport-McMoRan Corporate History",
+      "url": "https://www.fcx.com/about/history",
+      "description": "Official company timeline and milestones"
+    },
+    {
+      "source": "Louisiana Division of Archaeology",
+      "description": "Regional archaeological surveys of indigenous sites"
+    },
+    {
+      "source": "Louisiana DEQ RECAP Program",
+      "description": "Environmental assessment and remediation documentation"
+    },
+    {
+      "source": "EPA ECHO Database",
+      "facility_id": "AI #168766",
+      "description": "Environmental compliance tracking"
+    },
+    {
+      "source": "FEMA Disaster Recovery Records",
+      "year": 2007,
+      "description": "Post-Katrina recovery funding ($1.5M water treatment)"
+    },
+    {
+      "source": "Freeport-McMoRan 2024 Sustainability Report",
+      "description": "Remediation completion documentation"
+    }
+  ],
+  "visualization_configs": {
+    "timeline_display": {
+      "default_view": "1930-2025",
+      "zoom_periods": [
+        "1930-1945 (Construction & Wartime)",
+        "1945-1978 (Peak Operations)",
+        "1978-2005 (Decline & Closure)",
+        "2005-2025 (Remediation & Reuse)"
+      ]
+    },
+    "event_categories": {
+      "corporate": "Corporate evolution and mergers",
+      "operations": "Facility operations and production",
+      "infrastructure": "Infrastructure construction and development",
+      "environmental": "Environmental impacts and remediation",
+      "disaster": "Natural disasters and damage",
+      "regulatory": "Regulatory compliance and approvals",
+      "economic": "Economic trends and market forces",
+      "recognition": "Awards and public recognition",
+      "realestate": "Property transactions and listings"
+    },
+    "significance_levels": {
+      "critical": "Major turning points in site history",
+      "major": "Important developments affecting operations",
+      "moderate": "Notable events with lasting impact",
+      "minor": "Supporting context and background events"
+    }
+  }
+}

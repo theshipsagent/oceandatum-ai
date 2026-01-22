@@ -1,0 +1,1040 @@
+<!-- ============================================================================
+     MARKET ANALYSIS SECTION
+     Port Sulphur Terminal Analysis - Mile Marker 39
+
+     Generated: 2026-01-22
+     Data Source: market_data.json
+     Chart Library: Chart.js v4.x
+     ============================================================================ -->
+
+<section id="market" class="tab-content">
+    <!-- Section Header -->
+    <div class="section-header">
+        <h2>Market Analysis</h2>
+        <div class="source-count">
+            <span class="source-icon">📊</span>
+            <span class="source-text">7 sources</span>
+        </div>
+    </div>
+
+    <!-- Executive Summary Block -->
+    <div class="content-block summary-block">
+        <h3>Executive Summary</h3>
+        <p>
+            The Mississippi River System (MRS) handles approximately <strong>500 million short tons</strong>
+            of freight annually, but 80-90% is classified as captive or through traffic that bypasses
+            intermediate ports. For Mile Marker 39 (Port Sulphur Terminal), the accessible non-captive
+            market is estimated at <strong>5-10 million tons annually</strong>, primarily industrial cargo
+            including cement imports, metals, and bulk materials. Current capture rate remains at 1-2%,
+            with rail connectivity identified as the critical constraint for growth.
+        </p>
+        <div class="key-metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">500M</div>
+                <div class="metric-label">Annual MRS Tonnage</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">85%</div>
+                <div class="metric-label">Captive/Through Traffic</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">7.5M</div>
+                <div class="metric-label">Accessible Cargo (tons)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">1.5%</div>
+                <div class="metric-label">Current Capture Rate</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mississippi River System Overview -->
+    <div class="content-block">
+        <h3>Mississippi River System Traffic Composition</h3>
+        <p>
+            The Mississippi River System's cargo mix is dominated by grain exports (60%), petroleum products
+            (17.5%), and coal (12.5%), with the remaining 10% comprising steel, aggregates, and chemicals.
+            This downbound export flow originates from upper river points (St. Louis, Mid-Mississippi) and
+            moves to Gulf terminals near Mile Marker 0, bypassing most intermediate ports.
+        </p>
+
+        <!-- Commodity Mix Chart -->
+        <div class="chart-container">
+            <canvas id="commodityMixChart"></canvas>
+        </div>
+
+        <div class="insight-box">
+            <h4>Market Insight</h4>
+            <p>
+                <strong>80-90% of Mississippi River traffic is captive</strong>, locked into integrated
+                supply chains by major shippers like Cargill and ADM. Large tows (35-45 barges) minimize
+                intermediate handling due to economies of scale and contractual obligations. Only 10-20%
+                involves local ashore handling at lower river ports (MM 0-95).
+            </p>
+        </div>
+    </div>
+
+    <!-- Barge Rate Volatility -->
+    <div class="content-block">
+        <h3>Barge Transportation Economics</h3>
+        <p>
+            Barge rates from St. Louis to Gulf ports average <strong>$17.94 per ton</strong> under normal
+            conditions (January 2025), but low-water events create extreme volatility. During the 2023
+            drought crisis, rates peaked at <strong>$52.91 per ton</strong> (+195% vs. baseline), driven
+            by draft restrictions reducing barge capacity by 27% and forcing daylight-only tows.
+        </p>
+
+        <!-- Barge Rate Volatility Chart -->
+        <div class="chart-container">
+            <canvas id="bargeRateVolatilityChart"></canvas>
+        </div>
+
+        <div class="data-table-wrapper">
+            <h4>MM39 Diversion Economics</h4>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Route Scenario</th>
+                        <th>Normal Conditions</th>
+                        <th>Low-Water Crisis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>St. Louis to Gulf (MM 0)</td>
+                        <td>$17.94 /ton</td>
+                        <td>$25.00 /ton (+39%)</td>
+                    </tr>
+                    <tr>
+                        <td>St. Louis to MM39</td>
+                        <td>$17.50 /ton</td>
+                        <td>$21.50 /ton</td>
+                    </tr>
+                    <tr>
+                        <td>Potential Savings</td>
+                        <td>$0.44 /ton</td>
+                        <td>$3.50 /ton</td>
+                    </tr>
+                    <tr>
+                        <td>Additional Handling Cost</td>
+                        <td colspan="2">$1.50 /ton (range: $1-2)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="table-note">
+                <em>Note: MM39 diversion becomes economically attractive during crisis periods, offering
+                $3-5 per ton savings despite additional handling costs. 52-foot water depth at MM39
+                provides operational advantage during draft restrictions.</em>
+            </p>
+        </div>
+
+        <div class="highlight-box">
+            <h4>2025 Forecast</h4>
+            <p>
+                Expected rate inflation of <strong>12.5% (range: 10-15%)</strong> through 2025, with
+                highest risk during fall months. Federal dredging investment of $2.5 billion annually
+                mitigates but does not eliminate volatility. Ongoing drought risk creates incentive for
+                downstream discharge points like MM39.
+            </p>
+        </div>
+    </div>
+
+    <!-- Container Market Analysis -->
+    <div class="content-block">
+        <h3>Container Market Dynamics</h3>
+        <p>
+            Lower Mississippi River ports have identified <strong>400,000 TEU</strong> of container cargo
+            potential, based on Martin Associates analysis for Greater New Orleans Inc. (2025). Projected
+            capture over 3 years, combined with organic growth scenarios, yields compound annual growth
+            rates (CAGR) ranging from 1.9% to 4.45%.
+        </p>
+
+        <!-- Container Growth Chart -->
+        <div class="chart-container">
+            <canvas id="containerGrowthChart"></canvas>
+        </div>
+
+        <div class="two-column-grid">
+            <div class="column-content">
+                <h4>Historical Performance</h4>
+                <ul class="styled-list">
+                    <li><strong>Port of New Orleans Import CAGR:</strong> 2.3% (2003-2023)</li>
+                    <li><strong>Port of New Orleans Export CAGR:</strong> 3.2% (2003-2023)</li>
+                    <li><strong>U.S. Ports Overall CAGR:</strong> 3.0% (2003-2023)</li>
+                </ul>
+            </div>
+            <div class="column-content">
+                <h4>Capacity Outlook</h4>
+                <p>
+                    Current Port of New Orleans container terminal capacity is <strong>not saturated
+                    until 2040</strong>, even under aggressive growth scenario (400K TEU capture + 3%
+                    organic growth). This reduces near-term pressure for alternative container facilities
+                    at MM39.
+                </p>
+            </div>
+        </div>
+
+        <!-- Intermodal Trends Chart -->
+        <div class="chart-container">
+            <canvas id="intermodalTrendsChart"></canvas>
+        </div>
+
+        <div class="insight-box">
+            <h4>Intermodal Trade Shift</h4>
+            <p>
+                <strong>Discretionary cargo moving from West Coast to East Coast ports.</strong>
+                International intermodal to Midwest from Southwest (LA/Long Beach) declined -0.5% CAGR
+                (2010-2023), while Northeast ports (NY/Norfolk) grew +6.2% CAGR. Pacific Northwest
+                (Seattle/Tacoma) posted -6.1% CAGR, while Canadian Pacific ports grew +7.7% CAGR.
+            </p>
+        </div>
+    </div>
+
+    <!-- Iron & Steel Market -->
+    <div class="content-block">
+        <h3>Iron & Steel Import Market</h3>
+        <p>
+            Gulf Coast iron and steel imports have declined at <strong>-4.5% CAGR</strong> from 2014-2023,
+            falling from 19.7 million tons (2014) to 13.0 million tons (2023). Lower Mississippi River
+            (LMR) ports hold 40% market share (range: 35-45%), but lost market share between 2021-2023.
+        </p>
+
+        <!-- Iron & Steel Trend Chart -->
+        <div class="chart-container">
+            <canvas id="ironSteelTrendChart"></canvas>
+        </div>
+
+        <div class="competitive-grid">
+            <div class="competitive-card">
+                <div class="card-header">
+                    <span class="rank-badge">#1</span>
+                    <h4>Port of Mobile</h4>
+                </div>
+                <p class="commodity-list"><strong>Primary:</strong> Pig iron, slab</p>
+            </div>
+            <div class="competitive-card">
+                <div class="card-header">
+                    <span class="rank-badge">#2</span>
+                    <h4>Port of New Orleans</h4>
+                </div>
+                <p class="commodity-list"><strong>Primary:</strong> Pig iron, slab</p>
+            </div>
+            <div class="competitive-card">
+                <div class="card-header">
+                    <span class="rank-badge">#3</span>
+                    <h4>Port of Houston</h4>
+                </div>
+                <p class="commodity-list"><strong>Primary:</strong> Structural steel, shapes, pipe</p>
+            </div>
+            <div class="competitive-card">
+                <div class="card-header">
+                    <span class="rank-badge">#4</span>
+                    <h4>Gramercy</h4>
+                </div>
+                <p class="commodity-list"><strong>Primary:</strong> Pig iron, slab</p>
+            </div>
+            <div class="competitive-card">
+                <div class="card-header">
+                    <span class="rank-badge">#5</span>
+                    <h4>Baton Rouge</h4>
+                </div>
+                <p class="commodity-list"><strong>Primary:</strong> Pig iron, slab</p>
+            </div>
+        </div>
+
+        <!-- Competitive Ports Chart -->
+        <div class="chart-container">
+            <canvas id="competitivePortsChart"></canvas>
+        </div>
+
+        <!-- Market Share Chart -->
+        <div class="chart-container">
+            <canvas id="marketShareChart"></canvas>
+        </div>
+    </div>
+
+    <!-- MM39 Market Opportunity -->
+    <div class="content-block">
+        <h3>MM39-Specific Market Opportunity</h3>
+        <p>
+            Mile Marker 39 (Port Sulphur Terminal) has access to <strong>5-10 million tons annually</strong>
+            of non-captive industrial cargo, but current capture rate remains at 1-2%. Primary commodities
+            include cement imports, metals, and industrial materials. The critical constraint is rail
+            connectivity via the New Orleans & Gulf Coast Railway (NOGC).
+        </p>
+
+        <div class="swot-grid">
+            <div class="swot-card strengths">
+                <h4>Strengths</h4>
+                <ul class="styled-list">
+                    <li>52-foot water depth (deep draft capable)</li>
+                    <li>Mile Marker 39 proximity to Gulf (39 miles vs 89+ for major ports)</li>
+                    <li>Potential $3-5 per ton savings vs upper river terminals</li>
+                    <li>106.99 acres available industrial land</li>
+                    <li>Existing 24' × 433' dock infrastructure</li>
+                </ul>
+            </div>
+            <div class="swot-card weaknesses">
+                <h4>Weaknesses</h4>
+                <ul class="styled-list">
+                    <li>Limited rail connectivity (NOGC short line only, 32 miles)</li>
+                    <li>Current 1-2% capture rate of accessible cargo</li>
+                    <li>Competing with established Port of South Louisiana</li>
+                    <li>Environmental due diligence required (legacy sulfur operations)</li>
+                    <li>Plaquemines Parish infrastructure constraints</li>
+                </ul>
+            </div>
+            <div class="swot-card opportunities">
+                <h4>Opportunities</h4>
+                <ul class="styled-list">
+                    <li>5-10 million tons annually non-captive cargo accessible</li>
+                    <li>Rail spur development to NOGC Railway (advanced concepts in development)</li>
+                    <li>Cement imports and metals handling specialization</li>
+                    <li>LNG-related supply chain services (Venture Global Plaquemines, CP2)</li>
+                    <li>Crisis-period barge diversions (low-water events)</li>
+                </ul>
+            </div>
+            <div class="swot-card threats">
+                <h4>Threats</h4>
+                <ul class="styled-list">
+                    <li>Port of New Orleans container capacity not saturated until 2040</li>
+                    <li>Climate-driven low water events increasing costs</li>
+                    <li>80-90% of Mississippi traffic is captive/through</li>
+                    <li>Major competitors with established market share</li>
+                    <li>Regional LNG expansion environmental scrutiny</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="revenue-model-block">
+            <h4>Revenue Potential Model (10% Capture Scenario)</h4>
+            <div class="revenue-grid">
+                <div class="revenue-item">
+                    <span class="revenue-label">Accessible Market Size:</span>
+                    <span class="revenue-value">7.5M tons</span>
+                </div>
+                <div class="revenue-item">
+                    <span class="revenue-label">Target Capture Rate:</span>
+                    <span class="revenue-value">10%</span>
+                </div>
+                <div class="revenue-item">
+                    <span class="revenue-label">Annual Tonnage Captured:</span>
+                    <span class="revenue-value">750,000 tons</span>
+                </div>
+                <div class="revenue-item">
+                    <span class="revenue-label">Handling Fee (avg):</span>
+                    <span class="revenue-value">$8.50 /ton</span>
+                </div>
+                <div class="revenue-item">
+                    <span class="revenue-label">Storage Revenue (avg):</span>
+                    <span class="revenue-value">$2.50 /ton</span>
+                </div>
+                <div class="revenue-item total">
+                    <span class="revenue-label">Annual Revenue Potential:</span>
+                    <span class="revenue-value">$8.25M</span>
+                </div>
+                <div class="revenue-item range">
+                    <span class="revenue-label">Revenue Range (6-12% capture):</span>
+                    <span class="revenue-value">$5.6M - $12M</span>
+                </div>
+            </div>
+            <p class="model-assumptions">
+                <em>Assumptions: Handling fees $6-12/ton, storage $1.50-4/ton, 10% capture rate.
+                Achieving higher capture rates requires rail connectivity improvements and specialized
+                commodity handling infrastructure.</em>
+            </p>
+        </div>
+    </div>
+
+    <!-- Infrastructure & Connectivity -->
+    <div class="content-block">
+        <h3>Infrastructure & Rail Connectivity</h3>
+        <p>
+            The <strong>New Orleans & Gulf Coast Railway (NOGC)</strong> is a 32-mile short line serving
+            the Westbank, with interchange to Union Pacific at Westwego. Plaquemines Port has advanced
+            rail-spur concepts to connect future terminals to NOGC, critical for improving the current
+            1-2% capture rate to higher levels.
+        </p>
+
+        <div class="infrastructure-grid">
+            <div class="infra-card">
+                <h4>Waterway Access</h4>
+                <ul class="styled-list">
+                    <li><strong>Water Depth:</strong> 52 feet (deep draft capable)</li>
+                    <li><strong>Location:</strong> Mile Marker 39 (39 miles from Gulf)</li>
+                    <li><strong>Dock:</strong> 24' × 433' existing structure</li>
+                    <li><strong>Advantage:</strong> Operational capability during draft restrictions</li>
+                </ul>
+            </div>
+            <div class="infra-card">
+                <h4>Rail Connectivity</h4>
+                <ul class="styled-list">
+                    <li><strong>Railway:</strong> NOGC (New Orleans & Gulf Coast)</li>
+                    <li><strong>Type:</strong> Short line (32 miles)</li>
+                    <li><strong>Interchange:</strong> Union Pacific at Westwego</li>
+                    <li><strong>Status:</strong> Relocation/upgrade planning; rail-spur concepts in development</li>
+                </ul>
+            </div>
+            <div class="infra-card">
+                <h4>Land Resources</h4>
+                <ul class="styled-list">
+                    <li><strong>Total Acreage:</strong> 106.99 acres</li>
+                    <li><strong>Location:</strong> 28310 Highway 23, Plaquemines Parish</li>
+                    <li><strong>Zoning:</strong> Industrial use (deed restrictions)</li>
+                    <li><strong>Environmental:</strong> RECAP program - ready for industrial reuse</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Market Trends & Forecast -->
+    <div class="content-block">
+        <h3>Market Trends & 2025-2032 Forecast</h3>
+
+        <div class="trend-cards-grid">
+            <div class="trend-card positive">
+                <h4>System-Wide Growth</h4>
+                <div class="trend-value">+7.2% CAGR</div>
+                <p>Mississippi River System barge transportation market (2025-2032), driven by export
+                demand and bulk commodities. Sources: Coherent Market Insights (3.9%), Mordor
+                Intelligence (8.48%).</p>
+            </div>
+            <div class="trend-card neutral">
+                <h4>Local Ashore Growth</h4>
+                <div class="trend-value">+3.0% CAGR</div>
+                <p>Local ashore cargo growth at lower river ports, constrained by captive traffic
+                dominance and rail connectivity limitations. Non-captive opportunities focus on
+                industrial materials.</p>
+            </div>
+            <div class="trend-card negative">
+                <h4>Iron & Steel Decline</h4>
+                <div class="trend-value">-4.5% CAGR</div>
+                <p>Gulf Coast iron and steel imports declining (2014-2023), with LMR ports losing
+                market share 2021-2023. Pig iron and slab dominate, structural steel to Houston.</p>
+            </div>
+            <div class="trend-card warning">
+                <h4>Climate Risk</h4>
+                <div class="trend-value">Increasing</div>
+                <p>Low-water events creating 27% capacity loss, 20-30% cost inflation, and daylight-only
+                tows. 2023-2024 droughts demonstrate ongoing drought risk despite $2.5B annual federal
+                dredging investment.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sources & Data Quality -->
+    <div class="content-block sources-block">
+        <h3>Data Sources & Methodology</h3>
+        <div class="sources-grid">
+            <div class="source-category">
+                <h4>Government Sources</h4>
+                <ul class="source-list">
+                    <li>USACE (U.S. Army Corps of Engineers)</li>
+                    <li>BTS (Bureau of Transportation Statistics)</li>
+                    <li>USDA Grain Transportation Report</li>
+                    <li>EIA (Energy Information Administration)</li>
+                    <li>EPA ECHO database</li>
+                    <li>LDEQ (Louisiana Department of Environmental Quality)</li>
+                </ul>
+            </div>
+            <div class="source-category">
+                <h4>Commercial Sources</h4>
+                <ul class="source-list">
+                    <li>Martin Associates - Cargo Market Analysis (2025)</li>
+                    <li>Coherent Market Insights</li>
+                    <li>Mordor Intelligence</li>
+                    <li>Port of South Louisiana statistics</li>
+                    <li>Freeport-McMoRan 2024 Sustainability Report</li>
+                </ul>
+            </div>
+            <div class="source-category">
+                <h4>Trade Data</h4>
+                <ul class="source-list">
+                    <li>USA Trade OnLine</li>
+                    <li>USDA Agricultural Marketing Service</li>
+                </ul>
+            </div>
+        </div>
+        <p class="data-quality-note">
+            <strong>Data Quality:</strong> All tonnage figures are short tons unless otherwise specified.
+            Market forecasts represent ranges from multiple sources. Barge rates reflect spot market
+            conditions and vary with water levels, fuel costs, and seasonal demand. Environmental status
+            based on public records as of January 2025; buyer due diligence recommended.
+        </p>
+    </div>
+
+</section>
+
+<!-- ============================================================================
+     CHART INITIALIZATION SCRIPTS
+     Include Chart.js library before this section:
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     <script src="../visualizations/market_charts.js"></script>
+     ============================================================================ -->
+
+<script>
+// Initialize all market analysis charts when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Only initialize if market tab is active or charts are visible
+    if (typeof initializeCharts === 'function') {
+        initializeCharts({
+            commodityMix: 'commodityMixChart',
+            marketShare: 'marketShareChart',
+            bargeRates: 'bargeRateVolatilityChart',
+            containerGrowth: 'containerGrowthChart',
+            competitivePorts: 'competitivePortsChart',
+            intermodal: 'intermodalTrendsChart',
+            ironSteel: 'ironSteelTrendChart'
+        });
+    }
+});
+
+// Responsive chart updates on window resize
+window.addEventListener('resize', function() {
+    if (typeof updateChartsForMobile === 'function') {
+        updateChartsForMobile();
+    }
+});
+</script>
+
+<style>
+/* ============================================================================
+   MARKET SECTION STYLES
+   ============================================================================ */
+
+/* Section Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(100, 255, 180, 0.3);
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+}
+
+.source-count {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(100, 255, 180, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid rgba(100, 255, 180, 0.3);
+}
+
+.source-icon {
+    font-size: 1.2rem;
+}
+
+.source-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Content Blocks */
+.content-block {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.content-block h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #64ffb4;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.content-block h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.content-block p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* Summary Block */
+.summary-block {
+    background: linear-gradient(135deg, rgba(100, 255, 180, 0.08), rgba(100, 255, 180, 0.03));
+    border: 2px solid rgba(100, 255, 180, 0.2);
+}
+
+/* Key Metrics Grid */
+.key-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.metric-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(100, 255, 180, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #64ffb4;
+    margin-bottom: 0.5rem;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Chart Container */
+.chart-container {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chart-container canvas {
+    max-height: 400px;
+}
+
+/* Insight Boxes */
+.insight-box,
+.highlight-box {
+    background: rgba(100, 255, 180, 0.08);
+    border-left: 4px solid #64ffb4;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.insight-box h4,
+.highlight-box h4 {
+    color: #64ffb4;
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+/* Data Tables */
+.data-table-wrapper {
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.data-table thead {
+    background: rgba(100, 255, 180, 0.15);
+}
+
+.data-table th,
+.data-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.data-table th {
+    color: #64ffb4;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.data-table td {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.table-note {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+}
+
+/* Two-Column Grid */
+.two-column-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.column-content {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+/* Styled Lists */
+.styled-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.styled-list li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.styled-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #64ffb4;
+    font-weight: bold;
+}
+
+/* Competitive Cards Grid */
+.competitive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.competitive-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.competitive-card:hover {
+    transform: translateY(-4px);
+    border-color: #64ffb4;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.rank-badge {
+    background: #64ffb4;
+    color: #0a0a0a;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+}
+
+.card-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.commodity-list {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* SWOT Grid */
+.swot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.swot-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 2px solid;
+}
+
+.swot-card.strengths {
+    border-color: #64ffb4;
+}
+
+.swot-card.weaknesses {
+    border-color: #ff6b6b;
+}
+
+.swot-card.opportunities {
+    border-color: #4ecdc4;
+}
+
+.swot-card.threats {
+    border-color: #ffa500;
+}
+
+.swot-card h4 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.swot-card.strengths h4 { color: #64ffb4; }
+.swot-card.weaknesses h4 { color: #ff6b6b; }
+.swot-card.opportunities h4 { color: #4ecdc4; }
+.swot-card.threats h4 { color: #ffa500; }
+
+/* Revenue Model Block */
+.revenue-model-block {
+    background: rgba(100, 255, 180, 0.08);
+    border: 2px solid rgba(100, 255, 180, 0.3);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.revenue-model-block h4 {
+    margin-top: 0;
+    color: #64ffb4;
+}
+
+.revenue-grid {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.revenue-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.revenue-item.total {
+    background: rgba(100, 255, 180, 0.15);
+    border: 1px solid rgba(100, 255, 180, 0.4);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.revenue-item.range {
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 0.95rem;
+}
+
+.revenue-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.revenue-value {
+    color: #64ffb4;
+    font-weight: 600;
+}
+
+.model-assumptions {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+}
+
+/* Infrastructure Grid */
+.infrastructure-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.infra-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(100, 255, 180, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.infra-card h4 {
+    color: #64ffb4;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Trend Cards */
+.trend-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.trend-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 2px solid;
+    text-align: center;
+}
+
+.trend-card.positive { border-color: #64ffb4; }
+.trend-card.neutral { border-color: #4ecdc4; }
+.trend-card.negative { border-color: #ff6b6b; }
+.trend-card.warning { border-color: #ffa500; }
+
+.trend-card h4 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.trend-value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.trend-card.positive .trend-value { color: #64ffb4; }
+.trend-card.neutral .trend-value { color: #4ecdc4; }
+.trend-card.negative .trend-value { color: #ff6b6b; }
+.trend-card.warning .trend-value { color: #ffa500; }
+
+.trend-card p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+}
+
+/* Sources Block */
+.sources-block {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.source-category h4 {
+    color: #64ffb4;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.source-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.source-list li {
+    padding: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.data-quality-note {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(100, 255, 180, 0.05);
+    border-left: 4px solid #64ffb4;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .key-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .metric-value {
+        font-size: 2rem;
+    }
+
+    .chart-container canvas {
+        max-height: 300px;
+    }
+
+    .content-block {
+        padding: 1.5rem;
+    }
+
+    .competitive-grid,
+    .swot-grid,
+    .trend-cards-grid,
+    .infrastructure-grid,
+    .sources-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .two-column-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .data-table {
+        font-size: 0.85rem;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .chart-container {
+        page-break-inside: avoid;
+    }
+
+    .content-block {
+        page-break-inside: avoid;
+    }
+
+    .source-count {
+        background: none;
+        border: 1px solid #000;
+    }
+}
+</style>

@@ -1,0 +1,785 @@
+<!-- CAPEX SECTION -->
+<section id="capex" class="analysis-section">
+  <!-- Section Header -->
+  <div class="section-header">
+    <h2>Capital Expenditure Analysis</h2>
+    <div class="source-badges">
+      <span class="source-badge">capex_data.json</span>
+      <span class="source-badge">capex_SYNTHESIS.md</span>
+      <span class="source-badge">Project Documents</span>
+    </div>
+  </div>
+
+  <!-- Executive Summary -->
+  <div class="content-block">
+    <h3>Investment Overview</h3>
+    <p>
+      The Port Sulphur Terminal development requires a total project investment ranging from
+      <strong>$27.95M to $52.65M</strong>, with a base case estimate of <strong>$35.0M</strong>.
+      The project timeline spans <strong>39-81 months (3.25-6.75 years)</strong> across four major phases:
+      due diligence, environmental remediation, permitting, and construction.
+    </p>
+    <p>
+      The property acquisition of the 107-acre site at Mile 39 on the Mississippi River is valued at
+      <strong>$14.7M</strong> ($137,500/acre), securing 10,693 linear feet of river frontage with
+      existing 52-foot draft capacity and pre-existing dock infrastructure.
+    </p>
+  </div>
+
+  <!-- Key Metrics Cards -->
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-label">Total Investment Range</div>
+      <div class="metric-value">$27.95M - $52.65M</div>
+      <div class="metric-sublabel">Base Case: $35.0M</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Property Acquisition</div>
+      <div class="metric-value">$14.7M</div>
+      <div class="metric-sublabel">$137,500 per acre</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Environmental Remediation</div>
+      <div class="metric-value">$8.0M - $25.0M</div>
+      <div class="metric-sublabel">Base: $15.0M</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Development Timeline</div>
+      <div class="metric-value">39-81 Months</div>
+      <div class="metric-sublabel">3.25-6.75 years</div>
+    </div>
+  </div>
+
+  <!-- Chart: Total Investment Breakdown (Pie Chart) -->
+  <div class="chart-container">
+    <canvas id="capex-investment-breakdown"></canvas>
+  </div>
+
+  <!-- Investment Categories Detail -->
+  <div class="content-block">
+    <h3>Major Investment Categories</h3>
+
+    <div class="cost-category-card">
+      <div class="category-header">
+        <h4>1. Property Acquisition</h4>
+        <span class="cost-badge fixed">$14,700,000</span>
+      </div>
+      <div class="category-details">
+        <ul>
+          <li><strong>Location:</strong> 28310 Highway 23, Port Sulphur, LA 70083</li>
+          <li><strong>Total Acreage:</strong> 107 acres at $137,500/acre</li>
+          <li><strong>River Frontage:</strong> 10,693 linear feet at Mile 39 (Mississippi River)</li>
+          <li><strong>Draft Capacity:</strong> 52-foot draft (Post-Panamax capable)</li>
+          <li><strong>Zoning:</strong> Industrial District 3 (pre-approved for maritime use)</li>
+          <li><strong>Existing Infrastructure:</strong> 92-year-old dock (1933), 5,000 SF warehouse, remediated sulfur facility</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cost-category-card">
+      <div class="category-header">
+        <h4>2. Environmental Remediation</h4>
+        <span class="cost-badge variable">$8.0M - $25.0M</span>
+      </div>
+      <div class="category-details">
+        <p>
+          <strong>Base Case:</strong> $15,000,000 | <strong>Recommended Reserves:</strong> $10M-$30M
+        </p>
+        <p class="warning-text">
+          <strong>Critical Risk:</strong> Legacy sulfur processing contamination from 72 years of operations (1933-2005).
+          Site is EPA Non-NPL Superfund site requiring comprehensive soil, groundwater, and sediment remediation.
+        </p>
+        <ul>
+          <li><strong>Phase I ESA:</strong> $3,500 - $6,000 (3-4 weeks) - IMMEDIATE PRIORITY</li>
+          <li><strong>Phase II ESA:</strong> $15,000 - $50,000 (4-8 weeks) - if Phase I flags risks</li>
+          <li><strong>Comprehensive Phase II Assessment:</strong> $150,000 - $300,000 (LAC 33 compliance)</li>
+          <li><strong>Soil Remediation:</strong> Legacy sulfur contamination, soil acidification, heavy metals</li>
+          <li><strong>Groundwater Treatment:</strong> High water table contamination migration</li>
+          <li><strong>Sediment Remediation:</strong> 45+ years of sulfur loading/unloading contamination</li>
+          <li><strong>Ongoing Monitoring:</strong> EPA oversight, groundwater monitoring wells (annual cost TBD)</li>
+        </ul>
+        <div class="info-box">
+          <strong>Environmental Liabilities:</strong>
+          <ul>
+            <li>Active RCRA Small Quantity Generator (EPA ID: LAD072609795)</li>
+            <li>2009 Environmental Release: 5.8 million pounds acidic water discharge</li>
+            <li>Non-NPL Superfund site requiring institutional controls and deed restrictions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="cost-category-card">
+      <div class="category-header">
+        <h4>3. Due Diligence & Assessments</h4>
+        <span class="cost-badge variable">$50K - $150K</span>
+      </div>
+      <div class="category-details">
+        <p><strong>Recommended Budget:</strong> $100,000</p>
+        <ul>
+          <li><strong>Geotechnical Investigation:</strong> $20,000 - $75,000 (4-6 weeks)</li>
+          <li><strong>Bulkhead/Wharf Condition Assessment:</strong> $15,000 - $40,000 (92-year-old structure)</li>
+          <li><strong>Sediment Testing:</strong> $10,000 - $30,000 (if dredging anticipated)</li>
+          <li><strong>Flood Risk & Insurance Analysis:</strong> TBD - ESSENTIAL (22 feet Katrina flooding)</li>
+          <li><strong>Regulatory Consultation:</strong> EPA, LDEQ, USACE coordination</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cost-category-card">
+      <div class="category-header">
+        <h4>4. Infrastructure Development</h4>
+        <span class="cost-badge variable">$5.2M - $27.7M</span>
+      </div>
+      <div class="category-details">
+        <p><strong>Two Development Scenarios:</strong></p>
+
+        <div class="scenario-comparison">
+          <div class="scenario-option">
+            <h5>Scenario A: Lower Cost Mooring Facility</h5>
+            <p class="scenario-cost">$5.2M - $10.8M (Base: $7.5M)</p>
+            <ul>
+              <li><strong>Pile Installation:</strong> $1.8M - $4.2M (17 piles: 12 monopiles + 5 anchor piles)</li>
+              <li><strong>Revetment Repair:</strong> $400K - $1.2M (USACE Standard H-18-45204-99)</li>
+              <li><strong>Mooring/Navigation System:</strong> $300K - $800K (4 buoys, chains, hardware)</li>
+              <li><strong>Captive Dock Barge:</strong> $200K - $500K (service platform with capture yoke)</li>
+              <li><strong>Marine Construction Management:</strong> $1.5M - $3.1M (project management, mobilization)</li>
+              <li><strong>Land Improvements:</strong> $300K - $600K (0.92 acres clearing, access)</li>
+              <li><strong>Engineering/Permitting:</strong> $700K - $1.4M (Section 408, compliance)</li>
+            </ul>
+            <p><strong>Timeline:</strong> Permitting 18-36 months | Construction 6-15 months | Total: 24-51 months</p>
+          </div>
+
+          <div class="scenario-option">
+            <h5>Scenario B: Higher Capacity Facility</h5>
+            <p class="scenario-cost">$6.9M - $27.7M (Base: $15.0M)</p>
+            <ul>
+              <li><strong>Pile Installation:</strong> $2.4M - $9.2M (17 piles to 200' depth)</li>
+              <li><strong>Mooring/Navigation System:</strong> $800K - $2.5M (enhanced specifications)</li>
+              <li><strong>Captive Dock Barge:</strong> $300K - $800K</li>
+              <li><strong>Marine Construction:</strong> $2.5M - $12.0M (weather delays, contingencies)</li>
+              <li><strong>Land Improvements:</strong> $400K - $1.2M (expanded clearing, access road)</li>
+              <li><strong>Engineering/Permitting:</strong> $500K - $2.0M</li>
+            </ul>
+            <p><strong>Capacity:</strong> Supramax vessels (800' LOA, 75' beam) + 56 barge positions (7x8 grid) | 30,000 GRT</p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <strong>Required Permits (Both Scenarios):</strong>
+          <ul>
+            <li>USACE Section 408 Authorization (river modifications)</li>
+            <li>USACE Section 10 Permit (navigable waters)</li>
+            <li>Section 404 Clean Water Act Permit</li>
+            <li>Louisiana Coastal Use Permit</li>
+            <li>LDEQ Water Quality Certification</li>
+            <li>Section 106 Cultural Resources Review</li>
+            <li>ESA Section 7 Endangered Species Consultation</li>
+          </ul>
+          <p><strong>Permitting Timeline:</strong> 18-36 months (CRITICAL PATH ITEM)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart: Cost Categories Comparison (Grouped Bar Chart) -->
+  <div class="chart-container">
+    <canvas id="capex-cost-categories"></canvas>
+  </div>
+
+  <!-- Development Timeline -->
+  <div class="content-block">
+    <h3>Project Development Timeline</h3>
+    <p>
+      The total project duration ranges from <strong>39 to 81 months</strong>, with a base case
+      estimate of <strong>60 months (5 years)</strong>. Environmental permitting is the critical
+      path, requiring 18-36 months for USACE Section 408 authorization and related federal/state approvals.
+    </p>
+  </div>
+
+  <!-- Chart: Project Timeline (Horizontal Bar Chart) -->
+  <div class="chart-container">
+    <canvas id="capex-timeline"></canvas>
+  </div>
+
+  <!-- Timeline Phase Details -->
+  <div class="timeline-phases">
+    <div class="phase-card">
+      <div class="phase-header">
+        <span class="phase-number">Phase 1</span>
+        <h4>Due Diligence</h4>
+        <span class="phase-duration">3-6 months</span>
+      </div>
+      <ul>
+        <li>Phase I ESA (3-4 weeks) - IMMEDIATE</li>
+        <li>Phase II ESA if required (4-8 weeks)</li>
+        <li>Geotechnical investigation (4-6 weeks)</li>
+        <li>Bulkhead/wharf condition assessment</li>
+        <li>Flood risk analysis</li>
+        <li>Regulatory consultation initiation</li>
+      </ul>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <span class="phase-number">Phase 2</span>
+        <h4>Environmental Remediation</h4>
+        <span class="phase-duration">12-24 months</span>
+      </div>
+      <ul>
+        <li>Soil remediation (sulfur contamination)</li>
+        <li>Groundwater treatment system installation</li>
+        <li>Sediment remediation (waterfront area)</li>
+        <li>Cap installation/maintenance</li>
+        <li>EPA coordination and approvals</li>
+        <li>Institutional controls establishment</li>
+      </ul>
+      <p class="cost-range">Cost: $8.0M - $25.0M</p>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <span class="phase-number">Phase 3</span>
+        <h4>Permitting & Regulatory Approvals</h4>
+        <span class="phase-duration">18-36 months</span>
+      </div>
+      <ul>
+        <li>USACE Section 408 authorization</li>
+        <li>Section 10 navigable waters permit</li>
+        <li>Section 404 Clean Water Act permit</li>
+        <li>Louisiana Coastal Use Permit</li>
+        <li>LDEQ Water Quality Certification</li>
+        <li>ESA Section 7 endangered species consultation</li>
+        <li>Section 106 cultural resources review</li>
+      </ul>
+      <p class="cost-range">Cost: $500K - $2.0M</p>
+      <p class="warning-text"><strong>CRITICAL PATH:</strong> Longest duration phase determines overall timeline</p>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <span class="phase-number">Phase 4</span>
+        <h4>Construction</h4>
+        <span class="phase-duration">6-15 months</span>
+      </div>
+      <ul>
+        <li>Pile installation (17 total piles)</li>
+        <li>Revetment repair (USACE standards)</li>
+        <li>Mooring system installation</li>
+        <li>Marine construction activities</li>
+        <li>Land improvements & access</li>
+        <li>Final inspections & commissioning</li>
+      </ul>
+      <p class="cost-range">Cost: $5.2M - $27.7M (scenario-dependent)</p>
+    </div>
+  </div>
+
+  <!-- Chart: Cumulative Investment Timeline (Line Chart) -->
+  <div class="chart-container">
+    <canvas id="capex-cumulative-investment"></canvas>
+  </div>
+
+  <!-- Revenue Potential -->
+  <div class="content-block">
+    <h3>Revenue Potential</h3>
+    <p>
+      The midstream mooring facility offers significant revenue generation potential through fee-based
+      vessel mooring and barge fleeting services. Revenue projections are based on supramax bulk carriers
+      (30,000 GRT) at <strong>$0.78/GRT dockage rate + $1,500 security fee per vessel</strong>, generating
+      <strong>$24,900 per vessel call</strong>.
+    </p>
+  </div>
+
+  <!-- Chart: Revenue Scenarios (Bar Chart) -->
+  <div class="chart-container">
+    <canvas id="capex-revenue-scenarios"></canvas>
+  </div>
+
+  <!-- Revenue Scenario Details -->
+  <div class="metrics-grid three-col">
+    <div class="revenue-card">
+      <h4>Conservative Scenario</h4>
+      <div class="revenue-metric">
+        <span class="metric-label">Utilization</span>
+        <span class="metric-value">2 calls/week</span>
+      </div>
+      <div class="revenue-metric">
+        <span class="metric-label">Annual Vessel Calls</span>
+        <span class="metric-value">104</span>
+      </div>
+      <div class="revenue-metric">
+        <span class="metric-label">Gross Annual Revenue</span>
+        <span class="metric-value highlight">$2.59M</span>
+      </div>
+      <div class="revenue-metric">
+        <span class="metric-label">Net Revenue (after 20% OpEx)</span>
+        <span class="metric-value">$2.07M</span>
+      </div>
+    </div>
+
+    <div class="revenue-card featured">
+      <h4>Base Case Scenario</h4>
+      <div class="revenue-metric">
+        <span class="metric-label">Utilization</span>
+        <span class="metric-value">3 calls/week</span>
+      </div>
+      <div class="revenue-metric">
+        <span class="metric-label">Annual Vessel Calls</span>
+        <span class="metric-value">156</span>
+      </div>
+      <div class="revenue-metric">
+        <span class="metric-label">Gross Annual Revenue</span>
+        <span class="metric-value highlight">$3.88M</span>
+      </div>
+      <div class="revenue-metric">
+        <span class="metric-label">Net Revenue (after 20% OpEx)</span>
+        <span class="metric-value">$3.10M</span>
+      </div>
+    </div>
+
+    <div class="revenue-card">
+      <h4>Optimistic Scenario</h4>
+      <div class="revenue-metric">
+        <span class="metric-label">Utilization</span>
+        <span class="metric-value">4 calls/week</span>
+      </div>
+      <div class="revenue-metric">
+        <span class="metric-label">Annual Vessel Calls</span>
+        <span class="metric-value">208</span>
+      </div>
+      <div class="revenue-metric">
+        <span class="metric-label">Gross Annual Revenue</span>
+        <span class="metric-value highlight">$5.18M</span>
+      </div>
+      <div class="revenue-metric">
+        <span class="metric-label">Net Revenue (after 20% OpEx)</span>
+        <span class="metric-value">$4.14M</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Additional Revenue Stream:</strong> Barge fleeting capacity of 56 positions (7x8 grid)
+    provides fee-based mooring for customer-owned barges. Revenue model based on mooring position
+    fees with flexible utilization patterns.
+  </div>
+
+  <!-- Financing Considerations -->
+  <div class="content-block">
+    <h3>Financing Structures & Opportunities</h3>
+    <p>
+      Multiple financing pathways exist for port and terminal infrastructure development, combining
+      public and private capital sources. The Port Sulphur Terminal project is eligible for several
+      tax-advantaged and federal credit programs due to its maritime infrastructure classification.
+    </p>
+
+    <div class="financing-options">
+      <div class="financing-card">
+        <h4>Municipal Revenue Bonds</h4>
+        <p>
+          Tax-exempt bonds for docks/wharves under IRC §142 (exempt-facility bonds). Repayment from
+          facility rents, fees, or system net revenues.
+        </p>
+        <ul>
+          <li><strong>Eligible Use:</strong> Docks, wharves, mass commuting facilities</li>
+          <li><strong>Tax Treatment:</strong> Tax-exempt interest for investors</li>
+          <li><strong>Repayment Source:</strong> Project revenues or port authority system revenues</li>
+          <li><strong>Example:</strong> Port Authority consolidated bonds backed by system revenues</li>
+        </ul>
+      </div>
+
+      <div class="financing-card">
+        <h4>Private Activity Bonds (PABs)</h4>
+        <p>
+          Tax-exempt bonds issued by public authority for private projects meeting IRC §142 requirements.
+        </p>
+        <ul>
+          <li><strong>Eligible Facilities:</strong> Docks, wharves, transportation infrastructure</li>
+          <li><strong>Volume Cap:</strong> State allocation required</li>
+          <li><strong>Tax Benefit:</strong> Tax-exempt financing for private development</li>
+          <li><strong>Structure:</strong> Public issuance with private project repayment obligation</li>
+        </ul>
+      </div>
+
+      <div class="financing-card">
+        <h4>Lease-Revenue Bonds</h4>
+        <p>
+          Bonds repaid from pledged lease revenues under long-term operating agreements.
+        </p>
+        <ul>
+          <li><strong>Security:</strong> Dedicated lease payment stream</li>
+          <li><strong>Example:</strong> Fernandina OHPA bond refinancing (2018)</li>
+          <li><strong>Advantage:</strong> Matches debt service to operational cash flows</li>
+        </ul>
+      </div>
+
+      <div class="financing-card">
+        <h4>Public-Private Partnership (P3)</h4>
+        <p>
+          Availability-payment or revenue-risk concessions with long-term private operation.
+        </p>
+        <ul>
+          <li><strong>Models:</strong> DBFOM (Design-Build-Finance-Operate-Maintain)</li>
+          <li><strong>Example:</strong> Port of Miami Tunnel (30-year availability payments)</li>
+          <li><strong>Risk Allocation:</strong> Construction risk to private partner, revenue risk varies</li>
+        </ul>
+      </div>
+
+      <div class="financing-card">
+        <h4>TIFIA Loans</h4>
+        <p>
+          Federal credit assistance for transportation infrastructure (Transportation Infrastructure
+          Finance and Innovation Act).
+        </p>
+        <ul>
+          <li><strong>Terms:</strong> Long-term, low-interest federal loans</li>
+          <li><strong>Example:</strong> Gerald Desmond Bridge (Long Beach)</li>
+          <li><strong>Advantage:</strong> Below-market rates, flexible repayment</li>
+        </ul>
+      </div>
+
+      <div class="financing-card">
+        <h4>RAISE Grants</h4>
+        <p>
+          Federal grant program for transportation projects (formerly TIGER/BUILD grants).
+        </p>
+        <ul>
+          <li><strong>Funding Level:</strong> Up to 85% federal funding possible</li>
+          <li><strong>Example:</strong> Plaquemines rail spur extension ($72M federal of $85M total)</li>
+          <li><strong>Competitive:</strong> Nationwide competition, strong regional benefits required</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>Regional Financing Context:</strong> Plaquemines Port Harbor & Terminal District (Louisiana Gateway Port)
+      maintains strong financial position: $116.8M net position, $6M operating revenue (+13% growth), $75.4M capital assets,
+      and $300M bond financing capacity (as of December 31, 2022).
+    </div>
+  </div>
+
+  <!-- Regional Infrastructure Context -->
+  <div class="content-block">
+    <h3>Regional Infrastructure Investment Context</h3>
+    <p>
+      Port Sulphur Terminal sits within an unprecedented regional infrastructure investment corridor,
+      with <strong>$21+ billion in active Plaquemines Parish projects</strong> and <strong>$60+ billion
+      in Louisiana's industrial development pipeline</strong>. This creates strong market demand for
+      port and terminal capacity.
+    </p>
+
+    <div class="regional-projects">
+      <div class="project-card featured">
+        <h4>Venture Global Plaquemines LNG</h4>
+        <div class="project-investment">$21.0 Billion</div>
+        <p><strong>Status:</strong> Under construction, first phase operational 2024</p>
+        <p>Largest active project in Plaquemines Parish, driving demand for marine services and supply chain infrastructure.</p>
+      </div>
+
+      <div class="project-card">
+        <h4>APM Terminals Container Terminal (Louisiana Gateway Port)</h4>
+        <div class="project-investment">$500 Million</div>
+        <p><strong>Status:</strong> Letter of intent signed January 2024, permits pending</p>
+        <p><strong>Scope:</strong> Initial 200 acres, expandable to 900 acres, 14,000 TEU capacity</p>
+      </div>
+
+      <div class="project-card">
+        <h4>Rail Spur Extension to NOGC Railway</h4>
+        <div class="project-investment">$85 Million</div>
+        <p><strong>Funding:</strong> 85% federal (RAISE grant: $72M), state match from PPMTD</p>
+        <p><strong>Timeline:</strong> Design completed May 2025, construction bids Q4 2025, completion 2028-2029</p>
+        <p><strong>Distance:</strong> 32 miles connecting Port Sulphur area to Class I rail</p>
+      </div>
+
+      <div class="project-card">
+        <h4>Belle Chasse Bridge Replacement</h4>
+        <div class="project-investment">$169 Million</div>
+        <p>Fixed-span, 4-lane bridge with 73-foot vertical clearance improving access to lower Plaquemines Parish</p>
+      </div>
+
+      <div class="project-card">
+        <h4>LA 23 Highway Widening</h4>
+        <div class="project-investment">$17 Million</div>
+        <p>Happy Jack to Port Sulphur corridor expansion, environmental clearance underway</p>
+      </div>
+
+      <div class="project-card">
+        <h4>Woodland Connector Phase 1</h4>
+        <div class="project-investment">$18 Million</div>
+        <p>Connecting LA 23 and Walker Road to Intracoastal Canal, enhancing regional connectivity</p>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>Strategic Implication:</strong> Total regional transportation and industrial investment exceeds
+      <strong>$21.8 billion in active/near-term projects</strong>, creating robust demand for port services,
+      barge fleeting, and vessel mooring. Port Sulphur Terminal is strategically positioned to capture
+      this regional growth.
+    </div>
+  </div>
+
+  <!-- Cost Summary & Critical Next Steps -->
+  <div class="content-block">
+    <h3>Investment Summary & Critical Next Steps</h3>
+
+    <div class="cost-summary-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Cost Category</th>
+            <th>Minimum</th>
+            <th>Base Case</th>
+            <th>Maximum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Acquisition</strong></td>
+            <td>$14.70M</td>
+            <td>$14.70M</td>
+            <td>$14.70M</td>
+          </tr>
+          <tr>
+            <td><strong>Due Diligence</strong></td>
+            <td>$0.05M</td>
+            <td>$0.10M</td>
+            <td>$0.15M</td>
+          </tr>
+          <tr>
+            <td><strong>Environmental Remediation</strong></td>
+            <td>$8.00M</td>
+            <td>$15.00M</td>
+            <td>$25.00M</td>
+          </tr>
+          <tr>
+            <td><strong>Infrastructure (Scenario A)</strong></td>
+            <td>$5.20M</td>
+            <td>$7.50M</td>
+            <td>$10.80M</td>
+          </tr>
+          <tr>
+            <td><strong>Infrastructure (Scenario B)</strong></td>
+            <td>$6.90M</td>
+            <td>$15.00M</td>
+            <td>$27.70M</td>
+          </tr>
+          <tr class="total-row">
+            <td><strong>TOTAL PROJECT (Scenario A)</strong></td>
+            <td><strong>$27.95M</strong></td>
+            <td><strong>$37.30M</strong></td>
+            <td><strong>$50.65M</strong></td>
+          </tr>
+          <tr class="total-row">
+            <td><strong>TOTAL PROJECT (Scenario B)</strong></td>
+            <td><strong>$29.65M</strong></td>
+            <td><strong>$44.80M</strong></td>
+            <td><strong>$67.55M</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="critical-steps">
+      <h4>Immediate Action Items</h4>
+      <div class="step-grid">
+        <div class="step-card priority-immediate">
+          <div class="step-priority">IMMEDIATE</div>
+          <h5>Phase I Environmental Site Assessment</h5>
+          <p><strong>Cost:</strong> $3,500 - $6,000</p>
+          <p><strong>Timeline:</strong> 3-4 weeks</p>
+          <p>Essential first step to assess environmental liability scope and determine Phase II requirements.</p>
+        </div>
+
+        <div class="step-card priority-critical">
+          <div class="step-priority">CRITICAL</div>
+          <h5>Budget Environmental Remediation Reserves</h5>
+          <p><strong>Recommended:</strong> $10M - $30M</p>
+          <p>Establish financial capacity for comprehensive remediation based on Phase I/II findings.</p>
+        </div>
+
+        <div class="step-card priority-essential">
+          <div class="step-priority">ESSENTIAL</div>
+          <h5>Comprehensive Flood Risk & Insurance Analysis</h5>
+          <p><strong>Cost:</strong> TBD</p>
+          <p>22 feet of flooding during Hurricane Katrina (2005); site at/below sea level requires detailed flood modeling and insurance structuring.</p>
+        </div>
+
+        <div class="step-card priority-essential">
+          <div class="step-priority">ESSENTIAL</div>
+          <h5>Bulkhead/Wharf Structural Assessment</h5>
+          <p><strong>Cost:</strong> $15,000 - $40,000</p>
+          <p>92-year-old dock infrastructure (built 1933) requires detailed condition evaluation and rehabilitation cost estimation.</p>
+        </div>
+
+        <div class="step-card priority-priority">
+          <div class="step-priority">PRIORITY</div>
+          <h5>Verify RCRA Generator Status</h5>
+          <p><strong>Cost:</strong> Included in legal fees</p>
+          <p>Confirm ongoing obligations under EPA ID LAD072609795 and transfer requirements.</p>
+        </div>
+
+        <div class="step-card priority-required">
+          <div class="step-priority">REQUIRED</div>
+          <h5>Engage Specialized Environmental Legal Counsel</h5>
+          <p><strong>Cost:</strong> TBD</p>
+          <p>EPA Non-NPL Superfund site status requires specialized legal expertise for transaction structuring and liability management.</p>
+        </div>
+
+        <div class="step-card priority-essential">
+          <div class="step-priority">ESSENTIAL</div>
+          <h5>Pre-Application Coordination with USACE</h5>
+          <p><strong>Timeline:</strong> 30+ days before formal application</p>
+          <p>Section 408 authorization requires extensive pre-application consultation to clarify permitting pathway and timeline.</p>
+        </div>
+
+        <div class="step-card priority-essential">
+          <div class="step-priority">ESSENTIAL</div>
+          <h5>Regulatory Consultation (EPA, LDEQ, USACE)</h5>
+          <p><strong>Timeline:</strong> Ongoing during due diligence</p>
+          <p>Early agency engagement critical to understanding remediation requirements and permitting timeline.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Risk Factors Summary -->
+  <div class="content-block">
+    <h3>Risk Factors</h3>
+    <div class="risk-categories">
+      <div class="risk-card high-risk">
+        <h4>Environmental Risks (HIGH)</h4>
+        <ul>
+          <li>Legacy sulfur processing contamination (72 years: 1933-2005)</li>
+          <li>Soil acidification and heavy metals mobilization</li>
+          <li>Groundwater impacts from Frasch Process operations</li>
+          <li>Active RCRA Small Quantity Generator status (EPA ID LAD072609795)</li>
+          <li>Non-NPL Superfund site requiring EPA coordination and institutional controls</li>
+          <li>2009 environmental release: 5.8 million pounds acidic water discharge</li>
+        </ul>
+      </div>
+
+      <div class="risk-card high-risk">
+        <h4>Climate & Flood Risks (HIGH)</h4>
+        <ul>
+          <li>Hurricane Katrina damage: 22 feet of flooding (August 2005)</li>
+          <li>Site at/below sea level (coordinates: 29.473414, -89.686632)</li>
+          <li>Plaquemines Parish experiencing world's highest relative sea level rise rates</li>
+          <li>Back levee overflow concerns</li>
+          <li>Ongoing extreme flood vulnerability requiring comprehensive insurance and structural mitigation</li>
+        </ul>
+      </div>
+
+      <div class="risk-card medium-risk">
+        <h4>Structural Risks (MEDIUM)</h4>
+        <ul>
+          <li>92-year-old dock infrastructure (built 1933) - condition unknown</li>
+          <li>Post-Katrina infrastructure destruction - extent of damage/repair unclear</li>
+          <li>Potential subsidence from filled sulfur mine canal</li>
+          <li>Bank stability concerns in revetment-protected area (RM 41.1-34.3)</li>
+        </ul>
+      </div>
+
+      <div class="risk-card medium-risk">
+        <h4>Regulatory & Permitting Risks (MEDIUM-HIGH)</h4>
+        <ul>
+          <li>Multiple federal permits required: USACE Section 408, Section 10, Section 404</li>
+          <li>State coastal zone management compliance (Louisiana Coastal Use Permit)</li>
+          <li>Endangered species consultation requirements (ESA Section 7)</li>
+          <li>Cultural resources review (Section 106 NHPA)</li>
+          <li>Ongoing EPA oversight and institutional controls</li>
+          <li>Permitting timeline: 18-36 months (critical path risk)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strategic Advantages -->
+  <div class="content-block">
+    <h3>Strategic Advantages</h3>
+    <div class="advantages-grid">
+      <div class="advantage-card">
+        <h4>Location</h4>
+        <ul>
+          <li>Mile 39 on Mississippi River (federal navigation system)</li>
+          <li>52-foot draft capacity (Post-Panamax capable) - rare deep-water access</li>
+          <li>10,693 linear feet of river frontage</li>
+          <li>Within Port Sulphur revetment protection system (RM 41.1-34.3)</li>
+        </ul>
+      </div>
+
+      <div class="advantage-card">
+        <h4>Infrastructure</h4>
+        <ul>
+          <li>Existing dock infrastructure (assessment/rehabilitation required)</li>
+          <li>Industrial District 3 zoning (pre-approved for maritime use)</li>
+          <li>Proximity to planned $85M rail spur to NOGC Railway (2028-2029)</li>
+          <li>Access to federal navigation channel maintained by USACE</li>
+        </ul>
+      </div>
+
+      <div class="advantage-card">
+        <h4>Market Position</h4>
+        <ul>
+          <li>Proximity to $21B Venture Global Plaquemines LNG facility</li>
+          <li>Part of Louisiana Gateway Port development corridor</li>
+          <li>Strategic position at mouth of Mississippi River</li>
+          <li>Access to growing LNG, petrochemical, and container markets</li>
+          <li>Regional investment pipeline: $60B+ Louisiana industrial projects</li>
+        </ul>
+      </div>
+
+      <div class="advantage-card">
+        <h4>Comparable Land Values</h4>
+        <ul>
+          <li><strong>Port Sulphur:</strong> $137,500/acre</li>
+          <li><strong>State Acquisition (2022):</strong> $60,000/acre (Plaquemines Parish)</li>
+          <li><strong>Violet Dock Port:</strong> $222,222/acre (St. Bernard Parish, 81 acres, $18M)</li>
+          <li>Acquisition price competitive relative to regional port land values</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Chart Initialization Script -->
+<script>
+// Initialize CAPEX charts when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Investment Breakdown Pie Chart
+  const investmentBreakdownCtx = document.getElementById('capex-investment-breakdown');
+  if (investmentBreakdownCtx && typeof Chart !== 'undefined' && typeof CAPEX_CHARTS !== 'undefined') {
+    new Chart(investmentBreakdownCtx, CAPEX_CHARTS.investmentBreakdown);
+  }
+
+  // Cost Categories Comparison Bar Chart
+  const costCategoriesCtx = document.getElementById('capex-cost-categories');
+  if (costCategoriesCtx && typeof Chart !== 'undefined' && typeof CAPEX_CHARTS !== 'undefined') {
+    new Chart(costCategoriesCtx, CAPEX_CHARTS.costCategoriesComparison);
+  }
+
+  // Project Timeline Horizontal Bar Chart
+  const timelineCtx = document.getElementById('capex-timeline');
+  if (timelineCtx && typeof Chart !== 'undefined' && typeof CAPEX_CHARTS !== 'undefined') {
+    new Chart(timelineCtx, CAPEX_CHARTS.projectTimeline);
+  }
+
+  // Revenue Scenarios Bar Chart
+  const revenueScenariosCtx = document.getElementById('capex-revenue-scenarios');
+  if (revenueScenariosCtx && typeof Chart !== 'undefined' && typeof CAPEX_CHARTS !== 'undefined') {
+    new Chart(revenueScenariosCtx, CAPEX_CHARTS.revenueScenarios);
+  }
+
+  // Cumulative Investment Line Chart
+  const cumulativeInvestmentCtx = document.getElementById('capex-cumulative-investment');
+  if (cumulativeInvestmentCtx && typeof Chart !== 'undefined' && typeof CAPEX_CHARTS !== 'undefined') {
+    new Chart(cumulativeInvestmentCtx, CAPEX_CHARTS.cumulativeInvestment);
+  }
+});
+</script>
+
+<!-- Additional optional charts can be activated by adding canvas elements:
+     - capex-infrastructure-scenarios (infrastructure scenarios comparison)
+     - capex-total-investment-range (doughnut chart)
+     - capex-environmental-costs (environmental remediation breakdown)
+-->

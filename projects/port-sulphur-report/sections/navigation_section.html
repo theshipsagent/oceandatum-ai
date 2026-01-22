@@ -1,0 +1,527 @@
+<!-- ============================================ -->
+<!-- NAVIGATION & BATHYMETRY SECTION -->
+<!-- Port Sulphur Terminal Analysis -->
+<!-- Generated: 2026-01-22 -->
+<!-- Sources: 134 navigation documents -->
+<!-- ============================================ -->
+
+<style>
+/* Navigation Section Specific Styles */
+.navigation-section {
+    margin-bottom: 3rem;
+}
+
+.navigation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(0, 116, 217, 0.3);
+}
+
+.navigation-header h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.source-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 116, 217, 0.2);
+    border: 1px solid rgba(0, 116, 217, 0.4);
+    border-radius: 20px;
+    color: #7FDBFF;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+/* Map Container */
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 2rem;
+    background: rgba(0, 31, 63, 0.3);
+    border: 1px solid rgba(0, 116, 217, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-placeholder {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.map-placeholder svg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+    opacity: 0.4;
+}
+
+.map-placeholder p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Positioning Highlights */
+.positioning-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.position-card {
+    padding: 1.5rem;
+    background: rgba(0, 116, 217, 0.1);
+    border: 1px solid rgba(0, 116, 217, 0.3);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.position-card:hover {
+    background: rgba(0, 116, 217, 0.15);
+    border-color: rgba(0, 116, 217, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 116, 217, 0.2);
+}
+
+.position-card-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7FDBFF;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.position-card-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+}
+
+.position-card-description {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+
+/* Depth Zones Section */
+.depth-zones {
+    margin-bottom: 2rem;
+}
+
+.depth-zone-item {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, rgba(0, 31, 63, 0.2) 0%, rgba(0, 116, 217, 0.1) 100%);
+    border-left: 4px solid;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.depth-zone-item.shallow {
+    border-left-color: #7FDBFF;
+}
+
+.depth-zone-item.medium {
+    border-left-color: #39CCCC;
+}
+
+.depth-zone-item.deep {
+    border-left-color: #0074D9;
+}
+
+.depth-zone-item:hover {
+    background: linear-gradient(135deg, rgba(0, 31, 63, 0.3) 0%, rgba(0, 116, 217, 0.2) 100%);
+    transform: translateX(5px);
+}
+
+.depth-zone-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.depth-zone-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.depth-zone-range {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #7FDBFF;
+    font-family: 'Courier New', monospace;
+}
+
+.depth-zone-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.depth-zone-capability {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: rgba(46, 204, 64, 0.15);
+    border: 1px solid rgba(46, 204, 64, 0.3);
+    border-radius: 4px;
+    color: #2ECC40;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Chart Container */
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.chart-container canvas {
+    max-height: 100%;
+}
+
+/* Info Box */
+.info-box {
+    padding: 1.5rem;
+    background: rgba(0, 116, 217, 0.08);
+    border: 1px solid rgba(0, 116, 217, 0.2);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.info-box h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #7FDBFF;
+    margin-bottom: 1rem;
+}
+
+.info-box-content {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+}
+
+.info-box ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.info-box li {
+    margin-bottom: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Data Grid */
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.data-item {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    text-align: center;
+}
+
+.data-item-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.5rem;
+}
+
+.data-item-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #7FDBFF;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navigation-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .positioning-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .map-container {
+        height: 350px;
+    }
+
+    .chart-container {
+        height: 300px;
+    }
+}
+</style>
+
+<!-- Navigation Section Content -->
+<section class="navigation-section" id="navigation-bathymetry">
+
+    <!-- Section Header -->
+    <div class="navigation-header">
+        <h2>Navigation & Bathymetry</h2>
+        <span class="source-badge">134 Sources</span>
+    </div>
+
+    <!-- River Mile Positioning Highlights -->
+    <div class="positioning-grid">
+        <div class="position-card">
+            <div class="position-card-title">River Mile Position</div>
+            <div class="position-card-value">RM 39.0</div>
+            <div class="position-card-description">Above Head of Passes (AHP), West Bank, Plaquemines Parish</div>
+        </div>
+
+        <div class="position-card">
+            <div class="position-card-title">Distance to Gulf</div>
+            <div class="position-card-value">39 Miles</div>
+            <div class="position-card-description">Shorter transit than upriver terminals, direct access to international waters</div>
+        </div>
+
+        <div class="position-card">
+            <div class="position-card-title">River Frontage</div>
+            <div class="position-card-value">10,693 ft</div>
+            <div class="position-card-description">Over 2 miles of continuous Mississippi River frontage</div>
+        </div>
+
+        <div class="position-card">
+            <div class="position-card-title">Federal Channel</div>
+            <div class="position-card-value">45 ft Min</div>
+            <div class="position-card-description">USACE maintained depth, natural depths 60-120 feet</div>
+        </div>
+    </div>
+
+    <!-- Bathymetric Map Placeholder -->
+    <div class="map-container" id="bathymetricMap">
+        <div class="map-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <p>Bathymetric Survey Map (May 18, 2016)</p>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem;">T. Baker Smith Multi-Beam Survey | Datum: NAVD 88</p>
+        </div>
+    </div>
+
+    <!-- Depth Profile Zones -->
+    <div class="depth-zones">
+        <h3 style="font-size: 1.5rem; font-weight: 600; color: #ffffff; margin-bottom: 1.5rem;">Underwater Depth Zones</h3>
+
+        <div class="depth-zone-item shallow">
+            <div class="depth-zone-header">
+                <span class="depth-zone-name">Near-Shore Transition Zone</span>
+                <span class="depth-zone-range">0 to -20 ft</span>
+            </div>
+            <p class="depth-zone-description">
+                Gradual slope typical of Mississippi River banks. Limited draft access in immediate shore zone.
+                May require approach channel dredging for large vessels depending on operational requirements.
+            </p>
+            <span class="depth-zone-capability">Shallow Draft Operations</span>
+        </div>
+
+        <div class="depth-zone-item medium">
+            <div class="depth-zone-header">
+                <span class="depth-zone-name">Primary Docking Zone</span>
+                <span class="depth-zone-range">-20 to -60 ft</span>
+            </div>
+            <p class="depth-zone-description">
+                Existing dock structure vicinity supporting McMoran operations. Suitable for medium-draft vessels.
+                Current capability: 52-foot draft at low river stage. Adequate depths for additional berth development.
+            </p>
+            <span class="depth-zone-capability">Medium Draft Vessels Supported</span>
+        </div>
+
+        <div class="depth-zone-item deep">
+            <div class="depth-zone-header">
+                <span class="depth-zone-name">Deep Navigation Channel</span>
+                <span class="depth-zone-range">-60 to -120 ft</span>
+            </div>
+            <p class="depth-zone-description">
+                Main Mississippi River navigation channel maintained by USACE to -45 ft minimum.
+                Natural depths of 60-120 feet exceed federal requirements and support Panamax and Post-Panamax vessels.
+                Deep water proximity provides exceptional operational flexibility and competitive advantage.
+            </p>
+            <span class="depth-zone-capability">Panamax & Post-Panamax Capable</span>
+        </div>
+    </div>
+
+    <!-- Chart 1: Bathymetric Depth Profile -->
+    <div class="chart-container">
+        <canvas id="bathymetricDepthChart"></canvas>
+    </div>
+
+    <!-- Chart 2: Current Velocity by Season -->
+    <div class="chart-container">
+        <canvas id="currentVelocityChart"></canvas>
+    </div>
+
+    <!-- Seasonal Current Conditions Info Box -->
+    <div class="info-box">
+        <h3>Seasonal River Conditions</h3>
+        <div class="info-box-content">
+            <p><strong>Spring High Water (March-June):</strong> Discharge exceeds 375,000 cfs with current velocities of 2.5-5.0 fps.
+            Maximum draft access with deepest available depths, but substantial operational challenges from high current stress.
+            Requires enhanced mooring and additional tug assistance.</p>
+
+            <p><strong>Summer/Fall Normal (July-October):</strong> Discharge 222,000-379,000 cfs with velocities 1.5-2.5 fps.
+            Optimal navigation scenarios with balance of adequate depth and manageable current forces.
+            Ideal conditions for construction activities and routine operations.</p>
+
+            <p><strong>Winter Low Water (November-February):</strong> Discharge 131,000-222,000 cfs with velocities 1.0-1.5 fps.
+            Potential draft restrictions at other terminals during extreme low water events, but Port Sulphur's exceptional depths
+            (60-120 ft) provide competitive advantage when shallow-draft terminals face restrictions.</p>
+        </div>
+    </div>
+
+    <!-- Chart 3: River Discharge Patterns -->
+    <div class="chart-container">
+        <canvas id="riverDischargeChart"></canvas>
+    </div>
+
+    <!-- Navigation Aids & Features -->
+    <div class="info-box">
+        <h3>Navigation Aids & Infrastructure</h3>
+        <div class="info-box-content">
+            <ul>
+                <li><strong>Nestor Canal Light (RM 39.8)</strong> - Adjacent to facility, provides immediate positioning reference</li>
+                <li><strong>Port Sulphur Anchorage (RM 37.5-39.7)</strong> - Designated anchorage eliminates restrictions, facility within anchorage zone</li>
+                <li><strong>Home Place Lights (RM 37.0-37.6)</strong> - Downstream reference points for navigation</li>
+                <li><strong>USACE Chart No. 90</strong> - Covers RM 36.6 to 46.4 at 1:40,000 scale (revised May 6, 2016)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Chart 4: Navigation Aids Location -->
+    <div class="chart-container">
+        <canvas id="navigationAidsChart"></canvas>
+    </div>
+
+    <!-- Vessel Capabilities Data Grid -->
+    <h3 style="font-size: 1.5rem; font-weight: 600; color: #ffffff; margin: 2rem 0 1.5rem;">Vessel Accommodation Capabilities</h3>
+    <div class="data-grid">
+        <div class="data-item">
+            <div class="data-item-label">Existing Draft</div>
+            <div class="data-item-value">52 ft</div>
+        </div>
+        <div class="data-item">
+            <div class="data-item-label">Channel Depth</div>
+            <div class="data-item-value">60-120 ft</div>
+        </div>
+        <div class="data-item">
+            <div class="data-item-label">Federal Minimum</div>
+            <div class="data-item-value">45 ft</div>
+        </div>
+        <div class="data-item">
+            <div class="data-item-label">Dock Length</div>
+            <div class="data-item-value">433 ft</div>
+        </div>
+        <div class="data-item">
+            <div class="data-item-label">Design Velocity</div>
+            <div class="data-item-value">4.0 fps</div>
+        </div>
+        <div class="data-item">
+            <div class="data-item-label">Survey Datum</div>
+            <div class="data-item-value">NAVD 88</div>
+        </div>
+    </div>
+
+    <!-- Chart 5: Depth Zones Comparison -->
+    <div class="chart-container">
+        <canvas id="depthZonesChart"></canvas>
+    </div>
+
+    <!-- Survey Details Info Box -->
+    <div class="info-box">
+        <h3>Bathymetric Survey Details</h3>
+        <div class="info-box-content">
+            <p><strong>Survey Date:</strong> May 18, 2016</p>
+            <p><strong>Surveyor:</strong> T. Baker Smith, LLC</p>
+            <p><strong>Survey Vessel:</strong> M/V Echotrac</p>
+            <p><strong>Equipment:</strong> Multi-beam Echo-sounder with RTK and survey navigation system</p>
+            <p><strong>Vertical Datum:</strong> NAVD 88 (0.0' reference)</p>
+            <p><strong>Horizontal Projection:</strong> Louisiana South NAD83</p>
+            <p><strong>Corrections Applied:</strong> Draft corrections, water column sound velocity corrections</p>
+            <p><strong>Reference Imagery:</strong> 2015 aerial photography overlay</p>
+        </div>
+    </div>
+
+    <!-- Competitive Advantages -->
+    <div class="info-box" style="background: rgba(46, 204, 64, 0.08); border-color: rgba(46, 204, 64, 0.3);">
+        <h3 style="color: #2ECC40;">Strategic Competitive Advantages</h3>
+        <div class="info-box-content">
+            <ul>
+                <li><strong>Deeper than most Mississippi River terminals</strong> - Many terminals limited to 40-45 feet; Port Sulphur maintains 60-120 feet</li>
+                <li><strong>Operations during low-water periods</strong> - Maintains full operations when competitors face draft restrictions</li>
+                <li><strong>Direct federal channel access</strong> - No private dredging costs, shared federal maintenance burden</li>
+                <li><strong>Shorter transit to Gulf</strong> - 39 miles versus 60+ miles for upriver terminals</li>
+                <li><strong>Within designated anchorage</strong> - Pre-approved staging eliminates anchoring restrictions</li>
+                <li><strong>Two-way vessel traffic capable</strong> - Adequate channel width for simultaneous large vessel operations</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Underwater Obstructions Warning -->
+    <div class="info-box" style="background: rgba(255, 136, 54, 0.08); border-color: rgba(255, 136, 54, 0.3);">
+        <h3 style="color: #FF8836;">Identified Underwater Obstructions</h3>
+        <div class="info-box-content">
+            <p><strong>⚠️ HIGH PRIORITY:</strong> Unidentified large object (~100 ft x 25 ft) detected on bathymetric survey.
+            ROV or diver investigation required before any construction activities. Could affect project scheduling, costs, and safety.</p>
+
+            <p><strong>Existing Dock Pilings:</strong> Multiple locations throughout existing dock footprint. Typical pile-supported
+            wharf construction. May require demolition for expansion projects.</p>
+
+            <p><strong>Assumed Debris Fields:</strong> Concentrated adjacent to existing structures. Irregular bottom features consistent
+            with industrial construction debris from McMoran operations. Detailed characterization needed for pile driving and dredging operations.</p>
+        </div>
+    </div>
+
+    <!-- Data Sources Footer -->
+    <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+        <p style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); text-align: center;">
+            <strong>Primary Data Sources:</strong> T. Baker Smith Multi-Beam Bathymetric Survey (May 18, 2016) |
+            USACE Navigation Chart No. 90 (Revised May 6, 2016) | USACE Mississippi Valley Division Revetment Documentation |
+            Coast Pilot 5 - Lower Mississippi River | USGS Belle Chasse Monitoring Station
+        </p>
+    </div>
+
+</section>
+
+<!-- Chart Initialization Script -->
+<script src="../visualizations/navigation_charts.js"></script>
+<script>
+// Initialize all navigation charts when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof initializeNavigationCharts === 'function') {
+        initializeNavigationCharts();
+    }
+});
+</script>

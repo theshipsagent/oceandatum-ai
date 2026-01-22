@@ -1,0 +1,489 @@
+{
+  "property_overview": {
+    "address": "28310 Highway 23, Port Sulphur, LA 70083",
+    "parish": "Plaquemines Parish",
+    "state": "Louisiana",
+    "river_position": "West Bank Mississippi River Mile Marker 39",
+    "coordinates": {
+      "latitude": 29.4714,
+      "longitude": -89.6947
+    }
+  },
+  "parcel_data": {
+    "total_area": {
+      "acres": 106.99,
+      "square_feet": 4660964.4
+    },
+    "frontage": {
+      "mississippi_river": {
+        "linear_feet": 10693,
+        "description": "±10,693 linear feet of Mississippi River frontage"
+      },
+      "highway_23": {
+        "linear_feet": 2500,
+        "description": "2,500 LF frontage on Louisiana Highway 23"
+      }
+    },
+    "zoning": "Industrial District 3",
+    "elevation": {
+      "feet_above_sea_level": 8,
+      "flood_zone": "High-risk FEMA Zone"
+    }
+  },
+  "ownership_timeline": [
+    {
+      "year": 1932,
+      "event": "Acquisition of sulfur rights",
+      "party": "Freeport Sulphur Company",
+      "description": "Acquired sulfur rights for Lake Grande Ecaille",
+      "status": "Initial acquisition"
+    },
+    {
+      "year": 1933,
+      "event": "Facility construction and operations commence",
+      "party": "Freeport Sulphur Company",
+      "description": "Port Sulphur facility construction began; operations commenced as logistics, refining, storage and shipping hub",
+      "status": "Operational"
+    },
+    {
+      "year": "1933-1978",
+      "event": "Primary sulfur mining period",
+      "party": "Freeport Sulphur Company",
+      "description": "Primary sulfur mine operations at Grande Ecaille (10 miles west); Port Sulphur served as processing/export hub",
+      "status": "Peak operations"
+    },
+    {
+      "year": "1933-2005",
+      "event": "Full operational period",
+      "party": "Freeport Sulphur Company / Freeport-McMoRan",
+      "description": "72 years of continuous operations as sulfur logistics, refining, storage and shipping hub",
+      "status": "Operational"
+    },
+    {
+      "year": 1981,
+      "event": "Corporate merger",
+      "party": "Freeport-McMoRan Inc.",
+      "description": "McMoRan Oil & Gas merged with Freeport Minerals to create Freeport-McMoRan Inc. (FTX)",
+      "status": "Ownership change"
+    },
+    {
+      "year": "1980s-1990s",
+      "event": "Economic decline",
+      "party": "Freeport-McMoRan",
+      "description": "Operations declined due to recovered sulfur from oil/gas refining competition",
+      "status": "Declining operations"
+    },
+    {
+      "year": "Early 2000s",
+      "event": "Cessation of operations",
+      "party": "Freeport-McMoRan",
+      "description": "Operations ceased due to market competition",
+      "status": "Inactive"
+    },
+    {
+      "year": 2005,
+      "event": "Hurricane Katrina destruction",
+      "party": "Freeport-McMoRan",
+      "description": "Hurricane Katrina destroyed remaining sulfur facility infrastructure with 22' storm surge and 75 kt winds",
+      "status": "Destroyed"
+    },
+    {
+      "year": "Post-2005",
+      "event": "Environmental remediation",
+      "party": "Freeport-McMoRan",
+      "description": "Environmental assessments and remediation completed under Louisiana DEQ's RECAP program",
+      "status": "Remediated"
+    },
+    {
+      "year": 2025,
+      "event": "Current status",
+      "party": "Unknown (Property available for sale/development)",
+      "description": "Property listed as remediated industrial waterfront asset with expansion potential",
+      "status": "Available for development"
+    }
+  ],
+  "infrastructure": {
+    "dock_facility": {
+      "dimensions": {
+        "length_feet": 433,
+        "width_feet": 24
+      },
+      "capacity_tons": 10000,
+      "construction_year": 1933,
+      "age_years": 92,
+      "material": "concrete",
+      "draft": {
+        "feet": 52,
+        "condition": "at low river stage"
+      },
+      "condition_notes": "Requires structural evaluation due to age"
+    },
+    "warehouse": {
+      "area_square_feet": 5000,
+      "status": "Existing"
+    },
+    "utilities": {
+      "electrical": "Post-Katrina rebuilt; enhanced standards with backup systems",
+      "water_sewer": "Upgraded post-Katrina; site-specific verification required",
+      "telecommunications": "Available along Highway 23 corridor",
+      "status": "Requires verification"
+    },
+    "navigation": {
+      "channel_depth_minimum_feet": 45,
+      "channel_depth_natural_feet": ">45 at Mile Marker 39",
+      "navigation_capability": "Year-round river navigation",
+      "vessel_draft_capability_feet": 52,
+      "aids_to_navigation": "Inland Electronic Navigational Charts (updated monthly), Vessel Traffic Services"
+    }
+  },
+  "environmental_status": {
+    "historical_operations": {
+      "operation_type": "Frasch Process sulfur extraction and processing",
+      "duration_years": 72,
+      "start_year": 1933,
+      "end_year": 2005,
+      "processes": [
+        "Hot molten sulfur storage in insulated heated tanks",
+        "Vatting operations (solidified sulfur blocks across acres)",
+        "Sulfur processing and refining",
+        "Shipping operations for molten and solid sulfur"
+      ]
+    },
+    "contamination_profile": {
+      "soil_impacts": [
+        "Soil acidification (pH <3.0)",
+        "Heavy metals mobilization (iron, aluminum, zinc, lead, cadmium, arsenic)",
+        "Sulfur residues up to 50,900 mg/kg in vatting areas"
+      ],
+      "groundwater_impacts": [
+        "Acid Mine Drainage (AMD)",
+        "High sulfates and Total Dissolved Solids (TDS)",
+        "Heavy metals contamination"
+      ],
+      "other_concerns": [
+        "Thermal pollution",
+        "Potential vapor intrusion",
+        "Subsurface infrastructure and debris"
+      ]
+    },
+    "remediation": {
+      "status": "Completed",
+      "responsible_party": "Freeport-McMoRan",
+      "regulatory_program": "Louisiana DEQ Risk Evaluation/Corrective Action Program (RECAP)",
+      "technologies_applied": [
+        "Lime neutralization",
+        "Soil amendments",
+        "In-situ stabilization",
+        "Pump-and-treat groundwater systems",
+        "Phytoremediation"
+      ],
+      "superfund_status": "No active NPL designation",
+      "residual_risks": "Potential subsurface issues; ongoing groundwater monitoring recommended",
+      "verification_required": "Phase I/II Environmental Site Assessments recommended"
+    },
+    "post_katrina_impacts": {
+      "flood_height_feet": 22,
+      "contaminant_mobilization": "Yes - required multi-agency sampling",
+      "samples_analyzed": ">1,800 samples for organics/metals",
+      "agencies_involved": ["EPA", "Louisiana DEQ"],
+      "current_status": "Remediated"
+    }
+  },
+  "flood_risk": {
+    "historical_events": [
+      {
+        "event": "Hurricane Katrina",
+        "date": "2005-08-29",
+        "storm_surge_feet": 22,
+        "wind_speed_knots": 75,
+        "damage": "Destroyed remaining infrastructure, created 82 sq mi new water areas"
+      },
+      {
+        "event": "Hurricane Betsy",
+        "date": "1965",
+        "flooding_feet": 0,
+        "damage": "No flooding at site"
+      },
+      {
+        "event": "Hurricane Camille",
+        "date": "1969",
+        "flooding_feet": 0,
+        "damage": "No flooding at site"
+      },
+      {
+        "event": "Hurricane Ida",
+        "date": "2021",
+        "storm_surge_feet": "9-14",
+        "damage": "Not specified"
+      }
+    ],
+    "fema_classification": "High-risk zone",
+    "site_elevation_feet": 8,
+    "vulnerability_factors": [
+      "Low elevation above sea level",
+      "Storm surge exposure",
+      "Coastal subsidence",
+      "Sea level rise",
+      "Coastal erosion"
+    ],
+    "mitigation_requirements": [
+      "Elevated facilities",
+      "Flood barriers",
+      "Elevated electrical/mechanical systems",
+      "Emergency backup systems"
+    ],
+    "estimated_annual_insurance_cost": 100000
+  },
+  "valuation": {
+    "total_acreage": 106.99,
+    "estimated_value_per_acre": 137420,
+    "total_estimated_value": 14700000,
+    "comparable_range": {
+      "low_per_acre": 26785,
+      "high_per_acre": 1300000,
+      "typical_remediated_brownfield_range": "50,000-250,000 per acre"
+    },
+    "infrastructure_premiums": {
+      "deep_water_access_45_48ft": "15-25% premium",
+      "existing_dock_facilities": "20-35% premium",
+      "natural_deep_water": "10-15% premium",
+      "class_i_railroad_access": "5-10% premium (not currently available)",
+      "interstate_proximity": "5-10% premium",
+      "direct_highway_access": "10-15% premium"
+    },
+    "waterfront_premiums": {
+      "river_frontage": "62% premium",
+      "bay_frontage": "107% premium",
+      "canal_frontage": "61% premium"
+    }
+  },
+  "market_comparables": [
+    {
+      "property": "Phillips 66 Alliance Refinery (Belle Chasse Terminal)",
+      "parish": "Plaquemines",
+      "sale_price": 500000000,
+      "acreage": 3200,
+      "price_per_acre": 156250,
+      "premium_vs_baseline": "14%",
+      "buyer": "Harvest Midstream (Hilcorp affiliate)",
+      "year": 2023,
+      "infrastructure": "1 million barrels storage, two crude oil docks"
+    },
+    {
+      "property": "St. Rosalie Plantation Property",
+      "parish": "Plaquemines",
+      "sale_price": 30500000,
+      "acreage": 600,
+      "price_per_acre": 50833,
+      "premium_vs_baseline": "-63%",
+      "year": 2018,
+      "later_valuation": {
+        "price": 36000000,
+        "price_per_acre": 60000,
+        "year": 2022,
+        "buyer": "State acquisition"
+      }
+    },
+    {
+      "property": "Louisiana International Terminal (Violet Dock Port)",
+      "parish": "Saint Bernard",
+      "sale_price": 18000000,
+      "acreage": 81,
+      "price_per_acre": 222222,
+      "premium_vs_baseline": "62%",
+      "total_project_cost": 1800000000,
+      "total_project_acres": 1100
+    },
+    {
+      "property": "Avondale Marine Facility",
+      "parish": "Jefferson",
+      "purchase_2018": 60000000,
+      "purchase_2018_per_acre": 236220,
+      "acreage": 254,
+      "valuation_2023": 445000000,
+      "valuation_2023_per_acre": 1750000,
+      "amended_2024": 330000000,
+      "amended_2024_per_acre": 1300000,
+      "premium_vs_baseline": "846%",
+      "river_frontage_feet": 8000,
+      "infrastructure": "1.5M sq ft warehouse, heavy-lift cranes, rail access"
+    },
+    {
+      "property": "Greenfield Elevator Project (Cancelled)",
+      "parish": "Saint James",
+      "original_investment": 800000000,
+      "land_valuation": 40000000,
+      "acreage": 1300,
+      "price_per_acre": 30769,
+      "premium_vs_baseline": "-78%",
+      "status": "Cancelled August 2024 due to community opposition"
+    }
+  ],
+  "development_costs_estimated": {
+    "phase_i_ii_esa": {
+      "low": 50000,
+      "high": 150000
+    },
+    "structural_dock_inspection": {
+      "low": 25000,
+      "high": 75000
+    },
+    "flood_modeling": {
+      "low": 15000,
+      "high": 30000
+    },
+    "initial_due_diligence_total": {
+      "low": 500000,
+      "high": 750000
+    },
+    "total_redevelopment_potential": {
+      "low": 8000000,
+      "high": 25000000,
+      "notes": "Including ongoing monitoring and flood mitigation"
+    }
+  },
+  "regional_context": {
+    "plaquemines_port_district": {
+      "entity": "Plaquemines Port Harbor & Terminal District",
+      "rebranded_as": "Louisiana Gateway Port (March 2025)",
+      "governance": "Committee of Plaquemines Parish Council acting as Port Board",
+      "creation_year": 1954,
+      "executive_director": "Charles D. Tillotson",
+      "assets_value_2022": 116800000,
+      "operating_revenue_2022": 6000000,
+      "revenue_growth": "13%",
+      "capital_additions": 75400000,
+      "major_lease_revenue": {
+        "tenant": "Venture Global",
+        "monthly_amount": 738498
+      }
+    },
+    "major_industrial_projects": [
+      {
+        "project": "Venture Global Plaquemines LNG",
+        "investment": 21000000000,
+        "status": "Under construction, first phase operational 2024",
+        "expansion_2025": {
+          "investment": 18000000000,
+          "capacity": "Doubles to 40 MMtpy",
+          "additional_acres": 1000
+        },
+        "river_frontage_miles": 1.3,
+        "total_acres": 630
+      },
+      {
+        "project": "APM Terminals Container Terminal",
+        "investment": 500000000,
+        "phase_1_acres": 200,
+        "total_potential_acres": "200-900",
+        "capacity_teus": "1.0M-2.0M annually",
+        "construction_start": "Q2 2026",
+        "operational": "2028",
+        "design_completion": "30% as of December 2025",
+        "vessel_capacity": "18,000 TEU vessels"
+      },
+      {
+        "project": "Louisiana Gateway Port Rail Spur Extension",
+        "investment": 85000000,
+        "federal_funding_percent": 85,
+        "completion": "2028-2029",
+        "impact": "Diverts 500,000 annual truck loads from Highway 23"
+      }
+    ],
+    "transportation_infrastructure": {
+      "highway_23": {
+        "total_length_miles": 74,
+        "daily_traffic_venice": 5000,
+        "daily_traffic_belle_chasse": 32000,
+        "recent_upgrades": [
+          {
+            "project": "Belle Chasse Bridge replacement",
+            "cost": 169000000,
+            "year": 2023,
+            "impact": "Eliminated drawbridge delays"
+          },
+          {
+            "project": "Highway 23 widening (Port Sulphur/Happy Jack)",
+            "cost": 17000000,
+            "length_miles": 4,
+            "status": "Planned"
+          },
+          {
+            "project": "Peters Road Extension",
+            "cost": 7400000,
+            "funding_source": "RAISE Grant",
+            "impact": "25-35% congestion reduction"
+          }
+        ]
+      },
+      "rail": {
+        "nearest_terminal": "New Orleans & Gulf Coast Railway at Myrtle Grove",
+        "distance_miles": 8,
+        "line_length_miles": 32,
+        "capacity_utilization": "<10%",
+        "interchange": "Union Pacific at Westwego",
+        "commodities": ["petroleum", "chemicals", "grains"],
+        "challenges": "80+ at-grade crossings without gates",
+        "class_i_access": [
+          "CSX",
+          "Norfolk Southern",
+          "BNSF",
+          "Union Pacific",
+          "Canadian National",
+          "CPKC"
+        ]
+      },
+      "waterway": {
+        "mississippi_river_channel_depth_minimum": 45,
+        "natural_depth_at_site": ">45 feet",
+        "vessel_draft_capability": "50+ feet",
+        "channel_range": "Mile 236 (Baton Rouge) to Mile 0 (Gulf)",
+        "river_stages_2025_09_23": {
+          "baton_rouge_feet": 6.3,
+          "new_orleans_feet": 2.1,
+          "venice_feet": 0.8,
+          "alliance_feet": 1.55,
+          "alliance_24hr_change": -0.11
+        },
+        "low_water_impacts": "10-20% cost increase through reduced barge loads; 25-30% load reductions in extreme low water"
+      }
+    }
+  },
+  "lease_areas": {
+    "current_status": "Property available for sale/lease",
+    "potential_uses": [
+      "LNG export facility",
+      "Container terminal operations",
+      "Bulk cargo handling",
+      "Petrochemical operations",
+      "General industrial/maritime logistics"
+    ],
+    "zoning_permits": "Industrial District 3 allows heavy industrial operations"
+  },
+  "regulatory_approvals": {
+    "required_permits": [
+      "USACE Section 404 for dock modifications",
+      "Louisiana DEQ environmental permits",
+      "FERC approvals for LNG facilities (if applicable)",
+      "Local zoning compliance verification"
+    ],
+    "regulatory_agencies": [
+      "Louisiana DEQ (primary oversight)",
+      "EPA Region 6",
+      "USACE New Orleans District",
+      "FERC (for LNG projects)",
+      "Plaquemines Parish Government"
+    ]
+  },
+  "data_sources": {
+    "primary_documents": [
+      "Property Synthesis Document (property_SYNTHESIS.md)",
+      "Plaquemines Port Financials Dec 31, 2022",
+      "Property Overview documents",
+      "Industrial Riverfront Property Transactions and Valuation Methods",
+      "Characteristics of the Property reports"
+    ],
+    "generation_date": "2026-01-22",
+    "compilation_notes": "Data extracted from 38 source files including MD, JSON, and PDF documents covering financial, environmental, market, and infrastructure analysis"
+  }
+}

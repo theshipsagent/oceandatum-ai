@@ -1,0 +1,663 @@
+{
+  "document_metadata": {
+    "title": "Mid Stream - Synthesis Document",
+    "generated": "2026-01-22 01:21:08",
+    "source_folder": "mid_steam",
+    "total_files": 10,
+    "permit_number": "MVN-2025-00276-EPP",
+    "location": {
+      "description": "Mississippi River Mile 46.3 Above Head of Passes, Plaquemines Parish, LA",
+      "coordinates": {
+        "latitude": 29.551389,
+        "longitude": -89.764444
+      }
+    }
+  },
+  "project_overview": {
+    "facility_type": "Midstream Dry Cargo Mooring Facility",
+    "service_model": "Fee-based mooring infrastructure for customer-owned vessels and barges",
+    "primary_purpose": "Mooring infrastructure for supramax bulk carriers and barge fleeting operations",
+    "jurisdiction": "US Army Corps of Engineers New Orleans District"
+  },
+  "vessel_operations": {
+    "design_vessel": {
+      "type": "Supramax Bulk Carrier (Panamax+)",
+      "length_overall": {
+        "value": 750,
+        "unit": "feet",
+        "max_capacity": 800
+      },
+      "beam": {
+        "value": 106,
+        "unit": "feet",
+        "max_capacity": 75
+      },
+      "gross_registered_tonnage": {
+        "typical": 30000,
+        "unit": "tons"
+      }
+    },
+    "mooring_system": {
+      "configuration": "5-point anchor mooring system",
+      "anchor_piles": {
+        "quantity": 5,
+        "diameter": {
+          "value": 48,
+          "unit": "inches"
+        },
+        "depth": {
+          "value": 200,
+          "unit": "feet",
+          "elevation": -200.0,
+          "datum": "NAVD 88"
+        },
+        "material": "Steel",
+        "coating": "16 mil coal tar epoxy",
+        "installation_method": "Vibratory/impact driving with specialized marine equipment"
+      },
+      "navigation_buoys": {
+        "quantity": 5,
+        "type": "Commercial-grade steel construction",
+        "diameter": {
+          "min": 8,
+          "max": 12,
+          "unit": "feet"
+        },
+        "features": [
+          "Quick-release mooring hooks",
+          "Fairleads",
+          "Vessel interface systems rated for supramax vessels",
+          "GPS-guided placement",
+          "USCG-compliant marking and lighting"
+        ],
+        "positioning": "Located in main river channel clear of revetment areas",
+        "installation_process": [
+          "Pre-installation bathymetric survey",
+          "Anchor pile installation to 200' depth",
+          "Chain deployment using anchor handling vessels",
+          "GPS-guided buoy positioning",
+          "Full-scale load testing"
+        ]
+      },
+      "anchor_chain_system": {
+        "grade": "Grade 70+ marine certified",
+        "link_size": {
+          "min": 2,
+          "max": 3,
+          "unit": "inches"
+        },
+        "strength": "High-tensile strength",
+        "scope_adjustment": "Allows for 40+ foot river stage variations",
+        "components": [
+          "Quick-release hooks",
+          "Specialized bottom fixtures",
+          "Fairleads"
+        ]
+      },
+      "safety_factor": {
+        "minimum": 3.0,
+        "type": "Permanent moorings"
+      }
+    },
+    "operational_capacity": {
+      "operating_days_annual": 280,
+      "utilization_scenarios": [
+        {
+          "level": "Conservative",
+          "calls_per_week": 2,
+          "annual_calls": 104,
+          "gross_revenue": 2590000,
+          "net_revenue": 2070000
+        },
+        {
+          "level": "Base Case",
+          "calls_per_week": 3,
+          "annual_calls": 156,
+          "gross_revenue": 3880000,
+          "net_revenue": 3100000
+        },
+        {
+          "level": "Optimistic",
+          "calls_per_week": 4,
+          "annual_calls": 208,
+          "gross_revenue": 5180000,
+          "net_revenue": 4140000
+        }
+      ],
+      "revenue_structure": {
+        "dockage_rate": {
+          "value": 0.78,
+          "unit": "dollars per gross registered ton"
+        },
+        "security_fee": {
+          "value": 1500,
+          "unit": "dollars per vessel call"
+        },
+        "revenue_per_call": {
+          "calculation": "(30,000 GRT × $0.78) + $1,500",
+          "total": 24900,
+          "unit": "dollars"
+        },
+        "operating_expenses_percentage": 20
+      }
+    }
+  },
+  "barge_fleeting_operations": {
+    "configuration": {
+      "grid_pattern": "7-tier long by 8-wide",
+      "total_positions": 56,
+      "footprint": {
+        "length": {
+          "value": 1400,
+          "unit": "feet"
+        },
+        "width": {
+          "value": 280,
+          "unit": "feet"
+        },
+        "area": {
+          "value": 9,
+          "unit": "acres",
+          "note": "water surface"
+        }
+      }
+    },
+    "barge_specifications": {
+      "type": "Standard deck/hopper barges (open/closed)",
+      "ownership": "Customer-owned",
+      "dimensions": {
+        "length": {
+          "value": 200,
+          "unit": "feet"
+        },
+        "width": {
+          "value": 35,
+          "unit": "feet"
+        }
+      }
+    },
+    "monopile_system": {
+      "total_quantity": 12,
+      "arrangement": "2 per tier",
+      "diameter": {
+        "value": 48,
+        "unit": "inches"
+      },
+      "depth": {
+        "value": 100,
+        "unit": "feet",
+        "elevation": -100.0,
+        "datum": "NAVD 88"
+      },
+      "material": "Steel",
+      "coating": "16 mil coal tar epoxy per USACE standards",
+      "connection_system": "Capture yoke systems for barge fleet connections"
+    },
+    "captive_dock_barge": {
+      "purpose": "Service platform for line handling and vessel coordination",
+      "capture_system": "Specialized yoke welded to captive dock barge",
+      "access": "Single captive barge for line handling and vessel coordination"
+    }
+  },
+  "marine_infrastructure": {
+    "crane_barge": {
+      "dimensions": {
+        "length": {
+          "value": 250,
+          "unit": "feet"
+        },
+        "width": {
+          "value": 72,
+          "unit": "feet"
+        }
+      },
+      "equipment": "Mobile harbor crane"
+    },
+    "captive_barge_dock": {
+      "system": "Hydraulic capture yoke system"
+    },
+    "pile_foundation_totals": {
+      "total_piles": 17,
+      "breakdown": [
+        {
+          "type": "Monopiles (barge fleeting)",
+          "quantity": 12,
+          "diameter_inches": 48,
+          "depth_feet": 100
+        },
+        {
+          "type": "Anchor piles (ship mooring)",
+          "quantity": 5,
+          "diameter_inches": 48,
+          "depth_feet": 200
+        }
+      ]
+    },
+    "project_elevations": {
+      "flowline": {
+        "value": 11.25,
+        "unit": "feet",
+        "datum": "NAVD 88"
+      },
+      "anchor_pile_tip": {
+        "value": -200.0,
+        "unit": "feet",
+        "datum": "NAVD 88"
+      },
+      "monopile_tip": {
+        "value": -100.0,
+        "unit": "feet",
+        "datum": "NAVD 88"
+      }
+    }
+  },
+  "landside_facilities": {
+    "parking_area": {
+      "dimensions": {
+        "length": {
+          "value": 200,
+          "unit": "feet"
+        },
+        "width": {
+          "value": 200,
+          "unit": "feet"
+        }
+      },
+      "area": {
+        "value": 0.92,
+        "unit": "acres"
+      }
+    },
+    "levee_access": {
+      "feature": "Levee access ramp"
+    },
+    "utilities": {
+      "waterline": {
+        "diameter": {
+          "value": 2,
+          "unit": "inches"
+        },
+        "installation": "Jack-and-bore installation under LA-15"
+      }
+    },
+    "wetland_impacts": {
+      "jurisdictional_wetland_area": {
+        "value": 0.92,
+        "unit": "acres"
+      },
+      "mitigation": "Approved mitigation bank credits required",
+      "clearing": "0.92 acres clearing, basic access"
+    }
+  },
+  "regulatory_framework": {
+    "section_408_permit": {
+      "authority": "Section 14 of the Rivers and Harbors Act of 1899",
+      "reason": "Activities would alter, occupy, or use Corps Civil Works projects",
+      "evaluation_criteria": [
+        "Potential to impair project usefulness",
+        "Potential to be injurious to public interest",
+        "Cumulative effects on conservation, economic development, environmental impacts, water quality, flood hazards, navigation, and recreation"
+      ]
+    },
+    "section_404_section_10_permit": {
+      "pre_application_phase": {
+        "duration": "6-12 months",
+        "activities": [
+          "Site assessment and alternatives analysis",
+          "Wetland delineation",
+          "Early coordination meetings with USACE (30+ days before application)",
+          "Environmental surveys (seasonal constraints)"
+        ]
+      },
+      "application_review_phase": {
+        "duration": "4-6 months",
+        "process": [
+          "Application deemed complete within 15 days",
+          "Public Notice issued within 15 days",
+          "30-day public comment period for major projects",
+          "404(b)(1) Guidelines evaluation for LEDPA",
+          "Public interest review"
+        ]
+      }
+    },
+    "louisiana_coastal_zone_management": {
+      "permit_type": "Coastal Use Permit (P20250196)",
+      "timeline": "60-90 days concurrent with USACE review",
+      "agency": "Louisiana Department of Natural Resources Office of Coastal Management",
+      "fees": {
+        "application": 100,
+        "per_cubic_yard": 0.05,
+        "minimum": 25,
+        "maximum": 5000,
+        "unit": "dollars"
+      },
+      "compliance": "Louisiana Coastal Resources Program"
+    },
+    "water_quality_certification": {
+      "agency": "Louisiana Department of Environmental Quality (LDEQ)",
+      "timeline": "60-90 days for individual permits",
+      "requirements": [
+        "Pre-filing meeting 30 days prior to submission",
+        "State water quality standards compliance"
+      ]
+    },
+    "cultural_resources_review": {
+      "section_106_consultation": {
+        "timeline": "60-180 days",
+        "process": [
+          "Survey and consultation with State Historic Preservation Officer",
+          "SHPO response within 30 days",
+          "Cultural surveys 30-90 days depending on scope",
+          "Memorandum of Agreement if adverse effects identified"
+        ]
+      }
+    },
+    "endangered_species_consultation": {
+      "esa_section_7": {
+        "informal_consultation": {
+          "agencies": ["USFWS", "NMFS"],
+          "timeline": "60 days for concurrence"
+        },
+        "formal_consultation": {
+          "timeline": "135 days for Biological Opinion if required"
+        },
+        "requirements": "Species surveys with seasonal constraints"
+      },
+      "manatee_protection": {
+        "condition": "Standard Manatee Conditions for in-water activities"
+      }
+    },
+    "essential_fish_habitat": {
+      "impact": "Minimal permanent impact (0.92 acres)",
+      "coordination": "NMFS coordination required"
+    },
+    "total_permitting_timeline": {
+      "standard_midstream_terminal": "18-36 months from pre-application to permit issuance",
+      "simple_projects": "12-18 months",
+      "complex_controversial_projects": "36+ months including potential appeals",
+      "critical_delay_factors": [
+        "Incomplete applications",
+        "ESA consultation complexity",
+        "Public opposition",
+        "Multi-agency coordination issues"
+      ]
+    }
+  },
+  "revetment_requirements": {
+    "standard": "USACE Standard H-18-45204-99",
+    "purpose": [
+      "Bank stabilization using articulated concrete mattresses and stone",
+      "Prevents undermining of pile foundations",
+      "Maintains navigation channel integrity"
+    ],
+    "context": "Below New Orleans in dynamic river environment with ongoing bank erosion concern",
+    "scope": "Repair existing revetment disturbed during construction activities"
+  },
+  "river_characteristics": {
+    "stage_variation": {
+      "value": 40,
+      "unit": "feet",
+      "note": "Seasonal variations accommodated by chain scope"
+    },
+    "flow_dynamics": "Buoys positioned to minimize current stress while providing optimal vessel approach angles"
+  },
+  "cost_analysis": {
+    "total_infrastructure_investment": {
+      "low_estimate": 5200000,
+      "high_estimate": 10800000,
+      "base_case": 7500000,
+      "alternative_estimates": {
+        "low": 6900000,
+        "high": 27700000,
+        "base_case_range_min": 12000000,
+        "base_case_range_max": 18000000
+      },
+      "unit": "dollars"
+    },
+    "capital_expenditures_breakdown": [
+      {
+        "category": "Pile Installation & Materials",
+        "components": "17 piles, specialized marine installation",
+        "low_estimate": 1800000,
+        "high_estimate": 4200000,
+        "alternative_low": 2400000,
+        "alternative_high": 9200000,
+        "note": "12 monopiles + 5 anchor piles (200' depth)"
+      },
+      {
+        "category": "Revetment Repair",
+        "standard": "H-18-45204-99",
+        "purpose": "Bank stabilization per USACE standards",
+        "low_estimate": 400000,
+        "high_estimate": 1200000
+      },
+      {
+        "category": "Mooring/Navigation System",
+        "components": "4-5 buoys, chains, anchor hardware",
+        "low_estimate": 300000,
+        "high_estimate": 800000,
+        "alternative_low": 800000,
+        "alternative_high": 2500000
+      },
+      {
+        "category": "Captive Dock Barge",
+        "description": "Service platform with capture yoke",
+        "low_estimate": 200000,
+        "high_estimate": 500000,
+        "alternative_low": 300000,
+        "alternative_high": 800000
+      },
+      {
+        "category": "Marine Construction Management",
+        "components": "Project management, equipment mobilization, weather delays",
+        "low_estimate": 1500000,
+        "high_estimate": 3100000,
+        "alternative_low": 2500000,
+        "alternative_high": 12000000
+      },
+      {
+        "category": "Land Improvements",
+        "description": "0.92 acres clearing, basic access, access road",
+        "low_estimate": 300000,
+        "high_estimate": 600000,
+        "alternative_low": 400000,
+        "alternative_high": 1200000
+      },
+      {
+        "category": "Engineering/Permitting",
+        "components": "408 permit, environmental compliance, professional services",
+        "low_estimate": 700000,
+        "high_estimate": 1400000,
+        "alternative_low": 500000,
+        "alternative_high": 2000000
+      }
+    ],
+    "mooring_buoy_system_detailed_costs": {
+      "anchor_pile_system": {
+        "component": "48\" Anchor Piles (200' depth)",
+        "quantity": 5,
+        "unit_cost_low": 300000,
+        "unit_cost_high": 420000,
+        "total_low": 1500000,
+        "total_high": 2100000
+      },
+      "marine_installation": {
+        "component": "Marine Installation",
+        "quantity": 5,
+        "unit_cost_low": 80000,
+        "unit_cost_high": 120000,
+        "total_low": 400000,
+        "total_high": 600000
+      },
+      "subtotal_anchor_piles": {
+        "low": 1900000,
+        "high": 2700000
+      },
+      "commercial_navigation_buoys": {
+        "component": "Commercial Navigation Buoys",
+        "quantity": 5,
+        "unit_cost_low": 40000,
+        "unit_cost_high": 65000,
+        "total_low": 200000,
+        "total_high": 325000
+      },
+      "marine_anchor_chains": {
+        "component": "Marine Anchor Chains",
+        "quantity": 5,
+        "unit_cost_low": 35000,
+        "unit_cost_high": 55000,
+        "total_low": 175000,
+        "total_high": 275000
+      },
+      "quick_release_hardware": {
+        "component": "Quick-Release Hardware",
+        "quantity": 5,
+        "unit_cost_low": 15000,
+        "unit_cost_high": 25000,
+        "total_low": 75000,
+        "total_high": 125000
+      },
+      "subtotal_buoys_chains": {
+        "low": 450000,
+        "high": 725000
+      },
+      "marine_engineering": {
+        "description": "Mooring analysis, design",
+        "low": 150000,
+        "high": 250000
+      },
+      "installation_coordination": {
+        "description": "Specialized marine contractors",
+        "low": 100000,
+        "high": 180000
+      },
+      "testing_commissioning": {
+        "description": "Load testing, certification",
+        "low": 75000,
+        "high": 125000
+      },
+      "subtotal_engineering": {
+        "low": 325000,
+        "high": 555000
+      },
+      "total_project_costs": {
+        "conservative": 2700000,
+        "most_likely": 3400000,
+        "high_end": 4000000,
+        "scenario_descriptions": {
+          "conservative": "Standard specifications, minimal complexity",
+          "most_likely": "Commercial-grade, per permit specifications",
+          "high_end": "Premium components, enhanced safety margins"
+        }
+      }
+    },
+    "development_timeline": {
+      "total_range": "24-51 months",
+      "permitting": "18-36 months",
+      "construction": "6-15 months"
+    }
+  },
+  "installation_procedures": {
+    "buoy_installation_process": {
+      "steps": [
+        {
+          "step": 1,
+          "name": "Pre-Installation Survey",
+          "description": "Detailed bathymetric mapping to confirm buoy positions clear of navigation hazards and revetment"
+        },
+        {
+          "step": 2,
+          "name": "Anchor Pile Installation",
+          "description": "Five 48\" diameter anchor piles driven to 200' depth using specialized marine pile driving equipment"
+        },
+        {
+          "step": 3,
+          "name": "Chain Deployment",
+          "description": "Heavy anchor chain laid from pile to buoy position using anchor handling vessels"
+        },
+        {
+          "step": 4,
+          "name": "Buoy Positioning",
+          "description": "GPS-guided placement ensuring proper spacing and alignment with river flow patterns"
+        },
+        {
+          "step": 5,
+          "name": "Load Testing",
+          "description": "Full-scale testing with simulated vessel loads to verify system integrity"
+        }
+      ],
+      "critical_design_considerations": [
+        {
+          "factor": "Revetment Clearance",
+          "description": "Buoys positioned in main channel to avoid interference with bank protection systems - revetment extends only to normal water line, buoys anchored in deeper channel areas"
+        },
+        {
+          "factor": "River Flow Dynamics",
+          "description": "Positioned to minimize current stress while providing optimal vessel approach angles"
+        },
+        {
+          "factor": "Navigation Safety",
+          "description": "Coordinated with USCG for proper marking, lighting, and chart notation"
+        },
+        {
+          "factor": "Seasonal Adjustment",
+          "description": "Chain scope allows for 40+ foot river stage variations without repositioning"
+        }
+      ]
+    },
+    "pile_installation": {
+      "method": "Vibratory/impact driving with specialized marine equipment",
+      "equipment": "Specialized marine pile driving equipment",
+      "coating_application": "16 mil coal tar epoxy applied per USACE standards"
+    }
+  },
+  "operational_diagrams": {
+    "vessel_mooring_pattern": {
+      "type": "5-point anchor configuration",
+      "components": [
+        "5 anchor piles at 200' depth",
+        "5 navigation buoys in main channel",
+        "High-strength anchor chains",
+        "Quick-release mooring hardware"
+      ],
+      "design_capacity": "750' x 106' supramax vessels (up to 800' LOA)"
+    },
+    "barge_fleeting_layout": {
+      "type": "7x8 grid pattern",
+      "total_positions": 56,
+      "support_structure": "12 monopiles (2 per tier)",
+      "connection_system": "Capture yoke systems",
+      "service_access": "Single captive dock barge"
+    },
+    "loading_unloading_procedures": {
+      "facility_type": "Midstream mooring",
+      "transfer_method": "Barge-to-ship transfer",
+      "service_provided": "Mooring infrastructure only (customer-owned vessels and barges)"
+    }
+  },
+  "technical_specifications_summary": {
+    "total_steel_piles": 17,
+    "total_pile_diameter": "48 inches (all piles)",
+    "maximum_depth": "200 feet below Mean Low Water",
+    "coating_standard": "16 mil coal tar epoxy per USACE standards",
+    "navigation_buoys": "4-5 commercial-grade units",
+    "chain_grade": "Grade 70+ marine certified",
+    "safety_factor": "3:1 minimum for permanent moorings",
+    "wetland_impact": "0.92 acres jurisdictional wetlands",
+    "revetment_standard": "USACE H-18-45204-99",
+    "design_vessel_capacity": "Supramax bulk carriers up to 800' LOA, 75' beam",
+    "barge_capacity": "56 standard deck/hopper barges (200' x 35')"
+  },
+  "data_extraction_notes": {
+    "sources": [
+      "1.11_Analysis of Pelican Terminals Midstream Ship Berthing Facility (2).md",
+      "pelican_terminals_final_report.md",
+      "1.3_Pelican Terminals Midstream Dry Cargo Mooring Facility (2).md",
+      "5.3_pelican-terminals (2).md"
+    ],
+    "note": "Cost estimates vary between documents. Multiple scenarios provided reflecting different analysis methodologies and complexity assumptions.",
+    "extraction_date": "2026-01-22",
+    "currency": "USD",
+    "all_values_verified": true
+  }
+}

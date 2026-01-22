@@ -1,0 +1,850 @@
+<!-- Weather & Hydrology Section -->
+<section id="weather" class="analysis-section">
+  <div class="section-header">
+    <h2>Weather & Hydrology</h2>
+    <div class="source-count">64 sources</div>
+  </div>
+
+  <!-- Executive Summary -->
+  <div class="content-block">
+    <h3>Executive Summary</h3>
+    <p>
+      Port Sulphur Terminal operates at Mississippi River Mile 48.6 AHP within a remarkably consistent annual hydrologic cycle, shaped by three distinct seasonal patterns. The location experiences extreme variations in river discharge (131,000 to 650,000+ CFS), water velocity (1.2 to 5.0+ fps), and compound flooding risks from storm surge, river stage, and precipitation. However, post-Katrina levee improvements provide 100-year level protection, and the terminal's deep-water access creates strategic advantages during extreme low-water events.
+    </p>
+    <p>
+      <strong>Critical operational finding:</strong> The prime construction window (July-September) overlaps with peak hurricane season, requiring flexible scheduling and enhanced monitoring protocols. Winter low-water periods (November-February) offer ideal conditions for underwater work and maintenance, while spring high-water events (March-June) present the most challenging conditions with extreme current velocities.
+    </p>
+  </div>
+
+  <!-- Seasonal Discharge Patterns Chart -->
+  <div class="chart-container">
+    <div class="chart-wrapper">
+      <canvas id="seasonalDischargeChart"></canvas>
+    </div>
+    <div class="chart-caption">
+      <strong>Figure 1: Mississippi River Seasonal Discharge Patterns</strong><br>
+      Annual cycle showing discharge (CFS) and water velocity (FPS) at Mile 48.6 AHP. Data derived from downstream monitoring stations with regional scaling factors. Note the remarkably consistent pattern: Spring High Water (Mar-Jun), Summer/Fall Transition (Jul-Oct), Winter Low Water (Nov-Feb).
+    </div>
+  </div>
+
+  <!-- Operational Windows Highlight Cards -->
+  <div class="highlight-cards">
+    <div class="highlight-card optimal">
+      <div class="highlight-icon">✓</div>
+      <h4>Prime Construction Window</h4>
+      <div class="highlight-period">July - early October</div>
+      <p><strong>Optimal:</strong> July - early September</p>
+      <ul>
+        <li>River velocities: 1.5-2.5 fps</li>
+        <li>Manageable currents: 2.0-3.0 fps typical</li>
+        <li>Stable weather before peak hurricane activity</li>
+        <li>Standard navigation procedures</li>
+      </ul>
+      <div class="highlight-note">
+        <strong>Note:</strong> Hurricane season overlap (June 1 - Nov 30) requires flexible scheduling and weather risk management
+      </div>
+    </div>
+
+    <div class="highlight-card underwater">
+      <div class="highlight-icon">⚙</div>
+      <h4>Underwater Work Window</h4>
+      <div class="highlight-period">November - February</div>
+      <p><strong>Ideal for:</strong> Precision maintenance and inspection</p>
+      <ul>
+        <li>Low current velocities: 1.2-1.8 fps</li>
+        <li>Reduced river stages</li>
+        <li>Access to normally submerged areas</li>
+        <li>Minimal current forces</li>
+      </ul>
+      <div class="highlight-note">
+        <strong>Constraints:</strong> Fog risk (15-25 days), cold fronts (30-40 mph winds), winter weather requires enhanced safety protocols
+      </div>
+    </div>
+
+    <div class="highlight-card challenging">
+      <div class="highlight-icon">⚠</div>
+      <h4>High Water Challenge Period</h4>
+      <div class="highlight-period">March - June</div>
+      <p><strong>Most challenging conditions</strong></p>
+      <ul>
+        <li>Extreme velocities: 3.5-5.0 fps</li>
+        <li>High discharge: >400,000 CFS typical</li>
+        <li>Peak events: 650,000 CFS (2018)</li>
+        <li>Enhanced tug requirements</li>
+      </ul>
+      <div class="highlight-note">
+        <strong>Advantage:</strong> Maximum draft capability and available depths. Construction severely constrained, but heavy structure placement possible.
+      </div>
+    </div>
+
+    <div class="highlight-card vessel-ops">
+      <div class="highlight-icon">⚓</div>
+      <h4>Optimal Vessel Operations</h4>
+      <div class="highlight-period">July - October</div>
+      <p><strong>Standard operations:</strong> Most predictable conditions</p>
+      <ul>
+        <li>Manageable currents: 2.0-3.0 fps</li>
+        <li>Predictable water levels</li>
+        <li>Consistent cargo handling</li>
+        <li>Standard mooring procedures</li>
+      </ul>
+      <div class="highlight-note">
+        <strong>Year-round capability:</strong> Deep-water access maintains operations even during extreme low water (131,000 CFS - 2023 event)
+      </div>
+    </div>
+  </div>
+
+  <!-- Historical Flood Events -->
+  <div class="content-block">
+    <h3>Historical Flood Events & Infrastructure Resilience</h3>
+    <p>
+      Port Sulphur has experienced both catastrophic storm surge events and extreme river flooding, providing a comprehensive dataset for design envelope development. The 2005 Hurricane Katrina event with ~22 feet of inundation at Port Sulphur led to significant federal levee improvements under the HSDRRS (Hurricane and Storm Damage Risk Reduction System), which have been successfully validated during subsequent hurricanes Isaac (2012) and Ida (2021).
+    </p>
+  </div>
+
+  <!-- Historical Flood Timeline Chart -->
+  <div class="chart-container">
+    <div class="chart-wrapper">
+      <canvas id="historicalFloodEventsChart"></canvas>
+    </div>
+    <div class="chart-caption">
+      <strong>Figure 2: Historical Flood Events Timeline (2005-2023)</strong><br>
+      Major flood events showing both storm surge (feet) and river flooding (discharge in CFS). Note the validation of post-Katrina infrastructure improvements during Isaac (2012) and Ida (2021), and the extreme low water event (2023) demonstrating deep-water terminal advantages.
+    </div>
+  </div>
+
+  <!-- Storm Surge Comparison Chart -->
+  <div class="chart-container">
+    <div class="chart-wrapper">
+      <canvas id="stormSurgeSeverityChart"></canvas>
+    </div>
+    <div class="chart-caption">
+      <strong>Figure 3: Storm Surge Severity Comparison</strong><br>
+      Federal levee system (HSDRRS) provides 100-year level of risk reduction (1% annual exceedance probability). Design standard based on combined storm size, intensity, and track probabilities - not solely wind speed category. Sources: NOAA/NHC TCR, FEMA WWL maps, USGS SIR 2009-5230.
+    </div>
+  </div>
+
+  <!-- Compound Flooding Risks -->
+  <div class="content-block">
+    <h3>Compound Flooding Scenarios</h3>
+    <p>
+      Port Sulphur faces unique compound flooding risks from the simultaneous interaction of multiple water sources. A tropical system can produce:
+    </p>
+    <ul class="detailed-list">
+      <li><strong>Storm surge from Gulf of Mexico:</strong> 8-22+ feet depending on storm characteristics</li>
+      <li><strong>Mississippi River stage elevation:</strong> Can coincide with spring high water (March-June)</li>
+      <li><strong>Tropical rainfall:</strong> 5-15 inches over multi-day periods</li>
+      <li><strong>Timing interactions:</strong> When these factors align, regional flooding extends beyond immediate storm areas</li>
+    </ul>
+    <p>
+      The 2019 extended spring flood event (>6 months sustained high water) coinciding with active hurricane season provided valuable data on infrastructure performance under compound stress scenarios. Federal levee protection has proven effective, but operational planning must account for these multi-factor risk periods.
+    </p>
+  </div>
+
+  <!-- Operational Windows Detailed Chart -->
+  <div class="chart-container">
+    <div class="chart-wrapper">
+      <canvas id="operationalWindowsChart"></canvas>
+    </div>
+    <div class="chart-caption">
+      <strong>Figure 4: Operational Suitability Throughout the Year</strong><br>
+      Relative suitability ratings (0-100%) for construction, vessel operations, and underwater work based on river velocities, weather patterns, and seasonal constraints. Prime construction window (July-September) shows peak suitability before hurricane season peaks.
+    </div>
+  </div>
+
+  <!-- Hurricane Season Analysis -->
+  <div class="content-block">
+    <h3>Hurricane Season Risk Management</h3>
+    <p>
+      Port Sulphur lies in the primary threat zone for Gulf of Mexico tropical systems, with hurricane season running June 1 - November 30 and peak activity during August-October. This creates a critical operational planning challenge: the prime construction window (July-September) overlaps directly with elevated hurricane risk.
+    </p>
+    <p>
+      <strong>Risk mitigation strategies:</strong>
+    </p>
+    <ul class="detailed-list">
+      <li><strong>5-day advance forecasts:</strong> National Hurricane Center provides sufficient warning for preparation</li>
+      <li><strong>Flexible scheduling:</strong> Construction projects must accommodate weather-related pauses</li>
+      <li><strong>Enhanced monitoring:</strong> Peak season (August-October) requires continuous weather surveillance</li>
+      <li><strong>Infrastructure protection:</strong> Federal HSDRRS levee system provides 100-year level protection</li>
+      <li><strong>Historical validation:</strong> Post-Katrina improvements successfully tested during Isaac (2012) and Ida (2021)</li>
+    </ul>
+  </div>
+
+  <!-- Hurricane Risk Distribution Chart -->
+  <div class="chart-container">
+    <div class="chart-wrapper small-chart">
+      <canvas id="hurricaneSeasonRiskChart"></canvas>
+    </div>
+    <div class="chart-caption">
+      <strong>Figure 5: Hurricane Season Risk Distribution</strong><br>
+      Relative hurricane activity risk by month showing peak danger period (September) and overlap with optimal construction window (July-September). Balance between construction efficiency and weather risk management is critical.
+    </div>
+  </div>
+
+  <!-- Weather Patterns Detail -->
+  <div class="content-block">
+    <h3>Detailed Weather Patterns</h3>
+
+    <h4>Precipitation (62-65 inches annually)</h4>
+    <p>
+      Unevenly distributed throughout the year with distinct seasonal patterns:
+    </p>
+    <ul class="detailed-list">
+      <li><strong>Summer (June-September):</strong> Intense convective activity with several inches possible in short time periods, peak intensity during late afternoon/evening hours</li>
+      <li><strong>Winter (December-February):</strong> Longer-duration, lower-intensity systems with minimal but persistent impact</li>
+      <li><strong>Tropical events:</strong> 5-15 inches over multi-day periods, often coinciding with elevated river stages</li>
+    </ul>
+
+    <h4>Wind Conditions</h4>
+    <p><strong>Summer:</strong> South winds 5-10 knots typical, 1-2 foot seas in coastal approaches, thunderstorm activity creates variable conditions</p>
+    <p><strong>Winter:</strong> More variable wind directions; cold fronts bring sustained winds 30-40 mph with higher gusts for 24-48 hour durations, challenging vessel operations and potentially requiring temporary suspension of cargo handling</p>
+    <p><strong>Hurricane season:</strong> June 1 - November 30, most significant weather-related operational risk with 5-day advance forecasts available</p>
+
+    <h4>Fog Conditions (15-25 days annually)</h4>
+    <ul class="detailed-list">
+      <li><strong>Peak period:</strong> December - March (winter season)</li>
+      <li><strong>Formation mechanism:</strong> Radiational cooling combined with river surface moisture</li>
+      <li><strong>Typical duration:</strong> Early morning through mid-morning; occasionally all-day events</li>
+      <li><strong>Visibility threshold:</strong> Dense fog <0.25 miles requires vessel movement suspension</li>
+      <li><strong>Economic impact:</strong> Navigation restrictions and cargo handling limitations accumulate over fog season</li>
+    </ul>
+  </div>
+
+  <!-- Monitoring and Forecasting -->
+  <div class="content-block">
+    <h3>Monitoring and Forecasting Systems</h3>
+
+    <h4>River Monitoring</h4>
+    <p>
+      Comprehensive monitoring of river stage, velocity, and discharge at downstream monitoring stations with regional scaling factors applied for Port Sulphur conditions. These systems enable:
+    </p>
+    <ul class="detailed-list">
+      <li>Operational planning and scheduling optimization</li>
+      <li>Construction window identification</li>
+      <li>Vessel operations planning and tug requirements assessment</li>
+      <li>Real-time current velocity tracking</li>
+    </ul>
+
+    <h4>Weather Forecasting</h4>
+    <ul class="detailed-list">
+      <li><strong>NOAA coastal marine forecasting:</strong> Short-term weather and marine conditions</li>
+      <li><strong>National Hurricane Center:</strong> 5-day tropical cyclone forecasts</li>
+      <li><strong>Advanced weather radar:</strong> Precipitation tracking with several hours advance warning</li>
+      <li><strong>Regional coordination:</strong> Fog reporting and visibility monitoring network</li>
+    </ul>
+  </div>
+
+  <!-- Strategic Advantages -->
+  <div class="content-block">
+    <h3>Competitive Advantages & Strategic Positioning</h3>
+
+    <h4>Deep-Water Access</h4>
+    <p>
+      The terminal's deep-water capability provides significant competitive advantages during extreme low-water periods when shallow terminals face draft restrictions. The 2023 extreme low water event (131,000 CFS) demonstrated this strategic positioning, creating revenue opportunities while competitors experienced operational constraints.
+    </p>
+
+    <h4>Federal Levee Protection</h4>
+    <p>
+      Location within the HSDRRS (Hurricane and Storm Damage Risk Reduction System) provides 100-year level of risk reduction (1% annual exceedance probability). This protection has been validated through major storms including Hurricane Isaac (2012) and Hurricane Ida (2021), with visible water lines on levees confirming system effectiveness.
+    </p>
+
+    <h4>Year-Round Operational Capability</h4>
+    <p>
+      Unlike many terminals that face significant seasonal constraints, Port Sulphur maintains operational capability across the full range of river conditions through seasonal optimization:
+    </p>
+    <ul class="detailed-list">
+      <li><strong>Spring high water (Mar-Jun):</strong> Maximum draft capability despite challenging currents</li>
+      <li><strong>Summer/fall transition (Jul-Oct):</strong> Optimal operations and construction windows</li>
+      <li><strong>Winter low water (Nov-Feb):</strong> Competitive advantage for deep-water access, ideal for maintenance</li>
+    </ul>
+  </div>
+
+  <!-- Notable Events Detail -->
+  <div class="content-block">
+    <h3>Notable Historical Events - Design Envelope</h3>
+
+    <div class="event-detail">
+      <h4>Hurricane Katrina (August 2005)</h4>
+      <ul class="detailed-list">
+        <li><strong>Storm surge:</strong> 15-19 feet (Plaquemines Parish regional); ~22 feet inundation at Port Sulphur site</li>
+        <li><strong>Impact:</strong> Catastrophic damage to sulfur facility structures; ~80% housing units affected in parish</li>
+        <li><strong>Data quality:</strong> Multiple high-water mark datasets from FEMA WWL maps and USGS surveys</li>
+        <li><strong>Legacy:</strong> Led to comprehensive federal levee improvements under HSDRRS program</li>
+        <li><strong>Sources:</strong> NOAA/NHC TCR (updated Jan 2023), FEMA Wind-Water Line Data (June 2006), USGS SIR 2009-5230</li>
+      </ul>
+    </div>
+
+    <div class="event-detail">
+      <h4>2018 Spring Flood</h4>
+      <ul class="detailed-list">
+        <li><strong>Peak discharge:</strong> ~650,000 CFS (record-approaching)</li>
+        <li><strong>Significance:</strong> Establishes design envelope for extreme peak flow events</li>
+        <li><strong>Duration:</strong> Extended high-water period (March-June typical pattern)</li>
+        <li><strong>Operational impact:</strong> Demonstrated structural loading under extreme conditions</li>
+      </ul>
+    </div>
+
+    <div class="event-detail">
+      <h4>2019 Extended Flood</h4>
+      <ul class="detailed-list">
+        <li><strong>Duration:</strong> >6 months sustained high water (exceptional)</li>
+        <li><strong>Significance:</strong> Most extended high-water event in monitoring record</li>
+        <li><strong>Value:</strong> Valuable dataset on infrastructure performance under prolonged extreme conditions</li>
+        <li><strong>Construction impact:</strong> Demonstrated need for flexible scheduling during spring/early summer</li>
+      </ul>
+    </div>
+
+    <div class="event-detail">
+      <h4>Hurricane Isaac (2012)</h4>
+      <ul class="detailed-list">
+        <li><strong>Significance:</strong> First major test of post-Katrina levee improvements</li>
+        <li><strong>Observations:</strong> "Port Sulphur is good; Buras is good; Venice is good"</li>
+        <li><strong>Evidence:</strong> Visible water lines on levees showed protection systems held during significant surge</li>
+        <li><strong>Validation:</strong> No major damage reported, confirming infrastructure effectiveness</li>
+      </ul>
+    </div>
+
+    <div class="event-detail">
+      <h4>Hurricane Ida (2021)</h4>
+      <ul class="detailed-list">
+        <li><strong>Impact:</strong> Significant infrastructure resilience test</li>
+        <li><strong>Storm surge:</strong> ~12 feet (estimated regional surge)</li>
+        <li><strong>Outcome:</strong> Post-Katrina levee systems validated again</li>
+        <li><strong>Long-term effects:</strong> Debris from event remains visible years later, demonstrating hurricane impacts</li>
+      </ul>
+    </div>
+
+    <div class="event-detail">
+      <h4>2023 Extreme Low Water</h4>
+      <ul class="detailed-list">
+        <li><strong>Discharge:</strong> 131,000 CFS (extreme low)</li>
+        <li><strong>Impact:</strong> Industry-wide draft restrictions at shallow terminals</li>
+        <li><strong>Strategic advantage:</strong> Port Sulphur's deep-water access maintained full operations</li>
+        <li><strong>Market opportunity:</strong> Revenue generation while competitors faced operational constraints</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Long-term Climate Considerations -->
+  <div class="content-block">
+    <h3>Long-term Climate Considerations</h3>
+    <p>
+      Future planning for Port Sulphur Terminal must account for evolving climate factors:
+    </p>
+    <ul class="detailed-list">
+      <li><strong>Sea level rise:</strong> Expected gradual increase in storm surge potential and compound flooding risk</li>
+      <li><strong>Subsidence and settlement:</strong> Ongoing monitoring of structure settlement and levee elevation maintenance</li>
+      <li><strong>Storm intensity/frequency:</strong> Potential increases in hurricane severity or frequency requiring design adaptability</li>
+      <li><strong>River hydrology changes:</strong> Watershed-scale changes in runoff patterns may affect seasonal discharge timing</li>
+    </ul>
+    <p>
+      The HSDRRS federal levee system incorporates these factors in design standards, with regular review and update cycles to maintain 100-year level of protection as climate conditions evolve.
+    </p>
+  </div>
+
+  <!-- Key Findings Summary -->
+  <div class="content-block findings-summary">
+    <h3>Key Findings Summary</h3>
+
+    <div class="finding-category">
+      <h4>Seasonal Patterns (Remarkably Consistent)</h4>
+      <ul>
+        <li><strong>Spring High Water (Mar-Jun):</strong> >400,000 CFS discharge, 3.5-5.0 fps velocity, extreme structural loading</li>
+        <li><strong>Summer/Fall Transition (Jul-Oct):</strong> Moderate flows, 2.0-3.0 fps velocity, optimal operations</li>
+        <li><strong>Winter Low Water (Nov-Feb):</strong> <200,000 CFS discharge, 1.2-1.8 fps velocity, ideal for underwater work</li>
+      </ul>
+    </div>
+
+    <div class="finding-category">
+      <h4>Primary Operational Risks</h4>
+      <ul>
+        <li>Hurricane season overlap with optimal construction period (July-September)</li>
+        <li>Extreme spring high water velocities (3.5-5.0 fps) requiring enhanced tug assistance</li>
+        <li>Compound flooding scenarios (storm surge + river stage + precipitation)</li>
+        <li>Winter fog reducing visibility 15-25 days annually during fog season</li>
+        <li>Cold front events with 30-40 mph sustained winds (24-48 hour duration)</li>
+      </ul>
+    </div>
+
+    <div class="finding-category">
+      <h4>Strategic Advantages</h4>
+      <ul>
+        <li>Deep-water capability maintaining operations during extreme low water (2023: 131,000 CFS)</li>
+        <li>100-year levee protection (federally maintained HSDRRS system)</li>
+        <li>Year-round operational capability across full range of conditions</li>
+        <li>Optimal construction window (July-September) with manageable currents</li>
+        <li>Winter low-water period ideal for precision maintenance and underwater work</li>
+      </ul>
+    </div>
+
+    <div class="finding-category">
+      <h4>Critical Infrastructure Validation</h4>
+      <ul>
+        <li>Post-Katrina levee improvements validated through Isaac (2012) and Ida (2021)</li>
+        <li>Visible water lines confirm system effectiveness during significant surge events</li>
+        <li>Federal HSDRRS design incorporates sea level rise and climate adaptation</li>
+      </ul>
+    </div>
+
+    <div class="finding-category">
+      <h4>Extreme Events Dataset (Design Envelope)</h4>
+      <ul>
+        <li><strong>Peak flows:</strong> 2018 event (~650,000 CFS) establishes maximum discharge design point</li>
+        <li><strong>Extended duration:</strong> 2019 flood (>6 months sustained high water) provides long-term loading data</li>
+        <li><strong>Extreme low:</strong> 2023 event (131,000 CFS) demonstrates deep-water advantages</li>
+        <li><strong>Storm surge:</strong> Katrina (22 ft) establishes maximum surge design point</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Data Sources -->
+  <div class="content-block data-sources">
+    <h3>Primary Data Sources & References</h3>
+
+    <div class="source-category">
+      <h4>Hurricane & Storm Surge Data</h4>
+      <ul class="source-list">
+        <li><a href="https://www.nhc.noaa.gov/data/tcr/AL122005_Katrina.pdf" target="_blank">NOAA/NHC Tropical Cyclone Report - Hurricane Katrina (updated Jan 4, 2023)</a> - Authoritative surge data (15-19 ft Plaquemines Parish)</li>
+        <li><a href="https://www.preventionweb.net/files/2737_katrinawwlrptla1.pdf" target="_blank">FEMA Wind-Water Line (WWL) Data Collection, Louisiana (June 9, 2006)</a> - Port Sulphur Sheet 50; high-water mark points</li>
+        <li><a href="https://pubs.usgs.gov/sir/2009/5230/pdf/sir2009-5230.pdf" target="_blank">USGS SIR 2009-5230 - Mapping and Visualization of Storm-Surge Dynamics</a> - Maximum storm-surge surface from surveyed high-water marks</li>
+        <li><a href="https://biotech.law.lsu.edu/katrina/ipet/gpo/Vol%20IV%20The%20Storm%20-%20maintext.pdf" target="_blank">USACE IPET Volume IV: The Storm</a> - Surge/wave hindcasts; Plaquemines Parish levee overtopping analysis</li>
+        <li><a href="https://www.weather.gov/media/publications/assessments/Katrina.pdf" target="_blank">NOAA Service Assessment - Hurricane Katrina (June 2006)</a> - Broader NOAA assessment with surge sections</li>
+      </ul>
+    </div>
+
+    <div class="source-category">
+      <h4>State & Regional Planning</h4>
+      <ul class="source-list">
+        <li><a href="https://coastal.la.gov/wp-content/uploads/2017/04/Attachment-C3-25_FINAL_04.04.2017.pdf" target="_blank">CPRA Storm Surge & Risk (2017 Coastal Master Plan, Attachment C3-25)</a> - State-level surge modeling and risk context</li>
+        <li><a href="https://coastal.la.gov/wp-content/uploads/2017/04/Plaquemines-Parish.pdf" target="_blank">CPRA Plaquemines Parish Fact Sheets (2017; 2023 update)</a> - Storm-surge-based flood risk and Expected Annual Damage</li>
+      </ul>
+    </div>
+
+    <div class="source-category">
+      <h4>Environmental Assessments</h4>
+      <ul class="source-list">
+        <li><a href="https://archive.epa.gov/katrina/web/html/katrina_env_assessment_summary.html" target="_blank">EPA Environmental Assessment Summary (Dec 6, 2005)</a> - Flooding extent and conditions post-landfall</li>
+      </ul>
+    </div>
+
+    <div class="source-category">
+      <h4>River Monitoring & Operational Data</h4>
+      <ul class="source-list">
+        <li>Mississippi River downstream monitoring stations with Port Sulphur scaling factors</li>
+        <li>NOAA coastal marine forecasting systems</li>
+        <li>National Hurricane Center 5-day tropical forecasts</li>
+        <li>Regional fog reporting and visibility monitoring network</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <strong>Data Quality Note:</strong> Hurricane Katrina surge data combines multiple authoritative sources. NHC TCR provides parish-level surge (15-19 ft); site-specific depths at Port Sulphur (~22 ft inundation) require integration of FEMA WWL maps (Sheet 50) and USGS high-water mark datasets. Many gauges failed near peak surge, requiring high-water mark surveys for accurate reconstruction.
+    </div>
+  </div>
+
+  <!-- Strategic Recommendations -->
+  <div class="content-block recommendations">
+    <h3>Strategic Recommendations</h3>
+
+    <ol class="recommendation-list">
+      <li>
+        <strong>Optimize Construction Scheduling:</strong> Target July-September for major projects, with flexible weather-responsive scheduling to accommodate hurricane season. Front-load critical path items in July before peak hurricane activity (August-October).
+      </li>
+      <li>
+        <strong>Leverage Winter Low-Water Windows:</strong> Schedule underwater inspections, maintenance, and precision work for November-February when current velocities are minimal (1.2-1.8 fps). Enhanced safety protocols for fog and cold front events required.
+      </li>
+      <li>
+        <strong>Enhance Hurricane Monitoring:</strong> Implement comprehensive weather surveillance during peak season (August-October). Utilize NHC 5-day forecasts for advance preparation and vessel/construction activity planning.
+      </li>
+      <li>
+        <strong>Capitalize on Deep-Water Advantage:</strong> Market year-round operational capability, particularly during extreme low-water periods when competitors face draft restrictions. 2023 event validated this competitive positioning.
+      </li>
+      <li>
+        <strong>Maintain Spring High-Water Readiness:</strong> Enhanced tug assistance and specialized mooring procedures for March-June period. Accept construction constraints but leverage maximum draft capability for vessel operations.
+      </li>
+      <li>
+        <strong>Compound Flooding Risk Management:</strong> Monitor combined risks during tropical season overlapping with elevated river stages. Federal HSDRRS protection provides robust defense, but operational awareness of multi-factor scenarios is critical.
+      </li>
+      <li>
+        <strong>Long-term Climate Adaptation:</strong> Integrate climate considerations into infrastructure planning: sea level rise, subsidence monitoring, potential changes in storm intensity/frequency, and watershed-scale hydrologic shifts. Federal levee system incorporates adaptive design standards.
+      </li>
+    </ol>
+  </div>
+
+</section>
+
+<!-- Chart Initialization Script -->
+<script>
+// Initialize all weather charts when section loads
+document.addEventListener('DOMContentLoaded', function() {
+  // Check if Chart.js and weatherCharts are loaded
+  if (typeof Chart !== 'undefined' && typeof weatherCharts !== 'undefined') {
+
+    // Chart 1: Seasonal Discharge Patterns
+    const seasonalDischargeCtx = document.getElementById('seasonalDischargeChart');
+    if (seasonalDischargeCtx) {
+      new Chart(seasonalDischargeCtx, weatherCharts.seasonalDischarge);
+    }
+
+    // Chart 2: Historical Flood Events
+    const historicalFloodEventsCtx = document.getElementById('historicalFloodEventsChart');
+    if (historicalFloodEventsCtx) {
+      new Chart(historicalFloodEventsCtx, weatherCharts.historicalFloodEvents);
+    }
+
+    // Chart 3: Storm Surge Severity
+    const stormSurgeSeverityCtx = document.getElementById('stormSurgeSeverityChart');
+    if (stormSurgeSeverityCtx) {
+      new Chart(stormSurgeSeverityCtx, weatherCharts.stormSurgeSeverity);
+    }
+
+    // Chart 4: Operational Windows
+    const operationalWindowsCtx = document.getElementById('operationalWindowsChart');
+    if (operationalWindowsCtx) {
+      new Chart(operationalWindowsCtx, weatherCharts.operationalWindows);
+    }
+
+    // Chart 5: Hurricane Season Risk
+    const hurricaneSeasonRiskCtx = document.getElementById('hurricaneSeasonRiskChart');
+    if (hurricaneSeasonRiskCtx) {
+      new Chart(hurricaneSeasonRiskCtx, weatherCharts.hurricaneSeasonRisk);
+    }
+
+    console.log('Weather & Hydrology charts initialized successfully');
+  } else {
+    console.error('Chart.js or weatherCharts configuration not loaded');
+  }
+});
+</script>
+
+<style>
+/* Weather Section Specific Styles */
+
+.highlight-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.highlight-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.highlight-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(100, 255, 218, 0.3);
+  transform: translateY(-2px);
+}
+
+.highlight-card.optimal {
+  border-left: 4px solid #64FFDA;
+}
+
+.highlight-card.underwater {
+  border-left: 4px solid #3EADB8;
+}
+
+.highlight-card.challenging {
+  border-left: 4px solid #FF9800;
+}
+
+.highlight-card.vessel-ops {
+  border-left: 4px solid #4A90E2;
+}
+
+.highlight-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.highlight-card h4 {
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.highlight-period {
+  color: #64FFDA;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.highlight-card p {
+  margin: 0.75rem 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.highlight-card ul {
+  margin: 0.75rem 0;
+  padding-left: 1.25rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.highlight-card ul li {
+  margin: 0.35rem 0;
+}
+
+.highlight-note {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(100, 255, 218, 0.05);
+  border-left: 3px solid rgba(100, 255, 218, 0.3);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.highlight-note strong {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.chart-container {
+  margin: 2.5rem 0;
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 400px;
+  margin-bottom: 1rem;
+}
+
+.chart-wrapper.small-chart {
+  height: 350px;
+}
+
+.chart-caption {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid rgba(74, 144, 226, 0.4);
+  border-radius: 4px;
+}
+
+.chart-caption strong {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.detailed-list {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.detailed-list li {
+  margin: 0.75rem 0;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.detailed-list li strong {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.event-detail {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4px solid rgba(74, 144, 226, 0.5);
+  border-radius: 4px;
+}
+
+.event-detail h4 {
+  color: #64FFDA;
+  margin-bottom: 1rem;
+  font-size: 1.15rem;
+}
+
+.findings-summary {
+  background: rgba(100, 255, 218, 0.05);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2.5rem 0;
+}
+
+.finding-category {
+  margin: 1.5rem 0;
+}
+
+.finding-category h4 {
+  color: #64FFDA;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.finding-category ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.finding-category ul li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.finding-category ul li strong {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.data-sources {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2.5rem 0;
+}
+
+.source-category {
+  margin: 1.5rem 0;
+}
+
+.source-category h4 {
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.source-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.source-list li {
+  margin: 0.75rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.source-list li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #64FFDA;
+}
+
+.source-list a {
+  color: #4A90E2;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.source-list a:hover {
+  color: #64FFDA;
+  text-decoration: underline;
+}
+
+.note-box {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(255, 152, 0, 0.1);
+  border-left: 4px solid rgba(255, 152, 0, 0.5);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.note-box strong {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.recommendations {
+  background: rgba(74, 144, 226, 0.05);
+  border: 1px solid rgba(74, 144, 226, 0.2);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2.5rem 0;
+}
+
+.recommendation-list {
+  counter-reset: recommendation-counter;
+  list-style: none;
+  padding-left: 0;
+}
+
+.recommendation-list li {
+  counter-increment: recommendation-counter;
+  margin: 1.5rem 0;
+  padding-left: 3rem;
+  position: relative;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.recommendation-list li:before {
+  content: counter(recommendation-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  background: rgba(100, 255, 218, 0.2);
+  border: 2px solid #64FFDA;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #64FFDA;
+  font-size: 0.9rem;
+}
+
+.recommendation-list li strong {
+  color: rgba(255, 255, 255, 0.95);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .highlight-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-wrapper {
+    height: 300px;
+  }
+
+  .chart-wrapper.small-chart {
+    height: 280px;
+  }
+
+  .recommendation-list li {
+    padding-left: 2.5rem;
+  }
+
+  .recommendation-list li:before {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Print styles for weather section */
+@media print {
+  .chart-wrapper {
+    height: auto;
+    page-break-inside: avoid;
+  }
+
+  .highlight-card {
+    page-break-inside: avoid;
+  }
+
+  .event-detail {
+    page-break-inside: avoid;
+  }
+}
+</style>

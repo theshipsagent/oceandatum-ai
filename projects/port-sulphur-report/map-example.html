@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Sulphur Terminal - Interactive Map</title>
+
+    <!-- ArcGIS CSS -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/dark/main.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #0a0a0a;
+            color: white;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1B5E20 0%, #0D47A1 100%);
+            padding: 20px 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 5px;
+        }
+
+        .header .subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .map-container-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 120px);
+            padding: 20px;
+            gap: 20px;
+        }
+
+        #mapView {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .info-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .info-panel h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #64ffb4;
+        }
+
+        .info-panel p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(27, 94, 32, 0.3) 0%, rgba(13, 71, 161, 0.3) 100%);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(100, 255, 180, 0.2);
+        }
+
+        .stat-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #64ffb4;
+        }
+
+        .stat-card .label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.3s;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            border: 4px solid rgba(100, 255, 180, 0.2);
+            border-top: 4px solid #64ffb4;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.3rem;
+            }
+
+            .header .subtitle {
+                font-size: 0.85rem;
+            }
+
+            .map-container-wrapper {
+                padding: 10px;
+                height: calc(100vh - 100px);
+            }
+
+            .info-panel {
+                padding: 15px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            /* Hide layer toggle panel on mobile */
+            .layer-toggle-panel {
+                display: none !important;
+            }
+        }
+
+        /* Custom styling for ArcGIS widgets */
+        .esri-ui-corner .esri-component {
+            background: rgba(0, 0, 0, 0.8) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .esri-popup__main-container {
+            background: rgba(26, 26, 46, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .esri-popup__header-title {
+            color: #64ffb4 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Port Sulphur Terminal - Interactive GIS Analysis</h1>
+        <div class="subtitle">River Mile 39 | 106.99 Acres | 52' Draft | Mississippi River West Bank</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="map-container-wrapper">
+        <!-- Map Container -->
+        <div id="mapView"></div>
+
+        <!-- Info Panel -->
+        <div class="info-panel">
+            <h3>Key Site Characteristics</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="value">106.99</div>
+                    <div class="label">Total Acres</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">10,693 LF</div>
+                    <div class="label">River Frontage</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">52'</div>
+                    <div class="label">Channel Draft</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">RM 39</div>
+                    <div class="label">River Mile (AHP)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">39 mi</div>
+                    <div class="label">Distance to Gulf</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">6 Layers</div>
+                    <div class="label">Interactive Data</div>
+                </div>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.7;">
+                Click on map features for detailed information. Use the layer toggle (top-left) to show/hide different data layers.
+                Toggle between satellite and topographic basemaps using the basemap gallery (top-right).
+            </p>
+        </div>
+    </div>
+
+    <!-- ArcGIS JavaScript API -->
+    <script src="https://js.arcgis.com/4.28/"></script>
+
+    <!-- Port Sulphur Map Configuration -->
+    <script src="js/arcgis_config.js"></script>
+
+    <!-- Initialize Map -->
+    <script>
+        (function() {
+            // Show loading overlay
+            const loadingOverlay = document.getElementById('loadingOverlay');
+
+            // Initialize map when DOM is ready
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log("Initializing Port Sulphur map...");
+
+                // Configuration options
+                const mapOptions = {
+                    center: [-89.686632, 29.473414],
+                    zoom: 14,
+                    basemap: "satellite", // Options: "satellite", "streets", "topographic", "dark-gray"
+                    showWidgets: true,
+                    showLayerToggle: true
+                };
+
+                // Initialize the map
+                initializePortSulphurMap('mapView', mapOptions)
+                    .then(mapObject => {
+                        console.log("Map initialized successfully:", mapObject);
+
+                        // Hide loading overlay
+                        setTimeout(() => {
+                            loadingOverlay.classList.add('hidden');
+                        }, 500);
+
+                        // Optional: Add custom functionality
+                        const { map, view, layers } = mapObject;
+
+                        // Example: Log when a layer is clicked
+                        view.on("click", function(event) {
+                            view.hitTest(event).then(function(response) {
+                                if (response.results.length) {
+                                    const graphic = response.results[0].graphic;
+                                    console.log("Feature clicked:", graphic.attributes);
+                                }
+                            });
+                        });
+
+                        // Example: Fly to a specific location
+                        window.flyToTerminal = function() {
+                            view.goTo({
+                                center: [-89.686632, 29.473414],
+                                zoom: 15
+                            }, {
+                                duration: 2000,
+                                easing: "ease-in-out"
+                            });
+                        };
+
+                        // Example: Toggle all environmental layers
+                        window.toggleEnvironmental = function() {
+                            layers.environmental.visible = !layers.environmental.visible;
+                        };
+
+                        // Example: Export map as image
+                        window.exportMapImage = function() {
+                            view.takeScreenshot().then(function(screenshot) {
+                                const a = document.createElement('a');
+                                a.href = screenshot.dataUrl;
+                                a.download = 'port-sulphur-map.png';
+                                a.click();
+                            });
+                        };
+
+                        // Make map object globally available
+                        window.portSulphurMap = mapObject;
+                    })
+                    .catch(error => {
+                        console.error("Error initializing map:", error);
+                        loadingOverlay.innerHTML = `
+                            <div style="text-align: center; color: white;">
+                                <h2 style="color: #ff5252; margin-bottom: 10px;">Error Loading Map</h2>
+                                <p>${error.message}</p>
+                                <button onclick="location.reload()" style="
+                                    margin-top: 20px;
+                                    padding: 10px 20px;
+                                    background: #64ffb4;
+                                    border: none;
+                                    border-radius: 4px;
+                                    color: #0a0a0a;
+                                    font-weight: 600;
+                                    cursor: pointer;
+                                ">Reload Page</button>
+                            </div>
+                        `;
+                    });
+            });
+
+            // Handle window resize for responsive behavior
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    if (window.portSulphurMap && window.portSulphurMap.view) {
+                        // Recalculate view dimensions
+                        window.portSulphurMap.view.container.style.height = '100%';
+                    }
+                }, 250);
+            });
+        })();
+    </script>
+
+    <!-- Console Helper Functions Info -->
+    <script>
+        console.log(`
+╔═══════════════════════════════════════════════════════════════╗
+║  PORT SULPHUR TERMINAL - INTERACTIVE MAP                      ║
+║  Available Console Functions:                                 ║
+║                                                               ║
+║  flyToTerminal()          - Fly to terminal location         ║
+║  toggleEnvironmental()    - Toggle environmental layer       ║
+║  exportMapImage()         - Export map as PNG image          ║
+║  portSulphurMap           - Access map object                ║
+║                                                               ║
+║  Map Layers Available:                                        ║
+║  • Terminal Location (106.99 acres)                          ║
+║  • Bathymetry & Depth Zones (3 zones)                        ║
+║  • Navigation Channels & Aids                                ║
+║  • Environmental Concerns (Superfund, contamination, flood)  ║
+║  • Regional Infrastructure (terminals, LNG, warehouses)      ║
+║  • Property Boundaries (river & highway frontage)            ║
+║                                                               ║
+║  Data Sources:                                                ║
+║  • T. Baker Smith Bathymetric Survey (May 2016)              ║
+║  • LDEQ Environmental Records                                ║
+║  • USACE Navigation Charts                                   ║
+║  • Infrastructure Synthesis Data                             ║
+╚═══════════════════════════════════════════════════════════════╝
+        `);
+    </script>
+</body>
+</html>

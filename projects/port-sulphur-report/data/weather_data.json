@@ -1,0 +1,442 @@
+{
+  "metadata": {
+    "title": "Port Sulphur Weather and Hydrologic Data",
+    "source": "weather_SYNTHESIS.md",
+    "location": "Port Sulphur, Louisiana (Mississippi River Mile 48.6 AHP)",
+    "coordinates": {
+      "latitude": 29.4667,
+      "longitude": -89.7
+    },
+    "last_updated": "2026-01-22",
+    "description": "Comprehensive weather, hydrologic, and flood risk data for Port Sulphur terminal operations"
+  },
+
+  "seasonal_discharge_patterns": {
+    "description": "Mississippi River discharge patterns at Port Sulphur based on regional monitoring data",
+    "annual_cycle": [
+      {
+        "season": "Spring High Water",
+        "months": ["March", "April", "May", "June"],
+        "period": "March - June",
+        "discharge_cfs": {
+          "typical": ">400,000",
+          "peak_conditions": "650,000",
+          "description": "Sustained high discharges from snowmelt and spring rainfall"
+        },
+        "water_velocity_fps": {
+          "typical": "3.5 - 5.0",
+          "description": "Extreme structural loading conditions"
+        },
+        "stage_height": "Maximum available depths",
+        "duration": "3-4 months typically; 2019 event exceeded 6 months",
+        "operational_impact": "Most challenging conditions; extreme current velocities; enhanced tug requirements; construction severely constrained",
+        "vessel_operations": "Maximum draft capability but challenging handling",
+        "construction_suitability": "Precluded for marine construction; heavy structure placement possible",
+        "notable_events": [
+          {
+            "year": 2019,
+            "description": "Exceptional event with >6 months sustained high water",
+            "duration": ">6 months"
+          },
+          {
+            "year": 2018,
+            "description": "Record-approaching peak flows",
+            "discharge_cfs": "~650,000",
+            "note": "Establishes design envelope for extreme events"
+          }
+        ]
+      },
+      {
+        "season": "Summer/Fall Transition",
+        "months": ["July", "August", "September", "October"],
+        "period": "July - October",
+        "discharge_cfs": {
+          "typical": "Moderate flows",
+          "description": "Most predictable and manageable conditions"
+        },
+        "water_velocity_fps": {
+          "typical": "2.0 - 3.0",
+          "construction_window": "1.5 - 2.5 (July - early October)",
+          "description": "Optimal conditions for operations and construction"
+        },
+        "stage_height": "5-15 feet above low water datum",
+        "operational_impact": "Optimal period for terminal operations and construction; prime construction window July - early September",
+        "vessel_operations": "Standard navigation and mooring procedures",
+        "construction_suitability": "Preferred window for major projects and maintenance",
+        "hurricane_overlap": {
+          "season": "June 1 - November 30",
+          "peak_activity": "August - October",
+          "note": "Requires balance between construction efficiency and weather risk management"
+        }
+      },
+      {
+        "season": "Winter Low Water",
+        "months": ["November", "December", "January", "February"],
+        "period": "November - February",
+        "discharge_cfs": {
+          "typical": "<200,000",
+          "extreme_low": "131,000",
+          "description": "Minimum river stages and reduced velocities"
+        },
+        "water_velocity_fps": {
+          "typical": "1.2 - 1.8",
+          "description": "Minimal current forces"
+        },
+        "stage_height": "Minimum river stages",
+        "operational_impact": "Potential draft restrictions but optimal for underwater work; competitive advantage for deep-water terminals",
+        "vessel_operations": "Draft restrictions for shallow terminals; Port Sulphur maintains capability",
+        "construction_suitability": "Ideal for underwater construction, inspection, and precision maintenance",
+        "notable_events": [
+          {
+            "year": 2023,
+            "description": "Extreme low water event",
+            "discharge_cfs": "131,000",
+            "note": "Demonstrated strategic value of deep-water access"
+          }
+        ]
+      }
+    ],
+    "monthly_summary": {
+      "January": {"season": "Winter Low Water", "discharge": "Low (<200k cfs)", "velocity": "1.2-1.8 fps"},
+      "February": {"season": "Winter Low Water", "discharge": "Low (<200k cfs)", "velocity": "1.2-1.8 fps"},
+      "March": {"season": "Spring High Water", "discharge": "High (>400k cfs)", "velocity": "3.5-5.0 fps"},
+      "April": {"season": "Spring High Water", "discharge": "High (>400k cfs)", "velocity": "3.5-5.0 fps"},
+      "May": {"season": "Spring High Water", "discharge": "High (>400k cfs)", "velocity": "3.5-5.0 fps"},
+      "June": {"season": "Spring High Water", "discharge": "High (>400k cfs)", "velocity": "3.5-5.0 fps"},
+      "July": {"season": "Summer/Fall Transition", "discharge": "Moderate", "velocity": "2.0-3.0 fps"},
+      "August": {"season": "Summer/Fall Transition", "discharge": "Moderate", "velocity": "2.0-3.0 fps"},
+      "September": {"season": "Summer/Fall Transition", "discharge": "Moderate", "velocity": "2.0-3.0 fps"},
+      "October": {"season": "Summer/Fall Transition", "discharge": "Moderate", "velocity": "2.0-3.0 fps"},
+      "November": {"season": "Winter Low Water", "discharge": "Low (<200k cfs)", "velocity": "1.2-1.8 fps"},
+      "December": {"season": "Winter Low Water", "discharge": "Low (<200k cfs)", "velocity": "1.2-1.8 fps"}
+    }
+  },
+
+  "precipitation": {
+    "annual_total_inches": "62-65",
+    "distribution": "Unevenly distributed throughout year",
+    "summer_pattern": {
+      "months": "June - September",
+      "characteristics": "Intense convective activity",
+      "typical_events": "Several inches in short time periods",
+      "daily_pattern": "Peak intensity late afternoon/evening hours",
+      "impact": "Potential for rapid onset flooding; drainage system challenges"
+    },
+    "winter_pattern": {
+      "months": "December - February",
+      "characteristics": "Longer-duration, lower-intensity systems",
+      "impact": "Minimal but persistent"
+    },
+    "tropical_events": {
+      "rainfall_totals": "5-15 inches over multi-day periods",
+      "impact": "Regional flooding extending beyond immediate storm areas",
+      "compound_risk": "Often coincides with elevated river stages creating compound flooding scenarios"
+    }
+  },
+
+  "temperature": {
+    "climate": "Humid subtropical",
+    "note": "Specific temperature ranges not quantified in synthesis document; referenced in operational context only"
+  },
+
+  "wind_patterns": {
+    "summer": {
+      "typical": "South winds 5-10 knots",
+      "seas": "1-2 feet in coastal approaches",
+      "daily_variability": "Thunderstorm activity creates variable conditions"
+    },
+    "winter": {
+      "characteristics": "More variable wind directions",
+      "cold_fronts": {
+        "sustained_winds": "30-40 mph",
+        "gusts": "Higher than sustained",
+        "duration": "24-48 hours",
+        "impact": "Challenging vessel operations; temporary suspension of cargo handling"
+      }
+    },
+    "hurricane_season": {
+      "period": "June 1 - November 30",
+      "impact": "Most significant weather-related operational risk",
+      "advance_warning": "5-day forecasts from National Hurricane Center"
+    }
+  },
+
+  "fog_conditions": {
+    "annual_frequency": "15-25 days during peak season",
+    "peak_months": ["December", "January", "February", "March"],
+    "peak_period": "December - March",
+    "formation_mechanism": "Radiational cooling combined with river surface moisture",
+    "typical_duration": "Early morning through mid-morning; occasionally all day",
+    "visibility_threshold": "Dense fog <0.25 miles requires vessel movement suspension",
+    "operational_impact": "Vessel navigation restrictions; cargo handling may be limited; economic impact accumulates over fog season"
+  },
+
+  "hurricane_and_storm_history": {
+    "hurricane_season": "June 1 - November 30",
+    "location_risk": "Primary threat zone for Gulf of Mexico tropical systems",
+    "major_events": [
+      {
+        "name": "Hurricane Katrina",
+        "date": "August 23-30, 2005",
+        "storm_surge_ft": "15-19",
+        "storm_surge_location": "Plaquemines Parish (regional)",
+        "port_sulphur_inundation_ft": "~22",
+        "note": "Specific Port Sulphur figure from federal assessments; NHC gives 15-19 ft for parish level",
+        "wind": "Sustained tropical-storm to hurricane-force",
+        "impact": "Catastrophic damage to sulfur facility structures; ~80% housing units affected in parish",
+        "gauge_data": {
+          "location": "Pointe à la Hache (BGNL1)",
+          "reading_ft": "14.14",
+          "note": "Gauge failed before peak; many gauges failed near peak"
+        },
+        "sources": [
+          "NOAA/NHC Tropical Cyclone Report (updated Jan 4, 2023)",
+          "FEMA Wind-Water Line (WWL) Data Collection (June 9, 2006) - Port Sulphur Sheet 50",
+          "USGS SIR 2009-5230 - High-water mark based surge surface",
+          "EPA Environmental Assessment (Dec 6, 2005)"
+        ],
+        "data_quality": "NHC TCR provides parish-level surge (15-19 ft); site-specific depths require FEMA WWL maps and USGS HWM data"
+      },
+      {
+        "name": "Hurricane Isaac",
+        "date": "2012",
+        "impact": "Demonstrated effectiveness of post-Katrina levee improvements",
+        "observations": "Port Sulphur is good; Buras is good; Venice is good",
+        "note": "Visible water lines on levees showed protection systems held during significant storm surge",
+        "significance": "Post-Katrina infrastructure improvements validated"
+      },
+      {
+        "name": "Hurricane Ida",
+        "date": "2021",
+        "impact": "Additional testing of regional infrastructure resilience",
+        "note": "Debris from this event remains visible years later, demonstrating long-term impacts"
+      }
+    ],
+    "flood_protection": {
+      "system": "Federal levee system (HSDRRS - Hurricane and Storm Damage Risk Reduction System)",
+      "design_standard": "100-year level of risk reduction",
+      "100_year_definition": "1% annual chance of occurrence or exceedance",
+      "note": "Based on combined storm size, intensity, and track probabilities; not solely wind speed category"
+    }
+  },
+
+  "storm_surge_models": {
+    "100_year_event": {
+      "probability": "1% annual chance",
+      "description": "Risk reduction from storm surge with 1% annual exceedance probability",
+      "factors": "Combined chances of storm size, intensity (pressure), and track",
+      "note": "Different combinations can result in same 100-year surge event"
+    },
+    "calculation_factors": [
+      "Storm intensity (barometric pressure)",
+      "Storm size",
+      "Storm motion and track",
+      "Near-shore water depth",
+      "Local topographical features"
+    ],
+    "design_considerations": [
+      "Expected sea level rise",
+      "Settlement and subsidence of structures",
+      "Possible increases in storm severity or frequency"
+    ],
+    "saffir_simpson_note": "Wind speed alone cannot reliably describe storm surge; original 1972 Saffir-Simpson scale inadequate for surge prediction"
+  },
+
+  "flood_risk_zones": {
+    "location": "Within federal levee system protection",
+    "primary_sources": [
+      "FEMA Wind-Water Line (WWL) maps - Port Sulphur Sheet 50",
+      "USGS High-Water Mark (HWM) datasets",
+      "CPRA (Louisiana Coastal Protection and Restoration Authority) storm surge modeling"
+    ],
+    "compound_flooding_risks": {
+      "description": "Unique compound flooding scenarios from storm surge + river stage + precipitation",
+      "factors": [
+        "Storm surge from Gulf",
+        "Mississippi River stage elevation",
+        "Tropical rainfall (5-15 inches possible)",
+        "Timing and interaction of multiple factors"
+      ]
+    },
+    "post_katrina_improvements": {
+      "effectiveness": "Demonstrated during Hurricane Isaac (2012)",
+      "components": "Enhanced levee system",
+      "validation": "Visible water lines showed systems held during significant surge events"
+    }
+  },
+
+  "historical_flood_timeline": [
+    {
+      "year": 2005,
+      "event": "Hurricane Katrina",
+      "type": "Hurricane/Storm Surge",
+      "severity": "Catastrophic",
+      "surge_ft": "15-19 (parish); ~22 (Port Sulphur inundation)",
+      "impact": "Catastrophic damage; ~80% housing affected"
+    },
+    {
+      "year": 2012,
+      "event": "Hurricane Isaac",
+      "type": "Hurricane/Storm Surge",
+      "severity": "Moderate (well-managed)",
+      "impact": "Levee improvements effective; no major damage reported"
+    },
+    {
+      "year": 2018,
+      "event": "Spring Flood",
+      "type": "River Flooding",
+      "severity": "Extreme",
+      "discharge_cfs": "~650,000",
+      "impact": "Record-approaching peak flows; establishes design envelope"
+    },
+    {
+      "year": 2019,
+      "event": "Extended Spring Flood",
+      "type": "River Flooding",
+      "severity": "Exceptional",
+      "duration": ">6 months sustained high water",
+      "impact": "Valuable data on infrastructure performance under extreme sustained conditions"
+    },
+    {
+      "year": 2021,
+      "event": "Hurricane Ida",
+      "type": "Hurricane/Storm Surge",
+      "severity": "Significant",
+      "impact": "Infrastructure resilience tested; long-term debris impacts"
+    },
+    {
+      "year": 2023,
+      "event": "Extreme Low Water",
+      "type": "Drought/Low Water",
+      "severity": "Extreme",
+      "discharge_cfs": "131,000",
+      "impact": "Industry-wide draft restrictions; demonstrated deep-water terminal advantages"
+    }
+  ],
+
+  "operational_windows": {
+    "prime_construction": {
+      "period": "July - early October",
+      "optimal_period": "July - early September",
+      "conditions": "River velocities 1.5-2.5 fps; relatively stable weather before peak hurricane activity",
+      "constraints": "Hurricane season overlap requires flexible scheduling"
+    },
+    "underwater_work": {
+      "period": "November - February",
+      "conditions": "Low current velocities 1.2-1.8 fps; reduced river stages",
+      "advantages": "Precision work capability; access to normally submerged areas",
+      "constraints": "Fog, cold fronts, winter weather require enhanced safety protocols"
+    },
+    "vessel_operations_optimal": {
+      "period": "July - October",
+      "conditions": "Manageable currents 2.0-3.0 fps; predictable water levels",
+      "advantages": "Standard navigation procedures; consistent cargo handling"
+    },
+    "vessel_operations_challenging": {
+      "period": "March - June",
+      "conditions": "Extreme velocities 3.5-5.0 fps; high water stages",
+      "requirements": "Enhanced tug assistance; specialized mooring procedures",
+      "advantage": "Maximum draft capability"
+    }
+  },
+
+  "monitoring_and_forecasting": {
+    "river_monitoring": {
+      "parameters": ["River stage", "Velocity", "Discharge"],
+      "stations": "Downstream monitoring stations with regional scaling factors for Port Sulphur",
+      "uses": "Operational planning; construction scheduling; vessel operations"
+    },
+    "weather_forecasting": {
+      "systems": [
+        "NOAA coastal marine forecasting",
+        "National Hurricane Center (5-day forecasts)",
+        "Advanced weather radar",
+        "Precipitation forecasting (several hours advance warning)"
+      ],
+      "regional_coordination": "Fog reporting and visibility monitoring network"
+    },
+    "integration": "Combined river condition and weather monitoring enables comprehensive operational planning"
+  },
+
+  "competitive_advantages": {
+    "deep_water_access": {
+      "benefit": "Operational capability during winter low water when shallow terminals face restrictions",
+      "demonstrated": "2023 extreme low water event",
+      "market_impact": "Revenue opportunities when competitors face draft restrictions"
+    },
+    "levee_protection": {
+      "system": "Federal HSDRRS",
+      "standard": "100-year protection",
+      "validated": "Hurricane Isaac (2012) and Hurricane Ida (2021)"
+    },
+    "year_round_operations": {
+      "capability": "Full range of river conditions",
+      "seasonal_optimization": "Different operational modes for high/moderate/low water periods"
+    }
+  },
+
+  "data_sources_and_references": {
+    "primary_sources": [
+      {
+        "title": "NOAA/NHC Tropical Cyclone Report - Hurricane Katrina (updated Jan 4, 2023)",
+        "url": "https://www.nhc.noaa.gov/data/tcr/AL122005_Katrina.pdf",
+        "coverage": "Authoritative surge data (15-19 ft Plaquemines Parish)"
+      },
+      {
+        "title": "FEMA Wind-Water Line (WWL) Data Collection, Louisiana (June 9, 2006)",
+        "url": "https://www.preventionweb.net/files/2737_katrinawwlrptla1.pdf",
+        "coverage": "Flood recovery maps; Port Sulphur Sheet 50; high-water mark points"
+      },
+      {
+        "title": "USGS SIR 2009-5230 - Mapping and Visualization of Storm-Surge Dynamics for Hurricane Katrina",
+        "url": "https://pubs.usgs.gov/sir/2009/5230/pdf/sir2009-5230.pdf",
+        "coverage": "Maximum storm-surge surface from surveyed high-water marks"
+      },
+      {
+        "title": "USACE IPET Volume IV: The Storm",
+        "url": "https://biotech.law.lsu.edu/katrina/ipet/gpo/Vol%20IV%20The%20Storm%20-%20maintext.pdf",
+        "coverage": "Surge/wave hindcasts; Plaquemines Parish levee overtopping analysis"
+      },
+      {
+        "title": "CPRA Storm Surge & Risk (2017 Coastal Master Plan, Attachment C3-25)",
+        "url": "https://coastal.la.gov/wp-content/uploads/2017/04/Attachment-C3-25_FINAL_04.04.2017.pdf",
+        "coverage": "State-level surge modeling and risk context"
+      },
+      {
+        "title": "CPRA Plaquemines Parish Fact Sheets (2017; 2023 update)",
+        "url": "https://coastal.la.gov/wp-content/uploads/2017/04/Plaquemines-Parish.pdf",
+        "coverage": "Storm-surge-based flood risk and Expected Annual Damage (EAD)"
+      },
+      {
+        "title": "NOAA Service Assessment - Hurricane Katrina (June 2006)",
+        "url": "https://www.weather.gov/media/publications/assessments/Katrina.pdf",
+        "coverage": "Broader NOAA assessment with surge sections"
+      },
+      {
+        "title": "EPA Environmental Assessment Summary (Dec 6, 2005)",
+        "url": "https://archive.epa.gov/katrina/web/html/katrina_env_assessment_summary.html",
+        "coverage": "Flooding extent and conditions post-landfall"
+      }
+    ],
+    "synthesis_document": "weather_SYNTHESIS.md",
+    "regional_monitoring": "Mississippi River downstream monitoring stations with Port Sulphur scaling factors"
+  },
+
+  "key_findings": {
+    "seasonal_patterns": "Remarkably consistent annual cycle: high water (Mar-Jun), optimal (Jul-Oct), low water (Nov-Feb)",
+    "primary_risks": [
+      "Hurricane season overlap with optimal construction period",
+      "Extreme spring high water velocities (3.5-5.0 fps)",
+      "Compound flooding scenarios (surge + river + precipitation)",
+      "Winter fog reducing visibility 15-25 days annually"
+    ],
+    "strategic_advantages": [
+      "Deep-water capability during low water periods",
+      "100-year levee protection (federally maintained)",
+      "Year-round operational capability",
+      "Optimal construction window July-September"
+    ],
+    "critical_infrastructure": "Post-Katrina levee improvements validated through Isaac (2012) and Ida (2021)",
+    "extreme_events_dataset": "2018 peak flows (650k cfs), 2019 extended flood (>6 months), 2023 extreme low (131k cfs) provide comprehensive design envelope"
+  }
+}

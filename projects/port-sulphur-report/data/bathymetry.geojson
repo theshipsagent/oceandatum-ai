@@ -1,0 +1,346 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "name": "Port Sulphur Bathymetric Survey Data",
+    "description": "Bathymetric depth contours and features for Port Sulphur Terminal at River Mile 39",
+    "survey_date": "2016-05-18",
+    "surveyor": "T. Baker Smith, LLC",
+    "vertical_datum": "NAVD 88",
+    "horizontal_datum": "NAD83 Louisiana South",
+    "units": "feet",
+    "source": "Multi-beam Echo-sounder Survey"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.695, 29.465]
+      },
+      "properties": {
+        "name": "Port Sulphur Terminal Site",
+        "river_mile": 39.0,
+        "bank": "West Bank",
+        "elevation_feet": 8,
+        "feature_type": "site_center"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-89.695, 29.470],
+          [-89.695, 29.468],
+          [-89.695, 29.466],
+          [-89.695, 29.464],
+          [-89.695, 29.462],
+          [-89.695, 29.460]
+        ]
+      },
+      "properties": {
+        "name": "Federal Navigation Channel Centerline",
+        "river_mile_start": 39.7,
+        "river_mile_end": 37.5,
+        "feature_type": "navigation_channel",
+        "maintained_depth_feet": 45,
+        "typical_depth_feet": 90,
+        "depth_range": "60-120 feet",
+        "width": "Two-way large vessel traffic",
+        "maintaining_agency": "USACE New Orleans District"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-89.693, 29.467],
+          [-89.697, 29.467],
+          [-89.697, 29.463],
+          [-89.693, 29.463],
+          [-89.693, 29.467]
+        ]]
+      },
+      "properties": {
+        "name": "Port Sulphur Anchorage",
+        "river_mile_upstream": 39.7,
+        "river_mile_downstream": 37.5,
+        "feature_type": "anchorage_zone",
+        "status": "Designated federal anchorage",
+        "anchorage_depth_feet": 60,
+        "use": "Vessel staging and cargo operations"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-89.694, 29.466],
+          [-89.695, 29.466],
+          [-89.695, 29.465],
+          [-89.694, 29.465],
+          [-89.694, 29.466]
+        ]]
+      },
+      "properties": {
+        "name": "Near-Shore Transition Zone",
+        "feature_type": "depth_zone",
+        "depth_from_feet": 0,
+        "depth_to_feet": -20,
+        "zone_description": "Shallow approach area",
+        "characteristics": "Gradual slope typical of Mississippi River banks",
+        "vessel_access": "Limited draft",
+        "engineering_notes": "May require dredging for large vessels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-89.6945, 29.466],
+          [-89.6955, 29.466],
+          [-89.6955, 29.464],
+          [-89.6945, 29.464],
+          [-89.6945, 29.466]
+        ]]
+      },
+      "properties": {
+        "name": "Primary Docking Zone",
+        "feature_type": "depth_zone",
+        "depth_from_feet": -20,
+        "depth_to_feet": -60,
+        "zone_description": "Main operational area for existing dock",
+        "characteristics": "Supports medium-draft vessel operations",
+        "vessel_access": "Medium-draft vessels",
+        "current_use": "McMoran dock operations",
+        "expansion_potential": "Additional berth development viable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-89.695, 29.467],
+          [-89.696, 29.467],
+          [-89.696, 29.463],
+          [-89.695, 29.463],
+          [-89.695, 29.467]
+        ]]
+      },
+      "properties": {
+        "name": "Deep Navigation Channel Zone",
+        "feature_type": "depth_zone",
+        "depth_from_feet": -60,
+        "depth_to_feet": -120,
+        "zone_description": "Federal navigation channel with exceptional depths",
+        "characteristics": "Exceeds federal maintenance requirements",
+        "vessel_access": "Panamax and larger vessels",
+        "federal_maintenance": true,
+        "strategic_advantage": "Deep water provides operational flexibility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [-89.6948, 29.4655],
+          [-89.6950, 29.4653],
+          [-89.6952, 29.4651]
+        ]
+      },
+      "properties": {
+        "name": "Existing Dock Pilings",
+        "feature_type": "obstruction",
+        "obstruction_type": "dock_pilings",
+        "condition": "Intact structural elements",
+        "distribution": "Multiple locations throughout dock footprint",
+        "navigation_hazard": "Charted",
+        "risk_level": "Low to Moderate",
+        "removal_consideration": "May require demolition for expansion"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-89.6947, 29.4654],
+          [-89.6949, 29.4654],
+          [-89.6949, 29.4652],
+          [-89.6947, 29.4652],
+          [-89.6947, 29.4654]
+        ]]
+      },
+      "properties": {
+        "name": "Debris Field - North",
+        "feature_type": "obstruction",
+        "obstruction_type": "debris_field",
+        "characteristics": "Irregular bottom features consistent with construction debris",
+        "source": "McMoran industrial operations remnants",
+        "risk_level": "Moderate",
+        "impact": "Could affect pile driving and dredging",
+        "investigation_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-89.6951, 29.4648],
+          [-89.6954, 29.4648],
+          [-89.6954, 29.4646],
+          [-89.6951, 29.4646],
+          [-89.6951, 29.4648]
+        ]]
+      },
+      "properties": {
+        "name": "Unidentified Large Object",
+        "feature_type": "obstruction",
+        "obstruction_type": "unknown_object",
+        "length_feet": 100,
+        "width_feet": 25,
+        "survey_scale": "1 inch = 50 feet detailed survey",
+        "risk_level": "HIGH",
+        "recommended_action": "ROV or diver investigation required",
+        "construction_risk": "Could affect scheduling, costs, and safety"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-89.694, 29.470],
+          [-89.694, 29.460]
+        ]
+      },
+      "properties": {
+        "name": "Port Sulphur Revetment - West Bank",
+        "feature_type": "revetment",
+        "river_mile_upstream": 41.1,
+        "river_mile_downstream": 34.3,
+        "bank": "West Bank",
+        "revetment_type": "Articulated Concrete Mat (ACM)",
+        "project": "Mississippi River & Tributaries (MR&T)",
+        "engineering_function": "Bank protection against erosion",
+        "regulatory_status": "Protected federal infrastructure"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.695, 29.468]
+      },
+      "properties": {
+        "name": "Nestor Canal Light",
+        "feature_type": "navigation_aid",
+        "aid_type": "Light",
+        "river_mile": 39.8,
+        "proximity": "Adjacent to facility",
+        "function": "Immediate positioning reference"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.695, 29.467]
+      },
+      "properties": {
+        "name": "Port Sulphur Anchorage Upper Daybeacon",
+        "feature_type": "navigation_aid",
+        "aid_type": "Daybeacon",
+        "river_mile": 39.7,
+        "function": "Upper anchorage boundary marker"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.695, 29.463]
+      },
+      "properties": {
+        "name": "Port Sulphur Anchorage Lower Daybeacon",
+        "feature_type": "navigation_aid",
+        "aid_type": "Daybeacon",
+        "river_mile": 37.5,
+        "function": "Lower anchorage boundary marker"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.6948, 29.4655]
+      },
+      "properties": {
+        "name": "Existing Dock Structure",
+        "feature_type": "existing_infrastructure",
+        "dock_dimensions": "24' x 433'",
+        "dock_type": "Concrete dock",
+        "rated_capacity_tons": 10000,
+        "water_depth_feet": 52,
+        "draft_capability_feet": 52,
+        "operational_status": "Former McMoran facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-89.6948, 29.4658],
+          [-89.6948, 29.4652]
+        ]
+      },
+      "properties": {
+        "name": "Depth Profile - Shore to Channel",
+        "feature_type": "depth_profile",
+        "profile_type": "Cross-section",
+        "depths": [
+          {"distance_from_shore_feet": 0, "depth_feet": 0},
+          {"distance_from_shore_feet": 100, "depth_feet": -10},
+          {"distance_from_shore_feet": 200, "depth_feet": -20},
+          {"distance_from_shore_feet": 400, "depth_feet": -40},
+          {"distance_from_shore_feet": 600, "depth_feet": -60},
+          {"distance_from_shore_feet": 800, "depth_feet": -80},
+          {"distance_from_shore_feet": 1000, "depth_feet": -100},
+          {"distance_from_shore_feet": 1200, "depth_feet": -120}
+        ],
+        "gradient_characteristics": "Moderate slope to 40 feet, then steeper transition to navigation channel",
+        "scour_evidence": "Current-induced scour along channel edges"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-89.6935, 29.4705],
+          [-89.6965, 29.4705],
+          [-89.6965, 29.4595],
+          [-89.6935, 29.4595],
+          [-89.6935, 29.4705]
+        ]]
+      },
+      "properties": {
+        "name": "Survey Coverage Area",
+        "feature_type": "survey_extent",
+        "survey_date": "2016-05-18",
+        "surveyor": "T. Baker Smith, LLC",
+        "equipment": "Multi-beam Echo-sounder with RTK",
+        "coverage_type": "Detailed bathymetric mapping",
+        "corrections_applied": ["Draft", "Water column sound velocity"],
+        "aerial_photography": "2015 imagery overlay"
+      }
+    }
+  ]
+}

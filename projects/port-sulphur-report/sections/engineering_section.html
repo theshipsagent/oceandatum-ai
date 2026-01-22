@@ -1,0 +1,1020 @@
+<!-- ENGINEERING SPECIFICATIONS SECTION -->
+<!-- Port Sulphur Terminal Analysis -->
+<!-- Generated: 2026-01-22 -->
+
+<section id="engineering" class="report-section">
+
+  <!-- Section Header -->
+  <div class="section-header">
+    <h2>Engineering Specifications</h2>
+    <div class="source-badge">
+      <span class="source-count">1 source</span>
+      <span class="source-detail">engineering_SYNTHESIS.md</span>
+    </div>
+  </div>
+
+  <!-- Executive Summary -->
+  <div class="content-block summary-block">
+    <h3>Engineering Overview</h3>
+    <p>
+      Port Sulphur Terminal (River Mile 39) sits entirely within the federally-protected Port Sulphur Revetment reach
+      (RM 41.1-34.3), creating a complex engineering environment where Mississippi River dynamics intersect with
+      comprehensive bank protection systems. The site's engineering requirements are defined by extreme current
+      velocity variations (1.0-4.0 ft/sec), articulated concrete mat revetment systems requiring specialized
+      penetration procedures, and seasonal operational patterns that create distinct construction windows.
+    </p>
+    <p>
+      Current velocity patterns drive structural design requirements: spring high water (March-June) generates
+      maximum loading at 2.5-4.0 ft/sec, summer/fall normal periods (July-October) provide optimal construction
+      conditions at 1.5-2.5 ft/sec, and winter low water (November-February) enables underwater work at 1.0-1.5 ft/sec.
+      All infrastructure must accommodate this operational envelope while complying with USACE June 1999 standard
+      procedures for revetment penetrations.
+    </p>
+  </div>
+
+  <!-- Chart 1: Seasonal Operational Patterns -->
+  <div class="chart-container">
+    <div class="chart-header">
+      <h3>Seasonal Current Velocity Patterns</h3>
+      <p class="chart-subtitle">Estimated velocities at Port Sulphur (RM 39) based on Belle Chasse USGS 07374525 hydrographic data</p>
+    </div>
+    <div class="chart-wrapper">
+      <canvas id="seasonalOperationsChart" aria-label="Bar chart showing seasonal current velocity patterns"></canvas>
+    </div>
+    <div class="chart-insights">
+      <div class="insight-item">
+        <span class="insight-label">Spring High Water (Mar-Jun):</span>
+        <span class="insight-value">2.5-4.0 ft/sec - Maximum structural loading, construction limitations</span>
+      </div>
+      <div class="insight-item">
+        <span class="insight-label">Summer/Fall Normal (Jul-Oct):</span>
+        <span class="insight-value">1.5-2.5 ft/sec - Optimal construction window, standard operations</span>
+      </div>
+      <div class="insight-item">
+        <span class="insight-label">Winter Low Water (Nov-Feb):</span>
+        <span class="insight-value">1.0-1.5 ft/sec - Underwater work ideal, draft restrictions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart 2: Discharge Statistics -->
+  <div class="chart-container">
+    <div class="chart-header">
+      <h3>Mississippi River Discharge Statistics</h3>
+      <p class="chart-subtitle">Historical discharge distribution - Belle Chasse Station (USGS 07374525, RM 76)</p>
+    </div>
+    <div class="chart-wrapper">
+      <canvas id="dischargeStatisticsChart" aria-label="Bar chart showing discharge statistics from extreme low to extreme high"></canvas>
+    </div>
+    <div class="chart-insights">
+      <div class="insight-item">
+        <span class="insight-label">Extreme Range:</span>
+        <span class="insight-value">131,000 cfs (2023 min) to 645,000 cfs (2018 max) - 393% variation</span>
+      </div>
+      <div class="insight-item">
+        <span class="insight-label">Normal Operations:</span>
+        <span class="insight-value">222,000-379,000 cfs (25th-75th percentile) - Standard design basis</span>
+      </div>
+      <div class="insight-item">
+        <span class="insight-label">Median Flow:</span>
+        <span class="insight-value">283,000 cfs - Typical navigation conditions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart 3: Design Parameters Radar -->
+  <div class="chart-container">
+    <div class="chart-header">
+      <h3>Design Parameters Across Operating Conditions</h3>
+      <p class="chart-subtitle">Normalized requirements (0-100 scale) for structural and operational systems</p>
+    </div>
+    <div class="chart-wrapper" style="max-height: 500px;">
+      <canvas id="designParametersChart" aria-label="Radar chart comparing design requirements across extreme high, normal, and low water conditions"></canvas>
+    </div>
+    <div class="chart-insights">
+      <div class="insight-item">
+        <span class="insight-label">Extreme High Water:</span>
+        <span class="insight-value">Maximum structural requirements for current loading and mooring capacity</span>
+      </div>
+      <div class="insight-item">
+        <span class="insight-label">Normal Operations:</span>
+        <span class="insight-value">Balanced design - optimal operational flexibility with moderate structural demands</span>
+      </div>
+      <div class="insight-item">
+        <span class="insight-label">Low Water:</span>
+        <span class="insight-value">Reduced structural loading but higher foundation complexity and limited flexibility</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Technical Specifications Table -->
+  <div class="content-block table-block">
+    <h3>Design Parameters Specification Summary</h3>
+    <p class="table-subtitle">Port Sulphur Terminal - Engineering Design Criteria</p>
+
+    <!-- Current Velocities -->
+    <div class="spec-table-container">
+      <h4 class="spec-category">Current Velocities</h4>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+            <th>Condition</th>
+            <th>Design Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Extreme High (Spring Flood)</strong></td>
+            <td>4.0 ft/sec</td>
+            <td>Spring flood conditions</td>
+            <td>Maximum structural loading</td>
+          </tr>
+          <tr>
+            <td><strong>High Water Range</strong></td>
+            <td>2.5 - 4.0 ft/sec</td>
+            <td>Spring high water (Mar-Jun)</td>
+            <td>Heavy-duty mooring and fender systems</td>
+          </tr>
+          <tr>
+            <td><strong>Normal Operations</strong></td>
+            <td>1.5 - 2.5 ft/sec</td>
+            <td>Summer/fall (Jul-Oct)</td>
+            <td>Standard operating design basis</td>
+          </tr>
+          <tr>
+            <td><strong>Low Water Range</strong></td>
+            <td>1.0 - 1.5 ft/sec</td>
+            <td>Winter low water (Nov-Feb)</td>
+            <td>Minimum current loading</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Structural Requirements - Foundations -->
+    <div class="spec-table-container">
+      <h4 class="spec-category">Structural Requirements - Foundations</h4>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+            <th>Condition</th>
+            <th>Design Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Current Loading Design</strong></td>
+            <td>4+ ft/sec</td>
+            <td>Maximum velocity accommodation</td>
+            <td>Must accommodate extreme spring flood velocities</td>
+          </tr>
+          <tr>
+            <td><strong>Scour Protection</strong></td>
+            <td>Critical system</td>
+            <td>High-velocity periods</td>
+            <td>Required during all high current conditions</td>
+          </tr>
+          <tr>
+            <td><strong>Variable Conditions</strong></td>
+            <td>Full range design</td>
+            <td>Variable water levels and loading</td>
+            <td>Design for 1.0-4.0 ft/sec operational envelope</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Structural Requirements - Mooring Systems -->
+    <div class="spec-table-container">
+      <h4 class="spec-category">Structural Requirements - Mooring Systems</h4>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+            <th>Condition</th>
+            <th>Design Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Bollards & Cleats</strong></td>
+            <td>High-capacity</td>
+            <td>Extreme current forces</td>
+            <td>Design for maximum spring flood forces</td>
+          </tr>
+          <tr>
+            <td><strong>Fender Systems</strong></td>
+            <td>Heavy-duty</td>
+            <td>Vessel impact protection</td>
+            <td>Accommodate large vessel impacts in high current</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Revetment Interface Requirements -->
+    <div class="spec-table-container">
+      <h4 class="spec-category">Revetment Interface Requirements</h4>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+            <th>Condition</th>
+            <th>Design Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Penetration Procedures</strong></td>
+            <td>USACE Standard</td>
+            <td>June 1999 standard drawing</td>
+            <td>Full compliance with revetment penetration procedures</td>
+          </tr>
+          <tr>
+            <td><strong>Collar & Seal Systems</strong></td>
+            <td>Full thickness</td>
+            <td>Protective mat integration</td>
+            <td>Engineered collar spanning full mat thickness</td>
+          </tr>
+          <tr>
+            <td><strong>Toe Protection</strong></td>
+            <td>Additional provisions</td>
+            <td>Base of revetment</td>
+            <td>Additional protection measures required</td>
+          </tr>
+          <tr>
+            <td><strong>Performance Monitoring</strong></td>
+            <td>Long-term</td>
+            <td>Continuous assessment</td>
+            <td>Ongoing monitoring of penetration integrity</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Chart 4: Construction Window Timeline -->
+  <div class="chart-container">
+    <div class="chart-header">
+      <h3>Seasonal Construction Windows</h3>
+      <p class="chart-subtitle">Construction feasibility by month based on hydrologic conditions</p>
+    </div>
+    <div class="chart-wrapper">
+      <canvas id="constructionWindowChart" aria-label="Bar chart showing construction feasibility by month"></canvas>
+    </div>
+    <div class="chart-insights">
+      <div class="insight-item">
+        <span class="insight-label">Optimal Period (Jul-Oct):</span>
+        <span class="insight-value">90% feasibility - Best window for general marine construction</span>
+      </div>
+      <div class="insight-item">
+        <span class="insight-label">Underwater Work (Nov-Feb):</span>
+        <span class="insight-value">85% feasibility - Ideal for underwater construction and maintenance</span>
+      </div>
+      <div class="insight-item">
+        <span class="insight-label">Restricted Period (Mar-Jun):</span>
+        <span class="insight-value">40% feasibility - High velocities limit marine construction activities</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Construction Constraints -->
+  <div class="content-block highlight-block">
+    <h3>Construction Window Planning</h3>
+
+    <div class="construction-window">
+      <div class="window-header optimal">
+        <h4>Optimal Marine Construction: July - October (4 months)</h4>
+        <span class="feasibility-badge">90% Feasibility</span>
+      </div>
+      <div class="window-content">
+        <div class="window-section">
+          <h5>Conditions</h5>
+          <ul>
+            <li><strong>Discharge:</strong> 222,000-379,000 cfs (25th-75th percentile)</li>
+            <li><strong>Velocity:</strong> 1.5-2.5 ft/sec</li>
+            <li><strong>Stage:</strong> Normal navigation pool levels</li>
+            <li><strong>Stability:</strong> Most predictable flow conditions</li>
+          </ul>
+        </div>
+        <div class="window-section">
+          <h5>Recommended Activities</h5>
+          <ul>
+            <li>Pile driving and foundation work</li>
+            <li>Dock and wharf construction</li>
+            <li>Heavy equipment operations</li>
+            <li>Mooring system installation</li>
+            <li>Fender system installation</li>
+            <li>General marine construction</li>
+          </ul>
+        </div>
+        <div class="window-section">
+          <h5>Advantages</h5>
+          <ul>
+            <li>Balanced depth and current conditions</li>
+            <li>Optimal vessel handling</li>
+            <li>Predictable conditions allow efficient scheduling</li>
+            <li>Standard equipment adequate for operations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="construction-window">
+      <div class="window-header good">
+        <h4>Underwater Work Window: November - February (4 months)</h4>
+        <span class="feasibility-badge">85% Feasibility</span>
+      </div>
+      <div class="window-content">
+        <div class="window-section">
+          <h5>Conditions</h5>
+          <ul>
+            <li><strong>Discharge:</strong> 131,000-222,000 cfs (below 25th percentile)</li>
+            <li><strong>Velocity:</strong> 1.0-1.5 ft/sec</li>
+            <li><strong>Stage:</strong> Reduced stages, low water conditions</li>
+            <li><strong>Variability:</strong> Potential for extreme low water events</li>
+          </ul>
+        </div>
+        <div class="window-section">
+          <h5>Recommended Activities</h5>
+          <ul>
+            <li>Underwater pile installation</li>
+            <li>Foundation work below waterline</li>
+            <li>Submerged infrastructure inspection</li>
+            <li>Dredging operations</li>
+            <li>Maintenance activities</li>
+            <li>Testing and commissioning</li>
+          </ul>
+        </div>
+        <div class="window-section">
+          <h5>Advantages</h5>
+          <ul>
+            <li>Minimal current stress on structures</li>
+            <li>Good underwater visibility</li>
+            <li>Low-risk period for major maintenance</li>
+            <li>Reduced operational and insurance costs</li>
+          </ul>
+        </div>
+        <div class="window-section">
+          <h5>Limitations</h5>
+          <ul>
+            <li>Draft restrictions for vessel access</li>
+            <li>Light-loading requirements</li>
+            <li>Potential channel shoaling</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="construction-window">
+      <div class="window-header restricted">
+        <h4>Restricted Construction: March - June (4 months)</h4>
+        <span class="feasibility-badge">40% Feasibility</span>
+      </div>
+      <div class="window-content">
+        <div class="window-section">
+          <h5>Conditions</h5>
+          <ul>
+            <li><strong>Discharge:</strong> 375,000+ cfs (above 75th percentile)</li>
+            <li><strong>Velocity:</strong> 2.5-4.0 ft/sec</li>
+            <li><strong>Stage:</strong> Elevated stages, high water</li>
+            <li><strong>Duration:</strong> 3-4 months sustained high flow</li>
+          </ul>
+        </div>
+        <div class="window-section">
+          <h5>Limited Activities</h5>
+          <ul>
+            <li>Shore-based construction only</li>
+            <li>Material delivery with large vessels</li>
+            <li>Planning and permitting activities</li>
+            <li>Equipment mobilization on land</li>
+          </ul>
+        </div>
+        <div class="window-section">
+          <h5>Advantages</h5>
+          <ul>
+            <li>Maximum draft access for material delivery</li>
+            <li>Deepest available depths for largest vessels</li>
+            <li>Natural channel maintenance from high flows</li>
+          </ul>
+        </div>
+        <div class="window-section">
+          <h5>Challenges</h5>
+          <ul>
+            <li>High current structural loading (3-4 ft/sec)</li>
+            <li>Difficult vessel mooring operations</li>
+            <li>Marine construction activities severely restricted</li>
+            <li>Potential for overbank flooding</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Revetment Engineering Standards -->
+  <div class="content-block critical-block">
+    <h3>Critical Revetment Engineering Standards</h3>
+
+    <div class="standard-item">
+      <h4>USACE June 1999 Standard Drawing</h4>
+      <p class="standard-title">"Repair Procedures when Penetrating Revetments with Piles, Caissons, and/or Pile Clusters"</p>
+
+      <div class="standard-requirements">
+        <h5>Fundamental Principle</h5>
+        <p>
+          No penetration of concrete mat or trench-fill systems without approved repair procedures that maintain
+          or enhance original protective function. All penetrations must implement engineered solutions under
+          USACE engineering oversight.
+        </p>
+
+        <h5>Technical Requirements</h5>
+        <ul>
+          <li><strong>Collar and Seal Systems:</strong> Engineered systems spanning full thickness of protective mat</li>
+          <li><strong>Toe Protection:</strong> Additional provisions required at base of revetment</li>
+          <li><strong>Long-term Monitoring:</strong> Continuous performance assessment of penetration integrity</li>
+          <li><strong>Mat Stress Management:</strong> Construction sequencing to minimize stress on articulated mats</li>
+          <li><strong>Engineering Oversight:</strong> All penetration procedures performed under qualified engineering supervision</li>
+        </ul>
+
+        <h5>Construction Constraints</h5>
+        <ul>
+          <li>Treat revetment systems as critical infrastructure, not work platforms</li>
+          <li>Minimize heavy construction traffic on mats to preserve engineered flexibility</li>
+          <li>Avoid lateral loading from equipment operations</li>
+          <li>Implement construction sequencing that minimizes mat stress</li>
+          <li>Approved penetration procedures required for all mat interactions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="standard-item">
+      <h4>Anchoring Restrictions - 33 CFR 207.200</h4>
+      <p class="standard-title">Federal regulations prohibit anchoring over revetted banks without authorization</p>
+
+      <div class="standard-requirements">
+        <h5>Regulatory Framework</h5>
+        <p>
+          Coast Pilot 5 for the Lower Mississippi River explicitly notes anchoring restrictions over revetted
+          banks. This regulation recognizes that uncontrolled anchoring can damage protective systems while
+          creating navigation hazards.
+        </p>
+
+        <h5>Compliance Requirements</h5>
+        <ul>
+          <li><strong>Vessel Positioning:</strong> Must use designated anchorage areas or approved mooring systems</li>
+          <li><strong>Construction Activities:</strong> Specialized positioning plans required for marine construction</li>
+          <li><strong>Operational Mooring:</strong> Permanent mooring systems must integrate with revetment protection</li>
+          <li><strong>Authorization Process:</strong> USACE approval required for any anchoring over revetments</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Regulatory Compliance Checklist -->
+  <div class="content-block checklist-block">
+    <h3>Engineering Regulatory Compliance Requirements</h3>
+
+    <div class="regulation-section">
+      <div class="regulation-header">
+        <h4>Section 408 - Rivers and Harbors Act</h4>
+        <p class="regulation-authority">USACE New Orleans District (CEMVN-ED-LC)</p>
+      </div>
+      <ul class="checklist">
+        <li>Permission for any development affecting Mississippi River & Tributaries project features</li>
+        <li>Compliance with June 1999 revetment penetration procedures</li>
+        <li>Integration with 2025 Programmatic Environmental Assessment</li>
+        <li>Engineered collar and seal systems for mat penetrations</li>
+        <li>Long-term performance monitoring plan</li>
+      </ul>
+    </div>
+
+    <div class="regulation-section">
+      <div class="regulation-header">
+        <h4>Section 10 - Rivers and Harbors Act</h4>
+        <p class="regulation-authority">USACE Regulatory Division</p>
+      </div>
+      <ul class="checklist">
+        <li>Permits for structures in or over navigable waters</li>
+        <li>Navigation safety assessment and clearance approval</li>
+        <li>Environmental protection measures coordination</li>
+        <li>Coordination with existing water-dependent uses</li>
+        <li>Can be processed simultaneously with Section 408 for efficiency</li>
+      </ul>
+    </div>
+
+    <div class="regulation-section">
+      <div class="regulation-header">
+        <h4>Section 404 - Clean Water Act</h4>
+        <p class="regulation-authority">USACE Regulatory Division</p>
+      </div>
+      <ul class="checklist">
+        <li>Permits required for placement of fill material</li>
+        <li>Structural foundation approvals and engineering review</li>
+        <li>Scour protection system permitting</li>
+        <li>Approach materials evaluation</li>
+        <li>Pile foundations addressed as regulated fill per historical guidance</li>
+      </ul>
+    </div>
+
+    <div class="regulation-section">
+      <div class="regulation-header">
+        <h4>33 CFR 207.200 - Anchoring Restrictions</h4>
+        <p class="regulation-authority">U.S. Coast Guard / USACE</p>
+      </div>
+      <ul class="checklist">
+        <li>No anchoring over revetted banks without authorization</li>
+        <li>Vessel positioning via designated anchorage areas</li>
+        <li>Approved mooring systems required for operations</li>
+        <li>Reference Coast Pilot 5 for Lower Mississippi River guidance</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Engineering Implications Summary -->
+  <div class="content-block summary-block">
+    <h3>Critical Engineering Considerations</h3>
+
+    <div class="implication-grid">
+      <div class="implication-item">
+        <h4>Bank Stability History</h4>
+        <p>
+          Multiple revetment systems (Point Michel, Port Sulphur, Bohemia) indicate historically unstable
+          banks requiring comprehensive protection. Foundation design must account for underlying bank
+          instability and integrate with existing federal infrastructure.
+        </p>
+      </div>
+
+      <div class="implication-item">
+        <h4>Current Velocity Extremes</h4>
+        <p>
+          Design envelope of 1.0-4.0 ft/sec (400% variation) requires structural systems capable of
+          accommodating both extreme loading and variable operational conditions. Heavy-duty mooring,
+          fender, and foundation systems mandatory.
+        </p>
+      </div>
+
+      <div class="implication-item">
+        <h4>Scour Protection Criticality</h4>
+        <p>
+          Extensive hardening and high current velocities make scour protection a critical design element.
+          Protection systems must function across full velocity range and integrate with revetment
+          penetration procedures.
+        </p>
+      </div>
+
+      <div class="implication-item">
+        <h4>Regulatory Integration Complexity</h4>
+        <p>
+          Development within federal Mississippi River & Tributaries project triggers Section 408,
+          Section 10, and Section 404 requirements. Coordination with USACE New Orleans District
+          required throughout design and construction phases.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Reference -->
+  <div class="data-reference">
+    <p class="reference-note">
+      <strong>Hydrographic Data Source:</strong> USGS 07374525 - Mississippi River at Belle Chasse, LA (RM 76)
+      <br>
+      <strong>Reference Station:</strong> 37 miles downstream from Port Sulphur
+      <br>
+      <strong>Current Observation:</strong> 1.94 ft/sec (1.32 mph) - September 2025
+      <br>
+      <strong>Historical Range:</strong> 131,000-645,000 cfs discharge (2023 minimum to 2018 maximum)
+    </p>
+  </div>
+
+</section>
+
+<!-- Chart Initialization Script -->
+<script>
+// Initialize Engineering Charts when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Check if Chart.js and engineering charts configuration are loaded
+  if (typeof Chart !== 'undefined' && typeof window.engineeringCharts !== 'undefined') {
+
+    // 1. Seasonal Operations Chart
+    const seasonalCtx = document.getElementById('seasonalOperationsChart');
+    if (seasonalCtx) {
+      new Chart(seasonalCtx, window.engineeringCharts.seasonalOperationsChart);
+    }
+
+    // 2. Discharge Statistics Chart
+    const dischargeCtx = document.getElementById('dischargeStatisticsChart');
+    if (dischargeCtx) {
+      new Chart(dischargeCtx, window.engineeringCharts.dischargeStatisticsChart);
+    }
+
+    // 3. Design Parameters Radar Chart
+    const designParamsCtx = document.getElementById('designParametersChart');
+    if (designParamsCtx) {
+      new Chart(designParamsCtx, window.engineeringCharts.designParametersChart);
+    }
+
+    // 4. Construction Window Timeline Chart
+    const constructionCtx = document.getElementById('constructionWindowChart');
+    if (constructionCtx) {
+      new Chart(constructionCtx, window.engineeringCharts.constructionWindowChart);
+    }
+
+    console.log('Engineering charts initialized successfully');
+  } else {
+    console.warn('Chart.js or engineering charts configuration not loaded');
+  }
+});
+</script>
+
+<style>
+/* Engineering Section Specific Styles */
+
+/* Chart Containers */
+.chart-container {
+  background: rgba(26, 26, 46, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.chart-header {
+  margin-bottom: 20px;
+}
+
+.chart-header h3 {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.chart-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 400px;
+  margin: 20px 0;
+}
+
+.chart-insights {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.insight-item {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.insight-label {
+  color: #64ffb4;
+  font-weight: 600;
+  margin-right: 8px;
+  min-width: 200px;
+}
+
+.insight-value {
+  color: rgba(255, 255, 255, 0.85);
+  flex: 1;
+}
+
+/* Specification Tables */
+.table-block {
+  background: rgba(26, 26, 46, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.table-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+.spec-table-container {
+  margin: 28px 0;
+}
+
+.spec-category {
+  color: #64ffb4;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(100, 255, 180, 0.3);
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 0.9rem;
+}
+
+.spec-table thead {
+  background: rgba(100, 255, 180, 0.1);
+}
+
+.spec-table th {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px;
+  border-bottom: 2px solid rgba(100, 255, 180, 0.3);
+}
+
+.spec-table td {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: top;
+}
+
+.spec-table tbody tr:hover {
+  background: rgba(100, 255, 180, 0.05);
+}
+
+/* Construction Windows */
+.construction-window {
+  background: rgba(26, 26, 46, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.window-header {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.window-header.optimal {
+  background: linear-gradient(90deg, rgba(100, 255, 180, 0.2), rgba(100, 255, 180, 0.05));
+  border-bottom: 2px solid rgba(100, 255, 180, 0.4);
+}
+
+.window-header.good {
+  background: linear-gradient(90deg, rgba(74, 158, 255, 0.2), rgba(74, 158, 255, 0.05));
+  border-bottom: 2px solid rgba(74, 158, 255, 0.4);
+}
+
+.window-header.restricted {
+  background: linear-gradient(90deg, rgba(255, 107, 107, 0.2), rgba(255, 107, 107, 0.05));
+  border-bottom: 2px solid rgba(255, 107, 107, 0.4);
+}
+
+.window-header h4 {
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.feasibility-badge {
+  background: rgba(0, 0, 0, 0.3);
+  color: #64ffb4;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.window-content {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.window-section h5 {
+  color: #64ffb4;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.window-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.window-section li {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 6px 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.window-section li strong {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Critical Standards Block */
+.critical-block {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(26, 26, 46, 0.5));
+  border: 2px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.standard-item {
+  margin: 24px 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  border-left: 4px solid #ff6b6b;
+}
+
+.standard-title {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  margin: 8px 0 16px 0;
+  font-size: 0.95rem;
+}
+
+.standard-requirements h5 {
+  color: #64ffb4;
+  font-size: 1rem;
+  margin: 16px 0 8px 0;
+}
+
+.standard-requirements ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.standard-requirements li {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 8px 0 8px 20px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.standard-requirements li:before {
+  content: "▸";
+  color: #ff6b6b;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Regulatory Checklist */
+.checklist-block {
+  background: rgba(26, 26, 46, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.regulation-section {
+  margin: 24px 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  border-left: 4px solid #64ffb4;
+}
+
+.regulation-header h4 {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.regulation-authority {
+  color: #64ffb4;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.checklist {
+  list-style: none;
+  padding-left: 0;
+}
+
+.checklist li {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 10px 0 10px 32px;
+  position: relative;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.checklist li:before {
+  content: "☑";
+  color: #64ffb4;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+/* Implication Grid */
+.implication-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.implication-item {
+  background: rgba(26, 26, 46, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.implication-item h4 {
+  color: #64ffb4;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.implication-item p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Data Reference */
+.data-reference {
+  margin-top: 32px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  border-left: 3px solid #64ffb4;
+}
+
+.reference-note {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.reference-note strong {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chart-wrapper {
+    height: 300px;
+  }
+
+  .insight-label {
+    min-width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .spec-table {
+    font-size: 0.8rem;
+  }
+
+  .spec-table th,
+  .spec-table td {
+    padding: 8px;
+  }
+
+  .window-content {
+    grid-template-columns: 1fr;
+  }
+
+  .implication-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  .chart-wrapper {
+    height: 350px;
+  }
+
+  .construction-window {
+    page-break-inside: avoid;
+  }
+}
+</style>

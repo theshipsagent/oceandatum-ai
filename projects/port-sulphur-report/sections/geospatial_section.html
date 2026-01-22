@@ -1,0 +1,351 @@
+<!-- Geospatial Analysis Section -->
+<section id="geospatial" class="report-section">
+  <div class="section-header">
+    <div class="section-title-group">
+      <h2 class="section-title">Geospatial Analysis</h2>
+      <span class="source-count">0 sources</span>
+    </div>
+    <p class="section-description">
+      Reserved for future implementation of interactive mapping and geospatial visualization components.
+      This section will feature terminal location mapping, infrastructure asset overlays, navigation channel visualization,
+      and environmental features when coordinate data becomes available.
+    </p>
+  </div>
+
+  <!-- Placeholder Card -->
+  <div class="geospatial-placeholder-card">
+    <div class="placeholder-icon">
+      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+      </svg>
+    </div>
+
+    <h3 class="placeholder-title">Reserved for Future Map Layers</h3>
+
+    <p class="placeholder-description">
+      Interactive geospatial visualization of Port Sulphur Terminal location, infrastructure assets,
+      navigation channels, and environmental features will be displayed here when coordinate data becomes available.
+    </p>
+
+    <div class="placeholder-details">
+      <div class="detail-row">
+        <span class="detail-label">Location:</span>
+        <span class="detail-value">Mississippi River Delta</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Region:</span>
+        <span class="detail-value">Plaquemines Parish, Louisiana</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Waterway:</span>
+        <span class="detail-value">Mississippi River</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Status:</span>
+        <span class="detail-value status-pending">Coordinate Data Pending</span>
+      </div>
+    </div>
+
+    <div class="placeholder-features">
+      <h4>Planned Map Features</h4>
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon" style="background: rgba(255, 107, 107, 0.2); color: #FF6B6B;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>Terminal Boundary</strong>
+            <span>Property limits and waterfront access</span>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon" style="background: rgba(78, 205, 196, 0.2); color: #4ECDC4;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>Infrastructure Assets</strong>
+            <span>Berths, warehouses, and facilities</span>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon" style="background: rgba(100, 255, 180, 0.2); color: #64ffb4;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/>
+              <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>Navigation Features</strong>
+            <span>Channels, anchorages, turning basins</span>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon" style="background: rgba(149, 225, 211, 0.2); color: #95E1D3;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>Environmental Features</strong>
+            <span>Wetlands, flood zones, protected areas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="placeholder-implementation">
+      <h4>Recommended Implementation</h4>
+      <ul>
+        <li><strong>Mapping Library:</strong> Leaflet.js or Mapbox GL JS</li>
+        <li><strong>Base Tiles:</strong> OpenStreetMap or Mapbox satellite imagery</li>
+        <li><strong>Data Format:</strong> GeoJSON for layer compatibility</li>
+        <li><strong>Coordinate System:</strong> WGS84 (decimal degrees)</li>
+      </ul>
+    </div>
+
+    <div class="placeholder-note">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="16" x2="12" y2="12"/>
+        <line x1="12" y1="8" x2="12.01" y2="8"/>
+      </svg>
+      Map layers will be added when geospatial data becomes available. See
+      <code>data/geospatial_data.json</code> and <code>visualizations/geospatial_charts.js</code>
+      for data structure and visualization configuration.
+    </div>
+  </div>
+</section>
+
+<!-- Geospatial Placeholder Styles -->
+<style>
+.geospatial-placeholder-card {
+  background: linear-gradient(135deg, rgba(100, 255, 180, 0.05), rgba(78, 205, 196, 0.05));
+  border: 2px dashed rgba(100, 255, 180, 0.3);
+  border-radius: 12px;
+  padding: 3rem;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.placeholder-icon {
+  color: rgba(100, 255, 180, 0.5);
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.placeholder-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+}
+
+.placeholder-description {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.placeholder-details {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  text-align: left;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.detail-value {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.status-pending {
+  color: #64ffb4 !important;
+  font-weight: 600;
+}
+
+.placeholder-features {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.placeholder-features h4,
+.placeholder-implementation h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.feature-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.feature-text strong {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
+
+.feature-text span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+}
+
+.placeholder-implementation {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.placeholder-implementation ul {
+  list-style: none;
+  padding: 0;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.placeholder-implementation li {
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+.placeholder-implementation strong {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.placeholder-note {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  background: rgba(100, 255, 180, 0.08);
+  border: 1px solid rgba(100, 255, 180, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  text-align: left;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+.placeholder-note svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  color: #64ffb4;
+}
+
+.placeholder-note code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #64ffb4;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .geospatial-placeholder-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .placeholder-title {
+    font-size: 1.4rem;
+  }
+
+  .placeholder-description {
+    font-size: 1rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .placeholder-note {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .placeholder-note svg {
+    margin: 0 auto;
+  }
+}
+</style>

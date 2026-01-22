@@ -1,0 +1,357 @@
+{
+  "metadata": {
+    "source_document": "engineering_SYNTHESIS.md",
+    "generated_date": "2026-01-22",
+    "extraction_date": "2026-01-22",
+    "total_files_synthesized": 1,
+    "category": "engineering_technical"
+  },
+  "site_location": {
+    "river_mile": {
+      "approximate": 39,
+      "description": "Port Sulphur site location on Mississippi River"
+    },
+    "revetment_reach": {
+      "name": "Port Sulphur Revetment",
+      "river_mile_start": 41.1,
+      "river_mile_end": 34.3,
+      "bank": "west",
+      "status": "Site entirely within protected reach"
+    },
+    "adjacent_revetments": {
+      "upstream": {
+        "name": "Point Michel Revetment",
+        "river_mile_range": "RM 45.7-41.1"
+      },
+      "downstream": {
+        "name": "Bohemia Revetment",
+        "river_mile_range": "RM 47.7-44.7"
+      }
+    }
+  },
+  "revetment_system": {
+    "construction_type": "Articulated concrete mat",
+    "system_integration": "Part of comprehensive Mississippi River & Tributaries project",
+    "protection_purpose": "Bank stability and scour protection",
+    "federal_project": "Mississippi River & Tributaries",
+    "engineering_implications": [
+      "Multiple revetment systems indicate historically unstable banks",
+      "Extensive hardening suggests high current velocities",
+      "Bank instability history affects structural design requirements",
+      "Integration with federal bank protection system adds regulatory complexity"
+    ]
+  },
+  "regulatory_framework": {
+    "section_408": {
+      "authority": "Section 408 of Rivers and Harbors Act",
+      "administering_agency": "USACE New Orleans District",
+      "office": "CEMVN-ED-LC (Engineering Division)",
+      "requirement": "Permission required for any development affecting Mississippi River & Tributaries project features",
+      "streamlining": "2025 Programmatic Environmental Assessment with standardized engineering criteria",
+      "engineering_standard": "June 1999 repair procedures for revetment penetrations"
+    },
+    "section_10": {
+      "authority": "Rivers and Harbors Act Section 10",
+      "administering_agency": "USACE Regulatory Division",
+      "requirement": "Permits required for structures in or over navigable waters",
+      "scope": [
+        "Navigation safety",
+        "Environmental protection",
+        "Coordination with existing water-dependent uses"
+      ],
+      "coordination": "Simultaneous processing with Section 408 available"
+    },
+    "section_404": {
+      "authority": "Clean Water Act Section 404",
+      "requirement": "Permits for placement of fill material",
+      "applicability": [
+        "Structural foundations",
+        "Scour protection",
+        "Approach materials"
+      ],
+      "guidance": "Historical regulatory guidance addresses pile foundations as regulated fill"
+    },
+    "anchoring_restrictions": {
+      "regulation": "33 CFR 207.200",
+      "prohibition": "Anchoring over revetted banks without authorization",
+      "reference": "Coast Pilot 5 for Lower Mississippi River",
+      "requirement": "Vessel positioning must use designated anchorage areas or approved mooring systems"
+    }
+  },
+  "engineering_standards": {
+    "revetment_penetration": {
+      "standard_document": "June 1999 USACE Standard Drawing - Repair Procedures when Penetrating Revetments with Piles, Caissons, and/or Pile Clusters",
+      "fundamental_principle": "No penetration of concrete mat or trench-fill systems without approved repair procedures",
+      "technical_requirements": [
+        "Engineered collar and seal systems spanning full thickness of protective mat",
+        "Additional provisions for toe protection",
+        "Long-term performance monitoring"
+      ],
+      "construction_constraints": [
+        "Treat revetment systems as critical infrastructure",
+        "Minimize mat stress from construction traffic",
+        "Avoid lateral loading from equipment operations",
+        "Implement approved penetration procedures under engineering oversight"
+      ]
+    },
+    "mat_protection": {
+      "design_principle": "Articulated concrete mats provide protection through engineered flexibility and weight distribution",
+      "vulnerability": "Heavy construction traffic or lateral loading can compromise mat characteristics",
+      "requirement": "Construction sequencing to minimize mat stress"
+    }
+  },
+  "hydrographic_data": {
+    "reference_station": {
+      "identifier": "USGS 07374525",
+      "name": "Mississippi River at Belle Chasse, LA",
+      "river_mile": 76,
+      "distance_from_port_sulphur": {
+        "value": 37,
+        "unit": "miles",
+        "direction": "downstream"
+      },
+      "current_velocity": {
+        "value": 1.94,
+        "unit": "ft/sec",
+        "equivalent_mph": 1.32,
+        "date": "September 2025"
+      },
+      "tidal_influence": {
+        "belle_chasse": "Significant",
+        "port_sulphur": "Minimal"
+      },
+      "monitoring": "Real-time with velocity and discharge measurements"
+    },
+    "historical_discharge_statistics": {
+      "location": "Belle Chasse",
+      "maximum": {
+        "value": 645000,
+        "unit": "cfs",
+        "year": 2018,
+        "description": "Extreme flood conditions"
+      },
+      "percentile_75": {
+        "value": 379000,
+        "unit": "cfs",
+        "description": "High water operations"
+      },
+      "median": {
+        "value": 283000,
+        "unit": "cfs",
+        "description": "Normal navigation conditions"
+      },
+      "percentile_25": {
+        "value": 222000,
+        "unit": "cfs",
+        "description": "Low normal conditions"
+      },
+      "minimum": {
+        "value": 131000,
+        "unit": "cfs",
+        "year": 2023,
+        "description": "Extreme low water"
+      }
+    }
+  },
+  "seasonal_operations": {
+    "spring_high_water": {
+      "period": "March - June",
+      "duration": "3-4 months sustained high flow",
+      "hydrologic_characteristics": {
+        "discharge_range": {
+          "value": "375000+",
+          "unit": "cfs",
+          "percentile": "Above 75th"
+        },
+        "estimated_velocity_port_sulphur": {
+          "min": 2.5,
+          "max": 4.0,
+          "unit": "ft/sec"
+        },
+        "river_stage": "Elevated stages, optimal depths available"
+      },
+      "operational_advantages": [
+        "Maximum draft access - deepest available depths for largest vessels",
+        "Channel maintenance - natural scouring maintains navigation depths",
+        "Freshwater availability - abundant water for industrial processes",
+        "Reduced dredging - high flows transport sediment naturally"
+      ],
+      "operational_challenges": [
+        "High current stress - 3-4 ft/sec velocities create significant structural loading",
+        "Mooring difficulties - extreme current forces complicate vessel handling",
+        "Construction limitations - high velocities restrict marine construction activities",
+        "Flooding risk - potential for overbank flooding during extreme events"
+      ],
+      "engineering_implications": {
+        "structure_design": "Foundations must accommodate 4+ ft/sec current loads",
+        "fender_systems": "Heavy-duty fendering required for vessel impact protection",
+        "mooring_systems": "High-capacity bollards and cleats necessary",
+        "scour_protection": "Critical during high-velocity periods"
+      }
+    },
+    "summer_fall_normal": {
+      "period": "July - October",
+      "hydrologic_characteristics": {
+        "discharge_range": {
+          "min": 222000,
+          "max": 379000,
+          "unit": "cfs",
+          "percentile": "25th-75th"
+        },
+        "estimated_velocity_port_sulphur": {
+          "min": 1.5,
+          "max": 2.5,
+          "unit": "ft/sec"
+        },
+        "river_stage": "Normal navigation pool levels",
+        "stability": "Most predictable and stable flow conditions"
+      },
+      "operational_advantages": [
+        "Optimal navigation - balanced depth and current conditions",
+        "Construction window - best period for marine construction activities",
+        "Vessel operations - manageable current forces for safe vessel handling",
+        "Maintenance access - ideal conditions for dock and infrastructure maintenance"
+      ],
+      "operational_considerations": [
+        "Standard loading - normal vessel loading capacities",
+        "Current management - moderate current forces require standard navigation protocols",
+        "Seasonal transition - gradual transition to low water conditions"
+      ],
+      "design_standards": {
+        "normal_operating_conditions": "Design basis for routine operations",
+        "current_loading": {
+          "design_velocity_range": {
+            "min": 2.0,
+            "max": 2.5,
+            "unit": "ft/sec"
+          },
+          "purpose": "Structural analysis"
+        },
+        "operational_equipment": "Standard mooring and cargo handling equipment adequate"
+      }
+    },
+    "winter_low_water": {
+      "period": "November - February",
+      "hydrologic_characteristics": {
+        "discharge_range": {
+          "min": 131000,
+          "max": 222000,
+          "unit": "cfs",
+          "percentile": "Below 25th"
+        },
+        "estimated_velocity_port_sulphur": {
+          "min": 1.0,
+          "max": 1.5,
+          "unit": "ft/sec"
+        },
+        "river_stage": "Reduced stages, minimum operational depths",
+        "variability": "Potential for extreme low water events"
+      },
+      "operational_limitations": [
+        "Draft restrictions - reduced available depths limit vessel sizes",
+        "Loading restrictions - light-loading required for deeper-draft vessels",
+        "Channel shoaling - potential sediment deposition in low-velocity areas",
+        "Navigation delays - industry-wide impacts from restricted navigation"
+      ],
+      "operational_advantages": [
+        "Low current stress - minimal current forces on structures and vessels",
+        "Construction opportunity - ideal conditions for underwater work",
+        "Maintenance window - low-risk period for major maintenance activities",
+        "Cost optimization - lower insurance and operational risk factors"
+      ],
+      "engineering_considerations": [
+        "Minimum design depths must account for extreme low water scenarios",
+        "Dredging requirements - potential maintenance dredging during low water",
+        "Structural flexibility - design for variable water levels and loading conditions"
+      ]
+    }
+  },
+  "design_parameters": {
+    "current_velocities": {
+      "extreme_high": {
+        "value": 4.0,
+        "unit": "ft/sec",
+        "condition": "Spring flood conditions",
+        "design_requirement": "Maximum structural loading"
+      },
+      "high": {
+        "min": 2.5,
+        "max": 4.0,
+        "unit": "ft/sec",
+        "condition": "Spring high water",
+        "design_requirement": "Heavy-duty mooring and fender systems"
+      },
+      "normal": {
+        "min": 1.5,
+        "max": 2.5,
+        "unit": "ft/sec",
+        "condition": "Summer/fall normal operations",
+        "design_requirement": "Standard operating design basis"
+      },
+      "low": {
+        "min": 1.0,
+        "max": 1.5,
+        "unit": "ft/sec",
+        "condition": "Winter low water",
+        "design_requirement": "Minimum current loading"
+      }
+    },
+    "structural_requirements": {
+      "foundations": {
+        "current_loading": "Must accommodate 4+ ft/sec velocities",
+        "scour_protection": "Critical during high-velocity periods",
+        "variable_conditions": "Design for variable water levels and loading"
+      },
+      "mooring_systems": {
+        "bollards_cleats": "High-capacity for extreme current forces",
+        "fender_systems": "Heavy-duty for vessel impact protection"
+      },
+      "revetment_interface": {
+        "penetration_procedures": "USACE June 1999 standard drawing compliance",
+        "collar_seal_systems": "Full thickness of protective mat",
+        "toe_protection": "Additional provisions required",
+        "monitoring": "Long-term performance monitoring"
+      }
+    }
+  },
+  "construction_constraints": {
+    "seasonal_windows": {
+      "optimal_construction": {
+        "period": "July - October",
+        "description": "Summer/fall normal water period - best for marine construction"
+      },
+      "underwater_work": {
+        "period": "November - February",
+        "description": "Winter low water period - ideal for underwater construction"
+      },
+      "restricted_construction": {
+        "period": "March - June",
+        "description": "Spring high water - high velocities restrict marine construction activities"
+      }
+    },
+    "revetment_protection": {
+      "working_surface": "Treat mats as critical infrastructure, not work platforms",
+      "traffic_limits": "Minimize heavy construction traffic on mats",
+      "equipment_loading": "Avoid lateral loading from equipment operations",
+      "sequencing": "Construction sequencing to minimize mat stress",
+      "oversight": "Engineering oversight required for penetration procedures"
+    },
+    "vessel_positioning": {
+      "anchoring": "Prohibited over revetted banks without authorization (33 CFR 207.200)",
+      "alternatives": "Designated anchorage areas or approved mooring systems required"
+    }
+  },
+  "technical_assessment_areas": {
+    "required_analysis": [
+      "Geospatial mapping (hydrographic, cadastral, bathymetry, GIS layers)",
+      "Condition of structures (docks, bulkheads, warehouses, roads, utilities)",
+      "Maintenance backlog and dredging requirements"
+    ],
+    "critical_concerns": {
+      "bank_stability": "Multiple revetment systems indicate historically unstable banks",
+      "scour_protection": "Extensive hardening suggests high current velocities",
+      "foundation_design": "Bank instability history affects structural design requirements",
+      "regulatory_integration": "Complex federal bank protection system integration"
+    }
+  }
+}

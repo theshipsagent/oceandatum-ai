@@ -1,0 +1,1767 @@
+<!-- ============================================================================
+     ENVIRONMENTAL ANALYSIS SECTION
+     Port Sulphur Terminal Analysis
+
+     Design System: oceandatum.ai
+     - Dark gradient background (#0a0a0a to #1a1a2e)
+     - Glassmorphic cards with backdrop-filter blur
+     - Space Grotesk font
+     - Maritime green accent (#64ffb4)
+     - Responsive grid layout (2 columns desktop, 1 column mobile)
+     ============================================================================ -->
+
+<section id="environmental" class="analysis-section">
+  <!-- Section Header -->
+  <div class="section-header">
+    <div class="section-header-content">
+      <h2 class="section-title">Environmental Analysis</h2>
+      <div class="section-metadata">
+        <span class="source-count">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          158 Source Documents
+        </span>
+        <span class="facility-name">Former Freeport-McMoRan Port Sulphur Facility</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Executive Summary Card -->
+  <div class="executive-summary-card glass-card">
+    <h3 class="card-title">Executive Summary</h3>
+    <div class="summary-content">
+      <p class="lead-text">
+        The former Freeport-McMoRan Port Sulphur facility presents significant environmental liabilities
+        stemming from 72 years of Frasch sulfur processing operations (1933-2005). The site carries
+        exceptionally high environmental liability risks due to the combination of legacy contamination,
+        extreme flood vulnerability, rapid coastal land loss, and EPA Non-NPL Superfund oversight.
+      </p>
+      <div class="facility-info-grid">
+        <div class="info-item">
+          <span class="info-label">Facility Address</span>
+          <span class="info-value">28310 Highway 23, Port Sulphur, Louisiana 70083</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Coordinates</span>
+          <span class="info-value">29.473414°N, -89.686632°W</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Operations Period</span>
+          <span class="info-value">1933-2005 (72 years)</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Current Status</span>
+          <span class="info-value status-inactive">Permanently Closed - No Active Permits</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Superfund Designation</span>
+          <span class="info-value status-active">Active Non-NPL Superfund Site (EPA Region 6)</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">FRS ID</span>
+          <span class="info-value">110022408321</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Environmental Map Container -->
+  <div class="map-container glass-card">
+    <h3 class="card-title">Environmental Site Map</h3>
+    <div id="environmental-map" class="map-canvas" style="height: 500px;">
+      <!-- ESRI ArcGIS map will be initialized here via JavaScript -->
+      <!-- Map layers: Facility location, contamination zones, flood zones, incident sites -->
+    </div>
+    <div class="map-legend">
+      <div class="legend-item">
+        <span class="legend-marker" style="background: #d32f2f;"></span>
+        <span class="legend-label">Facility Location</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-marker" style="background: #ff9800;"></span>
+        <span class="legend-label">2009 Contamination Zone</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-marker" style="background: #9c27b0;"></span>
+        <span class="legend-label">Superfund Site</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-marker" style="background: #2196f3;"></span>
+        <span class="legend-label">Flood Zone (Katrina 2005)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-marker" style="background: #4caf50;"></span>
+        <span class="legend-label">River Mile 39 AHP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Findings Cards Grid -->
+  <div class="key-findings-grid">
+    <h3 class="section-subtitle">Critical Environmental Findings</h3>
+
+    <div class="findings-grid">
+      <!-- Finding 1: Operational History -->
+      <div class="finding-card glass-card risk-high">
+        <div class="risk-indicator">
+          <span class="risk-badge risk-badge-high">High Risk</span>
+        </div>
+        <h4 class="finding-title">Operational History</h4>
+        <p class="finding-description">
+          72 years of Frasch sulfur processing operations (1933-2005) created extensive legacy contamination
+          across processing areas, storage zones, and transportation routes.
+        </p>
+        <ul class="finding-details">
+          <li>Sulfur vating/storage areas with highest contamination concentrations</li>
+          <li>Processing areas with equipment foundations and spill zones</li>
+          <li>Transportation routes at loading/unloading areas</li>
+          <li>Historical waste disposal areas</li>
+        </ul>
+      </div>
+
+      <!-- Finding 2: 2009 Environmental Incident -->
+      <div class="finding-card glass-card risk-critical">
+        <div class="risk-indicator">
+          <span class="risk-badge risk-badge-critical">Critical Risk</span>
+        </div>
+        <h4 class="finding-title">2009 Acidic Water Release</h4>
+        <p class="finding-description">
+          Major environmental incident released 5.8 million pounds of acidic water with pH as low as 1.7,
+          affecting 1.5 miles of waterways downstream into Gainard Woods Canal.
+        </p>
+        <ul class="finding-details">
+          <li><strong>Date:</strong> April 27 - June 15, 2009</li>
+          <li><strong>Cause:</strong> Leak in Vat Line pipeline near Highway 23</li>
+          <li><strong>pH Readings:</strong> 1.7-1.73 SU (highly acidic)</li>
+          <li><strong>Status:</strong> Remediated, closed July 10, 2009 (LDEQ Doc 6484954)</li>
+        </ul>
+      </div>
+
+      <!-- Finding 3: Soil Contamination -->
+      <div class="finding-card glass-card risk-high">
+        <div class="risk-indicator">
+          <span class="risk-badge risk-badge-high">High Risk</span>
+        </div>
+        <h4 class="finding-title">Soil Contamination</h4>
+        <p class="finding-description">
+          Elemental sulfur concentrations up to 50,900 mg/kg observed, with typical pH 2.5-3.5
+          (highly acidic/phytotoxic). Heavy metals mobilized by acid leaching.
+        </p>
+        <ul class="finding-details">
+          <li><strong>Elemental Sulfur:</strong> Max 50,900 mg/kg (threshold: 10,000 mg/kg)</li>
+          <li><strong>Soil pH:</strong> 2.5-3.5 (threshold: 3.0)</li>
+          <li><strong>Heavy Metals:</strong> Iron, aluminum, zinc, lead, cadmium, arsenic</li>
+          <li><strong>Hot Spots:</strong> Require removal where exceeding 10,000 mg/kg</li>
+        </ul>
+      </div>
+
+      <!-- Finding 4: Flood Vulnerability -->
+      <div class="finding-card glass-card risk-critical">
+        <div class="risk-indicator">
+          <span class="risk-badge risk-badge-critical">Critical Risk</span>
+        </div>
+        <h4 class="finding-title">Hurricane Flood Vulnerability</h4>
+        <p class="finding-description">
+          22 feet of flooding during Hurricane Katrina (2005) at site with base elevation of only 8 feet
+          above sea level. Nearly all structures destroyed, population displaced from 3,000 to minimal.
+        </p>
+        <ul class="finding-details">
+          <li><strong>Katrina (2005):</strong> 22 ft storm surge - catastrophic</li>
+          <li><strong>Ida (2021):</strong> 9-14 ft storm surge in Plaquemines Parish</li>
+          <li><strong>Base Elevation:</strong> 8 feet above sea level</li>
+          <li><strong>Insurance:</strong> High-cost flood insurance mandatory</li>
+        </ul>
+      </div>
+
+      <!-- Finding 5: Regulatory Status -->
+      <div class="finding-card glass-card risk-medium">
+        <div class="risk-indicator">
+          <span class="risk-badge risk-badge-medium">Medium Risk</span>
+        </div>
+        <h4 class="finding-title">Regulatory Status</h4>
+        <p class="finding-description">
+          No active permits as of 2025, but EPA Non-NPL Superfund oversight continues.
+          Previous RCRA Small Quantity Generator status now inactive.
+        </p>
+        <ul class="finding-details">
+          <li><strong>RCRA Status:</strong> Inactive (was Active SQG 220-2,200 lbs/month)</li>
+          <li><strong>Air Permits:</strong> Permanently closed minor source</li>
+          <li><strong>Water Permits:</strong> All terminated (LA0004898, LAR05P368, LAR10G702)</li>
+          <li><strong>EPA Oversight:</strong> Active Non-NPL Superfund (EPA Region 6)</li>
+        </ul>
+      </div>
+
+      <!-- Finding 6: Coastal Hazards -->
+      <div class="finding-card glass-card risk-critical">
+        <div class="risk-indicator">
+          <span class="risk-badge risk-badge-critical">Critical Risk</span>
+        </div>
+        <h4 class="finding-title">Coastal Hazards & Sea Level Rise</h4>
+        <p class="finding-description">
+          Plaquemines Parish experiencing world's highest relative sea level rise rates with projected
+          1-3 feet subsidence by 2100. Land loss equivalent to football field every 38 minutes statewide.
+        </p>
+        <ul class="finding-details">
+          <li><strong>Land Loss Rate:</strong> Football field every 38 minutes (Louisiana)</li>
+          <li><strong>Subsidence:</strong> 1-3 feet projected by 2100</li>
+          <li><strong>Sea Level Rise:</strong> World's highest relative rates</li>
+          <li><strong>Site Risk:</strong> May become isolated island surrounded by open water</li>
+        </ul>
+      </div>
+
+      <!-- Finding 7: Groundwater Contamination -->
+      <div class="finding-card glass-card risk-high">
+        <div class="risk-indicator">
+          <span class="risk-badge risk-badge-high">High Risk</span>
+        </div>
+        <h4 class="finding-title">Groundwater Contamination</h4>
+        <p class="finding-description">
+          Acid mine drainage characteristics with pH below 3.5, elevated metals, and potential migration
+          to Mississippi River due to site's proximity and shallow groundwater.
+        </p>
+        <ul class="finding-details">
+          <li><strong>pH:</strong> Below 3.5 (acid mine drainage)</li>
+          <li><strong>Metals:</strong> Elevated iron, aluminum, trace metals</li>
+          <li><strong>Sulfate:</strong> Extremely high concentrations</li>
+          <li><strong>Migration Risk:</strong> Potential discharge to Mississippi River</li>
+        </ul>
+      </div>
+
+      <!-- Finding 8: Diesel Release -->
+      <div class="finding-card glass-card risk-medium">
+        <div class="risk-indicator">
+          <span class="risk-badge risk-badge-medium">Medium Risk</span>
+        </div>
+        <h4 class="finding-title">2016 Diesel Release</h4>
+        <p class="finding-description">
+          Diesel release discovered July 2016 from former Above Storage Tank (AST) location.
+          Ongoing exceedances in soil and groundwater monitoring wells in limited areas.
+        </p>
+        <ul class="finding-details">
+          <li><strong>Discovery:</strong> July 18, 2016</li>
+          <li><strong>Contaminants:</strong> Diesel hydrocarbons, PAHs, lead, arsenic</li>
+          <li><strong>Status:</strong> No Further Action for primary area (LDEQ RECAP)</li>
+          <li><strong>Remaining:</strong> Exceedances in Area B-3, wells TW-3, TW-13, TW-14</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Grid -->
+  <div class="charts-section">
+    <h3 class="section-subtitle">Environmental Data Visualizations</h3>
+
+    <!-- Row 1: Contamination and Flood -->
+    <div class="charts-row">
+      <div class="chart-container glass-card">
+        <canvas id="contamination-levels-chart"></canvas>
+      </div>
+      <div class="chart-container glass-card">
+        <canvas id="flood-timeline-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- Row 2: Remediation and Incidents -->
+    <div class="charts-row">
+      <div class="chart-container glass-card">
+        <canvas id="remediation-timeline-chart"></canvas>
+      </div>
+      <div class="chart-container glass-card">
+        <canvas id="environmental-incidents-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- Row 3: Risk Summary (centered, smaller) -->
+    <div class="charts-row charts-row-single">
+      <div class="chart-container chart-container-small glass-card">
+        <canvas id="risk-level-summary-chart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contamination Sites Details -->
+  <div class="contamination-sites-section">
+    <h3 class="section-subtitle">Contamination Sites & Areas of Concern</h3>
+
+    <div class="sites-grid">
+      <!-- Site 1: Sulfur Vating Areas -->
+      <div class="site-card glass-card">
+        <div class="site-header">
+          <h4 class="site-name">Sulfur Vating/Storage Areas</h4>
+          <span class="site-severity severity-critical">Critical</span>
+        </div>
+        <p class="site-description">
+          Historical sulfur storage blocks created by vatting operations, representing the most heavily
+          contaminated areas of the facility.
+        </p>
+        <div class="site-details">
+          <div class="detail-group">
+            <span class="detail-label">Size</span>
+            <span class="detail-value">Multiple acres</span>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Primary Contaminants</span>
+            <ul class="contaminant-list">
+              <li>Elemental Sulfur: 40,000-50,900 mg/kg (max observed)</li>
+              <li>Soil pH: 2.5-3.5 (highly acidic/phytotoxic)</li>
+              <li>Heavy Metals: Iron, aluminum, zinc, lead, cadmium, arsenic</li>
+            </ul>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Contamination Mechanism</span>
+            <span class="detail-value">Acid leaching mobilizes trace metals from sulfur-bearing minerals and equipment corrosion, enhanced by bacterial action in acidic conditions</span>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Action Required</span>
+            <span class="detail-value">Hot spots removal where sulfur exceeds 10,000 mg/kg threshold</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Site 2: Diesel Release Area -->
+      <div class="site-card glass-card">
+        <div class="site-header">
+          <h4 class="site-name">Diesel Release Site (2016)</h4>
+          <span class="site-severity severity-high">High</span>
+        </div>
+        <p class="site-description">
+          Former Above Storage Tank (AST) location discovered in July 2016 with diesel contamination
+          affecting soil and groundwater. LDEQ RECAP program oversight.
+        </p>
+        <div class="site-details">
+          <div class="detail-group">
+            <span class="detail-label">Discovery Date</span>
+            <span class="detail-value">July 18, 2016</span>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Regulatory Classification</span>
+            <span class="detail-value">LDEQ RECAP (Risk Evaluation/Corrective Action Program)</span>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Soil Contaminants</span>
+            <ul class="contaminant-list">
+              <li>Diesel range aliphatic hydrocarbon fractions</li>
+              <li>Diesel range aromatic hydrocarbon fractions</li>
+              <li>Total lead and arsenic</li>
+              <li>Polycyclic aromatic hydrocarbons (PAHs)</li>
+            </ul>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Groundwater Monitoring</span>
+            <ul class="contaminant-list">
+              <li>TW-3 (Area 1): 2-Methylnaphthalene, naphthalene, aliphatics, aromatics</li>
+              <li>TW-13 (Area 3): Total lead exceedances</li>
+              <li>TW-14 (Area 3): Total arsenic and lead exceedances</li>
+            </ul>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Status</span>
+            <span class="detail-value">No Further Action determination for primary area; exceedances remain in limited areas with ongoing monitoring</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Site 3: Waterfront Area -->
+      <div class="site-card glass-card">
+        <div class="site-header">
+          <h4 class="site-name">Mississippi River Waterfront Area</h4>
+          <span class="site-severity severity-high">High</span>
+        </div>
+        <p class="site-description">
+          Legacy sulfur processing contamination along river frontage from 45+ years of
+          loading/unloading activities at RM 39 AHP.
+        </p>
+        <div class="site-details">
+          <div class="detail-group">
+            <span class="detail-label">Operations Duration</span>
+            <span class="detail-value">45+ years of sulfur loading/unloading activities</span>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">Mississippi River bank frontage at RM 39 AHP</span>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Contamination Risk</span>
+            <span class="detail-value">Likely soil and sediment contamination from processing operations</span>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Current Status</span>
+            <span class="detail-value">Post-Katrina debris and potential contamination spread</span>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Assessment Required</span>
+            <span class="detail-value">Phase II ESA with soil and sediment sampling needed for characterization</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Site 4: Old Barge Slip -->
+      <div class="site-card glass-card">
+        <div class="site-header">
+          <h4 class="site-name">Front Parcel with Old Barge Slip</h4>
+          <span class="site-severity severity-medium">Medium</span>
+        </div>
+        <p class="site-description">
+          Former sulfur mine canal filled in place, creating subsurface concerns for structural
+          stability and potential buried contamination.
+        </p>
+        <div class="site-details">
+          <div class="detail-group">
+            <span class="detail-label">Description</span>
+            <span class="detail-value">Former sulfur mine canal filled in place</span>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Subsurface Concerns</span>
+            <ul class="contaminant-list">
+              <li>Potential buried contamination</li>
+              <li>Structural stability issues from filled canal</li>
+              <li>Legacy infrastructure limitations</li>
+            </ul>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Development Restrictions</span>
+            <span class="detail-value">May face limitations from legacy infrastructure and subsurface instability</span>
+          </div>
+          <div class="detail-group">
+            <span class="detail-label">Investigation Required</span>
+            <span class="detail-value">Subsurface investigation to assess structural integrity and contamination potential</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Regulatory Identifiers -->
+  <div class="regulatory-section glass-card">
+    <h3 class="card-title">Regulatory Identifiers & Permits</h3>
+
+    <div class="regulatory-grid">
+      <div class="regulatory-group">
+        <h4 class="regulatory-group-title">Federal Identifiers</h4>
+        <table class="regulatory-table">
+          <tbody>
+            <tr>
+              <td class="id-label">FRS ID (EPA Facility Registry)</td>
+              <td class="id-value">110022408321</td>
+            </tr>
+            <tr>
+              <td class="id-label">RCRA Generator ID</td>
+              <td class="id-value">LAD072609795 <span class="status-badge status-inactive">Inactive</span></td>
+            </tr>
+            <tr>
+              <td class="id-label">CAA Source ID (Clean Air Act)</td>
+              <td class="id-value">LA0000002207500016 <span class="status-badge status-closed">Permanently Closed</span></td>
+            </tr>
+            <tr>
+              <td class="id-label">EIS ID</td>
+              <td class="id-value">7205311</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="regulatory-group">
+        <h4 class="regulatory-group-title">State Identifiers (LDEQ)</h4>
+        <table class="regulatory-table">
+          <tbody>
+            <tr>
+              <td class="id-label">LDEQ Agency Interest</td>
+              <td class="id-value">17227</td>
+            </tr>
+            <tr>
+              <td class="id-label">LPDES Permit</td>
+              <td class="id-value">LA0004898 <span class="status-badge status-terminated">Terminated</span></td>
+            </tr>
+            <tr>
+              <td class="id-label">Industrial Stormwater Permit</td>
+              <td class="id-value">LAR05P368 <span class="status-badge status-terminated">Terminated 05/08/2016</span></td>
+            </tr>
+            <tr>
+              <td class="id-label">Construction Stormwater Permit</td>
+              <td class="id-value">LAR10G702 <span class="status-badge status-terminated">Terminated 09/30/2014</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="permit-status-note">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+      <div>
+        <strong>Current Permit Status (2025):</strong> NO ACTIVE PERMITS. Facility has been non-operational
+        for over 20 years (closed early 2000s). RCRAInfo system transitioned to HWIP (Hazardous Waste
+        Information Platform) on September 19, 2025.
+      </div>
+    </div>
+  </div>
+
+  <!-- Remediation Timeline -->
+  <div class="remediation-section glass-card">
+    <h3 class="card-title">Remediation & Settlement History</h3>
+
+    <div class="timeline">
+      <!-- 2009 Emergency Response -->
+      <div class="timeline-item">
+        <div class="timeline-marker status-completed"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h4 class="timeline-title">2009 Emergency Response</h4>
+            <span class="timeline-date">April 27 - July 10, 2009</span>
+            <span class="timeline-status status-completed">Completed</span>
+          </div>
+          <p class="timeline-description">
+            Emergency response to 5.8 million pound acidic water release. Comprehensive remediation
+            including neutralization, berm construction, pipeline replacement, and 24-hour monitoring.
+          </p>
+          <div class="timeline-details">
+            <div class="detail-item">
+              <strong>Closeout Date:</strong> July 10, 2009
+            </div>
+            <div class="detail-item">
+              <strong>Closeout Document:</strong> LDEQ-EDMS Document 6484954
+            </div>
+            <div class="detail-item">
+              <strong>Infrastructure Installed:</strong>
+              <ul>
+                <li>Berms in golf course ditch</li>
+                <li>pH monitoring equipment downstream</li>
+                <li>Fencing along east and west sides of golf course</li>
+                <li>Warning signs along canal</li>
+                <li>Replacement Vat Line pipeline under Highway 23</li>
+              </ul>
+            </div>
+            <div class="detail-item">
+              <strong>Remediation Actions:</strong>
+              <ul>
+                <li>Neutralized 18 drainage ditches</li>
+                <li>Excavated and replaced contaminated soil near highway</li>
+                <li>Elevated east side of ring levee by ~18 inches</li>
+                <li>Raised levee in southwest weir area to consistent height</li>
+                <li>Replaced weir with continuation of earthen ring levee</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2014 Settlement Agreement -->
+      <div class="timeline-item">
+        <div class="timeline-marker status-completed"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h4 class="timeline-title">2014 Settlement Agreement</h4>
+            <span class="timeline-date">May 16, 2014</span>
+            <span class="timeline-status status-completed">Completed</span>
+          </div>
+          <p class="timeline-description">
+            Amended Consolidated Compliance Order & Notice of Potential Penalty addressing
+            2009 violations and ongoing compliance requirements.
+          </p>
+          <div class="timeline-details">
+            <div class="detail-item">
+              <strong>Settlement Tracking No:</strong> SA-WE-13-0083
+            </div>
+            <div class="detail-item">
+              <strong>Enforcement No:</strong> WE-CN-09-0311A
+            </div>
+            <div class="detail-item">
+              <strong>Docket No:</strong> 2012-16586-EQ
+            </div>
+            <div class="detail-item">
+              <strong>Parties:</strong> Freeport-McMoRan Energy LLC and LDEQ
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2016 Diesel Release Investigation -->
+      <div class="timeline-item">
+        <div class="timeline-marker status-ongoing"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h4 class="timeline-title">2016 Diesel Release Remediation</h4>
+            <span class="timeline-date">July 2016 - Present</span>
+            <span class="timeline-status status-ongoing">Ongoing Monitoring</span>
+          </div>
+          <p class="timeline-description">
+            Phase II ESA and remediation of diesel release from former AST location.
+            Primary area received No Further Action determination, but limited areas require ongoing monitoring.
+          </p>
+          <div class="timeline-details">
+            <div class="detail-item">
+              <strong>Discovery:</strong> July 18, 2016
+            </div>
+            <div class="detail-item">
+              <strong>Regulatory Oversight:</strong> LDEQ RECAP program
+            </div>
+            <div class="detail-item">
+              <strong>Status:</strong> No Further Action for primary area
+            </div>
+            <div class="detail-item">
+              <strong>Remaining Concerns:</strong> Exceedances remain in Area B-3 and monitoring wells TW-3, TW-13, TW-14
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2019 Coastal Environmental Settlement -->
+      <div class="timeline-item">
+        <div class="timeline-marker status-completed"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h4 class="timeline-title">2019 Coastal Environmental Settlement</h4>
+            <span class="timeline-date">2019</span>
+            <span class="timeline-status status-completed">Completed</span>
+          </div>
+          <p class="timeline-description">
+            Freeport-McMoRan paid $100 million settlement for coastal environmental damages
+            related to historical operations.
+          </p>
+          <div class="timeline-details">
+            <div class="detail-item">
+              <strong>Settlement Amount:</strong> $100,000,000
+            </div>
+            <div class="detail-item">
+              <strong>Purpose:</strong> Coastal environmental damages
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Environmental Liabilities -->
+  <div class="liabilities-section">
+    <h3 class="section-subtitle">Environmental Liabilities for Prospective Purchaser</h3>
+
+    <div class="liabilities-grid">
+      <!-- Contamination Risks -->
+      <div class="liability-card glass-card">
+        <div class="liability-header">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <h4>Contamination Risks</h4>
+        </div>
+        <ul class="liability-list">
+          <li>Legacy sulfur processing contamination in waterfront soil and sediments</li>
+          <li>Old barge slip and filled sulfur mine canal with subsurface contamination risks</li>
+          <li>High water table with potential contamination migration from historical operations</li>
+          <li>Potential CERCLA reopener liability if contamination worse than understood</li>
+        </ul>
+      </div>
+
+      <!-- Maintenance Obligations -->
+      <div class="liability-card glass-card">
+        <div class="liability-header">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+          </svg>
+          <h4>Maintenance Obligations</h4>
+        </div>
+        <ul class="liability-list">
+          <li>EPA oversight coordination for Non-NPL Superfund site</li>
+          <li>Potential inheritance of groundwater monitoring wells and treatment systems</li>
+          <li>Cap maintenance for any existing contamination caps</li>
+          <li>Institutional controls with potential land use restrictions</li>
+          <li>Ongoing monitoring from 2009 incident infrastructure (17+ years old as of 2026)</li>
+          <li>Storm water infrastructure maintenance</li>
+        </ul>
+      </div>
+
+      <!-- Regulatory Obligations -->
+      <div class="liability-card glass-card">
+        <div class="liability-header">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          <h4>Regulatory Obligations</h4>
+        </div>
+        <ul class="liability-list">
+          <li>All Appropriate Inquiries (Phase I ESA) required before purchase for BFPP protection</li>
+          <li>Potential Phase II ESA required for contamination characterization</li>
+          <li>Coordination with EPA Region 6 and LDEQ for historical permit data</li>
+          <li>Compliance with institutional controls if present</li>
+          <li>Five-year review clause if contamination left in place</li>
+        </ul>
+      </div>
+
+      <!-- Financial Risks -->
+      <div class="liability-card glass-card">
+        <div class="liability-header">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+          <h4>Financial Risks</h4>
+        </div>
+        <ul class="liability-list">
+          <li>Substantial reserves required for ongoing monitoring and maintenance (15-20% of development costs)</li>
+          <li>Specialized environmental insurance coverage required</li>
+          <li>High-cost flood insurance mandatory (FEMA high-risk zone)</li>
+          <li>Potential cleanup costs if CERCLA reopener triggered</li>
+          <li>Development restrictions may lower property value</li>
+          <li>Bona Fide Prospective Purchaser (BFPP) designation recommended for liability protection</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommended Actions -->
+  <div class="recommendations-section glass-card">
+    <h3 class="card-title">Recommended Actions for Due Diligence</h3>
+
+    <div class="recommendations-grid">
+      <div class="recommendation-category">
+        <h4 class="category-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          Immediate Actions (Pre-Purchase)
+        </h4>
+        <ol class="recommendation-list">
+          <li>Conduct comprehensive Phase I Environmental Site Assessment before any transaction</li>
+          <li>Perform Phase II ESA with soil and groundwater sampling if Phase I identifies RECs</li>
+          <li>Contact EPA Region 6 for formal public records request on historical permit data</li>
+          <li>Contact LDEQ for complete file on Agency Interest No. 17227</li>
+          <li>Verify BFPP eligibility requirements and pursue designation for liability protection</li>
+        </ol>
+      </div>
+
+      <div class="recommendation-category">
+        <h4 class="category-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 11l3 3L22 4"></path>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+          </svg>
+          Risk Assessment
+        </h4>
+        <ol class="recommendation-list">
+          <li>Obtain specialized environmental insurance coverage quotes</li>
+          <li>Conduct flood risk assessment and obtain mandatory flood insurance quotes</li>
+          <li>Review any recorded Environmental Covenants or Notice of Residual Contamination on title</li>
+          <li>Verify existence and condition of any institutional controls or engineering controls (caps, barriers)</li>
+          <li>Inspect 2009 remediation infrastructure for condition after 17+ years</li>
+        </ol>
+      </div>
+
+      <div class="recommendation-category">
+        <h4 class="category-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Long-Term Planning
+        </h4>
+        <ol class="recommendation-list">
+          <li>Assess potential need for ongoing groundwater monitoring programs</li>
+          <li>Budget for environmental contingency (15-20% of development costs)</li>
+          <li>Engage environmental counsel for liability assessment and transaction structure</li>
+          <li>Develop long-term coastal adaptation strategy for sea level rise and subsidence</li>
+          <li>Establish relationship with EPA Region 6 and LDEQ for ongoing coordination</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Sources -->
+  <div class="data-sources-section glass-card">
+    <h3 class="card-title">Data Sources & References</h3>
+    <div class="sources-grid">
+      <div class="source-column">
+        <h4 class="source-category">Federal Agencies</h4>
+        <ul class="source-list">
+          <li>EPA ECHO Database (FRS ID 110022408321)</li>
+          <li>RCRAInfo / HWIP (Generator ID LAD072609795)</li>
+          <li>EPA Superfund/CERCLA Records</li>
+          <li>USACE Lower Mississippi Revetment Surveys</li>
+        </ul>
+      </div>
+      <div class="source-column">
+        <h4 class="source-category">State Agencies (Louisiana)</h4>
+        <ul class="source-list">
+          <li>LDEQ EDMS Documents</li>
+          <li>LDEQ RECAP Program Files</li>
+          <li>LDEQ Closeout Report Document 6484954</li>
+          <li>LPDES Permit Records (LA0004898, LAR05P368, LAR10G702)</li>
+        </ul>
+      </div>
+      <div class="source-column">
+        <h4 class="source-category">Environmental Assessments</h4>
+        <ul class="source-list">
+          <li>Phase I and Phase II Environmental Site Assessments</li>
+          <li>Settlement Agreement SA-WE-13-0083</li>
+          <li>Freeport-McMoRan Environmental Reports 2009-2025</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Critical Warnings Footer -->
+  <div class="warning-banner">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+      <line x1="12" y1="9" x2="12" y2="13"></line>
+      <line x1="12" y1="17" x2="12.01" y2="17"></line>
+    </svg>
+    <div class="warning-content">
+      <h4>Critical Buyer Warning</h4>
+      <p>
+        This site carries <strong>exceptionally high environmental liability risks</strong> due to the
+        combination of legacy contamination, extreme flood vulnerability, rapid coastal land loss, and
+        EPA Superfund oversight. Any purchase requires comprehensive environmental due diligence,
+        substantial financial reserves for ongoing monitoring and maintenance obligations, and specialized
+        environmental insurance coverage.
+      </p>
+      <p class="warning-note">
+        <strong>Note:</strong> Facility has been non-operational for over 20 years (closed early 2000s).
+        Hurricane Katrina in 2005 destroyed most infrastructure. All measurements and concentrations
+        extracted from source documents - field verification recommended.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================================
+     SECTION-SPECIFIC STYLES
+     ============================================================================ -->
+
+<style>
+/* Section Base Styles */
+.analysis-section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* Section Header */
+.section-header {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(100, 255, 180, 0.2);
+}
+
+.section-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.section-metadata {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.source-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.source-count svg {
+  color: #64ffb4;
+}
+
+.facility-name {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+}
+
+.section-subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 48px 0 24px;
+  letter-spacing: -0.01em;
+}
+
+/* Glassmorphic Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 24px;
+}
+
+/* Executive Summary */
+.executive-summary-card {
+  margin-bottom: 32px;
+}
+
+.lead-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+}
+
+.facility-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-value {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.status-inactive {
+  color: #ff9800;
+}
+
+.status-active {
+  color: #ef5350;
+  font-weight: 500;
+}
+
+/* Map Container */
+.map-container {
+  margin-bottom: 32px;
+}
+
+.map-canvas {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.legend-marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Key Findings Grid */
+.key-findings-grid {
+  margin-bottom: 48px;
+}
+
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.finding-card {
+  position: relative;
+  padding: 24px;
+}
+
+.finding-card.risk-critical {
+  border-left: 4px solid #ef5350;
+}
+
+.finding-card.risk-high {
+  border-left: 4px solid #ff9800;
+}
+
+.finding-card.risk-medium {
+  border-left: 4px solid #ffca28;
+}
+
+.risk-indicator {
+  margin-bottom: 12px;
+}
+
+.risk-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.risk-badge-critical {
+  background: rgba(239, 83, 80, 0.2);
+  color: #ef5350;
+  border: 1px solid rgba(239, 83, 80, 0.4);
+}
+
+.risk-badge-high {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ff9800;
+  border: 1px solid rgba(255, 152, 0, 0.4);
+}
+
+.risk-badge-medium {
+  background: rgba(255, 202, 40, 0.2);
+  color: #ffca28;
+  border: 1px solid rgba(255, 202, 40, 0.4);
+}
+
+.finding-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 12px;
+}
+
+.finding-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 16px;
+}
+
+.finding-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.finding-details li {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.finding-details li:last-child {
+  border-bottom: none;
+}
+
+/* Charts Section */
+.charts-section {
+  margin-bottom: 48px;
+}
+
+.charts-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.charts-row-single {
+  grid-template-columns: 1fr;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chart-container {
+  padding: 24px;
+  min-height: 350px;
+}
+
+.chart-container-small {
+  min-height: 300px;
+}
+
+.chart-container canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Contamination Sites */
+.contamination-sites-section {
+  margin-bottom: 48px;
+}
+
+.sites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+}
+
+.site-card {
+  padding: 24px;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.site-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+}
+
+.site-severity {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.severity-critical {
+  background: rgba(239, 83, 80, 0.2);
+  color: #ef5350;
+  border: 1px solid rgba(239, 83, 80, 0.4);
+}
+
+.severity-high {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ff9800;
+  border: 1px solid rgba(255, 152, 0, 0.4);
+}
+
+.severity-medium {
+  background: rgba(255, 202, 40, 0.2);
+  color: #ffca28;
+  border: 1px solid rgba(255, 202, 40, 0.4);
+}
+
+.site-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+}
+
+.site-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detail-value {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+}
+
+.contaminant-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.contaminant-list li {
+  padding: 4px 0 4px 16px;
+  position: relative;
+}
+
+.contaminant-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #64ffb4;
+}
+
+/* Regulatory Section */
+.regulatory-section {
+  margin-bottom: 32px;
+}
+
+.regulatory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.regulatory-group-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 16px;
+}
+
+.regulatory-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.regulatory-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.regulatory-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.id-label {
+  padding: 12px 16px 12px 0;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  width: 50%;
+}
+
+.id-value {
+  padding: 12px 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  font-family: 'Courier New', monospace;
+}
+
+.status-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.status-terminated {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ff9800;
+}
+
+.status-closed {
+  background: rgba(158, 158, 158, 0.2);
+  color: #9e9e9e;
+}
+
+.permit-status-note {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(33, 150, 243, 0.1);
+  border: 1px solid rgba(33, 150, 243, 0.3);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+.permit-status-note svg {
+  flex-shrink: 0;
+  color: #2196f3;
+  margin-top: 2px;
+}
+
+/* Remediation Timeline */
+.remediation-section {
+  margin-bottom: 32px;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #64ffb4, rgba(100, 255, 180, 0.2));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -34px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid #64ffb4;
+}
+
+.timeline-marker.status-completed {
+  background: #4caf50;
+  border-color: #4caf50;
+}
+
+.timeline-marker.status-ongoing {
+  background: #ffca28;
+  border-color: #ffca28;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 202, 40, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 202, 40, 0);
+  }
+}
+
+.timeline-content {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.timeline-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.timeline-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.timeline-status {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.timeline-status.status-completed {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+.timeline-status.status-ongoing {
+  background: rgba(255, 202, 40, 0.2);
+  color: #ffca28;
+}
+
+.timeline-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 16px;
+}
+
+.timeline-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.detail-item {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+.detail-item strong {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.detail-item ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.detail-item ul li {
+  margin: 4px 0;
+}
+
+/* Liabilities Section */
+.liabilities-section {
+  margin-bottom: 48px;
+}
+
+.liabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.liability-card {
+  padding: 24px;
+}
+
+.liability-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.liability-header svg {
+  color: #64ffb4;
+  flex-shrink: 0;
+}
+
+.liability-header h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+}
+
+.liability-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.liability-list li {
+  padding: 8px 0 8px 20px;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.liability-list li:last-child {
+  border-bottom: none;
+}
+
+.liability-list li::before {
+  content: "⚠";
+  position: absolute;
+  left: 0;
+  color: #ff9800;
+}
+
+/* Recommendations Section */
+.recommendations-section {
+  margin-bottom: 32px;
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+}
+
+.recommendation-category {
+  padding: 0;
+}
+
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 16px;
+}
+
+.category-title svg {
+  color: #64ffb4;
+  flex-shrink: 0;
+}
+
+.recommendation-list {
+  padding-left: 24px;
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+}
+
+.recommendation-list li {
+  margin: 12px 0;
+}
+
+/* Data Sources */
+.data-sources-section {
+  margin-bottom: 32px;
+}
+
+.sources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.source-category {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 12px;
+}
+
+.source-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+}
+
+.source-list li {
+  padding: 6px 0 6px 16px;
+  position: relative;
+}
+
+.source-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #64ffb4;
+}
+
+/* Warning Banner */
+.warning-banner {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  background: rgba(239, 83, 80, 0.1);
+  border: 2px solid rgba(239, 83, 80, 0.4);
+  border-radius: 12px;
+  margin-top: 32px;
+}
+
+.warning-banner svg {
+  flex-shrink: 0;
+  color: #ef5350;
+  margin-top: 4px;
+}
+
+.warning-content h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ef5350;
+  margin: 0 0 12px;
+}
+
+.warning-content p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 12px;
+}
+
+.warning-content p:last-child {
+  margin-bottom: 0;
+}
+
+.warning-note {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .section-metadata {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .glass-card {
+    padding: 20px;
+  }
+
+  .facility-info-grid,
+  .findings-grid,
+  .sites-grid,
+  .regulatory-grid,
+  .liabilities-grid,
+  .recommendations-grid,
+  .sources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeline {
+    padding-left: 30px;
+  }
+
+  .timeline::before {
+    left: 8px;
+  }
+
+  .timeline-marker {
+    left: -26px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .warning-banner {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .analysis-section {
+    padding: 40px 16px;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .glass-card {
+    padding: 16px;
+  }
+
+  .chart-container {
+    padding: 16px;
+    min-height: 300px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .analysis-section {
+    background: white;
+    color: black;
+  }
+
+  .glass-card {
+    background: white;
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  .section-title,
+  .section-subtitle,
+  .card-title {
+    color: black;
+  }
+
+  .warning-banner {
+    background: #fff3cd;
+    border-color: #ffc107;
+    page-break-inside: avoid;
+  }
+
+  .chart-container {
+    page-break-inside: avoid;
+  }
+}
+</style>

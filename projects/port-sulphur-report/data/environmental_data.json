@@ -1,0 +1,598 @@
+{
+  "metadata": {
+    "component": "environmental",
+    "source_document": "enviromental_SYNTHESIS.md",
+    "source_count": 158,
+    "extracted_date": "2026-01-22",
+    "facility_name": "Former Freeport-McMoRan Port Sulphur Facility",
+    "facility_address": "28310 Highway 23, Port Sulphur, Louisiana 70083",
+    "facility_coordinates": {
+      "latitude": 29.473414,
+      "longitude": -89.686632
+    },
+    "operations_period": "1933-2005",
+    "operations_duration_years": 72
+  },
+  "regulatory_identifiers": {
+    "frs_id": "110022408321",
+    "rcra_generator_id": "LAD072609795",
+    "caa_source_id": "LA0000002207500016",
+    "ldeq_agency_interest": "17227",
+    "lpdes_permit": "LA0004898",
+    "industrial_stormwater_permit": "LAR05P368",
+    "construction_stormwater_permit": "LAR10G702",
+    "eis_id": "7205311"
+  },
+  "permit_status": {
+    "current_status": "NO ACTIVE PERMITS",
+    "rcra_status": {
+      "classification": "Inactive",
+      "previous_classification": "Active Small Quantity Generator",
+      "waste_generation_range_lbs_monthly": "220-2200",
+      "note": "RCRAInfo system transitioned to HWIP on September 19, 2025"
+    },
+    "air_permits": {
+      "status": "Permanently Closed Minor Source",
+      "active_permits": "None"
+    },
+    "water_permits": {
+      "lpdes_la0004898": {
+        "status": "Terminated",
+        "effective_date": "2003-10-01",
+        "expiration_date": "2014-05-31"
+      },
+      "industrial_stormwater_lar05p368": {
+        "status": "Terminated",
+        "termination_date": "2016-05-08"
+      },
+      "construction_stormwater_lar10g702": {
+        "status": "Terminated",
+        "termination_date": "2014-09-30"
+      }
+    }
+  },
+  "environmental_incidents": [
+    {
+      "incident_id": "2009_acidic_water_release",
+      "date_discovered": "2009-04-27",
+      "date_reported": "2009-05-01",
+      "date_remediated": "2009-06-15",
+      "closeout_date": "2009-07-10",
+      "closeout_document": "LDEQ-EDMS Document 6484954",
+      "cause": "Leak in storm water pipeline (Vat Line) near Highway 23",
+      "trigger": "Construction activity damage post-Hurricane Katrina",
+      "impact": {
+        "total_release_pounds": 5800000,
+        "affected_waterbody": "Gainard Woods Canal",
+        "downstream_extent_miles": 1.5,
+        "pH_measurements": [
+          {
+            "location": "Drainage ditch 400 yards NW of Milan Street crossover",
+            "pH": 1.7,
+            "date": "2009-04-27"
+          },
+          {
+            "location": "Drainage ditch crossing former golf course (west to east)",
+            "pH": 1.73,
+            "date": "2009-04-27"
+          },
+          {
+            "location": "Gainard Woods Canal downstream",
+            "pH": "Below 6.0",
+            "distance_miles": 1.25,
+            "date": "2009-04-28"
+          },
+          {
+            "location": "Final canal pH after neutralization",
+            "pH": 8.31,
+            "date": "2009-06-05"
+          }
+        ]
+      },
+      "remediation_actions": [
+        "Constructed berms to prevent offsite migration",
+        "Installed 6 temporary pumps to remove low pH water",
+        "Neutralized affected waters with sodium hydroxide",
+        "24-hour security and public notifications",
+        "Flushed Highway 23 storm water system",
+        "Neutralized 18 drainage ditches connected to canal",
+        "Replaced failed Vat Line pipeline"
+      ],
+      "regulatory_violations": [
+        {
+          "violation": "Unauthorized discharge of pollutants",
+          "regulations": "LPDES permit LA0004898, La. R.S. 30:2076 (A)(1)(a), LAC 33:IX.501.D"
+        },
+        {
+          "violation": "Failure to notify LDEQ within 1 hour",
+          "actual_notification_delay_hours": 96,
+          "regulations": "LPDES permit LA0004898 Part III, La. R.S. 30:2025 (J)(2)"
+        },
+        {
+          "violation": "Failure to maintain pH meter calibration records",
+          "regulations": "LPDES permit LA0004898 Part III, Sections A.2, C.3, and C.5.6"
+        }
+      ]
+    },
+    {
+      "incident_id": "2009_direct_river_discharges",
+      "incidents": [
+        {
+          "date": "2009-09-05",
+          "cause": "Hole in discharge line between Outfall 101 and Outfall 001",
+          "volume_gallons": 300,
+          "pH": "Less than 6.0 SU",
+          "discharge_location": "Directly into Mississippi River"
+        },
+        {
+          "date": "2009-09-14",
+          "cause": "Leak in vacuum relief valve on discharge line",
+          "volume_gallons": 720,
+          "pH": "Less than 6.0 SU",
+          "discharge_location": "Directly into Mississippi River"
+        },
+        {
+          "date": "2009-09-17",
+          "cause": "Leak in new vacuum relief valve on discharge line",
+          "volume_gallons": 2,
+          "pH": "Less than 6.0 SU",
+          "discharge_location": "Directly into Mississippi River"
+        }
+      ]
+    }
+  ],
+  "contamination_sites": [
+    {
+      "site_id": "sulfur_vating_areas",
+      "name": "Sulfur Vating/Storage Areas",
+      "description": "Historical sulfur storage blocks created by vatting operations",
+      "size_acres": "Multiple acres",
+      "contaminants": {
+        "elemental_sulfur": {
+          "typical_concentration_mg_kg": 40000,
+          "max_observed_mg_kg": 50900,
+          "concentration_percent": 4,
+          "threshold_mg_kg": 10000,
+          "note": "Concentrations exceeding 10,000 mg/kg require hot spots removal"
+        },
+        "soil_ph": {
+          "typical_range": "2.5-3.5",
+          "classification": "Highly acidic/phytotoxic",
+          "threshold": 3.0
+        },
+        "heavy_metals": {
+          "metals_of_concern": [
+            "Iron",
+            "Aluminum",
+            "Zinc",
+            "Lead",
+            "Cadmium",
+            "Arsenic"
+          ],
+          "mechanism": "Acid leaching mobilizes trace metals from sulfur-bearing minerals and equipment corrosion",
+          "enhanced_by": "Bacterial action in acidic conditions"
+        }
+      },
+      "contamination_zones": [
+        "Sulfur vating areas (highest concentrations)",
+        "Processing areas (equipment foundations, spill zones)",
+        "Transportation routes (loading/unloading areas)",
+        "Waste disposal areas (historical process waste disposal)"
+      ]
+    },
+    {
+      "site_id": "diesel_release_area",
+      "name": "Diesel Release Site Area of Investigation",
+      "discovery_date": "2016-07-18",
+      "source": "Former Above Storage Tank (AST) location",
+      "regulatory_classification": "LDEQ RECAP (Risk Evaluation/Corrective Action Program)",
+      "status": "No Further Action determination for primary area (exceedances remain in limited areas)",
+      "affected_media": {
+        "soil": {
+          "primary_contaminants": [
+            "Diesel range aliphatic hydrocarbon fractions",
+            "Diesel range aromatic hydrocarbon fractions",
+            "Total lead",
+            "Total arsenic",
+            "Polycyclic aromatic hydrocarbons (PAHs)"
+          ],
+          "area_b3_area1_exceedances": [
+            "2-Methylnaphthalene",
+            "Aliphatics >C12-C16",
+            "Aromatics >C12-C16",
+            "Aromatics >C16-C21"
+          ]
+        },
+        "groundwater": {
+          "monitoring_wells": [
+            {
+              "well_id": "TW-3",
+              "location": "Area 1",
+              "exceedances": [
+                "2-Methylnaphthalene",
+                "Naphthalene",
+                "Aliphatics >C12-C16",
+                "Aromatics >C12-C16",
+                "Aromatics >C16-C21"
+              ]
+            },
+            {
+              "well_id": "TW-13",
+              "location": "Area 3",
+              "exceedances": [
+                "Total lead"
+              ]
+            },
+            {
+              "well_id": "TW-14",
+              "location": "Area 3",
+              "exceedances": [
+                "Total arsenic",
+                "Total lead"
+              ]
+            }
+          ],
+          "note": "Dissolved concentrations of lead and arsenic were below screening standards, indicating limited mobility"
+        }
+      },
+      "assessment_timeline": {
+        "phase_i_esa": "Completed for prospective purchaser John W. Stone Oil Distributor, LLC",
+        "phase_ii_sampling": "2016-06-29 to 2016-07-01",
+        "methodology": "Shallow soil borings in three areas based on Phase I findings"
+      }
+    },
+    {
+      "site_id": "waterfront_area",
+      "name": "Mississippi River Waterfront Area",
+      "description": "Legacy sulfur processing contamination along river frontage",
+      "operations_years": "45+ years of sulfur loading/unloading activities",
+      "contamination_risk": "Likely soil and sediment contamination from processing operations",
+      "current_status": "Post-Katrina debris and potential contamination spread",
+      "location": "Mississippi River bank frontage at RM 39 AHP"
+    },
+    {
+      "site_id": "front_parcel_barge_slip",
+      "name": "Front Parcel with Old Barge Slip",
+      "description": "Former sulfur mine canal filled in place",
+      "subsurface_concerns": [
+        "Potential buried contamination",
+        "Structural stability issues from filled canal",
+        "Legacy infrastructure limitations"
+      ],
+      "development_restrictions": "May face limitations from legacy infrastructure"
+    }
+  ],
+  "groundwater_contamination": {
+    "general_characteristics": {
+      "pH": "Below 3.5 (acid mine drainage characteristics)",
+      "dissolved_metals": "Elevated iron, aluminum, trace metals",
+      "sulfate_concentrations": "Extremely high levels",
+      "total_dissolved_solids": "Often exceeding drinking water standards"
+    },
+    "contamination_pathways": [
+      "Direct infiltration from sulfur storage areas and processing zones",
+      "Acid mine drainage (AMD) with pH below 3.5 and high iron/metals",
+      "Historical thermal pollution from hot water/steam discharge",
+      "Potential plume migration offsite"
+    ],
+    "migration_concerns": {
+      "proximity_to_mississippi_river": "Potential discharge to surface water",
+      "shallow_groundwater": "8-foot site elevation increases infiltration risk",
+      "flood_event_impact": "Katrina flooding may have enhanced contaminant mobility"
+    }
+  },
+  "flood_zones": [
+    {
+      "zone_id": "site_general",
+      "designation": "FEMA High-Risk Flood Zone",
+      "note": "Specific zone designation requires verification",
+      "base_elevation_feet": 8,
+      "coordinates": {
+        "latitude": 29.473414,
+        "longitude": -89.686632
+      },
+      "historical_flooding": [
+        {
+          "event": "Hurricane Betsy",
+          "year": 1965,
+          "flood_depth_feet": 0,
+          "notes": "No flooding recorded"
+        },
+        {
+          "event": "Hurricane Camille",
+          "year": 1969,
+          "flood_depth_feet": 0,
+          "notes": "No flooding recorded"
+        },
+        {
+          "event": "Hurricane Katrina",
+          "year": 2005,
+          "date": "2005-08-29",
+          "flood_depth_feet": 22,
+          "storm_surge_feet": 22,
+          "notes": "Catastrophic flooding - unprecedented event. Nearly all structures destroyed, population displaced from 3,000 to minimal. Federal levees failed, complete utility loss."
+        },
+        {
+          "event": "Hurricane Ida",
+          "year": 2021,
+          "storm_surge_feet_range": "9-14",
+          "location": "Plaquemines Parish",
+          "notes": "9-14 feet storm surge in Plaquemines Parish"
+        }
+      ],
+      "current_risk": {
+        "storm_surge_vulnerability": "Extreme exposure to Category 3+ hurricanes",
+        "sea_level_rise": "Increasing long-term risk",
+        "insurance_implications": "High-cost flood insurance mandatory",
+        "levee_concerns": "Ongoing flood overflow risks from back levee system"
+      }
+    }
+  ],
+  "coastal_hazards": {
+    "land_loss": {
+      "rate": "Football field every 38 minutes (Louisiana statewide)",
+      "projected_subsidence_feet_by_2100": "1-3",
+      "sea_level_rise": "Plaquemines Parish experiencing world's highest relative sea level rise rates"
+    },
+    "infrastructure_vulnerability": "Site may become isolated island surrounded by open water",
+    "erosion_impact": "Rapid coastal land loss threatening site viability"
+  },
+  "wetlands": {
+    "note": "No specific wetland delineation data in synthesis document",
+    "regional_context": "Louisiana coastal wetlands undergoing rapid loss",
+    "coastal_monitoring": "Post-Katrina flood systems and coastal restoration tracking active"
+  },
+  "remediation_status": [
+    {
+      "project": "2009 Emergency Response",
+      "status": "Completed",
+      "closeout_date": "2009-07-10",
+      "closeout_document": "LDEQ-EDMS Document 6484954",
+      "infrastructure_installed": [
+        "Berms in golf course ditch",
+        "pH monitoring equipment downstream",
+        "Fencing along east and west sides of golf course",
+        "Warning signs along canal",
+        "Replacement Vat Line pipeline under Highway 23"
+      ],
+      "remediation_actions": [
+        "Neutralized 18 drainage ditches",
+        "Excavated and replaced contaminated soil near highway",
+        "Elevated east side of ring levee by approximately 18 inches",
+        "Raised levee in area of southwest weir to consistent height",
+        "Replaced weir with continuation of earthen ring levee"
+      ]
+    },
+    {
+      "project": "2016 Diesel Release Remediation",
+      "status": "Largely complete with ongoing monitoring",
+      "regulatory_oversight": "LDEQ RECAP program",
+      "determination": "No Further Action for primary area",
+      "remaining_concerns": "Exceedances remain in limited areas (Area B-3, monitoring wells TW-3, TW-13, TW-14)"
+    },
+    {
+      "project": "2014 Settlement Agreement",
+      "enforcement_no": "WE-CN-09-0311A",
+      "settlement_tracking_no": "SA-WE-13-0083",
+      "docket_no": "2012-16586-EQ",
+      "parties": "Freeport-McMoRan Energy LLC and LDEQ",
+      "note": "Amended Consolidated Compliance Order & Notice of Potential Penalty issued May 16, 2014"
+    },
+    {
+      "project": "2019 Coastal Environmental Settlement",
+      "amount_dollars": 100000000,
+      "payee": "Freeport McMoRan",
+      "purpose": "Coastal environmental damages"
+    }
+  ],
+  "superfund_status": {
+    "designation": "Non-NPL Superfund site",
+    "location": "Hwy 23 S To Pt. Sulphur",
+    "parish": "Plaquemines",
+    "status": "Active",
+    "oversight": "EPA Region 6",
+    "implications": [
+      "Ongoing EPA coordination required",
+      "Potential CERCLA reopener liability if contamination worse than understood",
+      "Possible institutional controls limiting land use",
+      "Five-year review clause if contamination left in place",
+      "Bona Fide Prospective Purchaser (BFPP) designation recommended for liability protection"
+    ]
+  },
+  "key_findings": [
+    {
+      "category": "Operational History",
+      "finding": "72 years of Frasch sulfur processing operations (1933-2005) created extensive legacy contamination",
+      "risk_level": "High"
+    },
+    {
+      "category": "Environmental Incidents",
+      "finding": "2009 acidic water release of 5.8 million pounds with pH as low as 1.7, affecting 1.5 miles of waterways",
+      "risk_level": "Critical"
+    },
+    {
+      "category": "Soil Contamination",
+      "finding": "Elemental sulfur concentrations up to 50,900 mg/kg observed at similar sites, with typical pH 2.5-3.5 (highly acidic)",
+      "risk_level": "High"
+    },
+    {
+      "category": "Flood Vulnerability",
+      "finding": "22 feet of flooding during Hurricane Katrina (2005) at site with base elevation of only 8 feet above sea level",
+      "risk_level": "Critical"
+    },
+    {
+      "category": "Regulatory Status",
+      "finding": "No active permits as of 2025, but EPA Non-NPL Superfund oversight continues",
+      "risk_level": "Medium"
+    },
+    {
+      "category": "Coastal Hazards",
+      "finding": "Plaquemines Parish experiencing world's highest relative sea level rise rates with projected 1-3 feet subsidence by 2100",
+      "risk_level": "Critical"
+    },
+    {
+      "category": "Groundwater",
+      "finding": "Acid mine drainage characteristics with pH below 3.5, elevated metals, and potential migration to Mississippi River",
+      "risk_level": "High"
+    },
+    {
+      "category": "Recent Contamination",
+      "finding": "2016 diesel release with ongoing exceedances in soil and groundwater monitoring wells",
+      "risk_level": "Medium"
+    }
+  ],
+  "environmental_liabilities": {
+    "contamination_risks": [
+      "Legacy sulfur processing contamination in waterfront soil and sediments",
+      "Old barge slip and filled sulfur mine canal with subsurface contamination risks",
+      "High water table with potential contamination migration from historical operations"
+    ],
+    "maintenance_obligations": [
+      "EPA oversight coordination for Non-NPL Superfund site",
+      "Potential inheritance of groundwater monitoring wells and treatment systems",
+      "Cap maintenance for any existing contamination caps",
+      "Institutional controls with potential land use restrictions",
+      "Ongoing monitoring from 2009 incident infrastructure (17+ years old as of 2026)",
+      "Storm water infrastructure maintenance"
+    ],
+    "regulatory_obligations": [
+      "All Appropriate Inquiries (Phase I ESA) required before purchase for BFPP protection",
+      "Potential Phase II ESA required for contamination characterization",
+      "Coordination with EPA Region 6 and LDEQ for historical permit data",
+      "Compliance with institutional controls if present"
+    ],
+    "financial_risks": [
+      "Substantial reserves required for ongoing monitoring and maintenance",
+      "Specialized environmental insurance coverage required",
+      "High-cost flood insurance mandatory",
+      "Potential cleanup costs if CERCLA reopener triggered",
+      "Development restrictions may lower property value"
+    ]
+  },
+  "geojson_features": [
+    {
+      "type": "Feature",
+      "id": "facility_location",
+      "properties": {
+        "name": "Former Freeport-McMoRan Port Sulphur Facility",
+        "address": "28310 Highway 23, Port Sulphur, Louisiana 70083",
+        "frs_id": "110022408321",
+        "status": "Permanently Closed",
+        "operations_period": "1933-2005",
+        "marker_color": "#d32f2f",
+        "marker_symbol": "industrial"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.686632, 29.473414]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "2009_contamination_extent",
+      "properties": {
+        "name": "2009 Acidic Water Release Impact Zone",
+        "incident_date": "2009-04-27",
+        "contaminant": "Low pH water (pH 1.7-1.73)",
+        "downstream_extent_miles": 1.5,
+        "affected_waterbody": "Gainard Woods Canal",
+        "status": "Remediated 2009-06-15",
+        "marker_color": "#ff9800",
+        "marker_symbol": "warning"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.686632, 29.473414]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "superfund_site",
+      "properties": {
+        "name": "Non-NPL Superfund Site - Hwy 23 S To Pt. Sulphur",
+        "designation": "Non-NPL Superfund",
+        "status": "Active",
+        "oversight": "EPA Region 6",
+        "parish": "Plaquemines",
+        "marker_color": "#9c27b0",
+        "marker_symbol": "hazard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.686632, 29.473414]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "katrina_flood_zone",
+      "properties": {
+        "name": "Hurricane Katrina Maximum Flood Extent",
+        "event": "Hurricane Katrina",
+        "date": "2005-08-29",
+        "flood_depth_feet": 22,
+        "base_elevation_feet": 8,
+        "marker_color": "#2196f3",
+        "marker_symbol": "flood"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.686632, 29.473414]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "river_mile_marker",
+      "properties": {
+        "name": "Mississippi River Mile Marker 39 AHP",
+        "river_mile": 39,
+        "bank": "West Bank (Right Descending Bank)",
+        "revetment_reach": "Port Sulphur (WB) RM 41.1-34.3",
+        "marker_color": "#4caf50",
+        "marker_symbol": "harbor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.686632, 29.473414]
+      }
+    }
+  ],
+  "data_sources": [
+    "LDEQ EDMS Documents",
+    "EPA ECHO Database (FRS ID 110022408321)",
+    "RCRAInfo (Generator ID LAD072609795)",
+    "EPA Superfund/CERCLA Records",
+    "LPDES Permit Records (LA0004898, LAR05P368, LAR10G702)",
+    "LDEQ RECAP Program Files",
+    "Phase I and Phase II Environmental Site Assessments",
+    "Settlement Agreement SA-WE-13-0083",
+    "LDEQ Closeout Report Document 6484954",
+    "USACE Lower Mississippi Revetment Surveys",
+    "Freeport-McMoRan Environmental Reports 2009-2025"
+  ],
+  "recommended_actions": [
+    "Conduct comprehensive Phase I Environmental Site Assessment before any transaction",
+    "Perform Phase II ESA with soil and groundwater sampling if Phase I identifies RECs",
+    "Contact EPA Region 6 for formal public records request on historical permit data",
+    "Contact LDEQ for complete file on Agency Interest No. 17227",
+    "Verify BFPP eligibility requirements and pursue designation for liability protection",
+    "Obtain specialized environmental insurance coverage",
+    "Conduct flood risk assessment and obtain mandatory flood insurance quotes",
+    "Review any recorded Environmental Covenants or Notice of Residual Contamination on title",
+    "Verify existence and condition of any institutional controls or engineering controls (caps, barriers)",
+    "Inspect 2009 remediation infrastructure for condition after 17+ years",
+    "Assess potential need for ongoing groundwater monitoring",
+    "Budget for environmental contingency (15-20% of development costs)",
+    "Engage environmental counsel for liability assessment and transaction structure"
+  ],
+  "notes": [
+    "Facility has been non-operational for over 20 years (closed early 2000s)",
+    "Hurricane Katrina in 2005 destroyed most infrastructure",
+    "Site carries exceptionally high environmental liability risks due to combination of legacy contamination, extreme flood vulnerability, rapid coastal land loss, and EPA Superfund oversight",
+    "Any purchase requires substantial financial reserves for ongoing obligations",
+    "RCRAInfo system transitioned to HWIP (Hazardous Waste Information Platform) on September 19, 2025",
+    "No specific wetland delineation data available in source document",
+    "Flood zone designation requires verification with FEMA Flood Insurance Rate Maps",
+    "Geographic coordinates (29.473414, -89.686632) represent approximate site centroid",
+    "All measurements and concentrations extracted from source documents - field verification recommended"
+  ]
+}

@@ -1,0 +1,601 @@
+{
+  "metadata": {
+    "document_title": "Market Synthesis - Port Sulphur Terminal Analysis",
+    "generated_date": "2026-01-22",
+    "source_files": 7,
+    "primary_sources": [
+      "Cargo Market Analysis and Strategy for the Lower Mississippi River Ports (Martin Associates, 2025)",
+      "Cargo on the Mississippi River System (William S. Davis III, 2025)",
+      "Industrial Port Economics Research Prompts"
+    ]
+  },
+
+  "mississippi_river_system": {
+    "annual_tonnage": {
+      "total_system_tons": 500000000,
+      "unit": "short tons per year",
+      "time_period": "2019-2023",
+      "source": "USACE/BTS"
+    },
+    "traffic_composition": {
+      "captive_through_traffic_percentage": 85,
+      "captive_through_traffic_range": [80, 90],
+      "local_handling_percentage": 15,
+      "local_handling_range": [10, 20],
+      "description": "80-90% classified as captive or through traffic that bypasses intermediate ports"
+    },
+    "commodity_breakdown": {
+      "grain": {
+        "percentage": 60,
+        "types": ["corn", "soybeans"],
+        "direction": "downbound export"
+      },
+      "petroleum_products": {
+        "percentage": 17.5,
+        "percentage_range": [15, 20],
+        "direction": "downbound"
+      },
+      "coal": {
+        "percentage": 12.5,
+        "percentage_range": [10, 15],
+        "direction": "downbound"
+      },
+      "other": {
+        "percentage": 10,
+        "types": ["steel", "aggregates", "chemicals"],
+        "description": "breakbulk and industrial cargo"
+      }
+    },
+    "local_opportunity_mm39": {
+      "annual_accessible_tons": 7500000,
+      "annual_accessible_range": [5000000, 10000000],
+      "description": "non-captive opportunities for industrial cargo",
+      "commodity_types": ["cement imports", "metals", "industrial materials"],
+      "current_capture_rate_percentage": 1.5,
+      "current_capture_rate_range": [1, 2],
+      "constraint": "limited rail connectivity (NOGC Railway)"
+    }
+  },
+
+  "barge_transportation": {
+    "market_forecast": {
+      "system_wide_cagr": 7.2,
+      "system_wide_cagr_range": [3.9, 8.48],
+      "local_ashore_cagr": 3.0,
+      "time_horizon": "2025-2032",
+      "sources": ["Coherent Market Insights (3.9%)", "Mordor Intelligence (8.48%)"]
+    },
+    "rate_structure": {
+      "baseline_rates": {
+        "normal_conditions": {
+          "st_louis_to_gulf_per_ton": 17.94,
+          "typical_range": [15, 20],
+          "time_period": "January 2025",
+          "per_ton_mile": 0.055,
+          "per_ton_mile_range": [0.05, 0.06]
+        },
+        "mm89_to_gulf": {
+          "distance_miles": 89,
+          "cost_per_ton": 5.0,
+          "cost_per_ton_range": [4, 6]
+        }
+      },
+      "crisis_rates": {
+        "low_water_premium_per_ton": 25.0,
+        "stress_peak_jan_2023": 28.93,
+        "extreme_peak_sep_2023": 52.91,
+        "conditions": "low-water events, draft restrictions, daylight-only tows"
+      },
+      "mm39_diversion_economics": {
+        "incremental_premium_normal": 3.0,
+        "incremental_premium_range": [2, 4],
+        "incremental_premium_low_water": 6.5,
+        "incremental_premium_low_water_range": [5, 8],
+        "st_louis_to_mm39_total": 17.5,
+        "st_louis_to_mm39_range": [15, 20],
+        "potential_savings_per_ton": 4.0,
+        "potential_savings_range": [3, 5],
+        "additional_handling_cost": 1.5,
+        "additional_handling_range": [1, 2]
+      }
+    },
+    "operational_constraints": {
+      "low_water_impacts": {
+        "draft_reduction_feet": 9.5,
+        "draft_reduction_range": [9, 10],
+        "normal_draft_feet": 12,
+        "load_reduction_percentage": 27,
+        "capacity_loss_tons_per_barge": 200,
+        "tow_size_reduction_percentage": 27.5,
+        "tow_size_reduction_range": [17, 38],
+        "cost_inflation_percentage": 25,
+        "cost_inflation_range": [20, 30]
+      },
+      "normal_operations": {
+        "typical_tow_size_barges": 40,
+        "typical_tow_size_range": [35, 45],
+        "horsepower_limit_per_barge": 240
+      },
+      "fuel_costs": {
+        "diesel_per_gallon": 3.78,
+        "date": "July 2025",
+        "source": "EIA on-highway diesel average"
+      }
+    },
+    "forecast_conditions": {
+      "2025_outlook": {
+        "expected_rate_inflation_percentage": 12.5,
+        "expected_rate_inflation_range": [10, 15],
+        "risk_period": "fall months",
+        "drought_probability": "ongoing risk",
+        "federal_dredging_investment_annual": 2500000000
+      }
+    }
+  },
+
+  "container_market_analysis": {
+    "lower_mississippi_river_ports": {
+      "baseline_scenario": {
+        "identified_potential_teu": 400000,
+        "capture_timeframe_years": 3,
+        "capture_assumption": "100% capture",
+        "organic_growth_scenarios": [
+          {
+            "name": "medium_population_growth",
+            "annual_growth_rate": 1.9,
+            "cagr": 1.9
+          },
+          {
+            "name": "high_population_growth",
+            "annual_growth_rate": 2.3,
+            "cagr": 2.3
+          },
+          {
+            "name": "aggressive_organic_growth",
+            "annual_growth_rate": 3.0,
+            "cagr": 4.45,
+            "description": "3% organic growth plus 400K TEU capture over 3 years"
+          }
+        ]
+      },
+      "historical_growth": {
+        "port_new_orleans_import_cagr": 2.3,
+        "port_new_orleans_export_cagr": 3.2,
+        "time_period": "2003-2023",
+        "us_ports_overall_cagr": 3.0,
+        "comparison_period": "2003-2023"
+      },
+      "capacity_analysis": {
+        "current_terminal_capacity": "Port of New Orleans container terminal",
+        "capacity_saturation_year": 2040,
+        "scenario": "aggressive 400K TEU capture + 3% organic growth"
+      },
+      "trade_imbalance": {
+        "note": "400,000 TEU potential includes cargo imbalance considerations"
+      }
+    },
+    "intermodal_traffic_trends": {
+      "midwest_market": {
+        "southwest_to_midwest": {
+          "origin": "San Pedro Bay Ports (LA/Long Beach)",
+          "cagr": -0.5,
+          "time_period": "2010-2023",
+          "trend": "declining"
+        },
+        "northeast_to_midwest": {
+          "origin": "New York, Norfolk",
+          "cagr": 6.2,
+          "time_period": "2010-2023",
+          "trend": "strong growth, shift from West Coast"
+        },
+        "pacific_northwest_to_midwest": {
+          "origin": "Seattle, Tacoma, Portland",
+          "cagr": -6.1,
+          "time_period": "2010-2023",
+          "trend": "significant decline"
+        },
+        "canada_to_midwest": {
+          "origin": "Canadian Pacific ports",
+          "cagr": 7.7,
+          "time_period": "2010-2023",
+          "trend": "strong growth"
+        }
+      },
+      "south_central_market": {
+        "southwest_to_south_central": {
+          "origin": "San Pedro Bay Ports",
+          "destination": "Texas (Dallas/Fort Worth)",
+          "cagr": -4.0,
+          "time_period": "2010-2023",
+          "trend": "decline in mini-land bridge service",
+          "description": "Asian imports via West Coast to Texas distribution centers"
+        }
+      }
+    }
+  },
+
+  "iron_steel_market": {
+    "gulf_coast_imports": {
+      "historical_tonnage": {
+        "2014": 19745834,
+        "2015": 17102534,
+        "2016": 14527277,
+        "2017": 16370427,
+        "2018": 15754886,
+        "2019": 13764320,
+        "2020": 10870124,
+        "2021": 15271898,
+        "2022": 13424359,
+        "2023": 12990436,
+        "cagr_2014_2023": -4.5
+      },
+      "market_share_lmr_ports": {
+        "typical_range_percentage": 40,
+        "range_low": 35,
+        "range_high": 45,
+        "time_period": "2014-2023",
+        "recent_trend": "lost market share 2021-2023"
+      },
+      "leading_ports": [
+        {
+          "rank": 1,
+          "port": "Port of Mobile",
+          "primary_commodities": ["pig iron", "slab"]
+        },
+        {
+          "rank": 2,
+          "port": "Port of New Orleans",
+          "primary_commodities": ["pig iron", "slab"]
+        },
+        {
+          "rank": 3,
+          "port": "Port of Houston",
+          "primary_commodities": ["structural steel", "shapes", "pipe"]
+        },
+        {
+          "rank": 4,
+          "port": "Gramercy",
+          "primary_commodities": ["pig iron", "slab"]
+        },
+        {
+          "rank": 5,
+          "port": "Baton Rouge",
+          "primary_commodities": ["pig iron", "slab"]
+        }
+      ]
+    },
+    "regional_comparison": {
+      "south_atlantic_imports": {
+        "2014": 2899935,
+        "2023": 2777974,
+        "cagr_2014_2023": -0.5
+      },
+      "north_atlantic_imports": {
+        "2014": 4367153,
+        "2023": 1633068,
+        "cagr_2014_2023": -10.4
+      }
+    }
+  },
+
+  "competing_ports": {
+    "port_south_louisiana": {
+      "description": "Sustained scale and diversified bulk base",
+      "competitive_position": "Major competitor, established market share",
+      "data_source": "Official tonnage dashboards (quarterly PDFs)"
+    },
+    "port_new_orleans": {
+      "container_terminal_capacity": "Current terminal capacity",
+      "saturation_timeline": "Not until 2040 under aggressive growth scenario",
+      "historical_container_growth": {
+        "import_cagr": 2.3,
+        "export_cagr": 3.2,
+        "time_period": "2003-2023"
+      }
+    },
+    "port_mobile": {
+      "iron_steel_position": "Largest volume handler",
+      "primary_commodities": ["pig iron", "slab"]
+    },
+    "port_houston": {
+      "iron_steel_position": "Third largest handler",
+      "primary_commodities": ["structural steel", "shapes", "pipe"],
+      "customs_district": "Houston Customs District"
+    }
+  },
+
+  "infrastructure": {
+    "rail_connectivity": {
+      "nogc_railway": {
+        "name": "New Orleans & Gulf Coast Railway",
+        "type": "short line",
+        "length_miles": 32,
+        "location": "Westbank",
+        "interchange": "Union Pacific at Westwego",
+        "status": "current relocation/upgrade planning",
+        "plaquemines_connection": "advanced rail-spur concepts in development",
+        "impact_on_capture_rate": "critical for improving 1-2% capture to higher levels"
+      }
+    },
+    "waterway_access": {
+      "mile_marker_39": {
+        "depth_feet": 52,
+        "advantage": "deep draft capability for large vessels",
+        "dock_dimensions": "24' × 433'",
+        "acreage": 106.99
+      }
+    }
+  },
+
+  "site_specific_mm39": {
+    "location": {
+      "address": "28310 Highway 23",
+      "mile_marker": 39,
+      "parish": "Plaquemines",
+      "coordinates_approximate": "Port Sulphur area"
+    },
+    "physical_characteristics": {
+      "total_acreage": 106.99,
+      "existing_dock": "24' × 433'",
+      "water_depth_feet": 52,
+      "river_mile_from_gulf": 39
+    },
+    "historical_context": {
+      "previous_operator": "Freeport Sulphur",
+      "company_town_established": 1932,
+      "operations_start": 1933,
+      "operations_end": 1978,
+      "hurricane_katrina_impact": 2005,
+      "facility_type": "sulfur mining and processing"
+    },
+    "environmental_status": {
+      "remediation_status": "reported as complete",
+      "superfund_designation": "no active NPL listing",
+      "ldeq_program": "RECAP (Risk Evaluation/Corrective Action Program)",
+      "site_classification": "ready for reuse - industrial purposes",
+      "epa_enforcement": "no active enforcement actions as of 2025",
+      "verification_costs": {
+        "phase_i_esa": {
+          "cost_low": 15000,
+          "cost_high": 25000
+        },
+        "phase_ii_sampling": {
+          "cost_low": 150000,
+          "cost_high": 300000
+        },
+        "total_verification": {
+          "cost_low": 165000,
+          "cost_high": 325000
+        }
+      },
+      "potential_remediation_if_needed": {
+        "in_situ_stabilization_107_acres": {
+          "cost_low": 2000000,
+          "cost_high": 5000000
+        },
+        "groundwater_monitoring_5_10_years": {
+          "cost_low": 500000,
+          "cost_high": 1000000
+        },
+        "hotspot_excavation": {
+          "cost_low": 5000000,
+          "cost_high": 15000000
+        },
+        "total_potential": {
+          "cost_low": 8000000,
+          "cost_high": 25000000
+        }
+      },
+      "ongoing_obligations": {
+        "annual_monitoring_compliance": {
+          "cost_low": 85000,
+          "cost_high": 175000
+        },
+        "deed_restrictions": "industrial use only"
+      },
+      "liability": {
+        "cercla_retention": "Freeport-McMoRan retains CERCLA liability",
+        "buyer_assumption": "buyers assume future risks via indemnities"
+      }
+    },
+    "market_opportunity": {
+      "accessible_cargo_annual_tons": 7500000,
+      "accessible_cargo_range": [5000000, 10000000],
+      "current_capture_rate_percentage": 1.5,
+      "commodity_focus": ["cement imports", "metals", "industrial materials"],
+      "competitive_advantage": "52-foot depth, proximity to Gulf",
+      "constraint": "rail connectivity limitations"
+    }
+  },
+
+  "regional_context": {
+    "plaquemines_lng_expansion": {
+      "status": "2025 FERC actions",
+      "projects": ["Venture Global Plaquemines", "CP2"],
+      "impact_on_mm39": "indirect - regional air quality, traffic, dredging windows scrutiny",
+      "direct_liability": "none to subject tract"
+    },
+    "competing_industrial_parishes": [
+      "St. James",
+      "St. Charles",
+      "St. Bernard"
+    ]
+  },
+
+  "economic_metrics": {
+    "barge_economics": {
+      "major_shippers": ["Cargill", "ADM"],
+      "contract_structure": "integrated supply chains with long-term contracts",
+      "economies_of_scale": "large tows 35-45 barges reduce per-ton costs"
+    },
+    "development_costs": {
+      "industrial_land_waterfront": "price per acre trending analysis needed",
+      "infrastructure_per_acre": "utilities, rail access, road improvements",
+      "facility_types": ["LNG", "container", "petrochemical", "bulk"]
+    }
+  },
+
+  "data_sources": {
+    "government": [
+      "USACE (U.S. Army Corps of Engineers)",
+      "BTS (Bureau of Transportation Statistics)",
+      "USDA Grain Transportation Report",
+      "EIA (Energy Information Administration)",
+      "EPA ECHO database",
+      "LDEQ (Louisiana Department of Environmental Quality)",
+      "NOAA",
+      "National Weather Service",
+      "FRA (Federal Railroad Administration)"
+    ],
+    "commercial": [
+      "Martin Associates - Cargo Market Analysis",
+      "Coherent Market Insights",
+      "Mordor Intelligence",
+      "Port of South Louisiana statistics",
+      "Freeport-McMoRan 2024 Sustainability Report"
+    ],
+    "trade": [
+      "USA Trade OnLine",
+      "USDA Agricultural Marketing Service"
+    ]
+  },
+
+  "market_trends": {
+    "containerization": {
+      "shift_to_east_coast": "discretionary cargo moving from West Coast to East Coast ports",
+      "midwest_market": "6.2% CAGR from Northeast ports vs -0.5% from San Pedro Bay",
+      "mini_land_bridge_decline": "Texas market seeing -4.0% CAGR via West Coast"
+    },
+    "bulk_commodities": {
+      "grain_exports": "dominant Mississippi River commodity, 60% of tonnage",
+      "iron_steel": "Gulf Coast imports declining -4.5% CAGR 2014-2023",
+      "energy_transition": "LNG exports growing, coal declining"
+    },
+    "climate_risk": {
+      "low_water_events": "increasing frequency, 2023-2024 major disruptions",
+      "draft_restrictions": "reducing barge capacity 27%, increasing costs 20-30%",
+      "operational_constraints": "daylight-only tows, tow size reductions"
+    }
+  },
+
+  "competitive_analysis": {
+    "mm39_positioning": {
+      "strengths": [
+        "52-foot water depth (deep draft capable)",
+        "Mile Marker 39 proximity to Gulf (39 miles vs 89+ for major ports)",
+        "Potential $3-5 per ton savings vs upper river terminals",
+        "106.99 acres available industrial land"
+      ],
+      "weaknesses": [
+        "Limited rail connectivity (NOGC short line only)",
+        "Current 1-2% capture rate of accessible cargo",
+        "Competing with established Port of South Louisiana",
+        "Environmental due diligence required (legacy sulfur operations)"
+      ],
+      "opportunities": [
+        "5-10 million tons annually non-captive cargo accessible",
+        "Rail spur development to NOGC Railway",
+        "Cement imports and metals handling specialization",
+        "LNG-related supply chain services"
+      ],
+      "threats": [
+        "Port of New Orleans container capacity not saturated until 2040",
+        "Climate-driven low water events increasing costs",
+        "80-90% of Mississippi traffic is captive/through",
+        "Major competitors with established market share"
+      ]
+    },
+    "market_share_potential": {
+      "accessible_market_size_tons": 7500000,
+      "current_capture_tons": 112500,
+      "current_capture_percentage": 1.5,
+      "target_capture_percentage": 10,
+      "target_capture_tons": 750000,
+      "revenue_potential_assumptions": {
+        "handling_fee_per_ton": 8.5,
+        "handling_fee_range": [6, 12],
+        "storage_revenue_per_ton": 2.5,
+        "storage_revenue_range": [1.5, 4],
+        "annual_revenue_at_10_percent_capture": 8250000,
+        "annual_revenue_range_low": 5625000,
+        "annual_revenue_range_high": 12000000
+      }
+    }
+  },
+
+  "key_statistics_summary": {
+    "mississippi_river_total_annual_tons": 500000000,
+    "captive_traffic_percentage": 85,
+    "accessible_cargo_mm39_tons": 7500000,
+    "current_mm39_capture_percentage": 1.5,
+    "barge_rate_normal_per_ton": 17.94,
+    "barge_rate_crisis_per_ton": 52.91,
+    "container_teu_potential_lmr": 400000,
+    "container_capacity_saturation_year": 2040,
+    "iron_steel_gulf_cagr": -4.5,
+    "lmr_iron_steel_market_share_percentage": 40,
+    "system_wide_growth_cagr": 7.2,
+    "local_ashore_growth_cagr": 3.0,
+    "site_acreage": 106.99,
+    "water_depth_feet": 52,
+    "environmental_verification_cost_high": 325000,
+    "potential_remediation_cost_high": 25000000
+  },
+
+  "chart_ready_datasets": {
+    "gulf_iron_steel_imports_trend": {
+      "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
+      "tonnage": [19745834, 17102534, 14527277, 16370427, 15754886, 13764320, 10870124, 15271898, 13424359, 12990436],
+      "chart_type": "line",
+      "title": "Gulf Coast Iron & Steel Imports (2014-2023)",
+      "y_axis": "Tonnage (short tons)",
+      "trend": "declining, CAGR -4.5%"
+    },
+    "lmr_market_share_iron_steel": {
+      "period": "2014-2023",
+      "lmr_percentage": 40,
+      "other_gulf_percentage": 60,
+      "chart_type": "pie",
+      "title": "LMR Ports Market Share - Iron & Steel Imports"
+    },
+    "mississippi_commodity_mix": {
+      "commodities": ["Grain", "Petroleum", "Coal", "Other"],
+      "percentages": [60, 17.5, 12.5, 10],
+      "chart_type": "pie",
+      "title": "Mississippi River System Commodity Composition"
+    },
+    "barge_rate_volatility": {
+      "scenarios": ["Normal (Jan 2025)", "Stress (Jan 2023)", "Extreme (Sep 2023)"],
+      "rates_per_ton": [17.94, 28.93, 52.91],
+      "chart_type": "bar",
+      "title": "St. Louis to Gulf Barge Rates - Volatility Analysis",
+      "y_axis": "$ per ton"
+    },
+    "container_growth_scenarios": {
+      "scenarios": ["Medium Growth", "High Growth", "Aggressive"],
+      "cagr": [1.9, 2.3, 4.45],
+      "chart_type": "bar",
+      "title": "LMR Container Growth Projections - CAGR %",
+      "y_axis": "Annual Growth Rate %"
+    },
+    "intermodal_midwest_trends": {
+      "origins": ["Southwest (LA/LB)", "Northeast (NY/Norfolk)", "PNW (Seattle/Tacoma)", "Canada Pacific"],
+      "cagr": [-0.5, 6.2, -6.1, 7.7],
+      "chart_type": "bar",
+      "title": "International Intermodal to Midwest - CAGR 2010-2023",
+      "y_axis": "Compound Annual Growth Rate %"
+    },
+    "mm39_opportunity_funnel": {
+      "stages": ["Total MRS Tonnage", "Non-Captive Traffic", "MM39 Accessible", "Current Capture"],
+      "tonnage": [500000000, 75000000, 7500000, 112500],
+      "chart_type": "funnel",
+      "title": "MM39 Market Opportunity Funnel Analysis"
+    },
+    "competitive_ports_iron_steel": {
+      "ports": ["Mobile", "New Orleans", "Houston", "Gramercy", "Baton Rouge"],
+      "rank": [1, 2, 3, 4, 5],
+      "chart_type": "horizontal_bar",
+      "title": "Gulf Coast Iron & Steel Import Port Rankings"
+    }
+  }
+}

@@ -1,0 +1,814 @@
+{
+  "metadata": {
+    "title": "Port Sulphur Terminal Infrastructure Data",
+    "description": "Structured infrastructure data extracted from Port Sulphur infrastructure synthesis document",
+    "source_document": "infrastructure_SYNTHESIS.md",
+    "extraction_date": "2026-01-22",
+    "coordinate_system": "WGS84 (EPSG:4326)",
+    "units": {
+      "area": "acres",
+      "length": "feet",
+      "distance": "miles",
+      "capacity_liquid": "barrels",
+      "capacity_container": "TEU",
+      "investment": "USD"
+    }
+  },
+  "site_overview": {
+    "name": "Port Sulphur Deep-Water Terminal",
+    "location": {
+      "river_mile": 39,
+      "bank": "West Bank",
+      "distance_to_gulf": {
+        "value": 39,
+        "unit": "miles"
+      },
+      "parish": "Plaquemines Parish",
+      "state": "Louisiana"
+    },
+    "site_specifications": {
+      "total_area": {
+        "value": 106.99,
+        "unit": "acres"
+      },
+      "river_frontage": {
+        "value": 10693,
+        "unit": "linear feet"
+      },
+      "water_depth": {
+        "natural_draft": {
+          "value": 52,
+          "unit": "feet"
+        },
+        "federal_channel_maintained": {
+          "value": 45,
+          "unit": "feet",
+          "note": "minimum depth"
+        }
+      },
+      "zoning": "Industrial District 3"
+    },
+    "existing_infrastructure": {
+      "dock": {
+        "dimensions": {
+          "width": 24,
+          "length": 433,
+          "unit": "feet"
+        },
+        "material": "concrete"
+      },
+      "warehouse": {
+        "area": {
+          "value": 5000,
+          "unit": "square feet"
+        }
+      }
+    },
+    "anchorage": {
+      "name": "Port Sulphur Anchorage",
+      "river_miles": {
+        "upstream": 39.7,
+        "downstream": 37.5
+      },
+      "federal_designation": true
+    }
+  },
+  "regional_facilities": [
+    {
+      "id": "facility_001",
+      "name": "NOLA Terminal LLC",
+      "location": {
+        "river_mile": 59,
+        "type": "Mississippi River"
+      },
+      "operations_since": 2013,
+      "specifications": {
+        "total_area": {
+          "value": 152.8,
+          "unit": "acres"
+        },
+        "berths": {
+          "count": 3,
+          "vessel_capacity": "Capesize",
+          "description": "Three deepwater berths capable of handling vessels up to Capesize"
+        },
+        "vessel_capacity": {
+          "capesize_vessels_per_week": 2,
+          "barges_per_week": 25,
+          "operating_hours": "daylight hours"
+        },
+        "storage": {
+          "crude_oil": {
+            "capacity": 10000000,
+            "unit": "barrels",
+            "capabilities": ["blending"]
+          }
+        },
+        "suez_max_docks": {
+          "count": 2,
+          "size": "large",
+          "status": "existing"
+        }
+      },
+      "operations": {
+        "current_commodities": [
+          "aggregates",
+          "sand",
+          "bagged cement",
+          "crude oil"
+        ],
+        "planned_services": [
+          "bulk cargo handling",
+          "break bulk",
+          "specialty products"
+        ]
+      },
+      "financial": {
+        "bond_financing": {
+          "issued_2024": 97000000,
+          "total_approved": 300000000,
+          "issuer": "Plaquemines Port"
+        }
+      },
+      "master_plan": {
+        "storage_facilities": [
+          "warehousing",
+          "silos",
+          "domes"
+        ],
+        "indoor_outdoor_storage": true
+      }
+    },
+    {
+      "id": "facility_002",
+      "name": "APM Terminals Container Terminal (Louisiana Gateway Port)",
+      "status": "Planned",
+      "project_type": "Container Terminal Development",
+      "location": {
+        "description": "Port Sulphur area, West Bank",
+        "proximity_to_existing_site": "near"
+      },
+      "timeline": {
+        "letter_of_intent": "January 2024",
+        "permits_status": "pending",
+        "permits_approved": "June 2025 (USACE dredging, Louisiana DEQ environmental)",
+        "groundbreaking_anticipated": "Q2 2026",
+        "phase_1_operational": "2028",
+        "full_operations": "2028-2029"
+      },
+      "investment": {
+        "total": 500000000,
+        "funding": "privately funded",
+        "investor": "APM Terminals (Maersk)"
+      },
+      "specifications": {
+        "phase_1": {
+          "area": {
+            "value": 200,
+            "unit": "acres"
+          },
+          "vessel_capacity": {
+            "vessel_size": "14,000-18,000 TEU",
+            "description": "Largest ships traversing expanded Panama Canal"
+          },
+          "berths": {
+            "deepwater_capable": true,
+            "description": "Berths capable of handling largest container ships currently transiting expanded Panama Canal"
+          }
+        },
+        "expansion_potential": {
+          "total_area": {
+            "value": 900,
+            "unit": "acres",
+            "alternative_max": 1000
+          },
+          "use": "terminal expansion and complementary logistics activities"
+        }
+      },
+      "rail_integration": {
+        "on_dock_rail": true,
+        "unit_train_capacity": {
+          "cars": 100,
+          "description": "Sidings designed to handle unit trains of up to 100 cars"
+        },
+        "train_frequency": {
+          "initial": "20-30 trains per week",
+          "scaling": "matches terminal growth"
+        },
+        "cost_savings": {
+          "drayage_reduction": "30-40%",
+          "compared_to": "truck-only operations"
+        }
+      },
+      "strategic_advantages": [
+        "Unmatched river access (no air draft restrictions from bridges)",
+        "Proximity to LNG facilities (Venture Global Plaquemines LNG)",
+        "Tax abatements under Louisiana's Quality Jobs Program",
+        "Closest deep-water terminal to open water on Mississippi River system",
+        "3 hours shorter round trip than nearest proposed terminal",
+        "Widest ship turning radius"
+      ],
+      "market_position": {
+        "projected_ranking": "5th largest U.S. port by tonnage",
+        "timeframe": "within five years"
+      }
+    },
+    {
+      "id": "facility_003",
+      "name": "Venture Global Plaquemines LNG",
+      "status": "Under Construction",
+      "project_type": "LNG Export Facility",
+      "location": {
+        "area": {
+          "value": 632,
+          "unit": "acres"
+        },
+        "description": "Adjacent to Port Sulphur area"
+      },
+      "investment": {
+        "total": 21000000000,
+        "phase": "Under construction"
+      },
+      "timeline": {
+        "construction_announced": 2018,
+        "first_phase_operational": "mid-2024",
+        "full_operations": "2025"
+      },
+      "current_operations": {
+        "construction_workers_on_site": 6000,
+        "total_workers_nationally": 30000
+      },
+      "relationship_to_port_sulphur": {
+        "proximity": "borders site",
+        "infrastructure_connections": [
+          "Gator Express Pipeline connection"
+        ]
+      }
+    },
+    {
+      "id": "facility_004",
+      "name": "Louisiana International Terminal",
+      "status": "Planned",
+      "project_type": "Container Terminal",
+      "location": {
+        "parish": "St. Bernard Parish"
+      },
+      "investment": {
+        "total": 1800000000,
+        "investors": [
+          "Ports America",
+          "Mediterranean Shipping Company"
+        ]
+      },
+      "specifications": {
+        "capacity_at_buildout": {
+          "value": 2000000,
+          "unit": "TEU per year"
+        }
+      },
+      "competitive_relationship": "Competes for same cargo flows, but Port Sulphur's rail connectivity may provide complementary opportunities"
+    }
+  ],
+  "rail_infrastructure": {
+    "current_status": {
+      "direct_access": false,
+      "nearest_connection": {
+        "operator": "New Orleans & Gulf Coast Railway (NOGC)",
+        "location": "Myrtle Grove",
+        "distance_from_port_sulphur": {
+          "value": 8,
+          "unit": "miles",
+          "direction": "north"
+        }
+      }
+    },
+    "nogc_railway": {
+      "classification": "Class III shortline",
+      "length": {
+        "value": 32,
+        "unit": "miles"
+      },
+      "route": {
+        "western_terminus": "Union Pacific interchange at Westwego",
+        "eastern_terminus": "Myrtle Grove",
+        "via": "Belle Chasse"
+      },
+      "operations": {
+        "customers": "20+ switching and industrial customers",
+        "trains_per_day": "up to 3",
+        "speed": {
+          "value": "10-15",
+          "unit": "MPH"
+        },
+        "capacity_utilization": "less than 10%",
+        "capacity_potential": {
+          "value": 1000000,
+          "unit": "gross ton-miles per mile"
+        }
+      },
+      "commodities": [
+        "petroleum products",
+        "oils",
+        "chemicals",
+        "food products",
+        "grains",
+        "steel products"
+      ],
+      "class_i_connections": {
+        "direct_interchange": "Union Pacific (Westwego)",
+        "via_nopb": [
+          "BNSF",
+          "UP",
+          "CSXT",
+          "CN",
+          "CPKC",
+          "NS"
+        ]
+      }
+    },
+    "planned_rail_extension": {
+      "project_name": "Port Sulphur Rail Spur Extension",
+      "description": "32-mile rail spur from Port Sulphur to Belle Chasse",
+      "sponsor": "Plaquemines Port Harbor & Terminal District (PPMTD)",
+      "investment": {
+        "total": 85000000,
+        "federal_funding": {
+          "percentage": 85,
+          "source": "RAISE grants",
+          "allocation_2025": 72000000
+        },
+        "state_match": "PPMTD unrestricted fund"
+      },
+      "specifications": {
+        "length": {
+          "value": 32,
+          "unit": "miles"
+        },
+        "route": {
+          "from": "Port Sulphur (terminal site)",
+          "to": "Belle Chasse (MM 75)",
+          "connects_to": "New Orleans & Gulf Coast (NOGC) Railway"
+        },
+        "environmental": {
+          "terrain": "wetlands",
+          "reviews_required": "FERC environmental reviews"
+        }
+      },
+      "timeline": {
+        "design_study": "Completed May 2025",
+        "preliminary_engineering_funding": {
+          "amount": 10000000,
+          "approved": "June 2025"
+        },
+        "construction_bids": "Expected Q4 2025",
+        "completion": "2028-2029"
+      },
+      "benefits": {
+        "highway_23_reduction": {
+          "value": 500000,
+          "unit": "truck loads per year"
+        },
+        "connectivity": "National rail network for Midwest/heartland access",
+        "commodities_supported": [
+          "grains",
+          "metals",
+          "consumer goods",
+          "containers"
+        ]
+      },
+      "approvals": {
+        "parish_ordinance": "August 2024",
+        "june_2025_resolutions": "$10 million for preliminary engineering",
+        "public_meetings": "June 26, 2025 (community impacts, noise, wetland mitigation)"
+      }
+    },
+    "regional_rail_network": {
+      "nopb": {
+        "name": "New Orleans Public Belt Railroad",
+        "classification": "Class III switching railroad",
+        "ranking": "5th largest U.S. rail gateway by car volume",
+        "track_miles": 180,
+        "annual_carloads": 177000,
+        "service_area": "Port of New Orleans",
+        "class_i_access": "All six major Class I railroads",
+        "capacity_improvements": {
+          "huey_p_long_bridge": {
+            "current_tracks": 2,
+            "planned_addition": "Third track off eastern abutment",
+            "total_length": {
+              "value": 22995,
+              "unit": "feet"
+            },
+            "historical_note": "Longest rail bridge of its type when constructed"
+          },
+          "france_road_railyard": {
+            "expansion_completed": true,
+            "capacity_added": {
+              "value": 220,
+              "unit": "storage cars"
+            },
+            "location": "along Industrial Canal"
+          }
+        }
+      }
+    }
+  },
+  "pipeline_infrastructure": {
+    "gator_express": {
+      "operator": "Venture Global",
+      "diameter": {
+        "value": 42,
+        "unit": "inches"
+      },
+      "current_length": {
+        "value": 15,
+        "unit": "miles"
+      },
+      "destination": "Plaquemines LNG facility",
+      "commodity": "natural gas",
+      "expansion_2025": {
+        "additional_length": {
+          "value": 27,
+          "unit": "miles"
+        }
+      }
+    },
+    "other_pipelines": {
+      "enterprise_nautilus": {
+        "diameter": {
+          "value": 36,
+          "unit": "inches"
+        }
+      },
+      "regional_network": {
+        "proposed_statewide": {
+          "value": 2900,
+          "unit": "miles",
+          "note": "proposed"
+        },
+        "within_10_miles": {
+          "count": "10+",
+          "status": "active"
+        }
+      }
+    },
+    "considerations": [
+      "Tie-in potential for industrial development",
+      "Flood rupture risks",
+      "Proximity to 632-acre LNG site operational 2025"
+    ]
+  },
+  "highway_infrastructure": {
+    "primary_route": {
+      "designation": "Highway 23",
+      "status": "Primary access corridor",
+      "issues": [
+        "Congestion from LNG construction",
+        "Crane operations causing 2-4 hour delays in 2025",
+        "Sinkhole risks from water line issues"
+      ],
+      "planned_improvements": {
+        "truck_traffic_reduction": {
+          "value": 500000,
+          "unit": "loads per year",
+          "via": "Rail extension implementation"
+        }
+      },
+      "reliability_rating": "6/10",
+      "alternatives": {
+        "ferry_routes": {
+          "additional_distance": {
+            "value": "20-30",
+            "unit": "miles"
+          }
+        }
+      }
+    },
+    "telecommunications": {
+      "corridor_service": "Well-served along Highway 23",
+      "capabilities": "Modern industrial operations and logistics coordination"
+    }
+  },
+  "utilities": {
+    "electrical": {
+      "service_status": "Available",
+      "reliability_note": "Requires verification for specific industrial applications",
+      "backup_power": {
+        "importance": "Critical",
+        "reason": "Hurricane-prone environment"
+      },
+      "post_katrina_upgrades": true
+    },
+    "water_sewer": {
+      "availability": "Requires site-specific verification",
+      "infrastructure_quality": "Post-Katrina enhancement programs",
+      "upgrades": [
+        "Enhanced emergency preparedness",
+        "Improved flood protection",
+        "Systematic upgrades for modern industrial operations"
+      ]
+    },
+    "flood_protection": {
+      "post_katrina_improvements": true,
+      "features": [
+        "Enhanced emergency preparedness systems",
+        "Improved flood protection measures",
+        "Greater operational continuity during extreme weather"
+      ]
+    }
+  },
+  "port_authority_financials": {
+    "entity": "Plaquemines Port Harbor and Terminal District",
+    "rebrand": "Louisiana Gateway Port",
+    "as_of_date": "2022-12-31",
+    "financial_position": {
+      "net_position": {
+        "value": 116800000,
+        "unit": "USD"
+      },
+      "operating_revenue": {
+        "value": 6000000,
+        "unit": "USD",
+        "year_over_year_increase": "13%"
+      },
+      "non_operating_revenue": {
+        "value": 32000000,
+        "unit": "USD",
+        "year": 2022,
+        "sources": "Strategic lease agreements with major industrial tenants"
+      },
+      "capital_assets": {
+        "value": 75400000,
+        "unit": "USD",
+        "note": "Net of accumulated depreciation"
+      },
+      "2022_additions": {
+        "ferry_operations_acquisition": true,
+        "land_acquisitions": {
+          "value": 1200000,
+          "unit": "USD"
+        }
+      }
+    },
+    "revenue_sources": {
+      "operating": [
+        "Tariff fees",
+        "Security fees",
+        "Harbor fees",
+        "Docking fees",
+        "Ferry toll revenue"
+      ],
+      "non_operating": [
+        "Lease agreements with industrial tenants",
+        "Oil and gas royalties",
+        "Property taxes"
+      ]
+    }
+  },
+  "geojson_features": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "port_sulphur_terminal",
+        "properties": {
+          "name": "Port Sulphur Deep-Water Terminal",
+          "type": "Terminal Facility",
+          "river_mile": 39,
+          "area_acres": 106.99,
+          "river_frontage_ft": 10693,
+          "draft_ft": 52,
+          "status": "Existing",
+          "description": "106.99-acre deep-water industrial site with 24' × 433' concrete dock and 5,000 SF warehouse"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-89.765, 29.465]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "nola_terminal_llc",
+        "properties": {
+          "name": "NOLA Terminal LLC",
+          "type": "Terminal Facility",
+          "river_mile": 59,
+          "area_acres": 152.8,
+          "berths": 3,
+          "vessel_capacity": "Capesize/Suez Max",
+          "storage_capacity_barrels": 10000000,
+          "status": "Operating",
+          "operations_since": 2013,
+          "description": "152.8-acre terminal with 3 deepwater berths and 10 million barrel crude oil storage"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-89.895, 29.748]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "apm_terminals_container",
+        "properties": {
+          "name": "APM Terminals Container Terminal (Louisiana Gateway Port)",
+          "type": "Container Terminal",
+          "area_acres_phase1": 200,
+          "area_acres_expansion": 900,
+          "vessel_capacity_teu": 18000,
+          "investment_usd": 500000000,
+          "status": "Planned",
+          "operational_date": "2028",
+          "on_dock_rail": true,
+          "description": "$500M container terminal with 200-acre initial phase, expandable to 900 acres, with on-dock rail"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-89.770, 29.470]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "venture_global_lng",
+        "properties": {
+          "name": "Venture Global Plaquemines LNG",
+          "type": "LNG Export Facility",
+          "area_acres": 632,
+          "investment_usd": 21000000000,
+          "status": "Under Construction",
+          "operational_date": "2024-2025",
+          "construction_workers": 6000,
+          "description": "$21B LNG export facility on 632 acres, first phase operational 2024"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-89.760, 29.460]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "nogc_myrtle_grove_terminus",
+        "properties": {
+          "name": "NOGC Railway Terminus - Myrtle Grove",
+          "type": "Rail Terminus",
+          "operator": "New Orleans & Gulf Coast Railway",
+          "classification": "Class III",
+          "distance_from_port_sulphur_miles": 8,
+          "status": "Operating",
+          "description": "Eastern terminus of NOGC 32-mile shortline, 8 miles north of Port Sulphur"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-89.800, 29.550]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "nogc_belle_chasse",
+        "properties": {
+          "name": "NOGC Railway - Belle Chasse",
+          "type": "Rail Junction",
+          "operator": "New Orleans & Gulf Coast Railway",
+          "river_mile": 75,
+          "status": "Operating",
+          "description": "NOGC junction point, connection to Class I carriers"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-89.986, 29.851]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "nogc_westwego_interchange",
+        "properties": {
+          "name": "NOGC-Union Pacific Interchange - Westwego",
+          "type": "Rail Interchange",
+          "operator": "NOGC / Union Pacific",
+          "status": "Operating",
+          "description": "Western terminus of NOGC with Union Pacific interchange"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-90.142, 29.906]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "planned_rail_spur_midpoint",
+        "properties": {
+          "name": "Planned Port Sulphur Rail Spur (Route)",
+          "type": "Rail Extension Project",
+          "length_miles": 32,
+          "investment_usd": 85000000,
+          "status": "Planned",
+          "completion_date": "2028-2029",
+          "description": "$85M, 32-mile rail spur extension from Port Sulphur to Belle Chasse"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-89.765, 29.465],
+            [-89.800, 29.550],
+            [-89.900, 29.700],
+            [-89.986, 29.851]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "gator_express_pipeline",
+        "properties": {
+          "name": "Gator Express Pipeline",
+          "type": "Natural Gas Pipeline",
+          "operator": "Venture Global",
+          "diameter_inches": 42,
+          "length_miles": 15,
+          "expansion_2025_miles": 27,
+          "commodity": "Natural gas",
+          "destination": "Plaquemines LNG",
+          "description": "42-inch natural gas pipeline, 15 miles current with 27-mile 2025 expansion"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-89.760, 29.460],
+            [-89.755, 29.450],
+            [-89.750, 29.430]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "port_sulphur_anchorage",
+        "properties": {
+          "name": "Port Sulphur Anchorage",
+          "type": "Federal Anchorage",
+          "river_mile_upstream": 39.7,
+          "river_mile_downstream": 37.5,
+          "length_miles": 2.2,
+          "federal_designation": true,
+          "description": "Federal anchorage from RM 37.5 to 39.7"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-89.760, 29.435],
+            [-89.765, 29.465],
+            [-89.770, 29.495]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "highway_23",
+        "properties": {
+          "name": "Highway 23",
+          "type": "Primary Highway",
+          "designation": "Louisiana Highway 23",
+          "status": "Primary access corridor",
+          "reliability_rating": 6,
+          "description": "Primary highway access to Port Sulphur area, subject to LNG construction delays"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-89.765, 29.465],
+            [-89.800, 29.550],
+            [-89.900, 29.700],
+            [-89.950, 29.800]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "louisiana_international_terminal",
+        "properties": {
+          "name": "Louisiana International Terminal",
+          "type": "Container Terminal",
+          "location": "St. Bernard Parish",
+          "investment_usd": 1800000000,
+          "capacity_teu": 2000000,
+          "status": "Planned",
+          "investors": "Ports America, Mediterranean Shipping Company",
+          "description": "$1.8B container terminal in St. Bernard Parish, 2M TEU capacity at buildout"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-89.900, 29.820]
+        }
+      }
+    ]
+  },
+  "notes": {
+    "coordinate_accuracy": "Coordinates are approximate estimates based on river mile locations and regional geography. Actual facility coordinates should be verified with survey data or official GIS sources.",
+    "data_extraction_method": "Data extracted from infrastructure_SYNTHESIS.md using pattern matching and contextual analysis",
+    "updates_required": [
+      "Precise GPS coordinates for all facilities",
+      "Detailed berth specifications and dimensions",
+      "Current operational status verification",
+      "Additional pipeline route details",
+      "Complete warehouse inventory and specifications"
+    ],
+    "environmental_considerations": "Site carries environmental liabilities from 72 years of sulfur processing operations (1933-2005). Environmental assessment required for development."
+  }
+}

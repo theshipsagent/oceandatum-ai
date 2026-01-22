@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "title": "Port Sulphur Terminal - Geospatial Data",
+    "generated": "2026-01-22",
+    "source": "geospatial_SYNTHESIS.md",
+    "status": "placeholder",
+    "description": "Geospatial data structure for future map layers and visualization components",
+    "coordinate_system": "WGS84",
+    "units": "decimal_degrees"
+  },
+  "terminal_location": {
+    "name": "Port Sulphur Terminal",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    },
+    "bounds": {
+      "north": null,
+      "south": null,
+      "east": null,
+      "west": null
+    },
+    "region": "Mississippi River Delta",
+    "waterway": "Mississippi River",
+    "parish": "Plaquemines Parish",
+    "state": "Louisiana"
+  },
+  "infrastructure": {
+    "berths": [],
+    "warehouses": [],
+    "access_roads": [],
+    "rail_connections": [],
+    "pipelines": []
+  },
+  "navigation": {
+    "channels": [],
+    "anchorages": [],
+    "turning_basins": [],
+    "restricted_areas": []
+  },
+  "environmental": {
+    "wetlands": [],
+    "protected_areas": [],
+    "water_bodies": [],
+    "flood_zones": []
+  },
+  "layers": {
+    "available_layers": [
+      {
+        "id": "terminal_boundary",
+        "name": "Terminal Boundary",
+        "type": "polygon",
+        "status": "pending",
+        "data": []
+      },
+      {
+        "id": "infrastructure",
+        "name": "Infrastructure Assets",
+        "type": "point",
+        "status": "pending",
+        "data": []
+      },
+      {
+        "id": "navigation",
+        "name": "Navigation Features",
+        "type": "linestring",
+        "status": "pending",
+        "data": []
+      },
+      {
+        "id": "environmental",
+        "name": "Environmental Features",
+        "type": "polygon",
+        "status": "pending",
+        "data": []
+      }
+    ]
+  },
+  "notes": [
+    "This is a placeholder structure created from an empty geospatial synthesis document",
+    "Populate this file with actual geospatial data when source documents become available",
+    "All coordinate fields are set to null pending data availability",
+    "Layer structure follows GeoJSON conventions for future compatibility"
+  ]
+}

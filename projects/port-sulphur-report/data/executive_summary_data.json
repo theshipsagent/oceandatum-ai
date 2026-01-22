@@ -1,0 +1,568 @@
+{
+  "metadata": {
+    "report_title": "Port Sulphur Freeport Facility - Investment Analysis",
+    "location": "28310 Highway 23, Port Sulphur, LA 70083",
+    "parish": "Plaquemines Parish, Louisiana",
+    "generated_date": "2026-01-22",
+    "source_document": "exe_summary_SYNTHESIS.md"
+  },
+  "hero_metrics": {
+    "property_size_acres": 106.99,
+    "river_frontage_feet": 10693,
+    "highway_frontage_feet": 2500,
+    "water_depth_draft": 52,
+    "river_mile_marker": 39,
+    "warehouse_space_sf": 5000,
+    "years_operational": 72,
+    "establishment_year": 1933,
+    "dock_age_years": 92
+  },
+  "property_overview": {
+    "address": "28310 Highway 23, Port Sulphur, LA 70083",
+    "parish": "Plaquemines Parish, Louisiana",
+    "river_position": "West Bank Mississippi River Mile Marker 39",
+    "land_area": "106.99 acres total",
+    "river_frontage": "±10,693 linear feet of Mississippi River frontage",
+    "highway_access": "2,500 LF frontage on Louisiana Highway 23",
+    "zoning": "Industrial District 3"
+  },
+  "existing_infrastructure": {
+    "dock": {
+      "dimensions": "24' x 433'",
+      "material": "concrete",
+      "capacity_tons": 10000,
+      "water_depth_draft": "52' draft at low river stage",
+      "age_years": 92,
+      "construction_year": 1933,
+      "vessel_capability": "sulfur barges and ocean-going vessels"
+    },
+    "warehouse": {
+      "area_sf": 5000,
+      "status": "existing"
+    },
+    "navigation": {
+      "capability": "year-round river navigation",
+      "channel_depth": "45' minimum USACE-maintained",
+      "natural_depth": ">45' at Mile 39"
+    }
+  },
+  "historical_timeline": [
+    {
+      "year": 1932,
+      "event": "Freeport Sulphur Company acquired sulfur rights for Lake Grande Ecaille"
+    },
+    {
+      "year": 1933,
+      "event": "Facility construction completed and operations commenced",
+      "details": "Logistics, refining, storage and shipping hub supporting Grande Ecaille mine (10 miles west)"
+    },
+    {
+      "year": "1933-1978",
+      "event": "Primary sulfur mining at Grande Ecaille",
+      "details": "Port Sulphur served as central processing and export point"
+    },
+    {
+      "year": "1950s",
+      "event": "Facility expansion",
+      "details": "Support for offshore operations at Main Pass Block 299 (50 miles offshore, 300' water depth)"
+    },
+    {
+      "year": "WWII",
+      "event": "Army-Navy 'E' Award received",
+      "details": "Recognition for wartime production contributions"
+    },
+    {
+      "year": "1980s-1990s",
+      "event": "Economic decline",
+      "details": "Competition from recovered sulfur in oil and gas refining"
+    },
+    {
+      "year": "Early 2000s",
+      "event": "Operations ceased",
+      "details": "Due to market competition"
+    },
+    {
+      "year": 2005,
+      "event": "Hurricane Katrina",
+      "details": "Catastrophic damage with 22 feet of flooding, destroyed remaining infrastructure"
+    },
+    {
+      "year": "Post-2005",
+      "event": "Environmental remediation completed",
+      "details": "EPA and Louisiana DEQ confirmed remediation, no current Superfund designation"
+    }
+  ],
+  "frasch_process_operations": {
+    "process": "Frasch Process sulfur extraction",
+    "method": "Injecting superheated water (340°F/170°C) underground to melt sulfur",
+    "extraction": "Pumping to surface with compressed air",
+    "purity": "99% pure sulfur",
+    "storage": "Bins, vats, and 'vatting' operations creating acres of solidified sulfur storage blocks",
+    "materials_handled": [
+      "hot water",
+      "steam",
+      "sulfuric acid",
+      "molten sulfur"
+    ],
+    "operational_period_years": 72
+  },
+  "environmental_status": {
+    "remediation_status": "Completed",
+    "remediation_authority": "Freeport-McMoRan",
+    "regulatory_oversight": [
+      "EPA Region 6",
+      "Louisiana DEQ"
+    ],
+    "superfund_status": "No current EPA Superfund designation",
+    "contamination_addressed": [
+      "acid generation",
+      "heavy metals",
+      "groundwater impacts",
+      "sulfur-related contamination"
+    ],
+    "post_katrina_assessment": "Environmental assessments confirmed remediation of sulfur-related contamination"
+  },
+  "market_context": {
+    "regional_investments": {
+      "total_announced": "$60+ billion",
+      "major_projects": [
+        {
+          "name": "Venture Global Plaquemines LNG",
+          "investment": "$21 billion",
+          "status": "under construction",
+          "expansion": "$18 billion (2025)"
+        },
+        {
+          "name": "APM Terminals Container Terminal",
+          "investment": "$500 million",
+          "phase": "Phase 1",
+          "acreage": "200-900 acres"
+        }
+      ]
+    },
+    "property_valuations": {
+      "waterfront_industrial_avg_per_acre": 68000,
+      "general_parish_avg_per_acre": 39559,
+      "port_sulphur_baseline_per_acre": 137420,
+      "premium_range": {
+        "min_per_acre": 50000,
+        "max_per_acre": 250000
+      },
+      "comparable_transactions": [
+        {
+          "property": "Avondale Marine Facility (2024)",
+          "price_per_acre": 1300000,
+          "premium_vs_baseline": "846%",
+          "parish": "Jefferson"
+        },
+        {
+          "property": "Violet Dock",
+          "price_per_acre": 222222,
+          "premium_vs_baseline": "62%",
+          "parish": "Saint Bernard"
+        },
+        {
+          "property": "Phillips 66 Alliance Refinery",
+          "price_per_acre": 156250,
+          "premium_vs_baseline": "14%",
+          "parish": "Plaquemines"
+        }
+      ]
+    },
+    "infrastructure_premiums": {
+      "waterfront_access": {
+        "bay_waterfront": "107%",
+        "river_waterfront": "62%",
+        "canal_waterfront": "61%"
+      },
+      "transportation": {
+        "rail_access": "15-30%",
+        "highway_access": "10-20%",
+        "port_proximity": "25-40%"
+      },
+      "deep_water_access": {
+        "45_48_foot_draft": "15-25%",
+        "existing_dock_facilities": "20-35%",
+        "natural_deep_water": "10-15%"
+      }
+    }
+  },
+  "regional_development": {
+    "louisiana_gateway_port": {
+      "former_name": "Plaquemines Port Harbor & Terminal District",
+      "rebranding_date": "March 2025",
+      "container_terminal": {
+        "developer": "APM Terminals",
+        "phase_1_investment": "$500 million",
+        "phase_1_acreage": 200,
+        "total_potential_acreage": 900,
+        "vessel_capacity": "18,000 TEU vessels",
+        "annual_capacity_teu": "1.0-2.0 million",
+        "construction_start": "Q2 2026",
+        "operational_target": 2028,
+        "design_completion": "30% (December 2025)"
+      },
+      "financial_performance": {
+        "operating_revenue": "$6 million (up 13%)",
+        "total_assets": "$116.8 million",
+        "capital_additions": "$75.4 million",
+        "major_lease_revenue": {
+          "tenant": "Venture Global",
+          "monthly_payment": "$738,498"
+        }
+      },
+      "strategic_goal": "5th-largest U.S. port by tonnage within five years"
+    },
+    "rail_connectivity": {
+      "current_status": "No direct rail at Port Sulphur",
+      "nearest_connection": {
+        "name": "New Orleans & Gulf Coast Railway (NOGC)",
+        "terminus": "Myrtle Grove",
+        "distance_miles": 8,
+        "total_length_miles": 32,
+        "capacity_utilization": "<10%",
+        "interchange": "Union Pacific at Westwego"
+      },
+      "planned_infrastructure": {
+        "project": "$85 million rail spur extension",
+        "federal_funding_percent": 85,
+        "completion_target": "2028-2029",
+        "impact": "On-dock rail for unit trains, 30-40% reduction in drayage costs"
+      }
+    },
+    "highway_infrastructure": {
+      "primary_route": "Louisiana Highway 23",
+      "total_length_miles": 74,
+      "daily_traffic_range": "5,000 (Venice) to 32,000+ (Belle Chasse)",
+      "major_upgrades": [
+        {
+          "project": "Belle Chasse Bridge replacement",
+          "cost": "$169 million",
+          "completion": 2023,
+          "benefit": "Eliminated drawbridge delays"
+        },
+        {
+          "project": "Port Sulphur/Happy Jack widening",
+          "segment_miles": 4,
+          "cost": "$17 million",
+          "status": "planned"
+        },
+        {
+          "project": "Peters Road Extension",
+          "grant": "$7.4 million RAISE Grant",
+          "congestion_reduction": "25-35%"
+        }
+      ]
+    }
+  },
+  "investment_highlights": [
+    {
+      "category": "Strategic Location",
+      "points": [
+        "Mississippi River Mile Marker 39 - optimal Gulf proximity",
+        "106.99 acres with 10,693 LF of river frontage",
+        "52' draft capability - deepest water access in region",
+        "2,500 LF Highway 23 frontage for multimodal access"
+      ]
+    },
+    {
+      "category": "Existing Infrastructure",
+      "points": [
+        "Historic dock facility (24' x 433', 10,000-ton capacity)",
+        "5,000 SF warehouse space",
+        "Industrial District 3 zoning - permits heavy industrial use",
+        "Year-round navigation capability"
+      ]
+    },
+    {
+      "category": "Environmental Status",
+      "points": [
+        "Remediation completed by Freeport-McMoRan",
+        "No active Superfund designation",
+        "EPA and Louisiana DEQ verified",
+        "Ready for industrial redevelopment"
+      ]
+    },
+    {
+      "category": "Regional Growth Catalysts",
+      "points": [
+        "$21 billion Venture Global LNG expansion adjacent",
+        "$500 million APM Terminals container facility (2028)",
+        "$85 million rail spur bringing on-dock rail access",
+        "$60+ billion announced regional industrial investments"
+      ]
+    },
+    {
+      "category": "Market Position",
+      "points": [
+        "Waterfront industrial land averaging $68,000/acre regionally",
+        "Premium pricing for deep-water access (62% for river frontage)",
+        "Louisiana Gateway Port targeting top-5 U.S. port status",
+        "Closest deep-water terminals to Gulf on Mississippi River system"
+      ]
+    },
+    {
+      "category": "Transportation Network",
+      "points": [
+        "USACE-maintained 45' minimum channel depth",
+        "Future rail connectivity via NOGC extension (2028-2029)",
+        "$169 million Belle Chasse Bridge eliminates bottleneck",
+        "Access to 6 Class I railroads via regional interchange"
+      ]
+    }
+  ],
+  "strategic_advantages": [
+    {
+      "advantage": "Deepest Water Access",
+      "description": "52' draft at low river stage exceeds regional competitors",
+      "value_proposition": "Can handle largest vessels without dredging constraints"
+    },
+    {
+      "advantage": "Gulf Proximity",
+      "description": "Mile Marker 39 provides 3+ hour shipping time advantage over upriver ports",
+      "value_proposition": "Closest deepwater terminals to open water on Mississippi River system"
+    },
+    {
+      "advantage": "Remediated Brownfield",
+      "description": "Environmental cleanup completed, no Superfund designation",
+      "value_proposition": "Lower regulatory risk compared to greenfield permitting timeline"
+    },
+    {
+      "advantage": "Regional Industrial Cluster",
+      "description": "$60+ billion in announced projects within 20-mile radius",
+      "value_proposition": "Established industrial corridor with proven demand"
+    },
+    {
+      "advantage": "Multimodal Potential",
+      "description": "River, highway, and planned rail connectivity",
+      "value_proposition": "Future on-dock rail reduces logistics costs 30-40%"
+    },
+    {
+      "advantage": "Historic Infrastructure",
+      "description": "92-year-old dock with 10,000-ton capacity already in place",
+      "value_proposition": "Foundation for expansion at lower capital cost than new construction"
+    },
+    {
+      "advantage": "Industrial Zoning",
+      "description": "Industrial District 3 permits heavy industrial operations",
+      "value_proposition": "No rezoning required for major industrial development"
+    },
+    {
+      "advantage": "Large Contiguous Acreage",
+      "description": "106.99 acres allows for phased development",
+      "value_proposition": "Can accommodate multiple industrial tenants or single mega-project"
+    }
+  ],
+  "risk_factors": [
+    {
+      "category": "Flood and Hurricane Exposure",
+      "risk": "22 feet of flooding during Hurricane Katrina (2005)",
+      "mitigation": "Elevated facilities, flood protection systems, comprehensive insurance"
+    },
+    {
+      "category": "Infrastructure Age",
+      "risk": "92-year-old dock requires structural evaluation",
+      "mitigation": "Phase inspection and capital planning for repairs/replacement"
+    },
+    {
+      "category": "Environmental Legacy",
+      "risk": "72 years of sulfur processing may have residual subsurface issues",
+      "mitigation": "Phase I/II ESA, ongoing monitoring, seller indemnification"
+    },
+    {
+      "category": "Rail Connectivity Gap",
+      "risk": "No direct rail access currently",
+      "mitigation": "Planned $85M extension by 2028-2029; truck access to Myrtle Grove (8 miles)"
+    },
+    {
+      "category": "Captive Cargo Dominance",
+      "risk": "80-90% of Mississippi River traffic bypasses intermediate ports",
+      "mitigation": "Target non-captive industrial cargo (5-10M tons annually), value-added services"
+    }
+  ],
+  "financial_metrics": {
+    "estimated_property_value": {
+      "baseline_calculation": "$14.7 million (107 acres x $137,420/acre)",
+      "potential_range": {
+        "low": "$5.3 million (107 acres x $50,000/acre)",
+        "high": "$26.8 million (107 acres x $250,000/acre)"
+      }
+    },
+    "due_diligence_costs": {
+      "phase_1_esa": "$15,000-$25,000",
+      "phase_2_sampling": "$150,000-$300,000",
+      "total_verification": "$165,000-$325,000"
+    },
+    "potential_remediation_costs": {
+      "in_situ_stabilization": "$2-5 million",
+      "groundwater_monitoring_5_10_years": "$500,000-$1 million",
+      "hotspot_excavation": "$5-15 million",
+      "total_range": "$8-25 million"
+    },
+    "ongoing_obligations": {
+      "annual_monitoring_compliance": "$85,000-$175,000",
+      "flood_insurance_estimated": "$100,000+ annually"
+    },
+    "infrastructure_development_costs": {
+      "dock_repairs_replacement": "TBD (structural evaluation required)",
+      "utilities_verification_upgrades": "$500,000-$750,000",
+      "total_estimated_redevelopment": "$8-25 million"
+    }
+  },
+  "cargo_market_overview": {
+    "mississippi_river_system": {
+      "annual_tonnage": "500 million short tons",
+      "captive_through_traffic_percent": "80-90%",
+      "commodities": {
+        "grain_percent": 60,
+        "petroleum_products_percent": 15-20,
+        "coal_percent": 10-15
+      }
+    },
+    "local_opportunity": {
+      "non_captive_annual_tons": "5-10 million",
+      "industrial_cargo_types": [
+        "cement imports",
+        "metals",
+        "aggregates",
+        "chemicals"
+      ],
+      "capture_rate_without_rail": "1-2%",
+      "growth_potential_with_rail": "3-5%"
+    },
+    "container_market": {
+      "identified_potential_teu": 400000,
+      "capture_timeline": "3 years",
+      "organic_growth_rate": "3% annually",
+      "compound_annual_growth_rate": "4.45%",
+      "capacity_constraint": "Current Port of New Orleans capacity not met until 2040"
+    },
+    "barge_rates": {
+      "baseline_per_ton": "$4.69 (normal operations)",
+      "per_ton_mile": "$0.05-0.06",
+      "low_water_premium": "$20-25 per ton",
+      "mm39_diversion_premium": "$2-4 per ton (normal), $5-8 per ton (low-water)"
+    }
+  },
+  "comparable_facilities": {
+    "port_nickel_industrial_complex": {
+      "acreage": 387,
+      "river_frontage_feet": 5720,
+      "dock_dimensions": "510' x 52'",
+      "warehouse_sf": 66763,
+      "laydown_yard_sf": 386000,
+      "rail_service": "Norfolk Southern Class I with reciprocal switching"
+    },
+    "gold_river_industrial_mega_site": {
+      "acreage": 985,
+      "parish": "St. Charles",
+      "location": "Edgard",
+      "rail": "Union Pacific Class I",
+      "utilities": "Hydrogen pipeline (1.7 BCF daily capacity)",
+      "status": "Greenfield"
+    }
+  },
+  "development_scenarios": [
+    {
+      "scenario": "Bulk Cargo Terminal",
+      "use_case": "Cement, aggregates, steel imports",
+      "infrastructure_needs": [
+        "Dock rehabilitation",
+        "Conveyor systems",
+        "Storage silos/warehouses"
+      ],
+      "estimated_capex": "$15-30 million",
+      "timeline_months": "18-24"
+    },
+    {
+      "scenario": "Industrial Manufacturing Site",
+      "use_case": "Petrochemical, metals processing, manufacturing",
+      "infrastructure_needs": [
+        "Process equipment",
+        "Utilities expansion",
+        "Warehouse/production facilities"
+      ],
+      "estimated_capex": "$50-200 million",
+      "timeline_months": "36-60"
+    },
+    {
+      "scenario": "Logistics/Distribution Hub",
+      "use_case": "Container transloading, warehousing, cross-docking",
+      "infrastructure_needs": [
+        "Warehouse construction",
+        "Container handling equipment",
+        "Rail spur connection"
+      ],
+      "estimated_capex": "$25-75 million",
+      "timeline_months": "24-36"
+    },
+    {
+      "scenario": "Energy Export Terminal",
+      "use_case": "LNG support, petroleum products, biofuels",
+      "infrastructure_needs": [
+        "Storage tanks",
+        "Loading systems",
+        "Safety/environmental controls"
+      ],
+      "estimated_capex": "$100-500 million",
+      "timeline_months": "48-72"
+    }
+  ],
+  "key_data_sources": [
+    "exe_summary_SYNTHESIS.md",
+    "property_SYNTHESIS.md",
+    "infrastructure_SYNTHESIS.md",
+    "econometrics_SYNTHESIS.md",
+    "market_SYNTHESIS.md",
+    "Plaquemines Port Financials (Dec 31, 2022)",
+    "USACE Navigation Data",
+    "USDA Grain Transportation Reports",
+    "EPA Environmental Databases",
+    "Louisiana DEQ Records"
+  ],
+  "next_steps": [
+    {
+      "priority": "Immediate",
+      "action": "Phase I Environmental Site Assessment",
+      "cost": "$15,000-$25,000",
+      "timeline": "4-6 weeks"
+    },
+    {
+      "priority": "Critical",
+      "action": "Structural evaluation of 92-year-old dock",
+      "cost": "$50,000-$100,000",
+      "timeline": "6-8 weeks"
+    },
+    {
+      "priority": "Essential",
+      "action": "Regulatory consultation (LDEQ, EPA, USACE)",
+      "cost": "$25,000-$50,000",
+      "timeline": "8-12 weeks"
+    },
+    {
+      "priority": "Strategic",
+      "action": "Market study for cargo capture potential",
+      "cost": "$75,000-$150,000",
+      "timeline": "12-16 weeks"
+    },
+    {
+      "priority": "Planning",
+      "action": "Conceptual site development plans",
+      "cost": "$100,000-$200,000",
+      "timeline": "16-24 weeks"
+    }
+  ],
+  "dashboard_summary": {
+    "property_headline": "106.99-acre former Freeport Sulphur facility with 52' draft, remediated environmental status, and expansion potential",
+    "investment_thesis": "Strategic deep-water industrial site at epicenter of $60+ billion regional development, offering superior Gulf access and multimodal connectivity",
+    "target_investors": [
+      "Industrial operators requiring deep-water access",
+      "Port/terminal developers",
+      "Energy companies (LNG, petrochemical)",
+      "Logistics/distribution companies",
+      "Manufacturing firms requiring river transport"
+    ],
+    "competitive_positioning": "Deepest draft, closest to Gulf, remediated brownfield status, adjacent to major LNG and container developments",
+    "timing_rationale": "Regional infrastructure investments (rail, container terminal, LNG expansion) converging 2026-2029"
+  }
+}

@@ -1,0 +1,341 @@
+<!-- Permit Documents Section -->
+<section id="permits" class="report-section">
+  <div class="section-header">
+    <div class="section-title-group">
+      <h2 class="section-title">Permit Documents</h2>
+      <span class="source-count">0 sources</span>
+    </div>
+    <p class="section-description">
+      Regulatory permits and compliance documentation for the Port Sulphur Terminal facility.
+      This section is reserved for interactive document viewer functionality when permit documentation becomes available.
+    </p>
+  </div>
+
+  <!-- Placeholder Content -->
+  <div class="permits-placeholder">
+    <div class="placeholder-card">
+      <div class="placeholder-icon">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="12" y="8" width="40" height="48" rx="2" />
+          <line x1="20" y1="20" x2="44" y2="20" />
+          <line x1="20" y1="28" x2="44" y2="28" />
+          <line x1="20" y1="36" x2="36" y2="36" />
+          <circle cx="48" cy="48" r="12" fill="rgba(100, 255, 180, 0.2)" />
+          <path d="M44 48 L46 50 L52 44" stroke="#64ffb4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+
+      <h3 class="placeholder-title">Document Viewer Reserved</h3>
+
+      <p class="placeholder-message">
+        This section is reserved for an interactive document viewer that will display permit documentation
+        when available. Expected permit types include:
+      </p>
+
+      <ul class="permit-types-list">
+        <li>USACE Section 10 River and Harbor Act permits</li>
+        <li>USACE Section 404 Clean Water Act permits</li>
+        <li>Louisiana Pollutant Discharge Elimination System (LPDES) permits</li>
+        <li>Louisiana Department of Environmental Quality Air Quality permits</li>
+        <li>Louisiana Coastal Zone Management consistency certifications</li>
+        <li>Local zoning and land use permits</li>
+        <li>Historic preservation compliance documentation</li>
+      </ul>
+
+      <div class="placeholder-status">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">Data Pending</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Future Components Preview -->
+    <div class="future-components-grid">
+      <div class="component-preview">
+        <div class="preview-icon">📄</div>
+        <h4>Document Viewer</h4>
+        <p>Interactive PDF viewer with search, navigation, and metadata display</p>
+      </div>
+
+      <div class="component-preview">
+        <div class="preview-icon">📅</div>
+        <h4>Compliance Timeline</h4>
+        <p>Visual timeline of permitting milestones, renewals, and inspections</p>
+      </div>
+
+      <div class="component-preview">
+        <div class="preview-icon">🏛️</div>
+        <h4>Agency Dashboard</h4>
+        <p>Overview of regulatory agencies and permit types by jurisdiction</p>
+      </div>
+
+      <div class="component-preview">
+        <div class="preview-icon">✓</div>
+        <h4>Status Indicators</h4>
+        <p>Current compliance status summary and active permit tracking</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Permits Section Styles -->
+<style>
+/* Placeholder Container */
+.permits-placeholder {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Main Placeholder Card */
+.placeholder-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  transition: border-color 0.3s ease;
+}
+
+.placeholder-card:hover {
+  border-color: rgba(100, 255, 180, 0.4);
+}
+
+/* Placeholder Icon */
+.placeholder-icon {
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.placeholder-icon svg {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Placeholder Title */
+.placeholder-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+}
+
+/* Placeholder Message */
+.placeholder-message {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Permit Types List */
+.permit-types-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.permit-types-list li {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid rgba(100, 255, 180, 0.5);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+}
+
+.permit-types-list li:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-left-color: #64ffb4;
+  transform: translateX(4px);
+}
+
+/* Status Indicator */
+.placeholder-status {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffa500;
+  box-shadow: 0 0 8px rgba(255, 165, 0, 0.5);
+  animation: pulse-orange 2s ease-in-out infinite;
+}
+
+@keyframes pulse-orange {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+.status-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Future Components Grid */
+.future-components-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.component-preview {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.component-preview:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(100, 255, 180, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.preview-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.component-preview h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+}
+
+.component-preview p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .placeholder-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .placeholder-title {
+    font-size: 1.5rem;
+  }
+
+  .placeholder-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .permit-types-list {
+    max-width: 100%;
+  }
+
+  .permit-types-list li {
+    font-size: 0.9rem;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .future-components-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .component-preview {
+    padding: 1.25rem;
+  }
+
+  .preview-icon {
+    font-size: 2rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .placeholder-card {
+    border-style: solid;
+  }
+
+  .status-dot {
+    animation: none;
+  }
+
+  .future-components-grid {
+    break-inside: avoid;
+  }
+}
+</style>
+
+<!-- Permits Section JavaScript -->
+<script>
+// Placeholder initialization
+(function() {
+  console.log('Permits section: Placeholder mode - awaiting document data');
+
+  // Log expected data structure for future implementation
+  const expectedDataStructure = {
+    permits: {
+      federal: ['USACE Section 10/404', 'EPA NPDES/LPDES', 'USCG Navigation'],
+      state: ['LDEQ Air Quality', 'LDEQ Water Quality', 'LDNR Coastal Use', 'CPRA Consistency'],
+      local: ['Plaquemines Parish Zoning', 'Building Permits', 'Occupancy Permits']
+    },
+    status: 'pending',
+    futureComponents: [
+      'Document viewer with PDF.js',
+      'Compliance timeline chart',
+      'Agency jurisdiction mapping',
+      'Status indicator dashboard'
+    ]
+  };
+
+  // Check if permits data file exists (future implementation)
+  const dataPath = './data/permits_data.json';
+
+  // Future: When data becomes available, this will initialize the document viewer
+  // For now, display placeholder message
+  console.log('Expected permit data structure:', expectedDataStructure);
+  console.log('Placeholder will be replaced when permit documents are available');
+})();
+</script>

@@ -1,0 +1,633 @@
+{
+  "metadata": {
+    "title": "Port Sulphur Terminal - Capital Expenditure Analysis",
+    "generated": "2026-01-22",
+    "source": "capex_SYNTHESIS.md and related project documents",
+    "currency": "USD",
+    "notes": "All estimates based on current market conditions and comparable Mississippi River projects"
+  },
+  "project_overview": {
+    "location": "28310 Highway 23, Port Sulphur, LA 70083",
+    "property_size_acres": 107,
+    "river_frontage_feet": 10693,
+    "river_mile": 39,
+    "zoning": "Industrial District 3"
+  },
+  "total_project_investment": {
+    "low_estimate": 25000000,
+    "high_estimate": 45000000,
+    "base_case": 35000000,
+    "breakdown": [
+      {
+        "category": "Acquisition",
+        "amount": 14700000
+      },
+      {
+        "category": "Environmental Remediation",
+        "low": 8000000,
+        "high": 25000000,
+        "base": 15000000
+      },
+      {
+        "category": "Due Diligence & Assessments",
+        "low": 50000,
+        "high": 150000,
+        "base": 100000
+      },
+      {
+        "category": "Initial Development",
+        "low": 2250000,
+        "high": 5150000,
+        "base": 3500000
+      }
+    ]
+  },
+  "acquisition_costs": {
+    "total_acquisition_cost": 14700000,
+    "cost_per_acre": 137500,
+    "property_details": {
+      "total_acres": 107,
+      "river_frontage_linear_feet": 10693,
+      "existing_structures": [
+        "52-foot draft dock (92 years old, 1933 construction)",
+        "5,000 SF warehouse space",
+        "Remediated sulfur processing facility"
+      ]
+    }
+  },
+  "environmental_remediation": {
+    "total_estimated_cost": {
+      "low": 8000000,
+      "high": 25000000,
+      "base_case": 15000000
+    },
+    "recommended_reserves": {
+      "low": 10000000,
+      "high": 30000000,
+      "purpose": "Comprehensive environmental remediation and ongoing obligations"
+    },
+    "breakdown": [
+      {
+        "category": "Phase I Environmental Site Assessment (ESA)",
+        "cost_low": 3500,
+        "cost_high": 6000,
+        "timeline_weeks": "3-4",
+        "priority": "Immediate"
+      },
+      {
+        "category": "Phase II ESA (if Phase I flags risks)",
+        "cost_low": 15000,
+        "cost_high": 50000,
+        "timeline_weeks": "4-8",
+        "priority": "Critical"
+      },
+      {
+        "category": "Comprehensive Phase II Environmental Assessment",
+        "cost_low": 150000,
+        "cost_high": 300000,
+        "purpose": "Detailed sampling to ensure LAC 33 compliance"
+      },
+      {
+        "category": "Soil Remediation",
+        "estimated_cost": "Included in total remediation cost",
+        "scope": "Legacy sulfur processing contamination, soil acidification, heavy metals"
+      },
+      {
+        "category": "Groundwater Remediation",
+        "estimated_cost": "Included in total remediation cost",
+        "scope": "High water table contamination migration from historical operations"
+      },
+      {
+        "category": "Sediment Remediation",
+        "estimated_cost": "Included in total remediation cost",
+        "scope": "Waterfront area contamination from 45+ years of sulfur loading/unloading"
+      },
+      {
+        "category": "Ongoing Monitoring & Maintenance",
+        "estimated_annual_cost": "TBD",
+        "scope": "EPA Non-NPL Superfund site status, groundwater monitoring wells"
+      }
+    ],
+    "environmental_liabilities": {
+      "waterfront_area": "Legacy sulfur processing contamination in soil and sediments",
+      "front_parcel": "Old barge slip and filled sulfur mine canal subsurface contamination",
+      "groundwater": "High water table with potential contamination migration",
+      "epa_oversight": "Non-NPL Superfund site status requires ongoing EPA coordination",
+      "rcra_status": "Active Small Quantity Generator obligations under EPA ID LAD072609795"
+    }
+  },
+  "due_diligence_assessments": {
+    "total_budget": {
+      "low": 50000,
+      "high": 150000,
+      "recommended": 100000
+    },
+    "breakdown": [
+      {
+        "assessment": "Phase I Environmental Site Assessment",
+        "cost_low": 3500,
+        "cost_high": 6000,
+        "timeline": "3-4 weeks"
+      },
+      {
+        "assessment": "Phase II Environmental Site Assessment",
+        "cost_low": 15000,
+        "cost_high": 50000,
+        "timeline": "4-8 weeks",
+        "condition": "If Phase I flags risks"
+      },
+      {
+        "assessment": "Geotechnical Investigation",
+        "cost_low": 20000,
+        "cost_high": 75000,
+        "timeline": "4-6 weeks"
+      },
+      {
+        "assessment": "Bulkhead/Wharf Condition Assessment",
+        "cost_low": 15000,
+        "cost_high": 40000,
+        "scope": "92-year-old dock structure condition evaluation"
+      },
+      {
+        "assessment": "Sediment Testing",
+        "cost_low": 10000,
+        "cost_high": 30000,
+        "condition": "If dredging anticipated"
+      },
+      {
+        "assessment": "Flood Risk and Insurance Analysis",
+        "estimated_cost": "TBD",
+        "priority": "Essential",
+        "notes": "22 feet of flooding during Hurricane Katrina (2005)"
+      }
+    ]
+  },
+  "infrastructure_development": {
+    "note": "Multiple development scenarios based on intended use",
+    "scenarios": [
+      {
+        "scenario": "Midstream Mooring Facility - Option A (Lower Cost)",
+        "total_investment": {
+          "low": 5200000,
+          "high": 10800000,
+          "base_case": 7500000
+        },
+        "description": "Fee-based mooring infrastructure for supramax bulk carriers and barge fleeting",
+        "breakdown": [
+          {
+            "component": "Pile Installation & Materials",
+            "cost_low": 1800000,
+            "cost_high": 4200000,
+            "details": "17 piles total - 12 monopiles (48\" diameter to -100') + 5 anchor piles (48\" diameter to -200')"
+          },
+          {
+            "component": "Revetment Repair (USACE Standard H-18-45204-99)",
+            "cost_low": 400000,
+            "cost_high": 1200000,
+            "details": "Bank stabilization per USACE standards"
+          },
+          {
+            "component": "Mooring/Navigation System",
+            "cost_low": 300000,
+            "cost_high": 800000,
+            "details": "4 navigation buoys, chains, anchor hardware"
+          },
+          {
+            "component": "Captive Dock Barge",
+            "cost_low": 200000,
+            "cost_high": 500000,
+            "details": "Service platform with capture yoke"
+          },
+          {
+            "component": "Marine Construction Management",
+            "cost_low": 1500000,
+            "cost_high": 3100000,
+            "details": "Project management, equipment mobilization"
+          },
+          {
+            "component": "Land Improvements",
+            "cost_low": 300000,
+            "cost_high": 600000,
+            "details": "0.92 acres clearing, basic access"
+          },
+          {
+            "component": "Engineering/Permitting",
+            "cost_low": 700000,
+            "cost_high": 1400000,
+            "details": "Section 408 permit, environmental compliance"
+          }
+        ],
+        "timeline": {
+          "permitting_months": "18-36",
+          "construction_months": "6-15",
+          "total_months": "24-51"
+        },
+        "permit_requirements": [
+          "USACE Section 408 Authorization",
+          "USACE Section 10 Permit (Navigable Waters)",
+          "Section 404 Clean Water Act Permit",
+          "Louisiana Coastal Use Permit",
+          "LDEQ Water Quality Certification",
+          "Section 106 Cultural Resources Review",
+          "ESA Section 7 Endangered Species Consultation"
+        ]
+      },
+      {
+        "scenario": "Midstream Mooring Facility - Option B (Higher Cost)",
+        "total_investment": {
+          "low": 6900000,
+          "high": 27700000,
+          "base_case": 15000000
+        },
+        "description": "Expanded midstream dry cargo mooring facility with enhanced specifications",
+        "breakdown": [
+          {
+            "component": "Pile Installation (17 Total)",
+            "cost_low": 2400000,
+            "cost_high": 9200000,
+            "details": "12 monopiles + 5 anchor piles to 200' depth"
+          },
+          {
+            "component": "Mooring/Navigation System",
+            "cost_low": 800000,
+            "cost_high": 2500000,
+            "details": "4 buoys, chains, anchor hardware"
+          },
+          {
+            "component": "Captive Dock Barge",
+            "cost_low": 300000,
+            "cost_high": 800000,
+            "details": "Service platform with capture yoke"
+          },
+          {
+            "component": "Marine Construction",
+            "cost_low": 2500000,
+            "cost_high": 12000000,
+            "details": "Installation, weather delays, contingencies"
+          },
+          {
+            "component": "Land Improvements",
+            "cost_low": 400000,
+            "cost_high": 1200000,
+            "details": "0.92 acres clearing, access road"
+          },
+          {
+            "component": "Engineering/Permitting",
+            "cost_low": 500000,
+            "cost_high": 2000000,
+            "details": "Professional services, compliance"
+          }
+        ],
+        "capacity": {
+          "ship_mooring": "Supramax bulk carriers up to 800' LOA, 75' beam",
+          "barge_fleeting": "56 barge mooring positions (7x8 grid)",
+          "vessel_grt": 30000
+        }
+      }
+    ]
+  },
+  "regional_infrastructure_context": {
+    "nearby_major_projects": [
+      {
+        "project": "Venture Global Plaquemines LNG",
+        "investment": 21000000000,
+        "status": "Under construction, first phase operational 2024",
+        "description": "Largest active project in Plaquemines Parish"
+      },
+      {
+        "project": "APM Terminals Container Terminal (Louisiana Gateway Port)",
+        "investment": 500000000,
+        "status": "Letter of intent signed January 2024, permits pending",
+        "scope": "Initial phase: 200 acres, expandable to 900 acres, 14,000 TEU capacity"
+      },
+      {
+        "project": "Rail Spur Extension to NOGC Railway",
+        "investment": 85000000,
+        "distance_miles": 32,
+        "funding": "85% federal funding via RAISE grants ($72M), state match from PPMTD",
+        "timeline": "Design study completed May 2025, construction bids Q4 2025, completion 2028-2029"
+      },
+      {
+        "project": "Belle Chasse Bridge Replacement",
+        "investment": 169000000,
+        "description": "Fixed-span, 4-lane bridge with 73-foot vertical clearance"
+      },
+      {
+        "project": "LA 23 Highway Widening (Happy Jack to Port Sulphur)",
+        "investment": 17000000,
+        "status": "Environmental clearance underway, anticipated 2012 construction"
+      },
+      {
+        "project": "Woodland Connector Phase 1",
+        "investment": 18000000,
+        "description": "Connecting LA 23 and Walker Road to Intracoastal Canal"
+      }
+    ],
+    "total_regional_investment": {
+      "plaquemines_parish_active_projects": 21000000000,
+      "louisiana_industrial_pipeline": 60000000000,
+      "description": "Supporting market demand for port and terminal development"
+    }
+  },
+  "port_authority_financials": {
+    "entity": "Plaquemines Port Harbor & Terminal District (Louisiana Gateway Port)",
+    "as_of_date": "2022-12-31",
+    "net_position": 116800000,
+    "operating_revenue": 6000000,
+    "revenue_growth_percent": 13,
+    "non_operating_revenue": 32000000,
+    "capital_assets_net": 75400000,
+    "land_acquisitions_2022": 1200000,
+    "bond_financing_capacity": 300000000,
+    "notes": "Substantial asset accumulation and revenue diversification position authority for major capital projects"
+  },
+  "comparable_port_projects": {
+    "global_benchmarks": [
+      {
+        "project_type": "Container Terminal",
+        "construction_cost": 3000000000,
+        "description": "Recent global port projects"
+      },
+      {
+        "project_type": "Two 170,000-ton vessel berths",
+        "construction_cost": 300000000,
+        "description": "Global benchmark for deep-water berths"
+      }
+    ],
+    "depth_requirements": {
+      "regular_port": "20 feet minimum depth",
+      "deep_water_port": "30 feet minimum depth",
+      "post_panamax": "45+ feet depth",
+      "port_sulphur_existing": "52 feet draft capacity"
+    }
+  },
+  "comparable_acquisitions": {
+    "regional_land_values": [
+      {
+        "property": "State acquisition (2022)",
+        "total_cost": 36000000,
+        "cost_per_acre": 60000,
+        "location": "Plaquemines Parish"
+      },
+      {
+        "property": "Violet Dock Port Acquisition",
+        "total_cost": 18000000,
+        "acres": 81,
+        "cost_per_acre": 222222,
+        "location": "St. Bernard Parish"
+      }
+    ]
+  },
+  "risk_factors": {
+    "environmental": [
+      "Legacy sulfur processing contamination (72 years of operations, 1933-2005)",
+      "Soil acidification and heavy metals mobilization",
+      "Groundwater impacts from Frasch Process operations",
+      "Active RCRA Small Quantity Generator status (EPA ID LAD072609795)",
+      "Non-NPL Superfund site status requiring EPA coordination",
+      "2009 environmental release: 5.8 million pounds acidic water discharge"
+    ],
+    "climate_flood": [
+      "Hurricane Katrina damage: 22 feet of flooding (August 2005)",
+      "Site at/below sea level (coordinates: 29.473414, -89.686632)",
+      "Plaquemines Parish experiencing world's highest relative sea level rise rates",
+      "Back levee overflow concerns",
+      "Ongoing extreme flood vulnerability"
+    ],
+    "structural": [
+      "92-year-old dock infrastructure (built 1933)",
+      "Post-Katrina infrastructure destruction",
+      "Potential subsidence from filled sulfur mine canal",
+      "Bank stability concerns in revetment-protected area (RM 41.1-34.3)"
+    ],
+    "regulatory": [
+      "Multiple federal permits required (USACE Section 408, Section 10, Section 404)",
+      "State coastal zone management compliance",
+      "Endangered species consultation requirements",
+      "Cultural resources review (Section 106)",
+      "Ongoing EPA oversight and institutional controls"
+    ]
+  },
+  "development_timeline": {
+    "phase_1_due_diligence": {
+      "duration_months": "3-6",
+      "activities": [
+        "Phase I ESA (3-4 weeks)",
+        "Phase II ESA if required (4-8 weeks)",
+        "Geotechnical investigation (4-6 weeks)",
+        "Bulkhead/wharf condition assessment",
+        "Flood risk analysis",
+        "Regulatory consultation"
+      ]
+    },
+    "phase_2_remediation": {
+      "duration_months": "12-24",
+      "estimated_cost_low": 8000000,
+      "estimated_cost_high": 25000000,
+      "activities": [
+        "Soil remediation",
+        "Groundwater treatment systems",
+        "Sediment remediation",
+        "Cap installation/maintenance",
+        "EPA coordination and approvals"
+      ]
+    },
+    "phase_3_permitting": {
+      "duration_months": "18-36",
+      "estimated_cost_low": 500000,
+      "estimated_cost_high": 2000000,
+      "key_permits": [
+        "USACE Section 408 authorization",
+        "Section 10 navigable waters permit",
+        "Section 404 Clean Water Act permit",
+        "Louisiana Coastal Use Permit",
+        "LDEQ Water Quality Certification",
+        "ESA Section 7 consultation",
+        "Section 106 cultural resources"
+      ]
+    },
+    "phase_4_construction": {
+      "duration_months": "6-15",
+      "estimated_cost_scenario_a_low": 5200000,
+      "estimated_cost_scenario_a_high": 10800000,
+      "estimated_cost_scenario_b_low": 6900000,
+      "estimated_cost_scenario_b_high": 27700000,
+      "activities": [
+        "Pile installation (17 total piles)",
+        "Revetment repair",
+        "Mooring system installation",
+        "Marine construction",
+        "Land improvements"
+      ]
+    },
+    "total_project_duration": {
+      "minimum_months": 39,
+      "maximum_months": 81,
+      "base_case_months": 60
+    }
+  },
+  "financing_considerations": {
+    "potential_structures": [
+      {
+        "type": "Municipal Revenue Bonds",
+        "description": "Tax-exempt bonds for docks/wharves under IRC §142 (exempt-facility bonds)",
+        "repayment_source": "Facility rents/fees/system net revenues",
+        "example": "Port Authority consolidated bonds backed by system revenues"
+      },
+      {
+        "type": "Private Activity Bonds (PABs)",
+        "description": "Tax-exempt bonds issued by public authority for private projects",
+        "eligible_facilities": "Docks, wharves, mass commuting facilities per IRC §142",
+        "volume_cap": "State allocation required"
+      },
+      {
+        "type": "Lease-Revenue Bonds",
+        "description": "Bonds repaid from pledged lease revenues",
+        "example": "Fernandina OHPA bond refinancing (2018)"
+      },
+      {
+        "type": "Performance/Payment Bonds (Surety)",
+        "description": "Contractor guarantee for construction/lease obligations",
+        "note": "Not an investment security, required for public works per FL §255.05"
+      },
+      {
+        "type": "Public-Private Partnership (P3)",
+        "description": "Availability-payment or revenue-risk concessions",
+        "examples": [
+          "Port of Miami Tunnel (DBFOM with 30-year availability payments)",
+          "Gerald Desmond Bridge Replacement (TIFIA loans)"
+        ]
+      },
+      {
+        "type": "TIFIA Loans",
+        "description": "Federal credit assistance for transportation infrastructure",
+        "example": "Gerald Desmond Bridge (Long Beach)"
+      },
+      {
+        "type": "RAISE Grants",
+        "description": "Federal grant program for transportation projects",
+        "example": "Rail spur extension: 85% federal funding ($72M of $85M total)"
+      }
+    ],
+    "institutional_controls": {
+      "land_use_restrictions": "Potential limitations from historical contamination",
+      "deed_restrictions": "May be required as part of EPA remediation approval",
+      "ongoing_obligations": "Groundwater monitoring, cap maintenance, reporting requirements"
+    }
+  },
+  "revenue_potential": {
+    "midstream_mooring_facility": {
+      "dockage_rate_per_grt": 0.78,
+      "security_fee_per_vessel": 1500,
+      "typical_vessel_grt": 30000,
+      "revenue_per_call": 24900,
+      "operating_days_annual": 280,
+      "scenarios": [
+        {
+          "utilization": "Conservative (2 calls/week)",
+          "annual_calls": 104,
+          "gross_revenue": 2590000,
+          "net_revenue": 2070000,
+          "operating_expense_percent": 20
+        },
+        {
+          "utilization": "Base Case (3 calls/week)",
+          "annual_calls": 156,
+          "gross_revenue": 3880000,
+          "net_revenue": 3100000,
+          "operating_expense_percent": 20
+        },
+        {
+          "utilization": "Optimistic (4 calls/week)",
+          "annual_calls": 208,
+          "gross_revenue": 5180000,
+          "net_revenue": 4140000,
+          "operating_expense_percent": 20
+        }
+      ]
+    },
+    "barge_fleeting": {
+      "capacity": 56,
+      "unit": "barge positions",
+      "revenue_model": "Fee-based mooring for customer-owned barges"
+    }
+  },
+  "strategic_advantages": {
+    "location": [
+      "Mile 39 on Mississippi River (federal navigation system)",
+      "52-foot draft capacity (Post-Panamax capable)",
+      "10,693 linear feet of river frontage",
+      "Within Port Sulphur revetment protection system (RM 41.1-34.3)"
+    ],
+    "infrastructure": [
+      "Existing dock infrastructure (requires assessment/rehabilitation)",
+      "Industrial District 3 zoning (pre-approved for maritime use)",
+      "Proximity to planned $85M rail spur to NOGC Railway",
+      "Access to federal navigation channel"
+    ],
+    "market_position": [
+      "Proximity to $21B Venture Global Plaquemines LNG facility",
+      "Part of Louisiana Gateway Port development corridor",
+      "Strategic position at mouth of Mississippi River",
+      "Access to growing LNG, petrochemical, and container markets"
+    ]
+  },
+  "critical_next_steps": [
+    {
+      "step": "Phase I Environmental Site Assessment",
+      "priority": "Immediate",
+      "estimated_cost": 5000,
+      "timeline": "3-4 weeks"
+    },
+    {
+      "step": "Verify RCRA Generator Status and Ongoing Obligations",
+      "priority": "Priority",
+      "estimated_cost": "Included in legal/consulting fees"
+    },
+    {
+      "step": "Comprehensive Flood Risk and Insurance Analysis",
+      "priority": "Essential",
+      "estimated_cost": "TBD"
+    },
+    {
+      "step": "Budget Environmental Remediation Reserves",
+      "priority": "Critical",
+      "estimated_cost_range": "10M-30M"
+    },
+    {
+      "step": "Engage Specialized Environmental Legal Counsel",
+      "priority": "Required",
+      "estimated_cost": "TBD"
+    },
+    {
+      "step": "Bulkhead/Wharf Structural Condition Assessment",
+      "priority": "Essential",
+      "estimated_cost_low": 15000,
+      "estimated_cost_high": 40000
+    },
+    {
+      "step": "Pre-Application Coordination with USACE",
+      "priority": "Essential",
+      "timeline": "30+ days before formal application"
+    },
+    {
+      "step": "Regulatory Consultation (EPA, LDEQ, USACE)",
+      "priority": "Essential",
+      "timeline": "Ongoing during due diligence"
+    }
+  ],
+  "cost_summary": {
+    "acquisition": 14700000,
+    "due_diligence_minimum": 50000,
+    "due_diligence_maximum": 150000,
+    "environmental_remediation_minimum": 8000000,
+    "environmental_remediation_maximum": 25000000,
+    "infrastructure_scenario_a_minimum": 5200000,
+    "infrastructure_scenario_a_maximum": 10800000,
+    "infrastructure_scenario_b_minimum": 6900000,
+    "infrastructure_scenario_b_maximum": 27700000,
+    "total_project_minimum": 27950000,
+    "total_project_maximum": 52650000,
+    "recommended_base_case": 35000000
+  }
+}

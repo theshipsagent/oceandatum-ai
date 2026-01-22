@@ -1,0 +1,163 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "generated": "2026-01-22",
+    "source": "Property Synthesis Document - Port Sulphur Terminal",
+    "coordinate_system": "WGS84 (EPSG:4326)",
+    "notes": "Property boundaries are approximate, based on described frontage and acreage. Exact survey coordinates should be obtained from parish assessor records or official survey plats."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Port Sulphur Freeport Facility - Main Parcel",
+        "address": "28310 Highway 23, Port Sulphur, LA 70083",
+        "parish": "Plaquemines Parish",
+        "state": "Louisiana",
+        "total_acres": 106.99,
+        "total_square_feet": 4660964.4,
+        "river_frontage_lf": 10693,
+        "highway_23_frontage_lf": 2500,
+        "river_mile_marker": 39,
+        "bank": "West Bank",
+        "zoning": "Industrial District 3",
+        "owner_historical": "Freeport-McMoRan (1933-2005)",
+        "current_status": "Available for development",
+        "environmental_status": "Remediated",
+        "parcel_type": "Industrial Waterfront",
+        "elevation_feet": 8,
+        "flood_zone": "High-risk FEMA Zone"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-89.6920, 29.4695],
+            [-89.6920, 29.4735],
+            [-89.6975, 29.4735],
+            [-89.6975, 29.4695],
+            [-89.6920, 29.4695]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mississippi River Frontage",
+        "type": "River Frontage Line",
+        "length_linear_feet": 10693,
+        "length_miles": 2.025,
+        "description": "Approximately 10,693 linear feet of Mississippi River frontage along West Bank at Mile Marker 39",
+        "channel_depth_feet": 52,
+        "draft_capability": "Deep water access for large vessels"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-89.6920, 29.4695],
+          [-89.6920, 29.4735]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Highway 23 Frontage",
+        "type": "Highway Frontage Line",
+        "length_linear_feet": 2500,
+        "length_miles": 0.473,
+        "highway": "Louisiana Highway 23",
+        "description": "2,500 linear feet of frontage on Louisiana Highway 23"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-89.6975, 29.4695],
+          [-89.6975, 29.4735]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dock Facility",
+        "type": "Point of Interest",
+        "feature_type": "Concrete Dock",
+        "dimensions": "24' x 433'",
+        "capacity_tons": 10000,
+        "construction_year": 1933,
+        "age_years": 92,
+        "draft_feet": 52,
+        "condition": "Requires structural evaluation",
+        "status": "Existing infrastructure"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.6920, 29.4715]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Warehouse Facility",
+        "type": "Point of Interest",
+        "feature_type": "Warehouse",
+        "area_square_feet": 5000,
+        "status": "Existing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.6945, 29.4715]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Site Centroid",
+        "type": "Reference Point",
+        "description": "Approximate geographic center of property",
+        "river_mile": 39,
+        "latitude": 29.4714,
+        "longitude": -89.6947
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.6947, 29.4714]
+      }
+    }
+  ],
+  "boundary_notes": {
+    "data_quality": "APPROXIMATE - Survey required",
+    "limitations": [
+      "Exact parcel boundaries not provided in source documents",
+      "Polygon generated from frontage measurements and total acreage",
+      "Coordinates estimated based on Mile Marker 39 West Bank location",
+      "River frontage assumes relatively straight shoreline (actual may vary)",
+      "Interior property boundaries and easements not depicted"
+    ],
+    "recommendations": [
+      "Obtain official survey plat from Plaquemines Parish Assessor",
+      "Verify boundaries with title commitment and ALTA survey",
+      "Cross-reference with Louisiana DEQ remediation site boundaries",
+      "Confirm riparian rights and water boundaries with USACE",
+      "Review for encumbrances, easements, and right-of-way agreements"
+    ],
+    "calculated_dimensions": {
+      "river_frontage_feet": 10693,
+      "river_frontage_miles": 2.025,
+      "approximate_depth_feet": 2001,
+      "approximate_depth_miles": 0.379,
+      "total_area_acres": 106.99,
+      "calculation_note": "If river frontage is 10,693 LF and area is 106.99 acres (4,660,964 SF), average depth would be approximately 436 feet. However, irregular shoreline and actual parcel shape will vary."
+    },
+    "reference_coordinates": {
+      "mississippi_river_mile_39": {
+        "approximate_latitude": 29.4714,
+        "approximate_longitude": -89.6947,
+        "bank": "West Bank",
+        "source": "USACE River Mile Marker system"
+      }
+    }
+  }
+}

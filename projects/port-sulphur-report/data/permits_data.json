@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "source_document": "permits_SYNTHESIS.md",
+    "generated_date": "2026-01-22",
+    "last_updated": "2026-01-22T01:21:01Z",
+    "total_files_processed": 0,
+    "data_status": "placeholder",
+    "description": "Permits and regulatory compliance data for Port Sulphur Terminal"
+  },
+  "summary": {
+    "total_permits": 0,
+    "active_permits": 0,
+    "pending_applications": 0,
+    "regulatory_agencies": []
+  },
+  "permits": [],
+  "regulatory_framework": {
+    "federal_agencies": [],
+    "state_agencies": [],
+    "local_authorities": []
+  },
+  "compliance_status": {
+    "environmental_permits": {
+      "total": 0,
+      "status": "data_pending",
+      "categories": []
+    },
+    "operational_permits": {
+      "total": 0,
+      "status": "data_pending",
+      "categories": []
+    },
+    "construction_permits": {
+      "total": 0,
+      "status": "data_pending",
+      "categories": []
+    }
+  },
+  "timeline": {
+    "permitting_milestones": [],
+    "upcoming_renewals": [],
+    "historical_applications": []
+  },
+  "notes": [
+    "This is a placeholder structure created from an empty permits synthesis document.",
+    "No permit documents were available in the source directory at time of generation.",
+    "This structure should be populated when permit documentation becomes available.",
+    "Expected permit types: USACE Section 10/404, LPDES, Air Quality, Coastal Zone Management, etc."
+  ]
+}

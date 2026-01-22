@@ -1,0 +1,977 @@
+<!-- ============================================================================
+     REGULATORY & PERMITTING SECTION
+     Port Sulphur Terminal Analysis
+     Generated: 2026-01-22
+     Data Sources: 5 files from permitting analysis
+     ============================================================================ -->
+
+<section id="permitting" class="report-section">
+  <div class="section-header">
+    <h2>Regulatory & Permitting Framework</h2>
+    <div class="source-badge">5 sources</div>
+  </div>
+
+  <!-- Executive Summary -->
+  <div class="content-block">
+    <h3>Integrated Permitting Strategy</h3>
+    <p class="lead-text">
+      Port Sulphur Terminal development requires coordination across multiple regulatory authorities
+      with overlapping but distinct jurisdictions. The integrated permitting approach treats
+      <strong>Section 408 permission</strong> as the primary regulatory pathway, with Section 10 and
+      Section 404 permits processed concurrently under USACE New Orleans District coordination.
+    </p>
+    <div class="highlight-box">
+      <h4>2025 Programmatic Environmental Assessment</h4>
+      <p>
+        Provides standardized evaluation criteria that streamline the review process. Appendix B
+        contains specific engineering criteria for revetment interactions, reducing the need for
+        project-specific studies when standard approaches are applicable.
+      </p>
+    </div>
+  </div>
+
+  <!-- Regulatory Timeline Chart -->
+  <div class="chart-container">
+    <h3>Regulatory Timeline Analysis</h3>
+    <p class="chart-description">
+      Estimated permitting phases showing minimum and maximum duration scenarios. Total timeline
+      ranges from 18-36 months depending on complexity and early coordination effectiveness.
+    </p>
+    <div class="chart-wrapper">
+      <canvas id="regulatoryTimelineChart" height="350"></canvas>
+    </div>
+  </div>
+
+  <!-- Critical Path Timeline -->
+  <div class="chart-container">
+    <h3>Critical Path Analysis</h3>
+    <p class="chart-description">
+      26-month base scenario showing sequential permitting activities on the critical path.
+    </p>
+    <div class="chart-wrapper">
+      <canvas id="criticalPathChart" height="300"></canvas>
+    </div>
+  </div>
+
+  <!-- Permit Types Breakdown -->
+  <div class="two-column-layout">
+    <div class="chart-container">
+      <h3>Permit Types by Jurisdiction</h3>
+      <p class="chart-description">
+        Distribution of required permits across federal, state, and local regulatory levels.
+      </p>
+      <div class="chart-wrapper">
+        <canvas id="permitTypesChart" height="300"></canvas>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h3>Federal Permits (Primary)</h3>
+      <ul class="checklist-items">
+        <li>
+          <strong>Section 408 Permission</strong> (USACE New Orleans District)
+          <br><span class="detail-text">Modification of federal flood control/navigation projects</span>
+        </li>
+        <li>
+          <strong>Section 10 Permit</strong> (USACE New Orleans District)
+          <br><span class="detail-text">Work in or affecting navigable waters</span>
+        </li>
+        <li>
+          <strong>Section 404 Permit</strong> (USACE New Orleans District)
+          <br><span class="detail-text">Discharge of dredged/fill material into wetlands (if applicable)</span>
+        </li>
+        <li>
+          <strong>Surface Water Discharge Permits</strong> (USACE)
+          <br><span class="detail-text">Stormwater and process water discharge</span>
+        </li>
+      </ul>
+
+      <h4>State & Local Permits</h4>
+      <ul class="checklist-items">
+        <li>
+          <strong>Environmental Compliance</strong> (Louisiana DEQ - LAC 33)
+          <br><span class="detail-text">Soil remediation, groundwater protection, RBCA protocols</span>
+        </li>
+        <li>
+          <strong>Building Permits</strong> (Plaquemines Parish)
+          <br><span class="detail-text">Construction of terminal facilities and structures</span>
+        </li>
+        <li>
+          <strong>Development & Zoning Approvals</strong> (Plaquemines Parish)
+          <br><span class="detail-text">Land use and site development compliance</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Agency Jurisdiction Matrix -->
+  <div class="chart-container full-width">
+    <h3>Regulatory Agencies Jurisdiction Matrix</h3>
+    <p class="chart-description">
+      Multi-agency coordination requirements showing jurisdiction overlap across navigation,
+      environmental, security, and development domains.
+    </p>
+    <div class="chart-wrapper">
+      <canvas id="agenciesInvolvementChart" height="400"></canvas>
+    </div>
+  </div>
+
+  <!-- Required Environmental Studies -->
+  <div class="content-block">
+    <h3>Required Environmental Studies</h3>
+    <p>
+      Sequential environmental assessment process required before comprehensive permit package
+      submission. Phase progression depends on findings at each stage.
+    </p>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-wrapper">
+      <canvas id="studiesTimelineChart" height="300"></canvas>
+    </div>
+  </div>
+
+  <!-- Studies Checklist -->
+  <div class="regulatory-checklist">
+    <div class="checklist-card">
+      <div class="checklist-header">
+        <span class="checklist-number">1</span>
+        <h4>Phase I Environmental Site Assessment</h4>
+        <span class="status-badge status-required">Required</span>
+      </div>
+      <div class="checklist-content">
+        <p><strong>Purpose:</strong> Historical review and visual assessment</p>
+        <p><strong>Scope:</strong> Review of historical site usage, potential contamination sources,
+        regulatory database search, site reconnaissance</p>
+        <p><strong>Status:</strong> Not yet initiated - immediate action recommended</p>
+      </div>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-header">
+        <span class="checklist-number">2</span>
+        <h4>Phase II Environmental Site Assessment</h4>
+        <span class="status-badge status-conditional">Conditional</span>
+      </div>
+      <div class="checklist-content">
+        <p><strong>Purpose:</strong> Soil/groundwater sampling and analysis</p>
+        <p><strong>Scope:</strong> Subsurface investigation, chemical analysis, contamination delineation</p>
+        <p><strong>Trigger:</strong> Positive findings in Phase I ESA</p>
+      </div>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-header">
+        <span class="checklist-number">3</span>
+        <h4>Risk Assessment</h4>
+        <span class="status-badge status-conditional">Conditional</span>
+      </div>
+      <div class="checklist-content">
+        <p><strong>Purpose:</strong> Human health and ecological risk evaluation</p>
+        <p><strong>Regulatory Driver:</strong> EPA Regional Screening Levels (RSLs), LDEQ RBCA protocols</p>
+        <p><strong>Trigger:</strong> Contamination identified in Phase II</p>
+      </div>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-header">
+        <span class="checklist-number">4-6</span>
+        <h4>Remedial Investigation, Feasibility Study & Design</h4>
+        <span class="status-badge status-conditional">Conditional</span>
+      </div>
+      <div class="checklist-content">
+        <p><strong>Purpose:</strong> Detailed contamination characterization, technology evaluation,
+        and engineering design for selected remedy</p>
+        <p><strong>Regulatory Driver:</strong> EPA guidance (EPA-542-R-07-013), LDEQ approval required</p>
+        <p><strong>Trigger:</strong> Risk assessment determines remediation necessary</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Permit Complexity Matrix -->
+  <div class="chart-container">
+    <h3>Permit Application Complexity vs. Duration vs. Impact</h3>
+    <p class="chart-description">
+      Bubble chart showing relationship between permit complexity, processing duration, and
+      project impact. Larger bubbles indicate greater impact on project timeline and viability.
+    </p>
+    <div class="chart-wrapper">
+      <canvas id="complexityMatrixChart" height="400"></canvas>
+    </div>
+  </div>
+
+  <!-- Optimization Strategies -->
+  <div class="content-block">
+    <h3>Timeline Optimization Strategies</h3>
+    <p>
+      Six critical success factors for reducing permitting timeline and costs through proactive
+      coordination and comprehensive preparation.
+    </p>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-wrapper">
+      <canvas id="optimizationImpactChart" height="350"></canvas>
+    </div>
+  </div>
+
+  <!-- Optimization Details -->
+  <div class="two-column-layout">
+    <div class="content-block">
+      <h4>Critical Success Factors</h4>
+      <ul class="success-factors">
+        <li>
+          <strong>Early Pre-Application Consultation</strong>
+          <br>Understand regulatory requirements before design commitment; identify potential
+          issues early when modifications are most cost-effective
+        </li>
+        <li>
+          <strong>Comprehensive Application Packages</strong>
+          <br>Reduce review cycles by providing complete documentation upfront; minimize
+          information requests that delay processing
+        </li>
+        <li>
+          <strong>Proper Technical Documentation</strong>
+          <br>Avoid design revisions and reduce back-and-forth with regulators through thorough
+          initial submittals
+        </li>
+      </ul>
+    </div>
+
+    <div class="content-block">
+      <h4>Streamlining Benefits</h4>
+      <ul class="success-factors">
+        <li>
+          <strong>Concurrent Permit Processing</strong>
+          <br>Single point coordination through USACE New Orleans District; reduced waiting
+          between sequential permits
+        </li>
+        <li>
+          <strong>Programmatic EA Standards</strong>
+          <br>Use standardized criteria from Appendix B; reduce project-specific studies when
+          standard approaches applicable
+        </li>
+        <li>
+          <strong>Early Environmental Assessment</strong>
+          <br>Prevent late-stage discoveries; avoid costly remediation delays that extend
+          timeline significantly
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Environmental Overlays -->
+  <div class="content-block highlight-section">
+    <h3>Environmental Compliance Overlays</h3>
+    <div class="three-column-grid">
+      <div class="overlay-card">
+        <h4>CERCLA Considerations</h4>
+        <p><strong>Applicability:</strong> Superfund site considerations</p>
+        <p><strong>Assessment:</strong> Required through Phase I/II ESA process</p>
+        <p><strong>Oversight:</strong> EPA Region 6 (if triggered)</p>
+      </div>
+
+      <div class="overlay-card">
+        <h4>Wetlands Protection</h4>
+        <p><strong>Applicability:</strong> Clean Water Act Section 404</p>
+        <p><strong>Assessment:</strong> Wetlands delineation during permitting</p>
+        <p><strong>Oversight:</strong> USACE New Orleans District</p>
+      </div>
+
+      <div class="overlay-card">
+        <h4>Endangered Species Act</h4>
+        <p><strong>Applicability:</strong> If protected species or critical habitat present</p>
+        <p><strong>Assessment:</strong> Consultation during federal permitting</p>
+        <p><strong>Oversight:</strong> U.S. Fish & Wildlife Service coordination</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Agency Contacts -->
+  <div class="content-block">
+    <h3>Primary Regulatory Contacts</h3>
+    <div class="two-column-layout">
+      <div class="agency-contact-card">
+        <h4>U.S. Army Corps of Engineers</h4>
+        <p class="agency-name">New Orleans District</p>
+        <p><strong>Role:</strong> Primary federal regulatory authority for dock expansion</p>
+        <p><strong>Jurisdiction:</strong></p>
+        <ul>
+          <li>Section 408 Permission (Federal Project Modifications)</li>
+          <li>Section 10 Permits (Navigable Waters)</li>
+          <li>Section 404 Permits (Wetlands)</li>
+          <li>Federal Navigation Channel Maintenance</li>
+          <li>Revetment System Approvals</li>
+        </ul>
+        <p class="action-item"><strong>Action:</strong> Initiate pre-application consultation</p>
+      </div>
+
+      <div class="agency-contact-card">
+        <h4>Louisiana Department of Environmental Quality</h4>
+        <p class="agency-name">LDEQ</p>
+        <p><strong>Role:</strong> Primary state regulatory oversight</p>
+        <p><strong>Jurisdiction:</strong></p>
+        <ul>
+          <li>Soil Remediation Standards (LAC 33)</li>
+          <li>Groundwater Protection Standards</li>
+          <li>Risk-Based Corrective Action (RBCA) Protocols</li>
+          <li>Environmental Compliance</li>
+        </ul>
+        <p class="action-item"><strong>Action:</strong> Early coordination on state permitting requirements</p>
+      </div>
+
+      <div class="agency-contact-card">
+        <h4>Environmental Protection Agency</h4>
+        <p class="agency-name">EPA Region 6</p>
+        <p><strong>Role:</strong> Federal environmental oversight (if triggered)</p>
+        <p><strong>Jurisdiction:</strong></p>
+        <ul>
+          <li>Superfund Oversight</li>
+          <li>Soil Contamination Standards</li>
+          <li>Environmental Compliance</li>
+        </ul>
+        <p><strong>Guidance Documents:</strong></p>
+        <ul>
+          <li>Superfund Soil Screening Guidance (EPA/540/R-96/018)</li>
+          <li>Regional Screening Levels (RSLs)</li>
+          <li>Use of Soil Amendments (EPA-542-R-07-013)</li>
+        </ul>
+      </div>
+
+      <div class="agency-contact-card">
+        <h4>Plaquemines Parish Government</h4>
+        <p class="agency-name">Local Authority</p>
+        <p><strong>Role:</strong> Local permitting and development approvals</p>
+        <p><strong>Jurisdiction:</strong></p>
+        <ul>
+          <li>Local Building Permits</li>
+          <li>Development Permits</li>
+          <li>Zoning Approvals</li>
+          <li>Land Use Approvals</li>
+        </ul>
+        <p class="action-item"><strong>Action:</strong> Coordinate local permit timing with federal approvals</p>
+      </div>
+
+      <div class="agency-contact-card">
+        <h4>U.S. Coast Guard & CBP</h4>
+        <p class="agency-name">USCG / Customs & Border Protection</p>
+        <p><strong>Role:</strong> Navigation safety and security standards</p>
+        <p><strong>Jurisdiction:</strong></p>
+        <ul>
+          <li>Navigation Safety Standards</li>
+          <li>Aids to Navigation</li>
+          <li>Maritime Security</li>
+          <li>International Cargo Operations</li>
+          <li>Port Security</li>
+        </ul>
+      </div>
+
+      <div class="agency-contact-card">
+        <h4>Department of Energy</h4>
+        <p class="agency-name">DOE</p>
+        <p><strong>Role:</strong> LNG export approvals (regional context)</p>
+        <p><strong>Recent Activity:</strong></p>
+        <p>2025 DOE approvals for gas exports influence regional development patterns</p>
+        <p><strong>Regional Impact:</strong> $21B in tax breaks for LNG facilities regionally</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Immediate Recommendations -->
+  <div class="content-block recommendations-section">
+    <h3>Immediate Actions & Next Steps</h3>
+    <div class="two-column-layout">
+      <div class="recommendation-card priority-high">
+        <h4>Immediate Actions (0-3 months)</h4>
+        <ol class="recommendation-list">
+          <li>
+            <strong>Initiate Pre-Application Consultation</strong>
+            <br>Contact USACE New Orleans District to schedule preliminary meeting and
+            discuss project scope, regulatory requirements, and timeline expectations
+          </li>
+          <li>
+            <strong>Commission Phase I Environmental Site Assessment</strong>
+            <br>Engage qualified environmental consultant to conduct historical review,
+            database search, and site reconnaissance
+          </li>
+          <li>
+            <strong>Review 2025 Programmatic EA</strong>
+            <br>Study Appendix B engineering criteria for revetment interactions and
+            standardized evaluation requirements
+          </li>
+          <li>
+            <strong>Engage Louisiana DEQ</strong>
+            <br>Initial coordination regarding state permitting requirements under LAC 33
+          </li>
+        </ol>
+      </div>
+
+      <div class="recommendation-card priority-medium">
+        <h4>Near-Term Actions (3-6 months)</h4>
+        <ol class="recommendation-list">
+          <li>
+            <strong>Complete Phase II ESA (if triggered)</strong>
+            <br>Conduct subsurface investigation and chemical analysis if Phase I identifies concerns
+          </li>
+          <li>
+            <strong>Develop Preliminary Engineering Designs</strong>
+            <br>Incorporate Programmatic EA criteria and USACE feedback from pre-application consultation
+          </li>
+          <li>
+            <strong>Initiate Parish Coordination</strong>
+            <br>Begin discussions with Plaquemines Parish regarding local permits and timing
+          </li>
+          <li>
+            <strong>Prepare Integrated Permit Application Strategy</strong>
+            <br>Develop comprehensive plan for concurrent Section 408, Section 10, and Section 404 submissions
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Findings Summary -->
+  <div class="content-block findings-summary">
+    <h3>Key Findings</h3>
+    <div class="findings-grid">
+      <div class="finding-item positive">
+        <h4>Clear Regulatory Pathway</h4>
+        <p>Established framework through USACE New Orleans District with integrated permitting approach</p>
+      </div>
+
+      <div class="finding-item positive">
+        <h4>Streamlining Available</h4>
+        <p>2025 Programmatic EA provides standardized evaluation criteria reducing project-specific studies</p>
+      </div>
+
+      <div class="finding-item positive">
+        <h4>Technical Feasibility Confirmed</h4>
+        <p>Previous engineering studies verified dock expansion capability for at least two additional berths</p>
+      </div>
+
+      <div class="finding-item neutral">
+        <h4>Timeline Predictability</h4>
+        <p>18-36 month range achievable with proper coordination and comprehensive application packages</p>
+      </div>
+
+      <div class="finding-item neutral">
+        <h4>Multi-Agency Coordination Required</h4>
+        <p>Moderate complexity with multiple agencies but integrated federal process available</p>
+      </div>
+
+      <div class="finding-item caution">
+        <h4>Environmental Unknowns</h4>
+        <p>Phase I/II ESA required to assess contamination status before timeline can be finalized</p>
+      </div>
+
+      <div class="finding-item caution">
+        <h4>Primary Risk Factor</h4>
+        <p>Environmental contamination requiring remediation could extend timeline and add significant costs</p>
+      </div>
+
+      <div class="finding-item positive">
+        <h4>Mitigation Strategy</h4>
+        <p>Early environmental assessment and pre-application consultation minimize downstream surprises</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Documentation Priorities -->
+  <div class="content-block">
+    <h3>Documentation Priorities for Permit Applications</h3>
+    <ul class="documentation-checklist">
+      <li>
+        <strong>Comprehensive Technical Documentation</strong>
+        <br>Engineering analysis, design calculations, construction methodology, structural plans
+      </li>
+      <li>
+        <strong>Engineering Drawings Meeting Appendix B Standards</strong>
+        <br>Revetment interaction details, navigation safety features, dock structural details
+      </li>
+      <li>
+        <strong>Environmental Assessment Reports</strong>
+        <br>Phase I/II ESA results, risk assessment findings, remedial action plans (if needed)
+      </li>
+      <li>
+        <strong>Revetment Interaction Design Documentation</strong>
+        <br>Bank stability analysis, scour protection, revetment penetration procedures
+      </li>
+      <li>
+        <strong>Navigation Safety Analysis</strong>
+        <br>Vessel maneuverability studies, current velocity analysis, berthing simulation results
+      </li>
+      <li>
+        <strong>Wetlands Delineation (if applicable)</strong>
+        <br>Jurisdictional determination, impact assessment, mitigation proposals
+      </li>
+      <li>
+        <strong>Species Consultation Documentation</strong>
+        <br>Protected species surveys, critical habitat assessments, impact mitigation measures
+      </li>
+    </ul>
+  </div>
+
+  <!-- Regional Development Context -->
+  <div class="content-block context-section">
+    <h3>Regional Development Context</h3>
+    <div class="two-column-layout">
+      <div class="context-card">
+        <h4>LNG Development Influence</h4>
+        <p>
+          <strong>2025 DOE Approvals:</strong> Recent approvals for gas exports creating favorable
+          regulatory environment for infrastructure development
+        </p>
+        <p>
+          <strong>Regional Investment:</strong> $21 billion in tax breaks for LNG facilities
+          demonstrates government commitment to Gulf Coast energy infrastructure
+        </p>
+        <p>
+          <strong>Regulatory Impact:</strong> Established precedents and streamlined processes
+          benefit complementary infrastructure projects like Port Sulphur expansion
+        </p>
+      </div>
+
+      <div class="context-card">
+        <h4>Federal Navigation Channel</h4>
+        <p>
+          <strong>Active Maintenance Program:</strong> Ongoing federal commitment to Mississippi
+          River navigation channel maintenance
+        </p>
+        <p>
+          <strong>Coordination Requirement:</strong> All dock development must integrate with
+          channel maintenance schedules and dredging operations
+        </p>
+        <p>
+          <strong>Advantage:</strong> Federal navigation investment ensures long-term channel
+          viability supporting terminal operations
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================================
+     STYLING FOR PERMITTING SECTION
+     ============================================================================ -->
+
+<style>
+/* Regulatory Checklist Cards */
+.regulatory-checklist {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.checklist-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.checklist-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(100, 255, 180, 0.3);
+  transform: translateX(4px);
+}
+
+.checklist-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.checklist-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(100, 255, 180, 0.1);
+  border: 2px solid rgba(100, 255, 180, 0.3);
+  border-radius: 50%;
+  font-weight: bold;
+  color: #64ffb4;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.checklist-header h4 {
+  margin: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-required {
+  background: rgba(255, 99, 132, 0.2);
+  color: #ff6384;
+  border: 1px solid rgba(255, 99, 132, 0.4);
+}
+
+.status-conditional {
+  background: rgba(255, 206, 86, 0.2);
+  color: #ffce56;
+  border: 1px solid rgba(255, 206, 86, 0.4);
+}
+
+.checklist-content p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.checklist-content strong {
+  color: #64ffb4;
+}
+
+/* Agency Contact Cards */
+.agency-contact-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.agency-contact-card h4 {
+  color: #64ffb4;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.agency-name {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.agency-contact-card ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.agency-contact-card li {
+  margin: 0.25rem 0;
+  line-height: 1.5;
+}
+
+.action-item {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #64ffb4;
+  font-weight: 500;
+}
+
+/* Environmental Overlay Cards */
+.three-column-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.overlay-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.overlay-card h4 {
+  color: #64ffb4;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.overlay-card p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Recommendations Section */
+.recommendations-section {
+  background: linear-gradient(135deg, rgba(100, 255, 180, 0.05) 0%, rgba(54, 162, 235, 0.05) 100%);
+  border: 2px solid rgba(100, 255, 180, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.recommendation-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.priority-high {
+  border-left: 4px solid #ff6384;
+}
+
+.priority-medium {
+  border-left: 4px solid #ffce56;
+}
+
+.recommendation-card h4 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recommendation-list {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.recommendation-list li {
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.recommendation-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Key Findings Grid */
+.findings-summary {
+  margin: 2rem 0;
+}
+
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.finding-item {
+  padding: 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid;
+  transition: all 0.3s ease;
+}
+
+.finding-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.finding-item h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.finding-item p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.finding-item.positive {
+  background: rgba(75, 192, 192, 0.1);
+  border-left-color: #4bc0c0;
+}
+
+.finding-item.positive h4 {
+  color: #4bc0c0;
+}
+
+.finding-item.neutral {
+  background: rgba(54, 162, 235, 0.1);
+  border-left-color: #36a2eb;
+}
+
+.finding-item.neutral h4 {
+  color: #36a2eb;
+}
+
+.finding-item.caution {
+  background: rgba(255, 206, 86, 0.1);
+  border-left-color: #ffce56;
+}
+
+.finding-item.caution h4 {
+  color: #ffce56;
+}
+
+/* Documentation Checklist */
+.documentation-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.documentation-checklist li {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 3rem;
+}
+
+.documentation-checklist li::before {
+  content: '📄';
+  position: absolute;
+  left: 1rem;
+  font-size: 1.2rem;
+}
+
+.documentation-checklist li:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(100, 255, 180, 0.3);
+  transform: translateX(4px);
+}
+
+.documentation-checklist strong {
+  color: #64ffb4;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Context Cards */
+.context-section {
+  background: rgba(54, 162, 235, 0.05);
+  border: 1px solid rgba(54, 162, 235, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.context-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.context-card h4 {
+  color: #36a2eb;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.context-card p {
+  margin: 0.75rem 0;
+  line-height: 1.6;
+}
+
+.context-card strong {
+  color: #64ffb4;
+}
+
+/* Success Factors List */
+.success-factors {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.success-factors li {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid #64ffb4;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.success-factors li:hover {
+  background: rgba(100, 255, 180, 0.1);
+  transform: translateX(4px);
+}
+
+.success-factors strong {
+  color: #64ffb4;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Checklist Items */
+.checklist-items {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.checklist-items li {
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+  border-left: 3px solid rgba(100, 255, 180, 0.5);
+  transition: all 0.3s ease;
+}
+
+.checklist-items li:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-left-color: #64ffb4;
+}
+
+.checklist-items strong {
+  color: #64ffb4;
+}
+
+.detail-text {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* Highlight Section */
+.highlight-section {
+  background: linear-gradient(135deg, rgba(100, 255, 180, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(100, 255, 180, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .three-column-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .findings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .checklist-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .checklist-number {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .recommendations-section,
+  .context-section,
+  .highlight-section {
+    padding: 1.5rem;
+  }
+}
+</style>

@@ -1,0 +1,1160 @@
+<!-- ============================================================================
+     HISTORY SECTION - Port Sulphur Terminal Historical Timeline
+
+     This section presents 3,025 years of history from Indigenous settlement
+     to modern industrial reuse (1000 BCE - 2025 CE), featuring:
+
+     - Interactive timeline visualization with Chart.js
+     - Historical periods presented as collapsible accordion cards
+     - Key milestones highlights section
+     - Filterable timeline by significance level
+     - Period-based zoom controls
+
+     Data Source: history_data.json (87 events across 7 historical periods)
+     Visualization: history_timeline.js (Chart.js configuration)
+     Content: history_SYNTHESIS.md
+
+     Generated: 2026-01-22
+============================================================================= -->
+
+<section id="history-section" class="report-section">
+    <!-- Section Header -->
+    <div class="section-header">
+        <div class="section-title-row">
+            <h2 class="section-title">Historical Timeline</h2>
+            <span class="source-badge">4 Sources</span>
+        </div>
+        <p class="section-subtitle">
+            3,025 Years of History: From Indigenous Settlement to Industrial Reuse (1000 BCE - 2025 CE)
+        </p>
+    </div>
+
+    <!-- Key Statistics Bar -->
+    <div class="history-stats-bar">
+        <div class="stat-item">
+            <div class="stat-value">87</div>
+            <div class="stat-label">Historical Events</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">7</div>
+            <div class="stat-label">Historical Periods</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">72 Years</div>
+            <div class="stat-label">Freeport Operations</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">1933-2005</div>
+            <div class="stat-label">Operational Period</div>
+        </div>
+    </div>
+
+    <!-- Timeline Controls -->
+    <div class="timeline-controls">
+        <div class="control-group">
+            <label class="control-label">View Period:</label>
+            <div class="button-group">
+                <button class="zoom-btn active" data-preset="full">Full Timeline</button>
+                <button class="zoom-btn" data-preset="modern">Modern Era</button>
+                <button class="zoom-btn" data-preset="freeport_operations">Freeport Era</button>
+                <button class="zoom-btn" data-preset="construction_wartime">Construction</button>
+                <button class="zoom-btn" data-preset="peak_operations">Peak Ops</button>
+                <button class="zoom-btn" data-preset="decline_closure">Decline</button>
+                <button class="zoom-btn" data-preset="remediation">Remediation</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Filter by Significance:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" class="significance-filter" value="critical" checked>
+                    <span class="checkbox-text">Critical</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="significance-filter" value="major" checked>
+                    <span class="checkbox-text">Major</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="significance-filter" value="moderate" checked>
+                    <span class="checkbox-text">Moderate</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="significance-filter" value="minor">
+                    <span class="checkbox-text">Minor</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Timeline Visualization -->
+    <div class="timeline-visualization">
+        <div class="chart-container">
+            <canvas id="history-timeline-chart"></canvas>
+        </div>
+        <div class="timeline-legend">
+            <div class="legend-title">Significance Levels</div>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <span class="legend-dot" style="width: 16px; height: 16px;"></span>
+                    <span class="legend-label">Critical - Major turning points</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot" style="width: 12px; height: 12px;"></span>
+                    <span class="legend-label">Major - Important developments</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot" style="width: 10px; height: 10px;"></span>
+                    <span class="legend-label">Moderate - Notable events</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot" style="width: 8px; height: 8px;"></span>
+                    <span class="legend-label">Minor - Supporting context</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Milestones Highlights -->
+    <div class="key-milestones">
+        <h3 class="subsection-title">Key Milestones</h3>
+        <div class="milestones-grid">
+            <!-- Founding -->
+            <div class="milestone-card" data-impact="critical">
+                <div class="milestone-year">1912</div>
+                <div class="milestone-title">Freeport Sulphur Company Founded</div>
+                <div class="milestone-description">
+                    Establishment of the company that would develop Port Sulphur operations,
+                    founding the city of Freeport, Texas near its sulfur mines.
+                </div>
+            </div>
+
+            <!-- Acquisition -->
+            <div class="milestone-card" data-impact="critical">
+                <div class="milestone-year">1932</div>
+                <div class="milestone-title">Sulfur Rights Acquisition</div>
+                <div class="milestone-description">
+                    Freeport acquires Lake Grande Écaille sulfur mining rights (10 miles west),
+                    initiating Port Sulphur terminal development.
+                </div>
+            </div>
+
+            <!-- Commissioning -->
+            <div class="milestone-card" data-impact="critical">
+                <div class="milestone-year">1933</div>
+                <div class="milestone-title">Facility Commissioning</div>
+                <div class="milestone-description">
+                    Port Sulphur facility begins operations with completion of 24' x 433' concrete
+                    dock rated for 10,000 tons with 52' draft access.
+                </div>
+            </div>
+
+            <!-- Wartime Excellence -->
+            <div class="milestone-card" data-impact="major">
+                <div class="milestone-year">1944</div>
+                <div class="milestone-title">Wartime Production Excellence</div>
+                <div class="milestone-description">
+                    Army-Navy 'E' Award recognizes critical defense production contributions
+                    during World War II.
+                </div>
+            </div>
+
+            <!-- Liquid Sulfur -->
+            <div class="milestone-card" data-impact="moderate">
+                <div class="milestone-year">1955</div>
+                <div class="milestone-title">Liquid Sulfur Shipping Begins</div>
+                <div class="milestone-description">
+                    Facility capabilities expand to include liquid sulfur barge shipments,
+                    first load shipped from Port Sulphur.
+                </div>
+            </div>
+
+            <!-- Mine Closure -->
+            <div class="milestone-card" data-impact="major">
+                <div class="milestone-year">1978</div>
+                <div class="milestone-title">Grande Écaille Mine Closure</div>
+                <div class="milestone-description">
+                    Primary sulfur mine ceases operations after 45 years, marking beginning
+                    of terminal decline.
+                </div>
+            </div>
+
+            <!-- Operations End -->
+            <div class="milestone-card" data-impact="major">
+                <div class="milestone-year">2000</div>
+                <div class="milestone-title">Operations Cessation</div>
+                <div class="milestone-description">
+                    All sulfur operations cease due to market competition from recovered sulfur
+                    (oil/gas refining byproducts).
+                </div>
+            </div>
+
+            <!-- Hurricane Katrina -->
+            <div class="milestone-card" data-impact="critical">
+                <div class="milestone-year">2005</div>
+                <div class="milestone-title">Hurricane Katrina Destruction</div>
+                <div class="milestone-description">
+                    Catastrophic hurricane (22' storm surge, 75 kt winds) destroys remaining
+                    infrastructure, ending 72-year operational history.
+                </div>
+            </div>
+
+            <!-- Remediation Complete -->
+            <div class="milestone-card" data-impact="major">
+                <div class="milestone-year">2024</div>
+                <div class="milestone-title">Environmental Remediation Completion</div>
+                <div class="milestone-description">
+                    Site remediation completed and verified as 'ready for reuse' by Louisiana DEQ,
+                    no ongoing EPA enforcement actions.
+                </div>
+            </div>
+
+            <!-- Market Listing -->
+            <div class="milestone-card" data-impact="moderate">
+                <div class="milestone-year">2025</div>
+                <div class="milestone-title">Property Listed for Industrial Reuse</div>
+                <div class="milestone-description">
+                    106.99-acre industrial waterfront property listed for $14.7M, emphasizing
+                    deep-water access for potential expansion.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Historical Periods Accordion -->
+    <div class="historical-periods">
+        <h3 class="subsection-title">Historical Periods</h3>
+
+        <!-- Period 1: Prehistoric and Indigenous -->
+        <div class="period-accordion" data-period="prehistoric">
+            <div class="period-header" onclick="togglePeriod('prehistoric')">
+                <div class="period-header-content">
+                    <div class="period-color-bar" style="background-color: #8B4513;"></div>
+                    <div class="period-info">
+                        <h4 class="period-name">Prehistoric and Indigenous Period</h4>
+                        <div class="period-timespan">1000 BCE - 1500 CE</div>
+                    </div>
+                </div>
+                <div class="period-toggle">
+                    <span class="toggle-icon">▼</span>
+                </div>
+            </div>
+            <div class="period-content">
+                <div class="period-description">
+                    Archaeological evidence indicates human occupation dating to at least 1000 BCE,
+                    with shell middens and ceramic artifacts from the Marksville and Coles Creek cultures.
+                    The Mississippi River Delta was inhabited by Chitimacha and Houma tribes who utilized
+                    the region for fishing, hunting, and gathering. Bayou Grande Écaille features in
+                    indigenous oral histories as a resource-rich wetland.
+                </div>
+                <div class="period-events-count">
+                    <strong>1 documented event</strong> from this period
+                </div>
+            </div>
+        </div>
+
+        <!-- Period 2: Colonial and Antebellum -->
+        <div class="period-accordion" data-period="colonial">
+            <div class="period-header" onclick="togglePeriod('colonial')">
+                <div class="period-header-content">
+                    <div class="period-color-bar" style="background-color: #4169E1;"></div>
+                    <div class="period-info">
+                        <h4 class="period-name">Colonial and Antebellum Period</h4>
+                        <div class="period-timespan">1541 - 1869</div>
+                    </div>
+                </div>
+                <div class="period-toggle">
+                    <span class="toggle-icon">▼</span>
+                </div>
+            </div>
+            <div class="period-content">
+                <div class="period-description">
+                    European exploration began with Hernando de Soto's 1541 expedition. French colonization
+                    in the 1690s established Plaquemines as a strategic buffer, with Fort St. Philip
+                    constructed in 1746 for river defense. Spanish rule brought Isleño settlers from the
+                    Canary Islands in the 1760s, establishing fishing and trapping communities. The 1803
+                    Louisiana Purchase integrated the area into U.S. territory. The site remained
+                    undeveloped wetland throughout the antebellum period.
+                </div>
+                <div class="period-events-count">
+                    <strong>5 documented events</strong> from this period
+                </div>
+            </div>
+        </div>
+
+        <!-- Period 3: Early Industrialization -->
+        <div class="period-accordion" data-period="early_industrial">
+            <div class="period-header" onclick="togglePeriod('early_industrial')">
+                <div class="period-header-content">
+                    <div class="period-color-bar" style="background-color: #FF8C00;"></div>
+                    <div class="period-info">
+                        <h4 class="period-name">Post-Civil War to Early Industrialization</h4>
+                        <div class="period-timespan">1870 - 1932</div>
+                    </div>
+                </div>
+                <div class="period-toggle">
+                    <span class="toggle-icon">▼</span>
+                </div>
+            </div>
+            <div class="period-content">
+                <div class="period-description">
+                    Post-Reconstruction Plaquemines Parish shifted to commercial fishing, oyster harvesting,
+                    and citrus farming. The property remained undeveloped marsh until sulfur deposits were
+                    identified in the early 1900s. The Frasch Process (patented 1894) enabled sulfur
+                    extraction from salt domes using superheated water. Geological surveys identified
+                    sulfur deposits at Lake Grande Écaille. In 1912, Freeport Sulphur Company was founded,
+                    establishing the city of Freeport, Texas near its sulfur mines.
+                </div>
+                <div class="period-events-count">
+                    <strong>6 documented events</strong> from this period
+                </div>
+            </div>
+        </div>
+
+        <!-- Period 4: Construction Era -->
+        <div class="period-accordion" data-period="construction">
+            <div class="period-header" onclick="togglePeriod('construction')">
+                <div class="period-header-content">
+                    <div class="period-color-bar" style="background-color: #228B22;"></div>
+                    <div class="period-info">
+                        <h4 class="period-name">Facility Construction and Initial Operations</h4>
+                        <div class="period-timespan">1932 - 1939</div>
+                    </div>
+                </div>
+                <div class="period-toggle">
+                    <span class="toggle-icon">▼</span>
+                </div>
+            </div>
+            <div class="period-content">
+                <div class="period-description">
+                    In 1932, Freeport Sulphur Company acquired sulfur mining rights for Lake Grande Écaille
+                    (10 miles west of Port Sulphur). Facility construction began in 1932-1933 to support
+                    logistics, refining, and shipping operations. The 24' x 433' concrete dock was completed
+                    in 1933, rated for 10,000 tons with 52' draft access. Port Sulphur facility began
+                    operations in 1933, processing sulfur from Grande Écaille via the Frasch Process.
+                    The company town of Port Sulphur grew around the site with worker housing and
+                    supporting infrastructure.
+                </div>
+                <div class="period-events-count">
+                    <strong>4 documented events</strong> from this period (all critical milestones)
+                </div>
+            </div>
+        </div>
+
+        <!-- Period 5: Peak Operations -->
+        <div class="period-accordion" data-period="peak_operations">
+            <div class="period-header" onclick="togglePeriod('peak_operations')">
+                <div class="period-header-content">
+                    <div class="period-color-bar" style="background-color: #FFD700;"></div>
+                    <div class="period-info">
+                        <h4 class="period-name">Peak Operational Period</h4>
+                        <div class="period-timespan">1940 - 1978</div>
+                    </div>
+                </div>
+                <div class="period-toggle">
+                    <span class="toggle-icon">▼</span>
+                </div>
+            </div>
+            <div class="period-content">
+                <div class="period-description">
+                    From 1933-1978, Grande Écaille served as the primary sulfur mine with Port Sulphur
+                    as the logistics and shipping hub. The facility supported multiple Frasch Process
+                    sulfur mines throughout Louisiana, including offshore Main Pass Block 299 (50 miles
+                    offshore, 300' water depth). Wartime production peaked during WWII, earning an
+                    Army-Navy "E" Award in 1944 for defense contributions. Expansions in the 1950s added
+                    liquid sulfur shipment capabilities (first barge load shipped in 1955). By the
+                    1960s-1970s, the facility operated at peak capacity with extensive "vatting"
+                    operations creating acres of dry sulfur storage blocks.
+                </div>
+                <div class="period-events-count">
+                    <strong>14 documented events</strong> from this period
+                </div>
+            </div>
+        </div>
+
+        <!-- Period 6: Decline and Closure -->
+        <div class="period-accordion" data-period="decline">
+            <div class="period-header" onclick="togglePeriod('decline')">
+                <div class="period-header-content">
+                    <div class="period-color-bar" style="background-color: #DC143C;"></div>
+                    <div class="period-info">
+                        <h4 class="period-name">Economic Decline and Closure</h4>
+                        <div class="period-timespan">1979 - 2005</div>
+                    </div>
+                </div>
+                <div class="period-toggle">
+                    <span class="toggle-icon">▼</span>
+                </div>
+            </div>
+            <div class="period-content">
+                <div class="period-description">
+                    Primary sulfur mining operations ceased at Grande Écaille mine in 1978 after 45 years.
+                    Economic decline began in the 1980s due to market competition from recovered sulfur
+                    (oil/gas refining byproducts). In 1981, McMoRan Oil & Gas merged with Freeport Minerals
+                    to create Freeport-McMoRan Inc. (FTX). Reduced operations continued through the 1990s
+                    at diminished capacity. By the early 2000s, all sulfur operations ceased. Environmental
+                    concerns emerged including acid generation, heavy metals mobilization, and groundwater
+                    impacts from 72 years of operations. Hurricane Katrina (August 29, 2005) delivered
+                    catastrophic damage with 22' storm surge and 75 kt winds, destroying remaining
+                    infrastructure and marking the definitive end of Freeport operations.
+                </div>
+                <div class="period-events-count">
+                    <strong>18 documented events</strong> from this period
+                </div>
+            </div>
+        </div>
+
+        <!-- Period 7: Remediation and Reuse -->
+        <div class="period-accordion" data-period="remediation">
+            <div class="period-header" onclick="togglePeriod('remediation')">
+                <div class="period-header-content">
+                    <div class="period-color-bar" style="background-color: #64ffb4;"></div>
+                    <div class="period-info">
+                        <h4 class="period-name">Post-Katrina Remediation and Current Status</h4>
+                        <div class="period-timespan">2005 - Present</div>
+                    </div>
+                </div>
+                <div class="period-toggle">
+                    <span class="toggle-icon">▼</span>
+                </div>
+            </div>
+            <div class="period-content">
+                <div class="period-description">
+                    Post-Katrina site clearance operations began with FEMA assistance, including $1.5M
+                    funding for water treatment infrastructure recovery in 2007. In 2007, FCX acquired
+                    Phelps Dodge, becoming the world's largest publicly traded copper producer. Environmental
+                    assessments were conducted in 2009 under Louisiana DEQ's Risk Evaluation/Corrective
+                    Action Program (RECAP) addressing sulfuric acid and heavy metals contamination.
+                    Freeport-McMoRan conducted comprehensive remediation from 2020-2024 involving lime
+                    neutralization, soil amendments, and groundwater treatment. In 2024, remediation
+                    was completed and the site received verified "ready for reuse" status from LDEQ.
+                    EPA ECHO database confirms no ongoing enforcement actions. As of September 2025,
+                    the 106.99-acre industrial waterfront property is listed for $14.7M, emphasizing
+                    deep-water access for potential dock expansion.
+                </div>
+                <div class="period-events-count">
+                    <strong>18 documented events</strong> from this period
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Historical Context Summary -->
+    <div class="historical-context">
+        <h3 class="subsection-title">Historical Significance</h3>
+        <div class="context-grid">
+            <div class="context-card">
+                <div class="context-icon">🏭</div>
+                <div class="context-title">72 Years of Operations</div>
+                <div class="context-text">
+                    Port Sulphur facility operated continuously from 1933-2005 as a logistics,
+                    refining, storage, and shipping hub for Freeport Sulphur Company's sulfur mining
+                    operations, supporting multiple Frasch Process mines throughout Louisiana.
+                </div>
+            </div>
+
+            <div class="context-card">
+                <div class="context-icon">⚙️</div>
+                <div class="context-title">Frasch Process Innovation</div>
+                <div class="context-text">
+                    The facility utilized the revolutionary Frasch Process (patented 1894), which
+                    used superheated water to extract sulfur from salt domes. Operations included
+                    hot molten sulfur storage, "vatting" operations creating acres of solidified
+                    blocks, and liquid sulfur barge loading capabilities.
+                </div>
+            </div>
+
+            <div class="context-card">
+                <div class="context-icon">🎖️</div>
+                <div class="context-title">Wartime Defense Production</div>
+                <div class="context-text">
+                    During World War II, the facility received the Army-Navy "E" Award in 1944
+                    for excellence in wartime defense production. Sulfur was critical for
+                    munitions manufacturing, making Port Sulphur a strategic national asset.
+                </div>
+            </div>
+
+            <div class="context-card">
+                <div class="context-icon">🌊</div>
+                <div class="context-title">Offshore Operations Support</div>
+                <div class="context-text">
+                    The terminal supported offshore sulfur mining at Main Pass Block 299,
+                    located 50 miles offshore in 300 feet of water depth, demonstrating the
+                    facility's capability for complex multi-site logistics operations.
+                </div>
+            </div>
+
+            <div class="context-card">
+                <div class="context-icon">📉</div>
+                <div class="context-title">Market Forces and Decline</div>
+                <div class="context-text">
+                    Economic decline in the 1980s-1990s resulted from market competition from
+                    recovered sulfur (oil/gas refining byproducts), which became cheaper and
+                    more abundant than Frasch Process mining. Operations ceased by the early 2000s.
+                </div>
+            </div>
+
+            <div class="context-card">
+                <div class="context-icon">♻️</div>
+                <div class="context-title">Environmental Remediation</div>
+                <div class="context-text">
+                    Comprehensive environmental remediation (2020-2024) addressed legacy impacts
+                    including acid generation, heavy metals mobilization, and groundwater contamination.
+                    Site now verified as "ready for reuse" by Louisiana DEQ with no ongoing EPA
+                    enforcement actions.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sources Reference -->
+    <div class="sources-section">
+        <h4 class="sources-title">Historical Sources</h4>
+        <div class="sources-list">
+            <div class="source-item">
+                <div class="source-type">Corporate History</div>
+                <div class="source-name">Freeport-McMoRan Corporate History</div>
+                <a href="https://www.fcx.com/about/history" target="_blank" class="source-link">
+                    fcx.com/about/history
+                </a>
+            </div>
+            <div class="source-item">
+                <div class="source-type">Newspaper Archives</div>
+                <div class="source-name">The Times Picayune</div>
+                <div class="source-details">August 27, 1943 & July 15, 1944 - Wartime operations and Army-Navy 'E' Award coverage</div>
+            </div>
+            <div class="source-item">
+                <div class="source-type">Historical Archives</div>
+                <div class="source-name">National Archives, MD</div>
+                <div class="source-details">1944 photograph of Town of Port Sulphur</div>
+            </div>
+            <div class="source-item">
+                <div class="source-type">Sustainability Report</div>
+                <div class="source-name">Freeport-McMoRan 2024 Sustainability Report</div>
+                <div class="source-details">Remediation completion documentation and environmental status</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Inline Styles for History Section -->
+<style>
+/* ============================================================================
+   HISTORY SECTION STYLES
+============================================================================= */
+
+#history-section {
+    padding: 3rem 0;
+}
+
+/* Statistics Bar */
+.history-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #64ffb4;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Timeline Controls */
+.timeline-controls {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.control-group {
+    margin-bottom: 1.5rem;
+}
+
+.control-group:last-child {
+    margin-bottom: 0;
+}
+
+.control-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.zoom-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.zoom-btn:hover {
+    background: rgba(100, 255, 180, 0.1);
+    border-color: #64ffb4;
+    color: #64ffb4;
+}
+
+.zoom-btn.active {
+    background: #64ffb4;
+    border-color: #64ffb4;
+    color: #0a0a0a;
+    font-weight: 600;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    accent-color: #64ffb4;
+}
+
+.checkbox-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Timeline Visualization */
+.timeline-visualization {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chart-container {
+    position: relative;
+    height: 500px;
+    margin-bottom: 1.5rem;
+}
+
+#history-timeline-chart {
+    width: 100%;
+    height: 100%;
+}
+
+.timeline-legend {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+}
+
+.legend-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.legend-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-dot {
+    background: #64ffb4;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Key Milestones Grid */
+.key-milestones {
+    margin: 3rem 0;
+}
+
+.milestones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.milestone-card {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    border-left: 4px solid #64ffb4;
+    transition: all 0.3s ease;
+}
+
+.milestone-card[data-impact="critical"] {
+    border-left-color: #FFD700;
+}
+
+.milestone-card[data-impact="major"] {
+    border-left-color: #64ffb4;
+}
+
+.milestone-card[data-impact="moderate"] {
+    border-left-color: #4169E1;
+}
+
+.milestone-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.milestone-year {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #64ffb4;
+    margin-bottom: 0.5rem;
+}
+
+.milestone-card[data-impact="critical"] .milestone-year {
+    color: #FFD700;
+}
+
+.milestone-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.75rem;
+}
+
+.milestone-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Historical Periods Accordion */
+.historical-periods {
+    margin: 3rem 0;
+}
+
+.period-accordion {
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.period-accordion:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.period-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.period-header:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.period-header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.period-color-bar {
+    width: 6px;
+    height: 50px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.period-info {
+    flex: 1;
+}
+
+.period-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 0.25rem 0;
+}
+
+.period-timespan {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+}
+
+.period-toggle {
+    padding: 0 1rem;
+}
+
+.toggle-icon {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.period-accordion.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.period-content {
+    display: none;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.period-accordion.active .period-content {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.period-description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.period-events-count {
+    font-size: 0.85rem;
+    color: #64ffb4;
+    font-weight: 600;
+    padding: 0.75rem;
+    background: rgba(100, 255, 180, 0.05);
+    border-radius: 6px;
+    border-left: 3px solid #64ffb4;
+}
+
+/* Historical Context Grid */
+.historical-context {
+    margin: 3rem 0;
+}
+
+.context-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.context-card {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.context-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #64ffb4;
+    transform: translateY(-4px);
+}
+
+.context-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.context-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.75rem;
+}
+
+.context-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Sources Section */
+.sources-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sources-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sources-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.source-item {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border-left: 3px solid #64ffb4;
+}
+
+.source-type {
+    font-size: 0.75rem;
+    color: #64ffb4;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.source-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.5rem;
+}
+
+.source-link {
+    color: #64ffb4;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.source-link:hover {
+    color: #7fffc4;
+    text-decoration: underline;
+}
+
+.source-details {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .history-stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .zoom-btn {
+        width: 100%;
+    }
+
+    .checkbox-group {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .chart-container {
+        height: 350px;
+    }
+
+    .milestones-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .context-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .period-header-content {
+        gap: 0.75rem;
+    }
+
+    .period-color-bar {
+        height: 40px;
+    }
+
+    .period-name {
+        font-size: 1rem;
+    }
+}
+
+@media print {
+    .timeline-controls,
+    .period-toggle {
+        display: none;
+    }
+
+    .period-content {
+        display: block !important;
+    }
+
+    .period-accordion {
+        page-break-inside: avoid;
+    }
+}
+</style>
+
+<!-- JavaScript for Interactive Features -->
+<script>
+// ============================================================================
+// HISTORY SECTION INTERACTIVE FEATURES
+// ============================================================================
+
+// Toggle period accordion
+function togglePeriod(periodId) {
+    const accordion = document.querySelector(`[data-period="${periodId}"]`);
+    if (!accordion) return;
+
+    accordion.classList.toggle('active');
+}
+
+// Initialize timeline filters and controls
+document.addEventListener('DOMContentLoaded', function() {
+    // Zoom preset buttons
+    const zoomButtons = document.querySelectorAll('.zoom-btn');
+    zoomButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            zoomButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            const preset = this.dataset.preset;
+            updateTimelineView(preset);
+        });
+    });
+
+    // Significance filter checkboxes
+    const significanceFilters = document.querySelectorAll('.significance-filter');
+    significanceFilters.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            updateTimelineFilters();
+        });
+    });
+
+    // Initialize Chart.js timeline (requires Chart.js library and history_timeline.js)
+    if (typeof Chart !== 'undefined' && typeof TIMELINE_CONFIG !== 'undefined') {
+        initializeTimelineChart();
+    } else {
+        console.warn('Chart.js or timeline configuration not loaded. Timeline visualization requires:');
+        console.warn('- Chart.js library: <script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>');
+        console.warn('- Timeline data: <script src="history_timeline.js"><\/script>');
+    }
+});
+
+// Update timeline view based on zoom preset
+function updateTimelineView(preset) {
+    if (typeof getZoomPreset === 'function') {
+        const presetData = getZoomPreset(preset);
+        if (presetData && window.timelineChart) {
+            // Update chart with new preset range
+            window.timelineChart.options.scales.x.min = presetData.preset.startYear;
+            window.timelineChart.options.scales.x.max = presetData.preset.endYear;
+            window.timelineChart.update();
+        }
+    }
+}
+
+// Update timeline based on significance filters
+function updateTimelineFilters() {
+    const checkedFilters = Array.from(document.querySelectorAll('.significance-filter:checked'))
+        .map(cb => cb.value);
+
+    if (window.timelineChart && typeof generateChartConfig === 'function') {
+        const newConfig = generateChartConfig({
+            filterSignificance: checkedFilters,
+            startYear: window.timelineChart.options.scales.x.min,
+            endYear: window.timelineChart.options.scales.x.max
+        });
+
+        window.timelineChart.data = newConfig.data;
+        window.timelineChart.update();
+    }
+}
+
+// Initialize Chart.js timeline
+function initializeTimelineChart() {
+    const ctx = document.getElementById('history-timeline-chart');
+    if (!ctx) return;
+
+    const chartConfig = generateChartConfig({
+        filterSignificance: ['critical', 'major', 'moderate'],
+        startYear: -1000,
+        endYear: 2025
+    });
+
+    window.timelineChart = new Chart(ctx, chartConfig);
+}
+</script>
