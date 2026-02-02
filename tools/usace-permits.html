@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USACE Public Notices Search Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .controls {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1e3c72;
+        }
+
+        .district-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .district-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .district-checkbox:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .district-checkbox input {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .stats {
+            padding: 20px 30px;
+            background: #e7f3ff;
+            border-bottom: 1px solid #bee5eb;
+            display: none;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .stats-item {
+            text-align: center;
+        }
+
+        .stats-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stats-label {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .results {
+            padding: 30px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .permit-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .permit-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .permit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .permit-number {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .district-badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+        }
+
+        .permit-description {
+            color: #495057;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .permit-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .permit-actions button {
+            padding: 8px 16px;
+            font-size: 0.9em;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .alert {
+            padding: 15px;
+            margin: 20px;
+            border-radius: 5px;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .district-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏛️ USACE Public Notices Search</h1>
+            <p>Search Permits Across Multiple Districts</p>
+        </div>
+
+        <div class="controls">
+            <div class="section-title">Select USACE Districts:</div>
+            <div class="district-grid" id="districtGrid"></div>
+
+            <div class="button-group">
+                <button class="btn-primary" onclick="fetchPermits()">🔍 Fetch Permits</button>
+                <button class="btn-secondary" onclick="selectAll()">✓ Select All</button>
+                <button class="btn-secondary" onclick="deselectAll()">✗ Deselect All</button>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by keyword (e.g., barge, dredge, parish name)..." onkeypress="handleSearchKey(event)">
+                <button class="btn-primary" onclick="searchPermits()">Search</button>
+            </div>
+
+            <div class="button-group" style="margin-top: 15px;">
+                <button class="btn-success" onclick="exportCSV()">📥 Download CSV</button>
+                <button class="btn-success" onclick="exportTable()">📊 Download Table</button>
+            </div>
+        </div>
+
+        <div class="stats" id="stats">
+            <div class="stats-item">
+                <div class="stats-number" id="totalCount">0</div>
+                <div class="stats-label">Total Permits</div>
+            </div>
+            <div class="stats-item">
+                <div class="stats-number" id="districtCount">0</div>
+                <div class="stats-label">Districts</div>
+            </div>
+            <div class="stats-item">
+                <div class="stats-number" id="filteredCount">0</div>
+                <div class="stats-label">Showing</div>
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <div class="loading">
+                <p>Select districts and click "Fetch Permits" to begin</p>
+                <div class="alert" style="text-align: left; margin-top: 20px;">
+                    <strong>Note:</strong> This tool fetches data directly from USACE RSS feeds.
+                    Some districts may take 10-30 seconds to load. If a district fails to load,
+                    it may have CORS restrictions - try selecting different districts.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // USACE District RSS Feeds
+        const DISTRICTS = {
+            'New Orleans': 'https://www.mvn.usace.army.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=4&Site=417&max=500',
+            'Mobile': 'https://www.sam.usace.army.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=392&max=500',
+            'Vicksburg': 'https://www.mvk.usace.army.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=489&max=500',
+            'Galveston': 'https://www.swg.usace.army.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=463&max=500',
+            'Jacksonville': 'https://www.saj.usace.army.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=426&max=500',
+            'Charleston': 'https://www.sac.usace.army.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=384&max=500',
+            'Wilmington': 'https://www.saw.usace.army.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=495&max=500',
+            'Norfolk': 'https://www.nao.usace.army.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=240&max=500',
+        };
+
+        let allPermits = [];
+        let filteredPermits = [];
+
+        // Initialize districts
+        function initDistricts() {
+            const grid = document.getElementById('districtGrid');
+            Object.keys(DISTRICTS).forEach(district => {
+                const label = document.createElement('label');
+                label.className = 'district-checkbox';
+                label.innerHTML = `
+                    <input type="checkbox" value="${district}" checked>
+                    <span>${district}</span>
+                `;
+                grid.appendChild(label);
+            });
+        }
+
+        function selectAll() {
+            document.querySelectorAll('.district-checkbox input').forEach(cb => cb.checked = true);
+        }
+
+        function deselectAll() {
+            document.querySelectorAll('.district-checkbox input').forEach(cb => cb.checked = false);
+        }
+
+        function handleSearchKey(event) {
+            if (event.key === 'Enter') {
+                searchPermits();
+            }
+        }
+
+        // Use CORS proxy for fetching
+        const CORS_PROXY = 'https://corsproxy.io/?';
+
+        async function fetchDistrictPermits(districtName, rssUrl) {
+            try {
+                const response = await fetch(CORS_PROXY + encodeURIComponent(rssUrl));
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+
+                const items = xml.querySelectorAll('item');
+                const permits = [];
+
+                items.forEach(item => {
+                    const title = item.querySelector('title')?.textContent || '';
+                    const link = item.querySelector('link')?.textContent || '';
+                    const description = item.querySelector('description')?.textContent || '';
+                    const pubDate = item.querySelector('pubDate')?.textContent || '';
+
+                    // Clean description
+                    let cleanDesc = description.replace(/<[^>]+>/g, '');
+                    cleanDesc = cleanDesc.replace(/Expiration date:.*?\n?/g, '').trim();
+
+                    permits.push({
+                        district: districtName,
+                        permitNumber: title.trim(),
+                        publicationDate: pubDate,
+                        description: cleanDesc,
+                        detailUrl: link
+                    });
+                });
+
+                return permits;
+            } catch (error) {
+                console.error(`Error fetching ${districtName}:`, error);
+                return [];
+            }
+        }
+
+        async function fetchPermits() {
+            const checkboxes = document.querySelectorAll('.district-checkbox input:checked');
+            const selectedDistricts = Array.from(checkboxes).map(cb => cb.value);
+
+            if (selectedDistricts.length === 0) {
+                alert('Please select at least one district');
+                return;
+            }
+
+            document.getElementById('results').innerHTML = '<div class="loading"><div class="spinner"></div><p>Fetching permits from selected districts...<br><small>This may take 10-30 seconds</small></p></div>';
+            document.getElementById('stats').style.display = 'none';
+
+            allPermits = [];
+
+            // Fetch from each district
+            for (const district of selectedDistricts) {
+                const permits = await fetchDistrictPermits(district, DISTRICTS[district]);
+                allPermits = allPermits.concat(permits);
+
+                // Update progress
+                document.getElementById('results').innerHTML = `
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loaded ${allPermits.length} permits from ${district}...</p>
+                    </div>
+                `;
+            }
+
+            filteredPermits = allPermits;
+            displayPermits(filteredPermits);
+            updateStats();
+        }
+
+        function searchPermits() {
+            const keyword = document.getElementById('searchInput').value.toLowerCase();
+
+            if (!keyword) {
+                filteredPermits = allPermits;
+            } else {
+                filteredPermits = allPermits.filter(p =>
+                    p.description.toLowerCase().includes(keyword) ||
+                    p.permitNumber.toLowerCase().includes(keyword)
+                );
+            }
+
+            displayPermits(filteredPermits);
+            updateStats();
+        }
+
+        function displayPermits(permits) {
+            const resultsDiv = document.getElementById('results');
+
+            if (permits.length === 0) {
+                resultsDiv.innerHTML = '<div class="loading"><p>No permits found</p></div>';
+                return;
+            }
+
+            let html = '';
+            permits.forEach(permit => {
+                const shortDesc = permit.description.length > 300
+                    ? permit.description.substring(0, 300) + '...'
+                    : permit.description;
+
+                html += `
+                    <div class="permit-card">
+                        <div class="permit-header">
+                            <div class="permit-number">${permit.permitNumber}</div>
+                            <div class="district-badge">${permit.district}</div>
+                        </div>
+                        <div class="permit-description">${shortDesc}</div>
+                        <div style="color: #6c757d; font-size: 0.9em; margin-top: 10px;">
+                            📅 ${permit.publicationDate}
+                        </div>
+                        <div class="permit-actions">
+                            <button class="btn-primary" onclick="window.open('${permit.detailUrl}', '_blank')">🔗 View Details & PDFs</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            resultsDiv.innerHTML = html;
+        }
+
+        function updateStats() {
+            const selectedDistricts = new Set(filteredPermits.map(p => p.district));
+            document.getElementById('totalCount').textContent = allPermits.length;
+            document.getElementById('districtCount').textContent = selectedDistricts.size;
+            document.getElementById('filteredCount').textContent = filteredPermits.length;
+            document.getElementById('stats').style.display = 'flex';
+        }
+
+        function exportCSV() {
+            if (filteredPermits.length === 0) {
+                alert('No permits to export');
+                return;
+            }
+
+            let csv = 'District,Permit Number,Publication Date,Description,Detail URL\n';
+
+            filteredPermits.forEach(permit => {
+                const desc = permit.description.replace(/"/g, '""');
+                csv += `"${permit.district}","${permit.permitNumber}","${permit.publicationDate}","${desc}","${permit.detailUrl}"\n`;
+            });
+
+            downloadFile(csv, 'usace_permits_' + new Date().toISOString().slice(0,10) + '.csv', 'text/csv');
+        }
+
+        function exportTable() {
+            if (filteredPermits.length === 0) {
+                alert('No permits to export');
+                return;
+            }
+
+            let html = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>USACE Permits Export</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 20px; }
+                        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+                        th { background-color: #667eea; color: white; }
+                        tr:nth-child(even) { background-color: #f2f2f2; }
+                        a { color: #667eea; text-decoration: none; }
+                        a:hover { text-decoration: underline; }
+                    </style>
+                </head>
+                <body>
+                    <h1>USACE Public Notices Export</h1>
+                    <p>Generated: ${new Date().toLocaleString()}</p>
+                    <p>Total Permits: ${filteredPermits.length}</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>District</th>
+                                <th>Permit Number</th>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            filteredPermits.forEach(permit => {
+                html += `
+                    <tr>
+                        <td>${permit.district}</td>
+                        <td>${permit.permitNumber}</td>
+                        <td>${permit.publicationDate}</td>
+                        <td>${permit.description}</td>
+                        <td><a href="${permit.detailUrl}" target="_blank">View</a></td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                        </tbody>
+                    </table>
+                </body>
+                </html>
+            `;
+
+            downloadFile(html, 'usace_permits_' + new Date().toISOString().slice(0,10) + '.html', 'text/html');
+        }
+
+        function downloadFile(content, filename, type) {
+            const blob = new Blob([content], { type: type });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            a.remove();
+        }
+
+        // Initialize on page load
+        initDistricts();
+    </script>
+</body>
+</html>
