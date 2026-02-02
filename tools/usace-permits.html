@@ -15,7 +15,71 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 80px 20px 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding: 0.8rem 2rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+        }
+
+        .navbar-brand a {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            font-style: normal;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand a:hover {
+            color: #64ffb4;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .navbar-link {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+        }
+
+        .navbar-link:hover {
+            color: #64ffb4;
+            border-color: rgba(100,255,180,0.4);
+            background: rgba(100,255,180,0.05);
         }
 
         .container {
@@ -282,6 +346,14 @@
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <span class="navbar-brand">An <a href="../index.html">oceandatum.ai</a> company</span>
+        <div class="navbar-right">
+            <a href="../projects-hub.html" class="navbar-link">Projects Hub</a>
+            <a href="../index.html" class="navbar-link">Home</a>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="header">
             <h1>🏛️ USACE Public Notices Search</h1>
