@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Datum</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            min-height: 100vh;
+            background: #0a0a0a;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: #0a0a0a;
+        }
+
+        .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0.6;
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,20,40,0.4) 50%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .glass-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .login-container {
+            position: relative;
+            z-index: 100;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 400px;
+            width: 100%;
+            margin: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1) inset;
+        }
+
+        .logo-symbol {
+            width: 60px;
+            height: 60px;
+            color: #ffffff;
+            margin: 0 auto 1.5rem;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.3));
+        }
+
+        .logo-symbol svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .login-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .login-subtitle {
+            font-size: 0.9rem;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(100,255,180,0.5);
+            box-shadow: 0 0 0 3px rgba(100,255,180,0.1);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 0.9rem;
+            background: rgba(100,255,180,0.1);
+            border: 1px solid rgba(100,255,180,0.3);
+            border-radius: 8px;
+            color: #64ffb4;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-button:hover {
+            background: rgba(100,255,180,0.2);
+            border-color: rgba(100,255,180,0.5);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(100,255,180,0.2);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            background: rgba(255,100,100,0.1);
+            border: 1px solid rgba(255,100,100,0.3);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: #ff6464;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message.active {
+            display: block;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #64ffb4;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .login-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="glass-overlay"></div>
+
+    <div class="bg-container">
+        <video class="bg-video" autoplay muted playsinline loop preload="metadata" poster="oceandatum_poster.jpg">
+            <source src="oceandatum_loop_HD.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="login-container">
+        <div class="logo-symbol">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="50" cy="50" r="40" />
+                <ellipse cx="50" cy="50" rx="40" ry="15" />
+                <ellipse cx="50" cy="50" rx="15" ry="40" />
+                <line x1="10" y1="50" x2="90" y2="50" stroke-width="3" />
+                <circle cx="50" cy="50" r="3" fill="currentColor" />
+            </svg>
+        </div>
+
+        <h1 class="login-title">DATUM</h1>
+        <p class="login-subtitle">Project Access</p>
+
+        <div class="error-message" id="errorMessage">
+            Invalid username or password
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label class="form-label" for="username">Username</label>
+                <input type="text" id="username" class="form-input" required autocomplete="username">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" id="password" class="form-input" required autocomplete="current-password">
+            </div>
+
+            <button type="submit" class="login-button">ENTER</button>
+        </form>
+
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Hardcoded credentials (temporary)
+        const VALID_USERNAME = 'theshipsagent';
+        const VALID_PASSWORD = 'yellowrose';
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value;
+
+            if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+                // Set session
+                sessionStorage.setItem('datum_auth', 'true');
+                sessionStorage.setItem('datum_user', username);
+
+                // Redirect to projects hub
+                window.location.href = 'projects-hub.html';
+            } else {
+                // Show error
+                errorMessage.classList.add('active');
+                passwordInput.value = '';
+
+                // Shake animation
+                loginForm.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    loginForm.style.animation = '';
+                }, 500);
+            }
+        });
+
+        // Hide error on input
+        usernameInput.addEventListener('input', () => {
+            errorMessage.classList.remove('active');
+        });
+
+        passwordInput.addEventListener('input', () => {
+            errorMessage.classList.remove('active');
+        });
+    </script>
+
+    <style>
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+    </style>
+</body>
+</html>

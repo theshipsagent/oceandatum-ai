@@ -458,7 +458,8 @@
                 <a href="https://linkedin.com/in/williamsdavis" target="_blank" class="social-icon" title="LinkedIn">in</a>
                 <a href="https://theshipsagent.com" target="_blank" class="social-icon" title="Website">@</a>
             </div>
-            <a href="/" class="navbar-link">← Back to Home</a>
+            <a href="../projects-hub.html" class="navbar-link">Projects Hub</a>
+            <a href="../index.html" class="navbar-link">Home</a>
         </div>
     </nav>
 
@@ -1724,6 +1725,11 @@
     </div>
 
     <script>
+        // Check authentication
+        if (!sessionStorage.getItem('datum_auth')) {
+            window.location.href = '../login.html';
+        }
+
         function showTab(tabName) {
             // Hide all tabs
             const tabs = document.querySelectorAll('.tab-content');

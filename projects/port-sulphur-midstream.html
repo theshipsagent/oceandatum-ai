@@ -1122,19 +1122,8 @@
                     </svg>
                 </a>
             </div>
-            <div class="dropdown">
-                <a class="navbar-link">About</a>
-                <div class="dropdown-content">
-                    <a href="../cv.html">CV/Bio</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <a class="navbar-link">Projects</a>
-                <div class="dropdown-content">
-                    <a href="tampa-cement.html">Tampa Cement Terminal</a>
-                    <a href="port-sulphur-midstream.html">Port Sulphur Midstream</a>
-                </div>
-            </div>
+            <a class="navbar-link" href="../projects-hub.html">Projects Hub</a>
+            <a class="navbar-link" href="../index.html">Home</a>
         </div>
     </nav>
 
@@ -1142,13 +1131,10 @@
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-section">
             <div class="mobile-menu-item">
-                <a href="../cv.html">CV/Bio</a>
+                <a href="../projects-hub.html">Projects Hub</a>
             </div>
             <div class="mobile-menu-item">
-                <a href="tampa-cement.html">Tampa Cement Terminal</a>
-            </div>
-            <div class="mobile-menu-item">
-                <a href="port-sulphur-midstream.html">Port Sulphur Midstream</a>
+                <a href="../index.html">Home</a>
             </div>
         </div>
         <div class="mobile-menu-social">
@@ -1843,6 +1829,11 @@
 
     <!-- Chart Initialization Script -->
     <script>
+    // Check authentication
+    if (!sessionStorage.getItem('datum_auth')) {
+        window.location.href = '../login.html';
+    }
+
     // Initialize Midstream Operations Charts
     document.addEventListener('DOMContentLoaded', function() {
         if (typeof Chart !== 'undefined') {

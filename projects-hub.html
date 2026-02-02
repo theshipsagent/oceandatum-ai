@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Datum</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            min-height: 100vh;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: #0a0a0a;
+        }
+
+        .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0.6;
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,20,40,0.4) 50%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .glass-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding: 0.8rem 2rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+        }
+
+        .navbar-brand a {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            font-style: normal;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand a:hover {
+            color: #64ffb4;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .navbar-link {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+        }
+
+        .navbar-link:hover {
+            color: #64ffb4;
+            border-color: rgba(100,255,180,0.4);
+            background: rgba(100,255,180,0.05);
+        }
+
+        .logout-link {
+            background: rgba(255,100,100,0.1);
+            border-color: rgba(255,100,100,0.3);
+            color: rgba(255,100,100,0.9);
+        }
+
+        .logout-link:hover {
+            background: rgba(255,100,100,0.2);
+            border-color: rgba(255,100,100,0.5);
+            color: #ff6464;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+            padding: 6rem 2rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .category-section {
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .category-section:hover {
+            border-color: rgba(100,255,180,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            color: #64ffb4;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: 0.05em;
+        }
+
+        .category-description {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .project-item {
+            display: block;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .project-item:hover {
+            background: rgba(100,255,180,0.1);
+            border-color: rgba(100,255,180,0.3);
+            color: #64ffb4;
+            transform: translateX(5px);
+        }
+
+        .empty-state {
+            padding: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-style: italic;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            border: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.6rem 1rem;
+            }
+
+            .navbar-right {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .main-content {
+                padding: 5rem 1rem 3rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="glass-overlay"></div>
+
+    <div class="bg-container">
+        <video class="bg-video" autoplay muted playsinline loop preload="metadata" poster="oceandatum_poster.jpg">
+            <source src="oceandatum_loop_HD.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <nav class="navbar">
+        <span class="navbar-brand">An <a href="index.html">oceandatum.ai</a> company</span>
+        <div class="navbar-right">
+            <a href="index.html" class="navbar-link">Home</a>
+            <a href="cv.html" class="navbar-link">CV/Bio</a>
+            <a href="#" class="navbar-link logout-link" id="logoutBtn">Logout</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">PROJECTS</h1>
+            <p class="page-subtitle">Portfolio of maritime intelligence and terminal development work</p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Finished Projects -->
+            <div class="category-section">
+                <div class="category-header">
+                    <svg class="category-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h2 class="category-title">Finished Projects</h2>
+                </div>
+                <p class="category-description">Completed maritime terminal development and market intelligence studies</p>
+                <div class="project-list">
+                    <a href="projects/tampa-cement.html" class="project-item">Tampa Cement Terminal</a>
+                    <a href="projects/port-sulphur-report/port-sulphur-report.html" class="project-item">Port Sulphur Terminal</a>
+                    <a href="projects/port-sulphur-midstream.html" class="project-item">Port Sulphur Midstream</a>
+                </div>
+            </div>
+
+            <!-- Garage Projects -->
+            <div class="category-section">
+                <div class="category-header">
+                    <svg class="category-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                    </svg>
+                    <h2 class="category-title">Garage Projects</h2>
+                </div>
+                <p class="category-description">Works in progress and experimental research initiatives</p>
+                <div class="project-list">
+                    <div class="empty-state">No projects in development at this time</div>
+                </div>
+            </div>
+
+            <!-- Tool Kits -->
+            <div class="category-section">
+                <div class="category-header">
+                    <svg class="category-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <h2 class="category-title">Tool Kits</h2>
+                </div>
+                <p class="category-description">Analytical tools and data visualization frameworks</p>
+                <div class="project-list">
+                    <div class="empty-state">Tool kits coming soon</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication
+        if (!sessionStorage.getItem('datum_auth')) {
+            window.location.href = 'login.html';
+        }
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            sessionStorage.removeItem('datum_auth');
+            sessionStorage.removeItem('datum_user');
+            window.location.href = 'index.html';
+        });
+    </script>
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5169a56446ff4380ad2f1785a86804b8"}'></script>
+</body>
+</html>

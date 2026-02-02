@@ -541,19 +541,8 @@
                     </svg>
                 </a>
             </div>
-            <div class="dropdown">
-                <a class="navbar-link">About</a>
-                <div class="dropdown-content">
-                    <a href="../../cv.html">CV/Bio</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <a class="navbar-link">Projects</a>
-                <div class="dropdown-content">
-                    <a href="../tampa-cement.html">Tampa Cement Terminal</a>
-                    <a href="port-sulphur-report.html">Port Sulphur Terminal</a>
-                </div>
-            </div>
+            <a class="navbar-link" href="../../projects-hub.html">Projects Hub</a>
+            <a class="navbar-link" href="../../index.html">Home</a>
         </div>
     </nav>
 
@@ -561,13 +550,10 @@
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-section">
             <div class="mobile-menu-item">
-                <a href="../../cv.html">CV/Bio</a>
+                <a href="../../projects-hub.html">Projects Hub</a>
             </div>
             <div class="mobile-menu-item">
-                <a href="../tampa-cement.html">Tampa Cement Terminal</a>
-            </div>
-            <div class="mobile-menu-item">
-                <a href="port-sulphur-report.html">Port Sulphur Terminal</a>
+                <a href="../../index.html">Home</a>
             </div>
         </div>
         <div class="mobile-menu-social">
@@ -4802,6 +4788,11 @@
 <!-- Chart Initialization Script -->
 <script src="../visualizations/navigation_charts.js"></script>
 <script>
+// Check authentication
+if (!sessionStorage.getItem('datum_auth')) {
+    window.location.href = '../../login.html';
+}
+
 // Initialize all navigation charts when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof initializeNavigationCharts === 'function') {
