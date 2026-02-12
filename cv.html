@@ -1103,10 +1103,10 @@
     </nav>
 
     <div class="profile-container">
-        <div class="tab-nav">
+        <div class="tab-nav" id="tabNav">
             <button class="tab-button active" onclick="showTab('cv')">CV</button>
-            <button class="tab-button" onclick="showTab('biography')">Biography</button>
-            <button class="tab-button" onclick="showTab('bibliography')">Bibliography</button>
+            <button class="tab-button auth-only" onclick="showTab('biography')" style="display:none;">Biography</button>
+            <button class="tab-button auth-only" onclick="showTab('bibliography')" style="display:none;">Bibliography</button>
         </div>
 
         <!-- TAB 1: CV -->
@@ -3155,6 +3155,19 @@
                     mobileMenu.classList.remove('active');
                 });
             });
+        }
+
+        // Show Biography/Bibliography tabs only for authenticated users
+        if (sessionStorage.getItem('datum_auth')) {
+            document.querySelectorAll('.auth-only').forEach(function(el) {
+                el.style.display = '';
+            });
+
+            // Handle hash-based tab navigation (e.g. cv.html#biography)
+            var hash = window.location.hash.replace('#', '');
+            if (hash === 'biography' || hash === 'bibliography') {
+                showTab(hash);
+            }
         }
     </script>
 
