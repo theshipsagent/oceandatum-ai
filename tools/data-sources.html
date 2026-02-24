@@ -1,0 +1,3606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIS Dataset Index | Datum</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            min-height: 100vh;
+            padding: 80px 20px 20px;
+            color: #e0e0e0;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding: 0.8rem 2rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            font-size: 0.85rem;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+        }
+
+        .navbar-brand a {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            font-style: normal;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand a:hover {
+            color: #64ffb4;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .navbar-link {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+        }
+
+        .navbar-link:hover {
+            color: #64ffb4;
+            border-color: rgba(100,255,180,0.4);
+            background: rgba(100,255,180,0.05);
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .header {
+            background: rgba(0,0,0,0.4);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(100,255,180,0.3);
+        }
+
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            color: #ffffff;
+        }
+
+        .header p {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100,255,180,0.3);
+            background: rgba(100,255,180,0.05);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 600;
+            color: #64ffb4;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .controls {
+            padding: 30px;
+            background: rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1em;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+            color: #ffffff;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .search-box::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: rgba(100,255,180,0.5);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: rgba(255,255,255,0.7);
+        }
+
+        select {
+            padding: 10px 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1em;
+            background: rgba(0,0,0,0.4);
+            color: rgba(255,255,255,0.9);
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        select option {
+            background: #1a1a2e;
+            color: #ffffff;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: rgba(100,255,180,0.5);
+        }
+
+        .button {
+            padding: 10px 20px;
+            background: rgba(100,255,180,0.15);
+            color: #64ffb4;
+            border: 1px solid rgba(100,255,180,0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1em;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            transition: all 0.3s;
+        }
+
+        .button:hover {
+            background: rgba(100,255,180,0.25);
+            border-color: rgba(100,255,180,0.5);
+            box-shadow: 0 4px 12px rgba(100,255,180,0.1);
+        }
+
+        .button.secondary {
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.7);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .button.secondary:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.9);
+        }
+
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            cursor: pointer;
+            user-select: none;
+            border-bottom: 1px solid rgba(100,255,180,0.2);
+            white-space: nowrap;
+            letter-spacing: 0.03em;
+        }
+
+        th:hover {
+            background: rgba(100,255,180,0.05);
+            color: #64ffb4;
+        }
+
+        th.sortable::after {
+            content: ' \21C5';
+            opacity: 0.3;
+        }
+
+        th.sort-asc::after {
+            content: ' \2191';
+            opacity: 1;
+            color: #64ffb4;
+        }
+
+        th.sort-desc::after {
+            content: ' \2193';
+            opacity: 1;
+            color: #64ffb4;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.8);
+        }
+
+        tr:hover {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .source-id {
+            font-weight: 600;
+            color: #64ffb4;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .source-id:hover {
+            color: #a0ffd4;
+            text-decoration: underline;
+        }
+
+        .dataset-name {
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            cursor: pointer;
+        }
+
+        .dataset-name:hover {
+            color: #64ffb4;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: rgba(100,255,180,0.1);
+            color: #64ffb4;
+            border: 1px solid rgba(100,255,180,0.2);
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+            color: #64ffb4;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #141422;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            background: rgba(0,0,0,0.4);
+            color: white;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(100,255,180,0.3);
+        }
+
+        .modal-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8em;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+        }
+
+        .close-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .close-button:hover {
+            background: rgba(100,255,180,0.2);
+            border-color: rgba(100,255,180,0.4);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .detail-row {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .detail-value a {
+            color: #64ffb4;
+            text-decoration: none;
+        }
+
+        .detail-value a:hover {
+            text-decoration: underline;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .no-results h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.03);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.15);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(100,255,180,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.6rem 1rem;
+            }
+
+            .navbar-right {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <span class="navbar-brand">An <a href="../index.html">oceandatum.ai</a> company</span>
+        <div class="navbar-right">
+            <a href="../index.html" class="navbar-link">Home</a>
+            <a href="../cv.html" class="navbar-link">CV</a>
+            <a href="../projects-hub.html" class="navbar-link">Projects</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>GIS DATASET INDEX</h1>
+            <p>Interactive Data Sources Browser &mdash; 249 Datasets</p>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number" id="totalDatasets">0</div>
+                <div class="stat-label">Total Datasets</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalCategories">0</div>
+                <div class="stat-label">Categories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalSources">0</div>
+                <div class="stat-label">Sources</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalTypes">0</div>
+                <div class="stat-label">Data Types</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <input type="text"
+                   class="search-box"
+                   id="searchInput"
+                   placeholder="Search by SOURCE_ID, name, category, source, type, description, or URL...">
+
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="categoryFilter">Category:</label>
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="Academic/Research">Academic/Research</option>
+                        <option value="Aviation">Aviation</option>
+                        <option value="Bridges & Structures">Bridges & Structures</option>
+                        <option value="Commercial Data Providers">Commercial Data Providers</option>
+                        <option value="Data Download/Export">Data Download/Export</option>
+                        <option value="Environmental - Engineering">Environmental - Engineering</option>
+                        <option value="Environmental - Infrastructure Risk">Environmental - Infrastructure Risk</option>
+                        <option value="Environmental - Maritime">Environmental - Maritime</option>
+                        <option value="Freight & Supply Chain">Freight & Supply Chain</option>
+                        <option value="GIS/Mapping">GIS/Mapping</option>
+                        <option value="Geospatial Standards">Geospatial Standards</option>
+                        <option value="Government - Energy">Government - Energy</option>
+                        <option value="Government - Federal Data">Government - Federal Data</option>
+                        <option value="Government - Maritime/Waterways">Government - Maritime/Waterways</option>
+                        <option value="Government - State/Local">Government - State/Local</option>
+                        <option value="Government - Transportation">Government - Transportation</option>
+                        <option value="Infrastructure Operations">Infrastructure Operations</option>
+                        <option value="Infrastructure Transformation">Infrastructure Transformation</option>
+                        <option value="Maritime & Waterways">Maritime & Waterways</option>
+                        <option value="Maritime Trade, Port Operations, Vessel Traffic">Maritime Trade, Port Operations, Vessel Traffic</option>
+                        <option value="Navigation Infrastructure, Decision Support, Data Integration">Navigation Infrastructure, Decision Support, Data Integration</option>
+                        <option value="Navigation Infrastructure, Dredging Operations, Waterway Maintenance">Navigation Infrastructure, Dredging Operations, Waterway Maintenance</option>
+                        <option value="Navigation Infrastructure, Lock Operations, Vessel Traffic">Navigation Infrastructure, Lock Operations, Vessel Traffic</option>
+                        <option value="Navigation Safety, Waterway Status, Maritime Notices">Navigation Safety, Waterway Status, Maritime Notices</option>
+                        <option value="Oil & Gas">Oil & Gas</option>
+                        <option value="Oil & Gas - Environmental">Oil & Gas - Environmental</option>
+                        <option value="Oil & Gas - Global Infrastructure">Oil & Gas - Global Infrastructure</option>
+                        <option value="Other/Uncategorized">Other/Uncategorized</option>
+                        <option value="Port Identification, Maritime Trade, Customs Documentation">Port Identification, Maritime Trade, Customs Documentation</option>
+                        <option value="Port Operations, Real-Time Oceanographic Data, Maritime Safety, Navigation">Port Operations, Real-Time Oceanographic Data, Maritime Safety, Navigation</option>
+                        <option value="Ports & Shipping">Ports & Shipping</option>
+                        <option value="Ports & Shipping - Environmental">Ports & Shipping - Environmental</option>
+                        <option value="Ports & Shipping - Operational">Ports & Shipping - Operational</option>
+                        <option value="Rail">Rail</option>
+                        <option value="Rail Trails">Rail Trails</option>
+                        <option value="Transit">Transit</option>
+                        <option value="Transportation Industry">Transportation Industry</option>
+                        <option value="Transportation Infrastructure">Transportation Infrastructure</option>
+                        <option value="Waterborne Commerce, Port Operations, Maritime Trade">Waterborne Commerce, Port Operations, Maritime Trade</option>
+                        <option value="ZIP, Esri REST Services, ISO-19139 Metadata">ZIP, Esri REST Services, ISO-19139 Metadata</option>
+                        </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sourceFilter">Source:</label>
+                    <select id="sourceFilter">
+                        <option value="">All Sources</option>
+                        <option value="ArcGIS Online Community">ArcGIS Online Community</option>
+                        <option value="Bureau of Ocean Energy Management (BOEM)">Bureau of Ocean Energy Management (BOEM)</option>
+                        <option value="Bureau of Transportation Statistics (BTS)">Bureau of Transportation Statistics (BTS)</option>
+                        <option value="Bureau of Transportation Statistics (BTS) / HIFLD">Bureau of Transportation Statistics (BTS) / HIFLD</option>
+                        <option value="California Energy Commission (CEC)">California Energy Commission (CEC)</option>
+                        <option value="Department of Energy">Department of Energy</option>
+                        <option value="Department of Transportation - BTS">Department of Transportation - BTS</option>
+                        <option value="Department of Transportation - FHWA">Department of Transportation - FHWA</option>
+                        <option value="Department of Transportation - FRA">Department of Transportation - FRA</option>
+                        <option value="Department of Transportation - MARAD">Department of Transportation - MARAD</option>
+                        <option value="Department of Transportation - USACE">Department of Transportation - USACE</option>
+                        <option value="Department of Transportation / USACE">Department of Transportation / USACE</option>
+                        <option value="Department of the Interior">Department of the Interior</option>
+                        <option value="Department of the Interior - USGS">Department of the Interior - USGS</option>
+                        <option value="EPA">EPA</option>
+                        <option value="Energy Information Administration (EIA)">Energy Information Administration (EIA)</option>
+                        <option value="Environmental Defense Fund / MethaneSAT">Environmental Defense Fund / MethaneSAT</option>
+                        <option value="Federal Aviation Administration (FAA)">Federal Aviation Administration (FAA)</option>
+                        <option value="Federal Geographic Data Committee">Federal Geographic Data Committee</option>
+                        <option value="Federal Highway Administration (FHWA)">Federal Highway Administration (FHWA)</option>
+                        <option value="Federal Railroad Administration (FRA)">Federal Railroad Administration (FRA)</option>
+                        <option value="HIFLD - Bureau of Transportation Statistics">HIFLD - Bureau of Transportation Statistics</option>
+                        <option value="NOAA - Department of Commerce">NOAA - Department of Commerce</option>
+                        <option value="NOAA - National Oceanic and Atmospheric Administration">NOAA - National Oceanic and Atmospheric Administration</option>
+                        <option value="NOAA / BOEM">NOAA / BOEM</option>
+                        <option value="NOAA / Maritime Safety">NOAA / Maritime Safety</option>
+                        <option value="Official List of National Geospatial Data Assets">Official List of National Geospatial Data Assets</option>
+                        <option value="U.S. Army Corps of Engineers (USACE)">U.S. Army Corps of Engineers (USACE)</option>
+                        <option value="USACE - U.S. Army Corps of Engineers, Institute for Water Resources (IWR), Navigation and Civil Works Decision Support Center">USACE - U.S. Army Corps of Engineers, Institute for Water Resources (IWR), Navigation and Civil Works Decision Support Center</option>
+                        <option value="USACE - U.S. Army Corps of Engineers, Institute for Water Resources (IWR), Waterborne Commerce Statistics Center">USACE - U.S. Army Corps of Engineers, Institute for Water Resources (IWR), Waterborne Commerce Statistics Center</option>
+                        <option value="USACE - U.S. Army Corps of Engineers, Navigation Data Center (NDC) Library, in cooperation with U.S. Customs and Border Protection">USACE - U.S. Army Corps of Engineers, Navigation Data Center (NDC) Library, in cooperation with U.S. Customs and Border Protection</option>
+                        <option value="USACE - U.S. Army Corps of Engineers, Navigation and Civil Works Decision Support Center (NDC), Dredging Statistics Program">USACE - U.S. Army Corps of Engineers, Navigation and Civil Works Decision Support Center (NDC), Dredging Statistics Program</option>
+                        <option value="USACE - U.S. Army Corps of Engineers, Navigation and Civil Works Decision Support Center (NDC), Institute for Water Resources">USACE - U.S. Army Corps of Engineers, Navigation and Civil Works Decision Support Center (NDC), Institute for Water Resources</option>
+                        <option value="USACE - U.S. Army Corps of Engineers, Waterborne Commerce Statistics Center (WCSC). Also published by U.S. Customs and Border Protection">USACE - U.S. Army Corps of Engineers, Waterborne Commerce Statistics Center (WCSC). Also published by U.S. Customs and Border Protection</option>
+                        <option value="USACE / State Agencies">USACE / State Agencies</option>
+                        <option value="USGS - Department of the Interior">USGS - Department of the Interior</option>
+                        <option value="agtransport.usda.gov">agtransport.usda.gov</option>
+                        <option value="and Zones for US Waters">and Zones for US Waters</option>
+                        <option value="archive.org">archive.org</option>
+                        <option value="catalog.data.gov">catalog.data.gov</option>
+                        <option value="data.gov">data.gov</option>
+                        <option value="fgisonline.ams.usda.gov">fgisonline.ams.usda.gov</option>
+                        <option value="geo-harriscounty.opendata.arcgis.com">geo-harriscounty.opendata.arcgis.com</option>
+                        <option value="geodata.bts.gov">geodata.bts.gov</option>
+                        <option value="hifld-geoplatform.hub.arcgis.com">hifld-geoplatform.hub.arcgis.com</option>
+                        <option value="hts.usitc.gov">hts.usitc.gov</option>
+                        <option value="ials.sas.ac.uk">ials.sas.ac.uk</option>
+                        <option value="ideas.repec.org">ideas.repec.org</option>
+                        <option value="ienccloud.us">ienccloud.us</option>
+                        <option value="learn.microsoft.com">learn.microsoft.com</option>
+                        <option value="maritime.ihs.com">maritime.ihs.com</option>
+                        <option value="ndc.ops.usace.army.mil">ndc.ops.usace.army.mil</option>
+                        <option value="nodejs.org">nodejs.org</option>
+                        <option value="onlinebooks.library.upenn.edu">onlinebooks.library.upenn.edu</option>
+                        <option value="panjiva.com">panjiva.com</option>
+                        <option value="publibrary.sec.usace.army.mil">publibrary.sec.usace.army.mil</option>
+                        <option value="usace.contentdm.oclc.org">usace.contentdm.oclc.org</option>
+                        <option value="www.arcgis.com">www.arcgis.com</option>
+                        <option value="www.census.gov">www.census.gov</option>
+                        <option value="www.cisa.gov">www.cisa.gov</option>
+                        <option value="www.eia.gov">www.eia.gov</option>
+                        <option value="www.fastcase.com">www.fastcase.com</option>
+                        <option value="www.federalregister.gov">www.federalregister.gov</option>
+                        <option value="www.llama.com">www.llama.com</option>
+                        <option value="www.railinc.com">www.railinc.com</option>
+                        <option value="www.seedr.cc">www.seedr.cc</option>
+                        <option value="www.stb.gov">www.stb.gov</option>
+                        <option value="www.trade.gov">www.trade.gov</option>
+                        <option value="www.usace.army.mil">www.usace.army.mil</option>
+                        <option value="www.usgs.gov">www.usgs.gov</option>
+                        <option value="www.zotero.org">www.zotero.org</option>
+                        </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="typeFilter">Type:</label>
+                    <select id="typeFilter">
+                        <option value="">All Types</option>
+                        <option value="ArcGIS GeoServices REST API, CSV, GDB, GPKG, GeoJSON, HTML, JSON, KML, RSS, TEXT, XLS, XML, ZIP, text/json">ArcGIS GeoServices REST API, CSV, GDB, GPKG, GeoJSON, HTML, JSON, KML, RSS, TEXT, XLS, XML, ZIP, text/json</option>
+                        <option value="ArcGIS GeoServices REST API, CSV, GeoJSON, HTML, JSON, KML, RSS, XML, ZIP, text/json">ArcGIS GeoServices REST API, CSV, GeoJSON, HTML, JSON, KML, RSS, XML, ZIP, text/json</option>
+                        <option value="ArcGIS GeoServices REST API, HTML, JSON, RSS, XML, text/json">ArcGIS GeoServices REST API, HTML, JSON, RSS, XML, text/json</option>
+                        <option value="ArcGIS Online, REST Services, PDF">ArcGIS Online, REST Services, PDF</option>
+                        <option value="CSV, KML, Zip, GeoJSON, GeoTIFF, WMS, WFS">CSV, KML, Zip, GeoJSON, GeoTIFF, WMS, WFS</option>
+                        <option value="Database (Oracle), W-DAPP tool (Waterborne Data Analyzer and Pre-Processor), Downloadable datasets">Database (Oracle), W-DAPP tool (Waterborne Data Analyzer and Pre-Processor), Downloadable datasets</option>
+                        <option value="Database records, Historical archives">Database records, Historical archives</option>
+                        <option value="Database system, Web portal access">Database system, Web portal access</option>
+                        <option value="ESRI Formats">ESRI Formats</option>
+                        <option value="ESRI Geodatabase">ESRI Geodatabase</option>
+                        <option value="ESRI Geodatabase, Shapefile">ESRI Geodatabase, Shapefile</option>
+                        <option value="ESRI Geodatabase, Shapefile, REST Services">ESRI Geodatabase, Shapefile, REST Services</option>
+                        <option value="ESRI Geodatabase, Shapefile, REST Services, WFS">ESRI Geodatabase, Shapefile, REST Services, WFS</option>
+                        <option value="ESRI REST Services">ESRI REST Services</option>
+                        <option value="ESRI REST Services, Shapefile">ESRI REST Services, Shapefile</option>
+                        <option value="ESRI REST, Shapefile">ESRI REST, Shapefile</option>
+                        <option value="Esri REST, HTML">Esri REST, HTML</option>
+                        <option value="GIS Polygon Features">GIS Polygon Features</option>
+                        <option value="Google Earth Engine, Multiple">Google Earth Engine, Multiple</option>
+                        <option value="HTML">HTML</option>
+                        <option value="HTML, JSON, RSS, XML, text/json">HTML, JSON, RSS, XML, text/json</option>
+                        <option value="HTML/Geospatial">HTML/Geospatial</option>
+                        <option value="HTML/Interactive">HTML/Interactive</option>
+                        <option value="Interactive Database, Multiple">Interactive Database, Multiple</option>
+                        <option value="Internet/Web platforms, Telephone voice response systems, PUFFF (PORTS Uniform Flat File Format), Numerical circulation model forecasts">Internet/Web platforms, Telephone voice response systems, PUFFF (PORTS Uniform Flat File Format), Numerical circulation model forecasts</option>
+                        <option value="KMZ">KMZ</option>
+                        <option value="Lanes">Lanes</option>
+                        <option value="Multiple">Multiple</option>
+                        <option value="Multiple database systems, Web portals, Data libraries">Multiple database systems, Web portals, Data libraries</option>
+                        <option value="NOAA Standard Formats">NOAA Standard Formats</option>
+                        <option value="PDF, Database listings, CBP ACE Appendix F publications">PDF, Database listings, CBP ACE Appendix F publications</option>
+                        <option value="Real-time Data">Real-time Data</option>
+                        <option value="Web">Web</option>
+                        <option value="Web-based database, Online searchable portal, Real-time notices">Web-based database, Online searchable portal, Real-time notices</option>
+                        <option value="Web-based database, Real-time data system, Online portal access">Web-based database, Real-time data system, Online portal access</option>
+                        <option value="XML">XML</option>
+                        <option value="ZIP, HTML">ZIP, HTML</option>
+                        </select>
+                </div>
+
+                <button class="button secondary" onclick="resetFilters()">Reset Filters</button>
+                <button class="button" onclick="exportToCSV()">Export to CSV</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th class="sortable" onclick="sortTable(0)">SOURCE_ID</th>
+                        <th class="sortable" onclick="sortTable(1)">Name</th>
+                        <th class="sortable" onclick="sortTable(2)">Type</th>
+                        <th class="sortable" onclick="sortTable(3)">Source</th>
+                        <th class="sortable" onclick="sortTable(4)">Category</th>
+                        <th class="sortable" onclick="sortTable(5)">Update Status</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+            <div id="noResults" class="no-results" style="display: none;">
+                <h3>No results found</h3>
+                <p>Try adjusting your search or filter criteria</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Dataset Details</h2>
+                <button class="close-button" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+        </div>
+    </div>
+
+    <script>
+const allDatasets = [
+        {
+                "sourceId": "DS-001",
+                "name": "USGS National Assessment of Oil and Gas Project - Shale Gas Assessment Units",
+                "type": "XML",
+                "source": "Department of the Interior - USGS",
+                "category": "Oil & Gas",
+                "description": "National oil and gas assessment data with shale gas assessment units",
+                "url": "https://energy.usgs.gov/OilGas/AssessmentsData/NationalOilGasAssessment.aspx",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-002",
+                "name": "Oil and Gas Pipelines in the Gulf of Mexico from BOEM",
+                "type": "Esri REST, HTML",
+                "source": "NOAA - Department of Commerce",
+                "category": "Oil & Gas",
+                "description": "Line file representing pipeline infrastructure in the Gulf of Mexico associated with oil and gas industry",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-003",
+                "name": "NETL's Carbon Capture and Storage Database",
+                "type": "KMZ",
+                "source": "Department of Energy",
+                "category": "Oil & Gas - Environmental",
+                "description": "Active, proposed, canceled, and terminated CCS projects worldwide",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-004",
+                "name": "North American Rail Network Lines - Class I Freight Railroads",
+                "type": "HTML/Geospatial",
+                "source": "Department of Transportation - FRA",
+                "category": "Freight & Supply Chain",
+                "description": "Class I freight railroad network for industrial supply chain and goods movement",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Updated every 28 days"
+        },
+        {
+                "sourceId": "DS-005",
+                "name": "Principal Ports",
+                "type": "HTML/Geospatial",
+                "source": "Department of Transportation - USACE",
+                "category": "Ports & Shipping",
+                "description": "Principal ports dataset for maritime shipping and cargo operations",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Periodically Updated"
+        },
+        {
+                "sourceId": "DS-006",
+                "name": "National Highway Planning Network (NHPN)",
+                "type": "HTML/Geospatial",
+                "source": "Department of Transportation - FHWA",
+                "category": "Freight & Supply Chain",
+                "description": "Highway network for freight planning and industrial supply chain routing",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-007",
+                "name": "Freight Analysis Framework (FAF5) Highway Network Assignments",
+                "type": "HTML/Geospatial",
+                "source": "Department of Transportation - BTS",
+                "category": "Freight & Supply Chain",
+                "description": "Freight flow data and highway network assignments for supply chain analysis based on 2017 base year",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Updated April 2022"
+        },
+        {
+                "sourceId": "DS-008",
+                "name": "Intermodal Freight Facilities - Marine Roll-on/Roll-off",
+                "type": "HTML/Geospatial",
+                "source": "Department of Transportation - BTS",
+                "category": "Ports & Shipping",
+                "description": "Intermodal freight facilities for marine roll-on/roll-off operations",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Updated July 2022"
+        },
+        {
+                "sourceId": "DS-009",
+                "name": "Marine Highways",
+                "type": "HTML/Geospatial",
+                "source": "Department of Transportation - MARAD",
+                "category": "Ports & Shipping",
+                "description": "Marine highway system for coastal and inland waterway shipping",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Updated September 2025"
+        },
+        {
+                "sourceId": "DS-010",
+                "name": "Link Tonnages",
+                "type": "HTML/Geospatial",
+                "source": "Department of Transportation - USACE",
+                "category": "Freight & Supply Chain",
+                "description": "Tonnage data on transportation links for supply chain analysis",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Updated August 2025"
+        },
+        {
+                "sourceId": "DS-011",
+                "name": "USGS National Structures Dataset",
+                "type": "XML",
+                "source": "Department of the Interior - USGS",
+                "category": "Infrastructure Operations",
+                "description": "Structures including facilities, dams, and operational infrastructure",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-012",
+                "name": "National Bridge Inventory",
+                "type": "HTML/Geospatial",
+                "source": "Department of Transportation - FHWA",
+                "category": "Infrastructure Operations",
+                "description": "Bridge conditions and engineering data across U.S. highway system",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Updated June 2025"
+        },
+        {
+                "sourceId": "DS-013",
+                "name": "Federal Dams / National Inventory of Dams (NID)",
+                "type": "HTML/Geospatial",
+                "source": "Department of Transportation / USACE",
+                "category": "Infrastructure Operations",
+                "description": "Inventory of dams with operational and structural characteristics",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-014",
+                "name": "NOAA Digital Coast Sea Level Rise and Coastal Flooding Impacts Viewer",
+                "type": "HTML/Interactive",
+                "source": "NOAA - Department of Commerce",
+                "category": "Environmental - Infrastructure Risk",
+                "description": "Sea level rise and coastal flooding impacts on coastal infrastructure",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-015",
+                "name": "MarineCadastre.gov",
+                "type": "Multiple",
+                "source": "NOAA - Department of Commerce",
+                "category": "Ports & Shipping - Environmental",
+                "description": "Marine information system with ocean data and offshore planning tools",
+                "url": "https://marinecadastre.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-016",
+                "name": "USGS Surface-Water Data for the Nation (NWIS)",
+                "type": "XML",
+                "source": "Department of the Interior - USGS",
+                "category": "Environmental - Engineering",
+                "description": "Water-resources data from 1.5 million sites for infrastructure planning",
+                "url": "https://waterdata.usgs.gov",
+                "updateStatus": "Continuous"
+        },
+        {
+                "sourceId": "DS-017",
+                "name": "EnviroAtlas - Annual Average Potential Wind Energy Resource",
+                "type": "ZIP, HTML",
+                "source": "EPA",
+                "category": "Infrastructure Transformation",
+                "description": "Wind energy resource data by hydrologic unit for renewable energy planning",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-018",
+                "name": "Groundwater Depletion in the United States (1900-2008)",
+                "type": "XML",
+                "source": "Department of the Interior",
+                "category": "Environmental - Engineering",
+                "description": "Historical groundwater depletion data for water resource planning",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Historical"
+        },
+        {
+                "sourceId": "DS-019",
+                "name": "Crude Oil Pipelines",
+                "type": "ESRI Geodatabase, Shapefile, REST Services",
+                "source": "Energy Information Administration (EIA)",
+                "category": "Oil & Gas",
+                "description": "Polyline dataset representing major crude oil pipelines in the U.S., updated with end of year 2024 data",
+                "url": "https://catalog.data.gov/dataset/crude-oil-pipelines-ntad",
+                "updateStatus": "Updated October 2020; Current attribute data"
+        },
+        {
+                "sourceId": "DS-020",
+                "name": "Natural Gas Interstate and Intrastate Pipelines",
+                "type": "ESRI Geodatabase, Shapefile, REST Services, WFS",
+                "source": "Energy Information Administration (EIA)",
+                "category": "Oil & Gas",
+                "description": "Polyline dataset representing major natural gas transmission pipelines including gathering lines",
+                "url": "https://catalog.data.gov/dataset/natural-gas-interstate-and-intrastate-pipelines",
+                "updateStatus": "Updated October 2020; Current data"
+        },
+        {
+                "sourceId": "DS-021",
+                "name": "BOEM Gulf of America GIS - Active Leases and Infrastructure",
+                "type": "ArcGIS Online, REST Services, PDF",
+                "source": "Bureau of Ocean Energy Management (BOEM)",
+                "category": "Oil & Gas",
+                "description": "Oil and gas lease information with active leases and infrastructure locations",
+                "url": "https://www.boem.gov/oil-gas-energy/mapping-and-data/goar-geographic-information-system-gis-data-and-maps",
+                "updateStatus": "Updated February 2025"
+        },
+        {
+                "sourceId": "DS-022",
+                "name": "EIA Liquids Pipeline Projects Database",
+                "type": "Interactive Database, Multiple",
+                "source": "Energy Information Administration (EIA)",
+                "category": "Oil & Gas",
+                "description": "Tracks 200+ pipeline projects for crude oil, HGL, and petroleum products",
+                "url": "https://atlas.eia.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-023",
+                "name": "Oil and Gas Infrastructure Mapping (OGIM) Database",
+                "type": "Google Earth Engine, Multiple",
+                "source": "Environmental Defense Fund / MethaneSAT",
+                "category": "Oil & Gas - Environmental",
+                "description": "Global database of 6.7M infrastructure features including 4.5M wells and 1.2M km pipelines",
+                "url": "https://gee-community-catalog.org/projects/ogim/",
+                "updateStatus": "Updated February 2025"
+        },
+        {
+                "sourceId": "DS-024",
+                "name": "USGS Mineral Industries and Infrastructure - Africa Geodatabase",
+                "type": "ESRI Geodatabase",
+                "source": "USGS - Department of the Interior",
+                "category": "Oil & Gas - Global Infrastructure",
+                "description": "Comprehensive geodatabase including oil & gas pipelines, LNG terminals, power infrastructure",
+                "url": "https://catalog.data.gov/dataset/compilation-of-geospatial-data-gis-for-the-mineral-industries-and-related-infrastructure-o",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-025",
+                "name": "Intermodal Freight Facilities - Pipeline Terminals",
+                "type": "ESRI Geodatabase, Shapefile",
+                "source": "Bureau of Transportation Statistics (BTS)",
+                "category": "Freight & Supply Chain",
+                "description": "Pipeline terminal facilities with truck/rail/water mode connections and commodity data",
+                "url": "https://catalog.data.gov/dataset/intermodal-freight-facilities",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-026",
+                "name": "Intermodal Freight Facilities - Rail Terminals",
+                "type": "ESRI Geodatabase, Shapefile",
+                "source": "Bureau of Transportation Statistics (BTS)",
+                "category": "Freight & Supply Chain",
+                "description": "Rail terminal facilities for intermodal freight operations",
+                "url": "https://catalog.data.gov/dataset/intermodal-freight-facilities",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-027",
+                "name": "Intermodal Freight Facilities - Truck Terminals",
+                "type": "ESRI Geodatabase, Shapefile",
+                "source": "Bureau of Transportation Statistics (BTS)",
+                "category": "Freight & Supply Chain",
+                "description": "Truck terminal facilities for intermodal freight consolidation",
+                "url": "https://catalog.data.gov/dataset/intermodal-freight-facilities",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-028",
+                "name": "Major U.S. Port Facilities",
+                "type": "ESRI REST Services, Shapefile",
+                "source": "Bureau of Transportation Statistics (BTS) / HIFLD",
+                "category": "Ports & Shipping",
+                "description": "Comprehensive locations and characteristics of major U.S. port facilities",
+                "url": "https://hifld-geoplatform.opendata.arcgis.com/datasets/major-us-port-facilities",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-029",
+                "name": "Shipping Fairways",
+                "type": "ESRI REST, Shapefile",
+                "source": "HIFLD - Bureau of Transportation Statistics",
+                "category": "Ports & Shipping",
+                "description": "Defined shipping fairways and marine traffic corridors for coastal planning",
+                "url": "https://hifld-geoplatform.opendata.arcgis.com/datasets/geoplatform::shipping-fairways",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-030",
+                "name": "Global Shipping Routes",
+                "type": "ESRI REST Services",
+                "source": "ArcGIS Online Community",
+                "category": "Ports & Shipping",
+                "description": "Global shipping lanes and maritime routes dataset",
+                "url": "https://www.arcgis.com/home/item.html?id=12c0789207e64714b9545ad30fca1633",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-031",
+                "name": "Shipping Lanes - Gulf of Mexico",
+                "type": "GIS Polygon Features",
+                "source": "NOAA / BOEM",
+                "category": "Ports & Shipping",
+                "description": "Polygon data for all major shipping lanes in Gulf of Mexico",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-032",
+                "name": "Automatic Identification System (AIS) Vessel Tracking",
+                "type": "Real-time Data",
+                "source": "NOAA / Maritime Safety",
+                "category": "Ports & Shipping - Operational",
+                "description": "Real-time location and characteristics of vessels tracked via navigation devices",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Real-time"
+        },
+        {
+                "sourceId": "DS-033",
+                "name": "Deepwater Ship Channels",
+                "type": "GIS Polygon Features",
+                "source": "USACE / State Agencies",
+                "category": "Ports & Shipping",
+                "description": "Polygon features of deepwater ship channels in critical waterways",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-034",
+                "name": "US Energy Atlas",
+                "type": "CSV, KML, Zip, GeoJSON, GeoTIFF, WMS, WFS",
+                "source": "Energy Information Administration (EIA)",
+                "category": "Infrastructure Transformation",
+                "description": "Comprehensive energy infrastructure dataset with multiple download formats",
+                "url": "https://atlas.eia.gov/search",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-035",
+                "name": "California Energy Infrastructure - CEC Geospatial Data",
+                "type": "ESRI Formats",
+                "source": "California Energy Commission (CEC)",
+                "category": "Infrastructure Operations",
+                "description": "Power plant locations and characteristics for state energy infrastructure",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-036",
+                "name": "NOAA Electronic Navigational Charts (ENCs)",
+                "type": "NOAA Standard Formats",
+                "source": "NOAA - National Oceanic and Atmospheric Administration",
+                "category": "Environmental - Maritime",
+                "description": "Marine transportation infrastructure and coastal management charts",
+                "url": "https://catalog.data.gov",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-037",
+                "name": "State carbon dioxide emissions data",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Annual state-level estimates of energy consumption, prices, and expenditures for jet fuel.",
+                "url": "https://catalog.data.gov/dataset/state-carbon-dioxide-emissions-data",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-038",
+                "name": "Electricity Data and Statistics Application Programming Interface (API)",
+                "type": "API|HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Monthly, quarterly, and annual data on electricity generation, consumption, retail sales, price, revenue from retail sales, useful thermal output, fossil fuel stocks, and more.",
+                "url": "https://catalog.data.gov/dataset/electricity-data-and-statistics-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-039",
+                "name": "Monthly and Annual Energy Consumption by Sector",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Monthly data since January 1973 and annual data since 1949 on U.S. primary and total energy consumption by end-use sector (residential, commercial, industrial, transportation).",
+                "url": "https://catalog.data.gov/dataset/monthly-and-annual-energy-consumption-by-sector",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-040",
+                "name": "Petroleum Data: Prices Application Programming Interface (API)",
+                "type": "HTML|API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Prices of petroleum products and crude oil. Weekly, monthly, and annual data available. Users of the EIA API are required to obtain an API Key.",
+                "url": "https://catalog.data.gov/dataset/petroleum-data-prices-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-041",
+                "name": "Annual Electricity Price by State",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Annual data on the average price of retail electricity to consumers. Data organized by U.S. state and by provider, i.e., total electric industry, full-service providers, and more.",
+                "url": "https://catalog.data.gov/dataset/annual-electricity-price-by-state",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-042",
+                "name": "U.S. Crude Oil, Natural Gas, and Natural Gas Liquids Reserves",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Annual data on proved reserves of crude oil, natural gas, and natural gas liquids in the U.S. Based on EIA Form-23L data. Proved reserves are estimated volumes of hydrocarbon resources.",
+                "url": "https://catalog.data.gov/dataset/u-s-crude-oil-natural-gas-and-natural-gas-liquids-reserves",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-043",
+                "name": "State Energy Data System (SEDS): Consumption Application Programming Interface (API)",
+                "type": "HTML|API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides state-level and national-level energy consumption data. Data organized by major economic sectors. EIA's State Energy Data System (SEDS) is a comprehensive dataset.",
+                "url": "https://catalog.data.gov/dataset/state-energy-data-system-seds-consumption-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-044",
+                "name": "State Energy Data System (SEDS)",
+                "type": "CSV|HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "EIA's State Energy Data System (SEDS) is a comprehensive data set that consists of annual time series estimates of state-level energy use by major economic sectors.",
+                "url": "https://catalog.data.gov/dataset/state-energy-data-system-seds",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-045",
+                "name": "Monthly Electric Utility Sales and Revenue",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Utility level retail sales of electricity and associated revenue. Organized by reporting month, state, and by end-use sector, i.e., residential, commercial, industrial.",
+                "url": "https://catalog.data.gov/dataset/monthly-electric-utility-sales-and-revenue",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-046",
+                "name": "Liquids pipeline projects database",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "EIA launched a new liquids pipeline projects database that tracks more than 200 pipeline projects for crude oil, hydrocarbon gas liquids (HGL), and other petroleum products.",
+                "url": "https://catalog.data.gov/dataset/liquids-pipeline-projects-database",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-047",
+                "name": "EIA Thermoelectric Water Cooling Data",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "The U.S. Energy Information Administration (EIA) collects water cooling data for the electric power industry in the United States. This submission includes annual data on water cooling systems.",
+                "url": "https://catalog.data.gov/dataset/eia-thermoelectric-water-cooling-data-5ea33",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-048",
+                "name": "Petroleum & Other Liquids Data and Statistics",
+                "type": "HTML|API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Weekly, monthly, and annual data on crude oil, gasoline, diesel, propane, jet fuel, ethanol, and other liquid fuels. Domestic and international data on petroleum production and consumption.",
+                "url": "https://catalog.data.gov/dataset/petroleum-other-liquids-data-and-statistics",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-049",
+                "name": "Energy Data and Statistics from U.S. States",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "State-level data on all energy sources. Data on production, consumption, reserves, stocks, prices, imports, and exports. Data are collated from state-specific data sources.",
+                "url": "https://catalog.data.gov/dataset/energy-data-and-statistics-from-u-s-states",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-050",
+                "name": "Bulk Download Facility",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "The bulk download facility provides the entire contents of each major API data set in a single ZIP file. A small JSON formatted manifest file lists the bulk files and their metadata.",
+                "url": "https://catalog.data.gov/dataset/bulk-download-facility",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-051",
+                "name": "Commercial Buildings Energy Consumption Survey",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "The Commercial Buildings Energy Consumption Survey (CBECS) is a national sample survey that collects information on the stock of U.S. commercial buildings, their energy-related characteristics, and...",
+                "url": "https://catalog.data.gov/dataset/commercial-buildings-energy-consumption-survey",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-052",
+                "name": "Electricity Data: Plant Level Data Application Programming Interface (API)",
+                "type": "HTML|API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data on electric fuel consumption, fuel consumption, and net generation at the plant level. Annual, quarterly, and monthly data available.",
+                "url": "https://catalog.data.gov/dataset/electricity-data-plant-level-data-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-053",
+                "name": "Renewable and Alternative Fuels Data and Statistics",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Monthly and annual data on renewable energy, i.e., biomass, geothermal, hydropower, solar, and wind. Also data on alternative transportation fuels, i.e., hydrogen, ethanol.",
+                "url": "https://catalog.data.gov/dataset/renewable-and-alternative-fuels-data-and-statistics",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-054",
+                "name": "State Energy Data System (SEDS) Application Programming Interface (API)",
+                "type": "API|HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "State-level data on all energy sources. Data include production, consumption, reserves, stocks, prices, imports, and exports. Data are collated from state-specific sources.",
+                "url": "https://catalog.data.gov/dataset/state-energy-data-system-seds-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-055",
+                "name": "Consumption & Efficiency Data and Statistics",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data and statistics on energy consumption in homes, commercial buildings, manufacturing, and transportation. Data released monthly or annually.",
+                "url": "https://catalog.data.gov/dataset/consumption-efficiency-data-and-statistics",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-056",
+                "name": "Short-Term Energy Outlook: U.S. CO2 Emissions Application Programming Interface (API)",
+                "type": "API|HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data back to 1990 and projections annually, monthly, and quarterly for 18 months. Summarizes CO2 emissions from coal, fossil fuels, natural gas, and petroleum.",
+                "url": "https://catalog.data.gov/dataset/short-term-energy-outlook-u-s-co2-emissions-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-057",
+                "name": "International Energy Data - All Energy",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides international data on energy sources (e.g., coal, electricity, natural gas, petroleum, coal, renewables) and activities (e.g., consumption, imports, exports, production).",
+                "url": "https://catalog.data.gov/dataset/international-energy-data-all-energy",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-058",
+                "name": "Annual Distribution and Production of Oil and Gas Wells by State From 1919-Latest Year Available",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Annual data on the number and production volumes of oil and natural gas wells by state. Annual time series extend back to 1919.",
+                "url": "https://catalog.data.gov/dataset/annual-distribution-and-production-of-oil-and-gas-wells-by-state-from-1919-latest-year-ava",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-059",
+                "name": "Petroleum Data: Crude Reserves and Production Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data on the proved reserves, production, and drilling of crude oil, lease condensates, natural gas, and natural gas wells. Monthly and annual data available.",
+                "url": "https://catalog.data.gov/dataset/petroleum-data-crude-reserves-and-production-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-060",
+                "name": "Nuclear & Uranium Data and Statistics",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data on uranium and nuclear fuel, nuclear power plants and reactors, radioactive waste, and nuclear power generation. International data on nuclear generation also available.",
+                "url": "https://catalog.data.gov/dataset/nuclear-uranium-data-and-statistics",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-061",
+                "name": "Residential Energy Consumption Survey (RECS) Files, Energy Consumption, 2009",
+                "type": "CSV",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This 2009 version represents the 13th iteration of the RECS program. First conducted in 1978, the Residential Energy Consumption Survey is a national sample survey that collects data on energy...",
+                "url": "https://catalog.data.gov/dataset/residential-energy-consumption-survey-recs-files-energy-consumption-2009",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-062",
+                "name": "Annual Electric Power Industry Data",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Historical U.S. electric utility data. Data on generation, electric purchases, peak load, sales, revenues, customer counts, demand-side management programs, green pricing.",
+                "url": "https://catalog.data.gov/dataset/annual-electric-power-industry-data",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-063",
+                "name": "Energy-Related Environmental Data",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Environmental data on carbon dioxide emissions from energy and industry, by consuming sector (residential, commercial, industrial, transportation, electric power), and by fuel type.",
+                "url": "https://catalog.data.gov/dataset/energy-related-environmental-data",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-064",
+                "name": "Electricity Data: Net Generation from Electricity Plants Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data on U.S. electricity generation by fuel type, i.e., coal, petroleum, natural gas, nuclear, hydroelectric, wind, solar, geothermal, and wood.",
+                "url": "https://catalog.data.gov/dataset/electricity-data-net-generation-from-electricity-plants-application-programming-interface-",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-065",
+                "name": "Electric Power Annual",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Annual data on electricity generating capacity, electricity generation and useful thermal output, fuel receipts, fuel stocks, sales, consumption, and emissions in the U.S.",
+                "url": "https://catalog.data.gov/dataset/electric-power-annual",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-066",
+                "name": "Electricity Data - Consumption",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data on U.S. consumption for electricity generation in Btu. Data organized by fuel type, i.e., coal, petroleum liquids, petroleum coke, and natural gas.",
+                "url": "https://catalog.data.gov/dataset/electricity-data-consumption",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-067",
+                "name": "Total Energy Data and Statistics",
+                "type": "HTML|XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Comprehensive monthly and annual time series on all energy sources. Data on production, consumption, reserves, stocks, prices, imports, and exports. Monthly time series since 1973.",
+                "url": "https://catalog.data.gov/dataset/total-energy-data-and-statistics",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-068",
+                "name": "Alternative Fuel Vehicle Data",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Annual data on the number of on-road alternative fuel vehicles and hybrid vehicles made available in the U.S. Data on the use of alternative fueled vehicles and the consumption of alternative fuels.",
+                "url": "https://catalog.data.gov/dataset/alternative-fuel-vehicle-data",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-069",
+                "name": "Annual Company Level Natural Gas Supply and Disposition From 1997-Latest Year Available",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Annual company level data on the supply and disposition of natural gas in the United States from an identified universe of pipelines, local distribution companies, and other operators.",
+                "url": "https://catalog.data.gov/dataset/annual-company-level-natural-gas-supply-and-disposition-from-1997-latest-year-available",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-070",
+                "name": "Natural Gas Data",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data and statistics on natural gas prices, exploration and reserves, production, imports and exports, storage, pipelines, and consumption. Data released on a weekly, monthly, and annual basis.",
+                "url": "https://catalog.data.gov/dataset/natural-gas-data",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-071",
+                "name": "Coal Data: Aggregate Coal Mine Productivity Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Annual data on coal mine productivity in short tons per labor hour. Data organized by mine type (total, surface, underground, refuse).",
+                "url": "https://catalog.data.gov/dataset/coal-data-aggregate-coal-mine-productivity-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-072",
+                "name": "Energy Analysis & Projections",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Monthly and yearly forecasts of energy production, consumption, and price at the national level and by energy type. Monthly forecasts extend 18 months and yearly forecasts extend 30 years.",
+                "url": "https://catalog.data.gov/dataset/energy-analysis-projections",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-073",
+                "name": "Annual Energy Outlook",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "The Annual Energy Outlook presents longterm annual projections of energy supply, demand, and prices focused on the U.S. through 2050, based on results from EIA's National Energy Modeling System.",
+                "url": "https://catalog.data.gov/dataset/annual-energy-outlook",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-074",
+                "name": "Energy Markets & Finance Data and Statistics",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Information on price volatility and forecast uncertainty for crude oil and natural gas as well as an analysis of 7 key factors that may influence oil prices, physical market indicators, and financial...",
+                "url": "https://catalog.data.gov/dataset/energy-markets-finance-data-and-statistics",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-075",
+                "name": "Petroleum Data Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data on crude oil reserves and production; refining and processing; imports, exports, movements; stocks; prices; and consumption/sales are available in machine-readable format.",
+                "url": "https://catalog.data.gov/dataset/petroleum-data-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-076",
+                "name": "Annual U. S. Electric Power Industry Estimated Emissions by State From 1990 - Latest Year Available",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data on annual emissions of Carbon Dioxide (CO2), Sulfur Dioxide (SO2), and Nitrogen Oxides (NOx). Data organized by type of electric power producer, by energy source, and by state.",
+                "url": "https://catalog.data.gov/dataset/annual-u-s-electric-power-industry-estimated-emissions-by-state-from-1990-latest-year-avai",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-077",
+                "name": "Coal Data Collection",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "International and domestic data on coal production, consumption, prices, reserves, stocks, imports, exports, distribution, and transportation rates. Weekly, monthly, and annual data.",
+                "url": "https://catalog.data.gov/dataset/coal-data-collection",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-078",
+                "name": "Residential Energy Consumption Survey (RECS) Files, All Data, 2015",
+                "type": "CSV",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "The 2015 study represents the 14th iteration of the RECS program. First conducted in 1978, the Residential Energy Consumption Survey is a national sample survey that provides energy consumption and...",
+                "url": "https://catalog.data.gov/dataset/residential-energy-consumption-survey-recs-files-all-data-2015",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-079",
+                "name": "Company Level Petroleum Imports",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Monthly data at the company level on imports of crude oil and/or petroleum products into the 50 States, the District of Columbia, Puerto Rico, the Virgin Islands, and other U.S. territories.",
+                "url": "https://catalog.data.gov/dataset/company-level-petroleum-imports",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-080",
+                "name": "Crude Oil Imports Tracking Tool",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Maps and data for petroleum imports by type, crude oil grade, location, and country of origin.",
+                "url": "https://catalog.data.gov/dataset/crude-oil-imports-tracking-tool",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-081",
+                "name": "Petroleum Data: Imports/Exports and Movements Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Imports and exports of petroleum products and crude oil. Weekly, monthly, and annual data available.",
+                "url": "https://catalog.data.gov/dataset/petroleum-data-imports-exports-and-movements-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-082",
+                "name": "Electricity Data - Retail Sales",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data on retail sales of electricity by major end-use sectors, i.e., residential, commercial, industrial, and transportation. Based on Form EIA-826 data.",
+                "url": "https://catalog.data.gov/dataset/electricity-data-retail-sales",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-083",
+                "name": "Annual Electric Generator Report - Latest Year",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Annual U.S. generator level data about generators at electric power plants owned and operated by electric utilities and nonutilities (including independent power producers).",
+                "url": "https://catalog.data.gov/dataset/annual-electric-generator-report-latest-year",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-084",
+                "name": "Coal Mines, Surface and Underground",
+                "type": "SHP",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "All operating surface and underground coal mines in the United States.",
+                "url": "https://catalog.data.gov/dataset/coal-mines-surface-and-underground",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-085",
+                "name": "Crude Oil Imports",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Imports by origin of all grades of crude oil, i.e., heavy sour, heavy sweet, light sour, light sweet, and medium crude oil. View data by country, by world region, or by crude quality.",
+                "url": "https://catalog.data.gov/dataset/crude-oil-imports",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-086",
+                "name": "International Energy Data - Coal",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides international data on coal production. Data organized by country.",
+                "url": "https://catalog.data.gov/dataset/international-energy-data-coal",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-087",
+                "name": "Tight Oil Production Estimates by Play",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Estimated monthly production derived from state administrative data. Data are back to January 2000.",
+                "url": "https://catalog.data.gov/dataset/tight-oil-production-estimates-by-play",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-088",
+                "name": "Short-Term Energy Outlook: International Petroleum and Other Liquids Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data back to 1990 and projections annually, monthly, and quarterly for 18 months. Summarizes the outlook for supply, consumption, inventory, and prices.",
+                "url": "https://catalog.data.gov/dataset/short-term-energy-outlook-international-petroleum-and-other-liquids-application-programmin",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-089",
+                "name": "Short-Term Energy Outlook: U.S. Natural Gas Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data back to 1990 and projections annually, monthly, and quarterly for 18 months. Summarizes the outlook for supply, consumption, inventories, and prices.",
+                "url": "https://catalog.data.gov/dataset/short-term-energy-outlook-u-s-natural-gas-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-090",
+                "name": "International Energy Data - Petroleum and Other Liquids",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides international data on crude oil including lease condensate production, imports, exports, and reserves. Data organized by country.",
+                "url": "https://catalog.data.gov/dataset/international-energy-data-petroleum-and-other-liquids",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-091",
+                "name": "Petroleum Data: Consumption/Sales Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data on the consumption and sales of petroleum products. Weekly, monthly, and annual data available.",
+                "url": "https://catalog.data.gov/dataset/petroleum-data-consumption-sales-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-092",
+                "name": "Annual Solar Photovoltaic Module Shipments Report",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data on domestic shipments of photovoltaic cells and modules by market sector, end use, and type. Based on information reported on Form EIA-63B.",
+                "url": "https://catalog.data.gov/dataset/annual-solar-photovoltaic-module-shipments-report",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-093",
+                "name": "Short-Term Energy Outlook: U.S. Prices Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data back to 1990 and projections annually, monthly, and quarterly for 18 months. Summarizes the outlook for prices of petroleum, natural gas, coal, and electricity.",
+                "url": "https://catalog.data.gov/dataset/short-term-energy-outlook-u-s-prices-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-094",
+                "name": "Electricity Data: Average Retail Price of Electricity Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data on average retail price of electricity by major end-use sectors, i.e., residential, commercial, industrial, and transportation. Based on Form EIA-826 data.",
+                "url": "https://catalog.data.gov/dataset/electricity-data-average-retail-price-of-electricity-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-095",
+                "name": "Short-Term Energy Outlook Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "The API provides data back to 1990 and projections annually, monthly, and quarterly for 18 months. Summarizes the outlook for demand, supply and prices for petroleum, natural gas, coal, and...",
+                "url": "https://catalog.data.gov/dataset/short-term-energy-outlook-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-096",
+                "name": "Monthly Utility and Nonutility Fuel",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Monthly data on U.S. electric power generation, fuel consumption, stocks, and fuel heat content from utility power plants, nonutility power plants, and combined heat and power plants.",
+                "url": "https://catalog.data.gov/dataset/monthly-utility-and-nonutility-fuel",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-097",
+                "name": "Electricity Data - Fossil Fuels",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This provides data on the average cost of fossil fuels. Data organized by fuel type, i.e., coal, bituminous coal, subbituminous coal, lignite coal, petroleum liquids, petroleum coke, natural gas.",
+                "url": "https://catalog.data.gov/dataset/electricity-data-fossil-fuels",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-098",
+                "name": "Petroleum Data: Stocks Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data on petroleum and crude oil stocks. Weekly, monthly, and annual data available.",
+                "url": "https://catalog.data.gov/dataset/petroleum-data-stocks-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-099",
+                "name": "U.S. Energy Mapping System",
+                "type": "SHP|HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Map data for energy production and consumption in geospatial format.",
+                "url": "https://catalog.data.gov/dataset/u-s-energy-mapping-system",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-100",
+                "name": "Short-Term Energy Outlook - Real and Nominal Petroleum Prices",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Provides annual, quarterly, and monthly prices back to 1976 for gasoline, heating oil, and diesel fuel. Also provides annual prices from 1968 and quarterly and monthly prices from 1976 for crude oil.",
+                "url": "https://catalog.data.gov/dataset/short-term-energy-outlook-real-and-nominal-petroleum-prices",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-101",
+                "name": "International Energy Data - Alternative Energy",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides international data on alternative energy such as biodiesel production and consumption. Data organized by country.",
+                "url": "https://catalog.data.gov/dataset/international-energy-data-alternative-energy",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-102",
+                "name": "Dry Shale Gas Production Estimates by Play",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Estimated monthly production derived from state administrative data. Data are back to January 2000.",
+                "url": "https://catalog.data.gov/dataset/dry-shale-gas-production-estimates-by-play",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-103",
+                "name": "Coal Production by MSHA ID",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data on U.S mining operation (i.e., operation name, mailing address, telephone number, State and county of operation, etc.), annual coal production, code definitions, and more.",
+                "url": "https://catalog.data.gov/dataset/coal-production-by-msha-id",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-104",
+                "name": "Short-Term Energy Outlook: U.S. Electricity Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data back to 1990 and projections annually, monthly, and quarterly for 18 months. Summarizes the outlook for U.S electricity generation, consumption, and prices.",
+                "url": "https://catalog.data.gov/dataset/short-term-energy-outlook-u-s-electricity-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-105",
+                "name": "Short-Term Energy Outlook: U.S. Weather Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data back to 1990 and projections annually, monthly, and quarterly for 18 months. It provides data on U.S. heating degree days and cooling degree days.",
+                "url": "https://catalog.data.gov/dataset/short-term-energy-outlook-u-s-weather-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-106",
+                "name": "International Energy Data - Natural Gas",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This collection provides international data on natural gas. Data organized by country.",
+                "url": "https://catalog.data.gov/dataset/international-energy-data-natural-gas",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-107",
+                "name": "Short-Term Energy Outlook: U.S. Renewable Energy Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data back to 1990 and projections annually, monthly, and quarterly for 18 months. Summarizes the outlook for renewable energy consumption and electricity generation.",
+                "url": "https://catalog.data.gov/dataset/short-term-energy-outlook-u-s-renewable-energy-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-108",
+                "name": "State Energy Data System (SEDS): Conversion Factors Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides the conversion factors to change physical units to Btu. EIA's State Energy Data System (SEDS) is a comprehensive data set that consists of annual time series estimates of...",
+                "url": "https://catalog.data.gov/dataset/state-energy-data-system-seds-conversion-factors-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-109",
+                "name": "Crude Oil and Petroleum Exports",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Monthly Crude Oil and Petroleum Products Exports. Data are back to January 1981 for petroleum products and back to January 1920 for crude oil.",
+                "url": "https://catalog.data.gov/dataset/crude-oil-and-petroleum-exports",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-110",
+                "name": "State Energy Data System (SEDS): Production Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API contains state-level and national-level data on energy production. EIA's State Energy Data System (SEDS) is a comprehensive data set that consists of annual time series estimates.",
+                "url": "https://catalog.data.gov/dataset/state-energy-data-system-seds-production-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-111",
+                "name": "State Energy Data System (SEDS): GDP Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides state-level and national-level GDP. EIA's State Energy Data System (SEDS) is a comprehensive data set that consists of annual time series estimates of state-level energy data.",
+                "url": "https://catalog.data.gov/dataset/state-energy-data-system-seds-gdp-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-112",
+                "name": "Annual Summary Electricity Statistics for the U. S. From 2003 - Latest Year Available",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Annual data back to 2003 at the national level for electricity generation; capacity; consumption and cost of fossil fuels; sales, price and revenue; emissions; customer counts; and more.",
+                "url": "https://catalog.data.gov/dataset/annual-summary-electricity-statistics-for-the-u-s-from-2003-latest-year-available",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-113",
+                "name": "Petroleum Data: Summary Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data on petroleum production, imports, inputs, stocks, exports, and prices. Weekly, monthly, and annual data available.",
+                "url": "https://catalog.data.gov/dataset/petroleum-data-summary-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-114",
+                "name": "New England Dashboard",
+                "type": "HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "To increase customer understanding of weather-related energy issues in New England, EIA released an interactive dashboard showing energy market conditions in that region.",
+                "url": "https://catalog.data.gov/dataset/new-england-dashboard",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-115",
+                "name": "Short-Term Energy Outlook: U.S. Petroleum and Other Liquids Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data back to 1990 and projections annually, monthly, and quarterly for 18 months. Summarizes the outlook for U.S. petroleum and other liquids production, consumption, and...",
+                "url": "https://catalog.data.gov/dataset/short-term-energy-outlook-u-s-petroleum-and-other-liquids-application-programming-interfac",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-116",
+                "name": "State Energy Data System (SEDS): Population Application Programming Interface (API)",
+                "type": "API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides state-level population, in addition to the U.S. total population. EIA's State Energy Data System (SEDS) is a comprehensive data set that consists of annual time series estimates.",
+                "url": "https://catalog.data.gov/dataset/state-energy-data-system-seds-population-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-117",
+                "name": "Short-Term Energy Outlook: U.S. Coal Application Programming Interface (API)",
+                "type": "API|HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data back to 1990 and projections annually, monthly, and quarterly for 18 months. Summarizes the outlook for supply, consumption, inventories, and prices of coal.",
+                "url": "https://catalog.data.gov/dataset/short-term-energy-outlook-u-s-coal-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-118",
+                "name": "State Energy Data System (SEDS): Prices & Expenditures Application Programming Interface (API)",
+                "type": "HTML|API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides state-level and national-level energy prices and expenditures. Data organized by major economic sectors. EIA's State Energy Data System (SEDS) is a comprehensive dataset.",
+                "url": "https://catalog.data.gov/dataset/state-energy-data-system-seds-prices-expenditures-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-119",
+                "name": "Petroleum Data: Refining and Processing Application Programming Interface (API)",
+                "type": "HTML|API",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data on petroleum inputs, production, yield, and capacity. Weekly, monthly and annual data available.",
+                "url": "https://catalog.data.gov/dataset/petroleum-data-refining-and-processing-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-120",
+                "name": "Monthly Gross Withdrawals of Natural Gas",
+                "type": "XLS",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "Data from 2005 to the latest month available on gross withdrawals of natural gas. Data organized by area and by month. Based on Form EIA-914 data.",
+                "url": "https://catalog.data.gov/dataset/monthly-gross-withdrawals-of-natural-gas",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-121",
+                "name": "Short-Term Energy Outlook: U.S. Economy Application Programming Interface (API)",
+                "type": "API|HTML",
+                "source": "U.S. Energy Information Administration",
+                "category": "Department of Energy",
+                "description": "This API provides data back to 1990 and projections annually, monthly, and quarterly for 18 months. It provides data on economic output, income, expenditures, employment, and inflation.",
+                "url": "https://catalog.data.gov/dataset/short-term-energy-outlook-u-s-economy-application-programming-interface-api",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-122",
+                "name": "National Bridge Inventory",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The National Bridge Inventory dataset is as of June 20, 2025 from the Federal Highway Administration (FHWA) and is part of the U.S. Department of Transportation (USDOT)/Bureau of Transportation...",
+                "url": "https://catalog.data.gov/dataset/national-bridge-inventory-abd5a",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-123",
+                "name": "Navigable Waterway Network Lines",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Navigable Waterway Network Lines dataset is periodically updated by the United States Army Corp of Engineers (USACE) and is part of the U.S. Department of Transportation (USDOT)/Bureau of...",
+                "url": "https://catalog.data.gov/dataset/navigable-waterway-network-lines-129e0",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-124",
+                "name": "Runways",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Runways dataset is updated every 28 days from the Federal Aviation Administration (FAA) and is part of the U.S. Department of Transportation (USDOT)/Bureau of Transportation Statistics (BTS)...",
+                "url": "https://catalog.data.gov/dataset/runways-4b1eb",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-125",
+                "name": "Waterway Locks",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Waterway Locks dataset is periodically updated by the United States Army Corp of Engineers (USACE) and is part of the U.S. Department of Transportation (USDOT)/Bureau of Transportation Statistics...",
+                "url": "https://catalog.data.gov/dataset/waterway-locks-ddc5f",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-126",
+                "name": "Aviation Facilities",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Aviation Facilities dataset is updated every 28 days from the Federal Aviation Administration (FAA) and is part of the U.S. Department of Transportation (USDOT)/Bureau of Transportation...",
+                "url": "https://catalog.data.gov/dataset/aviation-facilities-fcf79",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-127",
+                "name": "National Transit Map Routes",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The National Transit Map - Routes dataset was compiled on September 02, 2025 from the Bureau of Transportation Statistics (BTS) and is part of the U.S. Department of Transportation (USDOT)/Bureau of...",
+                "url": "https://catalog.data.gov/dataset/national-transit-map-routes-b405a",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-128",
+                "name": "Intermodal Passenger Connectivity Database (IPCD)",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Intermodal Passenger Connectivity Database (IPCD) dataset was compiled on August 10, 2021 and was updated October 19, 2022 from the Bureau of Transportation Statistics (BTS) and is part of the...",
+                "url": "https://catalog.data.gov/dataset/intermodal-passenger-connectivity-database-ipcd-14a6e",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-129",
+                "name": "North American Rail Network Lines",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The North American Rail Network (NARN) Rail Lines dataset was created in 2016 and was updated on September 30, 2025 from the Federal Railroad Administration (FRA) and is part of the U.S. Department...",
+                "url": "https://catalog.data.gov/dataset/north-american-rail-network-lines-24470",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-130",
+                "name": "Rail Mileposts",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Rail Mileposts dataset was compiled on June 15, 2025 and was updated on September 01, 2025 by the Federal Railroad Administration (FRA), and is part of the U.S. Department of Transportation...",
+                "url": "https://catalog.data.gov/dataset/rail-mileposts-f82ca",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-131",
+                "name": "Navigation Facilities",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Navgiation Facilities dataset is periodically updated by the United States Army Corp of Engineers (USACE) and is part of the U.S. Department of Transportation (USDOT)/Bureau of Transportation...",
+                "url": "https://catalog.data.gov/dataset/docks-cc874",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-132",
+                "name": "North American Rail Network Nodes",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The North American Rail Network (NARN) Rail Nodes dataset was created in 2016 and was updated on September 30, 2025 from the Federal Railroad Administration (FRA) and is part of the U.S. Department...",
+                "url": "https://catalog.data.gov/dataset/north-american-rail-network-nodes-b078b",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-133",
+                "name": "National Transit Map Stops",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The National Transit Map - Stops dataset was compiled on September 02, 2025 from the Bureau of Transportation Statistics (BTS) and is part of the U.S. Department of Transportation (USDOT)/Bureau of...",
+                "url": "https://catalog.data.gov/dataset/national-transit-map-stops-035ba",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-134",
+                "name": "List of National Geospatial Data Assets (NGDAs) Portfolio Datasets As Endorsed by the Federal Geospatial Data Committee (FGDC)",
+                "type": "Geospatial",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "An National Geospatial Data Asset (NGDA) is defined as a geospatial dataset that has been designated by the FGDC Steering Committee and meets at least one of the following criteria: used by multiple...",
+                "url": "https://catalog.data.gov/dataset/list-of-national-geospatial-data-assets-ngdas-portfolio-datasets-as-endorsed-by-the-federal-geo2",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-135",
+                "name": "Navigable Waterway Network Nodes",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Navigable Waterway Network Nodes dataset is periodically updated by the United States Army Corp of Engineers (USACE) and is part of the U.S. Department of Transportation (USDOT)/Bureau of...",
+                "url": "https://catalog.data.gov/dataset/navigable-waterway-network-nodes-47f75",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-136",
+                "name": "Federal Trail GIS Data Schema WG Template GTS KERRY",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/federal-trail-gis-data-schema-wg-template-gts-kerry",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-137",
+                "name": "Intermodal Freight Facilities Air-to-Truck",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Intermodal Freight Facilities - Air-to-Truck dataset was compiled on January 15, 2019 and was updated on February 24, 2020 from the Bureau of Transportation Statistics (BTS) and is part of the...",
+                "url": "https://catalog.data.gov/dataset/intermodal-freight-facilities-air-to-truck-0f876",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-138",
+                "name": "Federal-Trail-GIS-Schema-Frequently-Asked-Questions",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/federal-trail-gis-schema-frequently-asked-questions",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-139",
+                "name": "BETA - Hazard Exposure: Select North American Rail Network Lines",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The BETA - Hazard Exposure: Select North American Rail Network Lines dataset was updated on October 16, 2025 from the Bureau of Transportation Statistics (BTS) and is part of the U.S. Department of...",
+                "url": "https://catalog.data.gov/dataset/beta-hazard-exposure-select-north-american-rail-network-lines-74f29",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-140",
+                "name": "Intermodal Freight Facilities Rail TOFC/COFC",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Intermodal Freight Facilities - Rail TOFC/COFC dataset was compiled on December 10, 2018 and was updated on July 22, 2022 from the Bureau of Transportation Statistics (BTS), and is part of the...",
+                "url": "https://catalog.data.gov/dataset/intermodal-freight-facilities-rail-tofc-cofc-8948f",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-141",
+                "name": "BETA - Hazard Exposure: Primary Airport Parcels",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The BETA - Hazard Exposure: Primary Airport Parcels dataset was updated on October 16, 2025 from the Bureau of Transportation Statistics (BTS) and is part of the U.S. Department of Transportation...",
+                "url": "https://catalog.data.gov/dataset/beta-hazard-exposure-primary-airport-parcels-db6ae",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-142",
+                "name": "BETA - Hazard Exposure: Principal Ports",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The BETA - Hazard Exposure: Principal Ports dataset was updated on October 16, 2025 from the Bureau of Transportation Statistics (BTS) and is part of the U.S. Department of Transportation...",
+                "url": "https://catalog.data.gov/dataset/beta-hazard-exposure-principal-ports-3caa4",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-143",
+                "name": "Partnership Building Activities",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/partnership-building-activities",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-144",
+                "name": "Transportation Theme's Geospatial Standards Implementation Plan - June 2023",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/transportation-themes-geospatial-standards-implementation-plan-june-2023",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-145",
+                "name": "Aviation Facilities",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Aviation Facilities dataset is updated every 28 days from the Federal Aviation Administration (FAA) and is part of the U.S. Department of Transportation (USDOT)/Bureau of Transportation...",
+                "url": "https://catalog.data.gov/dataset/aviation-facilities-68dd2",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-146",
+                "name": "Federal Lands Roads Working Group (FLR-WG)",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/federal-lands-roads-working-group-flr-wg",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-147",
+                "name": "GDA Activities",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/gda-activities",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-148",
+                "name": "U.S. Road Specification Working Group",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/u-s-road-specification-working-group",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-149",
+                "name": "FGDC Transportation Theme Strategic Plan 2021",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "FGDC Transportation Theme Strategic Plan 2021-2024 as part of the Geospatial Data Act reporting requirement",
+                "url": "https://catalog.data.gov/dataset/fgdc-transportation-theme-strategic-plan-2021",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-150",
+                "name": "2021 - 2024 FGDC Transportation Theme Strategic Plan v1.1",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/2021-2024-fgdc-transportation-theme-strategic-plan-v1-1",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-151",
+                "name": "Federal Lands Roads Working Group",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/federal-lands-roads-working-group",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-152",
+                "name": "Transportation NGDA List",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/transportation-ngda-list",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-153",
+                "name": "Intermodal Freight Facilities Pipeline Terminals",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Intermodal Freight Facilities - Pipeline Terminals dataset was compiled on February 02, 2021 and was updated on April 21, 2021 from the Bureau of Transportation Statistics (BTS) and is part of...",
+                "url": "https://catalog.data.gov/dataset/intermodal-freight-facilities-pipeline-terminals-55ac3",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-154",
+                "name": "BETA - Hazard Exposure: National Highway System",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The BETA - Hazard Exposure: National Highway System dataset was updated on October 16, 2025 from the Bureau of Transportation Statistics (BTS) and is part of the U.S. Department of Transportation...",
+                "url": "https://catalog.data.gov/dataset/beta-hazard-exposure-national-highway-system-3f8b5",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-155",
+                "name": "Intermodal Freight Facilities Marine Roll-on/Roll-off",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The Intermodal Freight Facilities - Marine Roll-on/Roll-off dataset was compiled on July 01, 2019 and was updated on July 22, 2022 from the Bureau of Transportation Statistics (BTS), and is part of...",
+                "url": "https://catalog.data.gov/dataset/intermodal-freight-facilities-marine-roll-on-roll-off-17f88",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-156",
+                "name": "Geospatial Transportation Subcommittee",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/geospatial-transportation-subcommittee",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-157",
+                "name": "BETA - Hazard Exposure: National Highway System Bridges",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API|CSV|ZIP|GeoJSON|KML|TEXT|XLS|GPKG|GDB",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "The BETA - Hazard Exposure: National Highway System Bridges dataset was updated on October 16, 2025 from the Bureau of Transportation Statistics (BTS) and is part of the U.S. Department of...",
+                "url": "https://catalog.data.gov/dataset/beta-hazard-exposure-national-highway-system-bridges-90a64",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-158",
+                "name": "NGDA transportation",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "Thumbnail image for NGDA Transportation Theme",
+                "url": "https://catalog.data.gov/dataset/ngda-transportation",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-159",
+                "name": "Passenger Travel Working Group",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/passenger-travel-working-group",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-160",
+                "name": "FTGSWG - Public Review",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/ftgswg-public-review",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-161",
+                "name": "Transportation Theme's Geospatial Standards Adoption Support Services - Tasks",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/transportation-themes-geospatial-standards-adoption-support-services-tasks",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-162",
+                "name": "2021-2024 Implementation Plan - Goals and Actions Public v1.1",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/2021-2024-implementation-plan-goals-and-actions-public-v1-1",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-163",
+                "name": "TTSP Communications Plan",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/ttsp-communications-plan",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-164",
+                "name": "Federal Trails Working Group",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "Trails working Group Hub page",
+                "url": "https://catalog.data.gov/dataset/federal-trails-working-group",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-165",
+                "name": "Transportation NGDA List",
+                "type": "XML|text/json|RSS|JSON|HTML|ArcGIS GeoServices REST API",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "This is a public view of the Theme NGDA List derived from the Official List of National Geospatial Data Assets (NGDA) Endorsed by the FGDC Steering Committee.",
+                "url": "https://catalog.data.gov/dataset/transportation-ngda-list-79072",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-166",
+                "name": "Standards",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "Standards utilized by NGDA within an NGDA Portfolio Community Theme are part of a FGDC geospatial standards endorsement/retirement process required by Section 2806 of the Geospatial Data Act. The...",
+                "url": "https://catalog.data.gov/dataset/standards-in-use",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-167",
+                "name": "20210513 Federal-Trail-GIS-Schema-Introduction v5.2",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "{{description}}",
+                "url": "https://catalog.data.gov/dataset/20210513-federal-trail-gis-schema-introduction-v5-2",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-168",
+                "name": "Overview",
+                "type": "XML|text/json|RSS|JSON|HTML",
+                "source": "Federal Geographic Data Committee",
+                "category": "Transportation",
+                "description": "An overview of the NGDA Themes origin, purposes and Lead Covered Agency(ies) managing the Theme.",
+                "url": "https://catalog.data.gov/dataset/overview",
+                "updateStatus": "Current"
+        },
+        {
+                "sourceId": "DS-169",
+                "name": "Shipping Fairways, Lanes, and Zones for US Waters",
+                "type": "ZIP|Esri REST Services|ISO-19139 Metadata",
+                "source": "NOAA - National Oceanic and Atmospheric Administration, Department of Commerce, Office of Coast Survey",
+                "category": "Maritime Navigation, Marine Spatial Planning",
+                "description": "Documents various shipping zones that delineate activities and regulations for marine vessel traffic including traffic lanes, separation zones, precautionary navigation areas, safety fairways,...",
+                "url": "https://catalog.data.gov/dataset/shipping-fairways-lanes-and-zones-for-us-waters1",
+                "updateStatus": "Weekly updates. Last updated: May 20, 2025. Not for navigation - intended for coastal and ocean planning purposes only."
+        },
+        {
+                "sourceId": "DS-170",
+                "name": "Waterborne Commerce Statistics Center (WCSC) Data",
+                "type": "Database (Oracle)|W-DAPP tool (Waterborne Data Analyzer and Pre-Processor)|Downloadable datasets",
+                "source": "USACE - U.S. Army Corps of Engineers, Institute for Water Resources (IWR), Waterborne Commerce Statistics Center",
+                "category": "Waterborne Commerce, Port Operations, Maritime Trade",
+                "description": "Comprehensive waterborne commerce data including vessel trips and cargo data collected within the Oracle Waterborne System and Lock Performance Monitoring System. Provides downloadable data for port,...",
+                "url": "https://www.iwr.usace.army.mil/About/Technical-Centers/WCSC-Waterborne-Commerce-Statistics-Center/",
+                "updateStatus": "Ongoing collection and annual reports. Data sources include U.S. Customs and Border Protection, U.S. Census Bureau, and Port Import Export Reporting Service."
+        },
+        {
+                "sourceId": "DS-171",
+                "name": "Foreign Traffic Vessel Entrances and Clearances",
+                "type": "Database records|Historical archives",
+                "source": "USACE - U.S. Army Corps of Engineers, Navigation Data Center (NDC) Library, in cooperation with U.S. Customs and Border Protection",
+                "category": "Maritime Trade, Port Operations, Vessel Traffic",
+                "description": "Dataset series documenting foreign trade vessel movements including vessel entrance and clearance dates, customs district and port codes, vessel manifest numbers, vessel names, and IMO (International...",
+                "url": "https://ndclibrary.sec.usace.army.mil/searchResults?series=Foreign%20Traffic%20Vessel%20Entrances%20Clearances",
+                "updateStatus": "Historical compilation maintained by ERDC team through USACE Navigation Data Center"
+        },
+        {
+                "sourceId": "DS-172",
+                "name": "Schedule K - Foreign Port Codes",
+                "type": "PDF|Database listings|CBP ACE Appendix F publications",
+                "source": "USACE - U.S. Army Corps of Engineers, Waterborne Commerce Statistics Center (WCSC). Also published by U.S. Customs and Border Protection",
+                "category": "Port Identification, Maritime Trade, Customs Documentation",
+                "description": "Geographic coding scheme identifying seaports worldwide that handle waterborne shipments involved in foreign trade with the United States. Five-digit numeric identifiers assigned to major seaports....",
+                "url": "https://ndclibrary.sec.usace.army.mil/searchResults?series=Schedule%20K%20Foreign%20Port%20Codes",
+                "updateStatus": "Regularly updated. Recent versions: February 2025, August 2024. USACE assumed maintenance responsibility effective April 7, 2003."
+        },
+        {
+                "sourceId": "DS-173",
+                "name": "Lock Performance Monitoring System (LPMS) - NDC Locks Database",
+                "type": "Web-based database|Real-time data system|Online portal access",
+                "source": "USACE - U.S. Army Corps of Engineers, Navigation and Civil Works Decision Support Center (NDC), Institute for Water Resources",
+                "category": "Navigation Infrastructure, Lock Operations, Vessel Traffic",
+                "description": "Web-based system collecting and reporting data on vessels traversing through Corps-owned or operated locks in near real-time. Provides lock and vessel-specific information including lock performance...",
+                "url": "https://www.iwr.usace.army.mil/About/Technical-Centers/NDC-Navigation-and-Civil-Works-Decision-Support/NDC-Locks/",
+                "updateStatus": "Near real-time data collection and reporting"
+        },
+        {
+                "sourceId": "DS-174",
+                "name": "Dredging Information System (DIS) - NDC Dredges Database",
+                "type": "Database system|Web portal access",
+                "source": "USACE - U.S. Army Corps of Engineers, Navigation and Civil Works Decision Support Center (NDC), Dredging Statistics Program",
+                "category": "Navigation Infrastructure, Dredging Operations, Waterway Maintenance",
+                "description": "Full lifecycle database capturing USACE dredging work including both in-house operations and contracted work. USACE district staff input data on dredging work completed using USACE dredges and...",
+                "url": "https://www.iwr.usace.army.mil/About/Technical-Centers/NDC-Navigation-and-Civil-Works-Decision-Support/NDC-Dredges/",
+                "updateStatus": "Ongoing collection with district staff data input"
+        },
+        {
+                "sourceId": "DS-175",
+                "name": "Navigation and Civil Works Decision Support Center (NDC) - Main Portal",
+                "type": "Multiple database systems|Web portals|Data libraries",
+                "source": "USACE - U.S. Army Corps of Engineers, Institute for Water Resources (IWR), Navigation and Civil Works Decision Support Center",
+                "category": "Navigation Infrastructure, Decision Support, Data Integration",
+                "description": "Central technical center within IWR providing navigation decision support to USACE. Manages information systems capturing data for lock operations, navigation dredging projects, and various...",
+                "url": "https://www.iwr.usace.army.mil/About/Technical-Centers/NDC-Navigation-and-Civil-Works-Decision-Support/",
+                "updateStatus": "Ongoing operations with multiple sub-systems maintained continuously"
+        },
+        {
+                "sourceId": "DS-176",
+                "name": "Notice to Navigation Interests (NTNI) - Navigation Notices",
+                "type": "Web-based database|Online searchable portal|Real-time notices",
+                "source": "USACE - U.S. Army Corps of Engineers, Navigation and Civil Works Decision Support Center (NDC), Institute for Water Resources",
+                "category": "Navigation Safety, Waterway Status, Maritime Notices",
+                "description": "Centralized access point for mariners to find notices of maintenance projects, hazards, closures or restrictions, and other pertinent waterway information. Provides real-time information about...",
+                "url": "https://www.iwr.usace.army.mil/About/Technical-Centers/NDC-Navigation-and-Civil-Works-Decision-Support/NDC-Navigation-Notices/",
+                "updateStatus": "Real-time updates as conditions change"
+        },
+        {
+                "sourceId": "DS-177",
+                "name": "Physical Oceanographic Real-Time System (PORTS)",
+                "type": "Internet/Web platforms|Telephone voice response systems|PUFFF (PORTS Uniform Flat File Format)|Numerical circulation model forecasts",
+                "source": "NOAA - National Oceanic and Atmospheric Administration, National Ocean Service (NOS)",
+                "category": "Port Operations, Real-Time Oceanographic Data, Maritime Safety, Navigation",
+                "description": "Decision support system measuring and disseminating real-time observations and predictions of water levels, currents, salinity, and meteorological parameters (winds, atmospheric pressure, air and...",
+                "url": "https://tidesandcurrents.noaa.gov/ports.html",
+                "updateStatus": "Real-time continuous data collection and dissemination"
+        },
+        {
+                "sourceId": "DS-178",
+                "name": "SDelete - Sysinternals | Microsoft Learn",
+                "type": "Web Bookmark",
+                "source": "learn.microsoft.com",
+                "category": "Data Download/Export",
+                "description": "Chrome bookmark",
+                "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sdelete",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-179",
+                "name": "Seedr: Download Anything Quick & Easy",
+                "type": "Web Bookmark",
+                "source": "www.seedr.cc",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://www.seedr.cc/",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-180",
+                "name": "Class Leading, Open-Source AI | Download Llama",
+                "type": "Web Bookmark",
+                "source": "www.llama.com",
+                "category": "Data Download/Export",
+                "description": "Chrome bookmark",
+                "url": "https://www.llama.com/llama-downloads/",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-181",
+                "name": "Node.js — Download Node.js®",
+                "type": "Web Bookmark",
+                "source": "nodejs.org",
+                "category": "Data Download/Export",
+                "description": "Chrome bookmark",
+                "url": "https://nodejs.org/en/download/current",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-182",
+                "name": "Home - Railinc",
+                "type": "Web Bookmark",
+                "source": "www.railinc.com",
+                "category": "Transportation Industry",
+                "description": "Chrome bookmark",
+                "url": "https://www.railinc.com/rportal/web/guest/home",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-183",
+                "name": "Surface Transportation Board",
+                "type": "Web Bookmark",
+                "source": "www.stb.gov",
+                "category": "Government - State/Local",
+                "description": "Chrome bookmark",
+                "url": "https://www.stb.gov/reports-data/",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-184",
+                "name": "Minerals Yearbook",
+                "type": "Web Bookmark",
+                "source": "www.usgs.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://www.usgs.gov/centers/national-minerals-information-center/minerals-yearbook-metals-and-minerals",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-185",
+                "name": "Maritime Portal - Login",
+                "type": "Web Bookmark",
+                "source": "maritime.ihs.com",
+                "category": "Commercial Data Providers",
+                "description": "Chrome bookmark",
+                "url": "https://maritime.ihs.com/Account2/Index",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-186",
+                "name": "Open Ag Transport Data",
+                "type": "Web Bookmark",
+                "source": "agtransport.usda.gov",
+                "category": "Government - State/Local",
+                "description": "Chrome bookmark",
+                "url": "https://agtransport.usda.gov/",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-187",
+                "name": "International Trade Data Main Page",
+                "type": "Web Bookmark",
+                "source": "www.census.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://www.census.gov/foreign-trade/data/index.html",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-188",
+                "name": "Data Exports — Panjiva",
+                "type": "Web Bookmark",
+                "source": "panjiva.com",
+                "category": "Data Download/Export",
+                "description": "Chrome bookmark",
+                "url": "https://panjiva.com/my_panjiva/my_exports",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-189",
+                "name": "Harmonized Tariff Schedule",
+                "type": "Web Bookmark",
+                "source": "hts.usitc.gov",
+                "category": "Government - State/Local",
+                "description": "Chrome bookmark",
+                "url": "https://hts.usitc.gov/",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-190",
+                "name": "HIFLD Open | HIFLD",
+                "type": "Web Bookmark",
+                "source": "hifld-geoplatform.hub.arcgis.com",
+                "category": "GIS/Mapping",
+                "description": "Chrome bookmark",
+                "url": "https://hifld-geoplatform.hub.arcgis.com/pages/hifld-open",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-191",
+                "name": "U.S. Customs Service | The Online Books Page",
+                "type": "Web Bookmark",
+                "source": "onlinebooks.library.upenn.edu",
+                "category": "Academic/Research",
+                "description": "Chrome bookmark",
+                "url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=U%2ES%2E%20Customs%20Service",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-192",
+                "name": "Geospatial at the Bureau of Transportation Statistics",
+                "type": "Web Bookmark",
+                "source": "geodata.bts.gov",
+                "category": "Government - Transportation",
+                "description": "Chrome bookmark",
+                "url": "https://geodata.bts.gov/",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-193",
+                "name": "Search Results - USACE Digital Library",
+                "type": "Web Bookmark",
+                "source": "usace.contentdm.oclc.org",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://usace.contentdm.oclc.org/digital/collection/p16021coll2/search/searchterm/ports",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-194",
+                "name": "Zotero",
+                "type": "Web Bookmark",
+                "source": "www.zotero.org",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://www.zotero.org/theshipsagent/library",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-195",
+                "name": "Fastcase – Beyond Research",
+                "type": "Web Bookmark",
+                "source": "www.fastcase.com",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://www.fastcase.com/",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-196",
+                "name": "Economics and Finance Research | IDEAS/RePEc",
+                "type": "Web Bookmark",
+                "source": "ideas.repec.org",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://ideas.repec.org/",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-197",
+                "name": "Joining the Library | Institute of Advanced Legal Studies",
+                "type": "Web Bookmark",
+                "source": "ials.sas.ac.uk",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://ials.sas.ac.uk/ials-library/joining-library",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-198",
+                "name": "ArcGIS",
+                "type": "Web Bookmark",
+                "source": "www.arcgis.com",
+                "category": "GIS/Mapping",
+                "description": "Chrome bookmark",
+                "url": "https://www.arcgis.com/sharing/rest/oauth2/authorize?client_id=arcgisonline&display=default&response_type=token&state=%7B%22useLandingPage%22%3Atrue%7D&expiration=20160&locale=en-us&redirect_uri=https%3A%2F%2Fwww.arcgis.com%2Fhome%2Faccountswitcher-callback.html&force_login=true&hideCancel=true&showSignupOption=true&signuptype=esri",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-199",
+                "name": "Gallery",
+                "type": "Web Bookmark",
+                "source": "www.arcgis.com",
+                "category": "GIS/Mapping",
+                "description": "Chrome bookmark",
+                "url": "https://www.arcgis.com/home/gallery.html?sortField=title&sortOrder=asc",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-200",
+                "name": "IENC/USACE_IENC_Master_Service (MapServer)",
+                "type": "Web Bookmark",
+                "source": "ienccloud.us",
+                "category": "GIS/Mapping",
+                "description": "Chrome bookmark",
+                "url": "https://ienccloud.us/arcgis/rest/services/IENC/USACE_IENC_Master_Service/MapServer",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-201",
+                "name": "U.S. Steel Export Monitor - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/u-s-steel-export-monitor-3dd77",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-202",
+                "name": "U.S. Aluminum Import Monitor - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/u-s-aluminum-import-monitor-b6db1",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-203",
+                "name": "Manufacturing Cost Guide - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/manufacturing-cost-guide-7ccbc",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-204",
+                "name": "Time Series International Trade: Monthly U.S. Imports by Harmonized System (HS) Code - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/time-series-international-trade-monthly-u-s-imports-by-harmonized-system-hs-code",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-205",
+                "name": "Steel Import Monitoring and Analysis System (SIMA) - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/steel-import-monitoring-and-analysis-system-sima-11ede",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-206",
+                "name": "National Levee Database - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/national-levee-database-0869b",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-207",
+                "name": "Total tonnage (foreign and domestic) of commodites carried on commercial waterways - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/total-tonnage-foreign-and-domestic-of-commodites-carried-on-commercial-waterways",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-208",
+                "name": "National HM Route Registry - National HM Route Registry - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/national-hm-route-registry-national-hm-route-registry",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-209",
+                "name": "Highway Performance Monitoring System (HPMS) - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/highway-performance-monitoring-system-hpms",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-210",
+                "name": "North American Rail Network Lines - Class I Freight Railroads View - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/north-american-rail-network-lines-class-i-freight-railroads-view2",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-211",
+                "name": "Feed Grains Database - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/feed-grains-database",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-212",
+                "name": "Principal Ports - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/principal-ports5",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-213",
+                "name": "Waterway Locks - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/waterway-locks1",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-214",
+                "name": "Freight Analysis Framework (FAF5) Regions - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/freight-analysis-framework-faf5-regions1",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-215",
+                "name": "National Highway Planning Network - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/national-highway-planning-network1",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-216",
+                "name": "Navigable Waterway Network Nodes - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/navigable-waterway-network-nodes",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-217",
+                "name": "North American Rail Network Nodes - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/north-american-rail-network-nodes3",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-218",
+                "name": "EPA Facility Registry Service (FRS): Facility Interests Dataset Download - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/epa-facility-registry-service-frs-facility-interests-dataset-download9",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-219",
+                "name": "The National Map - Data Delivery | U.S. Geological Survey",
+                "type": "Web Bookmark",
+                "source": "www.usgs.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://www.usgs.gov/the-national-map-data-delivery",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-220",
+                "name": "Free online journals, magazines, newspapers, and other serials | The Online Books Page",
+                "type": "Web Bookmark",
+                "source": "onlinebooks.library.upenn.edu",
+                "category": "Academic/Research",
+                "description": "Chrome bookmark",
+                "url": "https://onlinebooks.library.upenn.edu/serials.html",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-221",
+                "name": "The William and Mary Quarterly archives",
+                "type": "Web Bookmark",
+                "source": "onlinebooks.library.upenn.edu",
+                "category": "Academic/Research",
+                "description": "Chrome bookmark",
+                "url": "https://onlinebooks.library.upenn.edu/webbin/serial?id=wmqtly",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-222",
+                "name": "Books about early America : a selected bibliography : Institute of Early American History and Culture (Williamsburg, Va.) : Free Download, Borrow, and Streaming : Internet Archive",
+                "type": "Web Bookmark",
+                "source": "archive.org",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://archive.org/details/booksaboutearlya0000inst_w5t9/page/n1/mode/2up",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-223",
+                "name": "Lost Tribes Of North Carolina : WORTH S. RAY : Free Download, Borrow, and Streaming : Internet Archive",
+                "type": "Web Bookmark",
+                "source": "archive.org",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://archive.org/details/lost-tribes-of-north-carolina/page/33/mode/2up?q=%22thomas+davis%22+++chuckatuck",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-224",
+                "name": "William and Mary College quarterly historical magazine. : Williamsburg, Va. :William and Mary College, : Free Download, Borrow, and Streaming : Internet Archive",
+                "type": "Web Bookmark",
+                "source": "archive.org",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://archive.org/details/williammarycolle27will/page/n13/mode/2up?q=%22thomas+davis%22+++chuckatuck",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-225",
+                "name": "old historic churches of america : edward f. rines : Free Download, Borrow, and Streaming : Internet Archive",
+                "type": "Web Bookmark",
+                "source": "archive.org",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://archive.org/details/oldhistoricchurc0000edwa/page/n9/mode/2up?q=%22thomas+davis%22+++chuckatuck",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-226",
+                "name": "The Virginia magazine of history and biography : Bruce, Philip Alexander, 1856-1933, ed : Free Download, Borrow, and Streaming : Internet Archive",
+                "type": "Web Bookmark",
+                "source": "archive.org",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://archive.org/details/virginiamagazin05socigoog/mode/2up?q=%22thomas+davis%22+++chuckatuck",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-227",
+                "name": "National Bridge Inventory - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/national-bridge-inventory1",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-228",
+                "name": "EPA Geospatial Data Download: Facility and Site Information - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/epa-geospatial-data-download-facility-and-site-information",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-229",
+                "name": "TIGERweb, 2017, Series Information for the TIGERweb, Web Mapping Service and REST files - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/tigerweb-2017-series-information-for-the-tigerweb-web-mapping-service-and-rest-files",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-230",
+                "name": "The First Republic In America : Alexander Brown : Free Download, Borrow, and Streaming : Internet Archive",
+                "type": "Web Bookmark",
+                "source": "archive.org",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://archive.org/details/in.ernet.dli.2015.544096/mode/2up?q=%22capt+james+davis%22+virginia",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-231",
+                "name": "NOAA Electronic Navigational Charts (ENC) - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/noaa-electronic-navigational-charts-enc1",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-232",
+                "name": "Historical Map & Chart Collection of NOAA's Nautical Charts, Hydrographic Surveys, Topographic Surveys, Geodetic Surveys, City Plans, and Civil War Battle Maps Starting from the mid 1700's - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/historical-map-chart-collection-of-noaas-nautical-charts-hydrographic-surveys-topographic-surve1",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-233",
+                "name": "IHS Sea-web Ship Details and Technical Specifications - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/ihs-sea-web-ship-details-and-technical-specifications",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-234",
+                "name": "Critical Facilities for Coastal Geographies - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/critical-facilities-for-coastal-geographies1",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-235",
+                "name": "Index to the Virginia Genealogist : Agnes W. Dooley : Free Download, Borrow, and Streaming : Internet Archive",
+                "type": "Web Bookmark",
+                "source": "archive.org",
+                "category": "GIS/Mapping",
+                "description": "Chrome bookmark",
+                "url": "https://archive.org/details/indextovirginiag0000agne/page/n5/mode/2up?q=%22thomas+davis%22+++chuckatuck",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-236",
+                "name": "The Virginia Magazine of History and Biography 1959-07: Vol 67 Iss 3 : Free Download, Borrow, and Streaming : Internet Archive",
+                "type": "Web Bookmark",
+                "source": "archive.org",
+                "category": "Other/Uncategorized",
+                "description": "Chrome bookmark",
+                "url": "https://archive.org/details/sim_virginia-magazine-of-history-and-biography_1959-07_67_3/mode/2up?q=%22capt+james+davis%22+virginia",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-237",
+                "name": "Federal Register :: Federal Register Citation",
+                "type": "Web Bookmark",
+                "source": "www.federalregister.gov",
+                "category": "Government - State/Local",
+                "description": "Chrome bookmark",
+                "url": "https://www.federalregister.gov/citation/28-FR-14596",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-238",
+                "name": "Lock Performance Monitoring System (LPMS) | CISA",
+                "type": "Web Bookmark",
+                "source": "www.cisa.gov",
+                "category": "Government - State/Local",
+                "description": "Chrome bookmark",
+                "url": "https://www.cisa.gov/mts-resilience-resources/lock-performance-monitoring-system-lpms",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-239",
+                "name": "Product Commodity Class Hierarchy",
+                "type": "Web Bookmark",
+                "source": "fgisonline.ams.usda.gov",
+                "category": "Government - State/Local",
+                "description": "Chrome bookmark",
+                "url": "https://fgisonline.ams.usda.gov/G_APS/G_APS_ComClassHierarchy.aspx?pEM=D",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-240",
+                "name": "Data Tools, Apps, and Maps - U.S. Energy Information Administration (EIA)",
+                "type": "Web Bookmark",
+                "source": "www.eia.gov",
+                "category": "Government - Energy",
+                "description": "Chrome bookmark",
+                "url": "https://www.eia.gov/tools/",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-241",
+                "name": "U.S. Solid Biomass Resources by County - Solid - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/u-s-solid-biomass-resources-by-county-solid",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-242",
+                "name": "Time Series: Business Dynamics Statistics - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/dataset/economic-surveys-business-dynamics-statistics",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-243",
+                "name": "Corps Locks - Home",
+                "type": "Web Bookmark",
+                "source": "ndc.ops.usace.army.mil",
+                "category": "Government - Maritime/Waterways",
+                "description": "Chrome bookmark",
+                "url": "https://ndc.ops.usace.army.mil/ords/f?p=108:1::::::",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-244",
+                "name": "Harris County Open Data",
+                "type": "Web Bookmark",
+                "source": "geo-harriscounty.opendata.arcgis.com",
+                "category": "Government - State/Local",
+                "description": "Chrome bookmark",
+                "url": "https://geo-harriscounty.opendata.arcgis.com/",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-245",
+                "name": "National Transportation Atlas Database (NTAD) Metadata - Catalog",
+                "type": "Web Bookmark",
+                "source": "catalog.data.gov",
+                "category": "Government - Federal Data",
+                "description": "Chrome bookmark",
+                "url": "https://catalog.data.gov/harvest/national-transportation-atlas-database-ntad-metadata",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-246",
+                "name": "IWR Project Assistance Library",
+                "type": "Web Bookmark",
+                "source": "publibrary.sec.usace.army.mil",
+                "category": "Government - Maritime/Waterways",
+                "description": "Chrome bookmark",
+                "url": "https://publibrary.sec.usace.army.mil/resource?title=2023%20Vessel%20Company%20Summary&documentId=116a2b60-c10b-460e-fe60-6f74ac607dd9",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-247",
+                "name": "Navigation and Civil Works Decision Support (NDC) Library",
+                "type": "Web Bookmark",
+                "source": "ndclibrary.sec.usace.army.mil",
+                "category": "Government - Maritime/Waterways",
+                "description": "Chrome bookmark",
+                "url": "https://ndclibrary.sec.usace.army.mil/searchResults?series=Commodity%20Monthly%20Indicators",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-248",
+                "name": "Navigation and Civil Works Decision Support (NDC) Library",
+                "type": "Web Bookmark",
+                "source": "ndclibrary.sec.usace.army.mil",
+                "category": "Government - Maritime/Waterways",
+                "description": "Chrome bookmark",
+                "url": "https://ndclibrary.sec.usace.army.mil/searchResults?series=Waterborne%20Foreign%20Cargo",
+                "updateStatus": "Static"
+        },
+        {
+                "sourceId": "DS-249",
+                "name": "Navigation and Civil Works Decision Support (NDC) Library",
+                "type": "Web Bookmark",
+                "source": "ndclibrary.sec.usace.army.mil",
+                "category": "Government - Maritime/Waterways",
+                "description": "Chrome bookmark",
+                "url": "https://ndclibrary.sec.usace.army.mil/searchResults?series=Schedule%20K%20Foreign%20Port%20Codes",
+                "updateStatus": "Static"
+        }
+];
+        let currentSort = { column: -1, ascending: true };
+
+        // Initialize
+        function init() {
+            filteredDatasets = [...allDatasets];
+            populateFilters();
+            updateStats();
+            renderTable();
+            setupEventListeners();
+        }
+
+        // Populate filter dropdowns
+        function populateFilters() {
+            const categories = [...new Set(allDatasets.map(d => d.category))].sort();
+            const sources = [...new Set(allDatasets.map(d => d.source))].sort();
+            const types = [...new Set(allDatasets.map(d => d.type))].sort();
+
+            populateDropdown('categoryFilter', categories);
+            populateDropdown('sourceFilter', sources);
+            populateDropdown('typeFilter', types);
+        }
+
+        function populateDropdown(id, values) {
+            const select = document.getElementById(id);
+            values.forEach(value => {
+                if (value) {
+                    const option = document.createElement('option');
+                    option.value = value;
+                    option.textContent = value;
+                    select.appendChild(option);
+                }
+            });
+        }
+
+        // Update statistics
+        function updateStats() {
+            const categories = new Set(filteredDatasets.map(d => d.category));
+            const sources = new Set(filteredDatasets.map(d => d.source));
+            const types = new Set(filteredDatasets.map(d => d.type));
+
+            document.getElementById('totalDatasets').textContent = filteredDatasets.length;
+            document.getElementById('totalCategories').textContent = categories.size;
+            document.getElementById('totalSources').textContent = sources.size;
+            document.getElementById('totalTypes').textContent = types.size;
+        }
+
+        // Render table
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            const noResults = document.getElementById('noResults');
+            tbody.innerHTML = '';
+
+            if (filteredDatasets.length === 0) {
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+
+            filteredDatasets.forEach(dataset => {
+                const row = document.createElement('tr');
+
+                // SOURCE_ID column
+                const sourceIdCell = document.createElement('td');
+                const sourceIdLink = document.createElement('a');
+                sourceIdLink.href = '#';
+                sourceIdLink.className = 'source-id';
+                sourceIdLink.textContent = dataset.sourceId;
+                sourceIdLink.onclick = (e) => {
+                    e.preventDefault();
+                    showDetails(dataset);
+                };
+                sourceIdCell.appendChild(sourceIdLink);
+                row.appendChild(sourceIdCell);
+
+                // Name column
+                const nameCell = document.createElement('td');
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'dataset-name';
+                nameSpan.textContent = dataset.name;
+                nameSpan.onclick = () => showDetails(dataset);
+                nameCell.appendChild(nameSpan);
+                row.appendChild(nameCell);
+
+                // Type column
+                const typeCell = document.createElement('td');
+                typeCell.textContent = dataset.type;
+                row.appendChild(typeCell);
+
+                // Source column
+                const sourceCell = document.createElement('td');
+                sourceCell.textContent = dataset.source;
+                row.appendChild(sourceCell);
+
+                // Category column
+                const categoryCell = document.createElement('td');
+                const categoryBadge = document.createElement('span');
+                categoryBadge.className = 'category-badge';
+                categoryBadge.textContent = dataset.category;
+                categoryCell.appendChild(categoryBadge);
+                row.appendChild(categoryCell);
+
+                // Update Status column
+                const statusCell = document.createElement('td');
+                statusCell.textContent = dataset.updateStatus;
+                row.appendChild(statusCell);
+
+                // URL column
+                const urlCell = document.createElement('td');
+                if (dataset.url) {
+                    const urlLink = document.createElement('a');
+                    urlLink.href = dataset.url;
+                    urlLink.className = 'link';
+                    urlLink.textContent = 'Link';
+                    urlLink.target = '_blank';
+                    urlCell.appendChild(urlLink);
+                }
+                row.appendChild(urlCell);
+
+                tbody.appendChild(row);
+            });
+        }
+
+        // Show details modal
+        function showDetails(dataset) {
+            const modal = document.getElementById('detailModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+
+            modalTitle.textContent = dataset.name;
+
+            modalBody.innerHTML = `
+                <div class="detail-row">
+                    <div class="detail-label">Source ID</div>
+                    <div class="detail-value">${dataset.sourceId}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Name</div>
+                    <div class="detail-value">${dataset.name}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Type</div>
+                    <div class="detail-value">${dataset.type}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Source</div>
+                    <div class="detail-value">${dataset.source}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Category</div>
+                    <div class="detail-value"><span class="category-badge">${dataset.category}</span></div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Description</div>
+                    <div class="detail-value">${dataset.description || 'No description available'}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Update Status</div>
+                    <div class="detail-value">${dataset.updateStatus}</div>
+                </div>
+                ${dataset.url ? `
+                <div class="detail-row">
+                    <div class="detail-label">URL</div>
+                    <div class="detail-value"><a href="${dataset.url}" class="link" target="_blank">${dataset.url}</a></div>
+                </div>
+                ` : ''}
+            `;
+
+            modal.classList.add('active');
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('detailModal');
+            modal.classList.remove('active');
+        }
+
+        // Filter data
+        function filterData() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const sourceFilter = document.getElementById('sourceFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+
+            filteredDatasets = allDatasets.filter(dataset => {
+                const matchesSearch = !searchTerm ||
+                    dataset.sourceId.toLowerCase().includes(searchTerm) ||
+                    dataset.name.toLowerCase().includes(searchTerm) ||
+                    dataset.type.toLowerCase().includes(searchTerm) ||
+                    dataset.source.toLowerCase().includes(searchTerm) ||
+                    dataset.category.toLowerCase().includes(searchTerm) ||
+                    dataset.description.toLowerCase().includes(searchTerm) ||
+                    dataset.url.toLowerCase().includes(searchTerm);
+
+                const matchesCategory = !categoryFilter || dataset.category === categoryFilter;
+                const matchesSource = !sourceFilter || dataset.source === sourceFilter;
+                const matchesType = !typeFilter || dataset.type === typeFilter;
+
+                return matchesSearch && matchesCategory && matchesSource && matchesType;
+            });
+
+            updateStats();
+            renderTable();
+        }
+
+        // Reset filters
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('sourceFilter').value = '';
+            document.getElementById('typeFilter').value = '';
+            filterData();
+        }
+
+        // Sort table
+        function sortTable(columnIndex) {
+            const headers = ['sourceId', 'name', 'type', 'source', 'category', 'updateStatus'];
+            const field = headers[columnIndex];
+
+            if (currentSort.column === columnIndex) {
+                currentSort.ascending = !currentSort.ascending;
+            } else {
+                currentSort.column = columnIndex;
+                currentSort.ascending = true;
+            }
+
+            filteredDatasets.sort((a, b) => {
+                let aVal = a[field] || '';
+                let bVal = b[field] || '';
+
+                if (typeof aVal === 'string') {
+                    aVal = aVal.toLowerCase();
+                    bVal = bVal.toLowerCase();
+                }
+
+                if (aVal < bVal) return currentSort.ascending ? -1 : 1;
+                if (aVal > bVal) return currentSort.ascending ? 1 : -1;
+                return 0;
+            });
+
+            updateSortIndicators(columnIndex);
+            renderTable();
+        }
+
+        function updateSortIndicators(columnIndex) {
+            const headers = document.querySelectorAll('th.sortable');
+            headers.forEach((header, index) => {
+                header.classList.remove('sort-asc', 'sort-desc');
+                if (index === columnIndex) {
+                    header.classList.add(currentSort.ascending ? 'sort-asc' : 'sort-desc');
+                }
+            });
+        }
+
+        // Export to CSV
+        function exportToCSV() {
+            const headers = ['SOURCE_ID', 'Name', 'Type', 'Source', 'Category', 'Description', 'URL', 'Update_Status'];
+
+            let csv = headers.join(',') + '\n';
+
+            filteredDatasets.forEach(dataset => {
+                const row = [
+                    dataset.sourceId,
+                    escapeCSV(dataset.name),
+                    escapeCSV(dataset.type),
+                    escapeCSV(dataset.source),
+                    escapeCSV(dataset.category),
+                    escapeCSV(dataset.description),
+                    escapeCSV(dataset.url),
+                    escapeCSV(dataset.updateStatus)
+                ];
+                csv += row.join(',') + '\n';
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'gis_dataset_index_export.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function escapeCSV(value) {
+            if (!value) return '';
+            value = String(value);
+            if (value.includes(',') || value.includes('"') || value.includes('\n')) {
+                return '"' + value.replace(/"/g, '""') + '"';
+            }
+            return value;
+        }
+
+        // Event listeners
+        function setupEventListeners() {
+            document.getElementById('searchInput').addEventListener('input', filterData);
+            document.getElementById('categoryFilter').addEventListener('change', filterData);
+            document.getElementById('sourceFilter').addEventListener('change', filterData);
+            document.getElementById('typeFilter').addEventListener('change', filterData);
+
+            // Close modal on background click
+            document.getElementById('detailModal').addEventListener('click', (e) => {
+                if (e.target.id === 'detailModal') {
+                    closeModal();
+                }
+            });
+
+            // Close modal on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5169a56446ff4380ad2f1785a86804b8"}'></script>
+</body>
+</html>
