@@ -1,1086 +1,605 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>William S. Davis III - Professional Profile</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Space Grotesk', -apple-system, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-            color: #fff;
-            padding: 2rem;
-            padding-top: 5rem;
-            line-height: 1.6;
-        }
-
-        /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(255,255,255,0.15);
-            padding: 0.8rem 2rem;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .navbar-brand {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 300;
-            font-style: italic;
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            letter-spacing: 0.03em;
-        }
-
-        .navbar-brand a {
-            color: rgba(255,255,255,0.9);
-            font-weight: 600;
-            font-style: normal;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .navbar-brand a:hover {
-            color: #64ffb4;
-        }
-
-        .navbar-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .social-icons {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .social-icon {
-            color: rgba(255,255,255,0.7);
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-icon:hover {
-            color: #64ffb4;
-        }
-
-        .navbar-link {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 6px;
-        }
-
-        .navbar-link:hover {
-            color: #64ffb4;
-            border-color: rgba(100,255,180,0.4);
-            background: rgba(100,255,180,0.05);
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: rgba(0,0,0,0.9);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 6px;
-            min-width: 160px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-            z-index: 1001;
-            margin-top: 0.5rem;
-        }
-
-        .dropdown:hover .dropdown-content,
-        .dropdown.active .dropdown-content {
-            display: block;
-        }
-
-        /* Hamburger Menu */
-        .hamburger-button {
-            display: none;
-            background: none;
-            border: 2px solid rgba(255,255,255,0.3);
-            color: white;
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .hamburger-button:hover {
-            border-color: #64ffb4;
-            color: #64ffb4;
-            background: rgba(100,255,180,0.05);
-        }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 60px;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.98);
-            border-top: 1px solid rgba(100,255,180,0.3);
-            border-bottom: 1px solid rgba(100,255,180,0.3);
-            z-index: 1000;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .mobile-menu.active {
-            display: block;
-            max-height: 500px;
-        }
-
-        .mobile-menu-section {
-            padding: 10px 0;
-        }
-
-        .mobile-menu-item {
-            display: block;
-        }
-
-        .mobile-menu-item a {
-            display: block;
-            padding: 15px 20px;
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            font-size: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .mobile-menu-item a:hover {
-            background: rgba(100,255,180,0.1);
-            color: #64ffb4;
-            padding-left: 30px;
-        }
-
-        .mobile-menu-social {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        /* Mobile menu improvements */
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 0.6rem 1rem;
-                flex-direction: row;
-                justify-content: space-between;
-            }
-
-            /* Show hamburger button on mobile */
-            .hamburger-button {
-                display: block;
-            }
-
-            /* Hide desktop navigation on mobile */
-            .navbar-right {
-                display: none;
-            }
-
-            .dropdown-content {
-                position: fixed;
-                right: 1rem;
-                left: auto;
-                min-width: 200px;
-            }
-        }
-
-        .dropdown-content a {
-            color: rgba(255,255,255,0.8);
-            padding: 0.75rem 1rem;
-            text-decoration: none;
-            display: block;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown-content a:hover {
-            background: rgba(100,255,180,0.1);
-            color: #64ffb4;
-        }
-
-        .profile-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        /* Tab Navigation */
-        .tab-nav {
-            display: flex;
-            background: rgba(0,0,0,0.4);
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255,255,255,0.3) rgba(0,0,0,0.2);
-        }
-
-        .tab-nav::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .tab-nav::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.2);
-        }
-
-        .tab-nav::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.3);
-            border-radius: 3px;
-        }
-
-        .tab-button {
-            flex: 1 0 auto;
-            min-width: 120px;
-            padding: 1rem 1.5rem;
-            background: transparent;
-            border: none;
-            color: rgba(255,255,255,0.6);
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 2px solid transparent;
-            white-space: nowrap;
-        }
-
-        .tab-button:hover {
-            color: rgba(255,255,255,0.9);
-            background: rgba(255,255,255,0.05);
-        }
-
-        .tab-button.active {
-            color: #ffffff;
-            background: rgba(255,255,255,0.1);
-            border-bottom-color: rgba(255,255,255,0.5);
-        }
-
-        /* Tab Content */
-        .tab-content {
-            display: none;
-            padding: 2.5rem;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Common Styles */
-        .content-header {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid rgba(255,255,255,0.3);
-            position: relative;
-        }
-
-        .cv-logo {
-            position: absolute;
-            top: -0.5rem;
-            right: 0;
-            width: 120px;
-            height: auto;
-            opacity: 0.9;
-            filter: invert(1) brightness(1.2);
-            mix-blend-mode: screen;
-        }
-
-        .executive-photo {
-            float: right;
-            width: 210px;
-            height: auto;
-            margin: 0 0 1.5rem 2rem;
-            border-radius: 8px;
-            filter: grayscale(100%) contrast(1.1);
-            opacity: 0.85;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 300;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.08em;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.8);
-            font-weight: 400;
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-
-        .contact-info {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.8;
-        }
-
-        .contact-info a {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .contact-info a:hover {
-            color: #ffffff;
-            border-bottom-color: rgba(255,255,255,0.6);
-        }
-
-        h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-        }
-
-        h3 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: rgba(255,255,255,0.95);
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        h4 {
-            font-size: 0.95rem;
-            font-weight: 400;
-            color: rgba(255,255,255,0.85);
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            color: rgba(255,255,255,0.85);
-            font-size: 0.9rem;
-        }
-
-        ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        li {
-            margin-bottom: 0.4rem;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.88rem;
-        }
-
-        .location, .dates {
-            color: rgba(255,255,255,0.6);
-            font-weight: 300;
-            font-size: 0.85rem;
-        }
-
-        .concurrent-role {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.6);
-            font-style: italic;
-            margin-left: 1rem;
-            margin-bottom: 0.7rem;
-        }
-
-        .competencies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 0.4rem 1.3rem;
-            margin-bottom: 0.9rem;
-        }
-
-        .two-column {
-            columns: 2;
-            column-gap: 1.8rem;
-        }
-
-        .two-column li {
-            break-inside: avoid;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            margin: 2rem 0;
-        }
-
-        /* Biography specific styles */
-        .bio-section {
-            margin-bottom: 2.5rem;
-        }
-
-        .bio-intro {
-            font-size: 1.05rem;
-            color: rgba(255,255,255,0.9);
-            font-style: italic;
-            margin-bottom: 2rem;
-            padding-left: 1rem;
-            border-left: 3px solid rgba(255,255,255,0.3);
-        }
-
-        .bio-image {
-            float: right;
-            max-width: 320px;
-            height: auto;
-            margin: 0 0 1.5rem 2rem;
-            border-radius: 8px;
-            opacity: 0.9;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .bio-image.left {
-            float: left;
-            margin: 0 2rem 1.5rem 0;
-        }
-
-        /* Bibliography table styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1.5rem;
-        }
-
-        th, td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-
-        th {
-            background: rgba(255,255,255,0.1);
-            font-weight: 600;
-            color: #ffffff;
-            font-size: 0.9rem;
-        }
-
-        td {
-            color: rgba(255,255,255,0.85);
-            font-size: 0.88rem;
-        }
-
-        /* Bibliography section styles */
-        .bib-controls {
-            margin: 1.5rem 0;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .bib-controls button {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(100, 255, 180, 0.3);
-            color: rgba(255,255,255,0.9);
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .bib-controls button:hover {
-            background: rgba(100, 255, 180, 0.15);
-            border-color: rgba(100, 255, 180, 0.5);
-            transform: translateY(-1px);
-        }
-
-        .bib-toc {
-            background: rgba(255,255,255,0.05);
-            border-left: 3px solid rgba(100, 255, 180, 0.5);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 8px;
-        }
-
-        .bib-toc h2 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #64ffb4;
-        }
-
-        .bib-toc ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .bib-toc li {
-            margin: 0.5rem 0;
-        }
-
-        .bib-toc a {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            transition: all 0.2s ease;
-            display: block;
-            padding: 0.3rem 0;
-        }
-
-        .bib-toc a:hover {
-            color: #64ffb4;
-            padding-left: 0.5rem;
-        }
-
-        .bib-section {
-            margin: 2rem 0;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .bib-section-header {
-            background: rgba(255,255,255,0.08);
-            padding: 1.2rem 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-            user-select: none;
-        }
-
-        .bib-section-header:hover {
-            background: rgba(100, 255, 180, 0.1);
-        }
-
-        .bib-section-header.active {
-            background: rgba(100, 255, 180, 0.15);
-            border-bottom: 1px solid rgba(100, 255, 180, 0.3);
-        }
-
-        .bib-section-header h3 {
-            margin: 0;
-            font-size: 1.15rem;
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        .bib-section-header .entry-count {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-            font-weight: 400;
-            margin-left: 0.5rem;
-        }
-
-        .expand-icon {
-            font-size: 1.2rem;
-            color: #64ffb4;
-            transition: transform 0.3s ease;
-        }
-
-        .bib-section-header.active .expand-icon {
-            transform: rotate(180deg);
-        }
-
-        .bib-section-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            background: rgba(0,0,0,0.2);
-        }
-
-        .bib-section-content.active {
-            max-height: 10000px;
-            padding: 1.5rem;
-        }
-
-        .bib-entry {
-            margin-bottom: 1.2rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .bib-entry::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #64ffb4;
-            font-size: 1.2rem;
-        }
-
-        .bib-title {
-            font-style: italic;
-            color: rgba(255,255,255,0.95);
-            font-size: 0.95rem;
-            margin-bottom: 0.3rem;
-            line-height: 1.4;
-        }
-
-        .bib-meta {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        /* Print button */
-        .print-button {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: linear-gradient(135deg, #64ffb4 0%, #4ecf9a 100%);
-            color: #000;
-            border: none;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            box-shadow: 0 8px 24px rgba(100, 255, 180, 0.3);
-            transition: all 0.3s ease;
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .print-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(100, 255, 180, 0.4);
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-                padding-top: 5rem;
-            }
-            .tab-content {
-                padding: 1.5rem;
-            }
-            .tab-nav {
-                scroll-snap-type: x mandatory;
-            }
-            .tab-button {
-                font-size: 0.8rem;
-                padding: 0.75rem 1rem;
-                min-width: 100px;
-                scroll-snap-align: start;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
-            .cv-logo {
-                width: 80px;
-            }
-            .executive-photo {
-                width: 150px;
-                margin: 0 0 1rem 1rem;
-            }
-            .two-column {
-                columns: 1;
-            }
-            .print-button {
-                bottom: 1rem;
-                right: 1rem;
-                padding: 0.75rem 1.25rem;
-                font-size: 0.85rem;
-            }
-        }
-
-        /* Print styles */
-        @media print {
-            @page {
-                size: letter;
-                margin: 0.5in 0.75in;
-            }
-
-            body {
-                background: white !important;
-                color: black !important;
-                padding: 0 !important;
-                font-size: 10pt;
-                line-height: 1.4;
-            }
-
-            .navbar,
-            .tab-nav,
-            .print-button,
-            .dropdown,
-            .social-icons {
-                display: none !important;
-            }
-
-            .profile-container {
-                background: white !important;
-                border: none !important;
-                box-shadow: none !important;
-                border-radius: 0 !important;
-                max-width: 100% !important;
-            }
-
-            .tab-content {
-                display: block !important;
-                padding: 0 !important;
-                page-break-after: always;
-            }
-
-            .tab-content:last-child {
-                page-break-after: auto;
-            }
-
-            /* Hide inactive tabs in print */
-            .tab-content:not(.active) {
-                display: none !important;
-            }
-
-            .content-header {
-                margin-bottom: 1rem;
-                padding-bottom: 0.75rem;
-                border-bottom: 2px solid #333;
-                position: static;
-                min-height: auto;
-            }
-
-            .cv-logo {
-                display: none !important;
-            }
-
-            h1 {
-                font-size: 18pt;
-                font-weight: 600;
-                color: #000 !important;
-                margin-bottom: 0.25rem;
-                margin-top: 0;
-            }
-
-            .subtitle {
-                margin-bottom: 0.25rem;
-            }
-
-            h2 {
-                font-size: 12pt;
-                font-weight: 600;
-                color: #000 !important;
-                margin-top: 1rem;
-                margin-bottom: 0.5rem;
-                padding-bottom: 0.25rem;
-                border-bottom: 1px solid #333;
-                page-break-after: avoid;
-            }
-
-            h3 {
-                font-size: 11pt;
-                font-weight: 600;
-                color: #000 !important;
-                margin-top: 0.75rem;
-                margin-bottom: 0.25rem;
-                page-break-after: avoid;
-            }
-
-            h4 {
-                font-size: 10pt;
-                font-weight: 400;
-                color: #000 !important;
-                margin-top: 0.5rem;
-                margin-bottom: 0.25rem;
-            }
-
-            .subtitle,
-            .contact-info,
-            p,
-            li {
-                color: #000 !important;
-                font-size: 9pt;
-            }
-
-            .contact-info {
-                line-height: 1.6;
-            }
-
-            .contact-info {
-                line-height: 1.6;
-                margin-top: 0.5rem;
-            }
-
-            .contact-info a {
-                color: #000 !important;
-                text-decoration: none !important;
-                border-bottom: none !important;
-            }
-
-            .contact-info svg,
-            .contact-info .social-icon svg,
-            .social-icon {
-                display: none !important;
-            }
-
-            .contact-info div {
-                display: block !important;
-                margin-top: 0.3rem;
-            }
-
-            .contact-info span {
-                display: none !important;
-            }
-
-            .contact-info a[href*="linkedin"]:after {
-                content: " linkedin.com/in/williamsdavis";
-            }
-
-            .contact-info a[href*="twitter"]:after {
-                content: " @theshipsagent (X/Twitter)";
-            }
-
-            .contact-info a[href*="instagram"]:after {
-                content: " @theshipsagent (Instagram)";
-            }
-
-            .location,
-            .dates,
-            .concurrent-role {
-                color: #333 !important;
-                font-size: 9pt;
-            }
-
-            ul {
-                margin-left: 1.25rem;
-                margin-bottom: 0.5rem;
-            }
-
-            li {
-                margin-bottom: 0.2rem;
-                page-break-inside: avoid;
-            }
-
-            hr {
-                border-top: 1px solid #ccc;
-                margin: 0.75rem 0;
-                page-break-after: avoid;
-            }
-
-            .bio-section {
-                page-break-inside: avoid;
-                margin-bottom: 1rem;
-            }
-
-            .bio-intro {
-                font-size: 10pt;
-                color: #000 !important;
-                font-style: italic;
-                margin-bottom: 1rem;
-                padding-left: 0.75rem;
-                border-left: 3px solid #666;
-            }
-
-            .bio-image,
-            .executive-photo {
-                display: none !important;
-            }
-
-            .competencies-grid {
-                display: block;
-                columns: 2;
-                column-gap: 1rem;
-            }
-
-            .two-column {
-                columns: 2;
-                column-gap: 1rem;
-            }
-
-            table {
-                font-size: 9pt;
-                page-break-inside: avoid;
-            }
-
-            th {
-                background: #f0f0f0 !important;
-                color: #000 !important;
-                font-weight: 600;
-            }
-
-            td {
-                color: #000 !important;
-            }
-
-            /* Avoid breaks */
-            h2, h3, h4 {
-                page-break-after: avoid;
-            }
-
-            p, li, .bio-section {
-                page-break-inside: avoid;
-            }
-
-            /* Force page breaks between major sections */
-            .bio-section:has(h2) {
-                page-break-before: auto;
-            }
-
-            /* Bibliography print styles */
-            .bib-controls,
-            .bib-toc {
-                display: none !important;
-            }
-
-            .bib-section {
-                border: none !important;
-                margin: 1rem 0;
-                page-break-inside: avoid;
-            }
-
-            .bib-section-header {
-                background: none !important;
-                border-bottom: 1px solid #333 !important;
-                padding: 0.5rem 0 !important;
-                cursor: default !important;
-            }
-
-            .bib-section-header h3 {
-                font-size: 11pt !important;
-                color: #000 !important;
-            }
-
-            .expand-icon {
-                display: none !important;
-            }
-
-            .bib-section-content {
-                max-height: none !important;
-                display: block !important;
-                padding: 0.5rem 0 !important;
-                background: none !important;
-                columns: 1;
-            }
-
-            .bib-entry {
-                margin-bottom: 0.4rem;
-                padding-left: 1rem;
-                font-size: 8pt;
-                page-break-inside: avoid;
-            }
-
-            .bib-entry::before {
-                color: #000 !important;
-                font-size: 10pt;
-            }
-
-            .bib-title {
-                color: #000 !important;
-                font-size: 8pt;
-            }
-
-            .bib-meta {
-                color: #333 !important;
-                font-size: 7.5pt;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>William S. Davis III — CV | Ocean Datum</title>
+<meta name="description" content="Professional CV — Ship Agency & Terminal Operations Executive with 30 years of maritime industry experience">
+<meta name="author" content="William S. Davis III">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ── THEME VARIABLES ── */
+  :root {
+    --ink: rgba(255,255,255,0.9);
+    --ink-secondary: rgba(255,255,255,0.8);
+    --ink-muted: rgba(255,255,255,0.6);
+    --ink-faint: rgba(255,255,255,0.45);
+    --accent: #64ffb4;
+    --accent-hover: #8affd0;
+    --bg: #0a0a0a;
+    --bg-page: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    --bg-container: rgba(0,0,0,0.3);
+    --rule: rgba(255,255,255,0.3);
+    --rule-light: rgba(255,255,255,0.15);
+    --rule-faint: rgba(255,255,255,0.1);
+    --card-bg: rgba(255,255,255,0.05);
+    --card-border: rgba(255,255,255,0.1);
+    --font: 'Space Grotesk', -apple-system, sans-serif;
+    --toggle-bg: rgba(255,255,255,0.1);
+    --toggle-border: rgba(255,255,255,0.2);
+    --toggle-color: rgba(255,255,255,0.8);
+    --print-bg: #64ffb4;
+    --print-color: #0a0a0a;
+  }
+
+  body.light-mode {
+    --ink: #1a1a1a;
+    --ink-secondary: #2a2a2a;
+    --ink-muted: #555;
+    --ink-faint: #888;
+    --accent: #0d3b66;
+    --accent-hover: #155a99;
+    --bg: #ffffff;
+    --bg-page: #f5f5f0;
+    --bg-container: rgba(255,255,255,0.9);
+    --rule: #333;
+    --rule-light: #ccc;
+    --rule-faint: #e0e0e0;
+    --card-bg: #f0f4f8;
+    --card-border: #d6dfe8;
+    --toggle-bg: rgba(0,0,0,0.05);
+    --toggle-border: rgba(0,0,0,0.15);
+    --toggle-color: #333;
+    --print-bg: #0d3b66;
+    --print-color: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    font-size: 17px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-page);
+    color: var(--ink);
+    font-family: var(--font);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  body.light-mode {
+    background: var(--bg-page);
+  }
+
+  /* ── NAVBAR ── */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding: 0.8rem 2rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  body.light-mode .navbar {
+    background: rgba(255,255,255,0.85);
+    border-bottom-color: rgba(0,0,0,0.1);
+  }
+
+  .navbar-brand {
+    font-family: var(--font);
+    font-size: 0.85rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+
+  body.light-mode .navbar-brand { color: rgba(0,0,0,0.5); }
+
+  .navbar-brand a {
+    color: rgba(255,255,255,0.9);
+    font-weight: 600;
+    font-style: normal;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-brand a:hover { color: #64ffb4; }
+  body.light-mode .navbar-brand a { color: #0d3b66; }
+  body.light-mode .navbar-brand a:hover { color: #155a99; }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .social-icon {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .social-icon:hover { color: #64ffb4; }
+  body.light-mode .social-icon { color: rgba(0,0,0,0.5); }
+  body.light-mode .social-icon:hover { color: #0d3b66; }
+
+  .navbar-link {
+    font-family: var(--font);
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+  }
+
+  .navbar-link:hover {
+    color: #64ffb4;
+    border-color: rgba(100,255,180,0.4);
+    background: rgba(100,255,180,0.05);
+  }
+
+  body.light-mode .navbar-link { color: #333; border-color: rgba(0,0,0,0.15); }
+  body.light-mode .navbar-link:hover { color: #0d3b66; border-color: rgba(13,59,102,0.4); background: rgba(13,59,102,0.05); }
+
+  /* ── HAMBURGER ── */
+  .hamburger-button {
+    display: none;
+    background: none;
+    border: 2px solid rgba(255,255,255,0.3);
+    color: white;
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .hamburger-button:hover { border-color: #64ffb4; color: #64ffb4; background: rgba(100,255,180,0.05); }
+  body.light-mode .hamburger-button { border-color: rgba(0,0,0,0.2); color: #333; }
+  body.light-mode .hamburger-button:hover { border-color: #0d3b66; color: #0d3b66; }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.98);
+    border-top: 1px solid rgba(100,255,180,0.3);
+    border-bottom: 1px solid rgba(100,255,180,0.3);
+    z-index: 1000;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .mobile-menu.active { display: block; max-height: 500px; }
+  body.light-mode .mobile-menu { background: rgba(255,255,255,0.98); border-top-color: rgba(13,59,102,0.3); border-bottom-color: rgba(13,59,102,0.3); }
+
+  .mobile-menu-section { padding: 10px 0; }
+
+  .mobile-menu-item a {
+    display: block;
+    padding: 15px 20px;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-item a:hover { background: rgba(100,255,180,0.1); color: #64ffb4; padding-left: 30px; }
+  body.light-mode .mobile-menu-item a { color: #333; border-bottom-color: rgba(0,0,0,0.1); }
+  body.light-mode .mobile-menu-item a:hover { background: rgba(13,59,102,0.1); color: #0d3b66; }
+
+  .mobile-menu-social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+
+  body.light-mode .mobile-menu-social { border-top-color: rgba(0,0,0,0.1); }
+
+  /* ── THEME TOGGLE ── */
+  .theme-toggle {
+    background: var(--toggle-bg);
+    border: 1px solid var(--toggle-border);
+    color: var(--toggle-color);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── CONTAINER ── */
+  .cv-container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 6rem 2rem 4rem;
+  }
+
+  .cv-glass {
+    background: var(--bg-container);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--rule-light);
+    border-radius: 12px;
+    padding: 3rem 2.5rem 4rem;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  body.light-mode .cv-glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  }
+
+  /* ── HEADER ── */
+  .cv-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2.5px double var(--rule);
+  }
+
+  .cv-header h1 {
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 1.1;
+    margin: 0 0 0.4rem;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+  }
+
+  .cv-header .cv-subtitle {
+    font-family: var(--font);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--ink-muted);
+    margin: 0 0 1rem;
+  }
+
+  .cv-header .cv-contact {
+    font-family: var(--font);
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    line-height: 1.8;
+  }
+
+  .cv-header .cv-contact a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .cv-header .cv-contact a:hover { border-bottom-color: var(--accent); }
+
+  .cv-header .cv-contact strong {
+    color: var(--ink-secondary);
+    font-weight: 600;
+  }
+
+  .header-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 0.75rem;
+  }
+
+  .header-social a {
+    color: var(--ink-muted);
+    transition: all 0.3s ease;
+  }
+
+  .header-social a:hover { color: var(--accent); }
+
+  .header-social .sep {
+    color: var(--rule-light);
+    font-size: 0.8rem;
+  }
+
+  .header-social .site-link {
+    font-size: 0.82rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .header-social .site-link:hover { text-decoration: underline; }
+
+  /* ── PRINT BAR ── */
+  .print-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding: 0.8rem 1.2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .print-bar .print-label {
+    font-family: var(--font);
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+  }
+
+  .print-bar button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--print-color);
+    background: var(--print-bg);
+    padding: 0.45rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .print-bar button:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .print-bar button svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  /* ── CV BODY ── */
+  .cv-body h2 {
+    font-family: var(--font);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule-light);
+  }
+
+  .cv-body h2:first-child { margin-top: 0; }
+
+  .cv-body h3 {
+    font-family: var(--font);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .cv-body h4 {
+    font-family: var(--font);
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--ink-secondary);
+    margin-top: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .cv-body p {
+    font-family: var(--font);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--ink-secondary);
+    margin-bottom: 0.8rem;
+  }
+
+  .cv-body p strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .cv-body ul {
+    margin-left: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .cv-body li {
+    font-family: var(--font);
+    font-size: 0.86rem;
+    line-height: 1.65;
+    color: var(--ink-secondary);
+    margin-bottom: 0.35rem;
+  }
+
+  .cv-body li::marker {
+    color: var(--accent);
+  }
+
+  .cv-body hr {
+    border: none;
+    border-top: 1px solid var(--rule-faint);
+    margin: 1.8rem 0;
+  }
+
+  .location, .dates {
+    color: var(--ink-muted);
+    font-weight: 300;
+    font-size: 0.85rem;
+  }
+
+  .concurrent-role {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    font-style: italic;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .competencies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.35rem 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .two-column {
+    columns: 2;
+    column-gap: 1.8rem;
+  }
+
+  .two-column li {
+    break-inside: avoid;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-faint);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .site-footer .brand {
+    font-family: var(--font);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .site-footer .brand a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .site-footer .brand a:hover { text-decoration: underline; }
+
+  .site-footer .copyright {
+    font-family: var(--font);
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    html { font-size: 15px; }
+    .cv-container { padding: 5rem 1rem 3rem; }
+    .cv-glass { padding: 2rem 1.2rem 3rem; border-radius: 8px; }
+    .cv-header h1 { font-size: 1.8rem; }
+    .print-bar { flex-direction: column; }
+    .two-column { columns: 1; }
+    .competencies-grid { grid-template-columns: 1fr; }
+
+    .hamburger-button { display: block; }
+    .navbar-right { display: none; }
+    .navbar { padding: 0.6rem 1rem; }
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff !important; color: #000 !important; }
+    .navbar, .hamburger-button, .mobile-menu, .theme-toggle, .print-bar { display: none !important; }
+    .cv-container { max-width: none; padding: 0; }
+    .cv-glass { background: none; backdrop-filter: none; border: none; padding: 0; box-shadow: none; }
+    .cv-header { border-bottom-color: #000; }
+    .cv-header h1 { color: #000; }
+    .cv-header .cv-subtitle { color: #555; }
+    .cv-header .cv-contact { color: #333; }
+    .cv-header .cv-contact a { color: #0d3b66; }
+    .cv-body h2 { color: #000; border-bottom-color: #ccc; }
+    .cv-body h3 { color: #000; }
+    .cv-body h4 { color: #333; }
+    .cv-body p, .cv-body li { color: #222; }
+    .cv-body p strong { color: #000; }
+    .cv-body hr { border-top-color: #ddd; }
+    .location, .dates { color: #666; }
+    .concurrent-role { color: #666; }
+    .site-footer { display: none; }
+    .header-social { display: none; }
+  }
+</style>
 </head>
 <body>
-    <nav class="navbar">
-        <span class="navbar-brand">An <a href="https://oceandatum.ai">oceandatum.ai</a> company</span>
 
-        <!-- Hamburger button (mobile only) -->
-        <button class="hamburger-button" id="hamburgerBtn" aria-label="Menu">
-            ☰
-        </button>
+<nav class="navbar">
+    <span class="navbar-brand">An <a href="index.html">oceandatum.ai</a> company</span>
 
-        <!-- Desktop navigation -->
-        <div class="navbar-right">
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                </a>
-                <a href="https://twitter.com/theshipsagent" target="_blank" class="social-icon" title="Twitter">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                </a>
-                <a href="https://www.instagram.com/theshipsagent" target="_blank" class="social-icon" title="Instagram">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </a>
-                <a href="https://oceandatum.ai" target="_blank" class="social-icon" title="oceandatum.ai">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                    </svg>
-                </a>
-                <a href="https://theshipsagent.com" target="_blank" class="social-icon" title="theshipsagent.com">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                    </svg>
-                </a>
-            </div>
-            <a class="navbar-link" href="index.html">Home</a>
-            <a href="login.html" class="navbar-link">Enter</a>
+    <button class="hamburger-button" id="hamburgerBtn" aria-label="Menu">&#9776;</button>
+
+    <div class="navbar-right">
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+            </a>
+            <a href="https://twitter.com/theshipsagent" target="_blank" class="social-icon" title="Twitter">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/theshipsagent" target="_blank" class="social-icon" title="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
         </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">&#9790;</button>
+        <a href="posts.html" class="navbar-link">Blog</a>
+        <a href="index.html" class="navbar-link">Home</a>
+    </div>
 
-    <!-- Mobile menu (hidden by default) -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-section">
-            <div class="mobile-menu-item">
-                <a href="index.html">Home</a>
-            </div>
-            <div class="mobile-menu-item">
-                <a href="login.html">Enter</a>
-            </div>
+            <div class="mobile-menu-item"><a href="posts.html">Blog</a></div>
+            <div class="mobile-menu-item"><a href="index.html">Home</a></div>
+            <div class="mobile-menu-item"><a href="#" id="mobileThemeToggle">Toggle Light/Dark Mode</a></div>
         </div>
         <div class="mobile-menu-social">
             <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn">
@@ -1100,2077 +619,256 @@
             </a>
         </div>
     </div>
-    </nav>
+</nav>
 
-    <div class="profile-container">
-        <div class="tab-nav" id="tabNav">
-            <button class="tab-button active" onclick="showTab('cv')">CV</button>
-            <button class="tab-button auth-only" onclick="showTab('biography')" style="display:none;">Biography</button>
-            <button class="tab-button auth-only" onclick="showTab('bibliography')" style="display:none;">Bibliography</button>
-        </div>
+<div class="cv-container">
+  <div class="cv-glass">
 
-        <!-- TAB 1: CV -->
-        <div id="cv" class="tab-content active">
-            <div class="content-header">
-                <img src="images/wsd_logo.png" alt="W.S.D. Logo" class="cv-logo">
-                <h1>WILLIAM S. DAVIS III</h1>
-                <div class="subtitle">Ship Agency & Terminal Operations Executive | Commercial Development | Technology Implementation</div>
-                <div class="contact-info">
-                    <strong>Chesapeake, VA</strong> | +1 (657) 477-0436 | <a href="mailto:wsd@theshipsagent.com">wsd@theshipsagent.com</a>
-                    <br>
-                    <div style="margin-top: 0.5rem; display: flex; align-items: center; gap: 0.8rem;">
-                        <a href="https://linkedin.com/in/williamsdavis" target="_blank" class="social-icon" title="LinkedIn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                        </a>
-                        <a href="https://twitter.com/theshipsagent" target="_blank" class="social-icon" title="Twitter/X">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                        </a>
-                        <a href="https://instagram.com/theshipsagent" target="_blank" class="social-icon" title="Instagram">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <span style="color: rgba(255,255,255,0.4);">|</span>
-                        <a href="https://oceandatum.ai" target="_blank">oceandatum.ai</a>
-                        <span style="color: rgba(255,255,255,0.4);">|</span>
-                        <a href="https://theshipsagent.com" target="_blank">theshipsagent.com</a>
-                    </div>
-                </div>
-            </div>
-
-            <h2>Executive Summary</h2>
-            <p>Senior operations executive with 30 years of progressive leadership experience in maritime logistics, supply chain optimization, and terminal development. Deep operational expertise in cargo handling, vessel operations, and port coordination combined with proven ability to establish new markets, integrate acquisitions, and deploy enterprise technology. Track record includes merger of 3 ship agency businesses and establishing 9 port offices across U.S. Atlantic and Gulf Coast, leading successful M&A integrations with high customer retention, and supporting terminal development projects representing significant infrastructure investments. Expert in leveraging data analytics, geospatial systems, and enterprise technology to transform traditional maritime operations.</p>
-
-            <hr>
-
-            <h2>Core Competencies</h2>
-            <ul class="competencies-grid">
-                <li>Executive P&L Leadership (multi-location operations)</li>
-                <li>Business Development & Market Expansion</li>
-                <li>M&A Integration & Change Management</li>
-                <li>Supply Chain Strategy & Optimization</li>
-                <li>Terminal & Infrastructure Development</li>
-                <li>Enterprise Systems (ERP/CRM) Implementation</li>
-                <li>Data Analytics & Geospatial Intelligence</li>
-                <li>Multi-Site Operations Management</li>
-            </ul>
-
-            <hr>
-
-            <h2>Professional Experience</h2>
-
-            <h3>T. PARKER HOST, INC. <span class="location">| Norfolk, VA</span></h3>
-
-            <h4>Vice President & Business Development <span class="dates">| October 2016 – May 2025</span></h4>
-            <div class="concurrent-role">Also served as Head of Agency (November 2018 – February 2021)</div>
-
-            <p><strong>Executive Leadership & P&L Responsibility</strong></p>
-            <ul>
-                <li>Led 15-location ship agency division with 110+ employees handling 4,200+ annual port calls across US Atlantic and Gulf Coasts (New York to Brownsville, TX)</li>
-                <li>Full P&L accountability for multi-location maritime services operation with ~$800 million in port expenses receivables</li>
-                <li>Served on executive committee driving corporate strategy and business development initiatives</li>
-                <li>Directed operational excellence across geographically dispersed organization</li>
-            </ul>
-
-            <p><strong>Commercial & Business Development Achievements</strong></p>
-            <ul>
-                <li>Expanded customer base including major commodity traders (Glencore, Vitol, Cargill) across grain, petcoke, oil, gas, and breakbulk trades</li>
-                <li>Built and maintained relationships with terminal operators, pilots, port authorities, and shipping lines across 15 US ports</li>
-                <li>Established performance metrics and KPIs resulting in measurable operational efficiency improvements</li>
-                <li>Developed crisis management protocols maintaining service continuity during COVID-19 pandemic without business or customer loss</li>
-            </ul>
-
-            <p><strong>Technology & Systems Leadership</strong></p>
-            <ul>
-                <li>Led digital transformation implementing NetSuite ERP and CRM systems for 100+ users</li>
-                <li>Replaced legacy systems with integrated platforms improving data visibility and operational efficiency</li>
-                <li>Deployed proprietary geospatial tracking systems for vessel monitoring and analytics</li>
-                <li>Implemented KYC due diligence platforms for compliance and regulatory requirements</li>
-            </ul>
-
-            <p><strong>M&A Leadership & Integration</strong></p>
-            <ul>
-                <li>Directed integration of three ship agency acquisitions (Barwil Agencies merger 2017)</li>
-                <li>Established 9 new port offices (Savannah, Jacksonville, Charleston, Mobile, Gulfport, New Orleans, Brownsville, Houston, Freeport)</li>
-                <li>Maintained 95%+ customer retention across all acquisitions through focused transition management</li>
-                <li>Integrated operations, systems, and teams across geographically dispersed locations</li>
-            </ul>
-
-            <h3>WILHELMSEN SHIP SERVICES <span class="location">| Norfolk, VA</span></h3>
-
-            <h4>Operations Manager – Mississippi River <span class="dates">| December 1999 – October 2016</span></h4>
-
-            <p><strong>Regional Operations & Crisis Management</strong></p>
-            <ul>
-                <li>Managed ship agency operations across Mississippi River and Gulf Coast ports handling 400+ annual port calls</li>
-                <li>Led Hurricane Katrina response (2005) coordinating vessel operations during and after the disaster—maintained service continuity and customer relationships</li>
-                <li>Established operations in new ports including Hampton Roads (first coal nomination on US East Coast), Baltimore, and Philadelphia</li>
-                <li>Developed crisis management protocols and maintained operations during major disruptions</li>
-            </ul>
-
-            <p><strong>Commercial Development & Market Expansion</strong></p>
-            <ul>
-                <li>Expanded customer base across commodity trades (grain, petcoke, coal, oil, breakbulk)</li>
-                <li>Built relationships with terminal operators, pilots, port authorities, and shipping lines</li>
-                <li>Supported terminal development projects and infrastructure investments</li>
-                <li>Developed performance metrics driving operational improvements</li>
-            </ul>
-
-            <p><strong>Systems & Process Innovation</strong></p>
-            <ul>
-                <li>Early adopter of digital cameras and data systems for enhanced operational transparency</li>
-                <li>Developed proforma and berth sheets with photos and maps improving customer communications</li>
-                <li>Implemented tracking systems and analytics for vessel operations</li>
-            </ul>
-
-            <h3>T. PARKER HOST, INC. <span class="location">| Baltimore, MD</span></h3>
-
-            <h4>Port Agent <span class="dates">| November 1995 – December 1999</span></h4>
-
-            <ul>
-                <li>Managed ship agency operations in Baltimore handling diverse cargo types and vessel operations</li>
-                <li>Coordinated with stevedores, terminal operators, customs officials, and ship's masters</li>
-                <li>Handled disbursement accounting and proforma estimation for entry-level employees</li>
-                <li>Gained foundational expertise in commercial business operations and customer service</li>
-            </ul>
-
-            <hr>
-
-            <h2>Military Service</h2>
-
-            <h3>UNITED STATES ARMY <span class="location">| Fort Campbell, KY</span></h3>
-
-            <h4>Infantryman, 101st Airborne Division <span class="dates">| 1993 – 1995</span></h4>
-
-            <ul>
-                <li>Served in long-range surveillance unit at Fort Campbell, Kentucky</li>
-                <li>Developed discipline, attention to detail, and crisis management skills</li>
-                <li>Honorable discharge with valuable leadership and team coordination experience</li>
-            </ul>
-
-            <hr>
-
-            <h2>Education & Professional Development</h2>
-
-            <p><strong>Professional Certifications & Training:</strong></p>
-            <ul class="two-column">
-                <li>Diploma in Ship Agency — Association of Ship Brokers and Agents (ASBA), 2021</li>
-                <li>Maritime Arbitration — Society of Maritime Arbitrators, 2021</li>
-                <li>Maritime Law Certification — ASBA, 2017</li>
-                <li>Commercial Trade Transactions — ASBA, 2016</li>
-                <li>Basic Principles of Chartering — ASBA, 2014</li>
-                <li>Maritime Transportation of Chemicals & LPG — Tank Assist BV, 2015</li>
-                <li>Leadership Development Program — Center for Creative Leadership, 2013</li>
-            </ul>
-
-            <p><strong>Academic Background:</strong></p>
-            <ul>
-                <li>First Colonial High School, Virginia Beach, VA</li>
-                <li>Extensive business management and commercial development training through industry associations</li>
-            </ul>
-
-            <hr>
-
-            <h2>Professional Affiliations</h2>
-
-            <ul class="two-column">
-                <li>Society of Maritime Arbitrators (Member, 2021)</li>
-                <li>Association of Ship Brokers and Agents (Member, 2014)</li>
-                <li>Propeller Club of the United States (Member, 2002)</li>
-                <li>Hampton Roads Shipping Association (Member, 2002)</li>
-                <li>Virginia Maritime Association (Member, 2012)</li>
-                <li>Port of New Orleans (Member, 2002)</li>
-            </ul>
-
-            <hr>
-
-            <h2>Additional Information</h2>
-
-            <p><strong>Technical Proficiencies:</strong> NetSuite ERP/CRM, Oracle NetSuite, geospatial tracking systems, data analytics platforms, Microsoft Office Suite, maritime operational software, KYC compliance platforms</p>
-
-            <p><strong>Publications & Thought Leadership:</strong> Authored extensive professional library covering ship agency operations, chartering, maritime law, commodity trading, supply chain management, and specialized industry literature spanning 779 works</p>
-
-            <p><strong>Personal Interests:</strong> Wood turning, vintage machining, maritime history, live music.</p>
-        </div>
-
-        <!-- TAB 2: BIOGRAPHY -->
-        <div id="biography" class="tab-content">
-            <div class="content-header">
-                <img src="images/wsd_logo.png" alt="W.S.D. Logo" class="cv-logo">
-                <h1>WILLIAM S. DAVIS III</h1>
-                <div class="subtitle">Ship Agency & Terminal Operations Executive | Commercial Development | Technology Implementation</div>
-                <div class="contact-info">
-                    <strong>Chesapeake, VA</strong> | +1 (657) 477-0436 | <a href="mailto:wsd@theshipsagent.com">wsd@theshipsagent.com</a>
-                    <br>
-                    <div style="margin-top: 0.5rem; display: flex; align-items: center; gap: 0.8rem;">
-                        <a href="https://linkedin.com/in/williamsdavis" target="_blank" class="social-icon" title="LinkedIn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                        </a>
-                        <a href="https://twitter.com/theshipsagent" target="_blank" class="social-icon" title="Twitter/X">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                        </a>
-                        <a href="https://instagram.com/theshipsagent" target="_blank" class="social-icon" title="Instagram">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <span style="color: rgba(255,255,255,0.4);">|</span>
-                        <a href="https://oceandatum.ai" target="_blank">oceandatum.ai</a>
-                        <span style="color: rgba(255,255,255,0.4);">|</span>
-                        <a href="https://theshipsagent.com" target="_blank">theshipsagent.com</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bio-intro">
-                "A water-clerk need not pass an examination in anything under the sun, but he must have Ability in the abstract and demonstrate it practically."
-                <div style="text-align: right; margin-top: 0.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.6);">— Joseph Conrad, <em>Lord Jim</em> (1900)</div>
-            </div>
-
-            <div class="bio-section">
-                <h2>Origins</h2>
-                <img src="images/origins-photo.jpg" alt="Early maritime influences" class="bio-image" style="max-width: 259px;">
-                <p>Born and raised beside the Atlantic in Virginia Beach, I grew up watching ships pass Cape Henry—sometimes finding ship's mail or chunks of coal washed ashore from passing vessels while playing in the surf. I am a second-generation maritime professional; my earliest memory of boarding a commercial vessel was in 1979 aboard the <em>Export Builder</em>, when my father was an agent for American Export Isbrandtsen Lines. He would go on to a worldwide career, following American Export through Farrell Lines, then transitioning to commercial and leadership roles for Wilhelmsen Lines in 1989 with global responsibilities, until the final corporate merger of Wallenius and Wilhelmsen in 2017, where he began work for COSCO until retirement.</p>
-
-                <p>The ocean and my father's trinkets from overseas forged a lifelong interest in maritime commerce. The smell of salt water, the sight of ships on the horizon, and stories of distant ports shaped my professional aspirations from an early age.</p>
-
-                <p>My first commercial work came at age ten, selling stationery for prizes. At thirteen, I began working summers at a bicycle shop—a formative experience in commercial business built around mechanical assets that would prove beneficial later in life. I continued that job through high school graduation, working over forty hours weekly while attending school during my senior year. I have been gainfully employed for nearly forty years, with only four employers in that span.</p>
-            </div>
-
-            <div class="bio-section">
-                <h2>Military Service</h2>
-                <p>After graduating from First Colonial High School in Virginia Beach, I took a different path than most peers and enlisted in the United States Army. I served as an infantryman assigned to a military intelligence long-range surveillance unit in the 101st Airborne Division at Fort Campbell, Kentucky (1993–1995). The discipline, attention to detail, and crisis management skills developed during military service would prove more valuable throughout my maritime career than any college degree.</p>
-            </div>
-
-            <div class="bio-section">
-                <h2>Entry into Maritime (1995–1999)</h2>
-                <p>Following my discharge, I returned to civilian life in Baltimore, where my parents were living, working as a bicycle messenger and mechanic while determining my next steps. The physical work was honest, the streets of Baltimore were educational in their own way, and the job gave me time to think. Ultimately, I applied at several agencies in Baltimore under a simple premise: ship agency is the greatest entry-level job in shipping, and I was willing to work long, flexible hours for modest pay to earn my place in the industry. I was immediately hired.</p>
-
-                <p>At T. Parker Host in Baltimore, I learned the fundamentals—coordinating with stevedores, customs officials, pilots, terminal operators, and ship's masters. The work demanded precision, clear communication, and the ability to manage multiple moving parts simultaneously. Every vessel call was a lesson in logistics, timing, and problem-solving.</p>
-            </div>
-
-            <div class="bio-section">
-                <h2>Wilhelmsen Years: Mississippi River and Hurricane Katrina (1999–2006)</h2>
-                <p>In December 1999, I joined Wilhelmsen Ships Agency (operating as Barwil Agencies) as Operations Manager in Norfolk. Following the merger of Wilhelmsen and Wallenius liner services, Wilhelmsen had to bifurcate all domestic assets and businesses away from the merged liner pool. Overnight, they needed a manager to handle Pan Ocean's tramp liner service to Norfolk and attend the RoRo vessels in liner service. It was a great opportunity—I built the office from scratch: IT systems, forms, processes, and accounting, until Barwil could reorganize their US headquarters to New Orleans.</p>
-
-                <p>During this time, I helped reestablish their presence in neighboring Baltimore and North Carolina ports. I handled Hampton Roads' first-ever semi-submersible operation loading floating military stock and a 700-foot floating dry dock. I also achieved Barwil's first coal nomination on the US East Coast. This quickly drew attention from both local and worldwide corporate management. I established a sub-agency agreement with Host and worked on a one-year project to develop Barwil's global coal services package, attending strategy meetings in South Africa and Singapore with the global executive team.</p>
-
-                <p>During this era, I was among the first agents to use a digital camera and cellular modems for increased responsiveness while onboard vessels, and I developed a new format of proforma and berth sheets with photos and maps— innovations that would be widely copied once made famous by Host's adoption of the formats.</p>
-
-                <p>In early 2002, I requested a transfer to Barwil's Mississippi River office in New Orleans. I had always viewed the Mississippi River as the doctorate program for ship agency—the holy grail of on-the-job education. My primary responsibility was river operations, a different world from coastal ports: more complex vessel movements, tighter margins, and unpredictable challenges that demanded constant adaptation.</p>
-            </div>
-
-            <div class="bio-section">
-                <h2>Hurricane Katrina: August 2005</h2>
-                <p>When Hurricane Katrina made landfall in New Orleans on August 29, 2005, the world changed. Most staff evacuated, leaving only essential employees. I volunteered to remain so colleagues with families could leave safely. I didn't fully anticipate what would unfold—none of us did. New Orleans flooded, communications failed, and normal infrastructure collapsed. For nearly two weeks, I coordinated vessel operations under conditions I'd never imagined in a U.S. port.</p>
-
-                <p>I managed vessel attendance during the storm itself and its immediate aftermath. As disaster response ramped up, I moved in and out of armed checkpoints and curfews, navigating encounters with police ensuring I wasn't a looter— the city was nearly evacuated except for first responders. I coordinated operations for three FEMA-chartered cruise ships that served as floating bases for emergency response teams, providing housing, food service, and staging areas when land-based facilities were underwater.</p>
-
-                <p>Perhaps most significantly, I managed the first deep-draft vessel to depart from the Mississippi River after the storm, once the Army had dragged the entire federal channel to sea for weeks and sunken obstacles. Dozens of barges and tugs had sunk; ships sat on levees; tugboats were in the middle of highways. Getting that vessel safely out required coordination with Coast Guard, pilots, terminal operators, and salvage teams—all operating under emergency conditions with limited communications.</p>
-
-                <p>Crisis leadership became part of my professional identity. I learned that I could function effectively under extreme pressure, coordinate complex operations with degraded infrastructure, and maintain focus when everything around me was in chaos.</p>
-            </div>
-
-            <div class="bio-section">
-                <h2>Building the South Atlantic and Gulf Coast (2006–2016)</h2>
-                <p>In May 2006, conditions in New Orleans remained extremely difficult. I accepted a position as Operations Manager in Fernandina Beach, Florida, for Amelia Maritime Services, then a joint venture owned by Host and the Quinn family of Miami. The company was ready to expand aggressively into Gulf Coast and southern Atlantic ports, and they wanted someone who knew those markets and could build from scratch.</p>
-
-                <p>I participated in a complete reorganization of Amelia and its absorption into Host once the Quinns sold their interests. We then purchased Atlantic Ship Agencies in Savannah, which I was responsible for integrating and growing. During this period, I oversaw complete staff reorganization and expansion of operations in Fernandina, Jacksonville, and Brunswick, and opened Savannah and Charleston offices. I progressed from boarding agent to operations manager to vice president to a seat on the board of directors, until the business was integrated by Host, where I was promoted to Vice President of Business Development.</p>
-
-                <p>During the transition, I developed the beginnings of Host's first ERP using Google's platform and set up domain and email services for Amelia to streamline administrative and accounting functions between offices.</p>
-            </div>
-
-            <div class="bio-section">
-                <h2>Gulf Coast Expansion and M&A Integration</h2>
-                <p>In 2011, Host purchased NSA Agencies. I led on-the-ground management and restructuring of their Mobile, New Orleans, and Houston offices, commuting weekly from Jacksonville for eight months. Again, I turned over staff, integrated and built processes, and hired and trained new employees handling weekly operations while coordinating with existing staff to ensure seamless transitions.</p>
-            </div>
-
-            <div class="bio-section">
-                <h2>Terminal Development and ERP Integration</h2>
-                <p>At Host, I was the company representative of the former Bethlehem Steel site into a multimodal logistics and terminal complex. I conducted market analysis and supply chain modeling for steel, wind energy, and bulk commodity strategies—infrastructure investment at massive scale requiring analysis defensible to investors, lenders, and regulators.</p>
-
-                <p>I helped Host develop a sabermetics-style system using the world's most advanced data subscriptions and services to build complex operational and financial models, market studies, and geospatial modeling for various terminal operations, including due diligence research on counterparties. I was viewed as Host's internal consultant and also handled special assignments: reestablishing inventory for 500,000 tons of alumina at their Baltimore terminal after an inventory system failure, shutting down a logistics business in New York, and closing Host's agency in Colombia.</p>
-
-                <p>I worked on projects including an RFP to develop floating stevedoring and barging infrastructure for Russal's bauxite mine in Guinea, redevelopment of a former fertilizer plant into a dedicated petcoke terminal for CITGO's Pascagoula refinery, and a tank storage, barge, pipeline, and truck rack terminal at the former Philadelphia refinery on the Delaware River. I was chief architect of Host's "Solutions Network" business model and pitch books that led to Metalmark Capital's $75 million investment.</p>
-            </div>
-
-            <div class="bio-section">
-                <h2>Executive Leadership (2016–2025)</h2>
-                <img src="images/executive-leadership.jpg" alt="Executive leadership" class="bio-image" style="max-width: 160px;">
-                <p>In October 2016, while continuing regional management responsibilities, I took on an additional role as Director of Business Development focusing terminal development projects. This was a strategic pivot, leveraging operational expertise to support clients planning major terminal infrastructure investments.</p>
-
-                <p>Despite expensive degrees and MBAs on the business development team, two essential elements were lacking: experience and digitization—both proven skills of mine over time. This would be my second family relocation, from Jacksonville to Norfolk.</p>
-
-                <p>In November 2018, following the abrupt exit of Finn Host after the sale from the Host family to Adam Anderson and investors, I was assigned responsibility as interim head of agency. Overnight, in addition to my day job, I had over 100 employees, $22 million in revenue, and $800 million in receivables. I was promoted to Vice President & Head of Agency with full executive responsibility for T. Parker Host's ship agency division—oversight of all 15 locations, P&L accountability, and a seat on the executive committee shaping corporate strategy.</p>
-
-                <p>The initial goal was immediate stabilization of both morale and commercial relationships at risk of shifting to Host's new agency operating under a required license. This required extensive team building and change management. In the first six months, I reduced overhead by nearly $2 million through operational efficiencies alone.</p>
-
-                <p>The scope was substantial: 110+ employees, 4,200+ annual port calls, operations spanning from New York to Brownsville, Texas, with full responsibility for service quality, customer relationships, financial performance, and operational excellence.</p>
-            </div>
-
-            <div class="bio-section">
-                <h2>Digital Transformation</h2>
-                <p>I led the company's digital transformation, implementing Oracle NetSuite as our enterprise-wide ERP and CRM system for 100+ users, replacing legacy systems cobbled together over decades. I also developed proprietary geospatial tracking systems for vessel monitoring, data reporting platforms for operational optimization, and KYC due diligence platforms.</p>
-            </div>
-
-            <div class="bio-section">
-                <h2>COVID-19 Crisis Management</h2>
-                <p>We maintained 100% operational continuity throughout the pandemic without losing business, customers, or employees. Keeping a 24-hour business and a team of over 100 employees on point and motivated during the worst climate any American business could find itself operating in will remain one of my proudest achievements.</p>
-            </div>
-
-            <div class="bio-section">
-                <h2>Professional Development</h2>
-                <p>Throughout my career, continuous learning has been central to my development. I've systematically studied maritime operations, logistics, supply chain management, and related disciplines through specialized industry literature. Over 30 years, I've built a professional library of 779 works spanning ship agency, chartering, maritime law, port operations, supply chain econometrics, and commodity markets.</p>
-
-                <p>I have extensive interest and knowledge in chartered vessel operations, charter parties, laytime, and typical associated claims and bill of lading issues. At Host, I was the company representative for the Society of Maritime Arbitrators in New York and led several pieces of agency litigation, fines, and claims. I have a future goal of becoming a regular maritime arbitrator under SDNY and have taken preliminary training.</p>
-            </div>
-
-            <div class="bio-section">
-                <h2>Looking Forward</h2>
-                <p>In May 2025, with terminal operations now fully matured and a long-term hire trained and implemented as head of agency, I sought the horizons. I parted ways on good terms with Host as part of their acquisition of Transmarine, exiting gardening leave in December 2025.</p>
-
-                <p>After 30 years focused primarily on maritime operations, I'm interested in applying this experience to broader logistics, supply chain, or infrastructure roles. The skills are transferable: operational leadership, crisis management, technology implementation, market development, stakeholder management, and team building.</p>
-            </div>
-        </div>
-
-        <!-- TAB 3: BIBLIOGRAPHY -->
-        <div id="bibliography" class="tab-content">
-  <div class="content-header">
-    <img src="images/wsd_logo.png" alt="W.S.D. Logo" class="cv-logo">
+  <div class="cv-header">
     <h1>WILLIAM S. DAVIS III</h1>
-    <div class="subtitle">Professional Bibliography</div>
-  </div>
-
-  <p>Throughout my career, continuous learning has been central to professional development. Over 30 years, I've built a comprehensive professional library of hundreds of curated works spanning chartering, maritime law, port operations, cargo handling, supply chain management, and international trade.</p>
-
-  <p>This collection represents systematic study across the full spectrum of maritime commerce, from foundational legal texts to operational best practices. The bibliography demonstrates both breadth of knowledge and depth of focus in key commercial and operational areas.</p>
-
-  <!-- Controls -->
-  <div class="bib-controls">
-    <button onclick="expandAllSections()">Expand All</button>
-    <button onclick="collapseAllSections()">Collapse All</button>
-  </div>
-
-  <nav class="bib-toc">
-    <h2>Contents</h2>
-    <ul>
-      <li><a href="#bib-business-of-shipping">1. BUSINESS OF SHIPPING (21)</a></li>
-      <li><a href="#bib-cargo-operations">2. CARGO OPERATIONS (25)</a></li>
-      <li><a href="#bib-chartering">3. CHARTERING (27)</a></li>
-      <li><a href="#bib-claims-insurance">4. CLAIMS & INSURANCE (18)</a></li>
-      <li><a href="#bib-commodities">5. COMMODITIES (16)</a></li>
-      <li><a href="#bib-econometrics">6. ECONOMETRICS (46)</a></li>
-      <li><a href="#bib-historical">7. HISTORICAL (88)</a></li>
-      <li><a href="#bib-maritime-law">8. MARITIME LAW (34)</a></li>
-      <li><a href="#bib-port-operations">9. PORT OPERATIONS (33)</a></li>
-      <li><a href="#bib-supply-chain">10. SUPPLY CHAIN (36)</a></li>
-      <li><a href="#bib-trade-documentation">11. TRADE DOCUMENTATION (18)</a></li>
-    </ul>
-  </nav>
-
-  <div id="bib-business-of-shipping" class="bib-section">
-    <div class="bib-section-header" onclick="toggleSection(this)">
-      <h3>1. BUSINESS OF SHIPPING <span class="entry-count">(21 works)</span></h3>
-      <span class="expand-icon">▼</span>
+    <p class="cv-subtitle">Ship Agency &amp; Terminal Operations Executive | Commercial Development | Technology Implementation</p>
+    <div class="cv-contact">
+        <strong>Chesapeake, VA</strong> | +1 (657) 477-0436 | <a href="mailto:wsd@theshipsagent.com">wsd@theshipsagent.com</a>
     </div>
-    <div class="bib-section-content">
-      <div class="bib-entry">
-        <div class="bib-title">Shipmaster's handbook on ship's business. 2nd ed</div>
-        <div class="bib-meta">J. R. Aragon (1992) Cornell Maritime Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Elements of Shipping</div>
-        <div class="bib-meta">Alan E. Branch (2007) Informa Law from Routledge 8. ed., completely rev</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Business of Shipping</div>
-        <div class="bib-meta">James J. Buckley; Lane C. Kendall (2008) Cornell Maritime Press 8th ed.</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The World’s Key Industry: History and Economics of International Shipping</div>
-        <div class="bib-meta">Tzelina Charlautē; Stig Tenold; Jesús María Valdaliso Gago (2012) Palgrave Macmillan</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ship agency: a guide to tramp ship agency practice</div>
-        <div class="bib-meta">Marygrace Collins; Kenneth T. Schiels; Peter Skoufalos (2013) Witherby Publishing Group Ltd 3. ed., reprinted</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Managing ships</div>
-        <div class="bib-meta">John M. Downard (1990) Fairplay Publications reprinted</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Shipping business unwrapped: illusion, bias and fallacy in the shipping business</div>
-        <div class="bib-meta">Okan Duru (2019) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Commercial Management in Shipping</div>
-        <div class="bib-meta">Don L. Dykstra (2005) Nautical Institute 1. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ships Routing 2015 Edition</div>
-        <div class="bib-meta">IMO (2015)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Oxford companion to ships & the sea</div>
-        <div class="bib-meta">Peter Kemp (1976) Oxford University Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Handbook for marine radio communication</div>
-        <div class="bib-meta">Graham D. Lees; William G. Williamson (2015) Informa Law from Routledge Sixth edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Shipping company strategies: global management under turbulent conditions</div>
-        <div class="bib-meta">Peter Lorange (2008) Emerald 1. ed., reprinted</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Shipping strategy: innovating for success</div>
-        <div class="bib-meta">Peter Lorange (2009) Cambridge University Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Introduction to ship operations and onboard safety</div>
-        <div class="bib-meta">Alexander Arnfinn Olsen (2022) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Core principles of maritime navigation</div>
-        <div class="bib-meta">Alexander Arnfinn Olsen (2023) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Professional ship management: marketing and strategy</div>
-        <div class="bib-meta">Photis M. Panayides (2001) Ashgate</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Handbook of Maritime Security</div>
-        <div class="bib-meta">Anna Petrig (2022) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Management of Shipping Companies</div>
-        <div class="bib-meta">Ioannis Theotokas (2018) Informa Law from Routledge First edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Maritime Strategy and Sea Denial: Theory and Practice</div>
-        <div class="bib-meta">Milan Vego (2018) Informa Law from Routledge 1</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ship Agency. A Guide to Tramp Ship Agency Practice - Marygrace Collins, Kenneth Schiels and Peter Skoufalos</div>
-        <div class="bib-meta">(2013)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ship management: theory and practice</div>
-        <div class="bib-meta">Pengfei Zhang; Lijun Tang (2022) Informa Law from Routledge</div>
-      </div>
-    </div>
-  </div>
-  <div id="bib-cargo-operations" class="bib-section">
-    <div class="bib-section-header" onclick="toggleSection(this)">
-      <h3>2. CARGO OPERATIONS <span class="entry-count">(25 works)</span></h3>
-      <span class="expand-icon">▼</span>
-    </div>
-    <div class="bib-section-content">
-      <div class="bib-entry">
-        <div class="bib-title">Practical Loading of Merchant Vessels</div>
-        <div class="bib-meta">Tom Abbenhues (2017) STC Publishing Eerste druk</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Tugs, towboats and towing</div>
-        <div class="bib-meta">Edward M. Brady (1979) Cornell Maritime Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Dictionary of metals</div>
-        <div class="bib-meta">Harold M. Cobb (2012) ASM International</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ship knowledge: ship design, construction and operation</div>
-        <div class="bib-meta">Klaas van Dokkum (2020) DOKMAR 10th edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Cargo Work for Ships Officers</div>
-        <div class="bib-meta">Capt Errol Fernandes (2014) 3rd Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Stability and trim for the ship's officer</div>
-        <div class="bib-meta">William E. George (2005) Cornell Maritime Press 4th ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Flat rolling fundamentals</div>
-        <div class="bib-meta">Vladimir B. Ginzburg; Robert Ballas (2000) Marcel Dekker, Inc</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Southern Pacific, 1901-1985</div>
-        <div class="bib-meta">Donovan L. Hofsommer (2009) Texas A & M Univ Pr</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Cargo work for maritime operations</div>
-        <div class="bib-meta">David J. House (2005) Elsevier 7th ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Tanker Operations: a Handbook for the Person-in-charge (PIC)</div>
-        <div class="bib-meta">Mark Huber; G. S. Marton (2010) Schiffer 5th Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Trading and price discovery for crude oils: growth and development of international oil markets</div>
-        <div class="bib-meta">Adi Imsirovic (2021) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ship to Ship Transfer Guide: for Petroleum, Chemicals and Liquefied Gases</div>
-        <div class="bib-meta">Chemical Distribution Institute; International Chamber of Shipping; Oil Companies International Marine Forum; Society of International Gas Tanker and Terminal Operators Ltd (2013) Witherby Publishing Group Ltd</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Bulk Carrier Pratice</div>
-        <div class="bib-meta">Jack Isbester (2023) The Nautical Institute</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Tanker Practice: The Construction, Operation and Maintenance of Tankers</div>
-        <div class="bib-meta">G. A. B. King (1976) Stanford Maritime Ltd Repr</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">OTM: oil trading manual</div>
-        <div class="bib-meta">David Long (1995) Woodhead Pub</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Tanker operations: a handbook for the ship's officer</div>
-        <div class="bib-meta">G. S. Marton (1984) Cornell Maritime Press 2nd ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The shipping man: adventures in ship finance</div>
-        <div class="bib-meta">Matthew McCleery (2011) Marine Money International</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">New York longshoremen: class and power on the docks</div>
-        <div class="bib-meta">William J. Mello (2010) University Press of Florida</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Marine cargo operations: a guide to stowage</div>
-        <div class="bib-meta">Robert J. Meurn; Charles L. Sauerbier (2004) Cornell Maritime Press 3. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Texas</div>
-        <div class="bib-meta">James A. Michener (1985) Secker & Warburg</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Practical Stevedoring</div>
-        <div class="bib-meta">CAPT. R Pritchard (1963) Brown, Son & Ferguson First edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">ISGOTT International safety guide for oil tankers and terminals</div>
-        <div class="bib-meta">International Chamber of Shipping; Oil Companies International Marine Forum; International Association of Ports and Harbours (2020) Witherby Publishing Group Ltd Sixth Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Tankers: an introduction to the Transport of Oil by sea</div>
-        <div class="bib-meta">Philippe Valois (1997) Witherby Publishing Group Ltd</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Management innovators: the people and ideas that have shaped modern business</div>
-        <div class="bib-meta">Daniel A. Wren; Ronald G. Greenwood (1998) Oxford University Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">tanker handbook for deck officers</div>
-        <div class="bib-meta">(1976) Fourth edition</div>
-      </div>
-    </div>
-  </div>
-  <div id="bib-chartering" class="bib-section">
-    <div class="bib-section-header" onclick="toggleSection(this)">
-      <h3>3. CHARTERING <span class="entry-count">(27 works)</span></h3>
-      <span class="expand-icon">▼</span>
-    </div>
-    <div class="bib-section-content">
-      <div class="bib-entry">
-        <div class="bib-title">A Layman's Guide to Laytime</div>
-        <div class="bib-meta">Erwin de Zwarte Arklow (2007) Self</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Commodity Trading & Chartering Master Class</div>
-        <div class="bib-meta">BIMCO (2017)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">BIMCO Check before fixing 2021</div>
-        <div class="bib-meta">BIMCO (2021) Witherby Publishing Group Ltd Second edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Summerskill; Laytime</div>
-        <div class="bib-meta">Simon Baughen; Michael Brynmôr. Summerskill (2022) Sweet & Maxwell Seventh edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Chartering and Shipping Terms Vol 3 Timesheet Supplement M-Z</div>
-        <div class="bib-meta">J. Bes (1966) Barker & Howard</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Chartering and Shipping Terms Vol 2 Timesheet Supplement A-L</div>
-        <div class="bib-meta">J. Bes (1966) Barker & Howard</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Chartering and Shipping Terms Vol 1 Pratical Guide</div>
-        <div class="bib-meta">J. Bes (1966) Barker & Howard 10th Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The essential guide to chartering and the dry freight market</div>
-        <div class="bib-meta">Nick Collins (2000) Clarkson Research Studies</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Voyage Charters</div>
-        <div class="bib-meta">Julian Cooke (2014) Informa Law from Routledge 4th. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Davies; Commencement of Laytime</div>
-        <div class="bib-meta">Donald Davies (2013) Informa Law from Routledge 4th ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Bareboat Charters</div>
-        <div class="bib-meta">Mark Davis (2005) Informa Law from Routledge 2. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Shipbroking and chartering practice</div>
-        <div class="bib-meta">Lars Gorton; Rolf Ihre; Arne Sandevärn; Lars Gorton (1995) Informa Law from Routledge 4th ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ship Chartering Alternatives for Grain-exporting Cooperatives</div>
-        <div class="bib-meta">Donald Everett Hirsch (1981) U.S. Department of Agriculture, Agricultural Cooperative Service</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Port agency</div>
-        <div class="bib-meta">Malcolm Latarche; Institute of Chartered Shipbrokers (1998) Witherby Publishing Group Ltd</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Bes' chartering and shipping terms</div>
-        <div class="bib-meta">Norman J. Lopez; J. Bes (1992) Barker & Howard 11th. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The mariner's guide to dry time charterparties</div>
-        <div class="bib-meta">Jeremy Miles; Katherine Birchall; Peter Scott; North of England P & I Association (2005) North of England P&I Association Repr</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Charterers Terms & Conditions 2025</div>
-        <div class="bib-meta">UK P&I (2025) UK P&I</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Laytime Calculating</div>
-        <div class="bib-meta">William V. Packard (1983) Fairplay Publications</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Chartering Manual: by practitioniers ; ...from the basic principles of trading and the need to move goods through the seas, to the competences of chartering cargo ships</div>
-        <div class="bib-meta">Thomas J. Pagonis; Nick Pentheroudakis (2019) Practitioners' Book Avenue, LLP</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Scrutton on Charter Parties and Bills of Lading</div>
-        <div class="bib-meta">Scrutton (2020) Sweet & Maxwell Twenty-fourth edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Evolving Law and Practice of Voyage Charterparties</div>
-        <div class="bib-meta">Rhidian Thomas (2009) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The shipbroker's working knowledge: Dry cargo chartering in practice</div>
-        <div class="bib-meta">Tsoudis (2021) Akakia Publications</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Charterparties: law, practice and emerging legal issues</div>
-        <div class="bib-meta">Swansea University; Bari? Soyer; A. M. Tettenborn (2018) Informa Law from Routledge First edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Time charters. 2nd ed</div>
-        <div class="bib-meta">M. Wilford; T. Coghlin; N. J. Healy; J. D. Kimball (1982) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">BES Chartering Shipping Terms (N.Lopez 1992)</div>
-        <div class="bib-meta">(1992)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Schofield; Laytime & Demurrage</div>
-        <div class="bib-meta">(2000) Informa Law from Routledge 4th Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Bills of lading incorporating charterparties</div>
-        <div class="bib-meta">Melis Özdel (2015) Hart Publishing</div>
-      </div>
-    </div>
-  </div>
-  <div id="bib-claims-insurance" class="bib-section">
-    <div class="bib-section-header" onclick="toggleSection(this)">
-      <h3>4. CLAIMS & INSURANCE <span class="entry-count">(18 works)</span></h3>
-      <span class="expand-icon">▼</span>
-    </div>
-    <div class="bib-section-content">
-      <div class="bib-entry">
-        <div class="bib-title">Maritime letters of indemnity</div>
-        <div class="bib-meta">Felipe de Arizon; David Semark (2014) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Law of marine insurance and average</div>
-        <div class="bib-meta">Joseph Arnould; Jonathan Gilman; Mark Templeman; Claire Blanchard; Philippa Hopkins; Neil Hart (2018) Sweet & Maxwell 19th edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Berlingieri of Arrest of Ships</div>
-        <div class="bib-meta">Francesco Berlingieri (2013) Informa Law from Routledge 5th ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Miller's marine war risks</div>
-        <div class="bib-meta">Oliver Caplin; Michael D. Miller; James Davey; Michael Davey (2020) Informa Law from Routledge Fourth edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Draught surveying: a manual for marine surveyors and ship's officers</div>
-        <div class="bib-meta">W J. Dibble; P. Mitchell (1999) Mid-C Consultancy Rev. ed.</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Marine cargo insurance</div>
-        <div class="bib-meta">John Dunt (2009) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">international cargo insurance</div>
-        <div class="bib-meta">John Dunt (2013) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Marine Salvage, the unforgiving business of no cure no py</div>
-        <div class="bib-meta">Gores (1971) Double Day & Co</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Law of Marine Insurance</div>
-        <div class="bib-meta">Susan Hodges (1996) Cavendish Pub</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Enforcement of Maritime Claims</div>
-        <div class="bib-meta">David C. Jackson (2013) Informa Law from Routledge 4th ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Miller's law of freight loss and damage claims</div>
-        <div class="bib-meta">John McKnight Miller; Richard R. Sigmon (1974) W.C. Brown Co. 4th ed.</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Letters of indemnity: a guide to good practice</div>
-        <div class="bib-meta">Stephen Mills; Ben Roberts; North of England P & I Association (2017) The North of England P & I Association Second edition.</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">General average: law and practice</div>
-        <div class="bib-meta">Francis D. Rose (2018) Informa Law from Routledge Third edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Maritime liabilities in a global and regional context</div>
-        <div class="bib-meta">Swansea University; Baris Soyer; Andrew Tettenborn; Swansea University (2019) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Report Writing for Marine Surveyors</div>
-        <div class="bib-meta">Mike Wall; Llewellyn Bankes-Hughes (2010) Petrospot</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Maritime Accidents What Went Wrong? - Edward T. Gates</div>
-        <div class="bib-meta">(1989)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Marine Insurance: Origins and Institutions, 1300-1850 - A.B. Leonard</div>
-        <div class="bib-meta">(2016)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Damages, recoveries and remedies in shipping law - Baris Soyer</div>
-        <div class="bib-meta">(2023)</div>
-      </div>
-    </div>
-  </div>
-  <div id="bib-commodities" class="bib-section">
-    <div class="bib-section-header" onclick="toggleSection(this)">
-      <h3>5. COMMODITIES <span class="entry-count">(16 works)</span></h3>
-      <span class="expand-icon">▼</span>
-    </div>
-    <div class="bib-section-content">
-      <div class="bib-entry">
-        <div class="bib-title">The international grain trade</div>
-        <div class="bib-meta">Michael Atkin (1992) Woodhead Pub</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Introduction to Refractories for Iron- and Steelmaking</div>
-        <div class="bib-meta">Subir Biswas; Debasish Sarkar (2020) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ironmaking and Steelmaking Processes: Greenhouse Emissions, Control, and Reduction</div>
-        <div class="bib-meta">Pasquale Cavaliere (2016) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Advances in Ironmaking and Steelmaking Processes</div>
-        <div class="bib-meta">Pasquale Cavaliere (2023) MDPI - Multidisciplinary Digital Publishing Institute</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Grain marketing</div>
-        <div class="bib-meta">Gail L. Cramer; Eric James Wailes (1993) Westview Press 2nd ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Basic concepts of iron and steel making</div>
-        <div class="bib-meta">Sujay Kumar Dutta; Yakshil B. Chokshi (2020) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Blended cements: a symposium</div>
-        <div class="bib-meta">Geoffrey Frohnsdorff; American Society for Testing and Materials (1986) ASTM</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Global Cement Industry: Competitive and Institutional Frameworks</div>
-        <div class="bib-meta">Kaddour Hadri; William Mikhail; Tarek H. Selim; Ahmed S. Salem (2014) WORLD SCIENTIFIC</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Out of the Shadows: The New Merchants of Grain</div>
-        <div class="bib-meta">Jonathan Kingsman (2019) Self</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Cement Plant Operations Hand Book, for dry process plants</div>
-        <div class="bib-meta">Philip A. Alsop Phd. (2003) CEMEX Special Edition May 2003</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Making steel: Sparrows Point and the rise and ruin of American industrial might</div>
-        <div class="bib-meta">Mark Reutter (2004) University of Illinois Press 1st pbk. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Grain Carriage by Sea</div>
-        <div class="bib-meta">Tom Sewell (1999) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">International trade and carriage of goods</div>
-        <div class="bib-meta">Bariş Soyer; A. M. Tettenborn (2017) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Steel: carriage by sea</div>
-        <div class="bib-meta">A. Sparks; F. Coppers (2009) Informa Law from Routledge 5th ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">International steel trade</div>
-        <div class="bib-meta">(1995) Woodhead Pub</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Cement Plant Operations Handbook, for Dry-process plants</div>
-        <div class="bib-meta">(2019) Tradeship Publications 7th Edition</div>
-      </div>
-    </div>
-  </div>
-  <div id="bib-econometrics" class="bib-section">
-    <div class="bib-section-header" onclick="toggleSection(this)">
-      <h3>6. ECONOMETRICS <span class="entry-count">(46 works)</span></h3>
-      <span class="expand-icon">▼</span>
-    </div>
-    <div class="bib-section-content">
-      <div class="bib-entry">
-        <div class="bib-title">Data analytics: concepts, techniques and applications</div>
-        <div class="bib-meta">Mohiuddin Ahmed; Al-Sakib Khan Pathan (2019) CRC Press, Taylor & Francis Group</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Shipping Derivatives and Risk Management</div>
-        <div class="bib-meta">A. Alizadeh; N. Nomikos (2009) Palgrave Macmillan</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Information Technology and Intelligent Transportation Systems: Volume 2, Proceedings of the 2015 International Conference on Information Technology and Intelligent Transportation Systems ITITS 2015, held December 12-13, 2015, Xi’an China</div>
-        <div class="bib-meta">Valentina Emilia Balas; Lakhmi C. Jain; Xiangmo Zhao (2017) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Information Technology and Intelligent Transportation Systems: Volume 1, Proceedings of the 2015 International Conference on Information Technology and Intelligent Transportation Systems ITITS 2015, held December 12-13, 2015, Xi’an China</div>
-        <div class="bib-meta">Valentina Emilia Balas; Lakhmi C. Jain; Xiangmo Zhao (2017) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Economics of shipping practice and management</div>
-        <div class="bib-meta">Alan E. Branch (1982) Chapman and Hall</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Maritime economics: management and marketing</div>
-        <div class="bib-meta">Alan E. Branch (1998) S. Thornes Third ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Prioritizing Waterway Lock Projects: Barge Traffic Changes</div>
-        <div class="bib-meta">CRS (2018)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Shipping Economics</div>
-        <div class="bib-meta">Kevin Cullinane (2005) Elsevier 1. Aufl</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Quantifying Transport, Regulatory and Other Costs of Indian Overland Exports to Bangladesh</div>
-        <div class="bib-meta">Samantak Das; Sanjib Pohit (2006)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Running costs</div>
-        <div class="bib-meta">John M. Downard (1994) Fairplay Publications Repr</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Quantitative methods in maritime economics. 2nd ed</div>
-        <div class="bib-meta">J. J. Evans; P. B. Marlow (1990) Fairplay Publications</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The regionalization of the world economy</div>
-        <div class="bib-meta">Jeffrey A. Frankel (1998) University of Chicago Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ship sale and purchase</div>
-        <div class="bib-meta">Iain S. Goldrein; Matthew Hannaford; Paul Turner (2012) Informa Law from Routledge 6th. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Economic Consequences of Cabotage Restrictions: The Effect of the Jones Act on Puerto Rico</div>
-        <div class="bib-meta">Russell Hillberry; Jimenez Manuel I. (2024) The World Bank</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Cloud Computing for Logistics</div>
-        <div class="bib-meta">Michael Ten Hompel; Jakob Rehof; Oliver Wolf (2015) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Fundamentals of risk management: understanding, evaluating and implementing effective risk management</div>
-        <div class="bib-meta">Paul Hopkin (2017) Kogan Page Fourth edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The International Handbook of Shipping Finance: Theory and Practice</div>
-        <div class="bib-meta">Manolis G. Kavussanos; Ilias D. Visvikis (2016) Palgrave Macmillan</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Derivatives and risk management in shipping</div>
-        <div class="bib-meta">Manolis G. Kavussanos; Dimitris A. Tsouknidis; Ilias D. Visvikis (2021) Informa Law from Routledge Second edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Computational Logistics: 11th International Conference, ICCL 2020, Enschede, the Netherlands, September 28-30, 2020, Proceedings</div>
-        <div class="bib-meta">Eduardo Anibal Lalla-Ruiz; Martijn Mes; Stefan Voß (2020) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Technology and the blue economy: from autonomous shipping to big data</div>
-        <div class="bib-meta">Nick Lambert; Jonathan Turner; Andy Hamflett (2019) Kogan Page</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Financial intelligence for supply chain managers: understand the link between operations and corporate financial performance</div>
-        <div class="bib-meta">Steven M. Leon (2016) Pearson Education</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Data analytics and AI</div>
-        <div class="bib-meta">Jay Liebowitz (2021) CRC Press, Taylor & Francis Group</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Economics of Maritime Business</div>
-        <div class="bib-meta">Shuo Ma (2021) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">THE COST OF FORWARD CONTRACTING IN THE CIF NOLA EXPORT BID MARKET</div>
-        <div class="bib-meta">Andrew M. Mckenzie; Bradley J. Isbell; B. Wade Brorsen (2019)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Benchmarking freight transportation corridors and routes with data envelopment analysis (DEA)</div>
-        <div class="bib-meta">Isotilia Costa Melo; Paulo Nocera Alves Junior; Ana Elisa Perico; Maria Gabriela Serrano Guzman; Daisy Aparecida Do Nascimento Rebelatto (2018)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Smart ports</div>
-        <div class="bib-meta">Weijian Mi; Yuan Liu; Weijian Mi (2022) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Competing on Supply Chain Quality: A Network Economics Perspective</div>
-        <div class="bib-meta">Anna Nagurney; Dong Li (2016) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Risk Management and the Cost of Capital for Operating Assets</div>
-        <div class="bib-meta">Thomas J. O'Brien (2006)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Quantitative Approaches in Logistics and Supply Chain Management: Proceedings of the 8th Workshop on Logistics and Supply Chain Management, Berkeley, California, October 3rd and 4th, 2013</div>
-        <div class="bib-meta">Hans-Jürgen Sebastian; Philip Kaminsky; Thomas Mueller (2015) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Economic Growth And Information Technology: A Note</div>
-        <div class="bib-meta">Tarek H. Selim (2011)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Data Analytics and Artificial Intelligence for Inventory and Supply Chain Management</div>
-        <div class="bib-meta">Dinesh K. Sharma; Madhu Jain (2022) Springer 1st ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The economics of sea transport and international trade</div>
-        <div class="bib-meta">Institute of Chartered Shipbrokers (2015) Institute of Chartered Shipbrokers 2015 ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Handbook of quantitative supply chain analysis: modeling in the e-business era</div>
-        <div class="bib-meta">David Simchi-Levi; Narendra Agrawal (2004) Kluwer Acad. Publ</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ship building, sale, and finance</div>
-        <div class="bib-meta">Barış Soyer; Andrew Tettenborn (2016) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Algorithms for Data Science</div>
-        <div class="bib-meta">Brian Steele; John Chandler; Swarna Reddy (2016) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Maritime Economics</div>
-        <div class="bib-meta">Martin Stopford (1995) Informa Law from Routledge Repr</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Barge Operations on the Mississippi River: Hearing Before the Subcommittee on Merchant Marine of the Committee on Commerce, United States Senate, Ninety-third Congress, Second Session on Barge Operations on the Mississippi River at the Port of New Orleans, March 19, 1974</div>
-        <div class="bib-meta">United States Congress Senate Committee on Commerce Merchant Marine Subcommittee (1974) U.S. Government Printing Office</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Blackwell companion to maritime economics</div>
-        <div class="bib-meta">Wayne Kenneth Talley (2012) Wiley-Blackwell</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Data warehousing and analytics: fueling the data engine</div>
-        <div class="bib-meta">David Taniar; Wenny Rahayu (2021) Springer 1st ed. 2021</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Economics, Service, and Capacity in the Freight Railroad Industry: Hearing Before the Subcommittee on Surface Transportation and Merchant Marine of the Committee on Commerce, Science, and Transportation, United States Senate, One Hundred Ninth Congress, Second Session, June 21, 2006</div>
-        <div class="bib-meta">United States Congress Senate Committee on Commerce, Science, and Transportation Subcommittee on Surface Transportation and Merchant Marine (2012) U.S. Government Printing Office</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">A REVIEW OF SPATIAL ECONOMETRICS IN EXPLICIT LOCATION MODELLING OF COMMERCIAL PROPERTY MARKET</div>
-        <div class="bib-meta">Hamza Usman; Mohd Lizam; Burhaida Burhan (2021)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Price Dynamics in U.S. Grain and Freight Markets</div>
-        <div class="bib-meta">Tun‐Hsiang (Edward) Yu; David A. Bessler; Stephen W. Fuller (2007)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Carload Waybill Statistics: Territorial distribution, traffic, and revenue by commodity classes. Statement TD-1</div>
-        <div class="bib-meta">(1975) U.S. Department of Transportation, Federal Railroad Administration, Office of Rail Systems Analysis & Information</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Inland-Waterways-and-the-Global-Supply-Chain</div>
-        <div class="bib-meta">(2007) Adobe PDF Library 7.0</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ship Finance 2015</div>
-        <div class="bib-meta">(2015) Law Business Research Ltd</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Methodological Options and Data Sources for the Development of Long-Distance Passenger Travel Demand Models: A Comprehensive Review</div>
-        <div class="bib-meta">Lei Zhang; Frank Southworth; Chenfeng Xiong; Anthon Sonnenberg (2012)</div>
-      </div>
-    </div>
-  </div>
-  <div id="bib-historical" class="bib-section">
-    <div class="bib-section-header" onclick="toggleSection(this)">
-      <h3>7. HISTORICAL <span class="entry-count">(88 works)</span></h3>
-      <span class="expand-icon">▼</span>
-    </div>
-    <div class="bib-section-content">
-      <div class="bib-entry">
-        <div class="bib-title">Seaports South of the Sahara; The Achievements of an American Steamship Service</div>
-        <div class="bib-meta">Albion (1959) Appleton</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Harbour pilotage in the handling and mooring of Ships</div>
-        <div class="bib-meta">RAB Ardley (1944) 1944</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Rising Tide: The Great Mississippi Flood of 1927 and How It Changed America</div>
-        <div class="bib-meta">John M. Barry (1998) Simon & Schuster</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Marine Dictionary, French, English, German, Spanish, Italian</div>
-        <div class="bib-meta">Bataille, Brunet (1937) Societe d’editions geographiques, mRitime et coloniLs</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">New Orleans: As the World's Greatest Port</div>
-        <div class="bib-meta">John H. Bernhard (1921) New Orleans Association of Commerce</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Port & Terminal Charges at US Ports</div>
-        <div class="bib-meta">United States Shipping Board (1931) U.S. Government Printing Office</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">American Practical Navigator; an epitome of navigation</div>
-        <div class="bib-meta">Bowditch (1966) GPO</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ocean Shipping</div>
-        <div class="bib-meta">Stewart Bross (1956) Cornell Maritime Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Chesapeake Landfalls</div>
-        <div class="bib-meta">Alexander Crosby Brown (1974) Norfolk County Historical Society</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Coasting Captain, Journals of Capt Leonard S. Tawed</div>
-        <div class="bib-meta">Robert Burgess (1967) The Mariners Museum</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Sailing on Friday: the perilous voyage of America's merchant marine</div>
-        <div class="bib-meta">John A. Butler (1997) Brassey's 1st ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Carver: Carriage of Goods By Sea</div>
-        <div class="bib-meta">Thomas Hilbert Carver (1891) Sweet & Maxwell 2nd Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ships, ports, and pilots: a history of the piloting profession</div>
-        <div class="bib-meta">Roger Clancy (1984) McFarland</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Pacific Ports Manual</div>
-        <div class="bib-meta">Frank Waterhouse Co (1920) Frank Waterhouse Co</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Lord Jim</div>
-        <div class="bib-meta">Joseph Conrad (1901) Double Day & McClure</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Chartering & Charter Parties</div>
-        <div class="bib-meta">Henry Cooley (1947) Cornell Maritime Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">A History of the Jetties at the Mouth of the Mississippi River</div>
-        <div class="bib-meta">Elmer Lawrence Corthell (1881) J. Wiley & Sons</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Industrial Canal and Inner Harbor of New Orleans: History, Description and Economic Aspects of Giant Facility Created to Encourage Industrial Expansion and Develop Commerce</div>
-        <div class="bib-meta">Thomas Ewing Dabney (2019) Good Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Structures, Equipment and Advantages of the Port of New Orleans</div>
-        <div class="bib-meta">George Henry Davis (1915) Press of Schumert & Warfield</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">A Traffic History of the Mississippi River System</div>
-        <div class="bib-meta">Frank Haigh Dixon (1909) U.S. Government Printing Office</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Dutton’s Piloting & Navigating</div>
-        <div class="bib-meta">Dutton, Hill, Utegaard (1967) United States Naval Institute 7th Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Addresses and Papers of James B. Eads: Together with a Biographical Sketch</div>
-        <div class="bib-meta">James Buchanan Eads (1884) Slawson & Company, printers</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The United States Coast Guard 1790 to 1915 a definitive history</div>
-        <div class="bib-meta">Stephen H Evans (1949) United States Naval Institute</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Sheer will: the story of the Port of Houston and the Houston Ship Channel</div>
-        <div class="bib-meta">David H. Falloure (2014) publisher not identified First edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Tramp Ships: an illustrated history</div>
-        <div class="bib-meta">Roy Fenton (2013) Seaforth</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Port of Brownsville a Maritime history of the Rio Grande Valley</div>
-        <div class="bib-meta">Henry and Ferguson (1976) Springman, King Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Handling and Stowage of Cargo</div>
-        <div class="bib-meta">AG Ford (1941) International Textbook Co 1st</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Bread Upon the Waters; A History of United States Grain Exports</div>
-        <div class="bib-meta">Harry Fornari (1973) Auroa</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">They called us river rats: the last batture settlement of New Orleans</div>
-        <div class="bib-meta">Macon Fry (2021) University Press of Mississippi</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Stowage Handling and Transport of Ship Cargoes</div>
-        <div class="bib-meta">Garoche (1941) Cornell Maritime Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Dictionary of Commodities carried by Ship</div>
-        <div class="bib-meta">Garoche (1952) Cornell Maritime Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Abandoned Ocean: a History of United States Maritime Policy</div>
-        <div class="bib-meta">Andrew Gibson; Arthur Donovan (2000) University of South Carolina Press 1st pbk. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Texas forgotten ports</div>
-        <div class="bib-meta">Keith Guthrie (1988) Eakin Press 1st ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">A history of Greek-owned shipping: the making of an international tramp fleet, 1830 to the present day</div>
-        <div class="bib-meta">Gelina Harlaftis (1996) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Mission Port development with case studies</div>
-        <div class="bib-meta">Walter Hedden (1967) The American Association of Porter 40s</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The forgotten heroes: the heroic story of the United States Merchant Marine</div>
-        <div class="bib-meta">Brian Herbert (2004) Forge 1st ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Notes on the Stowage of Ships</div>
-        <div class="bib-meta">Chas. H. Hillcoat (1919) New York</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">A Handybook for Ship Owners and Masters</div>
-        <div class="bib-meta">Holman (1911) Maisey Seventh Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The story of P & O, the Peninsular and Oriental Steam Navigation Company</div>
-        <div class="bib-meta">David J. Howarth; Stephen Howarth; Peninsular and Oriental Steam Navigation Company (1986) Weidenfeld and Nicolson</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Triumph of the Tramp Ship</div>
-        <div class="bib-meta">Archibald Hurd (1922) Cassell, Petter, Galpin & Company</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Where the river runs deep: the story of a Mississippi River pilot</div>
-        <div class="bib-meta">Joy J. Jackson (1993) Louisiana State University Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">International Maritime Dictionary</div>
-        <div class="bib-meta">de Kerchove (1948) D. Van Nostrand Co 2nd Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Wilh. Wilhelmsen, 1861-1994</div>
-        <div class="bib-meta">B°ard Kolltveit; Michael Crowdy; Hans Christian Bangsmoen; Per H. Kjaervik; World Ship Society (1994) World Ship Society</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Modern Ship Stowage; including methods of handling cargo at Ocean Terminals</div>
-        <div class="bib-meta">Jos Leeming (1968) Edward R. Sweetman Co.</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">State Pilotage in America</div>
-        <div class="bib-meta">Lowe (1960) American Pilots Association 1st Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Wharf Management, Stevedoring and Storage</div>
-        <div class="bib-meta">Roy Samuel MacElwee; Thomas Rothwell Taylor (1921) D Appleton & Co</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ports and Terminal Facilities, by Roy S. MacElwee...</div>
-        <div class="bib-meta">Roy Samuel MacElwee (1926) McGraw-Hill</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Port Development</div>
-        <div class="bib-meta">MacElwee (1926)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Training for the Steamship Business</div>
-        <div class="bib-meta">MacElwee (1926)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ships Business</div>
-        <div class="bib-meta">McFarland (1942) Cornell Maritime Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Cargo Loss & Damage</div>
-        <div class="bib-meta">McFarland (1942) Cornell Maritime Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Have Served The National Cargo Bureau’s First Quarter Century</div>
-        <div class="bib-meta">Mitchel (1977) National Cargo Bureau</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Industries of New Orleans: Her Rank, Resources, Advantages, Trade, Commerce and Manufactures, Conditions of the Past, Present and Future, Representative Industrial Institutions, Historical, Descriptive, and Statistical</div>
-        <div class="bib-meta">Morrison (1885)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Entrance and Clearance of Vessels</div>
-        <div class="bib-meta">United States Department of Commerce Bureau of Navigation (1938) U.S. Department of Commerce, Bureau of Marine Inspection and Navigation</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Workers on the waterfront: seamen, longshoremen, and unionism in the 1930s</div>
-        <div class="bib-meta">Bruce Nelson (1990) University of Illinois Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Report of the Board of Commissioners of the Port of New Orleans</div>
-        <div class="bib-meta">Louisiana Board of Commissioners of the Port of New Orleans (1901) Board of Commissioners of the Port of New Orleans</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Port and Terminal Facilities</div>
-        <div class="bib-meta">Louisiana Board of Commissioners of the Port of New Orleans (1920) Board of Commissioners of the Port of New Orleans</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Inner Harbor Navigation Canal: Port of New Orleans. October 1922</div>
-        <div class="bib-meta">Louisiana Board of Commissioners of the Port of New Orleans (1922) Board of Commissioners of the Port of New Orleans</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">New Orleans: the Nation's Second Port: The South's Greatest City ... May 1, 1923</div>
-        <div class="bib-meta">Louisiana Board of Commissioners of the Port of New Orleans (1923) Board of Commissioners of the Port of New Orleans</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Port Handbook of New Orleans</div>
-        <div class="bib-meta">Louisiana Board of Commissioners of the Port of New Orleans (1926) Board of Commissioners of the Port of New Orleans</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Facilities of the Port of New Orleans</div>
-        <div class="bib-meta">Walter Parker (1919)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Merchant Vessels</div>
-        <div class="bib-meta">Robert Riegel Phd (1921) D Appleton & Co</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Mechanical Equipment Used in the Port of New Orleans</div>
-        <div class="bib-meta">William Von Phul (1916)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Houston Pilots silent servants of progress</div>
-        <div class="bib-meta">Francys Trimble for the Houston Pilots (2004) Houston Pilots</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">American Law on Charter Parties and Bills of Lading</div>
-        <div class="bib-meta">Wharton Poor (1948) Mathew Bender & Co 3rd Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The U.S. Customs Service: a bicentennial history</div>
-        <div class="bib-meta">Carl E. Prince; Mollie Keller (1989) Department of the Treasury, U.S. Customs Service</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Oil, Titan of the Southwest</div>
-        <div class="bib-meta">Rister (1949) University of Oklahoma Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Dues and Port Charges on Shipping Throughout the World</div>
-        <div class="bib-meta">Robert Ritherdon (1930) Philip, Son & Nephew, Ltd., 20 Church St., Liverpool 19th Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Economics for Executives: Railroad transportation</div>
-        <div class="bib-meta">George Evan Roberts (1921) American chamber of economics, Incorporated</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Seaports of the South: a journey</div>
-        <div class="bib-meta">Louis D. Rubin; John F. Harrington (1998) Longstreet Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Men along the shore, the ILA and its history</div>
-        <div class="bib-meta">Mod Russell (1966) The international longshoreman’s Association</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Port of Houston a history</div>
-        <div class="bib-meta">Marilyn McAdams Sibley (1968) University of Texas press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Port of New Orleans</div>
-        <div class="bib-meta">Sinclair (1942) Doubleday, Doran & Co</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Paper Work in Export Trade (Document Technique)</div>
-        <div class="bib-meta">Guy Edward Snider; Warren M. Maule; Roy Samuel MacElwee (1920) U.S. Government Printing Office</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">On the Stowage of Ships and Their Cargoes, Freights, Charter-parties, Etc</div>
-        <div class="bib-meta">Robert White Stevens (1859) Longmans, Green, and Company</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Chartering of Ships: Charter Parties and Bills of Lading</div>
-        <div class="bib-meta">G.W. Stretch (1954) Bierne Associates</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Directory of Ports, Bulk Liquid Terminals, Grain Elevators, and Bulk Handling Facilities, Gulf of Mexico & Atlantic Ports</div>
-        <div class="bib-meta">TTT Ship Agencies, Inc (1981) TTT Ship Agencies, Inc. VIII Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Stowage; The Properties and Stowage of Cargoes</div>
-        <div class="bib-meta">Thomas (1947) Brown, Son & Ferguson 3rd Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Time for Loading and Unloading Ships</div>
-        <div class="bib-meta">Hugo Tiberg (1957) Sir Issac Pitman & Sons,. Oslo University Press 1st Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Merchant Marine Officers Handbook</div>
-        <div class="bib-meta">Turpin; McEwen (1950) Cornell Maritime Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Documentation, Entrance and Clearance of Vessels: Regulations Issued Under Authority of Laws Relating to Documentation, Entrance and Clearance of Vessels, Etc., March, 1940</div>
-        <div class="bib-meta">USACE (1940) U.S. Government Printing Office</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Illustrated visitors' guide to New Orleans</div>
-        <div class="bib-meta">Waldo (1879)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Know Your Own Ship: A Simple Explanation</div>
-        <div class="bib-meta">Walton (1909) Charles Griffen & Co Ltd 11th Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">James W. Porch and the Port of New Orleans</div>
-        <div class="bib-meta">John Wilds (1984) James Porch Schwartz</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Tankerman's Handbook, a guide to loading and discharging oil cargoes</div>
-        <div class="bib-meta">Wooler (1966) Sweetman 3rd Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Wallenius Lines 1934-1984: glimpses from the history of Wallenius Lines on the [occasion] of its 50-year jubilee November 23, 1984</div>
-        <div class="bib-meta">(1984) Wallenius Lines</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ships business</div>
-        <div class="bib-meta">George J Bonwick and EC steer (1953) The Maritime press Ltd</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Norfolk historic Southport</div>
-        <div class="bib-meta">wertenbaker (1962) Duke University press Second addition</div>
-      </div>
-    </div>
-  </div>
-  <div id="bib-maritime-law" class="bib-section">
-    <div class="bib-section-header" onclick="toggleSection(this)">
-      <h3>8. MARITIME LAW <span class="entry-count">(34 works)</span></h3>
-      <span class="expand-icon">▼</span>
-    </div>
-    <div class="bib-section-content">
-      <div class="bib-entry">
-        <div class="bib-title">International law for seagoing officers</div>
-        <div class="bib-meta">Craig H. Allen (2022) Naval Institute Press 7th Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Maritime Law</div>
-        <div class="bib-meta">Yvonne Baatz (2021) Informa Law from Routledge Fifth edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Shipping and commercial case law (2a. ed.)</div>
-        <div class="bib-meta">Albert Badia (2013) Marge Books</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">International maritime conventions</div>
-        <div class="bib-meta">Francesco Berlingieri (2014) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Law of Admiralty</div>
-        <div class="bib-meta">Gilmore & Black (1975) The Foundation Press 2nd Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Roman law and maritime commerce</div>
-        <div class="bib-meta">Peter Candy; Emilia Mataix Ferrándiz (2022) Edinburgh University Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Hamburg Rules and the Rotterdam Rules</div>
-        <div class="bib-meta">Indira Carr; Peter Stone (2017) Informa Law from Routledge 6</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">International trade law</div>
-        <div class="bib-meta">Indira Carr; Peter Stone (2018) Informa Law from Routledge Sixth edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The shipping law review</div>
-        <div class="bib-meta">Andrew Chamberlain; Holly Colaço; Richard Neylon (2023) Law Business Research Ltd Tenth edition.</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ship Registration: Law and Practice</div>
-        <div class="bib-meta">Richard M. F. Coles; Edward Watt (2009) Informa Law from Routledge 2nd ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Commercial and Maritime Statutes</div>
-        <div class="bib-meta">Peter MacDonald Eggers; Simon Picken (2013) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Black's law dictionary</div>
-        <div class="bib-meta">Bryan A. Garner; Henry Campbell Black (2019) Thomson Reuters Eleventh edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Arnould: Law of Marine Insurance & Average</div>
-        <div class="bib-meta">Jonathan Gilman; Claire Blanchard; Mark Templeman; Philippa Hopkins; Neil Hart (2019) Sweet & Maxwell Supt to 19th Edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The law of agency and partnership</div>
-        <div class="bib-meta">William A. Gregory (2001) West 3. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Marine insurance law</div>
-        <div class="bib-meta">Özlem Gürses (2017) Informa Law from Routledge Second edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Multimodal Transport Law: The Law Applicable to the Multimodal Contract for the Carriage of Goods</div>
-        <div class="bib-meta">Marian Hoeks (2010) Wolters Kluwer Law International</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Dictionary of Shipping Law</div>
-        <div class="bib-meta">ER Hardy Ivamy (1984) Butter Worth's</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Shipbrokers and the Law</div>
-        <div class="bib-meta">Andrew Jamieson; Martin Stopford (2020) Informa Law from Routledge 1</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The International Comparative Legal Guide to:</div>
-        <div class="bib-meta">A Karitzis; Advokatfirmaet Selmer As; Ana Cristina Pimentel; Franco Duarte Murillo; Arredondo López Rangel (2019)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Admiralty and maritime laws in the Mediterranean Sea (ca. 800-1050): the Kitāb Akriyat al-Sufun vis-a-vis the Nomos Rhodion Nautikos</div>
-        <div class="bib-meta">Hassan Salih Khalilieh; Hassan Salih Khalilieh (2006) Brill</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Contemporary maritime piracy: international law, strategy, and diplomacy at sea</div>
-        <div class="bib-meta">James Kraska; Brian Wilson (2011) Praeger</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">International maritime security law</div>
-        <div class="bib-meta">James Kraska; Raul A. Pedrozo (2013) Martinus Nijhoff Publishers</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Modern maritime law: Vol.2: Managing risks and liabilities</div>
-        <div class="bib-meta">Alexandra Mandaraka-Sheppard (2013) Informa Law from Routledge Third edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Modern maritime law</div>
-        <div class="bib-meta">Alexandra Mandaraka-Sheppard (2013) Informa Law from Routledge Third edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Admiralty jurisdiction and practice</div>
-        <div class="bib-meta">Nigel Meeson; John A. Kimbell (2011) Informa Law from Routledge 4th ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Codification of maritime law: challenges, possibilities and experience</div>
-        <div class="bib-meta">Justyna Nawrot; Zuzanna Pepłowska-Dąbrowska (2020) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Marpol Consolidated Edition 2022: Articles, Protocols, Annexes and unified interpretations of the International Convention for the Prevention of Pollution from Ships, 1973, as modified by the 1978 and 1997 Protocols: Incorporating all amendsments in force on 1 November 2022</div>
-        <div class="bib-meta">International Maritime Organization (2022) Seventh edition, 2022</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Law of tug, tow, and pilotage</div>
-        <div class="bib-meta">Alex L. Parks (1971) Cornell Maritime Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Transport documents in carriage of goods by sea: international law and practice</div>
-        <div class="bib-meta">Časlav Pejović (2020) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Admiralty and Maritime Law</div>
-        <div class="bib-meta">Thomas J. Schoenbaum (2019) West Academic Publishing Sixth edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">New technologies, artificial intelligence and shipping law in the 21st century</div>
-        <div class="bib-meta">Baris Soyer; Andrew Tettenborn (2019) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The international law of the sea</div>
-        <div class="bib-meta">Yoshifumi Tanaka (2019) Cambridge University Press 3rd edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Law of the Sea - Nele Matz-Lück, Øystein Jensen and Elise Johansen</div>
-        <div class="bib-meta">(2023)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Legal Handbook Shipmaster 2025</div>
-        <div class="bib-meta">(2025)</div>
-      </div>
-    </div>
-  </div>
-  <div id="bib-port-operations" class="bib-section">
-    <div class="bib-section-header" onclick="toggleSection(this)">
-      <h3>9. PORT OPERATIONS <span class="entry-count">(33 works)</span></h3>
-      <span class="expand-icon">▼</span>
-    </div>
-    <div class="bib-section-content">
-      <div class="bib-entry">
-        <div class="bib-title">Port Management and Operations</div>
-        <div class="bib-meta">Patrick M. Alderton (2013) Informa Law from Routledge 3rd ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Beyond control: the Mississippi River's new channel to the Gulf of Mexico</div>
-        <div class="bib-meta">James F. Barnett (2017) University Press of Mississippi</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Cost planning of PFI and PPP building projects</div>
-        <div class="bib-meta">Halim A. Boussabaine (2007) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Handbook of Terminal Planning</div>
-        <div class="bib-meta">Jürgen W. Böse (2011) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Maritime Security: DHS Progress and Challenges in Key Areas of Port Security: Congressional Testimony</div>
-        <div class="bib-meta">Stephen L. Caldwell (2011) DIANE Publishing</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Mastering import & export management</div>
-        <div class="bib-meta">Thomas A. Cook; Kelly Raia (2017) AMACOM Third edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Integrated operations planning and revenue management for rail freight transportation</div>
-        <div class="bib-meta">Benoit Crevier; Jean-François Cordeau; Gilles Savard (2012)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Commercial practice in bunkering</div>
-        <div class="bib-meta">Nigel Draffin; Goris Vermeulen (2011) Petrospot Ltd First edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Buildings for Industrial Storage and Distribution</div>
-        <div class="bib-meta">Jolyon Drury; Peter Falconer (2003) Elsevier 2. Aufl</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ports and networks: strategies, operations and perspectives</div>
-        <div class="bib-meta">H. Geerlings; Bartholdt Kuipers; Rob Zuidwijk (2018) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">A Mathematical Study of the Impact on Salinity Intrusion of Deepening the Lower Mississippi River Navigation Channel</div>
-        <div class="bib-meta">Billy H. Johnson; Marden B. Boyd; Garbis Hovannes Keulegan (1987) Hydraulics Laboratory, Department of the Army Waterways Experiment Station, Corps of Engineers</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The structural design of heavy duty pavements for ports and other industries. 3rd ed</div>
-        <div class="bib-meta">J. Knapton; M. Meletiou (1996) Interpave</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Materials handling handbook</div>
-        <div class="bib-meta">Raymond A. Kulwiec; American Society of Mechanical Engineers; International Material Management Society (1985) Wiley-Blackwell 2nd ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ship channel design and operation</div>
-        <div class="bib-meta">Bruce L. MacCartney (2005) American Society of Civil Engineers</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Port-focal logistics and global supply chains</div>
-        <div class="bib-meta">Koi Yu Adolf Ng; John J. Liu (2014) Palgrave Macmillan</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Port economics, management and policy</div>
-        <div class="bib-meta">Theo Notteboom; Athanasios A. Pallis; Jean-Paul Rodrigue (2022) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Port Capacity Evaluation Formula for General Cargo</div>
-        <div class="bib-meta">Nam-kyu Park; Dae-gwun Yoon; Sang-kook Park (2014)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Oceanic and Atmospheric Fluid Dynamics</div>
-        <div class="bib-meta">Stefano Pierini (2025) Springer 1st ed. 2025</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Shiphandling with tugs</div>
-        <div class="bib-meta">George H. Reid (1986) Cornell Maritime Press 1st ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Geography of Transport Systems</div>
-        <div class="bib-meta">Jean-Paul Rodrigue (2024) Informa Law from Routledge 6th ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Introduction to marine cargo management</div>
-        <div class="bib-meta">J. Mark Rowbotham (2014) Informa Law from Routledge Second edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Break Bulk and Cargo Management</div>
-        <div class="bib-meta">J. Mark Rowbotham (2022) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Shiphandler's guide for masters and navigating officers, pilots and tug masters</div>
-        <div class="bib-meta">R. W. Rowe; Nautical Institute (2007) The Nautical Institute 2. ed., reprinted</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Fundamentals of port engineering</div>
-        <div class="bib-meta">Koos Schoonees (2024) CRC Press, Taylor & Francis Group</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Strategies to Increase Port Competitiveness</div>
-        <div class="bib-meta">Mehdi Taghavi; Elnaz Irannezhad; Peggy Schrobback; Mahboobeh Moghaddam; Carlo G Prato; Robert Nave (2017)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Port Economics</div>
-        <div class="bib-meta">Wayne Kenneth Talley (2009) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Facilities planning</div>
-        <div class="bib-meta">James A. Tompkins (2010) J. Wiley 4th ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Handbook of Port and Harbor Engineering: Geotechnical and Structural Aspects</div>
-        <div class="bib-meta">Gregory P. Tsinker (1997) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Port performance indicators</div>
-        <div class="bib-meta">UNCTAD (2023) United Nations</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Shipping Industrial Structure.</div>
-        <div class="bib-meta">Ladi Utieyione (2015) Xlibris</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Multi-hazard risk to global port infrastructure and resulting trade and logistics losses</div>
-        <div class="bib-meta">Jasper Verschuur (2023) nature.com</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">International shipping: the role of sea transport in the global economy</div>
-        <div class="bib-meta">Ralf Witthohn (2023) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Ports and Terminals</div>
-        <div class="bib-meta">(2016)</div>
-      </div>
-    </div>
-  </div>
-  <div id="bib-supply-chain" class="bib-section">
-    <div class="bib-section-header" onclick="toggleSection(this)">
-      <h3>10. SUPPLY CHAIN <span class="entry-count">(36 works)</span></h3>
-      <span class="expand-icon">▼</span>
-    </div>
-    <div class="bib-section-content">
-      <div class="bib-entry">
-        <div class="bib-title">Manufacturing processes reference guide</div>
-        <div class="bib-meta">Dell K. Allen; Leo Alting; Robert H. Todd (1994) Industrial Press 1. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Freight Transport Planning and Logistics</div>
-        <div class="bib-meta">Lucio Bianco; Agostino La Bella (1988) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Rail Freight Solutions to Roadway Congestion--Final Report and Guidebook</div>
-        <div class="bib-meta">Transportation Research Board; National Academies of Sciences, Engineering, and Medicine (2007) Transportation Research Board</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Handbook of Global Logistics: Transportation in International Supply Chains</div>
-        <div class="bib-meta">James H. Bookbinder; Springer Science+Business Media (2013) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Global supply chain management and international logistics</div>
-        <div class="bib-meta">Alan E. Branch (2009) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Advances in maritime logistics and supply chain systems</div>
-        <div class="bib-meta">Ek Peng Chew; Loo Hay Lee; Loon Ching Tang (2011) World Scientific</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Logistics & supply chain management</div>
-        <div class="bib-meta">Martin Christopher (2011) Financial Times Prentice Hall 4. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Directory of Transportation 2024</div>
-        <div class="bib-meta">Journal of Commerce (2024) Journal of Commerce</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Materials and processes in manufacturing</div>
-        <div class="bib-meta">Ernest P. DeGarmo; J. T. Black; Ronald A. Kohser (2008) Wiley-Blackwell 10. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The Puzzling Persistence of the Distance Effect on Bilateral Trade</div>
-        <div class="bib-meta">Anne-Célia Disdier; Keith Head (2008)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Maritime Infrastructure for Energy Management and Emission Reduction Using Digital Transformation</div>
-        <div class="bib-meta">Mahmoud Elsisi; Noorman Rinanto; Chun-Lien Su (2025) Springer Nature Singapore</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Work systems: the methods, measurement and management of work</div>
-        <div class="bib-meta">Mikell P. Groover (2014) Pearson First edition, Pearson new international edition.</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Supply chain redesign: transforming supply chains into integrated value systems</div>
-        <div class="bib-meta">Robert B. Handfield; Ernest L. Nichols (2002) Financial Times Prentice Hall</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Handbook of railway vehicle dynamics</div>
-        <div class="bib-meta">Simon Iwnicki (2006) CRC Press, Taylor & Francis Group</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Supply Chain Risk Mitigation: Strategies, Methods and Applications</div>
-        <div class="bib-meta">Yacob Khojasteh; Henry Xu; Saeed Zolfaghari (2022) Springer 1st ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Maritime Professions: Issues and Perspectives</div>
-        <div class="bib-meta">Agnieszka Kołodziej-Durnaś; Frank Sowa; Marie Grasmeier (2023) BRILL</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Innovations in shipping</div>
-        <div class="bib-meta">Peter Lorange (2020) Cambridge University Press</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Shipping and Logistics Management</div>
-        <div class="bib-meta">Y. H. Venus Lun; Kee-hung Lai; T. C. E. Cheng; Dong Yang (2023) Springer 2nd ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Global Logistics and Supply Chain Strategies for the 2020s: Vital Skills for the Next Generation</div>
-        <div class="bib-meta">Rico Merkert; Kai Hoberg (2023) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Containerization in maritime transport: contemporary trends and challenges</div>
-        <div class="bib-meta">Ryszard Miler; Eugeniusz Gostomski; Tomasz Nowosielski (2023) CRC Press, Taylor & Francis Group</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Waste Production and Utilization in the Metal Extraction Industry</div>
-        <div class="bib-meta">Sehliselo Ndlovu; Geoffrey S. Simate; Elias Matinde (2017) CRC Press, Taylor & Francis Group 1</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Current issues in shipping, ports and logistics</div>
-        <div class="bib-meta">Theo E. Notteboom (2011) University Press Antwerp</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The logistics and supply chain toolkit: over 100 tools for transport, warehousing and inventory management</div>
-        <div class="bib-meta">Gwynne Richards; Susan Grinsted (2020) Kogan Page Third edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Supply chain leadership: developing a people-centric approach to effective supply chain management</div>
-        <div class="bib-meta">Peter W. Robertson (2022) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Distribution planning and control: managing in the era of supply chain management</div>
-        <div class="bib-meta">David Frederick Ross (2018) Springer Third edition, corrected publication</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">The handbook of logistics and distribution management</div>
-        <div class="bib-meta">Alan Rushton; Phil Croucher; Peter Baker (2017) Kogan Page Sixth edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Maritime logistics: contemporary issues</div>
-        <div class="bib-meta">Dong-Wook Song; Photis M. Panayides (2012) Emerald Group Publishing Limited</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Maritime logistics: a guide to contemporary shipping and port management</div>
-        <div class="bib-meta">Dong-Wook Song (2015) Kogan Page 2. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Global logistics: new directions in supply chain management</div>
-        <div class="bib-meta">Edward Sweeney; C. D. J. Waters (2021) Kogan Page Eighth edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Maritime Transport Shipping & Logistics Operations</div>
-        <div class="bib-meta">Ulla Tapaninen (2020) Kogan Page 1st edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Principles of international logistics</div>
-        <div class="bib-meta">Jose L. Tongzon (2022) Edward Elgar Publishing</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Innovations in supply chain management for information systems: novel approaches</div>
-        <div class="bib-meta">John Wang (2010) Business Science Reference</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Railroaded : the transcontinentals and the making of modern America</div>
-        <div class="bib-meta">Richard White (2012) New York : W.W. Norton & Co.</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Guide for Cybersecurity Implementation for the Marine and Offshore Industries - ABS CyberSafety® Volume 2</div>
-        <div class="bib-meta">(2025)</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Logistics and supply chain innovation: bridging the gap between theory and practice</div>
-        <div class="bib-meta">Henk Zijm; Matthias Klumpp; Uwe Clausen; Michael Ten Hompel (2016) Springer</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Logistics 4.0 and Future of Supply Chains</div>
-        <div class="bib-meta">İsmail İyigün; Ömer Faruk Görçün (2022) Springer</div>
-      </div>
-    </div>
-  </div>
-  <div id="bib-trade-documentation" class="bib-section">
-    <div class="bib-section-header" onclick="toggleSection(this)">
-      <h3>11. TRADE DOCUMENTATION <span class="entry-count">(18 works)</span></h3>
-      <span class="expand-icon">▼</span>
-    </div>
-    <div class="bib-section-content">
-      <div class="bib-entry">
-        <div class="bib-title">Bills of lading</div>
-        <div class="bib-meta">Richard Aikens; Richard Lord; Michael D. Bools (2016) Informa Law from Routledge Second edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Export-Import; Procedures and Documentation</div>
-        <div class="bib-meta">Donna L. Bade (2022) HarperCollins Leadership, an imprint of HarperCollins Fifth edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Finance of International Trade</div>
-        <div class="bib-meta">Eric Bishop (2004) Elsevier</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Drafting and negotiating international commercial contracts: a practical guide, with ICC model contracts</div>
-        <div class="bib-meta">Fabio Bortolotti (2017) ICC, International chamber of commerce 3rd ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Dictionary of Shipping, International Business Trade Terms & Abbreviations</div>
-        <div class="bib-meta">Alan E. Branch (1995) Witherby Publishing Group Ltd 4th ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Export Practice and Management</div>
-        <div class="bib-meta">Alan E. Branch (2006) Thomson Learning 5. ed., reprinted</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Delivery of Cargo without original bills of lading</div>
-        <div class="bib-meta">UK P&I Club (2017) UK P&I</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Incoterms® 2010: ICC rules for the use of domestic and international trade terms; entry into force: 1 january 2011</div>
-        <div class="bib-meta">International Chamber of Commerce (2010) Internat. Chamber of Commerce Reprint</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Bills of lading in export trade</div>
-        <div class="bib-meta">Charles Debattista (2009) Tottel 3. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Cases & materials on the carriage of goods by sea</div>
-        <div class="bib-meta">Martin Dockray; Katherine Reece Thomas (2004) Cavendish Pub 3rd ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Traffic management</div>
-        <div class="bib-meta">Kenneth U. Flood (1975) Brown 3. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Freight Forwarding and Multi Modal Transport Contracts</div>
-        <div class="bib-meta">David Glass (2013) Informa Law from Routledge 2nd ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Infrastructure finance: the business of infrastructure for a sustainable future</div>
-        <div class="bib-meta">Neil S. Grigg (2010) John Wiley & Sons</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">C.I.F. and F.O.B. contracts</div>
-        <div class="bib-meta">Filippo Lorenzon; Yvonne Baatz; Christopher Nicoll (2012) Sweet & Maxwell 5. ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Delivery of goods under bills of lading</div>
-        <div class="bib-meta">Anders Møllmann (2017) Informa Law from Routledge</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Export-Import; Theory, Practices, and Procedures</div>
-        <div class="bib-meta">Belay Seyoum (2014) Informa Law from Routledge 3rd edition</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Bills of Lading and Bankers Documentary Credits</div>
-        <div class="bib-meta">Paul Todd (2013) Informa Law from Routledge 4th ed</div>
-      </div>
-      <div class="bib-entry">
-        <div class="bib-title">Carver on bills of lading</div>
-        <div class="bib-meta">Guenter H. Treitel; Francis M. B. Reynolds; Thomas Gilbert Carver; Francis M. B. Reynolds (2005) Sweet & Maxwell 2. ed</div>
-      </div>
+    <div class="header-social">
+        <a href="https://linkedin.com/in/williamsdavis" target="_blank" class="social-icon" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="https://twitter.com/theshipsagent" target="_blank" class="social-icon" title="Twitter/X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://instagram.com/theshipsagent" target="_blank" class="social-icon" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <span class="sep">|</span>
+        <a href="https://oceandatum.ai" target="_blank" class="site-link">oceandatum.ai</a>
+        <span class="sep">|</span>
+        <a href="https://theshipsagent.com" target="_blank" class="site-link">theshipsagent.com</a>
     </div>
   </div>
 
-  <p style="margin-top: 2rem; font-style: italic; color: rgba(255,255,255,0.7);">
-    This bibliography demonstrates commitment to continuous professional development and deep domain expertise across maritime commerce, operations, and business management.
-  </p>
-</div>
-    </div>
-
-    <button class="print-button" onclick="window.print()">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
-        </svg>
-        Download PDF
+  <div class="print-bar">
+    <span class="print-label">Save or print this CV:</span>
+    <button onclick="window.print()">
+      <svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+      Print / PDF
     </button>
+  </div>
 
-    <script>
-        function showTab(tabName) {
-            // Hide all tabs
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
+  <div class="cv-body">
 
-            // Deactivate all buttons
-            const buttons = document.querySelectorAll('.tab-button');
-            buttons.forEach(button => button.classList.remove('active'));
+    <h2>Executive Summary</h2>
+    <p>Senior operations executive with 30 years of progressive leadership experience in maritime logistics, supply chain optimization, and terminal development. Deep operational expertise in cargo handling, vessel operations, and port coordination combined with proven ability to establish new markets, integrate acquisitions, and deploy enterprise technology. Track record includes merger of 3 ship agency businesses and establishing 9 port offices across U.S. Atlantic and Gulf Coast, leading successful M&amp;A integrations with high customer retention, and supporting terminal development projects representing significant infrastructure investments. Expert in leveraging data analytics, geospatial systems, and enterprise technology to transform traditional maritime operations.</p>
 
-            // Show selected tab
-            document.getElementById(tabName).classList.add('active');
+    <hr>
 
-            // Activate clicked button (works with both click and programmatic calls)
-            if (window.event && window.event.target) {
-                window.event.target.classList.add('active');
-            } else {
-                // Find and activate the button that matches this tab
-                buttons.forEach(button => {
-                    const onclickAttr = button.getAttribute('onclick');
-                    if (onclickAttr && onclickAttr.includes(tabName)) {
-                        button.classList.add('active');
-                    }
-                });
-            }
-        }
+    <h2>Core Competencies</h2>
+    <ul class="competencies-grid">
+      <li>Executive P&amp;L Leadership (multi-location operations)</li>
+      <li>Business Development &amp; Market Expansion</li>
+      <li>M&amp;A Integration &amp; Change Management</li>
+      <li>Supply Chain Strategy &amp; Optimization</li>
+      <li>Terminal &amp; Infrastructure Development</li>
+      <li>Enterprise Systems (ERP/CRM) Implementation</li>
+      <li>Data Analytics &amp; Geospatial Intelligence</li>
+      <li>Multi-Site Operations Management</li>
+    </ul>
 
-        // Mobile dropdown handling
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdowns = document.querySelectorAll('.dropdown');
+    <hr>
 
-            dropdowns.forEach(dropdown => {
-                const link = dropdown.querySelector('.navbar-link');
+    <h2>Professional Experience</h2>
 
-                // Toggle dropdown on click (for mobile)
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
+    <h3>T. PARKER HOST, INC. <span class="location">| Norfolk, VA</span></h3>
 
-                    // Close other dropdowns
-                    dropdowns.forEach(d => {
-                        if (d !== dropdown) {
-                            d.classList.remove('active');
-                        }
-                    });
+    <h4>Vice President &amp; Business Development <span class="dates">| October 2016 &ndash; May 2025</span></h4>
+    <div class="concurrent-role">Also served as Head of Agency (November 2018 &ndash; February 2021)</div>
 
-                    // Toggle current dropdown
-                    dropdown.classList.toggle('active');
-                });
-            });
+    <p><strong>Executive Leadership &amp; P&amp;L Responsibility</strong></p>
+    <ul>
+      <li>Led 15-location ship agency division with 110+ employees handling 4,200+ annual port calls across US Atlantic and Gulf Coasts (New York to Brownsville, TX)</li>
+      <li>Full P&amp;L accountability for multi-location maritime services operation with ~$800 million in port expenses receivables</li>
+      <li>Served on executive committee driving corporate strategy and business development initiatives</li>
+      <li>Directed operational excellence across geographically dispersed organization</li>
+    </ul>
 
-            // Close dropdowns when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('active');
-                    });
-                }
-            });
+    <p><strong>Commercial &amp; Business Development Achievements</strong></p>
+    <ul>
+      <li>Expanded customer base including major commodity traders (Glencore, Vitol, Cargill) across grain, petcoke, oil, gas, and breakbulk trades</li>
+      <li>Built and maintained relationships with terminal operators, pilots, port authorities, and shipping lines across 15 US ports</li>
+      <li>Established performance metrics and KPIs resulting in measurable operational efficiency improvements</li>
+      <li>Developed crisis management protocols maintaining service continuity during COVID-19 pandemic without business or customer loss</li>
+    </ul>
 
-            // Tab button touch support for mobile
-            const tabButtons = document.querySelectorAll('.tab-button');
-            tabButtons.forEach(button => {
-                // Add touch event handler
-                button.addEventListener('touchend', function(e) {
-                    e.preventDefault();
+    <p><strong>Technology &amp; Systems Leadership</strong></p>
+    <ul>
+      <li>Led digital transformation implementing NetSuite ERP and CRM systems for 100+ users</li>
+      <li>Replaced legacy systems with integrated platforms improving data visibility and operational efficiency</li>
+      <li>Deployed proprietary geospatial tracking systems for vessel monitoring and analytics</li>
+      <li>Implemented KYC due diligence platforms for compliance and regulatory requirements</li>
+    </ul>
 
-                    // Get the tab name from the onclick attribute
-                    const onclickAttr = this.getAttribute('onclick');
-                    if (onclickAttr) {
-                        const match = onclickAttr.match(/showTab\('(.+?)'\)/);
-                        if (match) {
-                            const tabName = match[1];
-                            // Call showTab directly
-                            showTab(tabName);
-                        }
-                    }
-                }, { passive: false });
-            });
-        });
+    <p><strong>M&amp;A Leadership &amp; Integration</strong></p>
+    <ul>
+      <li>Directed integration of three ship agency acquisitions (Barwil Agencies merger 2017)</li>
+      <li>Established 9 new port offices (Savannah, Jacksonville, Charleston, Mobile, Gulfport, New Orleans, Brownsville, Houston, Freeport)</li>
+      <li>Maintained 95%+ customer retention across all acquisitions through focused transition management</li>
+      <li>Integrated operations, systems, and teams across geographically dispersed locations</li>
+    </ul>
 
-        // Bibliography section toggle functions
-        function toggleSection(header) {
-            const content = header.nextElementSibling;
-            header.classList.toggle('active');
-            content.classList.toggle('active');
-        }
+    <h3>WILHELMSEN SHIP SERVICES <span class="location">| Norfolk, VA</span></h3>
 
-        function expandAllSections() {
-            const headers = document.querySelectorAll('.bib-section-header');
-            const contents = document.querySelectorAll('.bib-section-content');
+    <h4>Operations Manager &ndash; Mississippi River <span class="dates">| December 1999 &ndash; October 2016</span></h4>
 
-            headers.forEach(header => header.classList.add('active'));
-            contents.forEach(content => content.classList.add('active'));
-        }
+    <p><strong>Regional Operations &amp; Crisis Management</strong></p>
+    <ul>
+      <li>Managed ship agency operations across Mississippi River and Gulf Coast ports handling 400+ annual port calls</li>
+      <li>Led Hurricane Katrina response (2005) coordinating vessel operations during and after the disaster&mdash;maintained service continuity and customer relationships</li>
+      <li>Established operations in new ports including Hampton Roads (first coal nomination on US East Coast), Baltimore, and Philadelphia</li>
+      <li>Developed crisis management protocols and maintained operations during major disruptions</li>
+    </ul>
 
-        function collapseAllSections() {
-            const headers = document.querySelectorAll('.bib-section-header');
-            const contents = document.querySelectorAll('.bib-section-content');
+    <p><strong>Commercial Development &amp; Market Expansion</strong></p>
+    <ul>
+      <li>Expanded customer base across commodity trades (grain, petcoke, coal, oil, breakbulk)</li>
+      <li>Built relationships with terminal operators, pilots, port authorities, and shipping lines</li>
+      <li>Supported terminal development projects and infrastructure investments</li>
+      <li>Developed performance metrics driving operational improvements</li>
+    </ul>
 
-            headers.forEach(header => header.classList.remove('active'));
-            contents.forEach(content => content.classList.remove('active'));
-        }
+    <p><strong>Systems &amp; Process Innovation</strong></p>
+    <ul>
+      <li>Early adopter of digital cameras and data systems for enhanced operational transparency</li>
+      <li>Developed proforma and berth sheets with photos and maps improving customer communications</li>
+      <li>Implemented tracking systems and analytics for vessel operations</li>
+    </ul>
 
-        // Hamburger menu toggle
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
+    <h3>T. PARKER HOST, INC. <span class="location">| Baltimore, MD</span></h3>
 
-        if (hamburgerBtn && mobileMenu) {
-            // Toggle mobile menu
-            hamburgerBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                mobileMenu.classList.toggle('active');
-            });
+    <h4>Port Agent <span class="dates">| November 1995 &ndash; December 1999</span></h4>
 
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
-                    mobileMenu.classList.remove('active');
-                }
-            });
+    <ul>
+      <li>Managed ship agency operations in Baltimore handling diverse cargo types and vessel operations</li>
+      <li>Coordinated with stevedores, terminal operators, customs officials, and ship&rsquo;s masters</li>
+      <li>Handled disbursement accounting and proforma estimation for entry-level employees</li>
+      <li>Gained foundational expertise in commercial business operations and customer service</li>
+    </ul>
 
-            // Close mobile menu when a link is clicked
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.remove('active');
-                });
-            });
-        }
+    <hr>
 
-        // Show Biography/Bibliography tabs only for authenticated users
-        if (sessionStorage.getItem('datum_auth')) {
-            document.querySelectorAll('.auth-only').forEach(function(el) {
-                el.style.display = '';
-            });
+    <h2>Military Service</h2>
 
-            // Handle hash-based tab navigation (e.g. cv.html#biography)
-            var hash = window.location.hash.replace('#', '');
-            if (hash === 'biography' || hash === 'bibliography') {
-                showTab(hash);
-            }
-        }
-    </script>
+    <h3>UNITED STATES ARMY <span class="location">| Fort Campbell, KY</span></h3>
 
-    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5169a56446ff4380ad2f1785a86804b8"}'></script><!-- End Cloudflare Web Analytics -->
+    <h4>Infantryman, 101st Airborne Division <span class="dates">| 1993 &ndash; 1995</span></h4>
+
+    <ul>
+      <li>Served in long-range surveillance unit at Fort Campbell, Kentucky</li>
+      <li>Developed discipline, attention to detail, and crisis management skills</li>
+      <li>Honorable discharge with valuable leadership and team coordination experience</li>
+    </ul>
+
+    <hr>
+
+    <h2>Education &amp; Professional Development</h2>
+
+    <p><strong>Professional Certifications &amp; Training:</strong></p>
+    <ul class="two-column">
+      <li>Diploma in Ship Agency &mdash; Association of Ship Brokers and Agents (ASBA), 2021</li>
+      <li>Maritime Arbitration &mdash; Society of Maritime Arbitrators, 2021</li>
+      <li>Maritime Law Certification &mdash; ASBA, 2017</li>
+      <li>Commercial Trade Transactions &mdash; ASBA, 2016</li>
+      <li>Basic Principles of Chartering &mdash; ASBA, 2014</li>
+      <li>Maritime Transportation of Chemicals &amp; LPG &mdash; Tank Assist BV, 2015</li>
+      <li>Leadership Development Program &mdash; Center for Creative Leadership, 2013</li>
+    </ul>
+
+    <p><strong>Academic Background:</strong></p>
+    <ul>
+      <li>First Colonial High School, Virginia Beach, VA</li>
+      <li>Extensive business management and commercial development training through industry associations</li>
+    </ul>
+
+    <hr>
+
+    <h2>Professional Affiliations</h2>
+
+    <ul class="two-column">
+      <li>Society of Maritime Arbitrators (Member, 2021)</li>
+      <li>Association of Ship Brokers and Agents (Member, 2014)</li>
+      <li>Propeller Club of the United States (Member, 2002)</li>
+      <li>Hampton Roads Shipping Association (Member, 2002)</li>
+      <li>Virginia Maritime Association (Member, 2012)</li>
+      <li>Port of New Orleans (Member, 2002)</li>
+    </ul>
+
+    <hr>
+
+    <h2>Additional Information</h2>
+
+    <p><strong>Technical Proficiencies:</strong> NetSuite ERP/CRM, Oracle NetSuite, geospatial tracking systems, data analytics platforms, Microsoft Office Suite, maritime operational software, KYC compliance platforms</p>
+
+    <p><strong>Publications &amp; Thought Leadership:</strong> Authored extensive professional library covering ship agency operations, chartering, maritime law, commodity trading, supply chain management, and specialized industry literature spanning 779 works</p>
+
+    <p><strong>Personal Interests:</strong> Wood turning, vintage machining, maritime history, live music.</p>
+
+  </div>
+
+  <div class="site-footer">
+    <span class="brand"><a href="https://oceandatum.ai">oceandatum.ai</a></span>
+    <span class="copyright">&copy; 2026 William S. Davis III</span>
+  </div>
+
+  </div>
+</div>
+
+<script>
+// Theme toggle
+const themeToggle = document.getElementById('themeToggle');
+const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+const body = document.body;
+
+function setTheme(mode) {
+  if (mode === 'light') {
+    body.classList.add('light-mode');
+    themeToggle.innerHTML = '&#9728;';
+  } else {
+    body.classList.remove('light-mode');
+    themeToggle.innerHTML = '&#9790;';
+  }
+  localStorage.setItem('cv-theme', mode);
+}
+
+const saved = localStorage.getItem('cv-theme');
+if (saved === 'light') {
+  setTheme('light');
+}
+
+themeToggle.addEventListener('click', function() {
+  setTheme(body.classList.contains('light-mode') ? 'dark' : 'light');
+});
+
+mobileThemeToggle.addEventListener('click', function(e) {
+  e.preventDefault();
+  setTheme(body.classList.contains('light-mode') ? 'dark' : 'light');
+});
+
+// Hamburger menu
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburgerBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  mobileMenu.classList.toggle('active');
+});
+
+document.addEventListener('click', function(e) {
+  if (!mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+    mobileMenu.classList.remove('active');
+  }
+});
+</script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5169a56446ff4380ad2f1785a86804b8"}'></script>
 </body>
 </html>
