@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Evidence Portal — Case GV26000999-00</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --page-bg: #0a0a0a;
+            --text-primary: rgba(255,255,255,0.9);
+            --text-secondary: rgba(255,255,255,0.7);
+            --text-muted: rgba(255,255,255,0.5);
+            --card-bg: rgba(255,255,255,0.05);
+            --card-border: rgba(255,255,255,0.1);
+            --card-hover-border: rgba(100,255,180,0.3);
+            --card-hover-shadow: 0 8px 24px rgba(100,255,180,0.12);
+            --od-accent: #64ffb4;
+            --od-accent-dim: rgba(100,255,180,0.12);
+            --section-border: rgba(255,255,255,0.08);
+            --badge-video: #ef4444;
+            --badge-audio: #8b5cf6;
+            --badge-photo: #3b82f6;
+            --badge-doc: #f59e0b;
+            --btn-bg: #64ffb4;
+            --btn-color: #0a0a0a;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            background: var(--page-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── HEADER ── */
+        .hero {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #1a0a0a 100%);
+            padding: 60px 20px 50px;
+            text-align: center;
+            border-bottom: 2px solid var(--od-accent);
+            position: relative;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(100,255,180,0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .case-badge { display: inline-block; background: var(--od-accent); color: #0a0a0a; padding: 6px 18px; border-radius: 4px; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 20px; }
+        .hero h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
+        .hero .case-id { font-size: 1.4rem; color: var(--od-accent); font-weight: 600; margin-bottom: 8px; }
+        .hero .parties { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 25px; }
+        .drive-btn { display: inline-block; padding: 14px 36px; background: var(--btn-bg); color: var(--btn-color); text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1rem; transition: all 0.3s; }
+        .drive-btn:hover { background: #8affcc; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(100,255,180,0.3); }
+        .drive-note { margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); }
+
+        /* ── SECTION NAV ── */
+        .section-nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(10,10,10,0.92); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--section-border);
+            padding: 0.6rem 0; text-align: center;
+            overflow-x: auto; white-space: nowrap;
+        }
+        .section-nav a {
+            display: inline-block; padding: 0.4rem 1.2rem; font-size: 0.85rem;
+            color: var(--text-muted); text-decoration: none; border-radius: 4px;
+            transition: color 0.3s, background 0.3s;
+        }
+        .section-nav a:hover, .section-nav a.active { color: var(--od-accent); background: var(--od-accent-dim); }
+
+        /* ── CONTAINER ── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ── SECTIONS ── */
+        section { padding: 60px 0; border-bottom: 1px solid var(--section-border); }
+        section:last-of-type { border-bottom: none; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { font-size: 1.8rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+        .section-header p { font-size: 1rem; color: var(--text-muted); }
+
+        /* ── EXHIBIT GRID ── */
+        .exhibit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+        .exhibit-grid.wide { grid-template-columns: 1fr; max-width: 800px; margin: 0 auto; }
+
+        .exhibit-card {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 12px; overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .exhibit-card:hover { border-color: var(--card-hover-border); box-shadow: var(--card-hover-shadow); }
+
+        .exhibit-media { position: relative; background: #111; }
+        .exhibit-media video, .exhibit-media audio { width: 100%; display: block; }
+        .exhibit-media img { width: 100%; display: block; cursor: pointer; aspect-ratio: 4/3; object-fit: cover; }
+        .exhibit-media .pdf-preview { padding: 40px; text-align: center; }
+        .exhibit-media .pdf-icon { font-size: 3.5rem; margin-bottom: 10px; }
+
+        .exhibit-badge {
+            position: absolute; top: 12px; left: 12px;
+            padding: 4px 12px; border-radius: 12px;
+            font-weight: 700; font-size: 0.75rem; letter-spacing: 0.5px;
+            color: #fff; z-index: 2;
+        }
+        .badge-video { background: var(--badge-video); }
+        .badge-audio { background: var(--badge-audio); }
+        .badge-photo { background: var(--badge-photo); }
+        .badge-doc { background: var(--badge-doc); }
+
+        .exhibit-info { padding: 16px 20px; }
+        .exhibit-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; color: var(--text-primary); }
+        .exhibit-info .meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; }
+        .exhibit-info .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        .btn-sm {
+            display: inline-block; padding: 6px 16px; font-size: 0.82rem; font-weight: 600;
+            border-radius: 6px; text-decoration: none; transition: all 0.3s;
+        }
+        .btn-primary { background: var(--od-accent-dim); color: var(--od-accent); border: 1px solid rgba(100,255,180,0.2); }
+        .btn-primary:hover { background: rgba(100,255,180,0.2); border-color: var(--od-accent); }
+        .btn-outline { background: transparent; color: var(--text-secondary); border: 1px solid var(--card-border); }
+        .btn-outline:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+
+        /* ── PHOTO GRID ── */
+        .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+        .photo-card { border-radius: 10px; overflow: hidden; background: var(--card-bg); border: 1px solid var(--card-border); transition: all 0.3s; cursor: pointer; }
+        .photo-card:hover { border-color: var(--card-hover-border); box-shadow: var(--card-hover-shadow); transform: translateY(-3px); }
+        .photo-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+        .photo-card .photo-label { padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; }
+        .photo-card .photo-label span { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); }
+        .photo-card .photo-label a { font-size: 0.78rem; color: var(--od-accent); text-decoration: none; }
+
+        /* ── LIGHTBOX ── */
+        .lightbox {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 5000;
+            justify-content: center; align-items: center; flex-direction: column;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 92vw; max-height: 82vh; object-fit: contain; border-radius: 8px; }
+        .lightbox-caption { color: #fff; margin-top: 16px; font-size: 1rem; font-weight: 600; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 2rem; cursor: pointer; background: none; border: none; z-index: 10; }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 2.5rem; cursor: pointer; background: rgba(255,255,255,0.1); border: none; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+
+        /* ── FOOTER ── */
+        footer { padding: 30px 20px; text-align: center; border-top: 1px solid var(--section-border); }
+        footer p { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero { padding: 40px 16px 35px; }
+            .hero h1 { font-size: 1.6rem; }
+            .hero .case-id { font-size: 1.1rem; }
+            section { padding: 40px 0; }
+            .section-header h2 { font-size: 1.4rem; }
+            .exhibit-grid { grid-template-columns: 1fr; }
+            .photo-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+            .lightbox-nav { width: 40px; height: 40px; font-size: 1.8rem; }
+        }
+
+        @media print {
+            .section-nav, .lightbox { display: none !important; }
+            body { background: #fff; color: #333; }
+        }
+
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="case-badge">EVIDENCE PORTAL</div>
+            <h1>Evidence Exhibits</h1>
+            <div class="case-id">Case GV26000999-00</div>
+            <div class="parties">Davis v. McLeod</div>
+            <a href="https://drive.google.com/drive/folders/1ccQ5nXRY23c50RrM2G3VzqWYGILEtFur?usp=sharing" target="_blank" class="drive-btn">Download All Exhibits (Google Drive)</a>
+            <p class="drive-note">27 exhibits &middot; ~1.8 GB total &middot; Videos, Audio, Photos, Documents</p>
+        </div>
+    </div>
+
+    <!-- Section Nav -->
+    <nav class="section-nav">
+        <a href="#videos" class="active">Videos (A)</a>
+        <a href="#audio">Audio (B)</a>
+        <a href="#photos">Photos (P)</a>
+        <a href="#documents">Documents (D)</a>
+    </nav>
+
+    <!-- VIDEO EXHIBITS (Series A) -->
+    <section id="videos">
+        <div class="container">
+            <div class="section-header">
+                <h2>Video Exhibits &mdash; Series A</h2>
+                <p>10 video files &middot; Body camera footage, witness accounts, and evidence recordings</p>
+            </div>
+
+            <div class="exhibit-grid">
+                <!-- A-1: Body Camera -->
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-video">EXHIBIT A-1</span>
+                        <div style="padding:60px 20px;text-align:center;">
+                            <div style="font-size:3rem;margin-bottom:10px;">&#127909;</div>
+                            <p style="color:var(--text-secondary);font-size:0.95rem;">Body Camera Recording</p>
+                            <p style="color:var(--text-muted);font-size:0.85rem;">1.4 GB &middot; 28:15 duration</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>Officer Body Camera &mdash; D01AG1177</h3>
+                        <p class="meta">Axon Body 4 &middot; September 3, 2025 &middot; 17:08</p>
+                        <div class="actions">
+                            <a href="https://drive.google.com/drive/folders/1ccQ5nXRY23c50RrM2G3VzqWYGILEtFur?usp=sharing" target="_blank" class="btn-sm btn-primary">Download from Drive</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- A-2: Sean-Aidan's Account -->
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-video">EXHIBIT A-2</span>
+                        <div style="padding:60px 20px;text-align:center;">
+                            <div style="font-size:3rem;margin-bottom:10px;">&#127909;</div>
+                            <p style="color:var(--text-secondary);font-size:0.95rem;">Witness Account Segment</p>
+                            <p style="color:var(--text-muted);font-size:0.85rem;">131 MB</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>Sean-Aidan's Account</h3>
+                        <p class="meta">Extracted segment from body camera</p>
+                        <div class="actions">
+                            <a href="https://drive.google.com/drive/folders/1ccQ5nXRY23c50RrM2G3VzqWYGILEtFur?usp=sharing" target="_blank" class="btn-sm btn-primary">Download from Drive</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- A-3: Fleeing Description -->
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-video">EXHIBIT A-3</span>
+                        <div style="padding:60px 20px;text-align:center;">
+                            <div style="font-size:3rem;margin-bottom:10px;">&#127909;</div>
+                            <p style="color:var(--text-secondary);font-size:0.95rem;">Fleeing Vehicle Description</p>
+                            <p style="color:var(--text-muted);font-size:0.85rem;">34 MB</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>Fleeing Vehicle Description</h3>
+                        <p class="meta">Extracted segment from body camera</p>
+                        <div class="actions">
+                            <a href="https://drive.google.com/drive/folders/1ccQ5nXRY23c50RrM2G3VzqWYGILEtFur?usp=sharing" target="_blank" class="btn-sm btn-primary">Download from Drive</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- A-4: Joke Exchange -->
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-video">EXHIBIT A-4</span>
+                        <div style="padding:60px 20px;text-align:center;">
+                            <div style="font-size:3rem;margin-bottom:10px;">&#127909;</div>
+                            <p style="color:var(--text-secondary);font-size:0.95rem;">Joke Exchange Segment</p>
+                            <p style="color:var(--text-muted);font-size:0.85rem;">30 MB</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>Joke Exchange</h3>
+                        <p class="meta">Extracted segment from body camera</p>
+                        <div class="actions">
+                            <a href="https://drive.google.com/drive/folders/1ccQ5nXRY23c50RrM2G3VzqWYGILEtFur?usp=sharing" target="_blank" class="btn-sm btn-primary">Download from Drive</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- A-5 through A-10: MOV files -->
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-video">EXHIBIT A-5</span>
+                        <div style="padding:60px 20px;text-align:center;">
+                            <div style="font-size:3rem;margin-bottom:10px;">&#127909;</div>
+                            <p style="color:var(--text-secondary);font-size:0.95rem;">Video Evidence</p>
+                            <p style="color:var(--text-muted);font-size:0.85rem;">7.5 MB &middot; MOV</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>Video Evidence Recording</h3>
+                        <p class="meta">3692899470912190610.MOV</p>
+                        <div class="actions">
+                            <a href="https://drive.google.com/drive/folders/1ccQ5nXRY23c50RrM2G3VzqWYGILEtFur?usp=sharing" target="_blank" class="btn-sm btn-primary">Download from Drive</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-video">EXHIBIT A-6</span>
+                        <div style="padding:60px 20px;text-align:center;">
+                            <div style="font-size:3rem;margin-bottom:10px;">&#127909;</div>
+                            <p style="color:var(--text-secondary);font-size:0.95rem;">Video Evidence</p>
+                            <p style="color:var(--text-muted);font-size:0.85rem;">5.8 MB &middot; MOV</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>Video Evidence Recording</h3>
+                        <p class="meta">395137281633928226.MOV</p>
+                        <div class="actions">
+                            <a href="https://drive.google.com/drive/folders/1ccQ5nXRY23c50RrM2G3VzqWYGILEtFur?usp=sharing" target="_blank" class="btn-sm btn-primary">Download from Drive</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-video">EXHIBIT A-7</span>
+                        <div style="padding:60px 20px;text-align:center;">
+                            <div style="font-size:3rem;margin-bottom:10px;">&#127909;</div>
+                            <p style="color:var(--text-secondary);font-size:0.95rem;">Video Evidence</p>
+                            <p style="color:var(--text-muted);font-size:0.85rem;">57 MB &middot; MOV</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>Video Evidence Recording</h3>
+                        <p class="meta">5125158173353209420.MOV</p>
+                        <div class="actions">
+                            <a href="https://drive.google.com/drive/folders/1ccQ5nXRY23c50RrM2G3VzqWYGILEtFur?usp=sharing" target="_blank" class="btn-sm btn-primary">Download from Drive</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-video">EXHIBIT A-8</span>
+                        <div style="padding:60px 20px;text-align:center;">
+                            <div style="font-size:3rem;margin-bottom:10px;">&#127909;</div>
+                            <p style="color:var(--text-secondary);font-size:0.95rem;">Video Evidence</p>
+                            <p style="color:var(--text-muted);font-size:0.85rem;">57 MB &middot; MOV</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>Video Evidence Recording</h3>
+                        <p class="meta">IMG_2801.MOV</p>
+                        <div class="actions">
+                            <a href="https://drive.google.com/drive/folders/1ccQ5nXRY23c50RrM2G3VzqWYGILEtFur?usp=sharing" target="_blank" class="btn-sm btn-primary">Download from Drive</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-video">EXHIBIT A-9</span>
+                        <div style="padding:60px 20px;text-align:center;">
+                            <div style="font-size:3rem;margin-bottom:10px;">&#127909;</div>
+                            <p style="color:var(--text-secondary);font-size:0.95rem;">Video Evidence</p>
+                            <p style="color:var(--text-muted);font-size:0.85rem;">29 MB &middot; MOV</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>Video Evidence Recording</h3>
+                        <p class="meta">IMG_2802.MOV</p>
+                        <div class="actions">
+                            <a href="https://drive.google.com/drive/folders/1ccQ5nXRY23c50RrM2G3VzqWYGILEtFur?usp=sharing" target="_blank" class="btn-sm btn-primary">Download from Drive</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-video">EXHIBIT A-10</span>
+                        <div style="padding:60px 20px;text-align:center;">
+                            <div style="font-size:3rem;margin-bottom:10px;">&#127909;</div>
+                            <p style="color:var(--text-secondary);font-size:0.95rem;">Video Evidence</p>
+                            <p style="color:var(--text-muted);font-size:0.85rem;">19 MB &middot; MOV</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>Video Evidence Recording</h3>
+                        <p class="meta">IMG_2803.MOV</p>
+                        <div class="actions">
+                            <a href="https://drive.google.com/drive/folders/1ccQ5nXRY23c50RrM2G3VzqWYGILEtFur?usp=sharing" target="_blank" class="btn-sm btn-primary">Download from Drive</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUDIO EXHIBITS (Series B) -->
+    <section id="audio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Audio Exhibits &mdash; Series B</h2>
+                <p>1 audio file &middot; 911 emergency call recording</p>
+            </div>
+
+            <div class="exhibit-grid wide">
+                <div class="exhibit-card">
+                    <div class="exhibit-media" style="padding:30px;">
+                        <span class="exhibit-badge badge-audio">EXHIBIT B-1</span>
+                        <audio controls style="width:100%;margin-top:20px;">
+                            <source src="911_call.m4a" type="audio/mp4">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>911 Emergency Call</h3>
+                        <p class="meta">521 Country Club Blvd &middot; 2.8 MB</p>
+                        <div class="actions">
+                            <a href="911_call.m4a" download class="btn-sm btn-primary">Download Audio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTO EXHIBITS (Series P) -->
+    <section id="photos">
+        <div class="container">
+            <div class="section-header">
+                <h2>Photo Exhibits &mdash; Series P</h2>
+                <p>12 photos &middot; Click to enlarge</p>
+            </div>
+
+            <div class="photo-grid">
+                <div class="photo-card" onclick="openLightbox(0)">
+                    <img src="4430827582412070648.JPG" alt="Exhibit P-1" loading="lazy">
+                    <div class="photo-label">
+                        <span>P-1</span>
+                        <a href="4430827582412070648.JPG" download onclick="event.stopPropagation()">Download</a>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(1)">
+                    <img src="8367519187299496069.JPG" alt="Exhibit P-2" loading="lazy">
+                    <div class="photo-label">
+                        <span>P-2</span>
+                        <a href="8367519187299496069.JPG" download onclick="event.stopPropagation()">Download</a>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(2)">
+                    <img src="8543805875582695520.JPG" alt="Exhibit P-3" loading="lazy">
+                    <div class="photo-label">
+                        <span>P-3</span>
+                        <a href="8543805875582695520.JPG" download onclick="event.stopPropagation()">Download</a>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(3)">
+                    <img src="IMG_2815.jpg" alt="Exhibit P-4" loading="lazy">
+                    <div class="photo-label">
+                        <span>P-4</span>
+                        <a href="IMG_2815.jpg" download onclick="event.stopPropagation()">Download</a>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(4)">
+                    <img src="IMG_2818.PNG" alt="Exhibit P-5" loading="lazy">
+                    <div class="photo-label">
+                        <span>P-5</span>
+                        <a href="IMG_2818.PNG" download onclick="event.stopPropagation()">Download</a>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(5)">
+                    <img src="IMG_2848.PNG" alt="Exhibit P-6" loading="lazy">
+                    <div class="photo-label">
+                        <span>P-6</span>
+                        <a href="IMG_2848.PNG" download onclick="event.stopPropagation()">Download</a>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(6)">
+                    <img src="IMG_2849.PNG" alt="Exhibit P-7" loading="lazy">
+                    <div class="photo-label">
+                        <span>P-7</span>
+                        <a href="IMG_2849.PNG" download onclick="event.stopPropagation()">Download</a>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(7)">
+                    <img src="IMG_2851.PNG" alt="Exhibit P-8" loading="lazy">
+                    <div class="photo-label">
+                        <span>P-8</span>
+                        <a href="IMG_2851.PNG" download onclick="event.stopPropagation()">Download</a>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(8)">
+                    <img src="IMG_2852.PNG" alt="Exhibit P-9" loading="lazy">
+                    <div class="photo-label">
+                        <span>P-9</span>
+                        <a href="IMG_2852.PNG" download onclick="event.stopPropagation()">Download</a>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(9)">
+                    <img src="IMG_4285.jpg" alt="Exhibit P-10" loading="lazy">
+                    <div class="photo-label">
+                        <span>P-10</span>
+                        <a href="IMG_4285.jpg" download onclick="event.stopPropagation()">Download</a>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(10)">
+                    <img src="screenshot_2025-09-04.jpg" alt="Exhibit P-11" loading="lazy">
+                    <div class="photo-label">
+                        <span>P-11</span>
+                        <a href="screenshot_2025-09-04.jpg" download onclick="event.stopPropagation()">Download</a>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="openLightbox(11)">
+                    <img src="screenshot_2025-09-05.jpg" alt="Exhibit P-12" loading="lazy">
+                    <div class="photo-label">
+                        <span>P-12</span>
+                        <a href="screenshot_2025-09-05.jpg" download onclick="event.stopPropagation()">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUMENT EXHIBITS (Series D) -->
+    <section id="documents">
+        <div class="container">
+            <div class="section-header">
+                <h2>Document Exhibits &mdash; Series D</h2>
+                <p>3 FOIA documents &middot; Redacted PDF files</p>
+            </div>
+
+            <div class="exhibit-grid">
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-doc">EXHIBIT D-1</span>
+                        <div class="pdf-preview">
+                            <div class="pdf-icon">&#128196;</div>
+                            <p style="color:var(--text-secondary);">PDF Document &middot; 346 KB</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>FOIA CAD Report (Redacted)</h3>
+                        <p class="meta">FOIA P-2025-5242 &middot; Computer Aided Dispatch</p>
+                        <div class="actions">
+                            <a href="FOIA_CAD_Redacted.pdf" target="_blank" class="btn-sm btn-primary">View PDF</a>
+                            <a href="FOIA_CAD_Redacted.pdf" download class="btn-sm btn-outline">Download</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-doc">EXHIBIT D-2</span>
+                        <div class="pdf-preview">
+                            <div class="pdf-icon">&#128196;</div>
+                            <p style="color:var(--text-secondary);">PDF Document &middot; 1.6 MB</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>FOIA Case File (Redacted)</h3>
+                        <p class="meta">FOIA P-2025-5242 &middot; Case Documentation</p>
+                        <div class="actions">
+                            <a href="FOIA_Case_Redacted.pdf" target="_blank" class="btn-sm btn-primary">View PDF</a>
+                            <a href="FOIA_Case_Redacted.pdf" download class="btn-sm btn-outline">Download</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exhibit-card">
+                    <div class="exhibit-media">
+                        <span class="exhibit-badge badge-doc">EXHIBIT D-3</span>
+                        <div class="pdf-preview">
+                            <div class="pdf-icon">&#128196;</div>
+                            <p style="color:var(--text-secondary);">PDF Document &middot; 439 KB</p>
+                        </div>
+                    </div>
+                    <div class="exhibit-info">
+                        <h3>FOIA Supplemental Case File (Redacted)</h3>
+                        <p class="meta">FOIA P-2025-5242 &middot; Supplemental Documentation</p>
+                        <div class="actions">
+                            <a href="FOIA_Case_Supp_Redacted.pdf" target="_blank" class="btn-sm btn-primary">View PDF</a>
+                            <a href="FOIA_Case_Supp_Redacted.pdf" download class="btn-sm btn-outline">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Evidence Portal &mdash; Case GV26000999-00 &mdash; Davis v. McLeod</p>
+        <p style="margin-top:8px;">This page is unlisted and not indexed by search engines.</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
+        <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
+        <img id="lightbox-img" src="" alt="">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <script>
+    var photos = [
+        { src: '4430827582412070648.JPG', label: 'Exhibit P-1' },
+        { src: '8367519187299496069.JPG', label: 'Exhibit P-2' },
+        { src: '8543805875582695520.JPG', label: 'Exhibit P-3' },
+        { src: 'IMG_2815.jpg', label: 'Exhibit P-4' },
+        { src: 'IMG_2818.PNG', label: 'Exhibit P-5' },
+        { src: 'IMG_2848.PNG', label: 'Exhibit P-6' },
+        { src: 'IMG_2849.PNG', label: 'Exhibit P-7' },
+        { src: 'IMG_2851.PNG', label: 'Exhibit P-8' },
+        { src: 'IMG_2852.PNG', label: 'Exhibit P-9' },
+        { src: 'IMG_4285.jpg', label: 'Exhibit P-10' },
+        { src: 'screenshot_2025-09-04.jpg', label: 'Exhibit P-11' },
+        { src: 'screenshot_2025-09-05.jpg', label: 'Exhibit P-12' }
+    ];
+    var currentPhoto = 0;
+
+    function openLightbox(idx) {
+        currentPhoto = idx;
+        document.getElementById('lightbox-img').src = photos[idx].src;
+        document.getElementById('lightbox-caption').textContent = photos[idx].label;
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function navLightbox(dir) {
+        currentPhoto = (currentPhoto + dir + photos.length) % photos.length;
+        document.getElementById('lightbox-img').src = photos[currentPhoto].src;
+        document.getElementById('lightbox-caption').textContent = photos[currentPhoto].label;
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (!document.getElementById('lightbox').classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navLightbox(-1);
+        if (e.key === 'ArrowRight') navLightbox(1);
+    });
+
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+        if (e.target === this) closeLightbox();
+    });
+
+    // Scroll spy
+    (function() {
+        var navLinks = document.querySelectorAll('.section-nav a');
+        var sections = [];
+        navLinks.forEach(function(a) {
+            var id = a.getAttribute('href').replace('#','');
+            var el = document.getElementById(id);
+            if (el) sections.push({ el: el, link: a });
+        });
+        window.addEventListener('scroll', function() {
+            var scrollPos = window.scrollY + 120;
+            var active = sections[0];
+            for (var i = 0; i < sections.length; i++) {
+                if (sections[i].el.offsetTop <= scrollPos) active = sections[i];
+            }
+            navLinks.forEach(function(l) { l.classList.remove('active'); });
+            if (active) active.link.classList.add('active');
+        }, { passive: true });
+    })();
+    </script>
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5169a56446ff4380ad2f1785a86804b8"}'></script>
+</body>
+</html>
