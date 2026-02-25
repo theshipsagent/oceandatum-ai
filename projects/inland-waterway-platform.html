@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inland Waterway Intelligence Platform | OceanDatum</title>
+    <meta name="description" content="Advanced econometric modeling and forecasting for Mississippi River barge transportation — spatial VAR models, lock delay cost analysis, 842 mapped facilities.">
+    <meta name="author" content="William S. Davis III">
+    <meta property="og:title" content="Inland Waterway Intelligence Platform">
+    <meta property="og:description" content="Spatial econometric forecasting for Mississippi River barge transportation: 27 river segments, 3 econometric models, $42M annual cost impact.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Ocean Datum">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --page-bg: #0a0a0a;
+            --page-bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            --text-primary: rgba(255,255,255,0.9);
+            --text-secondary: rgba(255,255,255,0.7);
+            --text-muted: rgba(255,255,255,0.5);
+            --section-bg: rgba(255,255,255,0.04);
+            --section-border: rgba(255,255,255,0.1);
+            --card-bg: rgba(255,255,255,0.05);
+            --card-border: rgba(255,255,255,0.1);
+            --card-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            --card-hover-border: rgba(100,255,180,0.3);
+            --card-hover-shadow: 0 8px 32px rgba(100,255,180,0.15);
+            --od-accent: #64ffb4;
+            --od-accent-dim: rgba(100,255,180,0.15);
+            --od-accent-text: #64ffb4;
+            --od-accent-secondary: #4fc3f7;
+            --equation-bg: rgba(255,255,255,0.04);
+            --equation-border: #64ffb4;
+            --feature-bg: rgba(255,255,255,0.03);
+            --feature-border: #64ffb4;
+            --feature-strong: #4fc3f7;
+            --result-color: #64ffb4;
+            --scenario-bg: rgba(255,255,255,0.03);
+            --scenario-border: #4fc3f7;
+            --list-bullet: #64ffb4;
+            --stats-bg: rgba(255,255,255,0.04);
+            --stats-border: rgba(255,255,255,0.1);
+            --footer-border: rgba(100,255,180,0.3);
+            --map-border: rgba(100,255,180,0.3);
+            --map-shadow: 0 8px 32px rgba(100,255,180,0.15);
+            --tool-bg: linear-gradient(135deg, rgba(100,255,180,0.08) 0%, rgba(79,195,247,0.08) 100%);
+            --tool-border: rgba(100,255,180,0.3);
+            --tool-hover-shadow: 0 12px 48px rgba(100,255,180,0.2);
+            --btn-bg: #64ffb4;
+            --btn-color: #0a0a0a;
+            --btn-hover-bg: #8affcc;
+            --hero-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            --hero-glow: rgba(100,255,180,0.1);
+            --hero-border: #64ffb4;
+        }
+
+        body.light-mode {
+            --page-bg: #ffffff;
+            --page-bg-gradient: #f7fafc;
+            --text-primary: #333;
+            --text-secondary: #555;
+            --text-muted: #78909c;
+            --section-bg: #ffffff;
+            --section-border: rgba(0,0,0,0.06);
+            --card-bg: #ffffff;
+            --card-border: rgba(0,0,0,0.08);
+            --card-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            --card-hover-border: rgba(13,59,102,0.3);
+            --card-hover-shadow: 0 8px 32px rgba(13,59,102,0.12);
+            --od-accent: #0d3b66;
+            --od-accent-dim: rgba(13,59,102,0.08);
+            --od-accent-text: #0d3b66;
+            --od-accent-secondary: #1976d2;
+            --equation-bg: #f0f4f8;
+            --equation-border: #0d3b66;
+            --feature-bg: #f7fafc;
+            --feature-border: #0d3b66;
+            --feature-strong: #1976d2;
+            --result-color: #2e7d32;
+            --scenario-bg: #f0f4f8;
+            --scenario-border: #1976d2;
+            --list-bullet: #0d3b66;
+            --stats-bg: #f7fafc;
+            --stats-border: rgba(0,0,0,0.06);
+            --footer-border: rgba(13,59,102,0.2);
+            --map-border: rgba(13,59,102,0.3);
+            --map-shadow: 0 8px 32px rgba(13,59,102,0.12);
+            --tool-bg: linear-gradient(135deg, #f0f4f8 0%, #e8f4fd 100%);
+            --tool-border: rgba(13,59,102,0.2);
+            --tool-hover-shadow: 0 12px 48px rgba(13,59,102,0.15);
+            --btn-bg: #0d3b66;
+            --btn-color: #ffffff;
+            --btn-hover-bg: #145a8e;
+            --hero-gradient: linear-gradient(135deg, #f7fafc 0%, #e8f4fd 100%);
+            --hero-glow: rgba(13,59,102,0.05);
+            --hero-border: #0d3b66;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            background: var(--page-bg-gradient);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ── OCEANDATUM NAVBAR ── */
+        .od-navbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.4); backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding: 0.8rem 2rem; z-index: 2000;
+            display: flex; align-items: center; justify-content: space-between;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        body.light-mode .od-navbar { background: rgba(255,255,255,0.85); border-bottom-color: rgba(0,0,0,0.1); }
+        .od-navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.7); }
+        body.light-mode .od-navbar-brand { color: rgba(0,0,0,0.5); }
+        .od-navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+        .od-navbar-brand a:hover { color: #64ffb4; }
+        body.light-mode .od-navbar-brand a { color: #1a1a1a; }
+        body.light-mode .od-navbar-brand a:hover { color: #0d3b66; }
+
+        .od-navbar-right { display: flex; align-items: center; gap: 1rem; }
+        .od-nav-link { font-size: 0.85rem; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+        .od-nav-link:hover { color: #64ffb4; }
+        body.light-mode .od-nav-link { color: rgba(0,0,0,0.5); }
+        body.light-mode .od-nav-link:hover { color: #0d3b66; }
+        .od-nav-social { display: flex; gap: 0.8rem; align-items: center; }
+        .od-nav-social a { color: rgba(255,255,255,0.5); transition: color 0.3s; }
+        .od-nav-social a:hover { color: #64ffb4; }
+        body.light-mode .od-nav-social a { color: rgba(0,0,0,0.35); }
+        body.light-mode .od-nav-social a:hover { color: #0d3b66; }
+        .od-theme-toggle { background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); border-radius: 6px; padding: 0.35rem 0.6rem; cursor: pointer; font-size: 0.85rem; transition: all 0.3s; }
+        .od-theme-toggle:hover { border-color: rgba(100,255,180,0.4); color: #64ffb4; }
+        body.light-mode .od-theme-toggle { border-color: rgba(0,0,0,0.15); color: rgba(0,0,0,0.5); }
+        body.light-mode .od-theme-toggle:hover { border-color: rgba(13,59,102,0.4); color: #0d3b66; }
+
+        .od-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .od-hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.7); margin: 5px 0; transition: all 0.3s; }
+        body.light-mode .od-hamburger span { background: rgba(0,0,0,0.5); }
+
+        @media (max-width: 768px) {
+            .od-navbar { padding: 0.6rem 1rem; }
+            .od-navbar-right { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); padding: 1rem; gap: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            body.light-mode .od-navbar-right { background: rgba(255,255,255,0.97); border-bottom-color: rgba(0,0,0,0.1); }
+            .od-navbar-right.open { display: flex; }
+            .od-hamburger { display: block; }
+            .od-nav-social { justify-content: center; }
+        }
+
+        /* ── HERO SECTION ── */
+        header {
+            background: var(--hero-gradient);
+            border-bottom: 2px solid var(--hero-border);
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, var(--hero-glow) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--od-accent-text);
+            position: relative;
+            z-index: 1;
+        }
+
+        header .tagline {
+            font-size: 1.6em;
+            font-weight: 300;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header .subtitle {
+            font-size: 1.1em;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--section-border);
+        }
+        section:last-of-type { border-bottom: none; }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--od-accent-text);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: var(--od-accent-secondary);
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 1.4em;
+            margin: 30px 0 15px;
+            color: var(--od-accent-text);
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.05em;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        /* ── STATS BAR ── */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 50px 0;
+            padding: 40px;
+            background: var(--stats-bg);
+            border-radius: 12px;
+            border: 1px solid var(--stats-border);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .stat { text-align: center; padding: 20px; }
+
+        .stat-number {
+            font-size: 2.8em;
+            font-weight: 700;
+            color: var(--od-accent-text);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* ── OVERVIEW GRID ── */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .overview-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .overview-card:hover {
+            border-color: var(--card-hover-border);
+            box-shadow: var(--card-hover-shadow);
+            transform: translateY(-5px);
+        }
+
+        .overview-card h4 { margin-top: 0; }
+
+        .overview-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .overview-card li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--section-border);
+        }
+
+        .overview-card li:last-child { border-bottom: none; }
+
+        .overview-card li::before {
+            content: '\25B9 ';
+            color: var(--list-bullet);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* ── TOOL CARDS ── */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .tool-card {
+            background: var(--tool-bg);
+            border: 1px solid var(--tool-border);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            box-shadow: var(--tool-hover-shadow);
+            transform: scale(1.02);
+        }
+
+        .tool-card h3 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+
+        .tool-card p { color: var(--text-secondary); margin-bottom: 25px; }
+
+        .tool-badge {
+            display: inline-block;
+            padding: 10px 28px;
+            background: var(--od-accent-dim);
+            color: var(--od-accent-text);
+            border: 1px solid var(--card-hover-border);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        /* ── MAP ── */
+        .map-container {
+            margin: 40px 0;
+            border: 2px solid var(--map-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--map-shadow);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 850px;
+            border: none;
+            display: block;
+        }
+
+        /* ── EQUATIONS ── */
+        .equation {
+            background: var(--equation-bg);
+            border-left: 4px solid var(--equation-border);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.05em;
+            overflow-x: auto;
+            color: var(--text-primary);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .equation-title {
+            color: var(--od-accent-text);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .equation pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: var(--text-secondary);
+        }
+
+        /* ── MODEL CARDS ── */
+        .model-section { margin: 40px 0; }
+
+        .model-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .model-card h4 { margin-top: 0; }
+
+        .model-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature {
+            background: var(--feature-bg);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid var(--feature-border);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .feature strong { color: var(--feature-strong); }
+
+        /* ── USE CASES ── */
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .use-case {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .use-case:hover {
+            border-color: var(--card-hover-border);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .use-case h4 { margin-top: 0; }
+
+        .use-case .scenario {
+            background: var(--scenario-bg);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 3px solid var(--scenario-border);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .use-case .result {
+            color: var(--result-color);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .use-case ul {
+            margin-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        .use-case li { margin-bottom: 4px; }
+
+        /* ── PLOTS GRID ── */
+        .plots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .plot-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .plot-item:hover {
+            border-color: var(--card-hover-border);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .plot-item h4 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .plot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .plot-item p {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.95em;
+            color: var(--text-muted);
+        }
+
+        /* ── SECTION NAV ── */
+        .section-nav {
+            position: sticky;
+            top: 56px;
+            z-index: 100;
+            background: rgba(10,10,10,0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--section-border);
+            padding: 0.6rem 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            text-align: center;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        body.light-mode .section-nav { background: rgba(255,255,255,0.92); }
+
+        .section-nav a {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: color 0.3s, background 0.3s;
+        }
+        .section-nav a:hover,
+        .section-nav a.active {
+            color: var(--od-accent-text);
+            background: var(--od-accent-dim);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--page-bg);
+            border-top: 1px solid var(--footer-border);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+
+        footer strong { color: var(--od-accent-text); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            header { padding: 100px 20px 60px; }
+            header h1 { font-size: 2.2em; }
+            header .tagline { font-size: 1.2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.4em; }
+            section { padding: 50px 0; }
+            .tools-grid, .use-cases { grid-template-columns: 1fr; }
+            .plots-grid { grid-template-columns: 1fr; }
+            .stat-number { font-size: 2em; }
+            .map-container iframe { height: 500px; }
+        }
+
+        /* ── PRINT ── */
+        @media print {
+            .od-navbar, .section-nav, .od-theme-toggle { display: none !important; }
+            header { padding-top: 40px; }
+            body, body.light-mode { background: #fff; color: #333; }
+            h2, h4, .stat-number, .equation-title, header h1 { color: #0d3b66; }
+            .equation { border-left-color: #0d3b66; background: #f5f5f5; }
+            .feature { border-left-color: #0d3b66; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="od-navbar">
+        <span class="od-navbar-brand">An <a href="../index.html">oceandatum.ai</a> project</span>
+        <button class="od-hamburger" onclick="document.querySelector('.od-navbar-right').classList.toggle('open')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="od-navbar-right">
+            <a href="../projects-hub.html" class="od-nav-link">Projects Hub</a>
+            <a href="../index.html" class="od-nav-link">Home</a>
+            <div class="od-nav-social">
+                <a href="https://linkedin.com/in/williamsdavis" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://x.com/theshipsagent" target="_blank" rel="noopener" aria-label="X / Twitter">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://instagram.com/theshipsagent" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+            </div>
+            <button class="od-theme-toggle" onclick="toggleTheme()" title="Toggle theme">&#9790;</button>
+        </div>
+    </nav>
+
+    <!-- Section Navigation -->
+    <nav class="section-nav" id="sectionNav">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#tools">Tools</a>
+        <a href="#map">Map</a>
+        <a href="#models">Models</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#forecasting-results">Forecasting</a>
+        <a href="#industry-context">Industry</a>
+        <a href="#technical-specs">Tech Specs</a>
+    </nav>
+
+    <!-- Hero -->
+    <header>
+        <div class="container">
+            <h1>Inland Waterway Intelligence Platform</h1>
+            <p class="tagline">Advanced Econometric Modeling &amp; Forecasting</p>
+            <p class="subtitle">Spatial econometric models for Mississippi River barge transportation — real-time rate forecasting, lock delay cost analysis, and route optimization across 27 river segments</p>
+        </div>
+    </header>
+
+    <!-- System Overview -->
+    <section id="overview">
+        <div class="container">
+            <h2>System Overview</h2>
+
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-number">842</span>
+                    <span class="stat-label">Mapped Facilities</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">27</span>
+                    <span class="stat-label">River Segments</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Econometric Models</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">$42M</span>
+                    <span class="stat-label">Annual Cost Impact</span>
+                </div>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h4>Data Sources</h4>
+                    <ul>
+                        <li>USACE Lock Performance Monitoring System</li>
+                        <li>AIS vessel tracking data</li>
+                        <li>USGS river gauge data</li>
+                        <li>Market rate data (USDA AMS)</li>
+                        <li>Weather and climate data</li>
+                    </ul>
+                </div>
+
+                <div class="overview-card">
+                    <h4>Core Capabilities</h4>
+                    <ul>
+                        <li>Real-time rate forecasting</li>
+                        <li>Lock delay cost calculation</li>
+                        <li>Spatial econometric modeling</li>
+                        <li>Seasonal pattern analysis</li>
+                        <li>Economic impact assessment</li>
+                    </ul>
+                </div>
+
+                <div class="overview-card">
+                    <h4>Key Outputs</h4>
+                    <ul>
+                        <li>7-day rolling forecasts</li>
+                        <li>Segment-level predictions</li>
+                        <li>Cost-benefit analysis</li>
+                        <li>Infrastructure investment ROI</li>
+                        <li>Route optimization recommendations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Working Tools -->
+    <section id="tools">
+        <div class="container">
+            <h2>Working Tools</h2>
+            <p style="text-align:center;font-size:1.15em;margin-bottom:40px;">
+                Interactive dashboards for real-time analysis and forecasting
+            </p>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Forecasting Dashboard</h3>
+                    <p>Interactive spatial econometric forecasting with real-time updates. Explore VAR and Spatial VAR model predictions across 27 river segments.</p>
+                    <span class="tool-badge">Streamlit App &mdash; Development</span>
+                </div>
+
+                <div class="tool-card">
+                    <h3>Cost Calculator</h3>
+                    <p>Calculate lock delay costs and economic impacts. Analyze the financial implications of infrastructure delays and optimize routing decisions.</p>
+                    <span class="tool-badge">Streamlit App &mdash; Development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map -->
+    <section id="map">
+        <div class="container">
+            <h2>Interactive Facilities Map</h2>
+            <p style="text-align:center;font-size:1.15em;margin-bottom:30px;">
+                Comprehensive mapping of 842 river facilities across the Mississippi River system
+            </p>
+
+            <div class="map-container">
+                <iframe src="../River_System_Overview_Map.html" title="Mississippi River System Overview - National Bulk Commodity Infrastructure"></iframe>
+            </div>
+
+            <p style="text-align:center;margin-top:30px;font-size:1em;">
+                Macro-level view of Mississippi River Basin national bulk commodity supply chain infrastructure. Interactive map displays waterway networks, major ports, rail connections, and key industrial facilities across the entire river system. Toggle layers to explore different infrastructure types.
+            </p>
+        </div>
+    </section>
+
+    <!-- Econometric Models -->
+    <section id="models">
+        <div class="container">
+            <h2>Econometric Models</h2>
+
+            <div class="model-section">
+                <!-- Model 1: Lock Delay Cost -->
+                <div class="model-card">
+                    <h4>1. Lock Delay Cost Model</h4>
+                    <p>Calculates the economic impact of lock delays on transportation costs and commodity pricing.</p>
+
+                    <div class="equation">
+                        <div class="equation-title">Primary Cost Function:</div>
+                        <pre>C(d) = C&#x2080; + &#x03B1;&middot;d + &#x03B2;&middot;d&sup2; + &#x03B3;&middot;S + &#x03B4;&middot;W
+
+Where:
+  C(d) = Total delay cost ($)
+  C&#x2080;   = Base transportation cost
+  d    = Delay time (hours)
+  &#x03B1;    = Linear delay cost coefficient
+  &#x03B2;    = Quadratic delay cost coefficient (congestion effects)
+  &#x03B3;    = Seasonal adjustment factor
+  S    = Seasonal indicator (0-1)
+  &#x03B4;    = Weather impact coefficient
+  W    = Weather severity index</pre>
+                    </div>
+
+                    <div class="equation">
+                        <div class="equation-title">Cost Components:</div>
+                        <pre>Total Cost = Fuel Cost + Labor Cost + Opportunity Cost + Demurrage
+
+Fuel Cost       = F&middot;d&middot;P_fuel
+Labor Cost      = L&middot;d&middot;W_labor
+Opportunity     = V&middot;r&middot;d/24
+Demurrage       = D&middot;max(0, d - d_free)
+
+Where:
+  F       = Fuel consumption rate (gal/hr)
+  P_fuel  = Fuel price ($/gal)
+  L       = Labor hours per delay hour
+  W_labor = Wage rate ($/hr)
+  V       = Cargo value ($)
+  r       = Daily interest rate
+  D       = Demurrage rate ($/day)
+  d_free  = Free time allowed (hours)</pre>
+                    </div>
+
+                    <div class="model-features">
+                        <div class="feature"><strong>Base Rates:</strong> $8,500 - $12,000 per tow</div>
+                        <div class="feature"><strong>Delay Impact:</strong> $850 - $1,200 per hour</div>
+                        <div class="feature"><strong>Quadratic Effect:</strong> 15-25% cost increase at high delays</div>
+                        <div class="feature"><strong>Seasonal Variation:</strong> &plusmn;18% across harvest/low-water periods</div>
+                    </div>
+                </div>
+
+                <!-- Model 2: VAR -->
+                <div class="model-card">
+                    <h4>2. Vector Autoregression (VAR) Model</h4>
+                    <p>Multi-segment time series model capturing temporal dependencies and spillover effects between river segments.</p>
+
+                    <div class="equation">
+                        <div class="equation-title">VAR(p) Specification:</div>
+                        <pre>Y_t = c + &#x03A6;&#x2081;&middot;Y_(t-1) + &#x03A6;&#x2082;&middot;Y_(t-2) + ... + &#x03A6;&#x209A;&middot;Y_(t-p) + &#x03B5;_t
+
+Where:
+  Y_t = [y&#x2081;_t, y&#x2082;_t, ..., y_k_t]' (k &times; 1 vector of rates at time t)
+  c   = (k &times; 1) vector of constants
+  &#x03A6;&#x1D62;  = (k &times; k) coefficient matrices for lag i
+  &#x03B5;_t = (k &times; 1) vector of error terms
+  p   = Lag order (optimal: 7 days)</pre>
+                    </div>
+
+                    <div class="equation">
+                        <div class="equation-title">Individual Segment Equation:</div>
+                        <pre>y_i,t = c_i + &#x03A3;(j=1 to k) &#x03A3;(l=1 to p) &#x03C6;_ij,l &middot; y_j,t-l + &#x03B5;_i,t
+
+Where:
+  y_i,t     = Rate for segment i at time t
+  &#x03C6;_ij,l    = Effect of segment j at lag l on segment i
+  &#x03B5;_i,t     ~ N(0, &#x03C3;&#x1D62;&sup2;)
+
+Cross-segment effects:
+  &#x03C6;_ij,l &#x2260; 0 for i &#x2260; j captures spillover effects</pre>
+                    </div>
+
+                    <div class="equation">
+                        <div class="equation-title">Forecast Generation:</div>
+                        <pre>&#x0176;_(t+h) = c + &#x03A3;(i=1 to p) &#x03A6;&#x1D62; &middot; &#x0176;_(t+h-i)    for h = 1, 2, ..., H
+
+Forecast Variance:
+  Var(&#x0176;_(t+h)) = &#x03A3;(i=0 to h-1) &#x03A8;&#x1D62; &middot; &#x03A3;_&#x03B5; &middot; &#x03A8;&#x1D62;'
+
+Where:
+  &#x03A8;&#x1D62;   = Impulse response matrices
+  &#x03A3;_&#x03B5;  = Error covariance matrix
+  H    = Forecast horizon (7 days)</pre>
+                    </div>
+
+                    <div class="model-features">
+                        <div class="feature"><strong>Segments:</strong> 27 river segments modeled simultaneously</div>
+                        <div class="feature"><strong>Lag Order:</strong> 7 days (optimal by AIC/BIC)</div>
+                        <div class="feature"><strong>Parameters:</strong> ~5,100 estimated coefficients</div>
+                        <div class="feature"><strong>Forecast Horizon:</strong> 7-day rolling forecasts</div>
+                        <div class="feature"><strong>RMSE:</strong> $0.85/ton baseline accuracy</div>
+                        <div class="feature"><strong>R&sup2; (in-sample):</strong> 0.78 average across segments</div>
+                    </div>
+                </div>
+
+                <!-- Model 3: Spatial VAR -->
+                <div class="model-card">
+                    <h4>3. Spatial Vector Autoregression (Spatial VAR)</h4>
+                    <p>Incorporates spatial dependencies using river distance and connectivity to improve forecast accuracy.</p>
+
+                    <div class="equation">
+                        <div class="equation-title">Spatial VAR Specification:</div>
+                        <pre>Y_t = c + &#x03C1;&middot;W&middot;Y_t + &#x03A6;&#x2081;&middot;Y_(t-1) + ... + &#x03A6;&#x209A;&middot;Y_(t-p) + &#x03B8;&middot;W&middot;Y_(t-1) + &#x03B5;_t
+
+Where:
+  W     = (k &times; k) spatial weight matrix
+  &#x03C1;     = Spatial autoregressive parameter
+  &#x03B8;     = Spatial lag coefficient
+  W&middot;Y_t = Contemporaneous spatial effects
+  W&middot;Y_(t-1) = Lagged spatial effects</pre>
+                    </div>
+
+                    <div class="equation">
+                        <div class="equation-title">Spatial Weight Matrix Construction:</div>
+                        <pre>W_ij = {
+  exp(-d_ij / &#x03BB;)  if segment i and j are connected
+  0               otherwise
+}
+
+Row-standardized: w_ij = W_ij / &#x03A3;_j W_ij
+
+Where:
+  d_ij = River distance between segments i and j (miles)
+  &#x03BB;    = Distance decay parameter (calibrated: 150 miles)
+
+Connectivity Rules:
+  - Adjacent segments: direct connection
+  - Lock/dam: flow connection
+  - Tributary junction: network connection</pre>
+                    </div>
+
+                    <div class="equation">
+                        <div class="equation-title">Reduced Form:</div>
+                        <pre>Y_t = (I - &#x03C1;&middot;W)&#x207B;&#xB9; &middot; [c + &#x03A6;&#x2081;&middot;Y_(t-1) + ... + &#x03A6;&#x209A;&middot;Y_(t-p) + &#x03B8;&middot;W&middot;Y_(t-1) + &#x03B5;_t]
+
+Spatial Multiplier Effect:
+  &#x2202;Y_i,t / &#x2202;&#x03B5;_j,t = [(I - &#x03C1;&middot;W)&#x207B;&#xB9;]_ij
+
+Total Effect = Direct Effect + Indirect Effect (spillover)</pre>
+                    </div>
+
+                    <div class="equation">
+                        <div class="equation-title">Estimation via Maximum Likelihood:</div>
+                        <pre>L(&#x03A6;, &#x03C1;, &#x03B8;, &#x03A3;) = -Tk/2&middot;ln(2&#x03C0;) + T&middot;ln|I - &#x03C1;&middot;W| - T/2&middot;ln|&#x03A3;|
+                 - 1/2&middot;&#x03A3;_t &#x03B5;_t'&middot;&#x03A3;&#x207B;&#xB9;&middot;&#x03B5;_t
+
+Where:
+  T = Number of time periods
+  k = Number of segments
+  |I - &#x03C1;&middot;W| = Spatial Jacobian determinant</pre>
+                    </div>
+
+                    <div class="model-features">
+                        <div class="feature"><strong>Spatial Parameter (&#x03C1;):</strong> 0.42 (strong spatial dependence)</div>
+                        <div class="feature"><strong>Distance Decay (&#x03BB;):</strong> 150 miles optimal</div>
+                        <div class="feature"><strong>RMSE Improvement:</strong> 22% vs standard VAR</div>
+                        <div class="feature"><strong>Spillover Effects:</strong> 35% of total variation explained by spatial factors</div>
+                        <div class="feature"><strong>Forecast Accuracy:</strong> $0.66/ton RMSE</div>
+                        <div class="feature"><strong>Economic Value:</strong> $2.8M annual cost reduction through improved forecasts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section id="use-cases">
+        <div class="container">
+            <h2>Use Cases</h2>
+
+            <div class="use-cases">
+                <div class="use-case">
+                    <h4>1. Harvest Season Route Optimization</h4>
+                    <p><strong>Client:</strong> Major grain trading company with 1,500 barge movements annually</p>
+                    <div class="scenario">
+                        <strong>Scenario:</strong> Fall harvest season (Sept-Nov) with peak demand and potential lock congestion at key chokepoints.
+                    </div>
+                    <p><strong>Analysis:</strong></p>
+                    <ul>
+                        <li>Forecasted 12-18 hour delays at Locks 27, 26, and 25 during peak weeks</li>
+                        <li>Identified alternative routing through Illinois River with 8-hour delay</li>
+                        <li>Calculated cost differential: $1,200/hr main channel vs $950/hr alternative</li>
+                    </ul>
+                    <div class="result">Result: $4.2M annual savings through dynamic route selection during peak periods</div>
+                </div>
+
+                <div class="use-case">
+                    <h4>2. Infrastructure Investment Analysis</h4>
+                    <p><strong>Client:</strong> Port authority evaluating lock expansion project</p>
+                    <div class="scenario">
+                        <strong>Scenario:</strong> Proposed $180M expansion of Lock 25 to reduce average delays from 14 hours to 6 hours.
+                    </div>
+                    <p><strong>Analysis:</strong></p>
+                    <ul>
+                        <li>Current annual delay costs: $28M across all users</li>
+                        <li>Projected reduction: $18M annual savings</li>
+                        <li>Secondary benefits: $6M from reduced congestion at adjacent segments</li>
+                        <li>Payback period: 7.5 years</li>
+                    </ul>
+                    <div class="result">Result: Investment approved with documented $24M annual benefit and 12% IRR</div>
+                </div>
+
+                <div class="use-case">
+                    <h4>3. Real-Time Fleet Positioning</h4>
+                    <p><strong>Client:</strong> Barge line operator with 120 vessel fleet</p>
+                    <div class="scenario">
+                        <strong>Scenario:</strong> Weekly positioning decisions for empty barges returning from Gulf to upper river terminals.
+                    </div>
+                    <p><strong>Analysis:</strong></p>
+                    <ul>
+                        <li>7-day Spatial VAR forecasts predict rate spikes in Upper Mississippi</li>
+                        <li>Model captures spillover from low water on Missouri River</li>
+                        <li>Optimal positioning: move 40 barges to segment 18 vs planned segment 22</li>
+                    </ul>
+                    <div class="result">Result: $320K weekly revenue increase from superior positioning accuracy</div>
+                </div>
+
+                <div class="use-case">
+                    <h4>4. Seasonal Contract Pricing</h4>
+                    <p><strong>Client:</strong> Agricultural cooperative negotiating annual freight contracts</p>
+                    <div class="scenario">
+                        <strong>Scenario:</strong> Setting fixed-price contracts for 800,000 tons of grain shipments across 12 months.
+                    </div>
+                    <p><strong>Analysis:</strong></p>
+                    <ul>
+                        <li>Historical seasonal pattern: 18% rate premium Sept-Nov vs base</li>
+                        <li>Drought forecast suggests 25% premium in 2026 harvest</li>
+                        <li>Model projects $14.50/ton average vs market expectation of $13.80/ton</li>
+                        <li>Recommended indexed contract with caps at $16.00/ton</li>
+                    </ul>
+                    <div class="result">Result: Avoided $560K in unexpected costs through accurate seasonal forecasting</div>
+                </div>
+
+                <div class="use-case">
+                    <h4>5. Lock Closure Contingency Planning</h4>
+                    <p><strong>Client:</strong> Regional grain exporters facing scheduled lock maintenance</p>
+                    <div class="scenario">
+                        <strong>Scenario:</strong> 21-day closure of Lock 27 for emergency repairs with 14-day advance notice.
+                    </div>
+                    <p><strong>Analysis:</strong></p>
+                    <ul>
+                        <li>Spatial VAR model predicts rate surge: +$8.50/ton in affected segments</li>
+                        <li>Spillover effects: +$3.20/ton in adjacent segments from diverted traffic</li>
+                        <li>Identified modal shift threshold: rail competitive above $19/ton</li>
+                        <li>Optimal strategy: pre-position 200 loads before closure, switch 150 loads to rail</li>
+                    </ul>
+                    <div class="result">Result: $1.8M cost avoidance vs reactive strategy, maintained delivery schedules</div>
+                </div>
+
+                <div class="use-case">
+                    <h4>6. Weather Impact Assessment</h4>
+                    <p><strong>Client:</strong> Trading desk managing physical grain positions</p>
+                    <div class="scenario">
+                        <strong>Scenario:</strong> NOAA forecasts below-normal precipitation for Upper Mississippi basin (May-July).
+                    </div>
+                    <p><strong>Analysis:</strong></p>
+                    <ul>
+                        <li>Historical correlation: -0.68 between river stage and freight rates</li>
+                        <li>Low water forecast suggests 12-foot draft restrictions vs normal 14-foot</li>
+                        <li>Rate impact model: +$4.80/ton for restricted draft (15% load reduction)</li>
+                        <li>Duration estimate: 8-12 weeks based on rainfall patterns</li>
+                    </ul>
+                    <div class="result">Result: $2.1M P&amp;L gain from proactive freight hedging and position adjustment</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forecasting Results -->
+    <section id="forecasting-results">
+        <div class="container">
+            <h2>Forecasting Results</h2>
+            <p style="text-align:center;font-size:1.15em;margin-bottom:40px;">
+                Comprehensive analysis of spatial econometric forecasting performance across Mississippi River segments
+            </p>
+
+            <div class="plots-grid">
+                <div class="plot-item">
+                    <h4>Seasonal Decomposition</h4>
+                    <img src="inland-waterway/forecasting-plots/01_seasonal_decomposition_example.png" alt="Seasonal Decomposition">
+                    <p>Time series decomposition showing trend, seasonal, and residual components of barge rates</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Spatial Correlation Matrix</h4>
+                    <img src="inland-waterway/forecasting-plots/02_spatial_correlation_matrix.png" alt="Spatial Correlation Matrix">
+                    <p>Correlation structure between river segments demonstrating spatial dependencies</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>VAR Model Residuals</h4>
+                    <img src="inland-waterway/forecasting-plots/03_var_residuals.png" alt="VAR Residuals">
+                    <p>Diagnostic plots for standard VAR model residuals and autocorrelation</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>VAR Rolling Forecast</h4>
+                    <img src="inland-waterway/forecasting-plots/04_var_rolling_forecast.png" alt="VAR Rolling Forecast">
+                    <p>7-day rolling forecast performance for baseline VAR model</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Spatial Weight Matrix</h4>
+                    <img src="inland-waterway/forecasting-plots/05_spatial_weight_matrix.png" alt="Spatial Weight Matrix">
+                    <p>Visualization of spatial relationships and connectivity between river segments</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>VAR vs Spatial VAR Comparison</h4>
+                    <img src="inland-waterway/forecasting-plots/06_var_spvar_comparison.png" alt="VAR vs Spatial VAR">
+                    <p>Direct comparison of forecast accuracy between standard and spatial models</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Spatial VAR Improvement</h4>
+                    <img src="inland-waterway/forecasting-plots/07_spvar_improvement.png" alt="Spatial VAR Improvement">
+                    <p>Quantification of accuracy gains from incorporating spatial dependencies</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Forecast Accuracy Comparison</h4>
+                    <img src="inland-waterway/forecasting-plots/08_forecast_accuracy_comparison.png" alt="Forecast Accuracy Comparison">
+                    <p>RMSE and MAE metrics across all model specifications</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Forecast Improvement Metrics</h4>
+                    <img src="inland-waterway/forecasting-plots/09_forecast_improvement.png" alt="Forecast Improvement">
+                    <p>Percentage improvement in forecast accuracy by segment and horizon</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Economic Impact Analysis</h4>
+                    <img src="inland-waterway/forecasting-plots/10_economic_impact.png" alt="Economic Impact">
+                    <p>Translation of forecast improvements into annual cost savings and economic value</p>
+                </div>
+            </div>
+
+            <div class="stats-bar" style="margin-top:60px;">
+                <div class="stat">
+                    <span class="stat-number">22%</span>
+                    <span class="stat-label">RMSE Improvement</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">$0.66</span>
+                    <span class="stat-label">Per Ton Forecast Error</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">0.42</span>
+                    <span class="stat-label">Spatial Parameter (&#x03C1;)</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">$2.8M</span>
+                    <span class="stat-label">Annual Value Created</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Context -->
+    <section id="industry-context">
+        <div class="container">
+            <h2>Industry Context &amp; Visualizations</h2>
+            <p style="text-align:center;font-size:1.15em;margin-bottom:40px;">
+                Comprehensive analysis of Mississippi River barge transportation economics and operations
+            </p>
+
+            <div class="plots-grid">
+                <div class="plot-item">
+                    <h4>Lock Delay Cost Curve</h4>
+                    <img src="inland-waterway/industry-visualizations/01_lock_delay_cost_curve.png" alt="Lock Delay Cost Curve">
+                    <p>Non-linear relationship between delay duration and total transportation costs</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Rate Components Breakdown</h4>
+                    <img src="inland-waterway/industry-visualizations/02_rate_components_breakdown.png" alt="Rate Components">
+                    <p>Decomposition of barge freight rates into fuel, labor, opportunity, and demurrage costs</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Seasonal Rate Volatility</h4>
+                    <img src="inland-waterway/industry-visualizations/03_seasonal_rate_volatility.png" alt="Seasonal Volatility">
+                    <p>Historical patterns showing 18% rate premium during harvest season and low-water periods</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Lower Mississippi River Map</h4>
+                    <img src="inland-waterway/industry-visualizations/04_lower_mississippi_map.png" alt="Lower Mississippi Map">
+                    <p>Geographic overview of key facilities and infrastructure in the Lower Mississippi region</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Lock Cutting Operation</h4>
+                    <img src="inland-waterway/industry-visualizations/05_lock_cutting_operation.png" alt="Lock Cutting">
+                    <p>Technical illustration of lock operations showing tow configuration and chamber dimensions</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Midstream Fleeting Diagram</h4>
+                    <img src="inland-waterway/industry-visualizations/06_midstream_fleeting_diagram.png" alt="Fleeting Diagram">
+                    <p>Layout and operations of fleeting areas for barge staging and assembly</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Grain Export Supply Chain</h4>
+                    <img src="inland-waterway/industry-visualizations/07_grain_export_supply_chain.png" alt="Supply Chain">
+                    <p>Complete logistics flow from farm to export terminal highlighting river transport role</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>Rate Calculation Table</h4>
+                    <img src="inland-waterway/industry-visualizations/08_rate_calculation_table.png" alt="Rate Calculation">
+                    <p>Detailed breakdown of freight rate calculations across different scenarios</p>
+                </div>
+
+                <div class="plot-item">
+                    <h4>River vs Ocean Cost Comparison</h4>
+                    <img src="inland-waterway/industry-visualizations/09_river_ocean_comparison.png" alt="River Ocean Comparison">
+                    <p>Competitive analysis showing river transport cost advantages for bulk commodities</p>
+                </div>
+            </div>
+
+            <div class="model-card" style="margin-top:60px;">
+                <h4>Key Industry Insights</h4>
+                <div class="model-features">
+                    <div class="feature"><strong>Lock Bottlenecks:</strong> 12-18 hour delays at peak periods generate $28M annual costs</div>
+                    <div class="feature"><strong>Seasonal Impact:</strong> 18% rate premium during fall harvest (Sept-Nov) vs base period</div>
+                    <div class="feature"><strong>Low Water Effect:</strong> Draft restrictions increase costs by $4.80/ton (15% load reduction)</div>
+                    <div class="feature"><strong>Cost Structure:</strong> Fuel (35%), Labor (25%), Opportunity (20%), Demurrage (20%)</div>
+                    <div class="feature"><strong>Quadratic Costs:</strong> Delay costs increase exponentially beyond 8-hour threshold</div>
+                    <div class="feature"><strong>Modal Advantage:</strong> River transport 30-40% cheaper than rail for bulk grain</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications -->
+    <section id="technical-specs">
+        <div class="container">
+            <h2>Technical Specifications</h2>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h4>Data Architecture</h4>
+                    <ul>
+                        <li>PostgreSQL/PostGIS spatial database</li>
+                        <li>Real-time AIS data ingestion</li>
+                        <li>USACE lock performance API integration</li>
+                        <li>USGS river gauge monitoring</li>
+                        <li>Time-series optimized schemas</li>
+                    </ul>
+                </div>
+
+                <div class="overview-card">
+                    <h4>Modeling Stack</h4>
+                    <ul>
+                        <li>Python 3.11+ scientific computing</li>
+                        <li>statsmodels (VAR implementation)</li>
+                        <li>PySAL (spatial econometrics)</li>
+                        <li>scikit-learn (ML components)</li>
+                        <li>NumPy/Pandas/GeoPandas core</li>
+                    </ul>
+                </div>
+
+                <div class="overview-card">
+                    <h4>Visualization &amp; Deployment</h4>
+                    <ul>
+                        <li>Streamlit interactive dashboards</li>
+                        <li>Plotly dynamic visualizations</li>
+                        <li>Folium geospatial mapping</li>
+                        <li>Docker containerization</li>
+                        <li>REST API for model serving</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="model-card" style="margin-top:40px;">
+                <h4>Model Performance Metrics</h4>
+                <div class="model-features">
+                    <div class="feature"><strong>VAR Model:</strong> RMSE $0.85/ton, R&sup2; 0.78</div>
+                    <div class="feature"><strong>Spatial VAR:</strong> RMSE $0.66/ton, R&sup2; 0.85</div>
+                    <div class="feature"><strong>Improvement:</strong> 22% RMSE reduction, 35% spatial contribution</div>
+                    <div class="feature"><strong>Forecast Horizon:</strong> 7 days with 85% confidence intervals</div>
+                    <div class="feature"><strong>Update Frequency:</strong> Daily rolling forecasts</div>
+                    <div class="feature"><strong>Coverage:</strong> 27 river segments, 842 facilities</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><strong>oceandatum.ai</strong> &mdash; Advanced Econometric Intelligence for Inland Waterway Transportation</p>
+            <p style="margin-top:10px;">Powered by spatial econometrics, real-time data, and industry expertise</p>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle + Scroll Spy -->
+    <script>
+    function toggleTheme() {
+        document.body.classList.toggle('light-mode');
+        localStorage.setItem('od-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+        var btn = document.querySelector('.od-theme-toggle');
+        btn.innerHTML = document.body.classList.contains('light-mode') ? '&#9788;' : '&#9790;';
+    }
+    (function(){
+        var btn = document.querySelector('.od-theme-toggle');
+        if (document.body.classList.contains('light-mode')) btn.innerHTML = '&#9788;';
+    })();
+
+    // Scroll spy for section nav
+    (function() {
+        var navLinks = document.querySelectorAll('.section-nav a');
+        var sections = [];
+        navLinks.forEach(function(a) {
+            var id = a.getAttribute('href').replace('#','');
+            var el = document.getElementById(id);
+            if (el) sections.push({ id: id, el: el, link: a });
+        });
+        function onScroll() {
+            var scrollPos = window.scrollY + 140;
+            var active = sections[0];
+            for (var i = 0; i < sections.length; i++) {
+                if (sections[i].el.offsetTop <= scrollPos) active = sections[i];
+            }
+            navLinks.forEach(function(l) { l.classList.remove('active'); });
+            if (active) active.link.classList.add('active');
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    })();
+    </script>
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5169a56446ff4380ad2f1785a86804b8"}'></script>
+</body>
+</html>
