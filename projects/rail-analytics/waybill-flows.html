@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STB Waybill Trade Flows — Rail Analytics Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; color: rgba(255,255,255,0.9); min-height: 100vh; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%); z-index: -1; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6); }
+    .navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+    .navbar-brand a:hover { color: #64ffb4; }
+    .navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .nav-link { font-size: 0.85rem; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.4rem 0.9rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; transition: all 0.3s; }
+    .nav-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+    .breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.4); padding: 5.5rem 2rem 0; max-width: 1100px; margin: 0 auto; }
+    .breadcrumb a { color: rgba(100,255,180,0.8); text-decoration: none; }
+    .breadcrumb a:hover { color: #64ffb4; }
+    .main-content { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+    .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .page-header h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 0.08em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-style: italic; }
+    .glass-section { background: rgba(0,0,0,0.38); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+    .glass-section h2 { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.05em; text-transform: uppercase; }
+    .glass-section h3 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.75); margin: 1.4rem 0 0.75rem; }
+    .glass-section p { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-bottom: 0.85rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.87rem; }
+    th { background: rgba(100,255,180,0.07); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.12); padding: 0.65rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; }
+    td { border: 1px solid rgba(255,255,255,0.07); padding: 0.65rem 0.9rem; color: rgba(255,255,255,0.72); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .feature-list { list-style: none; padding: 0; }
+    .feature-list li { padding: 0.28rem 0 0.28rem 1.35rem; position: relative; color: rgba(255,255,255,0.68); font-size: 0.88rem; }
+    .feature-list li::before { content: '▸'; position: absolute; left: 0; color: #64ffb4; font-size: 0.78rem; }
+    .highlight-box { background: rgba(100,255,180,0.05); border-left: 3px solid rgba(100,255,180,0.55); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .highlight-box p { margin: 0 0 0.5rem; font-size: 0.88rem; }
+    .highlight-box p:last-child { margin: 0; }
+    .alert-box { background: rgba(255,200,80,0.05); border-left: 3px solid rgba(255,200,80,0.5); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .alert-box p { margin: 0 0 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .alert-box p:last-child { margin: 0; }
+    .code-box { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.8rem; color: rgba(100,255,180,0.85); line-height: 1.9; overflow-x: auto; white-space: pre; }
+    .schematic { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.75rem; color: rgba(100,255,180,0.7); line-height: 1.7; overflow-x: auto; white-space: pre; }
+    .investigation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+    .investigation-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.5rem; transition: all 0.3s; }
+    .investigation-card:hover { border-color: rgba(100,255,180,0.3); transform: translateY(-3px); }
+    .investigation-card h4 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .investigation-card p { font-size: 0.83rem; color: rgba(255,255,255,0.6); margin-bottom: 0.6rem; }
+    .investigation-card a { display: inline-block; padding: 0.4rem 0.85rem; background: rgba(100,255,180,0.08); border: 1px solid rgba(100,255,180,0.3); border-radius: 5px; color: #64ffb4; text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: all 0.3s; }
+    .investigation-card a:hover { background: rgba(100,255,180,0.15); }
+    .nav-buttons { display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .nav-btn { flex: 1; min-width: 180px; padding: 0.6rem 1.1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: rgba(255,255,255,0.8); text-decoration: none; text-align: center; font-size: 0.85rem; transition: all 0.3s; }
+    .nav-btn:hover { background: rgba(100,255,180,0.08); border-color: rgba(100,255,180,0.35); color: #64ffb4; }
+    footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
+    @media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .breadcrumb { padding: 5.5rem 1rem 0; } .page-header h1 { font-size: 1.6rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="navbar-brand">An <a href="../../index.html">oceandatum.ai</a> project</span>
+  <div class="navbar-right">
+    <a href="index.html" class="nav-link">Rail Platform</a>
+    <a href="../../projects-hub.html" class="nav-link">Projects</a>
+    <a href="../../index.html" class="nav-link">Home</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../../index.html">Home</a> / <a href="../../projects-hub.html">Projects</a> / <a href="index.html">Rail Analytics Platform</a> / STB Waybill Trade Flows
+</div>
+
+<div class="main-content">
+  <div class="page-header">
+    <h1>STB Waybill Trade Flow Analysis</h1>
+    <p class="subtitle">Cement Origin-Destination Flows &amp; Producer Identification · 2005–2023 Public Use Waybill Sample | STCC 32411</p>
+  </div>
+
+  <!-- Dataset Overview -->
+  <div class="glass-section">
+    <h2>Dataset Overview</h2>
+    <p>The STB Public Use Waybill Sample (STCC 32411 — Portland Cement) provides the most comprehensive publicly available origin-destination flow data for cement shipped by rail in the United States. The dataset analyzed here spans <strong>156,223 records</strong> representing approximately <strong>429 million tons</strong> of cement movements across <strong>2005–2023</strong> (19 years). Each record represents a sampled rail waybill — the shipment document accompanying a rail car or group of cars from origin to destination — expanded using the STB's published expansion factors to estimate total industry tonnage.</p>
+    <p>The waybill data identifies shipments by BEA Economic Area (a geographic aggregation of counties used to protect commercially sensitive origin/destination information through a statistical disclosure limitation process). Matching these BEA origins to specific cement plant locations requires cross-referencing the EPA Greenhouse Gas Reporting Program (GHGRP) facility database and applying geocoding and proximity analysis techniques.</p>
+    <div class="highlight-box">
+      <p><strong>Dataset Statistics</strong></p>
+      <p><strong>Sample Records:</strong> 156,223 waybill records (STCC 32411, cement)</p>
+      <p><strong>Expanded Tonnage:</strong> ~429 million tons (2005–2023)</p>
+      <p><strong>Timespan:</strong> 19 years (2005–2023)</p>
+      <p><strong>Geographic Coverage:</strong> Continental US + Canadian cross-border flows</p>
+      <p><strong>EPA Plant Matching:</strong> 47,258 records (30.2%) matched to specific EPA GHGRP cement facilities</p>
+    </div>
+  </div>
+
+  <!-- Plant Matching Methodology -->
+  <div class="glass-section">
+    <h2>Plant Matching Methodology</h2>
+    <p>Matching waybill origin BEA codes to specific cement manufacturing plants requires geocoding EPA GHGRP facility coordinates and spatially joining them to BEA Economic Area boundaries. The EPA GHGRP lists all US cement kilns reporting above the 25,000 metric ton CO2 threshold, providing facility-level location data with latitude/longitude precision. Each EPA facility record is intersected with BEA boundary shapefiles to determine which BEA area contains the plant, creating a lookup table used to assign plant identities to waybill origins.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Match Category</th>
+          <th>Records</th>
+          <th>Expanded Tons</th>
+          <th>Share</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Suppressed BEA 000</strong></td>
+          <td>81,653</td>
+          <td>225M tons</td>
+          <td>52.3%</td>
+          <td>STB suppressed origin BEA — individual plant too identifiable; replaced with "000" to protect confidentiality</td>
+        </tr>
+        <tr>
+          <td><strong>No-Plant BEAs</strong></td>
+          <td>23,238</td>
+          <td>64M tons</td>
+          <td>14.9%</td>
+          <td>BEA origin code provided but no EPA cement plant found in that BEA — anomalous; under investigation</td>
+        </tr>
+        <tr>
+          <td><strong>Matched to EPA Plants</strong></td>
+          <td>47,258</td>
+          <td>130M tons</td>
+          <td>30.2%</td>
+          <td>BEA origin matched to at least one EPA GHGRP cement facility — highest confidence records</td>
+        </tr>
+        <tr>
+          <td><strong>Canadian Origin</strong></td>
+          <td>4,074</td>
+          <td>10M tons</td>
+          <td>2.6%</td>
+          <td>Cross-border Canadian imports; BEA codes assigned to Canadian provinces under STB convention</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="alert-box">
+      <p><strong>The Suppression Problem</strong></p>
+      <p>Over half of all waybill records (52.3%) have their origin BEA suppressed to "000" by the STB's confidentiality process, meaning the records cannot be directly attributed to any specific plant or geographic area. This suppression occurs when a BEA origin-destination pair is so unique that publishing it would allow identification of individual shippers. While the expansion factors still permit aggregate tonnage estimation, producer-level attribution is impossible for these records. The practical effect is that the most significant cement producers — those with the highest and most distinctive rail volumes — are systematically removed from the identifiable dataset.</p>
+    </div>
+  </div>
+
+  <!-- Anomalous No-Plant BEA Origins -->
+  <div class="glass-section">
+    <h2>Anomalous No-Plant BEA Origins</h2>
+    <p>A significant subset of waybill records (23,238 records, 64M tons) carry BEA origin codes that do not contain any EPA-registered cement manufacturing facility. These "no-plant BEA" records are analytically puzzling: they represent real rail shipments coded as STCC 32411 (cement) with clearly identified geographic areas, but those areas have no known cement production capacity. Several hypotheses explain these anomalies, including misclassification of imports through port BEAs, mid-corridor transloading that codes the transload point as origin, geographic artifacts from BEA boundary changes, and possible STCC coding errors.</p>
+
+    <div class="investigation-grid">
+      <div class="investigation-card">
+        <h4>Fargo ND — BEA 096</h4>
+        <p><strong>Records:</strong> ~4,200 | <strong>Tons:</strong> ~11.5M</p>
+        <p>No cement plant in the Fargo BEA. Likely represents Canadian import cement transloaded at Fargo-area rail yards after crossing the border from Manitoba or Saskatchewan, then re-coded with Fargo as rail origin.</p>
+        <a href="#" onclick="return false">Detailed report available upon request</a>
+      </div>
+      <div class="investigation-card">
+        <h4>Houston TX — BEA 134</h4>
+        <p><strong>Records:</strong> ~6,100 | <strong>Tons:</strong> ~17.2M</p>
+        <p>Houston is a major import gateway for clinker and finished cement via Galveston Bay bulk terminals. Shipments likely represent imported cement loaded at Gulf Coast terminals and coded with the Houston port BEA rather than a production-plant BEA.</p>
+        <a href="#" onclick="return false">Detailed report available upon request</a>
+      </div>
+      <div class="investigation-card">
+        <h4>Fresno CA — BEA 160</h4>
+        <p><strong>Records:</strong> ~2,800 | <strong>Tons:</strong> ~7.8M</p>
+        <p>Fresno has no cement kiln. These records may represent distribution warehouse or terminal elevator origins where cement is transloaded from truck to rail, or may reflect a geographic coding artifact from the Central Valley's proximity to the Tehachapi plant BEA.</p>
+        <a href="#" onclick="return false">Detailed report available upon request</a>
+      </div>
+      <div class="investigation-card">
+        <h4>Hartford CT — BEA 013</h4>
+        <p><strong>Records:</strong> ~1,900 | <strong>Tons:</strong> ~5.1M</p>
+        <p>No cement plant in the Hartford BEA. New England cement consumption relies heavily on imports via New Haven and Providence, and on rail deliveries from upstate New York plants. Hartford records may represent distribution terminal origins or BEA boundary edge cases.</p>
+        <a href="#" onclick="return false">Detailed report available upon request</a>
+      </div>
+    </div>
+
+    <h3>Additional No-Plant BEAs Under Investigation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>BEA Code</th>
+          <th>Area</th>
+          <th>Records</th>
+          <th>Expanded Tons</th>
+          <th>Likely Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>127</td>
+          <td>Lubbock, TX</td>
+          <td>~1,600</td>
+          <td>~4.4M</td>
+          <td>West Texas distribution terminal; possible mis-coded STCC for lime or gypsum</td>
+        </tr>
+        <tr>
+          <td>026</td>
+          <td>Raleigh, NC</td>
+          <td>~2,100</td>
+          <td>~5.7M</td>
+          <td>Distribution terminal; possible Carolinas import cement coded at transload point</td>
+        </tr>
+        <tr>
+          <td>010</td>
+          <td>Boston, MA</td>
+          <td>~1,400</td>
+          <td>~3.9M</td>
+          <td>Port import gateway; Boston Harbor cement imports coded at port BEA</td>
+        </tr>
+        <tr>
+          <td>067</td>
+          <td>Wheeling, WV</td>
+          <td>~850</td>
+          <td>~2.3M</td>
+          <td>Ohio Valley transload point; proximity to Pennsylvania and Ohio plants may create boundary ambiguity</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Key Findings -->
+  <div class="glass-section">
+    <h2>Key Findings</h2>
+
+    <h3>1. Canadian Cement Undercount</h3>
+    <p>The 4,074 Canadian-origin records (10M tons) likely represent a significant undercount of actual Canadian cement exports to the US. Canadian producers — particularly Lafarge Canada (Exshaw, AB; Bath, ON), St Marys Cement, and Ciments Votorantim — ship substantial volumes across the border. The waybill's handling of cross-border shipments, particularly those transloaded at US border BEAs, means Canadian tonnage may be partially captured in the "no-plant BEA" anomaly bucket rather than in the Canadian origin records.</p>
+
+    <h3>2. Port Import Gateways</h3>
+    <p>The clustering of no-plant BEA records at Houston, Tampa, Baltimore, and New Orleans BEAs strongly suggests these are import-coded shipments. US cement imports (primarily from Vietnam, China, Canada, and Turkey) arrive as bulk cargo at specialized marine terminals and are transloaded to rail cars for inland distribution. When the waybill origin is coded as the port terminal's BEA rather than the overseas production origin, it creates the no-plant BEA anomaly pattern observed in the dataset.</p>
+
+    <h3>3. Geographic Artifacts from BEA Boundary Changes</h3>
+    <p>The BEA Economic Area system underwent boundary revisions between 2004 and 2023, with some component counties reassigned between BEA nodes. Plants located near BEA boundaries — particularly those in the Appalachian cement belt — may generate waybills coded to one BEA in earlier years and a different BEA in later years, creating apparent discontinuities in the time series and contributing to the no-plant BEA count for the newer boundary areas.</p>
+
+    <h3>4. Mid-Corridor Distribution</h3>
+    <p>Some no-plant BEA records appear to represent distribution warehouse or cement terminal operations where a large producer ships bulk cement by rail to a regional distribution hub, which then re-ships in smaller lots coded with the distribution hub's BEA. This practice inflates origin diversity in the waybill data while masking true production-point attribution, and is particularly prevalent for major producers operating regional distribution strategies in markets distant from their manufacturing facilities.</p>
+  </div>
+
+  <!-- Top Cement-Producing BEAs -->
+  <div class="glass-section">
+    <h2>Top Cement-Producing BEAs</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>BEA Code</th>
+          <th>Area</th>
+          <th>19-Year Tonnage (Expanded)</th>
+          <th>Major Plants in BEA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>BEA 146</strong></td>
+          <td>Midlothian / Dallas-Fort Worth, TX</td>
+          <td>~38.4M tons</td>
+          <td>Texas Industries (Martin Marietta), Ash Grove (CRH), CEMEX Balcones — 3 large kilns</td>
+        </tr>
+        <tr>
+          <td><strong>BEA 077</strong></td>
+          <td>Alpena / Detroit, MI</td>
+          <td>~24.1M tons</td>
+          <td>Lafarge Alpena Plant (largest US cement kiln by capacity, ~4.5M ton/yr)</td>
+        </tr>
+        <tr>
+          <td><strong>BEA 044</strong></td>
+          <td>Lehigh Valley / Allentown, PA</td>
+          <td>~21.7M tons</td>
+          <td>Lehigh Cement (Heidelberg Materials) Fleetwood; Essroc (Italcementi) Bath — historic Lehigh Valley cluster</td>
+        </tr>
+        <tr>
+          <td><strong>BEA 151</strong></td>
+          <td>Florence / Pueblo, CO</td>
+          <td>~18.3M tons</td>
+          <td>Ash Grove / CRH Chanute; CEMEX Lyons; Holcim US Florence</td>
+        </tr>
+        <tr>
+          <td><strong>BEA 125</strong></td>
+          <td>Odessa / Abilene, TX</td>
+          <td>~16.9M tons</td>
+          <td>CEMEX Odessa; TXI Hunter — Permian Basin demand cluster, large volumes driven by oilfield construction</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Year Trend Anomaly -->
+  <div class="glass-section">
+    <h2>Year Trend Anomaly</h2>
+    <div class="alert-box">
+      <p><strong>2021 Record Count Spike</strong></p>
+      <p>The year 2021 shows an anomalous spike in raw record count within the STCC 32411 dataset — approximately 40% above the trailing three-year average — that does not correspond to a proportional increase in expanded tonnage. This pattern is consistent with a change in the STB's sampling methodology or expansion factor recalibration rather than a genuine surge in cement rail shipments (which would have been visible in USGS Mineral Industry Surveys data for the same period). The 2021 anomaly is flagged in the dataset and users running time-series trend analysis should treat 2021 record counts as methodologically suspect while relying on expanded tonnage figures, which are more consistent with external benchmarks.</p>
+    </div>
+  </div>
+
+  <!-- Data Validation & Cross-Checks -->
+  <div class="glass-section">
+    <h2>Data Validation &amp; Cross-Checks</h2>
+
+    <h3>USACE Cross-Validation</h3>
+    <p>Cement waterborne tonnage data from the US Army Corps of Engineers Waterborne Commerce Statistics (WCS) provides a partial cross-check for port-origin waybill records. Gulf Coast cement import terminals at Houston (Galveston Bay), Tampa, and New Orleans show USACE-reported import tonnages that are broadly consistent with the no-plant BEA records attributed to those port BEAs, supporting the hypothesis that port import terminals are the primary driver of the no-plant BEA anomaly cluster.</p>
+    <ul class="feature-list">
+      <li>Houston Ship Channel cement imports (USACE) — ~3.5M tons/yr average matches waybill BEA 134 anomaly scale</li>
+      <li>Tampa Bay cement imports — ~1.8M tons/yr consistent with Florida port BEA records</li>
+      <li>New Orleans cement imports — ~0.9M tons/yr consistent with NOLA BEA records</li>
+      <li>Pacific Coast ports (LA/LB, Seattle) — USACE data partially reconciles with West Coast no-plant BEAs</li>
+    </ul>
+
+    <h3>EPA Capacity Cross-Check</h3>
+    <p>EPA GHGRP reports plant-level clinker production which, combined with published clinker-to-cement ratios, allows estimation of maximum rail-shippable cement output per BEA. Comparing these EPA capacity estimates against waybill expanded tonnage per BEA reveals several BEAs where waybill tonnage exceeds plausible plant capacity — a further indicator that those BEA codes are capturing transload/distribution shipments rather than direct plant-to-customer movements.</p>
+    <ul class="feature-list">
+      <li>EPA GHGRP reports: 91 US cement plants above 25,000 MT CO2 threshold (2023)</li>
+      <li>Aggregate US capacity: ~110M short tons/yr clinker; ~116M tons/yr cement equivalent</li>
+      <li>Waybill-attributed tonnage vs. EPA capacity check: 14 BEAs show waybill tonnage exceeding 85% of EPA-estimated max rail-shippable capacity</li>
+      <li>3 BEAs show waybill tonnage 20%+ above EPA capacity ceiling — these are flagged as likely transload/distribution BEAs</li>
+    </ul>
+  </div>
+
+  <!-- Use Cases -->
+  <div class="glass-section">
+    <h2>Use Cases</h2>
+
+    <h3>Cement Producers</h3>
+    <ul class="feature-list">
+      <li>Competitive intelligence: map competitors' distribution reach by rail corridor</li>
+      <li>Identify underserved BEA markets receiving cement from distant origins — opportunity for closer-plant penetration</li>
+      <li>Rate benchmarking: compare own contract rates against market-level rate proxies from waybill revenue fields</li>
+      <li>Track import market share erosion in coastal BEAs over time</li>
+    </ul>
+
+    <h3>Railroads</h3>
+    <ul class="feature-list">
+      <li>Identify cement flows using competitor carriers for business development targeting</li>
+      <li>Analyze interline vs. single-line flow patterns for yield management</li>
+      <li>Service design: determine where new cement distribution centers would generate highest incremental rail demand</li>
+      <li>Forecast: project cement rail demand growth by BEA using housing start correlation models</li>
+    </ul>
+
+    <h3>Trade Analysts</h3>
+    <ul class="feature-list">
+      <li>Map import cement penetration into US domestic markets by BEA</li>
+      <li>Quantify domestic vs. import market share shifts over the 2005–2023 period</li>
+      <li>Analyze the demand impact of the 2008–2012 construction downturn on individual BEAs</li>
+      <li>Identify geographic markets most vulnerable to import competition based on rail access patterns</li>
+    </ul>
+
+    <h3>Regulators</h3>
+    <ul class="feature-list">
+      <li>STB rate case analysis: identify captive cement shippers by BEA for rate reasonableness review</li>
+      <li>Merger analysis: quantify competitive overlap and market concentration changes by BEA pair</li>
+      <li>Infrastructure planning: identify BEAs with growing cement flows requiring rail capacity investment</li>
+      <li>Antidumping/trade enforcement: cross-reference import BEA patterns with Commerce Department ITC data</li>
+    </ul>
+  </div>
+
+  <!-- Navigation -->
+  <div class="glass-section">
+    <h2>Explore Related Analysis</h2>
+    <div class="nav-buttons">
+      <a href="cement-costing.html" class="nav-btn">Cement Cost Model →</a>
+      <a href="network-model.html" class="nav-btn">Network Routing →</a>
+      <a href="geospatial.html" class="nav-btn">Geospatial Analysis →</a>
+      <a href="index.html" class="nav-btn">← Back to Platform Home</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Rail Analytics Platform — STB Waybill Trade Flow Analysis</strong></p>
+  <p>OceanDatum.ai — SESCO Consulting | February 2026</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">Sources: STB Public Use Waybill Sample (STCC 32411, 2005–2023); EPA GHGRP Cement Plant Database; USGS Mineral Industry Surveys — Cement; USACE Waterborne Commerce Statistics; BEA Economic Area definitions (2023 revision).</p>
+</footer>
+
+</body>
+</html>

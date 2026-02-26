@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cement Rail Cost Model — Rail Analytics Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; color: rgba(255,255,255,0.9); min-height: 100vh; line-height: 1.7; }
+body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%); z-index: -1; }
+.navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
+.navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6); text-decoration: none; }
+.navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+.navbar-brand a:hover { color: #64ffb4; }
+.navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.nav-link { font-size: 0.85rem; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.4rem 0.9rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; transition: all 0.3s; }
+.nav-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+.breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.4); padding: 5.5rem 2rem 0; max-width: 1100px; margin: 0 auto; }
+.breadcrumb a { color: rgba(100,255,180,0.8); text-decoration: none; }
+.breadcrumb a:hover { color: #64ffb4; }
+.main-content { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+.page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.page-header h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 0.08em; color: #fff; margin-bottom: 0.5rem; }
+.page-header .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-style: italic; }
+.glass-section { background: rgba(0,0,0,0.38); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+.glass-section h2 { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.05em; text-transform: uppercase; }
+.glass-section h3 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.75); margin: 1.4rem 0 0.75rem; letter-spacing: 0.03em; }
+.glass-section p { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-bottom: 0.85rem; }
+table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.87rem; }
+th { background: rgba(100,255,180,0.07); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.12); padding: 0.65rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; }
+td { border: 1px solid rgba(255,255,255,0.07); padding: 0.65rem 0.9rem; color: rgba(255,255,255,0.72); vertical-align: top; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+.feature-list { list-style: none; padding: 0; }
+.feature-list li { padding: 0.28rem 0 0.28rem 1.35rem; position: relative; color: rgba(255,255,255,0.68); font-size: 0.88rem; }
+.feature-list li::before { content: '▸'; position: absolute; left: 0; color: #64ffb4; font-size: 0.78rem; }
+.highlight-box { background: rgba(100,255,180,0.05); border-left: 3px solid rgba(100,255,180,0.55); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+.highlight-box p { margin: 0 0 0.5rem; font-size: 0.88rem; }
+.highlight-box p:last-child { margin: 0; }
+.metric-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+.metric-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.1rem; text-align: center; }
+.metric-card .value { font-size: 1.8rem; font-weight: 600; color: #64ffb4; margin: 0.4rem 0; }
+.metric-card .label { font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; text-transform: uppercase; }
+.formula-box { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.82rem; color: rgba(100,255,180,0.85); line-height: 2; overflow-x: auto; }
+.nav-buttons { display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
+.nav-btn { flex: 1; min-width: 180px; padding: 0.6rem 1.1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: rgba(255,255,255,0.8); text-decoration: none; text-align: center; font-size: 0.85rem; transition: all 0.3s; }
+.nav-btn:hover { background: rgba(100,255,180,0.08); border-color: rgba(100,255,180,0.35); color: #64ffb4; }
+.nav-btn.primary { background: rgba(100,255,180,0.08); border-color: rgba(100,255,180,0.35); color: #64ffb4; }
+.nav-btn.primary:hover { background: rgba(100,255,180,0.15); }
+
+/* ── INTERACTIVE CALCULATOR ── */
+.calculator {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(100,255,180,0.25);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1.5rem 0;
+}
+.calculator h2 { font-size: 1.1rem; font-weight: 600; color: #64ffb4; margin-bottom: 1.5rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+.calc-field label { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.calc-field input, .calc-field select {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 6px;
+  padding: 0.6rem 0.85rem;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.92rem;
+  transition: border-color 0.3s;
+  -webkit-appearance: none;
+}
+.calc-field input:focus, .calc-field select:focus { outline: none; border-color: rgba(100,255,180,0.5); background: rgba(100,255,180,0.04); }
+.calc-field select option { background: #1a1a2e; color: #fff; }
+.calc-field .hint { font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-top: 0.3rem; }
+.calc-btn {
+  background: rgba(100,255,180,0.12);
+  border: 1px solid rgba(100,255,180,0.4);
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+  color: #64ffb4;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 0.04em;
+}
+.calc-btn:hover { background: rgba(100,255,180,0.22); transform: translateY(-1px); }
+.calc-results { display: none; margin-top: 1.75rem; }
+.calc-results.visible { display: block; }
+.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.result-card { background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem; text-align: center; }
+.result-card .r-label { font-size: 0.72rem; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.result-card .r-value { font-size: 1.5rem; font-weight: 600; color: #fff; }
+.result-card .r-sub { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.2rem; }
+.rvc-display { text-align: center; padding: 1.5rem; border-radius: 10px; margin-top: 1rem; border: 1px solid; }
+.rvc-below { background: rgba(100,255,180,0.06); border-color: rgba(100,255,180,0.3); }
+.rvc-above { background: rgba(255,120,120,0.06); border-color: rgba(255,120,120,0.3); }
+.rvc-display .rvc-num { font-size: 3rem; font-weight: 700; }
+.rvc-below .rvc-num { color: #64ffb4; }
+.rvc-above .rvc-num { color: #ff8080; }
+.rvc-display .rvc-label { font-size: 0.85rem; margin-top: 0.3rem; color: rgba(255,255,255,0.6); }
+.breakdown-table { width: 100%; border-collapse: collapse; margin-top: 1.25rem; font-size: 0.85rem; }
+.breakdown-table th { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 0.85rem; text-align: left; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.04em; }
+.breakdown-table td { border: 1px solid rgba(255,255,255,0.07); padding: 0.5rem 0.85rem; color: rgba(255,255,255,0.72); }
+.breakdown-table tr.total-row td { border-top: 1px solid rgba(100,255,180,0.3); font-weight: 600; color: #64ffb4; }
+
+footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
+@media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .breadcrumb { padding: 5.5rem 1rem 0; } .page-header h1 { font-size: 1.6rem; } }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="navbar-brand">An <a href="../../index.html">oceandatum.ai</a> project</span>
+  <div class="navbar-right">
+    <a href="index.html" class="nav-link">Rail Platform</a>
+    <a href="../../projects-hub.html" class="nav-link">Projects</a>
+    <a href="../../index.html" class="nav-link">Home</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Rail Analytics Platform</a> / Cement Rail Cost Model
+</div>
+
+<div class="main-content">
+
+  <div class="page-header">
+    <h1>Cement Rail Transportation Cost Analysis</h1>
+    <p class="subtitle">Gulf Coast Origin Markets: Houston, Tampa & New Orleans · STB Waybill (2018–2023) · URCS Variable Cost Methodology</p>
+  </div>
+
+  <div class="glass-section">
+    <h2>Executive Summary</h2>
+    <p>This analysis provides comprehensive rail transportation cost benchmarks for cement (STCC 32411 — Portland Cement) originating from Gulf Coast production facilities. The model combines STB Public Use Waybill Sample data, URCS Phase III variable cost coefficients, and network-based routing analysis to develop rate benchmarks and R/VC (Revenue-to-Variable-Cost) ratio assessments for key transportation lanes.</p>
+    <div class="metric-row">
+      <div class="metric-card"><div class="label">Total Carloads</div><div class="value">175,751</div></div>
+      <div class="metric-card"><div class="label">Total Tonnage</div><div class="value">14.2M</div></div>
+      <div class="metric-card"><div class="label">Total Revenue</div><div class="value">$530.7M</div></div>
+      <div class="metric-card"><div class="label">Avg $/Ton</div><div class="value">$37.30</div></div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE CALCULATOR -->
+  <div class="calculator">
+    <h2>⚙ Live URCS Cost Calculator</h2>
+    <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);margin-bottom:1.5rem;">Enter shipment parameters to calculate URCS variable cost, estimated market rate, and R/VC ratio in real time.</p>
+    <div class="calc-grid">
+      <div class="calc-field">
+        <label>Origin Market</label>
+        <select id="originMarket" onchange="autoFillMarket()">
+          <option value="western">Houston, TX (Western Region)</option>
+          <option value="western_dallas">Tampa, FL (Eastern Region)</option>
+          <option value="cross">New Orleans, LA (Cross-Region)</option>
+          <option value="manual">Manual / Other</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label>Rail Miles (Origin → Destination)</label>
+        <input type="number" id="railMiles" value="289" min="1" max="5000" placeholder="e.g. 289">
+        <div class="hint">Actual rail miles (not straight-line)</div>
+      </div>
+      <div class="calc-field">
+        <label>Lading Weight (tons/car)</label>
+        <input type="number" id="ladingTons" value="100" min="1" max="130" placeholder="e.g. 100">
+        <div class="hint">Typical cement covered hopper: 90–110 tons</div>
+      </div>
+      <div class="calc-field">
+        <label>Car Tare Weight (tons)</label>
+        <input type="number" id="tareTons" value="30" min="10" max="50" placeholder="e.g. 30">
+        <div class="hint">Standard covered hopper tare: 28–32 tons</div>
+      </div>
+      <div class="calc-field">
+        <label>Number of Cars</label>
+        <input type="number" id="numCars" value="1" min="1" max="500" placeholder="e.g. 1">
+      </div>
+      <div class="calc-field">
+        <label>Number of Interchanges</label>
+        <input type="number" id="numInterchanges" value="0" min="0" max="5" placeholder="e.g. 0">
+        <div class="hint">Carrier-to-carrier handoffs on route</div>
+      </div>
+      <div class="calc-field">
+        <label>Region</label>
+        <select id="region">
+          <option value="western">Western (FRA 5–8): 0.94×</option>
+          <option value="eastern">Eastern (FRA 1–4): 1.18×</option>
+          <option value="cross" selected>Cross-Region: 1.08×</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label>Actual Rate ($/ton) — optional</label>
+        <input type="number" id="actualRate" value="37.30" min="0" max="200" step="0.01" placeholder="e.g. 37.30">
+        <div class="hint">For R/VC calculation. Leave 0 to skip.</div>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculateURCS()">Calculate URCS Cost →</button>
+
+    <div class="calc-results" id="calcResults">
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="r-label">Variable Cost (Total)</div>
+          <div class="r-value" id="res_vc_total">—</div>
+          <div class="r-sub">per shipment</div>
+        </div>
+        <div class="result-card">
+          <div class="r-label">VC per Ton</div>
+          <div class="r-value" id="res_vc_ton">—</div>
+          <div class="r-sub">$/ton lading</div>
+        </div>
+        <div class="result-card">
+          <div class="r-label">VC per Ton-Mile</div>
+          <div class="r-value" id="res_vc_tonmile">—</div>
+          <div class="r-sub">$/ton-mile</div>
+        </div>
+        <div class="result-card">
+          <div class="r-label">Gross Ton-Miles</div>
+          <div class="r-value" id="res_gtm">—</div>
+          <div class="r-sub">GTM per car</div>
+        </div>
+      </div>
+      <table class="breakdown-table">
+        <thead>
+          <tr><th>Cost Element</th><th>Formula</th><th>Amount</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Gross Ton-Mile (GTM)</td><td id="b_gtm_formula">—</td><td id="b_gtm">—</td></tr>
+          <tr><td>Car-Mile</td><td id="b_cm_formula">—</td><td id="b_cm">—</td></tr>
+          <tr><td>Switching (origin + dest)</td><td id="b_sw_formula">—</td><td id="b_sw">—</td></tr>
+          <tr><td>Interchange</td><td id="b_ix_formula">—</td><td id="b_ix">—</td></tr>
+          <tr><td>Subtotal (pre-adjustment)</td><td>—</td><td id="b_sub">—</td></tr>
+          <tr class="total-row"><td>Adjusted Total (×region factor)</td><td id="b_adj_formula">—</td><td id="b_adj">—</td></tr>
+        </tbody>
+      </table>
+      <div class="rvc-display" id="rvcDisplay">
+        <div class="rvc-num" id="rvcNum">—</div>
+        <div class="rvc-label" id="rvcLabel">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="glass-section">
+    <h2>URCS Variable Cost Methodology</h2>
+    <h3>Primary Data Sources</h3>
+    <table>
+      <tr><th>Source</th><th>Description</th><th>Coverage</th></tr>
+      <tr><td><strong>STB Public Use Waybill Sample</strong></td><td>Stratified sample of rail waybills (~2–3% sample rate)</td><td>2018–2023 · 3,974 sample records · Expansion factor 30–60×</td></tr>
+      <tr><td><strong>BTS NTAD Rail Network</strong></td><td>North American rail nodes and lines</td><td>197,485 nodes · 235,654 edges · 132,602 mainline miles</td></tr>
+      <tr><td><strong>URCS Phase III Costing</strong></td><td>STB-approved variable cost coefficients</td><td>2023 coefficients · Regional adjustment factors</td></tr>
+      <tr><td><strong>BEA Economic Areas</strong></td><td>Geographic zone definitions for O-D analysis</td><td>172 US zones · 14 Canadian regions</td></tr>
+    </table>
+
+    <h3>URCS Variable Cost Formula</h3>
+    <div class="formula-box">VC = (GTM_cost × Miles × GrossWeight) + (CM_cost × Miles × Cars)
+   + (Switch × Cars × 2) + (IX_cost × Interchanges × Cars)
+
+Where:
+  GTM_cost  = $0.048 per Gross Ton-Mile
+  CM_cost   = $0.140 per car-mile
+  Switch    = $8.50 per car (origin + destination)
+  IX_cost   = $5.00 per interchange per car
+
+Regional Adjustment Factors:
+  Eastern Region (FRA Districts 1–4): × 1.18
+  Western Region (FRA Districts 5–8): × 0.94
+  Cross-Region:                       × 1.08</div>
+
+    <h3>R/VC Ratio</h3>
+    <div class="formula-box">R/VC = (Freight Revenue / URCS Variable Cost) × 100%
+
+STB Regulatory Thresholds:
+  R/VC &gt; 180%  →  Potentially subject to STB rate jurisdiction
+  R/VC &lt; 180%  →  Not subject to STB rate reasonableness review
+  R/VC &lt; 100%  →  Revenue below variable cost (below marginal cost)</div>
+  </div>
+
+  <div class="glass-section">
+    <h2>Houston Origin Market — Volume & Revenue (2018–2023)</h2>
+    <table>
+      <tr><th>Year</th><th>Carloads</th><th>Tons</th><th>Revenue ($M)</th><th>$/Ton</th></tr>
+      <tr><td>2018</td><td>22,664</td><td>1,547,060</td><td>$60.28</td><td>$38.96</td></tr>
+      <tr><td>2019</td><td>24,440</td><td>1,796,114</td><td>$70.48</td><td>$39.24</td></tr>
+      <tr><td>2020</td><td>22,001</td><td>1,567,653</td><td>$61.70</td><td>$39.36</td></tr>
+      <tr><td>2021</td><td>19,087</td><td>1,705,128</td><td>$59.12</td><td>$34.67</td></tr>
+      <tr><td>2022</td><td>20,107</td><td>2,025,657</td><td>$75.20</td><td>$37.12</td></tr>
+      <tr><td>2023</td><td>16,298</td><td>1,691,201</td><td>$55.20</td><td>$32.64</td></tr>
+      <tr><td><strong>TOTAL</strong></td><td><strong>124,597</strong></td><td><strong>10,332,813</strong></td><td><strong>$382.0M</strong></td><td><strong>$36.98</strong></td></tr>
+    </table>
+    <div class="highlight-box">
+      <p><strong>Key Observations:</strong></p>
+      <ul class="feature-list" style="margin-top:0.5rem;">
+        <li>Volume peaked in 2019 (pre-COVID) with 24,440 carloads</li>
+        <li>2020–2021 shows COVID impact with reduced volumes</li>
+        <li>2022 recovery with highest tonnage (2.0M tons)</li>
+        <li>2023 shows volume and rate softening (16,298 carloads, $32.64/ton)</li>
+      </ul>
+    </div>
+
+    <h3>Primary Destination Markets</h3>
+    <table>
+      <tr><th>Destination</th><th>Carloads</th><th>Tons</th><th>% Total</th><th>Avg Miles</th><th>$/Ton</th></tr>
+      <tr><td><strong>Dallas, TX</strong></td><td>99,078</td><td>8,378,635</td><td>58.9%</td><td>289</td><td>$26.91</td></tr>
+      <tr><td><strong>Lubbock, TX</strong></td><td>48,393</td><td>3,531,643</td><td>24.8%</td><td>309</td><td>$43.34</td></tr>
+      <tr><td><strong>Fresno, CA</strong></td><td>8,310</td><td>603,255</td><td>4.2%</td><td>1,486</td><td>$79.47</td></tr>
+      <tr><td><strong>Los Angeles, CA</strong></td><td>1,370</td><td>156,245</td><td>1.1%</td><td>1,894</td><td>$91.65</td></tr>
+      <tr><td><strong>San Francisco, CA</strong></td><td>985</td><td>112,035</td><td>0.8%</td><td>2,019</td><td>$63.35</td></tr>
+      <tr><td><strong>Salt Lake City, UT</strong></td><td>980</td><td>107,315</td><td>0.8%</td><td>1,324</td><td>$67.45</td></tr>
+      <tr><td><strong>San Antonio, TX</strong></td><td>900</td><td>92,700</td><td>0.7%</td><td>470</td><td>$47.57</td></tr>
+    </table>
+  </div>
+
+  <div class="glass-section">
+    <h2>R/VC Ratio Analysis by Distance Band</h2>
+    <table>
+      <tr><th>Distance Band</th><th>Avg R/VC</th><th>% Above 180%</th><th>Interpretation</th></tr>
+      <tr><td><strong>Short-Haul (&lt;300 mi)</strong></td><td>350%</td><td>77%</td><td>Significant pricing power due to limited modal competition and captive markets. Most lanes exceed STB rate jurisdiction threshold.</td></tr>
+      <tr><td><strong>Medium-Haul (300–600 mi)</strong></td><td>175%</td><td>16%</td><td>Competitive pricing near variable cost recovery. Some lanes approach STB jurisdiction threshold.</td></tr>
+      <tr><td><strong>Long-Haul (&gt;1000 mi)</strong></td><td>92%</td><td>1%</td><td>Below variable cost recovery. Rail competes with alternative sources and operates at marginal economics.</td></tr>
+    </table>
+    <div class="highlight-box">
+      <p><strong>Short-haul pricing power:</strong> Houston cement enjoys R/VC averaging 350% on short-haul Texas lanes — well above the 180% STB jurisdiction threshold.</p>
+      <p><strong>Long-haul cost pressure:</strong> California-bound lanes operate at R/VC of 92%, below variable cost recovery, reflecting competition with West Coast domestic production and imports.</p>
+    </div>
+  </div>
+
+  <div class="glass-section">
+    <h2>Commodity Classification</h2>
+    <table>
+      <tr><th>STCC Code</th><th>Description</th><th>Analysis Scope</th></tr>
+      <tr><td><strong>32</strong></td><td>Stone, Clay, Glass, and Concrete Products</td><td>Top-level category</td></tr>
+      <tr><td><strong>324</strong></td><td>Hydraulic Cement</td><td>Sub-category focus</td></tr>
+      <tr><td><strong>32411</strong></td><td>Portland Cement</td><td><strong>Primary analysis commodity</strong></td></tr>
+    </table>
+    <h3>Equipment Types</h3>
+    <ul class="feature-list">
+      <li><strong>Covered Hoppers:</strong> Primary equipment for bulk cement (pneumatic discharge)</li>
+      <li><strong>Typical Capacity:</strong> 90–110 tons per car</li>
+      <li><strong>Loading/Unloading:</strong> Pressure differential pneumatic systems</li>
+      <li><strong>Fleet Size:</strong> Significant captive fleet ownership by cement producers</li>
+    </ul>
+  </div>
+
+  <div class="glass-section">
+    <h2>Model Limitations</h2>
+    <ul class="feature-list">
+      <li><strong>Waybill Sample Variance:</strong> 2–3% sample rate introduces statistical uncertainty, especially for low-volume lanes</li>
+      <li><strong>BEA Geographic Masking:</strong> Origin/destination reported at BEA zone level, not specific stations or facilities</li>
+      <li><strong>Confidentiality Suppression:</strong> STB masks origin as BEA 000 when &lt;3 shippers on a lane</li>
+      <li><strong>URCS Approximation:</strong> Variable cost coefficients are industry averages, not carrier-specific</li>
+      <li><strong>Network Routing Assumptions:</strong> Shortest path may not reflect actual routing</li>
+      <li><strong>Accessorial Charges Excluded:</strong> Model covers line-haul freight revenue only</li>
+    </ul>
+  </div>
+
+  <div class="nav-buttons">
+    <a href="waybill-flows.html" class="nav-btn">STB Waybill Flows →</a>
+    <a href="network-model.html" class="nav-btn">Network Cost Model →</a>
+    <a href="index.html" class="nav-btn">← Back to Platform Home</a>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Rail Analytics Platform — Cement Rail Cost Model</strong></p>
+  <p>OceanDatum.ai — SESCO Consulting | February 2026</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">Data Sources: STB Public Use Waybill Sample (2018–2023) · BTS NTAD Rail Network · STB URCS Phase III Costing · BEA Economic Areas</p>
+</footer>
+
+<script>
+const REGION_FACTORS = { western: 0.94, eastern: 1.18, cross: 1.08, manual: 1.08 };
+const GTM_COEFF  = 0.048;
+const CM_COEFF   = 0.140;
+const SWITCH_COST = 8.50;
+const IX_COST    = 5.00;
+
+// Typical $/ton by distance for R/VC reference
+const TYPICAL_RATES = {
+  short: 37,    // < 300 mi
+  medium: 50,   // 300-600 mi
+  long: 75      // > 600 mi
+};
+
+function autoFillMarket() {
+  const m = document.getElementById('originMarket').value;
+  const regionEl = document.getElementById('region');
+  if (m === 'western') {
+    regionEl.value = 'western';
+    document.getElementById('railMiles').value = 289;
+    document.getElementById('actualRate').value = 26.91;
+  } else if (m === 'western_dallas') {
+    regionEl.value = 'eastern';
+    document.getElementById('railMiles').value = 810;
+    document.getElementById('actualRate').value = 45.00;
+  } else if (m === 'cross') {
+    regionEl.value = 'cross';
+    document.getElementById('railMiles').value = 620;
+    document.getElementById('actualRate').value = 42.00;
+  }
+}
+
+function fmt(n, decimals=2) { return '$' + n.toFixed(decimals); }
+function fmtNum(n) { return n.toLocaleString(); }
+
+function calculateURCS() {
+  const miles       = parseFloat(document.getElementById('railMiles').value) || 0;
+  const lading      = parseFloat(document.getElementById('ladingTons').value) || 100;
+  const tare        = parseFloat(document.getElementById('tareTons').value) || 30;
+  const cars        = parseFloat(document.getElementById('numCars').value) || 1;
+  const interchanges= parseFloat(document.getElementById('numInterchanges').value) || 0;
+  const regionKey   = document.getElementById('region').value;
+  const actualRate  = parseFloat(document.getElementById('actualRate').value) || 0;
+  const rf          = REGION_FACTORS[regionKey] || 1.08;
+
+  if (miles <= 0 || lading <= 0 || cars <= 0) {
+    alert('Please enter valid miles, lading weight, and number of cars.');
+    return;
+  }
+
+  const grossTons = lading + tare;
+  const GTM       = grossTons * miles;
+  const gtm_cost  = GTM_COEFF * GTM * cars;
+  const cm_cost   = CM_COEFF * miles * cars;
+  const sw_cost   = SWITCH_COST * cars * 2;
+  const ix_cost   = IX_COST * interchanges * cars;
+  const subtotal  = gtm_cost + cm_cost + sw_cost + ix_cost;
+  const adjusted  = subtotal * rf;
+  const vc_per_ton    = adjusted / (lading * cars);
+  const vc_per_tonmile= vc_per_ton / miles;
+
+  // Set results
+  document.getElementById('res_vc_total').textContent   = fmt(adjusted);
+  document.getElementById('res_vc_ton').textContent     = fmt(vc_per_ton);
+  document.getElementById('res_vc_tonmile').textContent = '$' + vc_per_tonmile.toFixed(4);
+  document.getElementById('res_gtm').textContent        = fmtNum(Math.round(GTM));
+
+  document.getElementById('b_gtm_formula').textContent  = `$0.048 × ${Math.round(GTM).toLocaleString()} GTM × ${cars} car(s)`;
+  document.getElementById('b_gtm').textContent          = fmt(gtm_cost);
+  document.getElementById('b_cm_formula').textContent   = `$0.140 × ${miles} mi × ${cars} car(s)`;
+  document.getElementById('b_cm').textContent           = fmt(cm_cost);
+  document.getElementById('b_sw_formula').textContent   = `$8.50 × ${cars} car(s) × 2`;
+  document.getElementById('b_sw').textContent           = fmt(sw_cost);
+  document.getElementById('b_ix_formula').textContent   = `$5.00 × ${interchanges} × ${cars} car(s)`;
+  document.getElementById('b_ix').textContent           = fmt(ix_cost);
+  document.getElementById('b_sub').textContent          = fmt(subtotal);
+  document.getElementById('b_adj_formula').textContent  = `× ${rf.toFixed(2)} (${regionKey} region)`;
+  document.getElementById('b_adj').textContent          = fmt(adjusted);
+
+  // R/VC calculation
+  const rvcEl    = document.getElementById('rvcDisplay');
+  const rvcNum   = document.getElementById('rvcNum');
+  const rvcLabel = document.getElementById('rvcLabel');
+
+  if (actualRate > 0) {
+    const revenue  = actualRate * lading * cars;
+    const rvc      = (revenue / adjusted) * 100;
+    rvcNum.textContent = rvc.toFixed(0) + '%';
+    rvcEl.className    = 'rvc-display ' + (rvc > 180 ? 'rvc-above' : 'rvc-below');
+
+    let interpretation = '';
+    if (rvc >= 180) interpretation = `R/VC ${rvc.toFixed(0)}% — Above 180% threshold. Potentially subject to STB rate jurisdiction.`;
+    else if (rvc >= 100) interpretation = `R/VC ${rvc.toFixed(0)}% — Below 180% threshold. Not subject to STB rate reasonableness review.`;
+    else interpretation = `R/VC ${rvc.toFixed(0)}% — Below variable cost recovery. Revenue does not cover marginal cost.`;
+    rvcLabel.textContent = interpretation;
+  } else {
+    rvcNum.textContent = '—';
+    rvcEl.className    = 'rvc-display rvc-below';
+    rvcLabel.textContent = 'Enter actual rate ($/ton) above to calculate R/VC ratio.';
+  }
+
+  document.getElementById('calcResults').classList.add('visible');
+  document.getElementById('calcResults').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Network Cost Model — Rail Analytics Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; color: rgba(255,255,255,0.9); min-height: 100vh; line-height: 1.7; }
+body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%); z-index: -1; }
+.navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
+.navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6); text-decoration: none; }
+.navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+.navbar-brand a:hover { color: #64ffb4; }
+.navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.nav-link { font-size: 0.85rem; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.4rem 0.9rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; transition: all 0.3s; }
+.nav-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+.breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.4); padding: 5.5rem 2rem 0; max-width: 1100px; margin: 0 auto; }
+.breadcrumb a { color: rgba(100,255,180,0.8); text-decoration: none; }
+.breadcrumb a:hover { color: #64ffb4; }
+.main-content { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+.page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.page-header h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 0.08em; color: #fff; margin-bottom: 0.5rem; }
+.page-header .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-style: italic; }
+.glass-section { background: rgba(0,0,0,0.38); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+.glass-section h2 { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.05em; text-transform: uppercase; }
+.glass-section h3 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.75); margin: 1.4rem 0 0.75rem; letter-spacing: 0.03em; }
+.glass-section p { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-bottom: 0.85rem; }
+table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.87rem; }
+th { background: rgba(100,255,180,0.07); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.12); padding: 0.65rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; }
+td { border: 1px solid rgba(255,255,255,0.07); padding: 0.65rem 0.9rem; color: rgba(255,255,255,0.72); vertical-align: top; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+.feature-list { list-style: none; padding: 0; }
+.feature-list li { padding: 0.28rem 0 0.28rem 1.35rem; position: relative; color: rgba(255,255,255,0.68); font-size: 0.88rem; }
+.feature-list li::before { content: '▸'; position: absolute; left: 0; color: #64ffb4; font-size: 0.78rem; }
+.highlight-box { background: rgba(100,255,180,0.05); border-left: 3px solid rgba(100,255,180,0.55); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+.highlight-box p { margin: 0 0 0.5rem; font-size: 0.88rem; }
+.highlight-box p:last-child { margin: 0; }
+.code-box { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.8rem; color: rgba(100,255,180,0.85); line-height: 1.9; overflow-x: auto; white-space: pre; }
+.nav-buttons { display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
+.nav-btn { flex: 1; min-width: 180px; padding: 0.6rem 1.1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: rgba(255,255,255,0.8); text-decoration: none; text-align: center; font-size: 0.85rem; transition: all 0.3s; }
+.nav-btn:hover { background: rgba(100,255,180,0.08); border-color: rgba(100,255,180,0.35); color: #64ffb4; }
+
+/* ── INTERACTIVE ROUTE COST CALCULATOR ── */
+.calculator { background: rgba(0,0,0,0.5); border: 1px solid rgba(100,255,180,0.25); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+.calculator h2 { font-size: 1.1rem; font-weight: 600; color: #64ffb4; margin-bottom: 1.5rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+.calc-field label { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.calc-field input, .calc-field select { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; padding: 0.6rem 0.85rem; color: rgba(255,255,255,0.9); font-family: 'Space Grotesk', sans-serif; font-size: 0.92rem; transition: border-color 0.3s; -webkit-appearance: none; }
+.calc-field input:focus, .calc-field select:focus { outline: none; border-color: rgba(100,255,180,0.5); background: rgba(100,255,180,0.04); }
+.calc-field select option { background: #1a1a2e; color: #fff; }
+.calc-field .hint { font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-top: 0.3rem; }
+.calc-btn { background: rgba(100,255,180,0.12); border: 1px solid rgba(100,255,180,0.4); border-radius: 8px; padding: 0.75rem 2rem; color: #64ffb4; font-family: 'Space Grotesk', sans-serif; font-size: 0.92rem; font-weight: 600; cursor: pointer; transition: all 0.3s; letter-spacing: 0.04em; }
+.calc-btn:hover { background: rgba(100,255,180,0.22); transform: translateY(-1px); }
+.calc-results { display: none; margin-top: 1.75rem; }
+.calc-results.visible { display: block; }
+.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.result-card { background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem; text-align: center; }
+.result-card .r-label { font-size: 0.72rem; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.result-card .r-value { font-size: 1.5rem; font-weight: 600; color: #fff; }
+.result-card .r-sub { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.2rem; }
+.breakdown-table { width: 100%; border-collapse: collapse; margin-top: 1.25rem; font-size: 0.85rem; }
+.breakdown-table th { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 0.85rem; text-align: left; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.04em; }
+.breakdown-table td { border: 1px solid rgba(255,255,255,0.07); padding: 0.5rem 0.85rem; color: rgba(255,255,255,0.72); }
+.breakdown-table tr.total-row td { border-top: 1px solid rgba(100,255,180,0.3); font-weight: 600; color: #64ffb4; }
+.circuity-display { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1rem 1.5rem; margin-top: 1rem; }
+.circuity-display .circ-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; text-transform: uppercase; }
+.circuity-display .circ-value { font-size: 1.8rem; font-weight: 600; color: #64ffb4; margin: 0.25rem 0; }
+.circuity-display .circ-desc { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+.preset-routes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+.preset-btn { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.8rem 1rem; cursor: pointer; transition: all 0.3s; text-align: left; }
+.preset-btn:hover { border-color: rgba(100,255,180,0.35); background: rgba(100,255,180,0.04); }
+.preset-btn .p-name { font-size: 0.88rem; color: rgba(255,255,255,0.85); font-weight: 600; }
+.preset-btn .p-details { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 0.2rem; }
+
+footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
+@media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .breadcrumb { padding: 5.5rem 1rem 0; } .page-header h1 { font-size: 1.6rem; } }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="navbar-brand">An <a href="../../index.html">oceandatum.ai</a> project</span>
+  <div class="navbar-right">
+    <a href="index.html" class="nav-link">Rail Platform</a>
+    <a href="../../projects-hub.html" class="nav-link">Projects</a>
+    <a href="../../index.html" class="nav-link">Home</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Rail Analytics Platform</a> / Network Cost Model
+</div>
+
+<div class="main-content">
+
+  <div class="page-header">
+    <h1>Rail Network Cost Model</h1>
+    <p class="subtitle">NetworkX-Based Routing · URCS Phase III Variable Cost Engine · NTAD 197K-Node Rail Network</p>
+  </div>
+
+  <div class="glass-section">
+    <h2>Model Overview</h2>
+    <p>This network-based rail cost model combines graph routing algorithms with STB URCS Phase III variable cost methodology to calculate freight transportation costs between any origin-destination pair on the North American rail network. The model uses NetworkX MultiDiGraph data structures to represent the BTS NTAD rail network topology and applies Dijkstra's shortest path algorithm to determine optimal routing.</p>
+    <div class="highlight-box">
+      <p><strong>Core Capabilities:</strong></p>
+      <ul class="feature-list" style="margin-top:0.5rem;">
+        <li>Shortest path routing on 197,485-node rail network graph</li>
+        <li>URCS Phase III variable cost calculation (GTM + Car-Mile + Switch + Interchange)</li>
+        <li>Interchange detection and carrier transition identification</li>
+        <li>Circuity factor analysis (actual rail miles / straight-line distance)</li>
+        <li>Interactive map visualization (Folium with route overlays)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE ROUTE COST CALCULATOR -->
+  <div class="calculator">
+    <h2>⚙ Route Cost Calculator</h2>
+    <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);margin-bottom:1.25rem;">Model a rail freight move using URCS Phase III methodology. Select a preset corridor or enter custom parameters.</p>
+
+    <p style="font-size:0.8rem;color:rgba(255,255,255,0.45);margin-bottom:0.75rem;letter-spacing:0.04em;text-transform:uppercase;">Preset Corridors</p>
+    <div class="preset-routes">
+      <button class="preset-btn" onclick="loadPreset('houston_dallas')">
+        <div class="p-name">Houston → Dallas</div>
+        <div class="p-details">289 mi · Western · 0 IX</div>
+      </button>
+      <button class="preset-btn" onclick="loadPreset('houston_la')">
+        <div class="p-name">Houston → Los Angeles</div>
+        <div class="p-details">1,894 mi · Western · 0 IX</div>
+      </button>
+      <button class="preset-btn" onclick="loadPreset('nola_atlanta')">
+        <div class="p-name">NOLA → Atlanta</div>
+        <div class="p-details">520 mi · Cross-Region · 1 IX</div>
+      </button>
+      <button class="preset-btn" onclick="loadPreset('nola_chicago')">
+        <div class="p-name">NOLA → Chicago (CN)</div>
+        <div class="p-details">928 mi · Cross-Region · 0 IX</div>
+      </button>
+      <button class="preset-btn" onclick="loadPreset('tampa_baltimore')">
+        <div class="p-name">Tampa → Baltimore</div>
+        <div class="p-details">1,148 mi · Eastern · 1 IX</div>
+      </button>
+      <button class="preset-btn" onclick="loadPreset('houston_kc')">
+        <div class="p-name">Houston → Kansas City</div>
+        <div class="p-details">718 mi · Western · 0 IX</div>
+      </button>
+    </div>
+
+    <div class="calc-grid">
+      <div class="calc-field">
+        <label>Rail Miles (Actual)</label>
+        <input type="number" id="r_miles" value="289" min="1" max="6000" placeholder="e.g. 289">
+        <div class="hint">Use actual rail miles, not straight-line</div>
+      </div>
+      <div class="calc-field">
+        <label>Straight-Line Miles</label>
+        <input type="number" id="r_sl_miles" value="245" min="1" max="5000" placeholder="e.g. 245">
+        <div class="hint">For circuity factor calculation</div>
+      </div>
+      <div class="calc-field">
+        <label>Lading Weight (tons/car)</label>
+        <input type="number" id="r_lading" value="100" min="1" max="130" placeholder="e.g. 100">
+      </div>
+      <div class="calc-field">
+        <label>Tare Weight (tons/car)</label>
+        <input type="number" id="r_tare" value="30" min="10" max="50" placeholder="e.g. 30">
+      </div>
+      <div class="calc-field">
+        <label>Number of Cars</label>
+        <input type="number" id="r_cars" value="1" min="1" max="200" placeholder="e.g. 1">
+      </div>
+      <div class="calc-field">
+        <label>Number of Interchanges</label>
+        <input type="number" id="r_ix" value="0" min="0" max="5" placeholder="e.g. 0">
+        <div class="hint">Carrier-to-carrier handoffs</div>
+      </div>
+      <div class="calc-field">
+        <label>Track Type</label>
+        <select id="r_tracktype">
+          <option value="1.0">Mainline (no penalty)</option>
+          <option value="1.2">Branch Line (1.2× penalty)</option>
+          <option value="1.5">Siding / Local (1.5× penalty)</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label>Region</label>
+        <select id="r_region">
+          <option value="0.94">Western (FRA 5–8): 0.94×</option>
+          <option value="1.18">Eastern (FRA 1–4): 1.18×</option>
+          <option value="1.08" selected>Cross-Region: 1.08×</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculateRoute()">Calculate Route Cost →</button>
+
+    <div class="calc-results" id="routeResults">
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="r-label">Total Variable Cost</div>
+          <div class="r-value" id="rr_total">—</div>
+          <div class="r-sub">per shipment</div>
+        </div>
+        <div class="result-card">
+          <div class="r-label">VC per Ton</div>
+          <div class="r-value" id="rr_ton">—</div>
+          <div class="r-sub">$/ton lading</div>
+        </div>
+        <div class="result-card">
+          <div class="r-label">VC per Ton-Mile</div>
+          <div class="r-value" id="rr_tonmile">—</div>
+          <div class="r-sub">$/ton-mile</div>
+        </div>
+        <div class="result-card">
+          <div class="r-label">Gross Ton-Miles</div>
+          <div class="r-value" id="rr_gtm">—</div>
+          <div class="r-sub">per car</div>
+        </div>
+      </div>
+
+      <table class="breakdown-table">
+        <thead>
+          <tr><th>Cost Element</th><th>Coefficient</th><th>Quantity</th><th>Amount</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Gross Ton-Mile (GTM)</td><td>$0.048 / GTM</td><td id="rr_gtm_qty">—</td><td id="rr_gtm_cost">—</td></tr>
+          <tr><td>Car-Mile</td><td>$0.140 / car-mile</td><td id="rr_cm_qty">—</td><td id="rr_cm_cost">—</td></tr>
+          <tr><td>Switching (origin + dest)</td><td>$8.50 / car × 2</td><td id="rr_sw_qty">—</td><td id="rr_sw_cost">—</td></tr>
+          <tr><td>Interchange</td><td>$5.00 / IX / car</td><td id="rr_ix_qty">—</td><td id="rr_ix_cost">—</td></tr>
+          <tr><td>Track Type Adjustment</td><td id="rr_track_coeff">—</td><td>—</td><td id="rr_track_adj">—</td></tr>
+          <tr><td>Subtotal (pre-region)</td><td>—</td><td>—</td><td id="rr_subtotal">—</td></tr>
+          <tr class="total-row"><td>Adjusted Total</td><td id="rr_region_factor">—</td><td>—</td><td id="rr_adjusted">—</td></tr>
+        </tbody>
+      </table>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;">
+        <div class="circuity-display">
+          <div class="circ-label">Circuity Factor</div>
+          <div class="circ-value" id="rr_circuity">—</div>
+          <div class="circ-desc" id="rr_circuity_desc">—</div>
+        </div>
+        <div class="circuity-display">
+          <div class="circ-label">Effective Miles</div>
+          <div class="circ-value" id="rr_eff_miles">—</div>
+          <div class="circ-desc" id="rr_eff_desc">Rail miles after track type weighting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="glass-section">
+    <h2>Network Topology — NTAD Rail Network</h2>
+    <table>
+      <tr><th>Network Component</th><th>Count</th><th>Description</th></tr>
+      <tr><td><strong>Nodes</strong></td><td>197,485</td><td>Junction points, yards, terminals, sidings</td></tr>
+      <tr><td><strong>Edges</strong></td><td>235,654</td><td>Track segments with distance and ownership attributes</td></tr>
+      <tr><td><strong>Mainline Miles</strong></td><td>132,602</td><td>Primary freight corridors (excludes sidings, yards)</td></tr>
+      <tr><td><strong>Total Track Miles</strong></td><td>165,000+</td><td>All track including industrial leads, yards</td></tr>
+    </table>
+
+    <h3>NetworkX Graph Structure</h3>
+    <div class="code-box">import networkx as nx
+
+G = nx.MultiDiGraph()  # Multiple edges between node pairs (parallel tracks)
+
+# Node attributes
+G.add_node(node_id,
+           lat=latitude, lon=longitude,
+           type='junction|yard|terminal',
+           name='facility_name')
+
+# Edge attributes
+G.add_edge(from_node, to_node,
+           distance=miles,
+           carrier='UP|BNSF|NS|CSX|CN|CPKC',
+           track_type='mainline|branch|siding',
+           speed_limit=mph)</div>
+  </div>
+
+  <div class="glass-section">
+    <h2>Routing Algorithm</h2>
+    <h3>Dijkstra Shortest Path</h3>
+    <p>The model uses Dijkstra's algorithm to find minimum-cost paths. It can minimize distance, URCS variable cost, transit time, or number of interchanges.</p>
+    <ul class="feature-list">
+      <li><strong>Distance Minimization:</strong> Find shortest rail mileage route</li>
+      <li><strong>Cost Minimization:</strong> Find lowest URCS variable cost route</li>
+      <li><strong>Time Minimization:</strong> Find fastest route based on speed limits and congestion</li>
+      <li><strong>Interchange Minimization:</strong> Prefer single-line routes, penalize carrier transitions</li>
+    </ul>
+
+    <h3>Mainline Preference Weighting</h3>
+    <div class="code-box">def calculate_edge_weight(edge):
+    base_distance = edge['distance']
+    if edge['track_type'] == 'mainline':
+        weight = base_distance * 1.0    # No penalty
+    elif edge['track_type'] == 'branch':
+        weight = base_distance * 1.2    # 20% penalty
+    else:  # siding or yard track
+        weight = base_distance * 1.5    # 50% penalty
+    return weight</div>
+
+    <h3>Interchange Detection</h3>
+    <div class="code-box">def detect_interchanges(path, graph):
+    interchanges = []
+    prev_carrier = None
+    for i in range(len(path) - 1):
+        edge_data    = graph.get_edge_data(path[i], path[i+1])
+        curr_carrier = edge_data[0]['carrier']
+        if prev_carrier and curr_carrier != prev_carrier:
+            interchanges.append({
+                'node': path[i],
+                'from_carrier': prev_carrier,
+                'to_carrier':   curr_carrier
+            })
+        prev_carrier = curr_carrier
+    return interchanges</div>
+  </div>
+
+  <div class="glass-section">
+    <h2>URCS Cost Coefficients (2023)</h2>
+    <table>
+      <tr><th>Cost Element</th><th>2023 Coefficient</th><th>Unit</th><th>Description</th></tr>
+      <tr><td><strong>Gross Ton-Mile (GTM)</strong></td><td>$0.048</td><td>per GTM</td><td>Cost of moving gross weight (lading + tare) one mile</td></tr>
+      <tr><td><strong>Car-Mile</strong></td><td>$0.140</td><td>per car-mile</td><td>Equipment utilization cost per car per mile</td></tr>
+      <tr><td><strong>Switch Move</strong></td><td>$8.50</td><td>per car</td><td>Switching at origin and destination (×2)</td></tr>
+      <tr><td><strong>Interchange</strong></td><td>$5.00</td><td>per interchange</td><td>Cost of carrier-to-carrier car handoff</td></tr>
+    </table>
+    <table>
+      <tr><th>Region</th><th>FRA Districts</th><th>Adjustment Factor</th></tr>
+      <tr><td><strong>Eastern</strong></td><td>1–4</td><td>1.18× (higher cost)</td></tr>
+      <tr><td><strong>Western</strong></td><td>5–8</td><td>0.94× (lower cost)</td></tr>
+      <tr><td><strong>Cross-Region</strong></td><td>Mixed</td><td>1.08× (blended)</td></tr>
+    </table>
+
+    <h3>Full Calculation Example: Houston → Dallas</h3>
+    <div class="code-box"># 289 miles, 100 tons lading, 30 tons tare, 1 car, 0 interchanges
+
+GTM     = (100 + 30) × 289  = 37,570 GTM
+GTM_cost = 37,570 × $0.048 = $1,803.36
+
+CM_cost  = 289 × $0.140    = $40.46
+
+Switch   = 2 × $8.50       = $17.00
+
+IX_cost  = 0 × $5.00       = $0.00
+
+Subtotal = $1,803.36 + $40.46 + $17.00 = $1,860.82
+Adjusted = $1,860.82 × 0.94 (Western)  = $1,749.17
+
+VC/ton   = $1,749.17 / 100 tons        = $17.49/ton
+Actual avg (waybill): $26.91/ton
+R/VC     = $26.91 / $17.49             = 154%</div>
+  </div>
+
+  <div class="glass-section">
+    <h2>Circuity Factor Analysis</h2>
+    <p>Circuity factor measures the ratio of actual rail miles to straight-line distance. Rail routes follow established corridors and cannot travel "as the crow flies."</p>
+    <table>
+      <tr><th>Corridor Type</th><th>Typical Circuity</th><th>Example</th></tr>
+      <tr><td><strong>Transcontinental Mainline</strong></td><td>1.10 – 1.15</td><td>Chicago to LA via UP Southern route</td></tr>
+      <tr><td><strong>Regional Corridor</strong></td><td>1.15 – 1.25</td><td>Houston to Dallas via UP</td></tr>
+      <tr><td><strong>Branch Line / Circuitous</strong></td><td>1.25 – 1.40</td><td>Routes requiring multiple interchanges or mountain crossings</td></tr>
+      <tr><td><strong>Highly Constrained Geography</strong></td><td>1.40+</td><td>Coastal routes with mountain barriers</td></tr>
+    </table>
+    <div class="code-box">import math
+
+def haversine_distance(lat1, lon1, lat2, lon2):
+    R    = 3959  # Earth radius in miles
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a    = (math.sin(dlat/2)**2 +
+            math.cos(math.radians(lat1)) *
+            math.cos(math.radians(lat2)) *
+            math.sin(dlon/2)**2)
+    return R * 2 * math.asin(math.sqrt(a))
+
+# Houston → Dallas example:
+# Straight-line: 245 miles
+# Rail miles:    289 miles
+# Circuity:      289 / 245 = 1.18</div>
+  </div>
+
+  <div class="glass-section">
+    <h2>Model Limitations</h2>
+    <ul class="feature-list">
+      <li><strong>Operational Routing:</strong> Model finds shortest/lowest-cost path but actual routing may reflect commercial agreements, capacity constraints, or service patterns</li>
+      <li><strong>Dynamic Network:</strong> Static model does not account for congestion, maintenance outages, or seasonal capacity constraints</li>
+      <li><strong>URCS Averages:</strong> Variable cost coefficients are industry averages, not carrier-specific actuals</li>
+      <li><strong>Missing Facilities:</strong> Some industrial leads, transload facilities, or private track may not appear in public NTAD dataset</li>
+    </ul>
+  </div>
+
+  <div class="nav-buttons">
+    <a href="cement-costing.html" class="nav-btn">Cement Cost Model →</a>
+    <a href="geospatial.html" class="nav-btn">Geospatial Analysis →</a>
+    <a href="waybill-flows.html" class="nav-btn">Waybill Flows →</a>
+    <a href="index.html" class="nav-btn">← Back to Platform Home</a>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Rail Analytics Platform — Network Cost Model</strong></p>
+  <p>OceanDatum.ai — SESCO Consulting | February 2026</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">Data Sources: BTS NTAD Rail Network · STB URCS Phase III Coefficients · NetworkX Graph Algorithms · GeoPandas Spatial Processing</p>
+</footer>
+
+<script>
+const PRESETS = {
+  houston_dallas: { miles: 289, sl: 245, lading: 100, tare: 30, cars: 1, ix: 0, track: '1.0', region: '0.94' },
+  houston_la:     { miles: 1894, sl: 1550, lading: 100, tare: 30, cars: 1, ix: 0, track: '1.0', region: '0.94' },
+  nola_atlanta:   { miles: 520, sl: 470, lading: 100, tare: 30, cars: 1, ix: 1, track: '1.0', region: '1.08' },
+  nola_chicago:   { miles: 928, sl: 840, lading: 100, tare: 30, cars: 1, ix: 0, track: '1.0', region: '1.08' },
+  tampa_baltimore:{ miles: 1148, sl: 985, lading: 100, tare: 30, cars: 1, ix: 1, track: '1.0', region: '1.18' },
+  houston_kc:     { miles: 718, sl: 640, lading: 100, tare: 30, cars: 1, ix: 0, track: '1.0', region: '0.94' }
+};
+
+function loadPreset(key) {
+  const p = PRESETS[key];
+  document.getElementById('r_miles').value   = p.miles;
+  document.getElementById('r_sl_miles').value= p.sl;
+  document.getElementById('r_lading').value  = p.lading;
+  document.getElementById('r_tare').value    = p.tare;
+  document.getElementById('r_cars').value    = p.cars;
+  document.getElementById('r_ix').value      = p.ix;
+  document.getElementById('r_tracktype').value = p.track;
+  document.getElementById('r_region').value  = p.region;
+  calculateRoute();
+}
+
+function fmt(n) { return '$' + n.toFixed(2); }
+function fmtN(n) { return n.toLocaleString(); }
+
+function calculateRoute() {
+  const miles    = parseFloat(document.getElementById('r_miles').value) || 0;
+  const slMiles  = parseFloat(document.getElementById('r_sl_miles').value) || miles;
+  const lading   = parseFloat(document.getElementById('r_lading').value) || 100;
+  const tare     = parseFloat(document.getElementById('r_tare').value) || 30;
+  const cars     = parseFloat(document.getElementById('r_cars').value) || 1;
+  const ix       = parseFloat(document.getElementById('r_ix').value) || 0;
+  const trackMult= parseFloat(document.getElementById('r_tracktype').value) || 1.0;
+  const rf       = parseFloat(document.getElementById('r_region').value) || 1.08;
+
+  if (miles <= 0) { alert('Please enter valid rail miles.'); return; }
+
+  const effMiles  = miles * trackMult;
+  const grossTons = lading + tare;
+  const GTM       = grossTons * effMiles;
+  const gtm_cost  = 0.048 * GTM * cars;
+  const cm_cost   = 0.140 * effMiles * cars;
+  const sw_cost   = 8.50 * cars * 2;
+  const ix_cost   = 5.00 * ix * cars;
+
+  const subtotal_pre_track = (0.048 * grossTons * miles * cars) + (0.140 * miles * cars) + sw_cost + ix_cost;
+  const track_adj = (gtm_cost + cm_cost + sw_cost + ix_cost) - subtotal_pre_track;
+  const subtotal  = gtm_cost + cm_cost + sw_cost + ix_cost;
+  const adjusted  = subtotal * rf;
+  const vc_ton    = adjusted / (lading * cars);
+  const vc_tonmile= vc_ton / miles;
+  const circuity  = slMiles > 0 ? (miles / slMiles) : 0;
+
+  document.getElementById('rr_total').textContent    = fmt(adjusted);
+  document.getElementById('rr_ton').textContent      = fmt(vc_ton);
+  document.getElementById('rr_tonmile').textContent  = '$' + vc_tonmile.toFixed(4);
+  document.getElementById('rr_gtm').textContent      = fmtN(Math.round(GTM));
+
+  document.getElementById('rr_gtm_qty').textContent  = `${fmtN(Math.round(GTM))} GTM × ${cars} car(s)`;
+  document.getElementById('rr_gtm_cost').textContent = fmt(gtm_cost);
+  document.getElementById('rr_cm_qty').textContent   = `${effMiles.toFixed(1)} eff. mi × ${cars} car(s)`;
+  document.getElementById('rr_cm_cost').textContent  = fmt(cm_cost);
+  document.getElementById('rr_sw_qty').textContent   = `${cars} car(s) × 2`;
+  document.getElementById('rr_sw_cost').textContent  = fmt(sw_cost);
+  document.getElementById('rr_ix_qty').textContent   = `${ix} IX × ${cars} car(s)`;
+  document.getElementById('rr_ix_cost').textContent  = fmt(ix_cost);
+  document.getElementById('rr_track_coeff').textContent = trackMult > 1 ? `Track multiplier: ${trackMult}×` : 'No track penalty';
+  document.getElementById('rr_track_adj').textContent   = track_adj !== 0 ? fmt(track_adj) : '$0.00';
+  document.getElementById('rr_subtotal').textContent = fmt(subtotal);
+  document.getElementById('rr_region_factor').textContent = `Region factor: ${rf.toFixed(2)}×`;
+  document.getElementById('rr_adjusted').textContent = fmt(adjusted);
+
+  document.getElementById('rr_circuity').textContent = circuity.toFixed(2) + '×';
+  let circDesc = '';
+  if (circuity < 1.15) circDesc = 'Transcontinental mainline (efficient)';
+  else if (circuity < 1.25) circDesc = 'Regional corridor (typical)';
+  else if (circuity < 1.40) circDesc = 'Branch/circuitous routing';
+  else circDesc = 'Highly constrained geography';
+  document.getElementById('rr_circuity_desc').textContent = circDesc;
+  document.getElementById('rr_eff_miles').textContent = effMiles.toFixed(1);
+
+  document.getElementById('routeResults').classList.add('visible');
+  document.getElementById('routeResults').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+
+</body>
+</html>

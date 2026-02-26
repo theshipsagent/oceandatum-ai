@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markets &amp; Routing — Rail Analytics Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; color: rgba(255,255,255,0.9); min-height: 100vh; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%); z-index: -1; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6); }
+    .navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+    .navbar-brand a:hover { color: #64ffb4; }
+    .navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .nav-link { font-size: 0.85rem; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.4rem 0.9rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; transition: all 0.3s; }
+    .nav-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+    .breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.4); padding: 5.5rem 2rem 0; max-width: 1100px; margin: 0 auto; }
+    .breadcrumb a { color: rgba(100,255,180,0.8); text-decoration: none; }
+    .breadcrumb a:hover { color: #64ffb4; }
+    .main-content { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+    .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .page-header h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 0.08em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-style: italic; }
+    .glass-section { background: rgba(0,0,0,0.38); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+    .glass-section h2 { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.05em; text-transform: uppercase; }
+    .glass-section h3 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.75); margin: 1.4rem 0 0.75rem; }
+    .glass-section p { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-bottom: 0.85rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.87rem; }
+    th { background: rgba(100,255,180,0.07); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.12); padding: 0.65rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; }
+    td { border: 1px solid rgba(255,255,255,0.07); padding: 0.65rem 0.9rem; color: rgba(255,255,255,0.72); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .feature-list { list-style: none; padding: 0; }
+    .feature-list li { padding: 0.28rem 0 0.28rem 1.35rem; position: relative; color: rgba(255,255,255,0.68); font-size: 0.88rem; }
+    .feature-list li::before { content: '▸'; position: absolute; left: 0; color: #64ffb4; font-size: 0.78rem; }
+    .highlight-box { background: rgba(100,255,180,0.05); border-left: 3px solid rgba(100,255,180,0.55); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .highlight-box p { margin: 0 0 0.5rem; font-size: 0.88rem; }
+    .highlight-box p:last-child { margin: 0; }
+    .alert-box { background: rgba(255,200,80,0.05); border-left: 3px solid rgba(255,200,80,0.5); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .alert-box p { margin: 0 0 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .alert-box p:last-child { margin: 0; }
+    .code-box { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.8rem; color: rgba(100,255,180,0.85); line-height: 1.9; overflow-x: auto; white-space: pre; }
+    .schematic { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.75rem; color: rgba(100,255,180,0.7); line-height: 1.7; overflow-x: auto; white-space: pre; }
+    .investigation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+    .investigation-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.5rem; transition: all 0.3s; }
+    .investigation-card:hover { border-color: rgba(100,255,180,0.3); transform: translateY(-3px); }
+    .investigation-card h4 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .investigation-card p { font-size: 0.83rem; color: rgba(255,255,255,0.6); margin-bottom: 0.6rem; }
+    .investigation-card a { display: inline-block; padding: 0.4rem 0.85rem; background: rgba(100,255,180,0.08); border: 1px solid rgba(100,255,180,0.3); border-radius: 5px; color: #64ffb4; text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: all 0.3s; }
+    .investigation-card a:hover { background: rgba(100,255,180,0.15); }
+    .nav-buttons { display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .nav-btn { flex: 1; min-width: 180px; padding: 0.6rem 1.1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: rgba(255,255,255,0.8); text-decoration: none; text-align: center; font-size: 0.85rem; transition: all 0.3s; }
+    .nav-btn:hover { background: rgba(100,255,180,0.08); border-color: rgba(100,255,180,0.35); color: #64ffb4; }
+    footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
+    @media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .breadcrumb { padding: 5.5rem 1rem 0; } .page-header h1 { font-size: 1.6rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="navbar-brand">An <a href="../../index.html">oceandatum.ai</a> project</span>
+  <div class="navbar-right">
+    <a href="index.html" class="nav-link">Rail Platform</a>
+    <a href="../../projects-hub.html" class="nav-link">Projects</a>
+    <a href="../../index.html" class="nav-link">Home</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../../index.html">Home</a> / <a href="../../projects-hub.html">Projects</a> / <a href="index.html">Rail Analytics Platform</a> / Markets &amp; Routing
+</div>
+
+<div class="main-content">
+  <div class="page-header">
+    <h1>Class I Railroad Markets &amp; Routing</h1>
+    <p class="subtitle">Reachable Destinations from Gulf Coast Origins · UP, BNSF, NS, CSX, CN, CPKC Primary Corridors &amp; Interchange Gateways</p>
+  </div>
+
+  <!-- Overview -->
+  <div class="glass-section">
+    <h2>Overview</h2>
+    <p>The Class I railroad network divides broadly into eastern and western halves, with the Mississippi River serving as the primary structural boundary. Western carriers (UP, BNSF, CPKC) dominate routes from the Gulf Coast to the Pacific Coast, Mexico, and the northern Plains. Eastern carriers (NS, CSX) serve the network from the Mississippi eastward to the Atlantic. Canadian National (CN) operates a distinctive north-south spine from the Gulf Coast through the Midwest to Canada. This east-west structural division means that most long-haul movements requiring coast-to-coast service require either an interline junction or — for the limited true cross-network routes — a single carrier with coast-to-coast coverage (which currently only exists in the proposed UP-NS merger scenario).</p>
+    <div class="highlight-box">
+      <p><strong>Single-Line vs. Interline — Key Concept</strong></p>
+      <p><strong>Single-line service:</strong> The origin and destination are both on the same carrier's network. The carrier controls pricing, service, and car supply end-to-end. Shippers strongly prefer single-line for service reliability and rate simplicity.</p>
+      <p><strong>Interline service:</strong> The origin is on one carrier and the destination is on another. Cars are exchanged at a physical interchange gateway. Pricing is negotiated between the two carriers, often as a "through rate" or as separate line-haul components. Interline service introduces additional dwell time at the interchange junction and potential for service coordination failures.</p>
+      <p>At the New Orleans gateway, all east-west movements are interline — the Mississippi River defines the physical boundary between carrier territories, and all cars crossing the river move through Rail NOLA switching or the Huey P. Long Bridge interchange.</p>
+    </div>
+  </div>
+
+  <!-- Western Carriers -->
+  <div class="glass-section">
+    <h2>Western Carriers</h2>
+
+    <h3>Union Pacific (UP)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Market Region</th>
+          <th>Key Route</th>
+          <th>Primary Gateways</th>
+          <th>Approx. Transit Days (from NOLA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Los Angeles / Long Beach</td>
+          <td>Sunset Route — NOLA to El Paso to LA</td>
+          <td>El Paso, Yuma, Los Angeles</td>
+          <td>3–4 days (intermodal); 5–7 days (carload)</td>
+        </tr>
+        <tr>
+          <td>Houston / Dallas / San Antonio</td>
+          <td>Sunset Route (west) + Eagle Pass (Mexico)</td>
+          <td>Houston, San Antonio, Eagle Pass</td>
+          <td>1–2 days</td>
+        </tr>
+        <tr>
+          <td>Chicago</td>
+          <td>Gulf Subdivision via Jackson, MS to Memphis then north</td>
+          <td>Memphis, St. Louis, Chicago</td>
+          <td>2–3 days (intermodal); 3–5 days (carload)</td>
+        </tr>
+        <tr>
+          <td>Pacific Northwest</td>
+          <td>Overland Route via Salt Lake City</td>
+          <td>Denver, Salt Lake City, Portland, Seattle</td>
+          <td>4–5 days (intermodal)</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="feature-list">
+      <li>UP Sunset Route: NOLA → Baton Rouge → Lafayette → Houston → San Antonio → El Paso → Tucson → Los Angeles (1,996 miles)</li>
+      <li>UP Gulf Subdivision: NOLA → Jackson, MS → Memphis, TN — primary route to Midwest interchange</li>
+      <li>UP Mexico corridors: Eagle Pass and Laredo gateways to CPKC/FXE Mexican network</li>
+      <li>UP Pacific Extension: Salt Lake City to Portland/Seattle via Overland Route</li>
+    </ul>
+    <div class="highlight-box">
+      <p><strong>UP Houston Gateway Dominance</strong></p>
+      <p>UP's most significant competitive advantage from the Gulf Coast is its direct Sunset Route connection through Houston, which serves as the primary gateway for Mexico traffic and as a major industrial chemical distribution hub. UP is the dominant carrier for NOLA-to-Houston movements and for any traffic requiring Mexico interchange at Eagle Pass or Laredo. The Houston gateway is where UP's market position is strongest relative to BNSF and CPKC.</p>
+    </div>
+
+    <h3>BNSF Railway</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Market Region</th>
+          <th>Key Route</th>
+          <th>Primary Gateways</th>
+          <th>Approx. Transit Days (from NOLA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Los Angeles / Long Beach</td>
+          <td>Southern Transcon — NOLA via Shreveport to Belen, NM to LA</td>
+          <td>Shreveport, Amarillo, Belen, Los Angeles</td>
+          <td>3–4 days (intermodal); 5–7 days (carload)</td>
+        </tr>
+        <tr>
+          <td>Pacific Northwest</td>
+          <td>Northern lines via Kansas City to Denver to Portland/Seattle</td>
+          <td>Kansas City, Denver, Portland</td>
+          <td>4–5 days (intermodal)</td>
+        </tr>
+        <tr>
+          <td>Chicago</td>
+          <td>NOLA via Shreveport to Kansas City to Chicago (Argentine Yard)</td>
+          <td>Shreveport, Kansas City, Chicago</td>
+          <td>2–3 days (intermodal)</td>
+        </tr>
+        <tr>
+          <td>Gulf Coast Grain Export</td>
+          <td>Northern Plains grain via BNSF to Westwego export terminals</td>
+          <td>Fargo, Minneapolis, Kansas City, Westwego</td>
+          <td>Variable (unit train)</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="feature-list">
+      <li>BNSF Southern Transcon: NOLA/Westwego → Shreveport → Amarillo → Belen → Los Angeles (premier intermodal route)</li>
+      <li>BNSF to Chicago: Westwego → Shreveport → Kansas City → Argentine Yard, Chicago</li>
+      <li>BNSF Northern Plains: premier grain carrier from Dakotas/Montana to Gulf export terminals at Westwego</li>
+      <li>BNSF Mexico: No direct Mexico border crossing — relies on KCS/CPKC interchange at Laredo/Eagle Pass</li>
+    </ul>
+    <div class="highlight-box">
+      <p><strong>BNSF Limitation at NOLA</strong></p>
+      <p>BNSF's network geography creates a structural limitation at the New Orleans gateway: BNSF's mainline terminates at Westwego on the West Bank, with no direct East Bank presence. All BNSF traffic requiring East Bank destination service must move via NOPB interchange, adding switching cost and dwell time. This limitation is particularly significant for intermodal traffic destined for eastern US points, where NS or CSX interline via Chicago is often more competitive than BNSF-to-NOPB routing.</p>
+    </div>
+  </div>
+
+  <!-- Eastern Carriers -->
+  <div class="glass-section">
+    <h2>Eastern Carriers</h2>
+
+    <h3>Norfolk Southern (NS)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Market Region</th>
+          <th>Key Route</th>
+          <th>Primary Gateways</th>
+          <th>Approx. Transit Days (from NOLA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Atlanta / Birmingham / Charlotte</td>
+          <td>NS Crescent Corridor — NOLA via Meridian to Birmingham to Atlanta</td>
+          <td>Meridian, Birmingham, Atlanta</td>
+          <td>1–2 days</td>
+        </tr>
+        <tr>
+          <td>Chicago</td>
+          <td>NS via Birmingham and Chattanooga to Louisville to Chicago</td>
+          <td>Birmingham, Chattanooga, Louisville, Chicago</td>
+          <td>2–3 days (intermodal); 3–4 days (carload)</td>
+        </tr>
+        <tr>
+          <td>New York / Philadelphia</td>
+          <td>NS via Atlanta or Chattanooga to Norfolk / Philadelphia</td>
+          <td>Atlanta, Knoxville, Roanoke, Philadelphia</td>
+          <td>3–4 days (intermodal)</td>
+        </tr>
+        <tr>
+          <td>Detroit / Cleveland / Columbus</td>
+          <td>NS via Louisville to Columbus gateway</td>
+          <td>Louisville, Columbus, Cleveland</td>
+          <td>2–3 days (carload)</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="feature-list">
+      <li>NS Alabama Great Southern (AGS): NOLA → Meridian → Birmingham — primary NS trunk from Gulf to Southeast</li>
+      <li>NS Crescent Corridor: NS intermodal flagship from New Orleans to New York via Atlanta and Charlotte</li>
+      <li>NS Memphis Line: NOLA connections via Memphis gateway to Midwest</li>
+      <li>NS Norfolk / Lamberts Point: primary East Coast port gateway for NS network</li>
+    </ul>
+    <div class="highlight-box">
+      <p><strong>NS St. Bernard Corridor Position</strong></p>
+      <p>NS's competitive strength at New Orleans derives almost entirely from Oliver Yard's physical position in the St. Bernard Corridor — the only Class I facility with direct track access to eastern New Orleans industrial facilities and the LIT container terminal site. This geographic monopoly on direct St. Bernard service underpins NS's rate position in that market and is the primary competitive asset at risk in the UP-NS merger analysis.</p>
+    </div>
+
+    <h3>CSX Transportation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Market Region</th>
+          <th>Key Route</th>
+          <th>Primary Gateways</th>
+          <th>Approx. Transit Days (from NOLA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Atlanta / Jacksonville / Miami</td>
+          <td>CSX via Selma, AL to Montgomery to Atlanta; south to Jacksonville</td>
+          <td>Selma, Montgomery, Atlanta, Waycross</td>
+          <td>1–2 days (Atlanta); 2–3 days (Jacksonville)</td>
+        </tr>
+        <tr>
+          <td>Chicago</td>
+          <td>CSX via Louisville to Chicago (Barr Yard / Calumet)</td>
+          <td>Nashville, Louisville, Chicago</td>
+          <td>2–3 days (intermodal)</td>
+        </tr>
+        <tr>
+          <td>Baltimore / Philadelphia / New York</td>
+          <td>CSX via Clifton Forge to Baltimore / Philadelphia / New York</td>
+          <td>Cumberland, Clifton Forge, Baltimore</td>
+          <td>3–4 days (intermodal)</td>
+        </tr>
+        <tr>
+          <td>Detroit / Toledo / Cleveland</td>
+          <td>CSX via Cincinnati to Toledo / Detroit</td>
+          <td>Nashville, Cincinnati, Toledo</td>
+          <td>2–3 days (carload)</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="feature-list">
+      <li>CSX CSAO Line: Cincinnati, New Orleans &amp; Texas Pacific predecessor — primary Gulf-to-Midwest spine</li>
+      <li>CSX Selma Subdivision: NOLA → Selma, AL — primary CSX route from Gulf Coast east</li>
+      <li>CSX Southeast Network: Atlanta hub connecting to Jacksonville, Miami, Savannah, Charleston</li>
+      <li>CSX Baltimore / Philadelphia: CSX's strongest market — chemical, automotive, and intermodal flows</li>
+    </ul>
+    <div class="highlight-box">
+      <p><strong>CSX vs. NS Competitive Dynamic at NOLA</strong></p>
+      <p>CSX and NS compete vigorously for eastbound Gulf Coast traffic at New Orleans, particularly for movements to Atlanta, Birmingham, and Chicago. CSX's structural disadvantage at NOLA is that its Gentilly Yard lacks the direct St. Bernard Corridor track access that NS's Oliver Yard provides, meaning CSX must route some East Bank originating traffic via NOPB switching. However, for destinations where CSX has a superior network position (Florida, Baltimore, Philadelphia), CSX is the preferred carrier and can effectively compete on price even with the NOPB switching disadvantage.</p>
+    </div>
+  </div>
+
+  <!-- North-South Carrier -->
+  <div class="glass-section">
+    <h2>North-South Carrier</h2>
+
+    <h3>Canadian National (CN)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Market Region</th>
+          <th>Key Route</th>
+          <th>Primary Gateways</th>
+          <th>Approx. Transit Days (from NOLA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Chicago</td>
+          <td>CN IC Main Line — NOLA → Jackson, MS → Memphis → Centralia → Chicago</td>
+          <td>Jackson, Memphis, Centralia, Chicago (Homewood)</td>
+          <td>2 days (intermodal — CN's strongest market from NOLA)</td>
+        </tr>
+        <tr>
+          <td>St. Louis / Memphis</td>
+          <td>CN IC Line — direct service, NOLA to Memphis direct</td>
+          <td>Jackson, Memphis</td>
+          <td>1 day (Memphis); 1–2 days (St. Louis via interchange)</td>
+        </tr>
+        <tr>
+          <td>Toronto / Montreal</td>
+          <td>CN via Chicago to Canadian mainline east</td>
+          <td>Chicago, Detroit/Sarnia, Toronto, Montreal</td>
+          <td>3–4 days (intermodal)</td>
+        </tr>
+        <tr>
+          <td>Vancouver / Prince Rupert</td>
+          <td>CN via Chicago to western Canadian mainline</td>
+          <td>Chicago, Winnipeg, Edmonton, Vancouver</td>
+          <td>4–5 days (intermodal)</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="feature-list">
+      <li>CN IC (Illinois Central) Main: NOLA → Jackson → Memphis → Centralia → Chicago — 921 miles, CN's Gulf Coast spine</li>
+      <li>CN Baton Rouge: CN serves Port of Baton Rouge directly on its Gulf Subdivision</li>
+      <li>CN Memphis: major intermodal hub where CN interchanges with all eastern and western carriers</li>
+      <li>CN Canada: Toronto, Montreal, Halifax (via connection), and Vancouver all reachable as single-line CN movements from NOLA</li>
+    </ul>
+    <div class="highlight-box">
+      <p><strong>CN Strategic Advantage: True North-South Coverage</strong></p>
+      <p>CN is the only carrier at the New Orleans gateway with a true north-south network spine — running from New Orleans through Memphis, Chicago, and into Canada without requiring any interchange. This makes CN uniquely positioned for US-Canada cross-border flows (particularly grain, chemicals, and forest products) and for Chicago single-line service where CN's IC main line transit times rival those of any competitor. CN's limitation is its lack of east-west reach within the US — all non-Chicago eastern or western US destinations require interline service.</p>
+    </div>
+  </div>
+
+  <!-- Mexico Corridor Carrier -->
+  <div class="glass-section">
+    <h2>Mexico Corridor Carrier</h2>
+
+    <h3>Canadian Pacific Kansas City (CPKC)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Market Region</th>
+          <th>Key Route</th>
+          <th>Primary Gateways</th>
+          <th>Approx. Transit Days (from NOLA/Plaquemines)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mexico City / Monterrey / Lazaro Cardenas</td>
+          <td>CPKC KCS Southern — NOLA via Baton Rouge to Shreveport to Laredo to Mexican KCS network</td>
+          <td>Baton Rouge, Shreveport, Laredo, Monterrey</td>
+          <td>2–3 days (NOLA/Plaquemines to Monterrey)</td>
+        </tr>
+        <tr>
+          <td>Kansas City</td>
+          <td>CPKC KCS Southern — Shreveport to Texarkana to Kansas City</td>
+          <td>Shreveport, Texarkana, Kansas City</td>
+          <td>2 days</td>
+        </tr>
+        <tr>
+          <td>Dallas / Fort Worth</td>
+          <td>CPKC via Shreveport to Dallas</td>
+          <td>Shreveport, Dallas</td>
+          <td>1–2 days</td>
+        </tr>
+        <tr>
+          <td>Canada (Winnipeg / Calgary)</td>
+          <td>CPKC via Kansas City to CP mainline north</td>
+          <td>Kansas City, Minneapolis/St. Paul, Winnipeg</td>
+          <td>3–4 days (intermodal)</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="feature-list">
+      <li>CPKC KCS Southern Main: NOLA → Baton Rouge → Shreveport → Texarkana → Kansas City — core US spine</li>
+      <li>CPKC Laredo gateway: primary US-Mexico crossing for automotive, consumer goods, and industrial traffic</li>
+      <li>CPKC Plaquemines connection: new CPKC bridge at Plaquemines Parish gives direct access to Bunge/Gavilon grain export terminals</li>
+      <li>CPKC Canada: single-line service from Gulf Coast to Winnipeg, Calgary, and Vancouver via CP northern lines</li>
+    </ul>
+    <div class="highlight-box">
+      <p><strong>CPKC Gateway Bypass Threat to NOLA</strong></p>
+      <p>The most significant competitive development involving CPKC at the New Orleans gateway is the construction of a new CPKC rail bridge at Plaquemines Parish, south of New Orleans. This bridge gives CPKC direct access to the Port of Plaquemines grain export terminals without routing through the congested NORG corridor. For northbound grain and southbound Mexican industrial goods, this bypass route allows CPKC to avoid NOLA gateway delays entirely — potentially diverting traffic that would otherwise generate switching revenue for Rail NOLA and increasing the competitive challenge for Port NOLA's proposed LIT terminal, which relies on multi-carrier gateway traffic to achieve its business case.</p>
+    </div>
+  </div>
+
+  <!-- Major Interchange Gateways -->
+  <div class="glass-section">
+    <h2>Major Interchange Gateways</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Gateway</th>
+          <th>Carriers Present</th>
+          <th>Primary Function</th>
+          <th>Annual Rail Volume (approx.)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Chicago, IL</strong></td>
+          <td>All 7 Class I carriers (UP, BNSF, NS, CSX, CN, CPKC, + Amtrak)</td>
+          <td>Largest US rail interchange; east-west gateway; intermodal hub</td>
+          <td>~500 trains/day; ~1.3M carloads/year interchanged</td>
+        </tr>
+        <tr>
+          <td><strong>Kansas City, MO</strong></td>
+          <td>UP, BNSF, NS, CSX, CN, CPKC</td>
+          <td>Central US interchange; grain and intermodal hub; CPKC HQ</td>
+          <td>~300 trains/day; major grain and intermodal interchange</td>
+        </tr>
+        <tr>
+          <td><strong>Memphis, TN</strong></td>
+          <td>UP, NS, CSX, CN, CPKC + short lines</td>
+          <td>Mid-South interchange; major intermodal and carload gateway</td>
+          <td>~200 trains/day; ~800,000 carloads/year</td>
+        </tr>
+        <tr>
+          <td><strong>New Orleans, LA</strong></td>
+          <td>UP, BNSF, NS, CSX, CN, CPKC (+ Rail NOLA neutral switching)</td>
+          <td>East-West river crossing; Gulf Coast port gateway; 4th largest US rail interchange</td>
+          <td>35–40 trains/day; ~29M tons/year through gateway</td>
+        </tr>
+        <tr>
+          <td><strong>St. Louis, MO</strong></td>
+          <td>UP, BNSF, NS, CSX, CN</td>
+          <td>River crossing interchange; grain and chemical hub; secondary Midwest gateway</td>
+          <td>~150 trains/day</td>
+        </tr>
+        <tr>
+          <td><strong>Houston, TX</strong></td>
+          <td>UP, BNSF, NS (via interline), CSX (via interline), CPKC</td>
+          <td>Gulf Coast chemical and energy hub; petrochemical rail gateway; Mexico connections</td>
+          <td>Major petrochemical and intermodal volumes; ~25M tons/year</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Routing Decision Factors -->
+  <div class="glass-section">
+    <h2>Routing Decision Factors</h2>
+
+    <h3>Single-Line Preference</h3>
+    <ul class="feature-list">
+      <li>Single-line service eliminates interchange delays — typically saves 12–24 hours on 500–1,000 mile moves</li>
+      <li>Single-line rates are typically more negotiable than interline joint rates, giving shippers better leverage</li>
+      <li>Service failures are easier to address with a single carrier contact and accountability chain</li>
+      <li>Equipment supply (car availability) is controlled by one carrier — fewer empty car delays</li>
+      <li>EDI/visibility systems are cleaner — no handoff between carrier tracking systems</li>
+    </ul>
+
+    <h3>Interline Competitive Advantage</h3>
+    <ul class="feature-list">
+      <li>Interline routing opens competitive bidding between multiple carrier combinations, driving rates down</li>
+      <li>For origin-destination pairs where no single carrier has a direct route, interline is the only option</li>
+      <li>At interchange gateways, shippers can play Origin Carrier A vs. Origin Carrier B for the same destination</li>
+      <li>Interline allows combining the route strengths of multiple carriers (e.g., BNSF Transcon + CSX Southeast)</li>
+    </ul>
+
+    <h3>Distance vs. Service Quality</h3>
+    <ul class="feature-list">
+      <li>Shortest route is not always fastest — track condition, speed limits, and congestion determine transit time</li>
+      <li>Congested gateway cities (Chicago especially) can add 12–36 hours to intermodal moves</li>
+      <li>Direct routes through uncongested intermediate yards outperform technically shorter routes through congested hubs</li>
+      <li>PSR (Precision Scheduled Railroading) implementation has reduced some carrier schedules — transit times vary significantly by carrier and route</li>
+      <li>Shipper transit time requirements (e.g., just-in-time manufacturing) can eliminate lower-cost interline options that cannot meet service windows</li>
+    </ul>
+  </div>
+
+  <!-- Post-UP-NS Merger Routing Changes -->
+  <div class="glass-section">
+    <h2>Post-UP-NS Merger Routing Changes</h2>
+    <div class="highlight-box">
+      <p><strong>Projected Routing Changes if UP-NS Merger Approved</strong></p>
+      <ul class="feature-list">
+        <li>NOLA-to-East Coast single-line routing becomes available for first time in history — UP-NS can offer LA to NYC single-line intermodal, fundamentally changing coast-to-coast competitive dynamics</li>
+        <li>Existing NS-to-UP interline shipments (currently requiring interchange at NOLA or Chicago) would convert to single-line UP-NS — reducing interchange delays by 12–24 hours on average</li>
+        <li>BNSF-to-NS interline flows at Chicago and Memphis would need to renegotiate with UP-NS — BNSF has less leverage in joint rate negotiations with a larger merged carrier</li>
+        <li>St. Bernard Corridor shippers lose NS-vs-CSX competitive alternative; effective rate increase likely for captive shippers before any STB conditions take effect</li>
+        <li>Mexico-to-Southeast single-line routing (CPKC to NOLA to UP-NS Southeast) becomes strategically important — CPKC would benefit from UP-NS as a single-line eastern partner replacing fragmented NS/CSX interline arrangements</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="glass-section">
+    <h2>Explore Related Analysis</h2>
+    <div class="nav-buttons">
+      <a href="nola-gateway.html" class="nav-btn">NOLA Gateway Analysis →</a>
+      <a href="merger-analysis.html" class="nav-btn">UP-NS Merger Impact →</a>
+      <a href="network-model.html" class="nav-btn">Network Routing Model →</a>
+      <a href="index.html" class="nav-btn">← Back to Platform Home</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Rail Analytics Platform — Class I Railroad Markets &amp; Routing</strong></p>
+  <p>OceanDatum.ai — SESCO Consulting | February 2026</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">Sources: AAR Railroad Facts 2025; USDOT NTAD carrier network data; STB Annual Reports; individual Class I carrier network maps and timetables (public); Port NOLA Annual Report 2024; Louisiana DOTD State Rail Plan 2040; USDOT FAF5 freight flow data.</p>
+</footer>
+
+</body>
+</html>

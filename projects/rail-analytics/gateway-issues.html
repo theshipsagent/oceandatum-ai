@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gateway Infrastructure Issues — Rail Analytics Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; color: rgba(255,255,255,0.9); min-height: 100vh; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%); z-index: -1; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6); }
+    .navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+    .navbar-brand a:hover { color: #64ffb4; }
+    .navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .nav-link { font-size: 0.85rem; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.4rem 0.9rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; transition: all 0.3s; }
+    .nav-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+    .breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.4); padding: 5.5rem 2rem 0; max-width: 1100px; margin: 0 auto; }
+    .breadcrumb a { color: rgba(100,255,180,0.8); text-decoration: none; }
+    .breadcrumb a:hover { color: #64ffb4; }
+    .main-content { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+    .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .page-header h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 0.08em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-style: italic; }
+    .glass-section { background: rgba(0,0,0,0.38); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+    .glass-section h2 { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.05em; text-transform: uppercase; }
+    .glass-section h3 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.75); margin: 1.4rem 0 0.75rem; }
+    .glass-section p { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-bottom: 0.85rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.87rem; }
+    th { background: rgba(100,255,180,0.07); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.12); padding: 0.65rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; }
+    td { border: 1px solid rgba(255,255,255,0.07); padding: 0.65rem 0.9rem; color: rgba(255,255,255,0.72); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .feature-list { list-style: none; padding: 0; }
+    .feature-list li { padding: 0.28rem 0 0.28rem 1.35rem; position: relative; color: rgba(255,255,255,0.68); font-size: 0.88rem; }
+    .feature-list li::before { content: '▸'; position: absolute; left: 0; color: #64ffb4; font-size: 0.78rem; }
+    .highlight-box { background: rgba(100,255,180,0.05); border-left: 3px solid rgba(100,255,180,0.55); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .highlight-box p { margin: 0 0 0.5rem; font-size: 0.88rem; }
+    .highlight-box p:last-child { margin: 0; }
+    .alert-box { background: rgba(255,200,80,0.05); border-left: 3px solid rgba(255,200,80,0.5); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .alert-box p { margin: 0 0 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .alert-box p:last-child { margin: 0; }
+    .code-box { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.8rem; color: rgba(100,255,180,0.85); line-height: 1.9; overflow-x: auto; white-space: pre; }
+    .schematic { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.75rem; color: rgba(100,255,180,0.7); line-height: 1.7; overflow-x: auto; white-space: pre; }
+    .investigation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+    .investigation-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.5rem; transition: all 0.3s; }
+    .investigation-card:hover { border-color: rgba(100,255,180,0.3); transform: translateY(-3px); }
+    .investigation-card h4 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .investigation-card p { font-size: 0.83rem; color: rgba(255,255,255,0.6); margin-bottom: 0.6rem; }
+    .investigation-card a { display: inline-block; padding: 0.4rem 0.85rem; background: rgba(100,255,180,0.08); border: 1px solid rgba(100,255,180,0.3); border-radius: 5px; color: #64ffb4; text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: all 0.3s; }
+    .investigation-card a:hover { background: rgba(100,255,180,0.15); }
+    .nav-buttons { display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .nav-btn { flex: 1; min-width: 180px; padding: 0.6rem 1.1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: rgba(255,255,255,0.8); text-decoration: none; text-align: center; font-size: 0.85rem; transition: all 0.3s; }
+    .nav-btn:hover { background: rgba(100,255,180,0.08); border-color: rgba(100,255,180,0.35); color: #64ffb4; }
+    footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
+    @media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .breadcrumb { padding: 5.5rem 1rem 0; } .page-header h1 { font-size: 1.6rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="navbar-brand">An <a href="../../index.html">oceandatum.ai</a> project</span>
+  <div class="navbar-right">
+    <a href="index.html" class="nav-link">Rail Platform</a>
+    <a href="../../projects-hub.html" class="nav-link">Projects</a>
+    <a href="../../index.html" class="nav-link">Home</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../../index.html">Home</a> / <a href="../../projects-hub.html">Projects</a> / <a href="index.html">Rail Analytics Platform</a> / Gateway Infrastructure Issues
+</div>
+
+<div class="main-content">
+  <div class="page-header">
+    <h1>Rail Gateway Infrastructure Issues</h1>
+    <p class="subtitle">Capacity Constraints, Bottlenecks &amp; Capital Investment Needs · NOLA NORG Corridor Analysis | $4.1B+ Infrastructure Pipeline</p>
+  </div>
+
+  <div class="alert-box">
+    <p><strong>NOLA Gateway Capacity Crisis — Critical Congestion Metrics</strong></p>
+    <p><strong>Daily train traffic:</strong> 35 freight trains + 5 Amtrak passenger trains through the NORG corridor</p>
+    <p><strong>Maximum speed limit:</strong> 20 mph throughout the entire 29-mile NORG corridor</p>
+    <p><strong>Aggregate train delay:</strong> 29.7 hours per day — the equivalent of more than one full train-day lost to delay every 24 hours</p>
+    <p><strong>At-grade crossings:</strong> 20 highway-rail grade crossings within NORG generating 112.4 hours per day of vehicle delay</p>
+    <p><strong>Forecast growth:</strong> USDOT projects Gulf Coast rail tonnage to <strong>double by 2030</strong> — the current infrastructure cannot accommodate existing traffic, let alone a doubling of demand</p>
+  </div>
+
+  <!-- Critical Bottlenecks -->
+  <div class="glass-section">
+    <h2>Critical Bottlenecks</h2>
+
+    <h3>1. Huey P. Long Bridge — Single Point of Failure</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Issue</th>
+          <th>Detail</th>
+          <th>Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Single Track</strong></td>
+          <td>One rail track across the Mississippi River; built 1935; no second track</td>
+          <td>All east-west rail traffic must queue for bridge crossing windows; no simultaneous bidirectional movement</td>
+        </tr>
+        <tr>
+          <td><strong>Speed Restriction</strong></td>
+          <td>20 mph max speed on bridge — structural age-related restriction</td>
+          <td>A 100-car train at 20 mph takes ~12 minutes to clear the bridge; limits throughput to ~5 trains/hour theoretical max</td>
+        </tr>
+        <tr>
+          <td><strong>Age &amp; Condition</strong></td>
+          <td>90-year-old structure; periodic inspection-triggered slow orders; no redundancy</td>
+          <td>Unplanned closures for emergency inspection would shut down all East-West interchange at NOLA — no alternative rail crossing</td>
+        </tr>
+        <tr>
+          <td><strong>No Alternative Crossing</strong></td>
+          <td>Nearest alternative rail river crossing is Baton Rouge (~80 miles north)</td>
+          <td>Bridge failure or closure forces all traffic to divert via Baton Rouge — adding ~160 miles round-trip and disrupting gateway operations</td>
+        </tr>
+        <tr>
+          <td><strong>Second Track — No Funding</strong></td>
+          <td>Second track study completed; engineering feasible; cost estimated $800M–$1.2B</td>
+          <td>No committed funding as of February 2026; not included in current CRISI award cycle</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2. 20 mph Speed Limit Throughout NORG</h3>
+    <ul class="feature-list">
+      <li>The 20 mph restriction applies to the entire 29-mile NORG corridor — not just the bridge — due to track condition, curve geometry, and urban grade crossing density</li>
+      <li>Class I mainline standards typically allow 40–79 mph for freight trains; the NORG speed limit is less than half the minimum mainline standard</li>
+      <li>A single freight train traversing the full NORG corridor requires approximately 87 minutes at 20 mph, vs. ~22 minutes at a standard 79 mph freight speed — a 4x time penalty</li>
+      <li>The speed restriction is particularly damaging to Amtrak passenger service, which competes with the same track as freight and cannot achieve scheduled times without infrastructure improvements</li>
+    </ul>
+
+    <h3>3. NS Oliver Yard Freight Lead (3,000 ft)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Current State</strong></td>
+          <td>NS Oliver Yard's freight lead (the entry track from the main line) is approximately 3,000 feet — capable of accommodating trains of about 30 cars</td>
+        </tr>
+        <tr>
+          <td><strong>Problem</strong></td>
+          <td>Modern 100-car unit trains (grain, chemicals, cement, intermodal) are approximately 6,000–7,000 feet long. Trains exceeding the 3,000 ft lead cannot enter the yard as a unit — they must be split into two cuts, each move requiring a separate locomotive run-around. This doubles switching time and occupies the main line during the split operation.</td>
+        </tr>
+        <tr>
+          <td><strong>Proposed Solution</strong></td>
+          <td>Extend the freight lead to 8,000+ feet at an estimated cost of ~$180 million. This would allow full 100-car unit trains to enter Oliver Yard in a single movement, eliminating split-train switching operations and significantly reducing main line fouling during yard entries.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>4. Almonaster Avenue Bridge (IHNC)</h3>
+    <p>The Almonaster Avenue bridge carries rail traffic over the Inner Harbor Navigation Canal (IHNC) and is the primary rail gateway between the main NORG corridor and New Orleans East — the site of the proposed Louisiana International Terminal. The bridge is a swing-span structure that must open for marine traffic on the IHNC, creating rail traffic interruptions that compound the existing delay problem.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Issue</th>
+          <th>Detail</th>
+          <th>Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Swing Bridge Openings</strong></td>
+          <td>Bridge must open for IHNC vessel traffic under federal law; opening takes ~15 minutes per marine vessel</td>
+          <td>Each bridge opening creates a 15-minute rail blockage; multiple openings per day create cascading train delays</td>
+        </tr>
+        <tr>
+          <td><strong>Age &amp; Structural Condition</strong></td>
+          <td>Aging structure; periodic slow orders; maintenance-intensive swing mechanism</td>
+          <td>Unplanned closures for maintenance create unpredictable rail service interruptions to New Orleans East</td>
+        </tr>
+        <tr>
+          <td><strong>LIT Dependency</strong></td>
+          <td>All rail access to the Louisiana International Terminal must cross the Almonaster Bridge</td>
+          <td>Bridge capacity becomes a hard ceiling on LIT's on-dock rail throughput — LIT's business case assumes on-dock rail volumes that the existing bridge cannot accommodate</td>
+        </tr>
+        <tr>
+          <td><strong>Replacement Cost</strong></td>
+          <td>Bridge replacement (fixed high-level structure) estimated at ~$350 million</td>
+          <td>Design phase underway; federal funding sought; no construction award as of February 2026</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>5. At-Grade Crossings (20 in NORG)</h3>
+    <p>The 20 at-grade highway-rail crossings within the NORG corridor generate 112.4 hours per day of vehicle delay — the cumulative time that motor vehicles are stopped at crossing gates waiting for trains. This vehicular delay has a direct economic cost in lost productivity, fuel waste, and emergency vehicle access impairment. It also creates safety risk: at-grade crossings are the site of the vast majority of highway-rail fatalities in the US.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Crossing Location</th>
+          <th>Vehicle Delay (hrs/day)</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Jefferson Highway</strong></td>
+          <td>~18 hrs/day</td>
+          <td>Major arterial serving Jefferson Parish; among highest volume crossings; grade separation proposed at ~$45M</td>
+        </tr>
+        <tr>
+          <td><strong>Other Major Arterials (combined, 19 crossings)</strong></td>
+          <td>~94.4 hrs/day</td>
+          <td>Includes Louisiana Ave, Tchoupitoulas, Earhart Blvd, France Rd, Chef Menteur — all in urban context with limited grade separation space</td>
+        </tr>
+        <tr>
+          <td><strong>Emergency Access</strong></td>
+          <td>Not quantified in hrs/day</td>
+          <td>Fire stations on both sides of NORG corridor report response time delays of 3–8 minutes when a train occupies the crossing — life safety impact unquantified in economic terms</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>6. NOGC (West Bank Short Line) — 100 Grade Crossings</h3>
+    <p>The New Orleans Gulf Coast Railway (NOGC) operates as a short-line railroad on the West Bank of Jefferson and Plaquemines Parishes, serving chemical plants, refineries, and industrial facilities in the corridor south and west of Avondale. The NOGC's most severe infrastructure problem is its 100 at-grade highway crossings across a relatively short operating territory — a density of grade crossings that is extraordinary even by urban short-line standards.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Issue</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Grade Crossings</strong></td>
+          <td>100 at-grade highway-rail crossings on NOGC territory — approximately 1 crossing per 0.4 miles of track</td>
+        </tr>
+        <tr>
+          <td><strong>Operating Speed</strong></td>
+          <td>10–15 mph average operating speed due to crossing density and track condition</td>
+        </tr>
+        <tr>
+          <td><strong>Train Length Restriction</strong></td>
+          <td>Train lengths limited by crossing spacing — cannot run full-length unit trains without blocking multiple crossings simultaneously</td>
+        </tr>
+        <tr>
+          <td><strong>Vehicle Delay</strong></td>
+          <td>Hundreds of crossing events per day; cumulative vehicle delay not formally quantified but estimated at 30–50 hrs/day for the West Bank road network</td>
+        </tr>
+        <tr>
+          <td><strong>Emergency Access</strong></td>
+          <td>West Bank emergency response routinely delayed by NOGC crossing events; Jefferson Parish Emergency Management has documented response time impacts</td>
+        </tr>
+        <tr>
+          <td><strong>Industrial Customer Impact</strong></td>
+          <td>Chemical and refinery customers on NOGC territory receive irregular car service due to speed and length restrictions; truck substitution is economically significant</td>
+        </tr>
+        <tr>
+          <td><strong>Proposed Solution</strong></td>
+          <td>Grade separation program for highest-priority crossings: estimated $200M+ for meaningful reduction; no funded program in place</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Proposed Passenger Rail Impact -->
+  <div class="glass-section">
+    <h2>Proposed Baton Rouge–New Orleans Passenger Rail Impact</h2>
+    <p>Louisiana has proposed restoring passenger rail service between Baton Rouge and New Orleans along the existing CN Illinois Central corridor and the NORG right-of-way. While the route has strong political and economic support, its implementation on shared infrastructure creates a significant capacity conflict with existing freight operations in an already-constrained corridor.</p>
+    <div class="alert-box">
+      <p><strong>Capacity Conflict — Proposed Baton Rouge–NOLA Passenger Rail</strong></p>
+      <ul class="feature-list">
+        <li><strong>CPKC bridge at Plaquemines:</strong> Proposed passenger rail routing would need to cross or avoid the new CPKC rail bridge at Plaquemines, creating routing challenges at the southern end of the corridor</li>
+        <li><strong>EBJ flyover conflict:</strong> The proposed East Bank Junction (EBJ) flyover grade separation, designed to relieve freight conflicts, would need to accommodate passenger rail geometry and platform height requirements — adding cost and design complexity</li>
+        <li><strong>Mixed-use conflict:</strong> Adding 4–8 daily passenger trains to the NORG corridor (which already operates at 40 trains/day near capacity) would require either new track construction or displacement of freight trains — both expensive options</li>
+        <li><strong>Capital cost:</strong> Estimated infrastructure cost for Baton Rouge–NOLA passenger rail implementation: <strong>$262 million</strong> (state estimate; independent estimates range higher)</li>
+        <li><strong>Operating subsidy:</strong> Annual operating subsidy projected at <strong>$6.7 million per year</strong> — requires dedicated state funding stream; no funding mechanism established as of February 2026</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Infrastructure Investment Pipeline -->
+  <div class="glass-section">
+    <h2>Infrastructure Investment Pipeline</h2>
+    <p>The following table summarizes all identified infrastructure projects addressing NOLA gateway capacity issues, totaling more than $4.1 billion in identified need. Projects range from advanced planning to active construction, and span federal, state, private, and public-private funding sources.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Description</th>
+          <th>Est. Cost</th>
+          <th>Status (Feb 2026)</th>
+          <th>Lead Entity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Louisiana International Terminal (LIT)</strong></td>
+          <td>New deepwater container terminal with on-dock rail, New Orleans East</td>
+          <td>$1.8B</td>
+          <td>Environmental review; Phase 1 pending</td>
+          <td>Port NOLA</td>
+        </tr>
+        <tr>
+          <td><strong>Second Mississippi River Rail Crossing</strong></td>
+          <td>New rail bridge parallel to Huey P. Long Bridge</td>
+          <td>$800M–$1.2B</td>
+          <td>Studies only — no committed funding</td>
+          <td>Rail NOLA / Class I carriers</td>
+        </tr>
+        <tr>
+          <td><strong>Almonaster Avenue Bridge Replacement (IHNC)</strong></td>
+          <td>Replace aging swing bridge with fixed high-level structure</td>
+          <td>~$350M</td>
+          <td>Design phase; federal funding sought</td>
+          <td>Rail NOLA / USDOT</td>
+        </tr>
+        <tr>
+          <td><strong>At-Grade Crossing Elimination (NORG)</strong></td>
+          <td>Grade separation of highest-priority NORG crossings</td>
+          <td>~$400M</td>
+          <td>Multiple projects at various stages</td>
+          <td>LADOTD / USDOT / local</td>
+        </tr>
+        <tr>
+          <td><strong>NS Oliver Yard Freight Lead Extension</strong></td>
+          <td>Extend freight lead from 3,000 ft to 8,000+ ft</td>
+          <td>~$180M</td>
+          <td>Proposed — CRISI application pending</td>
+          <td>Norfolk Southern / STB</td>
+        </tr>
+        <tr>
+          <td><strong>EBJ Flyover (East Bank Junction Grade Sep.)</strong></td>
+          <td>Grade separation at East Bank Junction for NS/CSX/CN/Rail NOLA conflicts</td>
+          <td>~$120M</td>
+          <td>Studied; in long-range plan</td>
+          <td>Rail NOLA / Class I carriers</td>
+        </tr>
+        <tr>
+          <td><strong>CPKC Plaquemines Rail Bridge</strong></td>
+          <td>New CPKC rail bridge over Mississippi River at Plaquemines, south of NOLA</td>
+          <td>~$250M</td>
+          <td>Under construction (CPKC private investment)</td>
+          <td>CPKC (private)</td>
+        </tr>
+        <tr>
+          <td><strong>Baton Rouge–NOLA Passenger Rail</strong></td>
+          <td>Restore intercity passenger service on CN/NORG corridor</td>
+          <td>~$262M</td>
+          <td>Planning; no funding mechanism established</td>
+          <td>Louisiana DOTD / Amtrak</td>
+        </tr>
+        <tr>
+          <td><strong>NOGC Grade Crossing Program</strong></td>
+          <td>Grade separations for highest-priority West Bank NOGC crossings</td>
+          <td>$200M+</td>
+          <td>No funded program; conceptual only</td>
+          <td>Jefferson/Plaquemines Parishes</td>
+        </tr>
+        <tr>
+          <td><strong>Jefferson Highway Grade Separation</strong></td>
+          <td>Grade separate Jefferson Highway crossing — highest vehicle delay in NORG</td>
+          <td>~$45M</td>
+          <td>Proposed; federal funding application planned</td>
+          <td>Jefferson Parish / LADOTD</td>
+        </tr>
+        <tr>
+          <td><strong>Rail NOLA Track Rehabilitation</strong></td>
+          <td>Rail NOLA (NOPB) mainline and yard track surface rehabilitation</td>
+          <td>~$50M</td>
+          <td>Partially funded via CRISI; ongoing</td>
+          <td>Rail NOLA</td>
+        </tr>
+        <tr>
+          <td><strong>NORG Signal Modernization</strong></td>
+          <td>Replace outdated signal system with PTC-compliant CBOSS/ITCS technology</td>
+          <td>~$80M</td>
+          <td>Phase 1 underway; federal CRISI funded</td>
+          <td>Rail NOLA / Class I carriers</td>
+        </tr>
+        <tr>
+          <td><strong>LIT On-Dock Rail Infrastructure</strong></td>
+          <td>Rail yard and intermodal tracks within LIT terminal footprint</td>
+          <td>~$200M (within LIT total)</td>
+          <td>Part of LIT Phase 1 design</td>
+          <td>Port NOLA</td>
+        </tr>
+        <tr>
+          <td><strong>Avondale Intermodal Terminal Upgrade</strong></td>
+          <td>Upgrade UP Avondale Yard intermodal lift equipment and track layout</td>
+          <td>~$75M</td>
+          <td>Proposed; UP capital program consideration</td>
+          <td>Union Pacific (private)</td>
+        </tr>
+        <tr>
+          <td><strong>France Yard Expansion (Rail NOLA)</strong></td>
+          <td>Add classification tracks to expand France Yard capacity beyond 435 cars</td>
+          <td>~$40M</td>
+          <td>Included in Rail NOLA capital plan</td>
+          <td>Rail NOLA</td>
+        </tr>
+        <tr>
+          <td><strong>NOPB Gateway CRISI Grant</strong></td>
+          <td>Federal CRISI award for Rail NOLA gateway improvements</td>
+          <td>$7.29M (federal portion)</td>
+          <td>Awarded — implementation underway</td>
+          <td>Rail NOLA / USDOT</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>TOTAL (identified pipeline)</strong></td>
+          <td><strong>$4.1B+</strong></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Belt Alternatives -->
+  <div class="glass-section">
+    <h2>Belt Alternatives (Historical Studies)</h2>
+
+    <h3>Front Belt — Rejected</h3>
+    <p>The "Front Belt" alignment studied in earlier decades would have routed freight rail along the riverfront, parallel to the Mississippi River levee, through the central business district. This alignment was ultimately rejected because of the extreme density of urban development along the riverfront, the high cost of right-of-way acquisition, and the incompatibility with Port NOLA's cargo handling operations on the batture. The Front Belt concept has not been actively studied since the 1980s and is not considered viable under current land use conditions.</p>
+
+    <h3>Back Belt — Current</h3>
+    <p>The current NORG corridor represents the de facto "Back Belt" — a routing that arcs through interior neighborhoods rather than along the riverfront. The Back Belt alignment was established in the railroad era of the early 20th century and reflects the land availability and property values of that period. Today, dense residential and commercial development surrounds the Back Belt corridor, making capacity expansion (additional tracks, grade separations) extremely expensive due to right-of-way acquisition costs and community impact concerns. Nonetheless, the Back Belt is the only operational rail corridor through New Orleans, and all infrastructure improvements in the current pipeline are along this alignment.</p>
+
+    <h3>Middle Belt / Carrollton Curve — Preferred by Some Studies</h3>
+    <p>Several infrastructure studies from the 2000s and 2010s identified a "Middle Belt" alignment via the Carrollton Curve as potentially superior for long-term capacity expansion. This alignment would utilize an existing but underused rail right-of-way through the Carrollton neighborhood to provide a more direct east-west connection, potentially bypassing the most congested segment of the Back Belt near the central business district. However, community opposition to rail expansion through residential Carrollton, combined with the capital cost of new infrastructure on any new alignment, has kept the Middle Belt as a conceptual study rather than a funded project. As of February 2026, all active investment is focused on improving the existing Back Belt / NORG corridor.</p>
+  </div>
+
+  <!-- Operational Challenges -->
+  <div class="glass-section">
+    <h2>Operational Challenges</h2>
+
+    <h3>Switching Delays &amp; Terminal Dwell</h3>
+    <p>Rail NOLA switching operations are constrained by the limited capacity of France Yard (435 cars) and Claiborne Yard (335 cars) relative to the volume of interchange traffic passing through the gateway. When either yard reaches capacity — which occurs routinely during peak periods — incoming trains must hold on the main line, fouling the NORG corridor and generating the 29.7 hours/day of aggregate delay observed in operational studies. The switching delay problem is compounded by the single-track Huey P. Long Bridge, which creates a queuing bottleneck for all east-west movements and means that delays on one side of the river propagate to the other side.</p>
+
+    <h3>Flood Gates &amp; Storm Closures</h3>
+    <p>New Orleans' flood protection infrastructure — the levee system, flood walls, and IHNC surge gates — intersects with the rail network at multiple points. Following Hurricane Katrina and subsequent USACE infrastructure improvements, flood gates have been installed at locations where rail corridors penetrate the levee system. These gates must be closed during hurricane events, which shuts down rail service through the affected segments. Hurricane evacuation protocols also require clearing the rail network of rolling stock before storm landfall, creating service disruptions in the 48–72 hours before and after major storm events — a recurring operational challenge in a region with an active hurricane season.</p>
+
+    <h3>Congestion Impacts on Terminal Operations</h3>
+    <p>The NORG corridor's congestion has measurable effects on terminal dwell times throughout the gateway. Average car dwell at NOLA gateway terminals — the time a rail car sits in a yard between arrival and departure — is approximately 18–24 hours, compared to a national average of 12–16 hours for similar terminal operations. This extended dwell reflects both the switching capacity constraints within the yards and the main-line queuing that prevents timely car pickup by road trains. Extended dwell is costly: it ties up car supply, reduces fleet velocity, and makes NOLA a less attractive gateway for time-sensitive intermodal shipments relative to competing Gulf Coast ports with better rail connectivity.</p>
+  </div>
+
+  <!-- Competitive Implications -->
+  <div class="glass-section">
+    <h2>Competitive Implications</h2>
+    <div class="highlight-box">
+      <p><strong>Gateway Congestion &amp; Competitive Position</strong></p>
+      <ul class="feature-list">
+        <li><strong>Traffic diversion to competing gateways:</strong> Shippers and ocean carriers with flexibility to choose between Gulf Coast ports increasingly favor Houston (Barbours Cut/Bayport), Mobile (APM/MDT), or even Savannah/Charleston over New Orleans when transit time reliability is a priority — NORG congestion directly erodes Port NOLA's competitive position</li>
+        <li><strong>LIT disadvantage before opening:</strong> The Louisiana International Terminal's business case assumes competitive on-dock rail service times; if the Almonaster Bridge and Huey P. Long bottlenecks are not resolved concurrent with LIT's opening, LIT will be operationally disadvantaged from day one against competitor terminals with better rail access</li>
+        <li><strong>Truck competition strengthened:</strong> For shorter-haul moves (under 300 miles), truck already competes effectively with rail. Extended rail dwell times and service unreliability at NOLA push some shippers permanently to truck — a market share loss that is difficult to recover even after infrastructure improvements</li>
+        <li><strong>Port market share at risk:</strong> USDOT freight forecasts projecting doubled Gulf Coast tonnage by 2030 represent an opportunity for Port NOLA — but only if infrastructure improvements keep pace. Without investment, the volume growth will route through competing ports with higher-capacity rail connectivity</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Funding Challenges -->
+  <div class="glass-section">
+    <h2>Funding Challenges</h2>
+    <p>The $4.1B+ infrastructure pipeline identified for the NOLA gateway faces significant funding challenges. No single funding source can address the full pipeline, and the scale of investment required exceeds the historical annual capital commitment from all sources combined. The following funding mechanisms are available, each with constraints:</p>
+    <ul class="feature-list">
+      <li><strong>Federal grants (CRISI, RAISE, Port Infrastructure Development Program):</strong> The primary federal programs for rail and port infrastructure are competitive grants with annual appropriations well below the NOLA gateway's identified need. CRISI (Consolidated Rail Infrastructure and Safety Improvements) awards have historically funded individual projects in the $5M–$50M range — far below the scale needed for bridge replacements or second crossings. The NOPB Gateway CRISI grant of $7.29M illustrates both the availability and the scale mismatch of federal grant funding.</li>
+      <li><strong>State of Louisiana capital outlay and DOTD programs:</strong> Louisiana's infrastructure budget is constrained by the state's fiscal position; major rail infrastructure investment competes with highway, bridge, and coastal restoration priorities. The state has not established a dedicated rail infrastructure fund equivalent to programs in other rail-intensive states.</li>
+      <li><strong>Class I railroad private investment:</strong> Class I railroads typically fund infrastructure that directly benefits their operations. CPKC's Plaquemines bridge is an example of private rail investment driven by direct commercial return. The second Mississippi River crossing and Oliver Yard freight lead extension would benefit multiple carriers but require multi-party cost sharing agreements that have historically been difficult to negotiate.</li>
+      <li><strong>Public-private partnerships (P3):</strong> The LIT project is structured as a public-private partnership between Port NOLA and private terminal operators. P3 frameworks may be applicable to other gateway infrastructure, particularly the Almonaster Bridge replacement, but require careful structuring to align public access requirements with private investment returns.</li>
+      <li><strong>Port NOLA revenues and bond financing:</strong> Port NOLA has bonding capacity tied to its revenue stream; capital investment decisions must balance gateway infrastructure needs against Port NOLA's own terminal development priorities (LIT, phase 2 development, etc.).</li>
+    </ul>
+  </div>
+
+  <!-- Navigation -->
+  <div class="glass-section">
+    <h2>Explore Related Analysis</h2>
+    <div class="nav-buttons">
+      <a href="nola-gateway.html" class="nav-btn">NOLA Gateway Overview →</a>
+      <a href="merger-analysis.html" class="nav-btn">UP-NS Merger Impact →</a>
+      <a href="geospatial.html" class="nav-btn">Geospatial Analysis →</a>
+      <a href="index.html" class="nav-btn">← Back to Platform Home</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Rail Analytics Platform — Rail Gateway Infrastructure Issues</strong></p>
+  <p>OceanDatum.ai — SESCO Consulting | February 2026</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">Sources: USDOT Freight Analysis Framework (FAF5); Louisiana DOTD State Rail Plan 2040; Port NOLA Annual Report 2024; Rail NOLA (NOPB) public filings and CRISI applications; USDOT FRA Grade Crossing Inventory; USACE New Orleans District Infrastructure Reports; Louisiana Governor's Office of Homeland Security (hurricane ops); AAR Railroad Facts 2025; ASCE Infrastructure Report Card — Rail 2025.</p>
+</footer>
+
+</body>
+</html>

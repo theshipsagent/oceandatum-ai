@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rail Analytics Platform — OceanDatum.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: #0a0a0a;
+  color: rgba(255,255,255,0.9);
+  min-height: 100vh;
+  line-height: 1.7;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%);
+  z-index: -1;
+}
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  padding: 0.8rem 2rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar-brand {
+  font-size: 0.85rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+}
+.navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+.navbar-brand a:hover { color: #64ffb4; }
+.navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.nav-link {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 6px;
+  transition: all 0.3s;
+  letter-spacing: 0.03em;
+}
+.nav-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem 4rem;
+}
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.page-header h1 {
+  font-size: 2.8rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+.page-header .subtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+.page-header .meta {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+}
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.7);
+  margin: 3rem 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0 3rem;
+}
+.component-card {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.component-card:hover {
+  border-color: rgba(100,255,180,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+.status-badge {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.status-complete { background: rgba(100,255,180,0.15); color: #64ffb4; border: 1px solid rgba(100,255,180,0.3); }
+.status-demo { background: rgba(100,180,255,0.12); color: #64b4ff; border: 1px solid rgba(100,180,255,0.3); }
+.status-ref { background: rgba(200,160,255,0.12); color: #c8a0ff; border: 1px solid rgba(200,160,255,0.3); }
+.card-desc {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+.card-meta {
+  font-size: 0.8rem;
+  color: rgba(100,255,180,0.7);
+  margin-bottom: 1rem;
+}
+.card-link {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
+  background: rgba(100,255,180,0.08);
+  border: 1px solid rgba(100,255,180,0.3);
+  border-radius: 6px;
+  color: #64ffb4;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  align-self: flex-start;
+}
+.card-link:hover { background: rgba(100,255,180,0.18); transform: translateX(3px); }
+.glass-section {
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+.glass-section h2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  letter-spacing: 0.04em;
+}
+.glass-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  margin: 1.5rem 0 0.75rem;
+}
+.glass-section p { font-size: 0.92rem; color: rgba(255,255,255,0.7); margin-bottom: 0.9rem; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.88rem;
+}
+th {
+  background: rgba(100,255,180,0.08);
+  color: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 0.7rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+td {
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 0.7rem 1rem;
+  color: rgba(255,255,255,0.75);
+  vertical-align: top;
+}
+tr:hover td { background: rgba(255,255,255,0.02); }
+.feature-list { list-style: none; padding: 0; }
+.feature-list li {
+  padding: 0.3rem 0 0.3rem 1.4rem;
+  position: relative;
+  color: rgba(255,255,255,0.72);
+  font-size: 0.9rem;
+}
+.feature-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #64ffb4;
+  font-size: 0.8rem;
+}
+.highlight-box {
+  background: rgba(100,255,180,0.05);
+  border-left: 3px solid rgba(100,255,180,0.6);
+  padding: 1rem 1.4rem;
+  margin: 1.25rem 0;
+  border-radius: 0 8px 8px 0;
+}
+.highlight-box p { margin: 0; font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.tech-block {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+.tech-block h4 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 4rem;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.82rem;
+  line-height: 1.8;
+}
+@media (max-width: 768px) {
+  .navbar { padding: 0.6rem 1rem; }
+  .navbar-right { gap: 0.4rem; }
+  .main-content { padding: 5rem 1rem 3rem; }
+  .page-header h1 { font-size: 1.9rem; }
+  .component-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="navbar-brand">An <a href="../../index.html">oceandatum.ai</a> project</span>
+  <div class="navbar-right">
+    <a href="../../index.html" class="nav-link">Home</a>
+    <a href="../../projects-hub.html" class="nav-link">Projects</a>
+    <a href="../../cv.html" class="nav-link">CV</a>
+  </div>
+</nav>
+
+<div class="main-content">
+
+  <div class="page-header">
+    <h1>RAIL ANALYTICS PLATFORM</h1>
+    <p class="subtitle">STB Data Integration · Network Cost Modeling · Geospatial Analysis</p>
+    <p class="meta">OceanDatum.ai — SESCO Consulting | February 2026</p>
+  </div>
+
+  <div class="glass-section">
+    <h2>Project Overview</h2>
+    <p>This platform synthesizes multiple government data sources to provide comprehensive rail freight cost modeling, commodity flow analysis, and infrastructure assessment capabilities. The system processes STB Public Use Waybill Sample data (2005–2023), integrates URCS Phase III costing methodology, and applies network-based routing analysis to develop rate benchmarks and market intelligence for bulk commodity movements.</p>
+    <ul class="feature-list">
+      <li>Origin-destination flow analysis by commodity (STCC classification)</li>
+      <li>URCS variable cost modeling with R/VC ratio calculations</li>
+      <li>Network routing algorithms (Dijkstra shortest path on NTAD rail network)</li>
+      <li>Gateway congestion analysis and infrastructure bottleneck identification</li>
+      <li>Class I carrier merger impact assessment (captive shipper analysis)</li>
+      <li>Multi-modal freight integration (rail + waterborne + truck)</li>
+    </ul>
+  </div>
+
+  <h2 class="section-title">DEMONSTRATION COMPONENTS</h2>
+
+  <div class="component-grid">
+
+    <div class="component-card">
+      <div class="card-header">
+        <span class="card-title">NOLA Rail Gateway Analysis</span>
+        <span class="status-badge status-complete">COMPLETE</span>
+      </div>
+      <p class="card-desc">Comprehensive analysis of New Orleans rail gateway operations, Class I carrier connections, neutral switching via NOPB/Rail NOLA, and UP-NS merger implications for gateway competition and captive shippers.</p>
+      <p class="card-meta">▸ 500+ page detailed report · 6 Class I carriers · $4B+ infrastructure pipeline</p>
+      <a href="nola-gateway.html" class="card-link">View Analysis →</a>
+    </div>
+
+    <div class="component-card">
+      <div class="card-header">
+        <span class="card-title">Cement Rail Cost Model</span>
+        <span class="status-badge status-complete">COMPLETE</span>
+      </div>
+      <p class="card-desc">Rate benchmarking and URCS variable cost analysis for cement movements (STCC 32411) from Gulf Coast production facilities. Includes interactive cost calculator with live R/VC ratio analysis.</p>
+      <p class="card-meta">▸ 175K carloads · 14.2M tons · Live URCS Calculator</p>
+      <a href="cement-costing.html" class="card-link">View Model →</a>
+    </div>
+
+    <div class="component-card">
+      <div class="card-header">
+        <span class="card-title">STB Waybill Trade Flows</span>
+        <span class="status-badge status-complete">COMPLETE</span>
+      </div>
+      <p class="card-desc">Origin-destination flow visualization and producer identification for cement movements nationwide. Includes investigations of anomalous no-plant BEA origins with cross-border re-origination analysis.</p>
+      <p class="card-meta">▸ 156K waybill records (2005–2023) · 429M expanded tons</p>
+      <a href="waybill-flows.html" class="card-link">View Flows →</a>
+    </div>
+
+    <div class="component-card">
+      <div class="card-header">
+        <span class="card-title">Network Cost Model</span>
+        <span class="status-badge status-complete">COMPLETE</span>
+      </div>
+      <p class="card-desc">NetworkX-based rail network routing system with URCS Phase III variable cost calculation engine. Interactive route cost calculator with interchange detection and circuity analysis on the NTAD 197K-node rail network.</p>
+      <p class="card-meta">▸ Dijkstra routing · Cost per ton-mile · Live Calculator</p>
+      <a href="network-model.html" class="card-link">View Model →</a>
+    </div>
+
+    <div class="component-card">
+      <div class="card-header">
+        <span class="card-title">Geospatial Analysis</span>
+        <span class="status-badge status-complete">COMPLETE</span>
+      </div>
+      <p class="card-desc">Rail infrastructure mapping and proximity analysis integrating NTAD rail lines/nodes, EPA facility locations, BEA economic areas, and port/waterway networks. Louisiana rail yard analysis and NOLA gateway corridor mapping.</p>
+      <p class="card-meta">▸ GeoPandas · QGIS · GeoJSON exports · Folium maps</p>
+      <a href="geospatial.html" class="card-link">View Maps →</a>
+    </div>
+
+    <div class="component-card">
+      <div class="card-header">
+        <span class="card-title">UP-NS Merger Analysis</span>
+        <span class="status-badge status-demo">ANALYSIS</span>
+      </div>
+      <p class="card-desc">Deep-dive analysis of proposed Union Pacific–Norfolk Southern merger ($85B, STB FD 36838). Examines 2-to-1 competitive impacts at major gateways, captive shipper risks, Committed Gateway Pricing mechanism, and STB regulatory conditions.</p>
+      <p class="card-meta">▸ NOLA gateway · Louisiana International Terminal · St. Bernard corridor</p>
+      <a href="merger-analysis.html" class="card-link">View Analysis →</a>
+    </div>
+
+    <div class="component-card">
+      <div class="card-header">
+        <span class="card-title">Markets & Routing</span>
+        <span class="status-badge status-ref">REFERENCE</span>
+      </div>
+      <p class="card-desc">Class I railroad route directories showing markets reachable from Gulf Coast origin points, primary corridors, and interchange gateways. Carrier-specific service patterns and single-line vs. interline routing alternatives.</p>
+      <p class="card-meta">▸ UP · BNSF · NS · CSX · CN · CPKC routes</p>
+      <a href="markets-routing.html" class="card-link">View Routes →</a>
+    </div>
+
+    <div class="component-card">
+      <div class="card-header">
+        <span class="card-title">Gateway Infrastructure Issues</span>
+        <span class="status-badge status-demo">OPERATIONAL</span>
+      </div>
+      <p class="card-desc">Infrastructure capacity analysis identifying bottlenecks, switching delays, at-grade crossing impacts, and capital improvement needs. Covers NOLA NORG corridor (35 trains/day, 29.7 hrs delay), Huey P. Long Bridge constraints.</p>
+      <p class="card-meta">▸ $4.1B+ identified investment pipeline</p>
+      <a href="gateway-issues.html" class="card-link">View Issues →</a>
+    </div>
+
+  </div>
+
+  <div class="glass-section">
+    <h2>Technical Architecture</h2>
+    <div class="tech-stack-grid">
+      <div class="tech-block">
+        <h4>Data Sources</h4>
+        <ul class="feature-list">
+          <li>STB Public Use Waybill Sample (2005–2023) — 3.2M records</li>
+          <li>STB URCS Phase III — Variable cost coefficients</li>
+          <li>BTS NTAD — North American Rail Network (197K nodes)</li>
+          <li>EPA GHGRP — Cement plant locations</li>
+          <li>BEA Economic Areas — 172 US zones + 14 Canadian regions</li>
+          <li>USACE Waterborne Commerce — Port tonnage cross-validation</li>
+        </ul>
+      </div>
+      <div class="tech-block">
+        <h4>Processing Pipeline</h4>
+        <ul class="feature-list">
+          <li>Python 3.11+ (pandas, geopandas, networkx, folium)</li>
+          <li>NetworkX MultiDiGraph for rail network routing</li>
+          <li>Haversine + Dijkstra shortest path algorithms</li>
+          <li>URCS variable cost: GTM + Car-Mile + Switch + Interchange</li>
+          <li>GeoPandas spatial joins for proximity analysis</li>
+          <li>Interactive visualization: Folium maps, Plotly charts</li>
+        </ul>
+      </div>
+      <div class="tech-block">
+        <h4>Output Formats</h4>
+        <ul class="feature-list">
+          <li>HTML reports (static, self-contained, portable)</li>
+          <li>GeoJSON (rail yards, routes, BEA boundaries)</li>
+          <li>CSV exports (processed waybill data, cost estimates)</li>
+          <li>Interactive maps (Leaflet/Folium with layer toggles)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="glass-section">
+    <h2>Key Datasets Processed</h2>
+    <table>
+      <tr>
+        <th>Dataset</th>
+        <th>Records</th>
+        <th>Timespan</th>
+        <th>Processing Status</th>
+      </tr>
+      <tr>
+        <td><strong>STB Waybill — Cement (STCC 32411)</strong></td>
+        <td>156,223 sample<br>429M exp. tons</td>
+        <td>2005–2023</td>
+        <td>✓ Processed, EPA plant-matched, BEA-assigned</td>
+      </tr>
+      <tr>
+        <td><strong>NTAD Rail Network</strong></td>
+        <td>197,485 nodes<br>235,654 edges</td>
+        <td>2024</td>
+        <td>✓ Loaded into NetworkX, routeable</td>
+      </tr>
+      <tr>
+        <td><strong>EPA Cement Plants</strong></td>
+        <td>100 facilities</td>
+        <td>Current</td>
+        <td>✓ Geocoded, BEA-assigned, matched to waybill</td>
+      </tr>
+      <tr>
+        <td><strong>Louisiana Rail Yards</strong></td>
+        <td>45+ facilities</td>
+        <td>2024</td>
+        <td>✓ Mapped (GeoJSON), NOLA gateway classified</td>
+      </tr>
+      <tr>
+        <td><strong>SCRS Short Line Customers</strong></td>
+        <td>39,936 records<br>8,555 bulk classified</td>
+        <td>State reports</td>
+        <td>✓ Consolidated, harmonized, parent company matched</td>
+      </tr>
+      <tr>
+        <td><strong>BEA Economic Areas</strong></td>
+        <td>186 zones</td>
+        <td>Census</td>
+        <td>✓ Centroids geocoded, regional assignments</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="glass-section">
+    <h2>Analysis Highlights</h2>
+    <h3>Cement Trade Flow Findings</h3>
+    <ul class="feature-list">
+      <li><strong>Canadian Re-Origination:</strong> 27M tons enters US via CPKC at Fargo, ND (Lafarge Calgary), stored at ND terminals, re-originated as "domestic" shipments — raises true Canadian share from 2.4% to 8.7%</li>
+      <li><strong>Port Import Gateway:</strong> Houston (BEA 134) handles 31M tons via Port of Houston terminals (CEMEX Mexico clinker, GCC Chihuahua, Turkish/Greek vessel imports) — largest US cement import port</li>
+      <li><strong>Geographic Boundary Artifacts:</strong> Fresno (BEA 160) shows 37M tons origin but has no plants — actual Kern County plants (BEA 161) load at San Joaquin Valley yards, waybill records yard BEA not plant BEA</li>
+      <li><strong>Mid-Corridor Distribution:</strong> Hartford (BEA 013) shows 14M tons — receives from Albany NY plants + Quebec imports, re-originated southward via CSX/CP to Baltimore/Charleston markets</li>
+    </ul>
+    <h3>NOLA Gateway Capacity Issues</h3>
+    <ul class="feature-list">
+      <li><strong>Congestion:</strong> 29-mile NORG corridor handles 35 freight + 5 Amtrak trains/day at 20 mph max speed, generating 29.7 hrs/day combined train-meet delay</li>
+      <li><strong>Single Point of Failure:</strong> Huey P. Long Bridge is only Mississippi River rail crossing in metro — all east-west traffic queues here</li>
+      <li><strong>At-Grade Crossings:</strong> 20 crossings with 10K–20K vehicles/day generate 112.4 hrs/day vehicle delay</li>
+      <li><strong>Infrastructure Needs:</strong> $4.0B+ identified investments (NORG $642M, Louisiana International Terminal $1.8B, NOGC relocation $613M)</li>
+    </ul>
+    <h3>UP-NS Merger Captive Shipper Risk</h3>
+    <ul class="feature-list">
+      <li><strong>2-to-1 Problem Redux:</strong> NOLA gateway eastern carriers reduce from 2 (NS + CSX) to 1 (CSX only), mirroring 1996 western 2-to-1 (UP + SP → UP only)</li>
+      <li><strong>Below-Gateway Captivity:</strong> NS track south of NOLA through St. Bernard/Plaquemines becomes UP monopoly — shippers go from competitive access to UP sole carrier</li>
+      <li><strong>CGP Limitation:</strong> Committed Gateway Pricing addresses through-rate competition but NOT first-mile/last-mile captivity for shippers on former NS track south of NOLA</li>
+    </ul>
+  </div>
+
+  <div class="glass-section">
+    <h2>Use Cases</h2>
+    <table>
+      <tr>
+        <th>Application</th>
+        <th>Users</th>
+        <th>Platform Capabilities</th>
+      </tr>
+      <tr>
+        <td><strong>Rate Benchmarking</strong></td>
+        <td>Shippers, 3PLs, consultants</td>
+        <td>URCS variable cost baselines, R/VC ratio analysis, historical rate trends by lane</td>
+      </tr>
+      <tr>
+        <td><strong>STB Regulatory Analysis</strong></td>
+        <td>Regulatory agencies, law firms</td>
+        <td>R/VC >180% identification, captive shipper analysis, merger competitive impact assessment</td>
+      </tr>
+      <tr>
+        <td><strong>Market Intelligence</strong></td>
+        <td>Railroads, investors, analysts</td>
+        <td>Commodity flow patterns, market share by carrier/region, origin-destination matrices</td>
+      </tr>
+      <tr>
+        <td><strong>Infrastructure Planning</strong></td>
+        <td>State DOTs, port authorities</td>
+        <td>Gateway bottleneck identification, capacity constraint analysis, investment prioritization</td>
+      </tr>
+      <tr>
+        <td><strong>Supply Chain Optimization</strong></td>
+        <td>Manufacturers, distributors</td>
+        <td>Origin market comparison, routing alternatives, cost per ton-mile by corridor</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Rail Analytics Platform — Demonstration Portfolio</strong></p>
+  <p>OceanDatum.ai — SESCO Consulting | February 2026</p>
+  <p>Contact: William Davis | wsd@theshipsagent.com</p>
+  <p style="margin-top: 0.75rem; font-size: 0.75rem; color: rgba(255,255,255,0.3);">
+    Data Sources: STB (Surface Transportation Board) · BTS (Bureau of Transportation Statistics) · EPA (Environmental Protection Agency) · USACE (Army Corps of Engineers)
+  </p>
+</footer>
+
+</body>
+</html>

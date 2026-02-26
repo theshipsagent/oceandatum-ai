@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Orleans Rail Gateway Analysis — Rail Analytics Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; color: rgba(255,255,255,0.9); min-height: 100vh; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%); z-index: -1; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6); }
+    .navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+    .navbar-brand a:hover { color: #64ffb4; }
+    .navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .nav-link { font-size: 0.85rem; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.4rem 0.9rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; transition: all 0.3s; }
+    .nav-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+    .breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.4); padding: 5.5rem 2rem 0; max-width: 1100px; margin: 0 auto; }
+    .breadcrumb a { color: rgba(100,255,180,0.8); text-decoration: none; }
+    .breadcrumb a:hover { color: #64ffb4; }
+    .main-content { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+    .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .page-header h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 0.08em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-style: italic; }
+    .glass-section { background: rgba(0,0,0,0.38); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+    .glass-section h2 { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.05em; text-transform: uppercase; }
+    .glass-section h3 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.75); margin: 1.4rem 0 0.75rem; }
+    .glass-section p { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-bottom: 0.85rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.87rem; }
+    th { background: rgba(100,255,180,0.07); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.12); padding: 0.65rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; }
+    td { border: 1px solid rgba(255,255,255,0.07); padding: 0.65rem 0.9rem; color: rgba(255,255,255,0.72); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .feature-list { list-style: none; padding: 0; }
+    .feature-list li { padding: 0.28rem 0 0.28rem 1.35rem; position: relative; color: rgba(255,255,255,0.68); font-size: 0.88rem; }
+    .feature-list li::before { content: '▸'; position: absolute; left: 0; color: #64ffb4; font-size: 0.78rem; }
+    .highlight-box { background: rgba(100,255,180,0.05); border-left: 3px solid rgba(100,255,180,0.55); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .highlight-box p { margin: 0 0 0.5rem; font-size: 0.88rem; }
+    .highlight-box p:last-child { margin: 0; }
+    .alert-box { background: rgba(255,200,80,0.05); border-left: 3px solid rgba(255,200,80,0.5); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .alert-box p { margin: 0 0 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .alert-box p:last-child { margin: 0; }
+    .code-box { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.8rem; color: rgba(100,255,180,0.85); line-height: 1.9; overflow-x: auto; white-space: pre; }
+    .schematic { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.75rem; color: rgba(100,255,180,0.7); line-height: 1.7; overflow-x: auto; white-space: pre; }
+    .investigation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+    .investigation-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.5rem; transition: all 0.3s; }
+    .investigation-card:hover { border-color: rgba(100,255,180,0.3); transform: translateY(-3px); }
+    .investigation-card h4 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .investigation-card p { font-size: 0.83rem; color: rgba(255,255,255,0.6); margin-bottom: 0.6rem; }
+    .investigation-card a { display: inline-block; padding: 0.4rem 0.85rem; background: rgba(100,255,180,0.08); border: 1px solid rgba(100,255,180,0.3); border-radius: 5px; color: #64ffb4; text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: all 0.3s; }
+    .investigation-card a:hover { background: rgba(100,255,180,0.15); }
+    .nav-buttons { display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .nav-btn { flex: 1; min-width: 180px; padding: 0.6rem 1.1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: rgba(255,255,255,0.8); text-decoration: none; text-align: center; font-size: 0.85rem; transition: all 0.3s; }
+    .nav-btn:hover { background: rgba(100,255,180,0.08); border-color: rgba(100,255,180,0.35); color: #64ffb4; }
+    footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
+    @media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .breadcrumb { padding: 5.5rem 1rem 0; } .page-header h1 { font-size: 1.6rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="navbar-brand">An <a href="../../index.html">oceandatum.ai</a> project</span>
+  <div class="navbar-right">
+    <a href="index.html" class="nav-link">Rail Platform</a>
+    <a href="../../projects-hub.html" class="nav-link">Projects</a>
+    <a href="../../index.html" class="nav-link">Home</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../../index.html">Home</a> / <a href="../../projects-hub.html">Projects</a> / <a href="index.html">Rail Analytics Platform</a> / New Orleans Rail Gateway
+</div>
+
+<div class="main-content">
+  <div class="page-header">
+    <h1>New Orleans Rail Gateway Analysis</h1>
+    <p class="subtitle">Class I Railroad Routes, Switching Operations &amp; Competitive Landscape · Jefferson &amp; Orleans Parishes, Louisiana</p>
+  </div>
+
+  <!-- Gateway Overview -->
+  <div class="glass-section">
+    <h2>Gateway Overview</h2>
+    <p>New Orleans is the <strong>fourth-largest rail gateway in the United States</strong> by tonnage, serving as a critical interchange point where eastern and western Class I railroads meet at the Mississippi River. The gateway is defined by the New Orleans Rail Gateway (NORG) — a shared 29-mile corridor running from Bridge City on the West Bank through downtown New Orleans to New Orleans East — and is anchored by two specialized switching and terminal entities: the <strong>New Orleans Public Belt Railroad (NOPB)</strong>, now rebranded as <strong>Rail NOLA</strong>, which provides neutral switching between all six Class I carriers operating in the region.</p>
+    <p>All six major Class I railroads serving North America have a physical presence at the New Orleans gateway: Union Pacific (UP), BNSF Railway (BNSF), Norfolk Southern (NS), CSX Transportation (CSX), Canadian National (CN), and Canadian Pacific Kansas City (CPKC). This concentration of carriers makes New Orleans one of only a handful of true multi-railroad interchange hubs in the country, and the only one where all six Class I railroads converge at a common neutral switching facility.</p>
+    <div class="highlight-box">
+      <p><strong>Key Gateway Statistics</strong></p>
+      <p><strong>NORG Corridor Length:</strong> 29 miles (Bridge City to New Orleans East)</p>
+      <p><strong>Daily Train Traffic:</strong> 35 freight trains + 5 Amtrak passenger trains</p>
+      <p><strong>Maximum Speed:</strong> 20 mph throughout the corridor</p>
+      <p><strong>Daily Train Delay:</strong> 29.7 hours aggregate delay per day</p>
+      <p><strong>At-Grade Crossings:</strong> 20 within NORG; generating 112.4 hours/day of vehicle delay</p>
+      <p><strong>Capital Investment Pipeline:</strong> $4.0B+ in identified infrastructure projects</p>
+    </div>
+  </div>
+
+  <!-- NORG Corridor Schematic -->
+  <div class="glass-section">
+    <h2>NORG Corridor Schematic</h2>
+    <div class="schematic">
+WEST BANK                                        EAST BANK
+===========                                      ==========
+
+Bridge City ──── Huey P. Long Bridge ──┐
+(UP Avondale)    (Single Track, 20mph) │
+(BNSF Westwego)                        │
+                                        ▼
+                               ┌── Southport ──┐
+                               │  (NOPB Cotton │
+                               │   Warehouse   │
+                               │     Yard)     │
+                               └───────┬───────┘
+                                       │
+                              Central Business
+                                  District
+                                       │
+                               ┌───────┴───────┐
+                               │   NS Oliver   │
+                               │     Yard      │
+                               │  (St. Bernard │
+                               │   Corridor)   │
+                               └───────┬───────┘
+                                       │
+                               ┌───────┴───────┐
+                               │  CSX Gentilly │
+                               │     Yard      │
+                               └───────┬───────┘
+                                       │
+                               ┌───────┴───────┐
+                               │   CN Mays     │
+                               │     Yard      │
+                               └───────┬───────┘
+                                       │
+                               ┌───────┴───────┐
+                               │  Almonaster   │
+                               │  Ave Bridge   │
+                               │    (IHNC)     │
+                               └───────┬───────┘
+                                       │
+                              New Orleans East
+                           (Louisiana International
+                                 Terminal)
+    </div>
+  </div>
+
+  <!-- Class I Railroad Connections -->
+  <div class="glass-section">
+    <h2>Class I Railroad Connections</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Carrier</th>
+          <th>Primary Facility</th>
+          <th>Region Served</th>
+          <th>LA Route Miles</th>
+          <th>NOPB Interchange</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Union Pacific (UP)</strong></td>
+          <td>Avondale Yard (West Bank)</td>
+          <td>Western US, Mexico via Sunset Route / Overland Route</td>
+          <td>~1,100 miles</td>
+          <td>Yes — Cotton Warehouse Yard</td>
+        </tr>
+        <tr>
+          <td><strong>BNSF Railway (BNSF)</strong></td>
+          <td>Westwego Yard (West Bank)</td>
+          <td>Western US, Pacific Northwest, Chicago via Southern Transcon</td>
+          <td>~420 miles</td>
+          <td>Yes — Cotton Warehouse Yard</td>
+        </tr>
+        <tr>
+          <td><strong>Norfolk Southern (NS)</strong></td>
+          <td>Oliver Yard (St. Bernard Corridor)</td>
+          <td>Eastern US, Midwest via Crescent Corridor</td>
+          <td>~420 miles</td>
+          <td>Yes — France Yard / Claiborne Yard</td>
+        </tr>
+        <tr>
+          <td><strong>CSX Transportation (CSX)</strong></td>
+          <td>Gentilly Yard (East Bank)</td>
+          <td>Eastern US, Southeast via CSAO / C&amp;O lines</td>
+          <td>~540 miles</td>
+          <td>Yes — France Yard / Claiborne Yard</td>
+        </tr>
+        <tr>
+          <td><strong>Canadian National (CN)</strong></td>
+          <td>Mays Yard (East Bank)</td>
+          <td>Canada, Midwest, Gulf Coast via IC/GTW lines</td>
+          <td>~490 miles</td>
+          <td>Yes — France Yard</td>
+        </tr>
+        <tr>
+          <td><strong>CPKC</strong></td>
+          <td>Avondale Bridge Access (West Bank)</td>
+          <td>Mexico, Kansas City, Canada via KCS Southern lines</td>
+          <td>~370 miles</td>
+          <td>Yes — Cotton Warehouse Yard</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Markets Reachable from New Orleans -->
+  <div class="glass-section">
+    <h2>Markets Reachable from New Orleans</h2>
+
+    <h3>Western Network (UP / BNSF)</h3>
+    <ul class="feature-list">
+      <li>Los Angeles / Long Beach — via Sunset Route (UP) or Southern Transcon (BNSF)</li>
+      <li>Houston / Dallas / San Antonio — UP Sunset and Eagle Pass corridors</li>
+      <li>Chicago — UP Gulf Subdivision via Memphis; BNSF via Belen/Argentine</li>
+      <li>Pacific Northwest (Seattle, Portland) — BNSF Transcon to Northern Lines</li>
+      <li>Denver / Salt Lake City — UP Overland Route</li>
+      <li>Phoenix / Tucson — UP Sunset Route</li>
+    </ul>
+
+    <h3>Eastern Network (NS / CSX)</h3>
+    <ul class="feature-list">
+      <li>Atlanta / Charlotte / Birmingham — NS Crescent Corridor; CSX via Selma</li>
+      <li>Memphis / Nashville — NS Alabama Great Southern; CSX via Montgomery</li>
+      <li>New York / Philadelphia / Baltimore — NS via Chattanooga / Knoxville; CSX via Clifton Forge</li>
+      <li>Chicago — NS Big Four line via Louisville; CSX CSAOs via Cincinnati</li>
+      <li>Detroit / Cleveland — NS via Columbus; CSX via Toledo</li>
+      <li>Jacksonville / Miami — CSX via Waycross; NS via Savannah</li>
+    </ul>
+
+    <h3>Canadian National (CN) Markets</h3>
+    <ul class="feature-list">
+      <li>Chicago — CN IC main line (direct single-line service, ~900 miles)</li>
+      <li>Memphis — CN via Jackson, TN</li>
+      <li>St. Louis — CN via Memphis gateway</li>
+      <li>Toronto / Montreal — CN via Chicago and Canadian network</li>
+      <li>Jackson, MS / Centralia, IL — CN Illinois Central main</li>
+      <li>Baton Rouge — CN direct service on IC Gulf Subdivision</li>
+    </ul>
+
+    <h3>CPKC Markets</h3>
+    <ul class="feature-list">
+      <li>Mexico City / Monterrey / Lazaro Cardenas — single-line via KCS Southern</li>
+      <li>Kansas City — CPKC main line via Shreveport</li>
+      <li>Dallas / Fort Worth — CPKC KCS Southern via Shreveport</li>
+      <li>Detroit / Chicago — via CPKC interchange at Kansas City or St. Paul</li>
+      <li>Canada (Calgary, Winnipeg) — via CP lines north of Kansas City</li>
+    </ul>
+  </div>
+
+  <!-- NOPB / Rail NOLA -->
+  <div class="glass-section">
+    <h2>NOPB / Rail NOLA — Neutral Switching</h2>
+    <p>The New Orleans Public Belt Railroad (NOPB), now operating as <strong>Rail NOLA</strong>, was established in <strong>1908</strong> as a publicly owned terminal railroad to provide neutral, non-discriminatory switching between all carriers at the Port of New Orleans. Unlike carrier-owned terminal facilities in other cities, Rail NOLA operates as a neutral party, meaning all six Class I railroads can interchange cars with each other through Rail NOLA's yard system at standardized switching rates, regardless of competitive relationships.</p>
+    <p>In 2022, the Port of New Orleans assumed full operational control of NOPB and rebranded the organization as Rail NOLA, reflecting an updated strategic focus on integrating rail service with Port NOLA's cargo handling facilities. This governance change was intended to streamline capital investment decisions and align rail operations with port development priorities, including the Louisiana International Terminal (LIT) project.</p>
+    <div class="highlight-box">
+      <p><strong>Rail NOLA / NOPB Infrastructure</strong></p>
+      <p><strong>Mainline Track:</strong> 26 miles of mainline track</p>
+      <p><strong>Total Track Miles:</strong> 75 miles (including yard tracks, leads, and sidings)</p>
+      <p><strong>Cotton Warehouse Yard:</strong> Primary West Bank interchange facility</p>
+      <p><strong>France Yard:</strong> East Bank classification facility — capacity 435 cars</p>
+      <p><strong>Claiborne Yard:</strong> East Bank overflow/staging — capacity 335 cars</p>
+      <p><strong>Huey P. Long Bridge:</strong> Single-track connection between East and West Bank operations — critical bottleneck</p>
+    </div>
+
+    <h3>Critical Bottleneck: Huey P. Long Bridge</h3>
+    <p>The Huey P. Long Bridge rail crossing over the Mississippi River is a single-track structure built in 1935, representing the sole rail connection between the East Bank and West Bank operations of Rail NOLA and the Class I railroads serving both sides of the river. The bridge carries all rail traffic between the eastern carriers (NS, CSX, CN) and the western carriers (UP, BNSF, CPKC), meaning any traffic requiring east-west interline movement — including bulk commodities, grain, chemicals, and containers — must traverse this single-track bottleneck.</p>
+    <p>The bridge's 20 mph speed restriction, combined with its single-track configuration, creates significant dwell time for cars awaiting bridge crossing windows. Studies have identified the Huey P. Long Bridge as the single greatest capacity constraint in the NORG corridor. A second track across the Mississippi River has been studied for decades and is included in current infrastructure planning discussions, though no funding has been committed for this project as of February 2026.</p>
+  </div>
+
+  <!-- East Bank Terminals -->
+  <div class="glass-section">
+    <h2>East Bank Terminals &amp; Rail Service</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Terminal / Yard</th>
+          <th>Operator</th>
+          <th>Location</th>
+          <th>Function</th>
+          <th>Track Capacity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>NS Oliver Yard</strong></td>
+          <td>Norfolk Southern</td>
+          <td>St. Bernard Corridor, Orleans Parish</td>
+          <td>Classification, local switching, intermodal origination</td>
+          <td>~1,200 cars</td>
+        </tr>
+        <tr>
+          <td><strong>CSX Gentilly Yard</strong></td>
+          <td>CSX Transportation</td>
+          <td>Gentilly Blvd, Orleans Parish</td>
+          <td>Carload classification, unit train staging, industrial switching</td>
+          <td>~900 cars</td>
+        </tr>
+        <tr>
+          <td><strong>CN Mays Yard</strong></td>
+          <td>Canadian National</td>
+          <td>East Bank, Orleans Parish</td>
+          <td>IC interchange, local car switching, industrial service</td>
+          <td>~600 cars</td>
+        </tr>
+        <tr>
+          <td><strong>Port NOLA East Bank</strong></td>
+          <td>Port of New Orleans / Rail NOLA</td>
+          <td>France Rd / Claiborne Ave area</td>
+          <td>Port switching, multi-carrier interchange, bulk terminal service</td>
+          <td>France Yard 435; Claiborne 335</td>
+        </tr>
+        <tr>
+          <td><strong>Louisiana International Terminal (LIT)</strong></td>
+          <td>Port NOLA (under development)</td>
+          <td>New Orleans East, Lower Ninth Ward area</td>
+          <td>New deepwater container terminal with on-dock rail facility</td>
+          <td>Under construction — $1.8B project</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- West Bank Terminals -->
+  <div class="glass-section">
+    <h2>West Bank Terminals &amp; Rail Service</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Terminal / Yard</th>
+          <th>Operator</th>
+          <th>Location</th>
+          <th>Function</th>
+          <th>Track Capacity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>UP Avondale Yard</strong></td>
+          <td>Union Pacific</td>
+          <td>Avondale, Jefferson Parish (West Bank)</td>
+          <td>Primary UP classification yard for NOLA gateway, unit train staging</td>
+          <td>~2,000 cars</td>
+        </tr>
+        <tr>
+          <td><strong>BNSF Westwego</strong></td>
+          <td>BNSF Railway</td>
+          <td>Westwego, Jefferson Parish (West Bank)</td>
+          <td>BNSF gateway terminal, grain elevator service, local industrial</td>
+          <td>~800 cars</td>
+        </tr>
+        <tr>
+          <td><strong>Avondale Global Gateway</strong></td>
+          <td>Private (former Northrop Grumman shipyard site)</td>
+          <td>Avondale, Jefferson Parish</td>
+          <td>Break-bulk, heavy-lift, project cargo; rail access via UP/NOGC</td>
+          <td>Limited rail tracks on-site</td>
+        </tr>
+        <tr>
+          <td><strong>NOGC Short Line</strong></td>
+          <td>New Orleans Gulf Coast Railway (NOGC)</td>
+          <td>West Bank, Jefferson / Plaquemines Parishes</td>
+          <td>Local industrial switching, 100 at-grade crossings; connects chemical and refinery industries</td>
+          <td>Short line operations — limited capacity</td>
+        </tr>
+        <tr>
+          <td><strong>Port of Plaquemines</strong></td>
+          <td>Plaquemines Port Harbor &amp; Terminal District</td>
+          <td>Myrtle Grove / West Pointe a la Hache, Plaquemines Parish</td>
+          <td>Grain export terminals (Bunge, Gavilon), bulk export; CPKC interchange via new CPKC bridge</td>
+          <td>Multiple dedicated grain loop tracks</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Gateway Capacity Issues -->
+  <div class="glass-section">
+    <h2>Gateway Capacity Issues</h2>
+    <div class="alert-box">
+      <p><strong>Operational Constraints — NORG Corridor</strong></p>
+      <p>The NORG corridor operates at or near capacity under current infrastructure conditions. The combination of a 20 mph blanket speed restriction, a single-track river crossing, 20 at-grade highway crossings, and a constrained freight lead at NS Oliver Yard creates compounding delays that cascade through the system. USDOT forecasts project that Gulf Coast rail tonnage will double by 2030, making current capacity inadequate even without the proposed Louisiana International Terminal adding new demand.</p>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Description</th>
+          <th>Estimated Cost</th>
+          <th>Status (Feb 2026)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Louisiana International Terminal (LIT)</strong></td>
+          <td>New deepwater container terminal with on-dock rail, New Orleans East</td>
+          <td>$1.8 billion</td>
+          <td>Environmental review; construction phase 1 pending</td>
+        </tr>
+        <tr>
+          <td><strong>Second Mississippi River Rail Crossing</strong></td>
+          <td>New rail bridge parallel to Huey P. Long Bridge to eliminate single-track bottleneck</td>
+          <td>$800M–$1.2B (estimated)</td>
+          <td>Studies only — no committed funding</td>
+        </tr>
+        <tr>
+          <td><strong>NS Oliver Yard Freight Lead Extension</strong></td>
+          <td>Extend freight lead from 3,000 ft to 8,000+ ft to accommodate 100-car trains</td>
+          <td>~$180 million</td>
+          <td>Proposed — included in CRISI applications</td>
+        </tr>
+        <tr>
+          <td><strong>Almonaster Avenue Bridge Replacement (IHNC)</strong></td>
+          <td>Replace aging swing bridge over Inner Harbor Navigation Canal</td>
+          <td>~$350 million</td>
+          <td>Design phase; federal funding sought</td>
+        </tr>
+        <tr>
+          <td><strong>At-Grade Crossing Elimination (NORG)</strong></td>
+          <td>Grade separation of key at-grade crossings to reduce vehicle and train delay</td>
+          <td>~$400 million</td>
+          <td>Multiple projects at various stages</td>
+        </tr>
+        <tr>
+          <td><strong>NOPB Gateway CRISI Grant</strong></td>
+          <td>Federal CRISI award for Rail NOLA gateway improvements, track upgrades</td>
+          <td>$7.29 million (federal); total project larger</td>
+          <td>Awarded — implementation underway</td>
+        </tr>
+        <tr>
+          <td><strong>EBJ Flyover (East Bank Junction)</strong></td>
+          <td>Grade separation at key East Bank Junction to eliminate at-grade conflicts between NS, CSX, CN, and Rail NOLA movements</td>
+          <td>~$120 million</td>
+          <td>Studied — included in long-range plan</td>
+        </tr>
+        <tr>
+          <td><strong>TOTAL (identified pipeline)</strong></td>
+          <td></td>
+          <td><strong>$4.0B+</strong></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- UP-NS Merger Impact -->
+  <div class="glass-section">
+    <h2>UP-NS Merger Impact</h2>
+    <div class="alert-box">
+      <p><strong>Merger Status — February 2026</strong></p>
+      <p>Union Pacific announced its proposed acquisition of Norfolk Southern on December 16, 2025, valuing NS at approximately $85 billion. The STB (Surface Transportation Board) received the initial application in late December 2025 but issued a notice on January 16, 2026 that the filing was incomplete and required substantial supplemental information before the formal review clock would begin. A reverse termination fee of $2.5 billion has been disclosed. This would be the first merger application reviewed under the STB's 2001 rules requiring that the transaction "enhance" competition rather than merely not harm it — a significantly higher standard than previous merger reviews.</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>East Bank NOLA Gateway Structure</th>
+          <th>Competition Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pre-1996</strong></td>
+          <td>Southern Pacific (SP), Union Pacific (UP), Southern Railway / NS, Seaboard / CSX, IC, KCS all operating independently</td>
+          <td>High — 5–6 independent carriers competing for East/West traffic</td>
+        </tr>
+        <tr>
+          <td><strong>1996–Present</strong></td>
+          <td>SP absorbed into UP; KCS later became CPKC. East Bank: NS, CSX, CN (3 carriers). West Bank: UP, BNSF, CPKC (3 carriers)</td>
+          <td>Moderate — 2 eastern carriers (NS/CSX) competing for East Bank traffic; western traffic split UP/BNSF/CPKC</td>
+        </tr>
+        <tr>
+          <td><strong>Proposed Post UP-NS</strong></td>
+          <td>UP absorbs NS. East Bank reduced to UP-NS + CSX (effectively 2 systems). West Bank: UP-NS, BNSF, CPKC</td>
+          <td>Reduced — CSX becomes sole eastern competitor; captive shippers on NS-only corridors lose competitive alternative</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>St. Bernard Corridor Captive Shipper Risk</h3>
+    <p>The St. Bernard Corridor in eastern New Orleans is served exclusively by Norfolk Southern's Oliver Yard. Following the 1996 UP-SP merger, eastern New Orleans shippers retained competition between NS and CSX; however, the geography of the St. Bernard Corridor makes CSX access difficult without NOPB switching, adding cost and dwell time. If UP acquires NS, the following facilities would face significantly reduced competitive options:</p>
+    <ul class="feature-list">
+      <li>NS Oliver Yard (primary St. Bernard classification facility)</li>
+      <li>Louisiana International Terminal (being built adjacent to NS-served corridor)</li>
+      <li>Industrial shippers along the St. Bernard / Chef Menteur corridor</li>
+      <li>Chemical plants in the eastern Orleans Parish industrial district</li>
+      <li>Bulk liquid terminals relying on NS unit train service to eastern US refineries</li>
+      <li>Import cement terminals receiving eastern US origination via NS intermodal</li>
+    </ul>
+    <div class="alert-box">
+      <p><strong>Post-Merger Captive Position</strong></p>
+      <p>Shippers currently served solely or primarily by NS at the St. Bernard Corridor would, post-merger, face a UP-NS monopoly for direct rail service. While the STB's Committed Gateway Pricing (CGP) mechanism provides some rate protection at interchange gateways, CGP has significant gaps: it does not apply to single-line traffic, it is subject to shipper application requirements, and it excludes certain commodity categories. The practical effect is that shippers who today can play NS against CSX for competitive rate quotes would lose that leverage, and CGP would not fully substitute for true carrier competition.</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="glass-section">
+    <h2>Explore Related Analysis</h2>
+    <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:1.25rem;">Full 500+ page detailed report available upon request.</p>
+    <div class="nav-buttons">
+      <a href="merger-analysis.html" class="nav-btn">UP-NS Merger Deep Dive →</a>
+      <a href="markets-routing.html" class="nav-btn">Markets &amp; Routing →</a>
+      <a href="gateway-issues.html" class="nav-btn">Gateway Issues →</a>
+      <a href="index.html" class="nav-btn">← Back to Platform Home</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Rail Analytics Platform — New Orleans Rail Gateway Analysis</strong></p>
+  <p>OceanDatum.ai — SESCO Consulting | February 2026</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">Sources: STB Annual Reports; USDOT NTAD; Port NOLA Annual Reports; NOPB/Rail NOLA public filings; Louisiana DOTD State Rail Plan 2040; AAR Railroad Facts; USDOT Freight Analysis Framework; Surface Transportation Board FD 36838 (UP-NS merger application).</p>
+</footer>
+
+</body>
+</html>

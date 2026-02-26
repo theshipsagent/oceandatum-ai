@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geospatial Analysis — Rail Analytics Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; color: rgba(255,255,255,0.9); min-height: 100vh; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%); z-index: -1; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6); }
+    .navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+    .navbar-brand a:hover { color: #64ffb4; }
+    .navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .nav-link { font-size: 0.85rem; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.4rem 0.9rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; transition: all 0.3s; }
+    .nav-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+    .breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.4); padding: 5.5rem 2rem 0; max-width: 1100px; margin: 0 auto; }
+    .breadcrumb a { color: rgba(100,255,180,0.8); text-decoration: none; }
+    .breadcrumb a:hover { color: #64ffb4; }
+    .main-content { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+    .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .page-header h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 0.08em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-style: italic; }
+    .glass-section { background: rgba(0,0,0,0.38); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+    .glass-section h2 { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.05em; text-transform: uppercase; }
+    .glass-section h3 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.75); margin: 1.4rem 0 0.75rem; }
+    .glass-section p { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-bottom: 0.85rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.87rem; }
+    th { background: rgba(100,255,180,0.07); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.12); padding: 0.65rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; }
+    td { border: 1px solid rgba(255,255,255,0.07); padding: 0.65rem 0.9rem; color: rgba(255,255,255,0.72); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .feature-list { list-style: none; padding: 0; }
+    .feature-list li { padding: 0.28rem 0 0.28rem 1.35rem; position: relative; color: rgba(255,255,255,0.68); font-size: 0.88rem; }
+    .feature-list li::before { content: '▸'; position: absolute; left: 0; color: #64ffb4; font-size: 0.78rem; }
+    .highlight-box { background: rgba(100,255,180,0.05); border-left: 3px solid rgba(100,255,180,0.55); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .highlight-box p { margin: 0 0 0.5rem; font-size: 0.88rem; }
+    .highlight-box p:last-child { margin: 0; }
+    .alert-box { background: rgba(255,200,80,0.05); border-left: 3px solid rgba(255,200,80,0.5); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .alert-box p { margin: 0 0 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .alert-box p:last-child { margin: 0; }
+    .code-box { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.8rem; color: rgba(100,255,180,0.85); line-height: 1.9; overflow-x: auto; white-space: pre; }
+    .schematic { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.75rem; color: rgba(100,255,180,0.7); line-height: 1.7; overflow-x: auto; white-space: pre; }
+    .investigation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+    .investigation-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.5rem; transition: all 0.3s; }
+    .investigation-card:hover { border-color: rgba(100,255,180,0.3); transform: translateY(-3px); }
+    .investigation-card h4 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .investigation-card p { font-size: 0.83rem; color: rgba(255,255,255,0.6); margin-bottom: 0.6rem; }
+    .investigation-card a { display: inline-block; padding: 0.4rem 0.85rem; background: rgba(100,255,180,0.08); border: 1px solid rgba(100,255,180,0.3); border-radius: 5px; color: #64ffb4; text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: all 0.3s; }
+    .investigation-card a:hover { background: rgba(100,255,180,0.15); }
+    .nav-buttons { display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .nav-btn { flex: 1; min-width: 180px; padding: 0.6rem 1.1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: rgba(255,255,255,0.8); text-decoration: none; text-align: center; font-size: 0.85rem; transition: all 0.3s; }
+    .nav-btn:hover { background: rgba(100,255,180,0.08); border-color: rgba(100,255,180,0.35); color: #64ffb4; }
+    footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
+    @media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .breadcrumb { padding: 5.5rem 1rem 0; } .page-header h1 { font-size: 1.6rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="navbar-brand">An <a href="../../index.html">oceandatum.ai</a> project</span>
+  <div class="navbar-right">
+    <a href="index.html" class="nav-link">Rail Platform</a>
+    <a href="../../projects-hub.html" class="nav-link">Projects</a>
+    <a href="../../index.html" class="nav-link">Home</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../../index.html">Home</a> / <a href="../../projects-hub.html">Projects</a> / <a href="index.html">Rail Analytics Platform</a> / Geospatial Analysis
+</div>
+
+<div class="main-content">
+  <div class="page-header">
+    <h1>Geospatial Rail Infrastructure Analysis</h1>
+    <p class="subtitle">Rail Lines, Nodes, Yards &amp; Facility Proximity Mapping · GeoPandas | QGIS | GeoJSON | Interactive Folium Maps</p>
+  </div>
+
+  <!-- Overview -->
+  <div class="glass-section">
+    <h2>Overview</h2>
+    <p>The geospatial analysis component of the Rail Analytics Platform integrates multiple authoritative datasets to map the physical rail infrastructure, identify facility clusters, perform proximity analysis between rail assets and industrial customers, and produce both static and interactive cartographic outputs. The core analysis centers on the New Orleans Rail Gateway (NORG) corridor, with national coverage for cement plant proximity analysis tied to the STB Waybill flow data.</p>
+    <div class="highlight-box">
+      <p><strong>Core Datasets Integrated</strong></p>
+      <ul class="feature-list">
+        <li>USDOT NTAD (National Transportation Atlas Database) — national rail lines and nodes</li>
+        <li>Louisiana Rail Yards dataset — NOLA gateway yard polygons and metadata</li>
+        <li>EPA FRS (Facility Registry Service) + GHGRP — cement plant geocoded locations</li>
+        <li>BEA Economic Areas — boundary shapefiles for waybill origin-destination mapping</li>
+        <li>USACE Waterborne Commerce — port facility locations for import terminal analysis</li>
+        <li>State Rail Plans (Louisiana, Texas, Mississippi) — supplemental infrastructure data</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Key Geospatial Datasets -->
+  <div class="glass-section">
+    <h2>Key Geospatial Datasets</h2>
+
+    <h3>NTAD Rail Network</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Layer</th>
+          <th>Features</th>
+          <th>CRS</th>
+          <th>Attributes</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Rail Lines</strong></td>
+          <td>~140,000 segments (national)</td>
+          <td>WGS84 (EPSG:4326)</td>
+          <td>Carrier, track class, gross tons, owner, use code</td>
+          <td>USDOT BTS NTAD 2023</td>
+        </tr>
+        <tr>
+          <td><strong>Rail Nodes</strong></td>
+          <td>~18,500 points (national)</td>
+          <td>WGS84 (EPSG:4326)</td>
+          <td>Node type (junction, terminal, yard), carrier, milepost</td>
+          <td>USDOT BTS NTAD 2023</td>
+        </tr>
+        <tr>
+          <td><strong>Mainline Network</strong></td>
+          <td>Filtered subset — Class I mainlines only</td>
+          <td>WGS84 (EPSG:4326)</td>
+          <td>Speed class, annual gross tons, hazmat routing</td>
+          <td>USDOT BTS NTAD 2023</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Louisiana Rail Yards (NOLA Gateway)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Yard</th>
+          <th>Operator</th>
+          <th>Bank</th>
+          <th>Lat / Long (approx.)</th>
+          <th>Geometry Type</th>
+          <th>Capacity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>NS Oliver Yard</strong></td>
+          <td>Norfolk Southern</td>
+          <td>East</td>
+          <td>29.978N / 90.020W</td>
+          <td>Polygon (yard boundary)</td>
+          <td>~1,200 cars</td>
+        </tr>
+        <tr>
+          <td><strong>CSX Gentilly Yard</strong></td>
+          <td>CSX Transportation</td>
+          <td>East</td>
+          <td>30.005N / 89.998W</td>
+          <td>Polygon</td>
+          <td>~900 cars</td>
+        </tr>
+        <tr>
+          <td><strong>UP Avondale Yard</strong></td>
+          <td>Union Pacific</td>
+          <td>West</td>
+          <td>29.924N / 90.212W</td>
+          <td>Polygon</td>
+          <td>~2,000 cars</td>
+        </tr>
+        <tr>
+          <td><strong>CN Mays Yard</strong></td>
+          <td>Canadian National</td>
+          <td>East</td>
+          <td>30.011N / 89.987W</td>
+          <td>Polygon</td>
+          <td>~600 cars</td>
+        </tr>
+        <tr>
+          <td><strong>NOPB Cotton Warehouse Yard</strong></td>
+          <td>Rail NOLA</td>
+          <td>East (near CBD)</td>
+          <td>29.951N / 90.071W</td>
+          <td>Polygon</td>
+          <td>~400 cars</td>
+        </tr>
+        <tr>
+          <td><strong>NOPB France Yard</strong></td>
+          <td>Rail NOLA</td>
+          <td>East</td>
+          <td>29.993N / 90.016W</td>
+          <td>Polygon</td>
+          <td>435 cars</td>
+        </tr>
+        <tr>
+          <td><strong>NOPB Claiborne Yard</strong></td>
+          <td>Rail NOLA</td>
+          <td>East</td>
+          <td>29.987N / 90.022W</td>
+          <td>Polygon</td>
+          <td>335 cars</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>EPA Cement Plants (GHGRP)</h3>
+    <ul class="feature-list">
+      <li>91 active US cement facilities reporting above GHGRP threshold (2023)</li>
+      <li>Geocoded with lat/long from EPA FRS — accuracy within 50 meters for most facilities</li>
+      <li>Attributes: facility name, parent company, annual clinker production, kiln count, fuel type</li>
+      <li>Spatial join performed against BEA Economic Area boundaries (2023 vintage)</li>
+      <li>Output: EPA-BEA lookup table with plant-to-BEA assignments for waybill attribution</li>
+    </ul>
+
+    <h3>BEA Economic Areas</h3>
+    <ul class="feature-list">
+      <li>177 BEA Economic Areas covering the continental US (2023 boundary revision)</li>
+      <li>Source: US Bureau of Economic Analysis — downloadable as county-aggregation definitions</li>
+      <li>Boundary shapefiles derived from Census TIGER county polygons dissolved to BEA node assignments</li>
+      <li>Used as the primary geographic unit for origin-destination aggregation of STB waybill data</li>
+    </ul>
+  </div>
+
+  <!-- Spatial Analysis Methods -->
+  <div class="glass-section">
+    <h2>Spatial Analysis Methods</h2>
+
+    <h3>Proximity Analysis</h3>
+    <div class="highlight-box">
+      <p><strong>Proximity Queries Performed</strong></p>
+      <ul class="feature-list">
+        <li>EPA cement plants within 5 miles of Class I mainline rail — identifies plants with practical rail access</li>
+        <li>EPA cement plants within 1 mile of rail yard / siding — identifies plants with direct car placement capability</li>
+        <li>Import marine terminals within 10 miles of rail classification yard — identifies port-rail transload potential</li>
+        <li>NOLA gateway yards within 2 miles of industrial facilities — maps captive shipper geography</li>
+      </ul>
+    </div>
+
+    <h3>Spatial Joins</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Join Type</th>
+          <th>Left Layer</th>
+          <th>Right Layer</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Point-in-Polygon</strong></td>
+          <td>EPA Plant Points</td>
+          <td>BEA Economic Area Polygons</td>
+          <td>Assign BEA code to each EPA plant for waybill matching</td>
+        </tr>
+        <tr>
+          <td><strong>Buffer Intersection</strong></td>
+          <td>Rail Line Buffers (5 mi)</td>
+          <td>EPA Plant Points</td>
+          <td>Identify rail-accessible cement facilities</td>
+        </tr>
+        <tr>
+          <td><strong>Nearest Feature</strong></td>
+          <td>EPA Plant Points</td>
+          <td>NTAD Rail Nodes</td>
+          <td>Find nearest rail siding or interchange for each plant</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Corridor Mapping</h3>
+    <ul class="feature-list">
+      <li>NORG corridor extracted from NTAD as a 29-mile polyline subset between Bridge City and New Orleans East</li>
+      <li>Carrier track ownership overlaid using NTAD "RROWNER" attribute field</li>
+      <li>At-grade crossing locations georeferenced from USDOT FRA Highway-Rail Grade Crossing Inventory</li>
+      <li>Milepost annotations added from NTAD node data for infrastructure project location referencing</li>
+      <li>NOLA gateway flowchart produced as a schematic overlay on basemap — available upon request</li>
+    </ul>
+  </div>
+
+  <!-- NOLA Gateway Geospatial Analysis -->
+  <div class="glass-section">
+    <h2>NOLA Gateway Geospatial Analysis</h2>
+
+    <h3>Louisiana Rail Yard Mapping</h3>
+    <p>GIS data for the NOLA gateway is available upon request. The following GeoJSON datasets have been prepared as part of the analysis:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>GeoJSON File</th>
+          <th>Content</th>
+          <th>CRS</th>
+          <th>Features</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>nola_yards.geojson</strong></td>
+          <td>7 rail yard polygons with carrier attribution</td>
+          <td>WGS84</td>
+          <td>Yard name, operator, capacity, bank (E/W)</td>
+        </tr>
+        <tr>
+          <td><strong>norg_corridor.geojson</strong></td>
+          <td>29-mile NORG corridor polyline</td>
+          <td>WGS84</td>
+          <td>Segment carrier, speed limit, at-grade crossing locations</td>
+        </tr>
+        <tr>
+          <td><strong>nola_industrial.geojson</strong></td>
+          <td>Industrial facility points within 3 miles of NORG</td>
+          <td>WGS84</td>
+          <td>Facility name, commodity, primary serving carrier</td>
+        </tr>
+        <tr>
+          <td><strong>huey_long_bridge.geojson</strong></td>
+          <td>Huey P. Long Bridge rail crossing geometry</td>
+          <td>WGS84</td>
+          <td>Track count, speed limit, owner, year built</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>NORG Corridor Visualization</h3>
+    <ul class="feature-list">
+      <li>Basemap: OpenStreetMap + ESRI World Imagery hybrid in QGIS</li>
+      <li>Rail line symbology: colored by carrier (UP=gray, BNSF=orange, NS=black, CSX=blue, CN=red, NOPB=green)</li>
+      <li>Yard polygons: semi-transparent fill with carrier color, labeled with name and capacity</li>
+      <li>At-grade crossings: red diamond symbols at FRA-registered locations</li>
+      <li>Huey P. Long Bridge: highlighted as bottleneck with annotation box</li>
+    </ul>
+
+    <h3>Gateway Flowchart</h3>
+    <p>A detailed gateway flowchart showing all carrier interchange connections at the NOLA gateway has been prepared as part of this analysis. The flowchart illustrates the routing paths between each Class I carrier pair through Rail NOLA switching, the Huey P. Long Bridge bottleneck, and the proposed Louisiana International Terminal connection. The flowchart in both color and grayscale versions is available upon request.</p>
+  </div>
+
+  <!-- Technical Tools & Methods -->
+  <div class="glass-section">
+    <h2>Technical Tools &amp; Methods</h2>
+
+    <h3>Python Geospatial Stack</h3>
+    <ul class="feature-list">
+      <li><strong>GeoPandas</strong> — primary vector data manipulation, spatial joins, dissolves, and buffer operations</li>
+      <li><strong>Shapely</strong> — geometry operations (intersections, buffers, nearest-point calculations)</li>
+      <li><strong>Folium</strong> — interactive web map generation (HTML output with Leaflet.js backend)</li>
+      <li><strong>Pyproj</strong> — coordinate reference system transformations (WGS84 ↔ Louisiana State Plane)</li>
+      <li><strong>Rasterio</strong> — raster DEM processing for elevation context (NORG flood risk overlay)</li>
+    </ul>
+
+    <h3>QGIS Integration</h3>
+    <ul class="feature-list">
+      <li>QGIS 3.34 LTR used for final cartographic output and print layout production</li>
+      <li>Custom symbology styles exported as QGIS style files (.qml) for reproducibility</li>
+      <li>Atlas function used to generate individual carrier maps at consistent scale</li>
+      <li>Elevation profiles extracted using QGIS Profile Tool along NORG corridor</li>
+    </ul>
+
+    <h3>GDAL/OGR Command-Line Tools</h3>
+    <ul class="feature-list">
+      <li>ogr2ogr: format conversion between Shapefile, GeoJSON, GeoPackage, and PostGIS</li>
+      <li>ogrinfo: schema inspection and layer validation for all input datasets</li>
+      <li>gdal_translate: raster reprojection for DEM alignment</li>
+      <li>ogr2ogr -clipsrc: clipping national NTAD dataset to Louisiana/Gulf Coast study area bounding box</li>
+    </ul>
+  </div>
+
+  <!-- Output Formats -->
+  <div class="glass-section">
+    <h2>Output Formats</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Format</th>
+          <th>Use Case</th>
+          <th>Tool</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>GeoJSON</strong></td>
+          <td>Web display, data exchange, version control</td>
+          <td>GeoPandas / ogr2ogr</td>
+          <td>WGS84; human-readable; good for GitHub</td>
+        </tr>
+        <tr>
+          <td><strong>GeoPackage (.gpkg)</strong></td>
+          <td>Multi-layer project archive, QGIS native</td>
+          <td>QGIS / ogr2ogr</td>
+          <td>Single file; supports multiple layers and metadata</td>
+        </tr>
+        <tr>
+          <td><strong>Shapefile (.shp)</strong></td>
+          <td>ArcGIS compatibility, legacy system exchange</td>
+          <td>ogr2ogr</td>
+          <td>Multi-file format; 10-char field name limit</td>
+        </tr>
+        <tr>
+          <td><strong>Interactive HTML (Folium)</strong></td>
+          <td>Web browser exploration, client deliverables</td>
+          <td>Folium (Python)</td>
+          <td>Self-contained HTML; Leaflet.js backend; no server required</td>
+        </tr>
+        <tr>
+          <td><strong>Static PNG / PDF</strong></td>
+          <td>Reports, presentations, print output</td>
+          <td>QGIS Print Layout</td>
+          <td>300 DPI for print; 96 DPI web-optimized versions</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Use Cases -->
+  <div class="glass-section">
+    <h2>Use Cases</h2>
+
+    <h3>Infrastructure Planning</h3>
+    <ul class="feature-list">
+      <li>Map proposed infrastructure project locations (LIT, Almonaster Bridge, Oliver Yard lead extension)</li>
+      <li>Overlay flood zone boundaries (FEMA FIRM) against NORG corridor for resilience planning</li>
+      <li>Identify parcels needed for grade separation projects using cadastral data</li>
+    </ul>
+
+    <h3>Carrier Competition Analysis</h3>
+    <ul class="feature-list">
+      <li>Buffer analysis: which industrial facilities are within practical rail access distance of each carrier's mainline</li>
+      <li>Captive shipper mapping: identify facilities with only one carrier within economic switching distance</li>
+      <li>Post-merger competitive geography: visualize the change in service area overlap under proposed UP-NS transaction</li>
+    </ul>
+
+    <h3>Commodity Flow Mapping</h3>
+    <ul class="feature-list">
+      <li>Overlay STB waybill BEA O-D flows as proportional-width flow lines on national base map</li>
+      <li>Animate year-over-year changes in cement rail flow patterns (2005–2023)</li>
+      <li>Identify directional flow imbalances (e.g., westbound cement surplus on eastern carriers)</li>
+    </ul>
+
+    <h3>Client Deliverables</h3>
+    <ul class="feature-list">
+      <li>Custom facility proximity maps for cement terminal site selection studies</li>
+      <li>Carrier service territory maps for rate negotiation support</li>
+      <li>Gateway bottleneck visualization for infrastructure investment proposals</li>
+      <li>Interactive web maps (Folium) for client self-exploration of rail network data</li>
+    </ul>
+  </div>
+
+  <!-- Sample Outputs -->
+  <div class="glass-section">
+    <h2>Sample Outputs</h2>
+
+    <h3>Louisiana Rail Yards Map</h3>
+    <p>A static A3-size (16.5" x 11.7") map showing all 7 NOLA gateway yards as colored polygons overlaid on ESRI World Imagery basemap, with carrier color coding, capacity labels, and a legend. The map includes the Huey P. Long Bridge highlighted as a bottleneck node and the proposed LIT site in New Orleans East. Available upon request.</p>
+
+    <h3>NOLA Gateway Corridor Map</h3>
+    <p>An interactive Folium web map of the full 29-mile NORG corridor with layer controls allowing users to toggle: individual carrier track ownership, rail yard polygons, at-grade crossing locations, proposed infrastructure project boundaries, and industrial facility points. Popups on each feature display operational attributes. Available upon request.</p>
+
+    <h3>Cement Plant Proximity Analysis</h3>
+    <p>A national-scale map showing all 91 EPA GHGRP cement facilities as points, sized by annual clinker capacity and colored by parent company. Buffer rings at 1 mile and 5 miles from each plant are overlaid against NTAD Class I mainlines to visualize rail accessibility. Plants outside the 5-mile buffer are identified as potential truck-only or short-line-dependent facilities. Available upon request.</p>
+  </div>
+
+  <!-- Future Enhancements -->
+  <div class="glass-section">
+    <h2>Future Enhancements</h2>
+    <ul class="feature-list">
+      <li>Integration of ESRI ArcGIS Online for hosted interactive map delivery to clients</li>
+      <li>PostGIS database backend for scalable multi-user spatial query capability</li>
+      <li>Real-time AIS vessel data overlay for port-to-rail intermodal flow visualization</li>
+      <li>LIDAR-derived ground surface model for NORG corridor flood risk elevation profiling</li>
+      <li>Automated waybill BEA centroid mapping updated annually as new STB data releases</li>
+      <li>Network analysis routing (shortest path, least-cost path) using NTAD rail network topology</li>
+    </ul>
+  </div>
+
+  <!-- Navigation -->
+  <div class="glass-section">
+    <h2>Explore Related Analysis</h2>
+    <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:1.25rem;">GIS data available upon request.</p>
+    <div class="nav-buttons">
+      <a href="network-model.html" class="nav-btn">Network Routing →</a>
+      <a href="nola-gateway.html" class="nav-btn">NOLA Gateway →</a>
+      <a href="waybill-flows.html" class="nav-btn">Waybill Flows →</a>
+      <a href="index.html" class="nav-btn">← Back to Platform Home</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Rail Analytics Platform — Geospatial Rail Infrastructure Analysis</strong></p>
+  <p>OceanDatum.ai — SESCO Consulting | February 2026</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">Sources: USDOT BTS NTAD 2023; EPA FRS/GHGRP Cement Plant Database; BEA Economic Area Shapefiles (2023); FEMA FIRM flood zone data; ESRI World Imagery basemap; USDOT FRA Highway-Rail Grade Crossing Inventory; QGIS 3.34 LTR; GeoPandas 0.14.</p>
+</footer>
+
+</body>
+</html>
