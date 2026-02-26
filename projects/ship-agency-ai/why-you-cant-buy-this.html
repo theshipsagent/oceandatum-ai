@@ -1,1919 +1,1322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Why You Can't Buy This: Evidence-Based Analysis | Ship Agency AI</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --navy: #0A1628;
-            --teal: #0891B2;
-            --dark-teal: #0E7490;
-            --slate: #1E293B;
-            --gray: #64748B;
-            --light-gray: #F1F5F9;
-            --accent: #F59E0B;
-            --white: #FFFFFF;
-            --red: #DC2626;
-            --dark-red: #991B1B;
-            --green: #22C55E;
-            --dark-green: #16A34A;
-            --purple: #7C3AED;
-            --orange: #EA580C;
-        }
-
-        body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.7;
-            color: var(--slate);
-            background: var(--white);
-        }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #7F1D1D 0%, var(--red) 50%, #991B1B 100%);
-            color: var(--white);
-            padding: 100px 20px 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 20% 80%, rgba(0,0,0,0.2) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%);
-        }
-
-        .hero * { position: relative; z-index: 1; }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 25px;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        .hero .subtitle {
-            font-size: 1.5rem;
-            opacity: 0.95;
-            max-width: 1000px;
-            margin: 0 auto 20px;
-            line-height: 1.6;
-        }
-
-        .hero .meta {
-            font-size: 1rem;
-            opacity: 0.75;
-            margin-top: 20px;
-        }
-
-        /* Nav */
-        nav {
-            position: sticky;
-            top: 0;
-            background: var(--navy);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 100;
-            border-bottom: 3px solid var(--red);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            max-width: 1500px;
-            margin: 0 auto;
-        }
-
-        nav a {
-            display: block;
-            color: var(--white);
-            text-decoration: none;
-            padding: 16px 18px;
-            font-size: 0.88rem;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        nav a:hover, nav a.active {
-            background: rgba(220, 38, 38, 0.4);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 30px;
-        }
-
-        section {
-            margin-bottom: 80px;
-        }
-
-        h1.section-title {
-            font-size: 2.5rem;
-            color: var(--navy);
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 4px solid var(--red);
-        }
-
-        h2 {
-            font-size: 2rem;
-            color: var(--red);
-            margin: 40px 0 20px;
-        }
-
-        h3 {
-            font-size: 1.4rem;
-            color: var(--slate);
-            margin: 30px 0 15px;
-        }
-
-        p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .divider {
-            height: 3px;
-            background: linear-gradient(to right, var(--red), var(--accent));
-            margin: 30px 0;
-            border-radius: 2px;
-        }
-
-        /* Big NO / YES boxes */
-        .verdict-box {
-            padding: 50px 40px;
-            margin: 40px 0;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .verdict-box.no {
-            background: #FEE2E2;
-            border: 4px solid var(--red);
-        }
-
-        .verdict-box.yes {
-            background: #DCFCE7;
-            border: 4px solid var(--green);
-        }
-
-        .verdict-box h2 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-        }
-
-        .verdict-box.no h2 { color: var(--red); }
-        .verdict-box.yes h2 { color: var(--green); }
-
-        .verdict-box p {
-            font-size: 1.3rem;
-            margin-bottom: 0;
-        }
-
-        /* Objection boxes */
-        .objection-box {
-            background: var(--light-gray);
-            padding: 30px 35px;
-            margin: 30px 0;
-            border-radius: 8px;
-            border-left: 6px solid var(--teal);
-        }
-
-        .objection-box .question {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 15px;
-        }
-
-        .objection-box .answer {
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .objection-box .killer {
-            margin-top: 15px;
-            padding: 15px;
-            background: #FEE2E2;
-            border-radius: 6px;
-            color: var(--red);
-            font-weight: 600;
-        }
-
-        /* Alert boxes */
-        .alert-box {
-            padding: 30px;
-            margin: 30px 0;
-            border-radius: 8px;
-        }
-
-        .alert-box.warning {
-            background: #FEF3C7;
-            border-left: 6px solid var(--accent);
-        }
-
-        .alert-box.danger {
-            background: #FEE2E2;
-            border-left: 6px solid var(--red);
-        }
-
-        .alert-box.success {
-            background: #DCFCE7;
-            border-left: 6px solid var(--green);
-        }
-
-        .alert-box.info {
-            background: #E0F2FE;
-            border-left: 6px solid var(--teal);
-        }
-
-        .alert-box h3 { margin-top: 0; }
-
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        thead {
-            background: var(--navy);
-            color: var(--white);
-        }
-
-        th {
-            padding: 16px 14px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        td {
-            padding: 14px;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 0.95rem;
-        }
-
-        tbody tr:hover {
-            background: var(--light-gray);
-        }
-
-        /* Fail cards */
-        .fail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 22px;
-            margin: 30px 0;
-        }
-
-        .fail-card {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-left: 6px solid var(--red);
-        }
-
-        .fail-card h4 {
-            color: var(--navy);
-            margin-bottom: 8px;
-            font-size: 1.2rem;
-        }
-
-        .fail-card .category {
-            font-size: 0.8rem;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .fail-card .claim {
-            font-style: italic;
-            color: var(--gray);
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-
-        .fail-card .test-result {
-            background: #FEE2E2;
-            padding: 10px 12px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            color: var(--red);
-            font-weight: 600;
-        }
-
-        /* Grids */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin: 30px 0;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin: 30px 0;
-        }
-
-        /* Comparison cards */
-        .comparison-card {
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .comparison-card.bad {
-            background: linear-gradient(135deg, #FEE2E2, #FEF3C7);
-            border: 3px solid var(--red);
-        }
-
-        .comparison-card.good {
-            background: linear-gradient(135deg, #DCFCE7, #D1FAE5);
-            border: 3px solid var(--green);
-        }
-
-        .comparison-card h3 {
-            margin-top: 0;
-            font-size: 1.6rem;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .comparison-card ul { list-style: none; padding: 0; }
-
-        .comparison-card li {
-            padding: 10px 0 10px 30px;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .comparison-card.bad li::before {
-            content: '\2717';
-            position: absolute;
-            left: 5px;
-            color: var(--red);
-            font-weight: bold;
-        }
-
-        .comparison-card.good li::before {
-            content: '\2713';
-            position: absolute;
-            left: 5px;
-            color: var(--green);
-            font-weight: bold;
-        }
-
-        /* Card */
-        .card {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            border-top: 4px solid var(--teal);
-        }
-
-        .card h4 {
-            color: var(--navy);
-            margin-bottom: 12px;
-            font-size: 1.15rem;
-        }
-
-        .card.red { border-top-color: var(--red); }
-        .card.green { border-top-color: var(--green); }
-
-        /* Cost comparison */
-        .cost-card {
-            padding: 35px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .cost-card.cots {
-            background: linear-gradient(135deg, #FEE2E2, #FEF3C7);
-            border: 3px solid var(--red);
-        }
-
-        .cost-card.build {
-            background: linear-gradient(135deg, #DCFCE7, #D1FAE5);
-            border: 3px solid var(--green);
-        }
-
-        .cost-card h3 {
-            margin-top: 0;
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .cost-card .total {
-            font-size: 3rem;
-            font-weight: 700;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .cost-card.cots .total { color: var(--red); }
-        .cost-card.build .total { color: var(--green); }
-
-        .cost-card ul { list-style: none; padding: 0; margin: 15px 0; }
-        .cost-card li { padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1); font-size: 0.95rem; }
-
-        /* Stat highlight */
-        .stat-highlight {
-            background: linear-gradient(135deg, var(--navy), var(--slate));
-            color: var(--white);
-            padding: 40px;
-            border-radius: 10px;
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .stat-highlight .number {
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--teal);
-            margin-bottom: 10px;
-        }
-
-        .stat-highlight .label {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Quote block */
-        .quote-block {
-            border-left: 5px solid var(--red);
-            padding: 25px 30px;
-            margin: 30px 0;
-            background: rgba(220,38,38,0.04);
-            border-radius: 0 8px 8px 0;
-            font-size: 1.15rem;
-            font-style: italic;
-        }
-
-        /* SaaS chain */
-        .saas-chain {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            margin: 25px 0;
-            flex-wrap: wrap;
-        }
-
-        .saas-link {
-            background: var(--red);
-            color: white;
-            padding: 8px 14px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .saas-link.broken {
-            background: var(--green);
-            text-decoration: line-through;
-            opacity: 0.6;
-        }
-
-        .chain-plus {
-            font-size: 1.2rem;
-            color: var(--red);
-            font-weight: bold;
-        }
-
-        /* The Test Box */
-        .test-box {
-            background: var(--light-gray);
-            padding: 40px;
-            border-radius: 12px;
-            margin: 40px 0;
-            border: 2px solid var(--navy);
-        }
-
-        .test-box h3 {
-            margin-top: 0;
-            color: var(--navy);
-            font-size: 1.5rem;
-        }
-
-        .test-box .email-sample {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 6px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            margin: 20px 0;
-            border-left: 4px solid var(--accent);
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        /* Process flow */
-        .process-flow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 25px 0;
-            padding: 25px;
-            background: var(--light-gray);
-            border-radius: 10px;
-        }
-
-        .process-step {
-            background: var(--navy);
-            color: var(--white);
-            padding: 10px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-align: center;
-        }
-
-        .process-arrow {
-            font-size: 1.3rem;
-            color: var(--red);
-            font-weight: bold;
-        }
-
-        .vendor-link { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; }
-        .vendor-link:hover { color: var(--teal); text-decoration-style: solid; }
-        a.vendor-link-teal { color: var(--teal); text-decoration: underline; text-decoration-style: dotted; }
-        a.vendor-link-teal:hover { text-decoration-style: solid; }
-        a.vendor-link-white { color: #FCA5A5; text-decoration: underline; text-decoration-style: dotted; }
-        a.vendor-link-white:hover { color: white; text-decoration-style: solid; }
-
-        /* Footer */
-        footer {
-            background: var(--navy);
-            color: var(--white);
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 80px;
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .hero h1 { font-size: 2.5rem; }
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
-            nav a { padding: 12px 12px; font-size: 0.78rem; }
-        }
-
-        @media print {
-            nav { display: none; }
-            .hero { padding: 40px 20px; }
-        }
-
-        html { scroll-behavior: smooth; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why You Can't Buy This: Evidence-Based Analysis | Ship Agency AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; color: rgba(255,255,255,0.9); min-height: 100vh; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%); z-index: -1; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6); }
+    .navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+    .navbar-brand a:hover { color: #64ffb4; }
+    .navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .nav-link { font-size: 0.85rem; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.4rem 0.9rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; transition: all 0.3s; }
+    .nav-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+    .breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.4); padding: 5.5rem 2rem 0; max-width: 1100px; margin: 0 auto; }
+    .breadcrumb a { color: rgba(100,255,180,0.8); text-decoration: none; }
+    .breadcrumb a:hover { color: #64ffb4; }
+    .main-content { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+    .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .page-header h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 0.08em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-style: italic; }
+    .glass-section { background: rgba(0,0,0,0.38); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+    .glass-section h2 { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.05em; text-transform: uppercase; }
+    .glass-section h3 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.75); margin: 1.4rem 0 0.75rem; }
+    .glass-section p { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-bottom: 0.85rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.87rem; }
+    th { background: rgba(100,255,180,0.07); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.12); padding: 0.65rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; }
+    td { border: 1px solid rgba(255,255,255,0.07); padding: 0.65rem 0.9rem; color: rgba(255,255,255,0.72); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .feature-list { list-style: none; padding: 0; }
+    .feature-list li { padding: 0.28rem 0 0.28rem 1.35rem; position: relative; color: rgba(255,255,255,0.68); font-size: 0.88rem; }
+    .feature-list li::before { content: '▸'; position: absolute; left: 0; color: #64ffb4; font-size: 0.78rem; }
+    .highlight-box { background: rgba(100,255,180,0.05); border-left: 3px solid rgba(100,255,180,0.55); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .highlight-box p { margin: 0 0 0.5rem; font-size: 0.88rem; }
+    .highlight-box p:last-child { margin: 0; }
+    .alert-box { background: rgba(255,200,80,0.05); border-left: 3px solid rgba(255,200,80,0.5); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .alert-box p { margin: 0 0 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .alert-box p:last-child { margin: 0; }
+    .danger-box { background: rgba(220,38,38,0.06); border-left: 3px solid rgba(220,38,38,0.5); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .danger-box p { margin: 0 0 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .danger-box p:last-child { margin: 0; }
+    .vendor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+    .vendor-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.5rem; transition: all 0.3s; }
+    .vendor-card:hover { border-color: rgba(100,255,180,0.3); transform: translateY(-2px); }
+    .vendor-card h4 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 0.5rem; }
+    .vendor-card .grade { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .grade-fail { background: rgba(220,38,38,0.15); color: #f87171; border: 1px solid rgba(220,38,38,0.3); }
+    .grade-pass { background: rgba(100,255,180,0.1); color: #64ffb4; border: 1px solid rgba(100,255,180,0.3); }
+    .grade-partial { background: rgba(255,200,80,0.1); color: #fbbf24; border: 1px solid rgba(255,200,80,0.3); }
+    .vendor-card p { font-size: 0.83rem; color: rgba(255,255,255,0.6); margin-bottom: 0.4rem; }
+    .vendor-card a { color: rgba(100,255,180,0.8); text-decoration: none; }
+    .vendor-card a:hover { color: #64ffb4; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .stat-card { background: rgba(100,255,180,0.04); border: 1px solid rgba(100,255,180,0.15); border-radius: 10px; padding: 1.25rem; text-align: center; }
+    .stat-card .stat-value { font-size: 1.8rem; font-weight: 700; color: #64ffb4; display: block; }
+    .stat-card .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 0.3rem; }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+    .comparison-col h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 1rem; padding: 0.5rem 1rem; border-radius: 6px; margin-top: 0; }
+    .col-buy h3 { background: rgba(220,38,38,0.12); color: #f87171; border: 1px solid rgba(220,38,38,0.2); }
+    .col-build h3 { background: rgba(100,255,180,0.08); color: #64ffb4; border: 1px solid rgba(100,255,180,0.2); }
+    .nav-buttons { display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .nav-btn { flex: 1; min-width: 180px; padding: 0.6rem 1.1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: rgba(255,255,255,0.8); text-decoration: none; text-align: center; font-size: 0.85rem; transition: all 0.3s; }
+    .nav-btn:hover { background: rgba(100,255,180,0.08); border-color: rgba(100,255,180,0.35); color: #64ffb4; }
+    .inline-link { color: rgba(100,255,180,0.8); text-decoration: none; }
+    .inline-link:hover { color: #64ffb4; }
+    .card-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.25rem 0; }
+    .card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin: 1.25rem 0; }
+    .mini-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.25rem; }
+    .mini-card h4 { font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 0.6rem; }
+    .mini-card p { font-size: 0.83rem; color: rgba(255,255,255,0.6); margin-bottom: 0.4rem; }
+    .mini-card p:last-child { margin-bottom: 0; }
+    .mini-card.accent-green { border-color: rgba(100,255,180,0.2); }
+    .mini-card.accent-red { border-color: rgba(220,38,38,0.2); }
+    .process-flow { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 8px; border: 1px solid rgba(255,255,255,0.07); }
+    .process-step { background: rgba(100,255,180,0.08); border: 1px solid rgba(100,255,180,0.2); color: rgba(255,255,255,0.85); padding: 0.4rem 0.75rem; border-radius: 5px; font-size: 0.78rem; font-weight: 600; text-align: center; }
+    .process-arrow { color: rgba(100,255,180,0.6); font-size: 0.9rem; }
+    .saas-chain { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; margin: 1.25rem 0; }
+    .saas-link { background: rgba(220,38,38,0.12); border: 1px solid rgba(220,38,38,0.25); color: rgba(255,255,255,0.8); padding: 0.35rem 0.7rem; border-radius: 4px; font-size: 0.78rem; font-weight: 600; text-align: center; }
+    .chain-plus { color: rgba(220,38,38,0.7); font-weight: 700; font-size: 1rem; }
+    .quote-block { border-left: 3px solid rgba(100,255,180,0.4); padding: 0.85rem 1.25rem; margin: 1.25rem 0; background: rgba(100,255,180,0.03); border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.88rem; color: rgba(255,255,255,0.65); }
+    .big-stat { text-align: center; background: rgba(100,255,180,0.04); border: 1px solid rgba(100,255,180,0.15); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+    .big-stat .number { font-size: 3rem; font-weight: 700; color: #64ffb4; display: block; }
+    .big-stat .label { font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 0.5rem; }
+    .verdict-no { background: rgba(220,38,38,0.08); border: 2px solid rgba(220,38,38,0.4); border-radius: 12px; padding: 2rem; text-align: center; margin: 1.5rem 0; }
+    .verdict-no .verdict-text { font-size: 3rem; font-weight: 700; color: #f87171; margin-bottom: 0.75rem; }
+    .verdict-no p { font-size: 0.95rem; color: rgba(255,255,255,0.75); margin: 0; }
+    .verdict-yes { background: rgba(100,255,180,0.06); border: 2px solid rgba(100,255,180,0.4); border-radius: 12px; padding: 2rem; text-align: center; margin: 1.5rem 0; }
+    .verdict-yes .verdict-text { font-size: 3rem; font-weight: 700; color: #64ffb4; margin-bottom: 0.75rem; }
+    .verdict-yes p { font-size: 0.95rem; color: rgba(255,255,255,0.75); margin: 0.5rem 0; }
+    .objection-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.5rem; margin: 1.25rem 0; border-left: 3px solid rgba(100,255,180,0.4); }
+    .objection-box .question { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 0.75rem; }
+    .objection-box .answer { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.8; }
+    .objection-box .killer { margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(220,38,38,0.08); border-radius: 6px; color: #f87171; font-weight: 600; font-size: 0.85rem; border-left: 2px solid rgba(220,38,38,0.4); }
+    .test-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 1.75rem; margin: 1.5rem 0; }
+    .test-box h3 { color: rgba(255,255,255,0.85); font-size: 1rem; margin-bottom: 0.75rem; }
+    .email-sample { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 1rem 1.25rem; font-family: 'Courier New', Courier, monospace; font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.9; margin: 1rem 0; border-left: 3px solid rgba(255,200,80,0.5); }
+    .test-steps { margin: 1rem 0; padding: 0 0 0 1.25rem; }
+    .test-steps li { font-size: 0.88rem; color: rgba(255,255,255,0.68); padding: 0.25rem 0; }
+    .cost-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+    .cost-card { border-radius: 10px; padding: 1.5rem; }
+    .cost-card.cots { background: rgba(220,38,38,0.06); border: 1px solid rgba(220,38,38,0.25); }
+    .cost-card.build { background: rgba(100,255,180,0.05); border: 1px solid rgba(100,255,180,0.2); }
+    .cost-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 1rem; text-align: center; }
+    .cost-card.cots h3 { color: #f87171; }
+    .cost-card.build h3 { color: #64ffb4; }
+    .cost-card .total { font-size: 2rem; font-weight: 700; text-align: center; margin: 1rem 0; }
+    .cost-card.cots .total { color: #f87171; }
+    .cost-card.build .total { color: #64ffb4; }
+    .cost-card ul { list-style: none; padding: 0; margin: 0.75rem 0; }
+    .cost-card ul li { padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.83rem; color: rgba(255,255,255,0.65); }
+    .cost-card .cost-footer { text-align: center; font-size: 0.82rem; margin-top: 0.75rem; }
+    .cost-card.cots .cost-footer { color: #f87171; }
+    .cost-card.build .cost-footer { color: #64ffb4; }
+    .nine-truths { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.75rem 2rem; margin: 1.5rem 0; }
+    .nine-truths h3 { color: #64ffb4; font-size: 1rem; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .nine-truths p { font-size: 0.88rem; color: rgba(255,255,255,0.68); margin-bottom: 0.5rem; }
+    .nine-truths p:last-child { margin-bottom: 0; }
+    footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
+    @media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .breadcrumb { padding: 5.5rem 1rem 0; } .page-header h1 { font-size: 1.6rem; } .comparison-grid { grid-template-columns: 1fr; } .card-grid-2 { grid-template-columns: 1fr; } .card-grid-3 { grid-template-columns: 1fr; } .cost-comparison { grid-template-columns: 1fr; } }
+    @media print { .navbar { display: none; } nav { display: none; } .nav-buttons { display: none; } body { background: #fff; color: #000; } }
+  </style>
 </head>
 <body>
-    <div class="hero">
-        <h1>Why You Can't Buy This</h1>
-        <div class="subtitle">
-            Evidence-Based Analysis: 20+ Platforms Evaluated, Zero Pass the Test.<br>
-            Direct Answers to Every "Just Buy It" Objection.
-        </div>
-        <div class="meta">
-            Ocean DATUM | February 2026 | Revised Edition &mdash; With AI Fundamentals, Logistics Evidence, and SaaS Cost Analysis
-        </div>
+
+<nav class="navbar">
+  <span class="navbar-brand">An <a href="../../index.html">oceandatum.ai</a> project</span>
+  <div class="navbar-right">
+    <a href="buy-vs-build-reality.html" class="nav-link">Buy vs. Build</a>
+    <a href="../../projects-hub.html" class="nav-link">Projects</a>
+    <a href="../../index.html" class="nav-link">Home</a>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="../../index.html">Home</a> / <a href="../../projects-hub.html">Projects</a> / Why You Can't Buy This
+</div>
+
+<div class="main-content">
+
+  <div class="page-header">
+    <h1>Why You Can't Buy This</h1>
+    <p class="subtitle">Evidence-Based Analysis: 20+ Platforms Evaluated, Zero Pass the Test. Direct Answers to Every "Just Buy It" Objection. &nbsp;&bull;&nbsp; Ocean DATUM &bull; February 2026 &bull; Revised Edition &mdash; With AI Fundamentals, Logistics Evidence, and SaaS Cost Analysis</p>
+  </div>
+
+  <!-- SECTION 1: AI CONTEXT -->
+  <div class="glass-section" id="context">
+    <h2>First: Understanding What We Are Actually Talking About</h2>
+
+    <div class="highlight-box">
+      <p><strong>Why This Section Exists</strong></p>
+      <p>Before evaluating what can and cannot be purchased, it helps to understand what "AI for ship agency" actually means. This is not about chatbots answering FAQs. This is about autonomous systems that do operational work &mdash; reading emails, extracting data, updating schedules, making routing decisions, and learning from outcomes. Understanding the difference between what vendors claim and what actually exists requires knowing what "agentic AI" means.</p>
     </div>
 
-    <nav>
-        <ul>
-            <li><a href="#context">AI Context</a></li>
-            <li><a href="#question">The Question</a></li>
-            <li><a href="#test">The Test</a></li>
-            <li><a href="#vendors">20+ Vendors</a></li>
-            <li><a href="#logistics">Logistics Proof</a></li>
-            <li><a href="#why-fail">Why They Fail</a></li>
-            <li><a href="#saas">SaaS Chains</a></li>
-            <li><a href="#nesting">System Nesting</a></li>
-            <li><a href="#objections">Objections</a></li>
-            <li><a href="#cost">Real Cost</a></li>
-            <li><a href="#cost-compare">Cost Comparison</a></li>
-            <li><a href="#procurement">Procurement Fails</a></li>
-            <li><a href="#ai-erp">AI + Your ERP</a></li>
-            <li><a href="#answer">Final Answer</a></li>
+    <h3>What "Agentic AI" Means (And Does Not Mean)</h3>
+    <div class="card-grid-3">
+      <div class="mini-card accent-red">
+        <h4>NOT Agentic: Chatbot</h4>
+        <p><strong>What it does:</strong> Answers scripted questions. "What are your office hours?" "Where is my vessel?"</p>
+        <p><strong>Ship agency value:</strong> Nearly zero. Agents do not need a chatbot. They need something that processes 5,000 emails/day.</p>
+      </div>
+      <div class="mini-card">
+        <h4>NOT Agentic: Copilot</h4>
+        <p><strong>What it does:</strong> Helps a human work faster. Summarizes emails. Drafts replies. Suggests actions.</p>
+        <p><strong>Ship agency value:</strong> Marginal. Still requires human to read summary, make decision, and manually execute in 5+ systems.</p>
+      </div>
+      <div class="mini-card accent-green">
+        <h4>ACTUALLY Agentic: Autonomous Agent</h4>
+        <p><strong>What it does:</strong> Reads email. Extracts structured data. Updates schedule state. Evaluates impact. Distributes notifications or escalates to human based on confidence level. Learns from corrections.</p>
+        <p><strong>Ship agency value:</strong> Transformative. Eliminates 80%+ of manual data transposition. Elevates humans from data entry to decision-making.</p>
+      </div>
+    </div>
+
+    <h3>The Transposition Problem: Why This Matters</h3>
+    <p>The core problem in ship agency is not a missing software tool. It is the <strong>gap between tools</strong>. An operator spends 5&ndash;8 hours per day manually copying the same information between email, agency software, spreadsheets, accounting, WhatsApp, and phone calls. One ETA update gets entered or communicated 4&ndash;7 times. Across 18 active port calls, that is 300&ndash;500 manual transpositions per day.</p>
+
+    <div class="process-flow">
+      <div class="process-step">Email<br><small>Data arrives</small></div>
+      <div class="process-arrow">&rarr;</div>
+      <div class="process-step">Brain<br><small>Agent reads</small></div>
+      <div class="process-arrow">&rarr;</div>
+      <div class="process-step">Software<br><small>Manual entry</small></div>
+      <div class="process-arrow">&rarr;</div>
+      <div class="process-step">Spreadsheet<br><small>Copy again</small></div>
+      <div class="process-arrow">&rarr;</div>
+      <div class="process-step">Email out<br><small>Compose &amp; send</small></div>
+      <div class="process-arrow">&rarr;</div>
+      <div class="process-step">WhatsApp<br><small>Message terminal</small></div>
+      <div class="process-arrow">&rarr;</div>
+      <div class="process-step">Pilot order<br><small>Update again</small></div>
+    </div>
+
+    <p style="color:#f87171;font-weight:600;font-size:0.88rem;">Every new SaaS platform = one MORE destination for the same data = MORE transposition, not less.</p>
+
+    <div class="alert-box">
+      <p><strong>The Question This Document Answers</strong></p>
+      <p>Can you <strong>buy</strong> an agentic AI system that sits between these tools, reads data from all of them, and eliminates the manual transposition? We evaluated 20+ platforms. The answer follows.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2: THE QUESTION -->
+  <div class="glass-section" id="question">
+    <h2>The Question Everyone Asks</h2>
+
+    <div class="highlight-box" style="text-align:center;padding:2rem;">
+      <p style="font-size:1.5rem;font-style:italic;margin:0;">"Can't we just <strong>buy</strong> ship agency AI software?"</p>
+    </div>
+
+    <p>This is a perfectly reasonable question. In most business scenarios, buying makes sense. Need accounting? Buy QuickBooks. Need CRM? Buy Salesforce. Need email? Buy Microsoft 365.</p>
+    <p>The assumption is: <em>"Someone must sell this. We just find the vendor, sign the contract, configure it, and go."</em></p>
+
+    <div class="verdict-no">
+      <div class="verdict-text">NO.</div>
+      <p>That product does not exist. What follows is the evidence &mdash; vendor by vendor, test by test.</p>
+    </div>
+
+    <div class="glass-section" style="background:rgba(0,0,0,0.5);margin:0;">
+      <h2>Three Facts, No Spin</h2>
+
+      <h3>1. The Product Does Not Exist</h3>
+      <p>No vendor sells agentic AI for ship agency operations. Maritime software exists (<a href="https://magicport.ai" target="_blank" class="inline-link">MagicPort</a>, <a href="https://sedna.com" target="_blank" class="inline-link">Sedna</a>, <a href="https://da-desk.com" target="_blank" class="inline-link">DA-Desk</a>, <a href="https://gatship.com" target="_blank" class="inline-link">GAT-Ship</a>, <a href="https://harborlab.com" target="_blank" class="inline-link">HarborLab</a>), but it digitizes manual workflows. It does not provide autonomous AI agents that read emails, make decisions, and learn from operations.</p>
+
+      <h3>2. Generic AI Platforms Lack Domain Knowledge</h3>
+      <p><a href="https://salesforce.com" target="_blank" class="inline-link">Salesforce</a> Agentforce, <a href="https://microsoft.com/copilot" target="_blank" class="inline-link">Microsoft Copilot</a>, <a href="https://servicenow.com" target="_blank" class="inline-link">ServiceNow</a> AIx are designed for horizontal markets (sales, HR, IT). They do not understand ETAs, berth rotation, disbursement accounting, SOF compilation, or any ship agency workflow. Training them costs more than building from scratch.</p>
+
+      <h3>3. 95% of "AI" Claims Are Marketing</h3>
+      <p>Gartner estimates only ~130 of thousands of vendors claiming "AI agents" offer genuine agentic capabilities. The rest are chatbots, RPA tools, or workflow automation with AI branding. Buying one means discovering post-purchase that it cannot do what was promised.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3: THE TEST -->
+  <div class="glass-section" id="test">
+    <h2>The Test: Every Vendor Gets the Same One</h2>
+
+    <p>Before evaluating 20+ platforms, we defined a single, objective test. This is not a trick question. This is the most basic operation a ship agent performs dozens of times per day. Any platform claiming "AI for maritime" should handle this trivially.</p>
+
+    <div class="test-box">
+      <h3>The Ship Agency AI Test</h3>
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.65);">Can your system autonomously process this email and execute ALL required actions without human intervention?</p>
+
+      <div class="email-sample">
+        Subject: Revised ETA - MV OCEAN STAR<br><br>
+        Good morning,<br><br>
+        Please be advised MV OCEAN STAR revised ETA Berth 7 now 1400 UTC<br>
+        15 Feb due weather delay. Previous ETA was 0800 same date.<br>
+        Please advise terminal and update all parties.<br><br>
+        Regards,<br>
+        Owners Operations
+      </div>
+
+      <h3 style="margin-top:1.25rem;">Required Actions (All Must Be Automatic):</h3>
+      <ol class="test-steps">
+        <li><strong>Classify:</strong> Identify this is an ETA update (not crew change, not invoice, not routine confirmation)</li>
+        <li><strong>Extract:</strong> Vessel name (MV OCEAN STAR), new ETA (1400 UTC 15 Feb), berth (7), reason (weather delay)</li>
+        <li><strong>Calculate:</strong> Delay magnitude: 6 hours from previous ETA of 0800</li>
+        <li><strong>Update:</strong> Vessel port call schedule state in database</li>
+        <li><strong>Evaluate:</strong> Impact on berth rotation (are other vessels affected by 6-hour shift?)</li>
+        <li><strong>Classify urgency:</strong> Based on delay magnitude, time of receipt, and berth conflict risk</li>
+        <li><strong>If high confidence (routine, no conflicts):</strong> Autonomously distribute update to terminal, principal, pilot, and other stakeholders</li>
+        <li><strong>If medium confidence (potential conflict):</strong> Escalate to human with pre-assembled decision brief</li>
+        <li><strong>Log:</strong> Record all actions taken. Learn pattern for future similar scenarios.</li>
+      </ol>
+    </div>
+
+    <div class="big-stat">
+      <span class="number">0 / 20+</span>
+      <div class="label">Platforms pass this test. Not a single commercial product can execute all 9 steps autonomously.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: VENDOR EVALUATION -->
+  <div class="glass-section" id="vendors">
+    <h2>The Vendor Evaluation: 20+ Platforms, Zero Pass</h2>
+
+    <p>We systematically evaluated every plausible platform across four categories. Each was tested against the Ship Agency AI Test above. Here is what we found.</p>
+
+    <h3>Category 1: Maritime-Specific Software (9 Vendors)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Vendor</th>
+          <th>Claims</th>
+          <th>Reality</th>
+          <th>Test Steps Passed</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><a href="https://magicport.ai" target="_blank" class="inline-link">MagicPort</a></strong></td>
+          <td>"Digital port call management"</td>
+          <td>Form generation, workflow templates. All manual input.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://sedna.com" target="_blank" class="inline-link">Sedna</a></strong></td>
+          <td>"Maritime email platform"</td>
+          <td>Better email organization/tagging. Still requires human read &amp; act.</td>
+          <td style="color:#fbbf24;font-weight:600;">1 of 9 (partial classify)</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://da-desk.com" target="_blank" class="inline-link">DA-Desk</a></strong></td>
+          <td>"Transparent disbursement"</td>
+          <td>Disbursement requests only. No email or schedule capability.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://marcura.com" target="_blank" class="inline-link">Marcura</a> / ShipIntel</strong></td>
+          <td>"Maritime AI solutions"</td>
+          <td>Invoice processing, cost benchmarking. Post-facto analysis only.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://gatship.com" target="_blank" class="inline-link">GAT-Ship</a></strong></td>
+          <td>"Ship agency management"</td>
+          <td>Legacy management system. Zero AI. All manual data entry.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://harborlab.com" target="_blank" class="inline-link">HarborLab</a></strong></td>
+          <td>"Port operations platform"</td>
+          <td>Terminal/berth planning. Port-side, not agent-side.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://veson.com" target="_blank" class="inline-link">Veson Nautical</a></strong></td>
+          <td>"Maritime software &amp; AI"</td>
+          <td>Voyage mgmt for shipowners/charterers. Wrong use case.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong>SESCO</strong></td>
+          <td>"Port agency software"</td>
+          <td>1990s-era legacy system. No modern capabilities.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://windward.ai" target="_blank" class="inline-link">Windward</a></strong></td>
+          <td>"Maritime AI platform"</td>
+          <td>Vessel tracking, risk/sanctions screening. Different domain.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Category 2: Enterprise AI Platforms (6 Vendors)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Vendor</th>
+          <th>Claims</th>
+          <th>Why It Fails for Ship Agency</th>
+          <th>Test Steps</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><a href="https://salesforce.com" target="_blank" class="inline-link">Salesforce</a> Agentforce</strong></td>
+          <td>"AI agents for any workflow"</td>
+          <td>Zero maritime domain knowledge. Cannot parse "ETA Berth 7 1400 UTC" without $500K+ custom dev.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://microsoft.com/copilot" target="_blank" class="inline-link">Microsoft Copilot</a></strong></td>
+          <td>"AI productivity assistant"</td>
+          <td>Summarizes email ("this is about a delay"). Cannot extract data, update systems, or take action.</td>
+          <td style="color:#fbbf24;font-weight:600;">0.5 of 9 (partial summary)</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://servicenow.com" target="_blank" class="inline-link">ServiceNow</a> AIx</strong></td>
+          <td>"Agentic AI for service mgmt"</td>
+          <td>IT ticketing platform. Zero maritime understanding.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://uipath.com" target="_blank" class="inline-link">UiPath</a></strong></td>
+          <td>"AI-powered automation"</td>
+          <td>RPA: follows rigid rules, breaks on format variations. Not intelligent.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://cloud.google.com/vertex-ai" target="_blank" class="inline-link">Google Vertex AI</a></strong></td>
+          <td>"AI development platform"</td>
+          <td>Raw infrastructure. Like buying lumber when you need a house.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://aws.amazon.com/bedrock/" target="_blank" class="inline-link">AWS Bedrock</a> Agents</strong></td>
+          <td>"Managed AI agent framework"</td>
+          <td>Infrastructure only. Requires building the entire application yourself.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Category 3: Logistics &amp; Supply Chain (3 Vendors)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Vendor</th>
+          <th>Claims</th>
+          <th>Why It Fails</th>
+          <th>Test Steps</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><a href="https://fourkites.com" target="_blank" class="inline-link">FourKites</a> / <a href="https://project44.com" target="_blank" class="inline-link">project44</a></strong></td>
+          <td>"Supply chain visibility"</td>
+          <td>Tracks cargo/containers, not agent operations. Different data flows.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://flexport.com" target="_blank" class="inline-link">Flexport</a></strong></td>
+          <td>"Digital freight forwarding"</td>
+          <td>Freight forwarder platform. Different business model entirely.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://navis.com" target="_blank" class="inline-link">Navis</a> (<a href="https://cargotec.com" target="_blank" class="inline-link">Cargotec</a>)</strong></td>
+          <td>"Terminal operating system"</td>
+          <td>Terminal-side system for berth/yard management. Not agent-side.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Category 4: AI Finance &amp; Emerging Startups (3 Vendors)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Vendor</th>
+          <th>Claims</th>
+          <th>Why It Fails</th>
+          <th>Test Steps</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><a href="https://ramp.com" target="_blank" class="inline-link">Ramp</a> / <a href="https://brex.com" target="_blank" class="inline-link">Brex</a></strong></td>
+          <td>"AI finance automation"</td>
+          <td>Corporate expense management. Does not understand maritime disbursement model.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://harvey.ai" target="_blank" class="inline-link">Harvey AI</a></strong></td>
+          <td>"AI for legal"</td>
+          <td>Proves the point: domain-specific AI works. Built for law. Ship agency needs its own.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://glean.com" target="_blank" class="inline-link">Glean</a></strong></td>
+          <td>"AI enterprise search"</td>
+          <td>Searches internal documents. Does not execute operational workflows.</td>
+          <td style="color:#f87171;font-weight:600;">0 of 9</td>
+          <td style="color:#f87171;">FAIL</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="verdict-no">
+      <div class="verdict-text">RESULT: 0 OF 21 PASS</div>
+      <p>Not a single commercial product passes the Ship Agency AI Test without extensive custom development that amounts to building the solution yourself &mdash; on someone else's platform, paying them rent.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 5: LOGISTICS PROOF -->
+  <div class="glass-section" id="logistics">
+    <h2>But It Works Elsewhere: Logistics Industry Proof</h2>
+
+    <p>If agentic AI cannot be bought for ship agency, does it exist anywhere in logistics? Yes. Other sectors have already demonstrated what is possible &mdash; proving the technology works and ship agency is simply behind.</p>
+
+    <div class="card-grid-3">
+      <div class="mini-card accent-green">
+        <h4>C.H. Robinson</h4>
+        <p>Largest US freight broker. AI processes millions of carrier communications, extracts rate confirmations, updates load boards, routes exceptions to humans only when confidence is low.</p>
+        <p style="color:#64ffb4;font-weight:600;">Result: 50% reduction in manual data entry for carrier interactions.</p>
+      </div>
+      <div class="mini-card accent-green">
+        <h4>Defense Logistics Agency</h4>
+        <p>DLA deployed AI for demand forecasting, automated requisition processing, and unstructured request classification. Reads field unit requests, classifies urgency, matches inventory, routes fulfillment.</p>
+        <p style="color:#64ffb4;font-weight:600;">Result: 30% faster requisition processing. Automated priority classification.</p>
+      </div>
+      <div class="mini-card accent-green">
+        <h4>Container Terminal AI</h4>
+        <p>Rotterdam, Singapore, Long Beach use AI-driven TOS for berth allocation, crane sequencing, yard planning. Thousands of autonomous decisions per hour based on real-time data.</p>
+        <p style="color:#64ffb4;font-weight:600;">Result: 20&ndash;40% throughput improvement. Real-time berth rotation adaptation.</p>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <p><strong>Why Ship Agency Is Actually Easier</strong></p>
+      <p>Shipping data is <strong>consistent, simple, and programmable</strong>. Vessels have IMO numbers. Ports have UN/LOCODE. Berths are numbered. ETAs follow standard formats. Cargo quantities use standard units. The data is simple &mdash; it is just scattered globally across 1,000+ email senders and 150+ subject line variations per ship. AI was designed to solve exactly this kind of problem.</p>
+      <p><strong>If AI can parse military logistics requests with life-or-death urgency classification, it can certainly parse "MV OCEAN STAR ETA revised 1400 UTC Berth 7."</strong></p>
+    </div>
+
+    <h3>Companies Already Using AI to Reduce SaaS Spend</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>What They Did</th>
+          <th>Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Klarna</strong></td>
+          <td>Replaced Salesforce and multiple SaaS tools with internal AI systems</td>
+          <td>25% reduction in SaaS spend, millions saved annually, gained full operational control</td>
+        </tr>
+        <tr>
+          <td><strong>Shopify</strong></td>
+          <td>CEO mandate: AI must be explored before any new hire or tool purchase</td>
+          <td>Organizational shift from "buy tools" to "build with AI first"</td>
+        </tr>
+        <tr>
+          <td><strong>Duolingo</strong></td>
+          <td>Replaced contractor content creation with AI-generated learning content</td>
+          <td>Reduced content creation costs by ~80%, faster content deployment</td>
+        </tr>
+        <tr>
+          <td><strong>Various enterprises (Gartner 2025)</strong></td>
+          <td>CFOs increasingly questioning SaaS portfolio as AI provides alternatives</td>
+          <td>Enterprise SaaS renewal rates declining for first time as companies consolidate with AI</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 6: WHY THEY ALL FAIL -->
+  <div class="glass-section" id="why-fail">
+    <h2>Why All 21 Vendors Fail: The Four Fatal Problems</h2>
+
+    <h3>Problem 1: The Domain Knowledge Gap</h3>
+    <p>Generic AI platforms are <strong>domain-agnostic by design</strong>. They cannot distinguish an ETA update from a crew change request. They do not know that "anchorage B requires two river turns at $85K each" is a cost-critical decision. They cannot parse 15&ndash;30 different counterparty communication styles per vessel call.</p>
+
+    <div class="comparison-grid">
+      <div class="comparison-col col-buy">
+        <h3>What Generic AI Understands</h3>
+        <ul class="feature-list">
+          <li>This email is about a delay</li>
+          <li>Someone mentioned a vessel name</li>
+          <li>There is a time reference in the text</li>
+          <li>The sender seems to want action taken</li>
         </ul>
-    </nav>
-
-    <div class="container">
-
-        <!-- ============================================================ -->
-        <!-- SECTION 1: AI CONTEXT -->
-        <!-- ============================================================ -->
-        <section id="context">
-            <h1 class="section-title">FIRST: UNDERSTANDING WHAT WE ARE ACTUALLY TALKING ABOUT</h1>
-            <div class="divider"></div>
-
-            <div class="alert-box info">
-                <h3>Why This Section Exists</h3>
-                <p style="margin-bottom: 0;">Before evaluating what can and cannot be purchased, it helps to understand what "AI for ship agency" actually means. This is not about chatbots answering FAQs. This is about autonomous systems that do operational work &mdash; reading emails, extracting data, updating schedules, making routing decisions, and learning from outcomes. Understanding the difference between what vendors claim and what actually exists requires knowing what "agentic AI" means.</p>
-            </div>
-
-            <h2>What "Agentic AI" Means (And Does Not Mean)</h2>
-
-            <div class="grid-3">
-                <div class="card red">
-                    <h4>NOT Agentic: Chatbot</h4>
-                    <p style="margin-bottom: 8px;"><strong>What it does:</strong> Answers scripted questions. "What are your office hours?" "Where is my vessel?"</p>
-                    <p style="margin-bottom: 0;"><strong>Ship agency value:</strong> Nearly zero. Agents do not need a chatbot. They need something that processes 5,000 emails/day.</p>
-                </div>
-                <div class="card" style="border-top-color: var(--accent);">
-                    <h4>NOT Agentic: Copilot</h4>
-                    <p style="margin-bottom: 8px;"><strong>What it does:</strong> Helps a human work faster. Summarizes emails. Drafts replies. Suggests actions.</p>
-                    <p style="margin-bottom: 0;"><strong>Ship agency value:</strong> Marginal. Still requires human to read summary, make decision, and manually execute in 5+ systems.</p>
-                </div>
-                <div class="card green">
-                    <h4>ACTUALLY Agentic: Autonomous Agent</h4>
-                    <p style="margin-bottom: 8px;"><strong>What it does:</strong> Reads email. Extracts structured data. Updates schedule state. Evaluates impact. Distributes notifications or escalates to human based on confidence level. Learns from corrections.</p>
-                    <p style="margin-bottom: 0;"><strong>Ship agency value:</strong> Transformative. Eliminates 80%+ of manual data transposition. Elevates humans from data entry to decision-making.</p>
-                </div>
-            </div>
-
-            <h2>The Transposition Problem: Why This Matters</h2>
-
-            <p>The core problem in ship agency is not a missing software tool. It is the <strong>gap between tools</strong>. An operator spends 5&ndash;8 hours per day manually copying the same information between email, agency software, spreadsheets, accounting, WhatsApp, and phone calls. One ETA update gets entered or communicated 4&ndash;7 times. Across 18 active port calls, that is 300&ndash;500 manual transpositions per day.</p>
-
-            <div class="process-flow">
-                <div class="process-step">Email<br><small>Data arrives</small></div>
-                <div class="process-arrow">&rarr;</div>
-                <div class="process-step">Brain<br><small>Agent reads</small></div>
-                <div class="process-arrow">&rarr;</div>
-                <div class="process-step">Software<br><small>Manual entry</small></div>
-                <div class="process-arrow">&rarr;</div>
-                <div class="process-step">Spreadsheet<br><small>Copy again</small></div>
-                <div class="process-arrow">&rarr;</div>
-                <div class="process-step">Email out<br><small>Compose &amp; send</small></div>
-                <div class="process-arrow">&rarr;</div>
-                <div class="process-step">WhatsApp<br><small>Message terminal</small></div>
-                <div class="process-arrow">&rarr;</div>
-                <div class="process-step">Pilot order<br><small>Update again</small></div>
-            </div>
-
-            <p style="text-align: center; font-weight: 600; color: var(--red);">Every new SaaS platform = one MORE destination for the same data = MORE transposition, not less.</p>
-
-            <div class="alert-box warning">
-                <h3>The Question This Document Answers</h3>
-                <p style="margin-bottom: 0; font-size: 1.15rem;">Can you <strong>buy</strong> an agentic AI system that sits between these tools, reads data from all of them, and eliminates the manual transposition? We evaluated 20+ platforms. The answer follows.</p>
-            </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 2: THE QUESTION -->
-        <!-- ============================================================ -->
-        <section id="question">
-            <h1 class="section-title">THE QUESTION EVERYONE ASKS</h1>
-            <div class="divider"></div>
-
-            <div style="background: var(--light-gray); padding: 50px; border-radius: 12px; margin: 40px 0; text-align: center;">
-                <p style="font-size: 2rem; font-style: italic; color: var(--slate); margin-bottom: 0;">
-                    "Can't we just <strong>buy</strong> ship agency AI software?"
-                </p>
-            </div>
-
-            <p style="font-size: 1.15rem;">This is a perfectly reasonable question. In most business scenarios, buying makes sense. Need accounting? Buy QuickBooks. Need CRM? Buy Salesforce. Need email? Buy Microsoft 365.</p>
-
-            <p style="font-size: 1.15rem;">The assumption is: <em>"Someone must sell this. We just find the vendor, sign the contract, configure it, and go."</em></p>
-
-            <div class="verdict-box no">
-                <h2>NO.</h2>
-                <p>That product does not exist. What follows is the evidence &mdash; vendor by vendor, test by test.</p>
-            </div>
-
-            <div style="background: linear-gradient(135deg, var(--navy), var(--slate)); color: var(--white); padding: 45px; border-radius: 12px; margin: 40px 0;">
-                <h2 style="color: var(--white); margin-bottom: 30px; text-align: center;">Three Facts, No Spin</h2>
-
-                <div style="margin-bottom: 25px;">
-                    <h3 style="color: var(--teal); margin-bottom: 12px;">1. The Product Does Not Exist</h3>
-                    <p style="font-size: 1.05rem; margin-bottom: 0;">No vendor sells agentic AI for ship agency operations. Maritime software exists (<a href="https://magicport.ai" target="_blank" class="vendor-link-white">MagicPort</a>, <a href="https://sedna.com" target="_blank" class="vendor-link-white">Sedna</a>, <a href="https://da-desk.com" target="_blank" class="vendor-link-white">DA-Desk</a>, <a href="https://gatship.com" target="_blank" class="vendor-link-white">GAT-Ship</a>, <a href="https://harborlab.com" target="_blank" class="vendor-link-white">HarborLab</a>), but it digitizes manual workflows. It does not provide autonomous AI agents that read emails, make decisions, and learn from operations.</p>
-                </div>
-
-                <div style="margin-bottom: 25px;">
-                    <h3 style="color: var(--teal); margin-bottom: 12px;">2. Generic AI Platforms Lack Domain Knowledge</h3>
-                    <p style="font-size: 1.05rem; margin-bottom: 0;"><a href="https://salesforce.com" target="_blank" class="vendor-link-white">Salesforce</a> Agentforce, <a href="https://microsoft.com/copilot" target="_blank" class="vendor-link-white">Microsoft Copilot</a>, <a href="https://servicenow.com" target="_blank" class="vendor-link-white">ServiceNow</a> AIx are designed for horizontal markets (sales, HR, IT). They do not understand ETAs, berth rotation, disbursement accounting, SOF compilation, or any ship agency workflow. Training them costs more than building from scratch.</p>
-                </div>
-
-                <div>
-                    <h3 style="color: var(--teal); margin-bottom: 12px;">3. 95% of "AI" Claims Are Marketing</h3>
-                    <p style="font-size: 1.05rem; margin-bottom: 0;">Gartner estimates only ~130 of thousands of vendors claiming "AI agents" offer genuine agentic capabilities. The rest are chatbots, RPA tools, or workflow automation with AI branding. Buying one means discovering post-purchase that it cannot do what was promised.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 3: THE TEST -->
-        <!-- ============================================================ -->
-        <section id="test">
-            <h1 class="section-title">THE TEST: EVERY VENDOR GETS THE SAME ONE</h1>
-            <div class="divider"></div>
-
-            <p>Before evaluating 20+ platforms, we defined a single, objective test. This is not a trick question. This is the most basic operation a ship agent performs dozens of times per day. Any platform claiming "AI for maritime" should handle this trivially.</p>
-
-            <div class="test-box">
-                <h3>The Ship Agency AI Test</h3>
-                <p style="margin-bottom: 15px;">Can your system autonomously process this email and execute ALL required actions without human intervention?</p>
-
-                <div class="email-sample">
-                    Subject: Revised ETA - MV OCEAN STAR<br><br>
-                    Good morning,<br><br>
-                    Please be advised MV OCEAN STAR revised ETA Berth 7 now 1400 UTC<br>
-                    15 Feb due weather delay. Previous ETA was 0800 same date.<br>
-                    Please advise terminal and update all parties.<br><br>
-                    Regards,<br>
-                    Owners Operations
-                </div>
-
-                <h3 style="margin-top: 25px;">Required Actions (All Must Be Automatic):</h3>
-                <ol style="line-height: 2.2; margin-left: 25px; font-size: 1.05rem;">
-                    <li><strong>Classify:</strong> Identify this is an ETA update (not crew change, not invoice, not routine confirmation)</li>
-                    <li><strong>Extract:</strong> Vessel name (MV OCEAN STAR), new ETA (1400 UTC 15 Feb), berth (7), reason (weather delay)</li>
-                    <li><strong>Calculate:</strong> Delay magnitude: 6 hours from previous ETA of 0800</li>
-                    <li><strong>Update:</strong> Vessel port call schedule state in database</li>
-                    <li><strong>Evaluate:</strong> Impact on berth rotation (are other vessels affected by 6-hour shift?)</li>
-                    <li><strong>Classify urgency:</strong> Based on delay magnitude, time of receipt, and berth conflict risk</li>
-                    <li><strong>If high confidence (routine, no conflicts):</strong> Autonomously distribute update to terminal, principal, pilot, and other stakeholders</li>
-                    <li><strong>If medium confidence (potential conflict):</strong> Escalate to human with pre-assembled decision brief</li>
-                    <li><strong>Log:</strong> Record all actions taken. Learn pattern for future similar scenarios.</li>
-                </ol>
-            </div>
-
-            <div class="stat-highlight">
-                <div class="number">0 / 20+</div>
-                <div class="label">Platforms pass this test. Not a single commercial product can execute all 9 steps autonomously.</div>
-            </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 4: VENDOR EVALUATION -->
-        <!-- ============================================================ -->
-        <section id="vendors">
-            <h1 class="section-title">THE VENDOR EVALUATION: 20+ PLATFORMS, ZERO PASS</h1>
-            <div class="divider"></div>
-
-            <p>We systematically evaluated every plausible platform across four categories. Each was tested against the Ship Agency AI Test above. Here is what we found.</p>
-
-            <h2>Category 1: Maritime-Specific Software (9 Vendors)</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Vendor</th>
-                        <th>Claims</th>
-                        <th>Reality</th>
-                        <th>Test Steps Passed</th>
-                        <th>Verdict</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong><a href="https://magicport.ai" target="_blank" class="vendor-link">MagicPort</a></strong></td>
-                        <td>"Digital port call management"</td>
-                        <td>Form generation, workflow templates. All manual input.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://sedna.com" target="_blank" class="vendor-link">Sedna</a></strong></td>
-                        <td>"Maritime email platform"</td>
-                        <td>Better email organization/tagging. Still requires human read &amp; act.</td>
-                        <td style="color: var(--red); font-weight: 600;">1 of 9 (partial classify)</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://da-desk.com" target="_blank" class="vendor-link">DA-Desk</a></strong></td>
-                        <td>"Transparent disbursement"</td>
-                        <td>Disbursement requests only. No email or schedule capability.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://marcura.com" target="_blank" class="vendor-link">Marcura</a> / ShipIntel</strong></td>
-                        <td>"Maritime AI solutions"</td>
-                        <td>Invoice processing, cost benchmarking. Post-facto analysis only.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://gatship.com" target="_blank" class="vendor-link">GAT-Ship</a></strong></td>
-                        <td>"Ship agency management"</td>
-                        <td>Legacy management system. Zero AI. All manual data entry.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://harborlab.com" target="_blank" class="vendor-link">HarborLab</a></strong></td>
-                        <td>"Port operations platform"</td>
-                        <td>Terminal/berth planning. Port-side, not agent-side.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://veson.com" target="_blank" class="vendor-link">Veson Nautical</a></strong></td>
-                        <td>"Maritime software &amp; AI"</td>
-                        <td>Voyage mgmt for shipowners/charterers. Wrong use case.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong>SESCO</strong></td>
-                        <td>"Port agency software"</td>
-                        <td>1990s-era legacy system. No modern capabilities.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://windward.ai" target="_blank" class="vendor-link">Windward</a></strong></td>
-                        <td>"Maritime AI platform"</td>
-                        <td>Vessel tracking, risk/sanctions screening. Different domain.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>Category 2: Enterprise AI Platforms (6 Vendors)</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Vendor</th>
-                        <th>Claims</th>
-                        <th>Why It Fails for Ship Agency</th>
-                        <th>Test Steps</th>
-                        <th>Verdict</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong><a href="https://salesforce.com" target="_blank" class="vendor-link">Salesforce</a> Agentforce</strong></td>
-                        <td>"AI agents for any workflow"</td>
-                        <td>Zero maritime domain knowledge. Cannot parse "ETA Berth 7 1400 UTC" without $500K+ custom dev.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://microsoft.com/copilot" target="_blank" class="vendor-link">Microsoft Copilot</a></strong></td>
-                        <td>"AI productivity assistant"</td>
-                        <td>Summarizes email ("this is about a delay"). Cannot extract data, update systems, or take action.</td>
-                        <td style="color: var(--red); font-weight: 600;">0.5 of 9 (partial summary)</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://servicenow.com" target="_blank" class="vendor-link">ServiceNow</a> AIx</strong></td>
-                        <td>"Agentic AI for service mgmt"</td>
-                        <td>IT ticketing platform. Zero maritime understanding.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://uipath.com" target="_blank" class="vendor-link">UiPath</a></strong></td>
-                        <td>"AI-powered automation"</td>
-                        <td>RPA: follows rigid rules, breaks on format variations. Not intelligent.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://cloud.google.com/vertex-ai" target="_blank" class="vendor-link">Google Vertex AI</a></strong></td>
-                        <td>"AI development platform"</td>
-                        <td>Raw infrastructure. Like buying lumber when you need a house.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://aws.amazon.com/bedrock/" target="_blank" class="vendor-link">AWS Bedrock</a> Agents</strong></td>
-                        <td>"Managed AI agent framework"</td>
-                        <td>Infrastructure only. Requires building the entire application yourself.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>Category 3: Logistics &amp; Supply Chain (3 Vendors)</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Vendor</th>
-                        <th>Claims</th>
-                        <th>Why It Fails</th>
-                        <th>Test Steps</th>
-                        <th>Verdict</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong><a href="https://fourkites.com" target="_blank" class="vendor-link">FourKites</a> / <a href="https://project44.com" target="_blank" class="vendor-link">project44</a></strong></td>
-                        <td>"Supply chain visibility"</td>
-                        <td>Tracks cargo/containers, not agent operations. Different data flows.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://flexport.com" target="_blank" class="vendor-link">Flexport</a></strong></td>
-                        <td>"Digital freight forwarding"</td>
-                        <td>Freight forwarder platform. Different business model entirely.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://navis.com" target="_blank" class="vendor-link">Navis</a> (<a href="https://cargotec.com" target="_blank" class="vendor-link">Cargotec</a>)</strong></td>
-                        <td>"Terminal operating system"</td>
-                        <td>Terminal-side system for berth/yard management. Not agent-side.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>Category 4: AI Finance &amp; Emerging Startups (3 Vendors)</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Vendor</th>
-                        <th>Claims</th>
-                        <th>Why It Fails</th>
-                        <th>Test Steps</th>
-                        <th>Verdict</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong><a href="https://ramp.com" target="_blank" class="vendor-link">Ramp</a> / <a href="https://brex.com" target="_blank" class="vendor-link">Brex</a></strong></td>
-                        <td>"AI finance automation"</td>
-                        <td>Corporate expense management. Does not understand maritime disbursement model.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://harvey.ai" target="_blank" class="vendor-link">Harvey AI</a></strong></td>
-                        <td>"AI for legal"</td>
-                        <td>Proves the point: domain-specific AI works. Built for law. Ship agency needs its own.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://glean.com" target="_blank" class="vendor-link">Glean</a></strong></td>
-                        <td>"AI enterprise search"</td>
-                        <td>Searches internal documents. Does not execute operational workflows.</td>
-                        <td style="color: var(--red); font-weight: 600;">0 of 9</td>
-                        <td style="color: var(--red);">FAIL</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="verdict-box no">
-                <h2>RESULT: 0 OF 21 PASS</h2>
-                <p>Not a single commercial product passes the Ship Agency AI Test without extensive custom development that amounts to building the solution yourself &mdash; on someone else's platform, paying them rent.</p>
-            </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 5: LOGISTICS PROOF -->
-        <!-- ============================================================ -->
-        <section id="logistics">
-            <h1 class="section-title">BUT IT WORKS ELSEWHERE: LOGISTICS INDUSTRY PROOF</h1>
-            <div class="divider"></div>
-
-            <p>If agentic AI cannot be bought for ship agency, does it exist anywhere in logistics? Yes. Other sectors have already demonstrated what is possible &mdash; proving the technology works and ship agency is simply behind.</p>
-
-            <div class="grid-3">
-                <div class="card green">
-                    <h4>C.H. Robinson</h4>
-                    <p style="margin-bottom: 8px;">Largest US freight broker. AI processes millions of carrier communications, extracts rate confirmations, updates load boards, routes exceptions to humans only when confidence is low.</p>
-                    <p style="margin-bottom: 0; font-weight: 600; color: var(--dark-green);">Result: 50% reduction in manual data entry for carrier interactions.</p>
-                </div>
-                <div class="card green">
-                    <h4>Defense Logistics Agency</h4>
-                    <p style="margin-bottom: 8px;">DLA deployed AI for demand forecasting, automated requisition processing, and unstructured request classification. Reads field unit requests, classifies urgency, matches inventory, routes fulfillment.</p>
-                    <p style="margin-bottom: 0; font-weight: 600; color: var(--dark-green);">Result: 30% faster requisition processing. Automated priority classification.</p>
-                </div>
-                <div class="card green">
-                    <h4>Container Terminal AI</h4>
-                    <p style="margin-bottom: 8px;">Rotterdam, Singapore, Long Beach use AI-driven TOS for berth allocation, crane sequencing, yard planning. Thousands of autonomous decisions per hour based on real-time data.</p>
-                    <p style="margin-bottom: 0; font-weight: 600; color: var(--dark-green);">Result: 20&ndash;40% throughput improvement. Real-time berth rotation adaptation.</p>
-                </div>
-            </div>
-
-            <div class="alert-box warning">
-                <h3>Why Ship Agency Is Actually Easier</h3>
-                <p>Shipping data is <strong>consistent, simple, and programmable</strong>. Vessels have IMO numbers. Ports have UN/LOCODE. Berths are numbered. ETAs follow standard formats. Cargo quantities use standard units. The data is simple &mdash; it is just scattered globally across 1,000+ email senders and 150+ subject line variations per ship. AI was designed to solve exactly this kind of problem.</p>
-                <p style="margin-bottom: 0; font-weight: 600;">If AI can parse military logistics requests with life-or-death urgency classification, it can certainly parse "MV OCEAN STAR ETA revised 1400 UTC Berth 7."</p>
-            </div>
-
-            <h2>Companies Already Using AI to Reduce SaaS Spend</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Company</th>
-                        <th>What They Did</th>
-                        <th>Impact</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Klarna</strong></td>
-                        <td>Replaced Salesforce and multiple SaaS tools with internal AI systems</td>
-                        <td>25% reduction in SaaS spend, millions saved annually, gained full operational control</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Shopify</strong></td>
-                        <td>CEO mandate: AI must be explored before any new hire or tool purchase</td>
-                        <td>Organizational shift from "buy tools" to "build with AI first"</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Duolingo</strong></td>
-                        <td>Replaced contractor content creation with AI-generated learning content</td>
-                        <td>Reduced content creation costs by ~80%, faster content deployment</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Various enterprises (Gartner 2025)</strong></td>
-                        <td>CFOs increasingly questioning SaaS portfolio as AI provides alternatives</td>
-                        <td>Enterprise SaaS renewal rates declining for first time as companies consolidate with AI</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 6: WHY THEY ALL FAIL -->
-        <!-- ============================================================ -->
-        <section id="why-fail">
-            <h1 class="section-title">WHY ALL 21 VENDORS FAIL: THE FOUR FATAL PROBLEMS</h1>
-            <div class="divider"></div>
-
-            <h2>Problem 1: The Domain Knowledge Gap</h2>
-
-            <p>Generic AI platforms are <strong>domain-agnostic by design</strong>. They cannot distinguish an ETA update from a crew change request. They do not know that "anchorage B requires two river turns at $85K each" is a cost-critical decision. They cannot parse 15&ndash;30 different counterparty communication styles per vessel call.</p>
-
-            <div class="grid-2">
-                <div class="card red">
-                    <h4>What Generic AI Understands</h4>
-                    <ul style="line-height: 2; margin-left: 15px;">
-                        <li>This email is about a delay</li>
-                        <li>Someone mentioned a vessel name</li>
-                        <li>There is a time reference in the text</li>
-                        <li>The sender seems to want action taken</li>
-                    </ul>
-                    <p style="margin: 15px 0 0; color: var(--red); font-weight: 600;">This is Level 2 (Copilot). Summary without action.</p>
-                </div>
-                <div class="card green">
-                    <h4>What Ship Agency AI Must Understand</h4>
-                    <ul style="line-height: 2; margin-left: 15px;">
-                        <li>ETA shifted 6 hours; Berth 7 may conflict with vessel currently discharging</li>
-                        <li>Pilot must be reordered for 1300 arrival (1 hour before ETB)</li>
-                        <li>Tug company needs 4-hour advance notice; this is now urgent</li>
-                        <li>Principal should be notified with revised cost estimate (additional anchorage?)</li>
-                        <li>Terminal gate closure at 1600 means tight turnaround for import cargo</li>
-                    </ul>
-                    <p style="margin: 15px 0 0; color: var(--dark-green); font-weight: 600;">This is Level 3 (Agent). Understanding + autonomous action.</p>
-                </div>
-            </div>
-
-            <h2>Problem 2: The Integration Nightmare</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>System</th>
-                        <th>Typical Setup</th>
-                        <th>COTS Integration Reality</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Email</strong></td>
-                        <td>Exchange, Gmail, legacy IMAP</td>
-                        <td>Generic platforms read email but cannot extract maritime data structures</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Accounting</strong></td>
-                        <td>QuickBooks, Xero, legacy ERP</td>
-                        <td>API connectors exist but do not map to disbursement advance/recovery model</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Terminal Systems</strong></td>
-                        <td>Proprietary per port, some EDI</td>
-                        <td>No COTS platform integrates with port-specific terminal systems</td>
-                    </tr>
-                    <tr>
-                        <td><strong>AIS / Vessel Tracking</strong></td>
-                        <td>MarineTraffic, VesselFinder feeds</td>
-                        <td>COTS platforms do not correlate AIS data with port call schedules</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Port Community Systems</strong></td>
-                        <td>Port-specific, often legacy</td>
-                        <td>Zero integration from any generic AI platform</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="alert-box danger">
-                <h3>The Integration Tax</h3>
-                <p style="margin-bottom: 0;">Even if you buy a COTS platform, you will spend <strong>6&ndash;18 months and $500K&ndash;$2M</strong> in custom integration and domain training. At that point, you have paid for both the COTS license AND custom development. The worst of both worlds.</p>
-            </div>
-
-            <h2>Problem 3: Agent Washing (95% of "AI" Is Not AI)</h2>
-
-            <p>Gartner's research: of thousands of vendors claiming "AI agents," only ~130 offer genuine agentic capabilities. The rest are:</p>
-
-            <div class="grid-3">
-                <div class="card red">
-                    <h4>Rebranded Chatbots</h4>
-                    <p style="margin-bottom: 0;">Answer pre-scripted questions. Called "AI assistants" in marketing. Cannot take autonomous action.</p>
-                </div>
-                <div class="card red">
-                    <h4>Rebranded RPA</h4>
-                    <p style="margin-bottom: 0;">Follow rigid if/then rules. Called "intelligent automation." Break on any input variation.</p>
-                </div>
-                <div class="card red">
-                    <h4>Workflow Tools + AI Label</h4>
-                    <p style="margin-bottom: 0;">Traditional workflow automation with "AI-powered" added to the brochure. Same product, new marketing.</p>
-                </div>
-            </div>
-
-            <h2>Problem 4: The N-to-M Connector Problem</h2>
-
-            <p>Before the Model Context Protocol (MCP), connecting AI to business systems required custom code for every combination:</p>
-
-            <p style="text-align: center; font-size: 1.2rem; margin: 25px 0; color: var(--red); font-weight: 600;">
-                5 AI platforms &times; 10 data sources = 50 custom integrations
-            </p>
-
-            <p>MCP (Anthropic, Nov 2024; adopted by OpenAI, Google, Microsoft; donated to Linux Foundation) provides a universal standard:</p>
-
-            <p style="text-align: center; font-size: 1.2rem; margin: 25px 0; color: var(--green); font-weight: 600;">
-                5 AI platforms + 10 MCP connectors = 15 integrations (build once, use everywhere)
-            </p>
-
-            <p><strong>COTS vendors have not adopted MCP yet</strong> because it is bleeding-edge (Nov 2024 release). By the time enterprise vendors integrate it, you could have already built your platform.</p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 7: SAAS CHAINS -->
-        <!-- ============================================================ -->
-        <section id="saas">
-            <h1 class="section-title">BREAKING THE CHAINS OF INFINITE SaaS EXPENSE</h1>
-            <div class="divider"></div>
-
-            <p>This is not just about ship agency software. This is about the entire model of renting tools you never own, with rising costs every year, while each tool adds another silo that makes the transposition problem worse.</p>
-
-            <h2>The SaaS Trap: Designed to Extract, Not Solve</h2>
-
-            <div class="grid-2">
-                <div class="comparison-card bad">
-                    <h3>The SaaS Business Model</h3>
-                    <ul>
-                        <li>Monthly recurring revenue that never ends</li>
-                        <li>Annual price increases 5&ndash;15% (above inflation, every year)</li>
-                        <li>Per-seat pricing: your growth = their revenue</li>
-                        <li>Data lock-in: leaving means losing history</li>
-                        <li>Feature gating: basic free, critical behind paywalls</li>
-                        <li>Each tool is a silo that does not talk to others</li>
-                        <li>"Platform tax" on every transaction and API call</li>
-                    </ul>
-                </div>
-                <div class="comparison-card good">
-                    <h3>The Build-and-Own Model</h3>
-                    <ul>
-                        <li>One-time development cost, then marginal maintenance</li>
-                        <li>You control costs &mdash; no vendor price increases</li>
-                        <li>Add users at infrastructure cost only ($5&ndash;10/month each)</li>
-                        <li>You own all data, code, and operational intelligence</li>
-                        <li>All features available from Day 1 &mdash; you built them</li>
-                        <li>AI agent connects all systems via MCP</li>
-                        <li>No platform tax, no per-API-call billing surprises</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h2>The Chain That Binds: Real SaaS Expense Over 3 Years</h2>
-
-            <div class="saas-chain">
-                <div class="saas-link">O365 $9K</div>
-                <div class="chain-plus">+</div>
-                <div class="saas-link">QuickBooks $3K</div>
-                <div class="chain-plus">+</div>
-                <div class="saas-link">Agency SW $20K</div>
-                <div class="chain-plus">+</div>
-                <div class="saas-link">AIS $8K</div>
-                <div class="chain-plus">+</div>
-                <div class="saas-link">CRM $6K</div>
-                <div class="chain-plus">+</div>
-                <div class="saas-link">Cloud $4K</div>
-                <div class="chain-plus">+</div>
-                <div class="saas-link">Copilot $12K</div>
-                <div class="chain-plus">=</div>
-                <div class="saas-link" style="background: var(--dark-red); font-size: 1rem;">$62K+ / 3yr</div>
-            </div>
-
-            <p style="text-align: center; color: var(--red); font-weight: 600; font-size: 1.15rem;">
-                $62K+ spent over 3 years. Zero IP created. Zero competitive advantage. Still 300+ manual transpositions per day. Still need 4 screens.
-            </p>
-
-            <h2>The Market Is Waking Up</h2>
-
-            <div class="alert-box warning">
-                <h3>SaaS / Tech Stocks Under Pressure</h3>
-                <ul style="line-height: 2.2; margin-left: 20px;">
-                    <li><strong>Salesforce:</strong> Stock volatility 2024&ndash;2025 as market questions whether AI makes generic CRM obsolete</li>
-                    <li><strong>Enterprise SaaS renewal rates:</strong> Declining for the first time as companies consolidate with AI alternatives</li>
-                    <li><strong>Klarna:</strong> Publicly replaced Salesforce with internal AI. Saved millions. Gained control.</li>
-                    <li><strong>Shopify CEO:</strong> "Before requesting new headcount or tools, teams must demonstrate why AI cannot do the job"</li>
-                    <li><strong>Marc Andreessen (a16z):</strong> "AI agents will replace SaaS applications" &mdash; VC community betting against traditional SaaS</li>
-                    <li><strong>Gartner 2025:</strong> CFOs increasingly questioning SaaS portfolios as AI provides cheaper, owned alternatives</li>
-                </ul>
-                <p style="margin-bottom: 0;"><strong>The trend is unmistakable:</strong> companies are breaking free of SaaS dependency by building AI-native solutions they own. Ship agency can do the same &mdash; with the added advantage of being in an industry where no adequate SaaS exists anyway.</p>
-            </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 8: SYSTEM NESTING -->
-        <!-- ============================================================ -->
-        <section id="nesting">
-            <h1 class="section-title">THIS IS NOT ABOUT REPLACING &mdash; IT IS ABOUT NESTING</h1>
-            <div class="divider"></div>
-
-            <div class="alert-box info">
-                <h3>The Most Important Point in This Document</h3>
-                <p style="margin-bottom: 0; font-size: 1.1rem;">The goal is <strong>NOT</strong> to buy a new platform. The goal is <strong>NOT</strong> to replace existing systems. The goal is to build an AI intelligence layer that <strong>nests with</strong> every system you already have &mdash; reading from them, writing to them, coordinating between them &mdash; so the human stops being the middleware.</p>
-            </div>
-
-            <h2>Nesting = Working With, Not Replacing</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Your Current System</th>
-                        <th>Status</th>
-                        <th>How AI Nests With It</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Outlook / Email</strong></td>
-                        <td style="color: var(--green); font-weight: 600;">KEEPS WORKING</td>
-                        <td>AI reads emails via API. Extracts data. Classifies. Routes. You still see every email.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>QuickBooks</strong></td>
-                        <td style="color: var(--green); font-weight: 600;">KEEPS WORKING</td>
-                        <td>AI creates disbursement entries via API. Tracks costs. Generates invoices. Accounting team still approves.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Agency Software</strong></td>
-                        <td style="color: var(--green); font-weight: 600;">KEEPS WORKING</td>
-                        <td>AI reads/writes port call data. Updates records automatically. Legacy system remains for historical data.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>AIS Tracking</strong></td>
-                        <td style="color: var(--green); font-weight: 600;">KEEPS WORKING</td>
-                        <td>AI pulls position data. Correlates with schedule state. Auto-updates ETAs based on vessel speed.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>WhatsApp / Phone</strong></td>
-                        <td style="color: var(--green); font-weight: 600;">KEEPS WORKING</td>
-                        <td>Agent continues normal communication. AI captures data from digital channels for processing.</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>What Actually Changes</h2>
-
-            <div class="grid-2">
-                <div class="card red">
-                    <h4>What Goes Away</h4>
-                    <ul style="line-height: 2; margin-left: 15px;">
-                        <li>Manually reading 800 emails to find the 50 that need action</li>
-                        <li>Copying ETA from email into 4 different systems</li>
-                        <li>Composing 20 notification emails per schedule change</li>
-                        <li>Maintaining manual spreadsheets as shadow systems</li>
-                        <li>Losing institutional knowledge when people leave</li>
-                    </ul>
-                </div>
-                <div class="card green">
-                    <h4>What Humans Do Instead</h4>
-                    <ul style="line-height: 2; margin-left: 15px;">
-                        <li>Review AI-flagged exceptions that need judgment</li>
-                        <li>Manage relationships with counterparties</li>
-                        <li>Handle complex negotiations and escalations</li>
-                        <li>Proactive service: anticipate problems before they happen</li>
-                        <li>Train the AI by correcting edge cases (knowledge captured forever)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="quote-block">
-                "Like having every operations manager's brain working in sync, 24/7, never forgetting, never tired, always learning. Their experience is not lost when they leave &mdash; it is captured, stored, and built upon. That is what we are building. Not a new platform to buy. A living intelligence layer that makes everything you already have work together."
-            </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 9: OBJECTIONS -->
-        <!-- ============================================================ -->
-        <section id="objections">
-            <h1 class="section-title">ADDRESSING EVERY "JUST BUY IT" OBJECTION</h1>
-            <div class="divider"></div>
-
-            <div class="objection-box">
-                <div class="question">"Can't we just customize <a href="https://salesforce.com" target="_blank" class="vendor-link">Salesforce</a> Agentforce for ship agency?"</div>
-                <div class="answer">
-                    <strong>Technically yes. Practically no.</strong> Salesforce Agentforce is a horizontal platform with zero maritime domain knowledge. You would need to:
-                    <ul style="margin: 12px 0 12px 20px; line-height: 1.9;">
-                        <li>Build custom data models for vessel port calls, disbursements, schedule states</li>
-                        <li>Develop maritime NLP to extract shipping data from emails</li>
-                        <li>Create business logic for berth rotation, cost tracking, vendor coordination</li>
-                        <li>Build custom integrations with email, AIS, terminals, accounting</li>
-                        <li>Pay Salesforce licensing fees on top of all customization</li>
-                    </ul>
-                    <div class="killer">Estimated cost: $500K&ndash;$2M over 12&ndash;18 months. You would be building 80% of the solution yourself on someone else's platform, paying them rent, locked into their roadmap. Building on open standards costs less and you own the result.</div>
-                </div>
-            </div>
-
-            <div class="objection-box">
-                <div class="question">"What about <a href="https://microsoft.com/copilot" target="_blank" class="vendor-link">Microsoft Copilot</a>? It already reads our email."</div>
-                <div class="answer">
-                    <strong>Copilot is a productivity assistant, not an operational agent.</strong>
-                    <br><br>
-                    <strong>What Copilot does:</strong> "This email appears to be about a vessel arrival time change. The sender mentions a weather delay." (End of capability.)
-                    <br><br>
-                    <strong>What you need:</strong> Extract "MV OCEAN STAR", "1400 UTC 15 Feb", "Berth 7", calculate 6-hour delay, update schedule state, check berth conflicts, distribute notifications to terminal/principal/pilot, or escalate with decision brief.
-                    <div class="killer">Copilot passes Step 0 (reading words). It fails Steps 1 through 9 of the Ship Agency AI Test. It is a spell-checker, not an operational agent.</div>
-                </div>
-            </div>
-
-            <div class="objection-box">
-                <div class="question">"<a href="https://sedna.com" target="_blank" class="vendor-link">Sedna</a> already does maritime email management."</div>
-                <div class="answer">
-                    <strong>Sedna organizes emails. It does not act on them.</strong> Sedna provides better tagging, team collaboration, and email classification for shipping companies. This is genuinely useful &mdash; it is the best maritime email tool available. But it is Level 2 (Copilot), not Level 3 (Agent).
-                    <br><br>
-                    With Sedna, a human still reads every email, decides what to do, and manually executes in 5+ systems. Sedna reduces the time to FIND the right email. It does not eliminate the work of PROCESSING it.
-                    <div class="killer">Sedna passes approximately 1 of 9 test steps (partial classification). Useful tool, but not the solution. In a build scenario, Sedna could be one input the AI reads FROM &mdash; but it is not a substitute for the agent intelligence layer.</div>
-                </div>
-            </div>
-
-            <div class="objection-box">
-                <div class="question">"Can't we wait for vendors to add AI to their maritime software?"</div>
-                <div class="answer">
-                    <strong>They will add chatbots and call it "AI-powered." Genuine agentic AI requires:</strong>
-                    <ul style="margin: 12px 0 12px 20px; line-height: 1.9;">
-                        <li>Deep LLM integration (Claude, GPT-4, Gemini) &mdash; maritime vendors lack AI expertise</li>
-                        <li>Complete product architecture redesign (cannot bolt agents onto legacy software)</li>
-                        <li>Significant R&D investment (&gt;$5M minimum for genuine agent development)</li>
-                    </ul>
-                    Maritime software vendors lack the AI expertise, financial resources, and architectural foundation. Even if they started today: 2&ndash;3 years minimum to market.
-                    <div class="killer">By the time they ship a product (if ever), you will have 2&ndash;3 years of operational learning, refined models, and captured institutional knowledge they cannot replicate.</div>
-                </div>
-            </div>
-
-            <div class="objection-box">
-                <div class="question">"Building custom software is risky. What if we can't maintain it?"</div>
-                <div class="answer">
-                    <strong>The maintenance model is completely different with Claude Code.</strong>
-                    <br><br>
-                    <strong>Old model (risky):</strong> Hire 10-person dev team. If they leave, code becomes unmaintainable. Changes require developer time, cost, and project management.
-                    <br><br>
-                    <strong>New model (sustainable):</strong> Ship agency operator who understands the business refines the platform using Claude Code. Describe changes in plain English. Implementation same day. No dependency on external developers.
-                    <div class="killer">Example: Houston port changes anchorage procedures. Old model: submit change request, wait 6 months, pay $25K. New model: operator describes change to Claude Code, implemented and live same day, zero external cost.</div>
-                </div>
-            </div>
-
-            <div class="objection-box">
-                <div class="question">"Won't building take years and cost millions?"</div>
-                <div class="answer">
-                    <strong>That was true in 2020. The economics changed in 2025&ndash;2026.</strong>
-                    <br><br>
-                    <strong>Old:</strong> 10&ndash;20 engineers &times; 18&ndash;36 months &times; $150K avg = $2.7M&ndash;$10.8M
-                    <br><br>
-                    <strong>New:</strong> 1&ndash;2 domain experts + Claude Code &times; 3&ndash;12 months = $300K&ndash;$800K
-                    <br><br>
-                    Phase 1 (email intelligence + schedule state) operational in 3 months. Delivering ROI while Phase 2 builds. No "big bang" risk.
-                    <div class="killer">COTS comparison: Salesforce + customization = 12&ndash;18 months, $800K&ndash;$2.3M. Building from scratch = 3 months to first value, $300K&ndash;$800K total. Building is faster AND cheaper.</div>
-                </div>
-            </div>
-
-            <div class="objection-box">
-                <div class="question">"What if we build it and then a vendor releases a product?"</div>
-                <div class="answer">
-                    <strong>Then you are 2&ndash;3 years ahead of everyone who waits for that vendor.</strong>
-                    <br><br>
-                    Your AI has learned from millions of actual operational emails and decisions. Your platform is refined for your specific ports, principals, and workflows. Your team operates with AI augmentation as second nature. A generic vendor product cannot match battle-tested, continuously refined operational intelligence.
-                    <div class="killer">Plus: you own your platform. If a better component emerges, you integrate it. COTS locks you into a vendor's roadmap and pricing. Ownership beats rental every time.</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 10: COST COMPARISON -->
-        <!-- ============================================================ -->
-        <section id="cost">
-            <h1 class="section-title">THE REAL COST COMPARISON: TRANSPARENT NUMBERS</h1>
-            <div class="divider"></div>
-
-            <div class="grid-2">
-                <div class="cost-card cots">
-                    <h3>OPTION A: Buy COTS + Customize</h3>
-                    <ul>
-                        <li><strong>Year 1:</strong> Platform licenses: $100K</li>
-                        <li><strong>Year 1:</strong> Integration consulting: $300K</li>
-                        <li><strong>Year 1:</strong> Custom domain development: $400K</li>
-                        <li><strong>Year 1:</strong> Training &amp; deployment: $100K</li>
-                        <li><strong>Year 2:</strong> Annual licenses: $110K (+10%)</li>
-                        <li><strong>Year 2:</strong> Gap-filling customization: $200K</li>
-                        <li><strong>Year 3:</strong> Annual licenses: $121K (+10%)</li>
-                        <li><strong>Year 3:</strong> Maintenance &amp; updates: $100K</li>
-                    </ul>
-                    <div class="total">$1.4M &ndash; $2.3M</div>
-                    <p style="text-align: center; color: var(--red); font-weight: 600; margin: 15px 0 0;">
-                        Timeline: 12&ndash;18 months to deployment<br>
-                        Ownership: Vendor owns platform. You rent access.<br>
-                        After 3 years: Still paying. Still dependent.
-                    </p>
-                </div>
-
-                <div class="cost-card build">
-                    <h3>OPTION B: Build with Claude Code</h3>
-                    <ul>
-                        <li><strong>Phase 1 (Mo 1&ndash;3):</strong> Development: $100K</li>
-                        <li><strong>Phase 1:</strong> Claude API + infra: $15K</li>
-                        <li><strong>Phase 2 (Mo 4&ndash;6):</strong> Development: $100K</li>
-                        <li><strong>Phase 3 (Mo 7&ndash;12):</strong> Development: $150K</li>
-                        <li><strong>Year 2:</strong> API $120K + Infra $60K + Refinement $50K</li>
-                        <li><strong>Year 3:</strong> API $150K + Infra $80K + Refinement $50K</li>
-                    </ul>
-                    <div class="total">$300K &ndash; $875K</div>
-                    <p style="text-align: center; color: var(--dark-green); font-weight: 600; margin: 15px 0 0;">
-                        Timeline: 3 months to Phase 1 ROI<br>
-                        Ownership: You own all code, data, IP<br>
-                        After 3 years: Declining costs. Growing capability.
-                    </p>
-                </div>
-            </div>
-
-            <div class="verdict-box yes">
-                <h2>Build Saves $500K &ndash; $1.5M Over 3 Years</h2>
-                <p>Plus: you own the IP, control the roadmap, capture institutional knowledge, and break the chain of infinite SaaS expense. Every year, the build gets cheaper to operate. Every year, the COTS license gets more expensive.</p>
-            </div>
-
-            <h2>Hidden COTS Costs Nobody Mentions Until It Is Too Late</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Hidden Cost</th>
-                        <th>What Actually Happens</th>
-                        <th>Financial Impact</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Gap Discovery</strong></td>
-                        <td>After paying licenses, discover product covers only 20% of needs</td>
-                        <td>Sunk cost + additional custom dev required</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Integration Overrun</strong></td>
-                        <td>Vendor underestimated effort. Real timeline 2x quoted.</td>
-                        <td>$200K&ndash;$500K additional consulting</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Change Requests</strong></td>
-                        <td>Every workflow modification = vendor quote + wait</td>
-                        <td>$5K&ndash;$50K per change, 2&ndash;6 week delays</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Version Breaks</strong></td>
-                        <td>Vendor releases new version. Your customizations break.</td>
-                        <td>$50K&ndash;$150K re-customization per major release</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Seat Expansion</strong></td>
-                        <td>Quoted for 5 users. Actually need 15 as you scale.</td>
-                        <td>3x licensing cost, year over year</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Abandonment Risk</strong></td>
-                        <td>Vendor pivots focus or gets acquired. Your features deprioritized.</td>
-                        <td>Total investment loss + migration costs</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 11: COMPREHENSIVE COST COMPARISON -->
-        <!-- ============================================================ -->
-        <section id="cost-compare">
-            <h1 class="section-title">COMPREHENSIVE COST COMPARISON: FIVE PATHS, ONE CLEAR WINNER</h1>
-            <div class="divider"></div>
-
-            <p>To make this decision with full transparency, we researched real-world costs for every viable solution path. These figures are based on industry averages for a mid-size operation (10&ndash;25 users) over a 3-year period, sourced from vendor pricing guides, Gartner research, and published implementation case studies.</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Solution Type</th>
-                        <th>Initial Investment</th>
-                        <th>Annual Licensing</th>
-                        <th>Implementation / Dev</th>
-                        <th>Annual Maintenance</th>
-                        <th>3-Year Total</th>
-                        <th>Ownership</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Maritime SaaS</strong><br><small>(<a href="https://magicport.ai" target="_blank" class="vendor-link">MagicPort</a>, <a href="https://da-desk.com" target="_blank" class="vendor-link">DA-Desk</a>, <a href="https://sedna.com" target="_blank" class="vendor-link">Sedna</a>)</small></td>
-                        <td>$5K&ndash;$15K</td>
-                        <td>$24K&ndash;$72K</td>
-                        <td>$10K&ndash;$30K</td>
-                        <td>Included</td>
-                        <td style="color: var(--accent); font-weight: 600;">$87K&ndash;$246K</td>
-                        <td style="color: var(--red);">None. Still manual. No AI agents.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>NetSuite ERP</strong><br><small>(Oracle consulting firm)</small></td>
-                        <td>$50K&ndash;$100K</td>
-                        <td>$50K&ndash;$150K</td>
-                        <td>$100K&ndash;$500K</td>
-                        <td>$50K&ndash;$150K</td>
-                        <td style="color: var(--red); font-weight: 600;">$400K&ndash;$1.2M</td>
-                        <td style="color: var(--red);">Oracle owns platform. Every change = consulting bill.</td>
-                    </tr>
-                    <tr>
-                        <td><strong><a href="https://salesforce.com" target="_blank" class="vendor-link">Salesforce</a> CRM</strong><br><small>(Enterprise)</small></td>
-                        <td>$25K&ndash;$75K</td>
-                        <td>$45K&ndash;$180K</td>
-                        <td>$75K&ndash;$500K+</td>
-                        <td>$30K&ndash;$100K</td>
-                        <td style="color: var(--red); font-weight: 600;">$280K&ndash;$1.3M</td>
-                        <td style="color: var(--red);">Zero maritime domain. Per-seat scales with growth.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>M365 + <a href="https://dynamics.microsoft.com" target="_blank" class="vendor-link">Dynamics 365</a></strong></td>
-                        <td>$15K&ndash;$40K</td>
-                        <td>$25K&ndash;$60K</td>
-                        <td>$25K&ndash;$150K</td>
-                        <td>$15K&ndash;$50K</td>
-                        <td style="color: var(--accent); font-weight: 600;">$135K&ndash;$480K</td>
-                        <td style="color: var(--red);">Copilot = Level 2 only. No autonomous agents.</td>
-                    </tr>
-                    <tr style="background: #DCFCE7;">
-                        <td><strong>Build with Claude Code</strong><br><small>(Our solution)</small></td>
-                        <td>$15K&ndash;$30K</td>
-                        <td>$0 (you own it)</td>
-                        <td>$100K&ndash;$350K</td>
-                        <td>$60K&ndash;$150K</td>
-                        <td style="color: var(--green); font-weight: 700;">$295K&ndash;$830K</td>
-                        <td style="color: var(--dark-green); font-weight: 600;">Own ALL code, data, IP. Full agentic AI.</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="alert-box success">
-                <h3>The Math Is Clear</h3>
-                <p>Building costs the same or less &mdash; and is the ONLY option delivering actual agentic AI. Every other path gives you a platform still requiring manual transposition, still lacking maritime domain knowledge, still charging rent forever.</p>
-                <p style="margin-bottom: 0;"><strong>Risk reality:</strong> Gartner reports 70% of ERP implementations fail to meet objectives. Average cost overruns: 215%. The "buy" path is not just expensive &mdash; it carries dramatically higher risk of total failure.</p>
-            </div>
-
-            <h2>Post-Implementation Change Costs: The Hidden Multiplier</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Change Type</th>
-                        <th>NetSuite / Salesforce (Consulting)</th>
-                        <th>Build with Claude Code</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Modify a form layout</td>
-                        <td style="color: var(--red);">$2,500&ndash;$10,000 + 2&ndash;4 weeks</td>
-                        <td style="color: var(--green);">Same-day. $0 external cost.</td>
-                    </tr>
-                    <tr>
-                        <td>Add a new report/dashboard</td>
-                        <td style="color: var(--red);">$5,000&ndash;$15,000 + scope process</td>
-                        <td style="color: var(--green);">Same-day. Describe, deploy.</td>
-                    </tr>
-                    <tr>
-                        <td>Integrate new data source</td>
-                        <td style="color: var(--red);">$10,000&ndash;$50,000 + months</td>
-                        <td style="color: var(--green);">Days. MCP connector.</td>
-                    </tr>
-                    <tr>
-                        <td>Adjust workflow logic</td>
-                        <td style="color: var(--red);">$5,000&ndash;$25,000 + vendor may decline</td>
-                        <td style="color: var(--green);">Same-day. Domain expert describes change.</td>
-                    </tr>
-                    <tr style="background: #FEE2E2;">
-                        <td><strong>Annual change budget</strong></td>
-                        <td style="color: var(--red); font-weight: 600;">$50K&ndash;$150K/year</td>
-                        <td style="color: var(--green); font-weight: 600;">$0 external. Included in ops.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 12: HOW PROCUREMENT ACTUALLY FAILS -->
-        <!-- ============================================================ -->
-        <section id="procurement">
-            <h1 class="section-title">HOW PROCUREMENT ACTUALLY FAILS</h1>
-            <div class="divider"></div>
-
-            <p>Understanding why companies end up trapped in expensive, underperforming software requires understanding how the procurement process itself is broken.</p>
-
-            <h2>The Broken Procurement Cycle</h2>
-
-            <div class="process-flow">
-                <div class="process-step">C-Suite says<br><small>"We need a system"</small></div>
-                <div class="process-arrow">&rarr;</div>
-                <div class="process-step">Jr. C-Suite<br><small>Delegates to IT/Ops</small></div>
-                <div class="process-arrow">&rarr;</div>
-                <div class="process-step" style="background: var(--red);">50/50 Chance<br><small>SMEs even invited</small></div>
-                <div class="process-arrow">&rarr;</div>
-                <div class="process-step">Sales Demos<br><small>3 webinars, 2 calls</small></div>
-                <div class="process-arrow">&rarr;</div>
-                <div class="process-step" style="background: var(--red);">No Real Testing<br><small>Never used actual GUI</small></div>
-                <div class="process-arrow">&rarr;</div>
-                <div class="process-step">Contract Signed<br><small>$$$ committed</small></div>
-                <div class="process-arrow">&rarr;</div>
-                <div class="process-step" style="background: var(--red);">Contractor Installs<br><small>Not DIY</small></div>
-            </div>
-
-            <div class="grid-2">
-                <div class="card red">
-                    <h4>Where It Goes Wrong: The Evaluation</h4>
-                    <ul style="line-height: 2.2; margin-left: 15px;">
-                        <li><strong>50/50 chance</strong> the people who actually DO the work are invited to evaluate</li>
-                        <li>If SMEs are invited, they are observers, not technical advisors</li>
-                        <li><strong>Nobody evaluates by working in the GUI</strong> with real scenarios and real data</li>
-                        <li>Decision based on polished sales demos, not operational reality</li>
-                        <li>Vendor controls what you see and when you see it</li>
-                    </ul>
-                </div>
-                <div class="card red">
-                    <h4>Where It Goes Wrong: Post-Purchase</h4>
-                    <ul style="line-height: 2.2; margin-left: 15px;">
-                        <li><strong>Requires a contractor to install</strong> &mdash; not plug-and-play</li>
-                        <li>Configuration takes months, not days</li>
-                        <li>Data migration reveals incompatibilities</li>
-                        <li>Users discover gaps between demo and reality</li>
-                        <li>Every gap = change request = consulting bill = weeks of delay</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h2>Real Example: $1.2M NetSuite Implementation &mdash; Still Not Working</h2>
-
-            <div class="alert-box danger">
-                <h3>Case Study: Oracle-Approved Consulting Firm ERP Deployment</h3>
-                <p>A mid-size company engaged an Oracle-approved consulting firm to build a NetSuite-based accounting and operational ERP system.</p>
-
-                <div style="background: white; padding: 25px; border-radius: 8px; margin: 20px 0;">
-                    <table style="margin: 0; box-shadow: none;">
-                        <tbody>
-                            <tr><td style="font-weight: 600; width: 200px;">Total Spent:</td><td style="color: var(--red); font-weight: 700; font-size: 1.2rem;">$1.2 Million</td></tr>
-                            <tr><td style="font-weight: 600;">Timeline Quoted:</td><td>8&ndash;12 months</td></tr>
-                            <tr><td style="font-weight: 600;">Timeline Actual:</td><td style="color: var(--red); font-weight: 600;">2+ years and counting</td></tr>
-                            <tr><td style="font-weight: 600;">Current Status:</td><td style="color: var(--red); font-weight: 600;">Still not working correctly</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h4 style="color: var(--red); margin-top: 20px;">Without In-House Skills, Every Fix Requires:</h4>
-                <div class="process-flow" style="background: white;">
-                    <div class="process-step">Discover<br>Problem</div>
-                    <div class="process-arrow">&rarr;</div>
-                    <div class="process-step">Schedule<br>Web Call</div>
-                    <div class="process-arrow">&rarr;</div>
-                    <div class="process-step">Explain<br>Issue</div>
-                    <div class="process-arrow">&rarr;</div>
-                    <div class="process-step">Wait for<br>Scope of Work</div>
-                    <div class="process-arrow">&rarr;</div>
-                    <div class="process-step">PO Approval</div>
-                    <div class="process-arrow">&rarr;</div>
-                    <div class="process-step">5+ More<br>Web Calls</div>
-                    <div class="process-arrow">&rarr;</div>
-                    <div class="process-step" style="background: var(--red);">$10K Bill</div>
-                </div>
-
-                <p style="margin-top: 20px; font-weight: 600; color: var(--red); font-size: 1.15rem;">Even minor changes &mdash; redesigning a project form, adjusting an accounting form layout &mdash; trigger this entire cycle. Each cycle: $5,000&ndash;$10,000+ minimum.</p>
-                <p style="margin-bottom: 0;"><strong>The trap:</strong> Without in-house NetSuite/SuiteScript expertise, the company is entirely dependent on the consulting firm. The firm bills hourly. Delays are revenue.</p>
-            </div>
-
-            <div class="stat-highlight">
-                <div class="number">70%</div>
-                <div class="label">of ERP implementations fail to meet objectives (Gartner 2025). Average cost overruns: 215%.</div>
-            </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 13: AI CAN CUSTOMIZE YOUR EXISTING ERP -->
-        <!-- ============================================================ -->
-        <section id="ai-erp">
-            <h1 class="section-title">AI CAN CUSTOMIZE YOUR EXISTING ERP &mdash; AT WARP SPEED</h1>
-            <div class="divider"></div>
-
-            <div class="alert-box success">
-                <h3>The Game-Changing Realization</h3>
-                <p style="margin-bottom: 0; font-size: 1.1rem;">Even if you already have Oracle NetSuite, <a href="https://salesforce.com" target="_blank" class="vendor-link-teal">Salesforce</a>, <a href="https://dynamics.microsoft.com" target="_blank" class="vendor-link-teal">Microsoft Dynamics</a>, or SAP &mdash; AI coding tools like Claude Code can build customizations at a fraction of the cost and time of consulting firms. Oracle themselves published documentation showing Claude connected directly to NetSuite via MCP.</p>
-            </div>
-
-            <h2>AI vs. Consulting Firm: The Cost Comparison</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Dimension</th>
-                        <th>Traditional Consulting Firm</th>
-                        <th>AI-Assisted (Claude Code)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Cost per change</strong></td>
-                        <td style="color: var(--red);">$5,000&ndash;$50,000</td>
-                        <td style="color: var(--green);">Effectively $0 (API costs: pennies)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Time per change</strong></td>
-                        <td style="color: var(--red);">2&ndash;8 weeks</td>
-                        <td style="color: var(--green);">Hours to days</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Availability</strong></td>
-                        <td style="color: var(--red);">Subject to consultant schedule</td>
-                        <td style="color: var(--green);">24/7, instantly</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Scope negotiations</strong></td>
-                        <td style="color: var(--red);">Written SOW + PO per change</td>
-                        <td style="color: var(--green);">Describe it. Build it. Iterate.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Domain knowledge</strong></td>
-                        <td style="color: var(--red);">Consultant may not know your industry</td>
-                        <td style="color: var(--green);">Domain expert drives directly</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Annual maintenance savings</strong></td>
-                        <td style="color: var(--red);">$50K&ndash;$150K/year</td>
-                        <td style="color: var(--green);">$0&ndash;$5K/year</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>Verified: AI + ERP Is Real and Production-Ready</h2>
-
-            <div class="grid-2">
-                <div class="card green">
-                    <h4>Oracle Confirms AI + NetSuite</h4>
-                    <p style="margin-bottom: 8px;">Oracle&rsquo;s developer blog published "Talking to Your ERP: NetSuite Meets Claude via MCP" &mdash; demonstrating Claude AI directly querying and modifying NetSuite records via MCP.</p>
-                    <p style="margin-bottom: 0;">NetSuite 2026.1 ships with production-ready MCP integration and AI-native SuiteScript development tools.</p>
-                </div>
-                <div class="card green">
-                    <h4>Enterprise AI Adoption Accelerating</h4>
-                    <p style="margin-bottom: 8px;">Enterprise AI coding adoption grew 340% in H1 2025. Companies report $850K average annual savings through Claude Code (Anthropic enterprise data).</p>
-                    <p style="margin-bottom: 0;">Consuly built a complete MVP in under a month with Claude AI &mdash; typically a year-long project.</p>
-                </div>
-            </div>
-
-            <div class="alert-box info">
-                <h3>The Bottom Line for Companies With Existing ERPs</h3>
-                <ul style="line-height: 2.2; margin: 0 0 0 20px;">
-                    <li><strong>Stop paying $10K per form change.</strong> Claude Code modifies NetSuite forms, workflows, scripts in hours.</li>
-                    <li><strong>Stop waiting weeks for consultants.</strong> AI is available 24/7.</li>
-                    <li><strong>Stop negotiating scope of work documents.</strong> Describe what you need. Build it.</li>
-                    <li><strong>Save $50K&ndash;$150K/year</strong> in ongoing consulting costs.</li>
-                    <li><strong>Build the maritime intelligence layer</strong> on top of your existing ERP.</li>
-                </ul>
-                <p style="margin-bottom: 0; margin-top: 15px; font-weight: 600;">The question is no longer "can we afford to build?" The question is "can we afford NOT to when AI makes customization effectively free?"</p>
-            </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECTION 14: FINAL ANSWER -->
-        <!-- ============================================================ -->
-        <section id="answer">
-            <h1 class="section-title">FINAL ANSWER: NO, YOU CANNOT BUY THIS</h1>
-            <div class="divider"></div>
-
-            <div style="background: linear-gradient(135deg, var(--red), #7F1D1D); color: var(--white); padding: 50px; border-radius: 12px; margin: 40px 0;">
-                <h2 style="color: var(--white); margin-bottom: 30px; text-align: center; font-size: 2.5rem;">The Evidence</h2>
-                <ul style="font-size: 1.15rem; line-height: 2.2; list-style: none; padding: 0;">
-                    <li style="padding: 5px 0;"><strong style="color: #FCA5A5;">21 platforms evaluated.</strong> Zero pass the 9-step Ship Agency AI Test.</li>
-                    <li style="padding: 5px 0;"><strong style="color: #FCA5A5;">9 maritime vendors.</strong> Best coverage: 1 of 9 test steps (Sedna, partial classification only).</li>
-                    <li style="padding: 5px 0;"><strong style="color: #FCA5A5;">6 enterprise AI platforms.</strong> Zero maritime domain knowledge. $500K+ to customize.</li>
-                    <li style="padding: 5px 0;"><strong style="color: #FCA5A5;">3 logistics platforms.</strong> Track cargo, not agent operations. Wrong use case.</li>
-                    <li style="padding: 5px 0;"><strong style="color: #FCA5A5;">3 emerging AI startups.</strong> Prove domain-specific AI works &mdash; but not for ship agency.</li>
-                    <li style="padding: 5px 0;"><strong style="color: #FCA5A5;">Customizing COTS costs more</strong> ($1.4M&ndash;$2.3M) and takes longer (12&ndash;18 months) than building from scratch ($300K&ndash;$875K, 3 months to first value).</li>
-                    <li style="padding: 5px 0;"><strong style="color: #FCA5A5;">Every SaaS purchase adds another silo</strong> to transpose data into &mdash; making the core problem worse, not better.</li>
-                </ul>
-            </div>
-
-            <div class="verdict-box yes" style="padding: 50px;">
-                <h2 style="margin-bottom: 25px;">What You CAN Do</h2>
-                <div style="font-size: 1.1rem; line-height: 2.2; text-align: left; max-width: 800px; margin: 0 auto;">
-                    <p><strong style="color: var(--dark-green);">BUILD an AI intelligence layer</strong> that nests with every system you already have, using modern tools (Claude Code + MCP) for $300K&ndash;$800K over 12 months.</p>
-                    <p><strong style="color: var(--dark-green);">DEPLOY incrementally.</strong> Phase 1 operational in 3 months, delivering ROI immediately while Phase 2 builds.</p>
-                    <p><strong style="color: var(--dark-green);">BREAK the SaaS chain.</strong> Stop renting tools that add silos. Start building intelligence that connects them.</p>
-                    <p><strong style="color: var(--dark-green);">CAPTURE institutional knowledge.</strong> Every decision, every pattern, every edge case &mdash; preserved and built upon forever.</p>
-                    <p><strong style="color: var(--dark-green);">OWN the IP.</strong> No vendor lock-in. Full control of roadmap, data, and operational intelligence.</p>
-                    <p style="margin-bottom: 0;"><strong style="color: var(--dark-green);">GAIN 2&ndash;3 year competitive advantage</strong> while competitors wait for vendors who may never deliver.</p>
-                </div>
-            </div>
-
-            <h2 style="color: var(--navy);">The Actual Decision</h2>
-
-            <p style="font-size: 1.2rem;">The question is not "should we buy or build?" because <strong>there is nothing to buy.</strong></p>
-
-            <p style="font-size: 1.2rem;">The actual question is:</p>
-
-            <div style="background: var(--light-gray); padding: 40px; border-radius: 12px; margin: 30px 0; border-left: 6px solid var(--teal);">
-                <p style="font-size: 1.4rem; font-weight: 600; text-align: center; margin-bottom: 0; line-height: 1.6;">
-                    "Do we build autonomous ship agency AI operations now &mdash; nesting with our existing systems, capturing our institutional knowledge, breaking the SaaS expense chain &mdash; and gain 2&ndash;3 years of competitive advantage?<br><br>
-                    Or do we wait for vendors who may never deliver what we need?"
-                </p>
-            </div>
-
-            <div style="text-align: center; margin-top: 50px; padding: 50px 40px; background: linear-gradient(135deg, var(--navy), var(--slate)); color: var(--white); border-radius: 12px;">
-                <h2 style="color: var(--teal); margin-bottom: 20px; font-size: 2rem;">The Nine Truths</h2>
-                <div style="text-align: left; max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 2.2;">
-                    <p>1. The agent is the bottleneck &mdash; constantly transposing same info across 5+ platforms.</p>
-                    <p>2. Every new SaaS tool = more transposition, not less.</p>
-                    <p>3. Why 2&ndash;4 screens? Because systems do not talk to each other.</p>
-                    <p>4. Shipping data is consistent, simple, programmable &mdash; just scattered globally.</p>
-                    <p>5. 1,000+ email senders. 150 subject lines per ship. Details buried. Transposed 4+ times.</p>
-                    <p>6. AI = every operations manager's brain working in sync, 24/7.</p>
-                    <p>7. SME experience can be captured, stored, and built upon &mdash; never lost again.</p>
-                    <p>8. The SaaS infinite expense model is crumbling. Companies are breaking free.</p>
-                    <p style="margin-bottom: 0;">9. Modern tools (Claude Code) change build economics completely. Build is faster AND cheaper than buying.</p>
-                </div>
-            </div>
-
-            <p style="font-size: 1.2rem; margin-top: 40px; text-align: center;">
-                The companies that choose "build now" will define the next generation of ship agency operations.
-            </p>
-
-            <p style="font-size: 1.2rem; text-align: center; font-weight: 600; color: var(--red);">
-                The companies that choose "wait for COTS" will become the case studies about disruption.
-            </p>
-        </section>
+        <p style="color:#f87171;font-weight:600;font-size:0.83rem;margin-top:0.5rem;">This is Level 2 (Copilot). Summary without action.</p>
+      </div>
+      <div class="comparison-col col-build">
+        <h3>What Ship Agency AI Must Understand</h3>
+        <ul class="feature-list">
+          <li>ETA shifted 6 hours; Berth 7 may conflict with vessel currently discharging</li>
+          <li>Pilot must be reordered for 1300 arrival (1 hour before ETB)</li>
+          <li>Tug company needs 4-hour advance notice; this is now urgent</li>
+          <li>Principal should be notified with revised cost estimate (additional anchorage?)</li>
+          <li>Terminal gate closure at 1600 means tight turnaround for import cargo</li>
+        </ul>
+        <p style="color:#64ffb4;font-weight:600;font-size:0.83rem;margin-top:0.5rem;">This is Level 3 (Agent). Understanding + autonomous action.</p>
+      </div>
     </div>
 
-    <footer>
-        <p style="font-size: 1.2rem; margin-bottom: 15px;"><strong>Why You Can't Buy This</strong></p>
-        <p>Evidence-Based Analysis: 20+ Platforms, Zero Pass &mdash; Ocean DATUM</p>
-        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">February 2026 &bull; Revised Edition</p>
-    </footer>
+    <h3>Problem 2: The Integration Nightmare</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>System</th>
+          <th>Typical Setup</th>
+          <th>COTS Integration Reality</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Email</strong></td>
+          <td>Exchange, Gmail, legacy IMAP</td>
+          <td>Generic platforms read email but cannot extract maritime data structures</td>
+        </tr>
+        <tr>
+          <td><strong>Accounting</strong></td>
+          <td>QuickBooks, Xero, legacy ERP</td>
+          <td>API connectors exist but do not map to disbursement advance/recovery model</td>
+        </tr>
+        <tr>
+          <td><strong>Terminal Systems</strong></td>
+          <td>Proprietary per port, some EDI</td>
+          <td>No COTS platform integrates with port-specific terminal systems</td>
+        </tr>
+        <tr>
+          <td><strong>AIS / Vessel Tracking</strong></td>
+          <td>MarineTraffic, VesselFinder feeds</td>
+          <td>COTS platforms do not correlate AIS data with port call schedules</td>
+        </tr>
+        <tr>
+          <td><strong>Port Community Systems</strong></td>
+          <td>Port-specific, often legacy</td>
+          <td>Zero integration from any generic AI platform</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <script>
-        window.addEventListener('scroll', function() {
-            var navLinks = document.querySelectorAll('nav a');
-            var sections = document.querySelectorAll('section');
-            var current = '';
-            sections.forEach(function(section) {
-                var sectionTop = section.offsetTop;
-                if (pageYOffset >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(function(link) {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+    <div class="danger-box">
+      <p><strong>The Integration Tax</strong></p>
+      <p>Even if you buy a COTS platform, you will spend <strong>6&ndash;18 months and $500K&ndash;$2M</strong> in custom integration and domain training. At that point, you have paid for both the COTS license AND custom development. The worst of both worlds.</p>
+    </div>
+
+    <h3>Problem 3: Agent Washing (95% of "AI" Is Not AI)</h3>
+    <p>Gartner's research: of thousands of vendors claiming "AI agents," only ~130 offer genuine agentic capabilities. The rest are:</p>
+
+    <div class="card-grid-3">
+      <div class="mini-card accent-red">
+        <h4>Rebranded Chatbots</h4>
+        <p>Answer pre-scripted questions. Called "AI assistants" in marketing. Cannot take autonomous action.</p>
+      </div>
+      <div class="mini-card accent-red">
+        <h4>Rebranded RPA</h4>
+        <p>Follow rigid if/then rules. Called "intelligent automation." Break on any input variation.</p>
+      </div>
+      <div class="mini-card accent-red">
+        <h4>Workflow Tools + AI Label</h4>
+        <p>Traditional workflow automation with "AI-powered" added to the brochure. Same product, new marketing.</p>
+      </div>
+    </div>
+
+    <h3>Problem 4: The N-to-M Connector Problem</h3>
+    <p>Before the Model Context Protocol (MCP), connecting AI to business systems required custom code for every combination:</p>
+    <p style="color:#f87171;font-weight:600;font-size:1rem;text-align:center;margin:1rem 0;">5 AI platforms &times; 10 data sources = 50 custom integrations</p>
+    <p>MCP (Anthropic, Nov 2024; adopted by OpenAI, Google, Microsoft; donated to Linux Foundation) provides a universal standard:</p>
+    <p style="color:#64ffb4;font-weight:600;font-size:1rem;text-align:center;margin:1rem 0;">5 AI platforms + 10 MCP connectors = 15 integrations (build once, use everywhere)</p>
+    <p><strong>COTS vendors have not adopted MCP yet</strong> because it is bleeding-edge (Nov 2024 release). By the time enterprise vendors integrate it, you could have already built your platform.</p>
+  </div>
+
+  <!-- SECTION 7: SAAS CHAINS -->
+  <div class="glass-section" id="saas">
+    <h2>Breaking the Chains of Infinite SaaS Expense</h2>
+
+    <p>This is not just about ship agency software. This is about the entire model of renting tools you never own, with rising costs every year, while each tool adds another silo that makes the transposition problem worse.</p>
+
+    <h3>The SaaS Trap: Designed to Extract, Not Solve</h3>
+    <div class="comparison-grid">
+      <div class="comparison-col col-buy">
+        <h3>The SaaS Business Model</h3>
+        <ul class="feature-list">
+          <li>Monthly recurring revenue that never ends</li>
+          <li>Annual price increases 5&ndash;15% (above inflation, every year)</li>
+          <li>Per-seat pricing: your growth = their revenue</li>
+          <li>Data lock-in: leaving means losing history</li>
+          <li>Feature gating: basic free, critical behind paywalls</li>
+          <li>Each tool is a silo that does not talk to others</li>
+          <li>"Platform tax" on every transaction and API call</li>
+        </ul>
+      </div>
+      <div class="comparison-col col-build">
+        <h3>The Build-and-Own Model</h3>
+        <ul class="feature-list">
+          <li>One-time development cost, then marginal maintenance</li>
+          <li>You control costs &mdash; no vendor price increases</li>
+          <li>Add users at infrastructure cost only ($5&ndash;10/month each)</li>
+          <li>You own all data, code, and operational intelligence</li>
+          <li>All features available from Day 1 &mdash; you built them</li>
+          <li>AI agent connects all systems via MCP</li>
+          <li>No platform tax, no per-API-call billing surprises</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>The Chain That Binds: Real SaaS Expense Over 3 Years</h3>
+    <div class="saas-chain">
+      <div class="saas-link">O365 $9K</div>
+      <div class="chain-plus">+</div>
+      <div class="saas-link">QuickBooks $3K</div>
+      <div class="chain-plus">+</div>
+      <div class="saas-link">Agency SW $20K</div>
+      <div class="chain-plus">+</div>
+      <div class="saas-link">AIS $8K</div>
+      <div class="chain-plus">+</div>
+      <div class="saas-link">CRM $6K</div>
+      <div class="chain-plus">+</div>
+      <div class="saas-link">Cloud $4K</div>
+      <div class="chain-plus">+</div>
+      <div class="saas-link">Copilot $12K</div>
+      <div class="chain-plus">=</div>
+      <div class="saas-link" style="background:rgba(180,0,0,0.2);border-color:rgba(220,38,38,0.5);font-size:0.85rem;font-weight:700;">$62K+ / 3yr</div>
+    </div>
+
+    <p style="color:#f87171;font-weight:600;font-size:0.88rem;">$62K+ spent over 3 years. Zero IP created. Zero competitive advantage. Still 300+ manual transpositions per day. Still need 4 screens.</p>
+
+    <h3>The Market Is Waking Up</h3>
+    <div class="alert-box">
+      <p><strong>SaaS / Tech Stocks Under Pressure</strong></p>
+      <ul class="feature-list" style="margin-top:0.5rem;">
+        <li><strong>Salesforce:</strong> Stock volatility 2024&ndash;2025 as market questions whether AI makes generic CRM obsolete</li>
+        <li><strong>Enterprise SaaS renewal rates:</strong> Declining for the first time as companies consolidate with AI alternatives</li>
+        <li><strong>Klarna:</strong> Publicly replaced Salesforce with internal AI. Saved millions. Gained control.</li>
+        <li><strong>Shopify CEO:</strong> "Before requesting new headcount or tools, teams must demonstrate why AI cannot do the job"</li>
+        <li><strong>Marc Andreessen (a16z):</strong> "AI agents will replace SaaS applications" &mdash; VC community betting against traditional SaaS</li>
+        <li><strong>Gartner 2025:</strong> CFOs increasingly questioning SaaS portfolios as AI provides cheaper, owned alternatives</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>The trend is unmistakable:</strong> companies are breaking free of SaaS dependency by building AI-native solutions they own. Ship agency can do the same &mdash; with the added advantage of being in an industry where no adequate SaaS exists anyway.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 8: SYSTEM NESTING -->
+  <div class="glass-section" id="nesting">
+    <h2>This Is Not About Replacing &mdash; It Is About Nesting</h2>
+
+    <div class="highlight-box">
+      <p><strong>The Most Important Point in This Document</strong></p>
+      <p>The goal is <strong>NOT</strong> to buy a new platform. The goal is <strong>NOT</strong> to replace existing systems. The goal is to build an AI intelligence layer that <strong>nests with</strong> every system you already have &mdash; reading from them, writing to them, coordinating between them &mdash; so the human stops being the middleware.</p>
+    </div>
+
+    <h3>Nesting = Working With, Not Replacing</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Your Current System</th>
+          <th>Status</th>
+          <th>How AI Nests With It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Outlook / Email</strong></td>
+          <td style="color:#64ffb4;font-weight:600;">KEEPS WORKING</td>
+          <td>AI reads emails via API. Extracts data. Classifies. Routes. You still see every email.</td>
+        </tr>
+        <tr>
+          <td><strong>QuickBooks</strong></td>
+          <td style="color:#64ffb4;font-weight:600;">KEEPS WORKING</td>
+          <td>AI creates disbursement entries via API. Tracks costs. Generates invoices. Accounting team still approves.</td>
+        </tr>
+        <tr>
+          <td><strong>Agency Software</strong></td>
+          <td style="color:#64ffb4;font-weight:600;">KEEPS WORKING</td>
+          <td>AI reads/writes port call data. Updates records automatically. Legacy system remains for historical data.</td>
+        </tr>
+        <tr>
+          <td><strong>AIS Tracking</strong></td>
+          <td style="color:#64ffb4;font-weight:600;">KEEPS WORKING</td>
+          <td>AI pulls position data. Correlates with schedule state. Auto-updates ETAs based on vessel speed.</td>
+        </tr>
+        <tr>
+          <td><strong>WhatsApp / Phone</strong></td>
+          <td style="color:#64ffb4;font-weight:600;">KEEPS WORKING</td>
+          <td>Agent continues normal communication. AI captures data from digital channels for processing.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>What Actually Changes</h3>
+    <div class="card-grid-2">
+      <div class="mini-card accent-red">
+        <h4>What Goes Away</h4>
+        <ul class="feature-list">
+          <li>Manually reading 800 emails to find the 50 that need action</li>
+          <li>Copying ETA from email into 4 different systems</li>
+          <li>Composing 20 notification emails per schedule change</li>
+          <li>Maintaining manual spreadsheets as shadow systems</li>
+          <li>Losing institutional knowledge when people leave</li>
+        </ul>
+      </div>
+      <div class="mini-card accent-green">
+        <h4>What Humans Do Instead</h4>
+        <ul class="feature-list">
+          <li>Review AI-flagged exceptions that need judgment</li>
+          <li>Manage relationships with counterparties</li>
+          <li>Handle complex negotiations and escalations</li>
+          <li>Proactive service: anticipate problems before they happen</li>
+          <li>Train the AI by correcting edge cases (knowledge captured forever)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      "Like having every operations manager's brain working in sync, 24/7, never forgetting, never tired, always learning. Their experience is not lost when they leave &mdash; it is captured, stored, and built upon. That is what we are building. Not a new platform to buy. A living intelligence layer that makes everything you already have work together."
+    </div>
+  </div>
+
+  <!-- SECTION 9: OBJECTIONS -->
+  <div class="glass-section" id="objections">
+    <h2>Addressing Every "Just Buy It" Objection</h2>
+
+    <div class="objection-box">
+      <div class="question">"Can't we just customize <a href="https://salesforce.com" target="_blank" class="inline-link">Salesforce</a> Agentforce for ship agency?"</div>
+      <div class="answer">
+        <strong>Technically yes. Practically no.</strong> Salesforce Agentforce is a horizontal platform with zero maritime domain knowledge. You would need to:
+        <ul class="feature-list" style="margin-top:0.5rem;">
+          <li>Build custom data models for vessel port calls, disbursements, schedule states</li>
+          <li>Develop maritime NLP to extract shipping data from emails</li>
+          <li>Create business logic for berth rotation, cost tracking, vendor coordination</li>
+          <li>Build custom integrations with email, AIS, terminals, accounting</li>
+          <li>Pay Salesforce licensing fees on top of all customization</li>
+        </ul>
+        <div class="killer">Estimated cost: $500K&ndash;$2M over 12&ndash;18 months. You would be building 80% of the solution yourself on someone else's platform, paying them rent, locked into their roadmap. Building on open standards costs less and you own the result.</div>
+      </div>
+    </div>
+
+    <div class="objection-box">
+      <div class="question">"What about <a href="https://microsoft.com/copilot" target="_blank" class="inline-link">Microsoft Copilot</a>? It already reads our email."</div>
+      <div class="answer">
+        <strong>Copilot is a productivity assistant, not an operational agent.</strong><br><br>
+        <strong>What Copilot does:</strong> "This email appears to be about a vessel arrival time change. The sender mentions a weather delay." (End of capability.)<br><br>
+        <strong>What you need:</strong> Extract "MV OCEAN STAR", "1400 UTC 15 Feb", "Berth 7", calculate 6-hour delay, update schedule state, check berth conflicts, distribute notifications to terminal/principal/pilot, or escalate with decision brief.
+        <div class="killer">Copilot passes Step 0 (reading words). It fails Steps 1 through 9 of the Ship Agency AI Test. It is a spell-checker, not an operational agent.</div>
+      </div>
+    </div>
+
+    <div class="objection-box">
+      <div class="question">"<a href="https://sedna.com" target="_blank" class="inline-link">Sedna</a> already does maritime email management."</div>
+      <div class="answer">
+        <strong>Sedna organizes emails. It does not act on them.</strong> Sedna provides better tagging, team collaboration, and email classification for shipping companies. This is genuinely useful &mdash; it is the best maritime email tool available. But it is Level 2 (Copilot), not Level 3 (Agent).<br><br>
+        With Sedna, a human still reads every email, decides what to do, and manually executes in 5+ systems. Sedna reduces the time to FIND the right email. It does not eliminate the work of PROCESSING it.
+        <div class="killer">Sedna passes approximately 1 of 9 test steps (partial classification). Useful tool, but not the solution. In a build scenario, Sedna could be one input the AI reads FROM &mdash; but it is not a substitute for the agent intelligence layer.</div>
+      </div>
+    </div>
+
+    <div class="objection-box">
+      <div class="question">"Can't we wait for vendors to add AI to their maritime software?"</div>
+      <div class="answer">
+        <strong>They will add chatbots and call it "AI-powered." Genuine agentic AI requires:</strong>
+        <ul class="feature-list" style="margin-top:0.5rem;">
+          <li>Deep LLM integration (Claude, GPT-4, Gemini) &mdash; maritime vendors lack AI expertise</li>
+          <li>Complete product architecture redesign (cannot bolt agents onto legacy software)</li>
+          <li>Significant R&amp;D investment (&gt;$5M minimum for genuine agent development)</li>
+        </ul>
+        Maritime software vendors lack the AI expertise, financial resources, and architectural foundation. Even if they started today: 2&ndash;3 years minimum to market.
+        <div class="killer">By the time they ship a product (if ever), you will have 2&ndash;3 years of operational learning, refined models, and captured institutional knowledge they cannot replicate.</div>
+      </div>
+    </div>
+
+    <div class="objection-box">
+      <div class="question">"Building custom software is risky. What if we can't maintain it?"</div>
+      <div class="answer">
+        <strong>The maintenance model is completely different with Claude Code.</strong><br><br>
+        <strong>Old model (risky):</strong> Hire 10-person dev team. If they leave, code becomes unmaintainable. Changes require developer time, cost, and project management.<br><br>
+        <strong>New model (sustainable):</strong> Ship agency operator who understands the business refines the platform using Claude Code. Describe changes in plain English. Implementation same day. No dependency on external developers.
+        <div class="killer">Example: Houston port changes anchorage procedures. Old model: submit change request, wait 6 months, pay $25K. New model: operator describes change to Claude Code, implemented and live same day, zero external cost.</div>
+      </div>
+    </div>
+
+    <div class="objection-box">
+      <div class="question">"Won't building take years and cost millions?"</div>
+      <div class="answer">
+        <strong>That was true in 2020. The economics changed in 2025&ndash;2026.</strong><br><br>
+        <strong>Old:</strong> 10&ndash;20 engineers &times; 18&ndash;36 months &times; $150K avg = $2.7M&ndash;$10.8M<br><br>
+        <strong>New:</strong> 1&ndash;2 domain experts + Claude Code &times; 3&ndash;12 months = $300K&ndash;$800K<br><br>
+        Phase 1 (email intelligence + schedule state) operational in 3 months. Delivering ROI while Phase 2 builds. No "big bang" risk.
+        <div class="killer">COTS comparison: Salesforce + customization = 12&ndash;18 months, $800K&ndash;$2.3M. Building from scratch = 3 months to first value, $300K&ndash;$800K total. Building is faster AND cheaper.</div>
+      </div>
+    </div>
+
+    <div class="objection-box">
+      <div class="question">"What if we build it and then a vendor releases a product?"</div>
+      <div class="answer">
+        <strong>Then you are 2&ndash;3 years ahead of everyone who waits for that vendor.</strong><br><br>
+        Your AI has learned from millions of actual operational emails and decisions. Your platform is refined for your specific ports, principals, and workflows. Your team operates with AI augmentation as second nature. A generic vendor product cannot match battle-tested, continuously refined operational intelligence.
+        <div class="killer">Plus: you own your platform. If a better component emerges, you integrate it. COTS locks you into a vendor's roadmap and pricing. Ownership beats rental every time.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 10: REAL COST COMPARISON -->
+  <div class="glass-section" id="cost">
+    <h2>The Real Cost Comparison: Transparent Numbers</h2>
+
+    <div class="cost-comparison">
+      <div class="cost-card cots">
+        <h3>OPTION A: Buy COTS + Customize</h3>
+        <ul>
+          <li><strong>Year 1:</strong> Platform licenses: $100K</li>
+          <li><strong>Year 1:</strong> Integration consulting: $300K</li>
+          <li><strong>Year 1:</strong> Custom domain development: $400K</li>
+          <li><strong>Year 1:</strong> Training &amp; deployment: $100K</li>
+          <li><strong>Year 2:</strong> Annual licenses: $110K (+10%)</li>
+          <li><strong>Year 2:</strong> Gap-filling customization: $200K</li>
+          <li><strong>Year 3:</strong> Annual licenses: $121K (+10%)</li>
+          <li><strong>Year 3:</strong> Maintenance &amp; updates: $100K</li>
+        </ul>
+        <div class="total">$1.4M &ndash; $2.3M</div>
+        <div class="cost-footer">
+          Timeline: 12&ndash;18 months to deployment<br>
+          Ownership: Vendor owns platform. You rent access.<br>
+          After 3 years: Still paying. Still dependent.
+        </div>
+      </div>
+      <div class="cost-card build">
+        <h3>OPTION B: Build with Claude Code</h3>
+        <ul>
+          <li><strong>Phase 1 (Mo 1&ndash;3):</strong> Development: $100K</li>
+          <li><strong>Phase 1:</strong> Claude API + infra: $15K</li>
+          <li><strong>Phase 2 (Mo 4&ndash;6):</strong> Development: $100K</li>
+          <li><strong>Phase 3 (Mo 7&ndash;12):</strong> Development: $150K</li>
+          <li><strong>Year 2:</strong> API $120K + Infra $60K + Refinement $50K</li>
+          <li><strong>Year 3:</strong> API $150K + Infra $80K + Refinement $50K</li>
+        </ul>
+        <div class="total">$300K &ndash; $875K</div>
+        <div class="cost-footer">
+          Timeline: 3 months to Phase 1 ROI<br>
+          Ownership: You own all code, data, IP<br>
+          After 3 years: Declining costs. Growing capability.
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict-yes">
+      <div class="verdict-text">Build Saves $500K &ndash; $1.5M Over 3 Years</div>
+      <p>Plus: you own the IP, control the roadmap, capture institutional knowledge, and break the chain of infinite SaaS expense. Every year, the build gets cheaper to operate. Every year, the COTS license gets more expensive.</p>
+    </div>
+
+    <h3>Hidden COTS Costs Nobody Mentions Until It Is Too Late</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Hidden Cost</th>
+          <th>What Actually Happens</th>
+          <th>Financial Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gap Discovery</strong></td>
+          <td>After paying licenses, discover product covers only 20% of needs</td>
+          <td>Sunk cost + additional custom dev required</td>
+        </tr>
+        <tr>
+          <td><strong>Integration Overrun</strong></td>
+          <td>Vendor underestimated effort. Real timeline 2x quoted.</td>
+          <td>$200K&ndash;$500K additional consulting</td>
+        </tr>
+        <tr>
+          <td><strong>Change Requests</strong></td>
+          <td>Every workflow modification = vendor quote + wait</td>
+          <td>$5K&ndash;$50K per change, 2&ndash;6 week delays</td>
+        </tr>
+        <tr>
+          <td><strong>Version Breaks</strong></td>
+          <td>Vendor releases new version. Your customizations break.</td>
+          <td>$50K&ndash;$150K re-customization per major release</td>
+        </tr>
+        <tr>
+          <td><strong>Seat Expansion</strong></td>
+          <td>Quoted for 5 users. Actually need 15 as you scale.</td>
+          <td>3x licensing cost, year over year</td>
+        </tr>
+        <tr>
+          <td><strong>Abandonment Risk</strong></td>
+          <td>Vendor pivots focus or gets acquired. Your features deprioritized.</td>
+          <td>Total investment loss + migration costs</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 11: COMPREHENSIVE COST COMPARISON -->
+  <div class="glass-section" id="cost-compare">
+    <h2>Comprehensive Cost Comparison: Five Paths, One Clear Winner</h2>
+
+    <p>To make this decision with full transparency, we researched real-world costs for every viable solution path. These figures are based on industry averages for a mid-size operation (10&ndash;25 users) over a 3-year period, sourced from vendor pricing guides, Gartner research, and published implementation case studies.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Solution Type</th>
+          <th>Initial Investment</th>
+          <th>Annual Licensing</th>
+          <th>Implementation / Dev</th>
+          <th>Annual Maintenance</th>
+          <th>3-Year Total</th>
+          <th>Ownership</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Maritime SaaS</strong><br><small>(<a href="https://magicport.ai" target="_blank" class="inline-link">MagicPort</a>, <a href="https://da-desk.com" target="_blank" class="inline-link">DA-Desk</a>, <a href="https://sedna.com" target="_blank" class="inline-link">Sedna</a>)</small></td>
+          <td>$5K&ndash;$15K</td>
+          <td>$24K&ndash;$72K</td>
+          <td>$10K&ndash;$30K</td>
+          <td>Included</td>
+          <td style="color:#fbbf24;font-weight:600;">$87K&ndash;$246K</td>
+          <td style="color:#f87171;">None. Still manual. No AI agents.</td>
+        </tr>
+        <tr>
+          <td><strong>NetSuite ERP</strong><br><small>(Oracle consulting firm)</small></td>
+          <td>$50K&ndash;$100K</td>
+          <td>$50K&ndash;$150K</td>
+          <td>$100K&ndash;$500K</td>
+          <td>$50K&ndash;$150K</td>
+          <td style="color:#f87171;font-weight:600;">$400K&ndash;$1.2M</td>
+          <td style="color:#f87171;">Oracle owns platform. Every change = consulting bill.</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://salesforce.com" target="_blank" class="inline-link">Salesforce</a> CRM</strong><br><small>(Enterprise)</small></td>
+          <td>$25K&ndash;$75K</td>
+          <td>$45K&ndash;$180K</td>
+          <td>$75K&ndash;$500K+</td>
+          <td>$30K&ndash;$100K</td>
+          <td style="color:#f87171;font-weight:600;">$280K&ndash;$1.3M</td>
+          <td style="color:#f87171;">Zero maritime domain. Per-seat scales with growth.</td>
+        </tr>
+        <tr>
+          <td><strong>M365 + <a href="https://dynamics.microsoft.com" target="_blank" class="inline-link">Dynamics 365</a></strong></td>
+          <td>$15K&ndash;$40K</td>
+          <td>$25K&ndash;$60K</td>
+          <td>$25K&ndash;$150K</td>
+          <td>$15K&ndash;$50K</td>
+          <td style="color:#fbbf24;font-weight:600;">$135K&ndash;$480K</td>
+          <td style="color:#f87171;">Copilot = Level 2 only. No autonomous agents.</td>
+        </tr>
+        <tr>
+          <td><strong>Build with Claude Code</strong><br><small>(Our solution)</small></td>
+          <td>$15K&ndash;$30K</td>
+          <td>$0 (you own it)</td>
+          <td>$100K&ndash;$350K</td>
+          <td>$60K&ndash;$150K</td>
+          <td style="color:#64ffb4;font-weight:700;">$295K&ndash;$830K</td>
+          <td style="color:#64ffb4;font-weight:600;">Own ALL code, data, IP. Full agentic AI.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <p><strong>The Math Is Clear</strong></p>
+      <p>Building costs the same or less &mdash; and is the ONLY option delivering actual agentic AI. Every other path gives you a platform still requiring manual transposition, still lacking maritime domain knowledge, still charging rent forever.</p>
+      <p><strong>Risk reality:</strong> Gartner reports 70% of ERP implementations fail to meet objectives. Average cost overruns: 215%. The "buy" path is not just expensive &mdash; it carries dramatically higher risk of total failure.</p>
+    </div>
+
+    <h3>Post-Implementation Change Costs: The Hidden Multiplier</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Change Type</th>
+          <th>NetSuite / Salesforce (Consulting)</th>
+          <th>Build with Claude Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Modify a form layout</td>
+          <td style="color:#f87171;">$2,500&ndash;$10,000 + 2&ndash;4 weeks</td>
+          <td style="color:#64ffb4;">Same-day. $0 external cost.</td>
+        </tr>
+        <tr>
+          <td>Add a new report/dashboard</td>
+          <td style="color:#f87171;">$5,000&ndash;$15,000 + scope process</td>
+          <td style="color:#64ffb4;">Same-day. Describe, deploy.</td>
+        </tr>
+        <tr>
+          <td>Integrate new data source</td>
+          <td style="color:#f87171;">$10,000&ndash;$50,000 + months</td>
+          <td style="color:#64ffb4;">Days. MCP connector.</td>
+        </tr>
+        <tr>
+          <td>Adjust workflow logic</td>
+          <td style="color:#f87171;">$5,000&ndash;$25,000 + vendor may decline</td>
+          <td style="color:#64ffb4;">Same-day. Domain expert describes change.</td>
+        </tr>
+        <tr>
+          <td><strong>Annual change budget</strong></td>
+          <td style="color:#f87171;font-weight:600;">$50K&ndash;$150K/year</td>
+          <td style="color:#64ffb4;font-weight:600;">$0 external. Included in ops.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 12: HOW PROCUREMENT ACTUALLY FAILS -->
+  <div class="glass-section" id="procurement">
+    <h2>How Procurement Actually Fails</h2>
+
+    <p>Understanding why companies end up trapped in expensive, underperforming software requires understanding how the procurement process itself is broken.</p>
+
+    <h3>The Broken Procurement Cycle</h3>
+    <div class="process-flow">
+      <div class="process-step">C-Suite says<br><small>"We need a system"</small></div>
+      <div class="process-arrow">&rarr;</div>
+      <div class="process-step">Jr. C-Suite<br><small>Delegates to IT/Ops</small></div>
+      <div class="process-arrow">&rarr;</div>
+      <div class="process-step" style="background:rgba(220,38,38,0.12);border-color:rgba(220,38,38,0.3);">50/50 Chance<br><small>SMEs even invited</small></div>
+      <div class="process-arrow">&rarr;</div>
+      <div class="process-step">Sales Demos<br><small>3 webinars, 2 calls</small></div>
+      <div class="process-arrow">&rarr;</div>
+      <div class="process-step" style="background:rgba(220,38,38,0.12);border-color:rgba(220,38,38,0.3);">No Real Testing<br><small>Never used actual GUI</small></div>
+      <div class="process-arrow">&rarr;</div>
+      <div class="process-step">Contract Signed<br><small>$$$ committed</small></div>
+      <div class="process-arrow">&rarr;</div>
+      <div class="process-step" style="background:rgba(220,38,38,0.12);border-color:rgba(220,38,38,0.3);">Contractor Installs<br><small>Not DIY</small></div>
+    </div>
+
+    <div class="card-grid-2">
+      <div class="mini-card accent-red">
+        <h4>Where It Goes Wrong: The Evaluation</h4>
+        <ul class="feature-list">
+          <li><strong>50/50 chance</strong> the people who actually DO the work are invited to evaluate</li>
+          <li>If SMEs are invited, they are observers, not technical advisors</li>
+          <li><strong>Nobody evaluates by working in the GUI</strong> with real scenarios and real data</li>
+          <li>Decision based on polished sales demos, not operational reality</li>
+          <li>Vendor controls what you see and when you see it</li>
+        </ul>
+      </div>
+      <div class="mini-card accent-red">
+        <h4>Where It Goes Wrong: Post-Purchase</h4>
+        <ul class="feature-list">
+          <li><strong>Requires a contractor to install</strong> &mdash; not plug-and-play</li>
+          <li>Configuration takes months, not days</li>
+          <li>Data migration reveals incompatibilities</li>
+          <li>Users discover gaps between demo and reality</li>
+          <li>Every gap = change request = consulting bill = weeks of delay</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Real Example: $1.2M NetSuite Implementation &mdash; Still Not Working</h3>
+    <div class="danger-box">
+      <p><strong>Case Study: Oracle-Approved Consulting Firm ERP Deployment</strong></p>
+      <p>A mid-size company engaged an Oracle-approved consulting firm to build a NetSuite-based accounting and operational ERP system.</p>
+      <table style="margin:0.75rem 0;">
+        <tbody>
+          <tr><td style="font-weight:600;width:180px;">Total Spent:</td><td style="color:#f87171;font-weight:700;">$1.2 Million</td></tr>
+          <tr><td style="font-weight:600;">Timeline Quoted:</td><td>8&ndash;12 months</td></tr>
+          <tr><td style="font-weight:600;">Timeline Actual:</td><td style="color:#f87171;font-weight:600;">2+ years and counting</td></tr>
+          <tr><td style="font-weight:600;">Current Status:</td><td style="color:#f87171;font-weight:600;">Still not working correctly</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Without In-House Skills, Every Fix Requires:</strong></p>
+      <div class="process-flow" style="margin-top:0.5rem;">
+        <div class="process-step">Discover Problem</div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-step">Schedule Web Call</div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-step">Explain Issue</div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-step">Wait for Scope of Work</div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-step">PO Approval</div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-step">5+ More Web Calls</div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-step" style="background:rgba(220,38,38,0.15);border-color:rgba(220,38,38,0.4);">$10K Bill</div>
+      </div>
+      <p style="color:#f87171;font-weight:600;margin-top:0.75rem;">Even minor changes &mdash; redesigning a project form, adjusting an accounting form layout &mdash; trigger this entire cycle. Each cycle: $5,000&ndash;$10,000+ minimum.</p>
+      <p><strong>The trap:</strong> Without in-house NetSuite/SuiteScript expertise, the company is entirely dependent on the consulting firm. The firm bills hourly. Delays are revenue.</p>
+    </div>
+
+    <div class="big-stat">
+      <span class="number">70%</span>
+      <div class="label">of ERP implementations fail to meet objectives (Gartner 2025). Average cost overruns: 215%.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 13: AI CAN CUSTOMIZE YOUR EXISTING ERP -->
+  <div class="glass-section" id="ai-erp">
+    <h2>AI Can Customize Your Existing ERP &mdash; At Warp Speed</h2>
+
+    <div class="highlight-box">
+      <p><strong>The Game-Changing Realization</strong></p>
+      <p>Even if you already have Oracle NetSuite, <a href="https://salesforce.com" target="_blank" class="inline-link">Salesforce</a>, <a href="https://dynamics.microsoft.com" target="_blank" class="inline-link">Microsoft Dynamics</a>, or SAP &mdash; AI coding tools like Claude Code can build customizations at a fraction of the cost and time of consulting firms. Oracle themselves published documentation showing Claude connected directly to NetSuite via MCP.</p>
+    </div>
+
+    <h3>AI vs. Consulting Firm: The Cost Comparison</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Traditional Consulting Firm</th>
+          <th>AI-Assisted (Claude Code)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Cost per change</strong></td>
+          <td style="color:#f87171;">$5,000&ndash;$50,000</td>
+          <td style="color:#64ffb4;">Effectively $0 (API costs: pennies)</td>
+        </tr>
+        <tr>
+          <td><strong>Time per change</strong></td>
+          <td style="color:#f87171;">2&ndash;8 weeks</td>
+          <td style="color:#64ffb4;">Hours to days</td>
+        </tr>
+        <tr>
+          <td><strong>Availability</strong></td>
+          <td style="color:#f87171;">Subject to consultant schedule</td>
+          <td style="color:#64ffb4;">24/7, instantly</td>
+        </tr>
+        <tr>
+          <td><strong>Scope negotiations</strong></td>
+          <td style="color:#f87171;">Written SOW + PO per change</td>
+          <td style="color:#64ffb4;">Describe it. Build it. Iterate.</td>
+        </tr>
+        <tr>
+          <td><strong>Domain knowledge</strong></td>
+          <td style="color:#f87171;">Consultant may not know your industry</td>
+          <td style="color:#64ffb4;">Domain expert drives directly</td>
+        </tr>
+        <tr>
+          <td><strong>Annual maintenance savings</strong></td>
+          <td style="color:#f87171;">$50K&ndash;$150K/year</td>
+          <td style="color:#64ffb4;">$0&ndash;$5K/year</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Verified: AI + ERP Is Real and Production-Ready</h3>
+    <div class="card-grid-2">
+      <div class="mini-card accent-green">
+        <h4>Oracle Confirms AI + NetSuite</h4>
+        <p>Oracle's developer blog published "Talking to Your ERP: NetSuite Meets Claude via MCP" &mdash; demonstrating Claude AI directly querying and modifying NetSuite records via MCP.</p>
+        <p>NetSuite 2026.1 ships with production-ready MCP integration and AI-native SuiteScript development tools.</p>
+      </div>
+      <div class="mini-card accent-green">
+        <h4>Enterprise AI Adoption Accelerating</h4>
+        <p>Enterprise AI coding adoption grew 340% in H1 2025. Companies report $850K average annual savings through Claude Code (Anthropic enterprise data).</p>
+        <p>Consuly built a complete MVP in under a month with Claude AI &mdash; typically a year-long project.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>The Bottom Line for Companies With Existing ERPs</strong></p>
+      <ul class="feature-list" style="margin-top:0.5rem;">
+        <li><strong>Stop paying $10K per form change.</strong> Claude Code modifies NetSuite forms, workflows, scripts in hours.</li>
+        <li><strong>Stop waiting weeks for consultants.</strong> AI is available 24/7.</li>
+        <li><strong>Stop negotiating scope of work documents.</strong> Describe what you need. Build it.</li>
+        <li><strong>Save $50K&ndash;$150K/year</strong> in ongoing consulting costs.</li>
+        <li><strong>Build the maritime intelligence layer</strong> on top of your existing ERP.</li>
+      </ul>
+      <p style="margin-top:0.75rem;font-weight:600;">The question is no longer "can we afford to build?" The question is "can we afford NOT to when AI makes customization effectively free?"</p>
+    </div>
+  </div>
+
+  <!-- SECTION 14: FINAL ANSWER -->
+  <div class="glass-section" id="answer">
+    <h2>Final Answer: No, You Cannot Buy This</h2>
+
+    <div class="danger-box">
+      <p><strong>The Evidence</strong></p>
+      <ul class="feature-list" style="margin-top:0.5rem;">
+        <li><strong>21 platforms evaluated.</strong> Zero pass the 9-step Ship Agency AI Test.</li>
+        <li><strong>9 maritime vendors.</strong> Best coverage: 1 of 9 test steps (Sedna, partial classification only).</li>
+        <li><strong>6 enterprise AI platforms.</strong> Zero maritime domain knowledge. $500K+ to customize.</li>
+        <li><strong>3 logistics platforms.</strong> Track cargo, not agent operations. Wrong use case.</li>
+        <li><strong>3 emerging AI startups.</strong> Prove domain-specific AI works &mdash; but not for ship agency.</li>
+        <li><strong>Customizing COTS costs more</strong> ($1.4M&ndash;$2.3M) and takes longer (12&ndash;18 months) than building from scratch ($300K&ndash;$875K, 3 months to first value).</li>
+        <li><strong>Every SaaS purchase adds another silo</strong> to transpose data into &mdash; making the core problem worse, not better.</li>
+      </ul>
+    </div>
+
+    <div class="verdict-yes">
+      <div class="verdict-text">What You CAN Do</div>
+      <p style="text-align:left;max-width:800px;margin:0.75rem auto 0;font-size:0.92rem;">
+        <strong style="color:#64ffb4;">BUILD an AI intelligence layer</strong> that nests with every system you already have, using modern tools (Claude Code + MCP) for $300K&ndash;$800K over 12 months.<br><br>
+        <strong style="color:#64ffb4;">DEPLOY incrementally.</strong> Phase 1 operational in 3 months, delivering ROI immediately while Phase 2 builds.<br><br>
+        <strong style="color:#64ffb4;">BREAK the SaaS chain.</strong> Stop renting tools that add silos. Start building intelligence that connects them.<br><br>
+        <strong style="color:#64ffb4;">CAPTURE institutional knowledge.</strong> Every decision, every pattern, every edge case &mdash; preserved and built upon forever.<br><br>
+        <strong style="color:#64ffb4;">OWN the IP.</strong> No vendor lock-in. Full control of roadmap, data, and operational intelligence.<br><br>
+        <strong style="color:#64ffb4;">GAIN 2&ndash;3 year competitive advantage</strong> while competitors wait for vendors who may never deliver.
+      </p>
+    </div>
+
+    <h3>The Actual Decision</h3>
+    <p>The question is not "should we buy or build?" because <strong>there is nothing to buy.</strong></p>
+    <p>The actual question is:</p>
+
+    <div class="highlight-box" style="text-align:center;padding:2rem;">
+      <p style="font-size:1.1rem;font-weight:600;line-height:1.8;margin:0;">"Do we build autonomous ship agency AI operations now &mdash; nesting with our existing systems, capturing our institutional knowledge, breaking the SaaS expense chain &mdash; and gain 2&ndash;3 years of competitive advantage?<br><br>Or do we wait for vendors who may never deliver what we need?"</p>
+    </div>
+
+    <div class="nine-truths">
+      <h3>The Nine Truths</h3>
+      <p>1. The agent is the bottleneck &mdash; constantly transposing same info across 5+ platforms.</p>
+      <p>2. Every new SaaS tool = more transposition, not less.</p>
+      <p>3. Why 2&ndash;4 screens? Because systems do not talk to each other.</p>
+      <p>4. Shipping data is consistent, simple, programmable &mdash; just scattered globally.</p>
+      <p>5. 1,000+ email senders. 150 subject lines per ship. Details buried. Transposed 4+ times.</p>
+      <p>6. AI = every operations manager's brain working in sync, 24/7.</p>
+      <p>7. SME experience can be captured, stored, and built upon &mdash; never lost again.</p>
+      <p>8. The SaaS infinite expense model is crumbling. Companies are breaking free.</p>
+      <p>9. Modern tools (Claude Code) change build economics completely. Build is faster AND cheaper than buying.</p>
+    </div>
+
+    <p style="font-size:0.95rem;text-align:center;margin-top:1.5rem;color:rgba(255,255,255,0.75);">The companies that choose "build now" will define the next generation of ship agency operations.</p>
+    <p style="font-size:0.95rem;text-align:center;font-weight:600;color:#f87171;">The companies that choose "wait for COTS" will become the case studies about disruption.</p>
+
+    <div class="nav-buttons">
+      <a href="buy-vs-build-reality.html" class="nav-btn">&larr; Buy vs. Build Reality</a>
+      <a href="../../projects-hub.html" class="nav-btn">All Projects</a>
+      <a href="../../index.html" class="nav-btn">Home</a>
+    </div>
+  </div>
+
+</div><!-- end .main-content -->
+
+<footer>
+  <p>oceandatum.ai &mdash; Maritime Intelligence &amp; Analytics</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">Autonomous Ship Agency AI Platform &mdash; Internal Development Framework</p>
+</footer>
+
 </body>
 </html>
