@@ -163,6 +163,8 @@ body.light-mode svg .grid-line { stroke: rgba(0,0,0,0.08) !important; }
   <nav class="navbar">
     <span class="navbar-brand">An <a href="../index.html">oceandatum.ai</a> project</span>
     <div class="navbar-right">
+      <button id="theme-btn" onclick="toggleTheme()" class="nav-link" style="background:none;cursor:pointer;font-family:inherit;">&#9788; Light</button>
+      <button onclick="window.print()" class="nav-link" style="background:none;cursor:pointer;font-family:inherit;">&#8595; PDF</button>
       <a href="../projects-hub.html" class="nav-link">Projects</a>
       <a href="../index.html" class="nav-link">Home</a>
     </div>
@@ -1997,19 +1999,27 @@ TheShipsAgent.com ── Vertical Application / Proof of Concept / Ship Agency</
     <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">February 2026</p>
   </footer>
 
-<!-- UI Controls: theme toggle + PDF -->
-<div class="ui-controls" style="position:fixed;top:1rem;right:1rem;z-index:9999;display:flex;flex-direction:column;gap:0.4rem;align-items:flex-end;">
-  <button id="theme-btn" onclick="toggleTheme()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.35rem 0.8rem;border-radius:6px;border:1px solid rgba(255,255,255,0.25);background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.85);cursor:pointer;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);white-space:nowrap;transition:all 0.2s;">&#9788; Light</button>
-  <button onclick="window.print()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.35rem 0.8rem;border-radius:6px;border:1px solid rgba(255,255,255,0.25);background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.85);cursor:pointer;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);white-space:nowrap;transition:all 0.2s;">&#8595; PDF</button>
-</div>
 <script>
 (function(){
   var btn = document.getElementById('theme-btn');
   function applyTheme(light){
-    if(light){ document.body.classList.add('light-mode'); btn.textContent='\u263D Dark'; btn.style.background='rgba(255,255,255,0.85)'; btn.style.color='#1a2332'; btn.style.borderColor='rgba(0,0,0,0.2)'; }
-    else { document.body.classList.remove('light-mode'); btn.textContent='\u2600 Light'; btn.style.background='rgba(0,0,0,0.45)'; btn.style.color='rgba(255,255,255,0.85)'; btn.style.borderColor='rgba(255,255,255,0.25)'; }
+    if(light){
+      document.body.classList.add('light-mode');
+      btn.textContent='\u263D Dark';
+      btn.style.color='#1a2332';
+      btn.style.borderColor='rgba(0,0,0,0.25)';
+    } else {
+      document.body.classList.remove('light-mode');
+      btn.textContent='\u2600 Light';
+      btn.style.color='';
+      btn.style.borderColor='';
+    }
   }
-  window.toggleTheme = function(){ var l=!document.body.classList.contains('light-mode'); localStorage.setItem('od-theme',l?'light':'dark'); applyTheme(l); };
+  window.toggleTheme=function(){
+    var l=!document.body.classList.contains('light-mode');
+    localStorage.setItem('od-theme',l?'light':'dark');
+    applyTheme(l);
+  };
   applyTheme(localStorage.getItem('od-theme')==='light');
 })();
 </script>
