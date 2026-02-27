@@ -1,0 +1,42 @@
+USACE_CANONICAL,DISPLAY_NAME,PORT_AUTHORITY,REGION,CONSOLIDATION_NOTE
+"Port of Houston Authority of Harris County, TX",Houston,Port of Houston Authority,Gulf,
+Port of Gramercy,Port of South Louisiana,"Port of South Louisiana, LA",Gulf,"Gramercy is a USACE reporting code within the Port of South Louisiana district"
+"Corpus Christi, TX",Corpus Christi,"Corpus Christi, TX",Gulf,
+Port of Virginia,Virginia,"Port of Virginia, VA",East Coast,
+New York/Newark Area,New York/Newark,"Port Authority of NY & NJ",East Coast,
+Port of New Orleans,New Orleans,"Port of New Orleans, LA",Gulf,"Separate port authority from South Louisiana; both on Lower Mississippi"
+Baltimore,Baltimore,"Baltimore, MD",East Coast,
+Port of Galveston,Galveston,"Galveston, TX",Gulf,
+"Port Everglades, FL",Port Everglades,"Port Everglades, FL",East Coast,"Fort Lauderdale; USACE classifies as Unknown but is Atlantic coast"
+Port of Long Beach,Long Beach,"Port of Long Beach, CA",West Coast,
+"Mobile, AL",Mobile,"Mobile, AL",Gulf,
+"Beaumont, TX",Beaumont,"Beaumont, TX",Gulf,
+Georgia Ports Authority,Savannah,"Port of Savannah, GA",East Coast,"USACE canonical 'Georgia Ports Authority' = Savannah"
+"PortMiami, FL",Miami,"PortMiami, FL",East Coast,"USACE classifies as Unknown but is Atlantic coast"
+"Baton Rouge (BTR) Airport",Greater Baton Rouge,"Port of Greater Baton Rouge, LA",Gulf,"USACE mislabel — 'BTR Airport' is the port of Baton Rouge"
+"Lake Charles Harbor and Terminal District, LA",Lake Charles,"Lake Charles, LA",Gulf,
+"Plaquemines, LA, Port of",Plaquemines,"Plaquemines Port Harbor & Terminal District, LA",Gulf,"Separate port authority; Lower Mississippi Mile 0-50"
+Port Arthur,Port Arthur,"Port Arthur, TX",Gulf,
+"Port Fourchon, LA",Port Fourchon,"Greater Lafourche Port Commission, LA",Gulf,"Offshore supply base; USACE region blank"
+"Virgin Islands Port Authority - St. Croix, VI",St. Croix USVI,Virgin Islands Port Authority,East Coast,US territory
+Tampa,Tampa,"Tampa Port Authority, FL",Gulf,
+Freeport,Freeport,"Port Freeport, TX",Gulf,
+"Virgin Islands Port Authority - St. Thomas, VI",St. Thomas USVI,Virgin Islands Port Authority,East Coast,US territory
+Philadelphia Regional Port Authority,Philadelphia,"Philadelphia, PA",East Coast,
+"San Juan, PR",San Juan,San Juan PR,East Coast,US territory
+Port of Seattle,Seattle,"Port of Seattle, WA",West Coast,
+The Port of Los Angeles,Los Angeles,"Port of Los Angeles, CA",West Coast,
+Jacksonville,Jacksonville,"Jacksonville, FL",East Coast,
+"Port of Charleston, SC",Charleston,"Port of Charleston, SC",East Coast,
+"Tacoma, WA",Tacoma,"Tacoma, WA",West Coast,
+"Port of Oakland, CA",Oakland,"Port of Oakland, CA",West Coast,
+"Detroit, MI",Detroit,"Detroit/Wayne County Port Authority, MI",Great Lakes,"USACE region blank"
+"Duluth-Superior, MN and WI",Duluth-Superior,"Duluth-Superior, MN/WI",Great Lakes,"USACE region blank"
+"Cleveland, OH",Cleveland,"Cleveland-Cuyahoga County, OH",Great Lakes,"USACE region blank"
+"Toledo, OH",Toledo,"Toledo, OH",Great Lakes,"USACE region blank"
+"Port of Pascagoula, MS",Pascagoula,"Port of Pascagoula, MS",Gulf,"USACE classifies as Unknown"
+"Sabine Pass, TX",Sabine Pass,"Sabine Pass, TX",Gulf,
+"Port of Palm Beach District, FL",Palm Beach,"Port of Palm Beach, FL",East Coast,"USACE classifies as Unknown"
+"Kalama, WA",Kalama,"Port of Kalama, WA",West Coast,"USACE region blank"
+Port of Vancouver USA,Vancouver USA,"Port of Vancouver USA, WA",West Coast,"USACE region blank"
+Port Of Longview,Longview,"Port of Longview, WA",West Coast,"USACE region blank"
