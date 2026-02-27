@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+  <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
+  <link rel="stylesheet" href="od-lightmode.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -239,91 +241,6 @@
             transform: translateX(5px);
         }
 
-        /* Think Tank / Project Backlog cards */
-        .tt-card {
-            display: block;
-            padding: 1rem 1.1rem;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 8px;
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            transition: all 0.25s ease;
-        }
-        .tt-card:hover {
-            background: rgba(100,255,180,0.06);
-            border-color: rgba(100,255,180,0.25);
-            transform: translateX(4px);
-        }
-        .tt-card-top {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 0.75rem;
-            margin-bottom: 0.3rem;
-        }
-        .tt-card-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: rgba(255,255,255,0.88);
-            line-height: 1.3;
-        }
-        .tt-card-meta {
-            font-size: 0.72rem;
-            color: rgba(255,255,255,0.35);
-            letter-spacing: 0.03em;
-            margin-bottom: 0.35rem;
-        }
-        .tt-card-desc {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.5);
-            line-height: 1.45;
-        }
-        .tt-card-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 0.6rem;
-            gap: 0.5rem;
-        }
-        .tt-effort {
-            font-size: 0.68rem;
-            color: rgba(255,255,255,0.28);
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-        .tt-active-link {
-            font-size: 0.72rem;
-            color: #64ffb4;
-            text-decoration: none;
-            letter-spacing: 0.02em;
-        }
-        .tt-active-link:hover { text-decoration: underline; }
-        .badge {
-            flex-shrink: 0;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 0.2rem 0.55rem;
-            border-radius: 20px;
-        }
-        .badge-high {
-            background: rgba(100,255,180,0.15);
-            color: #64ffb4;
-            border: 1px solid rgba(100,255,180,0.35);
-        }
-        .badge-med {
-            background: rgba(255,193,7,0.12);
-            color: #ffc107;
-            border: 1px solid rgba(255,193,7,0.3);
-        }
-        .badge-low {
-            background: rgba(255,255,255,0.06);
-            color: rgba(255,255,255,0.4);
-            border: 1px solid rgba(255,255,255,0.12);
-        }
-
         .empty-state {
             padding: 2rem;
             text-align: center;
@@ -358,20 +275,8 @@
             }
         }
     </style>
-<style id="sn-css">
-.sn{position:fixed;top:0;left:0;right:0;z-index:2000;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(100,255,180,0.12);padding:0 1.5rem;height:48px;display:flex;align-items:center;justify-content:space-between;font-family:'Space Grotesk',sans-serif}
-.sn a{font-size:0.82rem;color:rgba(255,255,255,0.5);text-decoration:none;white-space:nowrap;transition:color 0.2s}
-.sn a:hover{color:#64ffb4}
-.sn-r{display:flex;gap:1.2rem;align-items:center}
-.sn-hub{padding:0.25rem 0.7rem;border:1px solid rgba(255,255,255,0.12);border-radius:5px}
-.sn-hub:hover{border-color:rgba(100,255,180,0.3)}
-.sn-logout{color:rgba(255,100,100,0.7)!important;padding:0.25rem 0.7rem;border:1px solid rgba(255,100,100,0.2);border-radius:5px}
-.sn-logout:hover{color:#ff6464!important;border-color:rgba(255,100,100,0.4)}
-@media(max-width:480px){.sn{padding:0 0.75rem;height:42px}.sn a{font-size:0.72rem}.sn-r{gap:0.6rem}}
-</style>
 </head>
 <body>
-<script>if("scrollRestoration"in history)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
     <div class="overlay"></div>
     <div class="glass-overlay"></div>
 
@@ -381,14 +286,15 @@
         </video>
     </div>
 
-    <nav class="sn">
-  <a href="index.html">Home</a>
-  <div class="sn-r">
-    <a href="tools/maritime-ai-role.html">Role Brief</a>
-    <a href="cv.html">CV</a>
-    <a href="#" class="sn-logout" id="logoutBtn">Logout</a>
-  </div>
-</nav>
+    <nav class="navbar">
+        <span class="navbar-brand">An <a href="index.html">oceandatum.ai</a> company</span>
+        <div class="navbar-right">
+            <a href="index.html" class="navbar-link">Home</a>
+            <a href="cv.html" class="navbar-link">CV</a>
+            <a href="cv.html#biography" class="navbar-link">Biography</a>
+            <a href="#" class="navbar-link logout-link" id="logoutBtn">Logout</a>
+        </div>
+    </nav>
 
     <div class="main-content">
         <div class="page-header">
@@ -412,9 +318,7 @@
                     <a href="tools/barge-fleet-analysis.html" class="project-item">Mississippi River Barge Fleet Analysis</a>
                     <a href="projects/us-thermal-coal-india.html" class="project-item">US Thermal Coal Export to India — Commercial Primer</a>
                     <a href="projects/class1-railroad-corridors.html" class="project-item">U.S. Class I Railroad Corridor &amp; Directional Flow Reference Guide</a>
-                    <a href="projects/egyptian-fertilizer-us-market.html" class="project-item">Import Opportunities for Egyptian Fertilizers in the US Market</a>
-                    <a href="projects/plaquemines-parish-workforce.html" class="project-item">Plaquemines Parish Workforce &amp; Economic Impact Analysis</a>
-                    <a href="projects/plaquemines-pipeline-report.html" class="project-item">Plaquemines Parish &amp; Lower Mississippi Pipeline Infrastructure Report</a>
+                    <a href="projects/ship-agency-strategy-v2.html" class="project-item">US Ship Agency Competitive Strategy Report v2 — Blue Ocean Analysis</a>
                 </div>
             </div>
 
@@ -432,12 +336,10 @@
                     <a href="projects/maritime-voyage-analysis.html" class="project-item">Lower Mississippi River Traffic Analysis — MRTIS 2025</a>
                     <a href="projects/construction-materials.html" class="project-item">US Construction Materials Intelligence Platform</a>
                     <a href="projects/rail-analytics/index.html" class="project-item">Rail Analytics Platform — STB Waybill Data, Network Cost Modeling &amp; NOLA Gateway Analysis</a>
-                    <a href="projects/mile-76-port-development.html" class="project-item">Mile 76 Port Development — Lower Mississippi River Terminal Acquisition Due Diligence</a>
-                    <a href="projects/sesco-supply-chain.html" class="project-item">Inventory &amp; Supply Chain Optimization Platform — International Bulk Commodity Logistics</a>
                 </div>
             </div>
 
-            <!-- Tool Kits + Think Tank (tabbed) -->
+            <!-- Tool Kits -->
             <div class="category-section">
                 <div class="category-header">
                     <svg class="category-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -446,15 +348,11 @@
                     </svg>
                     <h2 class="category-title">Tool Kits</h2>
                 </div>
-
+                <p class="category-description">Analytical tools and data visualization frameworks</p>
                 <div class="project-list">
-                        <a href="tools/think-tank.html" class="project-item" style="border-color:rgba(100,255,180,0.25);color:#64ffb4;">&#9889; Think Tank — Project Backlog</a>
-                        <a href="tools/lower-miss-river-map.html" class="project-item">Lower Mississippi River Interactive Map</a>
-                        <a href="tools/usace-permits.html" class="project-item">USACE Permits Search</a>
-                        <a href="tools/data-sources.html" class="project-item">GIS Dataset Index</a>
-                        <a href="tools/value-tracker.html" class="project-item">AI Value Tracker — Development Cost Comparison</a>
+                    <a href="tools/usace-permits.html" class="project-item">USACE Permits Search</a>
+                    <a href="tools/data-sources.html" class="project-item">GIS Dataset Index</a>
                 </div>
-
             </div>
 
             <!-- Projects on Hold -->
@@ -467,7 +365,8 @@
                 </div>
                 <p class="category-description">Paused initiatives awaiting resources or market conditions</p>
                 <div class="project-list">
-                    <a href="projects/port-sulphur-report/port-sulphur-report.html" class="project-item">Mile Marker 39 Terminal &amp; Midstream Operations — Detailed Report</a>
+                    <a href="projects/port-sulphur-report/port-sulphur-report.html" class="project-item">Port Sulphur Terminal</a>
+                    <a href="projects/port-sulphur-midstream.html" class="project-item">Port Sulphur Midstream</a>
                 </div>
             </div>
 
@@ -483,9 +382,7 @@
                 <div class="project-list">
                     <a href="projects/ship-agency-ai/buy-vs-build-reality.html" class="project-item">Autonomous Ship Agency AI — Buy vs. Build Reality (Stakeholder Framework)</a>
                     <a href="projects/ship-agency-ai/why-you-cant-buy-this.html" class="project-item">Autonomous Ship Agency AI — Why You Can't Buy This (Objection Killer)</a>
-                    <a href="projects/ship-agency-strategy-v2.html" class="project-item">US Ship Agency Competitive Branding &amp; Blue Ocean Strategy Report v2</a>
-                    <a href="tools/sedna-analysis.html" class="project-item">SEDNA vs. The New AI Landscape — Critical Analysis for Ship Agency Leadership</a>
-                    <a href="tools/maritime-ai-role.html" class="project-item">The Missing Role in Maritime&rsquo;s AI Transformation — Domain Intelligence Architect</a>
+                    <a href="projects/ship-agency-ai/sedna-analysis.html" class="project-item">SEDNA vs. The New AI Landscape — Critical Analysis for Ship Agency Leadership</a>
                 </div>
             </div>
 
@@ -502,36 +399,26 @@
                     <a href="tools/bibliography.html" class="project-item">Professional Bibliography</a>
                 </div>
             </div>
-
         </div>
     </div>
 
     <script>
-        // Check authentication (session or remembered device)
-        function isAuth() {
-            if (sessionStorage.getItem('datum_auth')) return true;
-            if (localStorage.getItem('datum_auth') === 'true') {
-                var exp = parseInt(localStorage.getItem('datum_auth_expires') || '0');
-                if (Date.now() < exp) { sessionStorage.setItem('datum_auth','true'); return true; }
-                localStorage.removeItem('datum_auth');
-                localStorage.removeItem('datum_auth_expires');
-            }
-            return false;
+        // Check authentication
+        if (!sessionStorage.getItem('datum_auth')) {
+            window.location.href = 'login.html';
         }
-        if (!isAuth()) window.location.href = 'login.html';
 
-        // Logout — clear both session and remembered device
+        // Logout functionality
         document.getElementById('logoutBtn').addEventListener('click', function(e) {
             e.preventDefault();
             sessionStorage.removeItem('datum_auth');
             sessionStorage.removeItem('datum_user');
-            localStorage.removeItem('datum_auth');
-            localStorage.removeItem('datum_auth_expires');
             window.location.href = 'index.html';
         });
     </script>
 
     <!-- Cloudflare Web Analytics -->
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5169a56446ff4380ad2f1785a86804b8"}'></script>
+<script src="od-theme-pdf.js"></script>
 </body>
 </html>

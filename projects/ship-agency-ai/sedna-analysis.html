@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
+  <link rel="stylesheet" href="../../od-lightmode.css">
   <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; color: rgba(255,255,255,0.9); min-height: 100vh; line-height: 1.7; }
@@ -51,131 +53,16 @@ strong { font-weight: 700; color: rgba(255,255,255,0.9); }
 code { background: rgba(100,255,180,0.08); padding: 0.1rem 0.35rem; border-radius: 3px; font-size: 0.85em; color: rgba(100,255,180,0.9); }
 footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
 @media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .page-header h1 { font-size: 1.5rem; } }
-
-/* ── Light / Dark toggle ── */
-body.light-mode {
-  color: #1a2332 !important;
-}
-body.light-mode::before {
-  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fa 50%, #f0f4ff 100%) !important;
-}
-body.light-mode .navbar {
-  background: rgba(255,255,255,0.88) !important;
-  border-bottom-color: rgba(0,0,0,0.1) !important;
-}
-body.light-mode .navbar-brand,
-body.light-mode .navbar-brand a,
-body.light-mode .nav-link,
-body.light-mode .breadcrumb,
-body.light-mode .breadcrumb a {
-  color: rgba(0,0,0,0.75) !important;
-}
-body.light-mode .nav-link {
-  border-color: rgba(0,0,0,0.18) !important;
-}
-body.light-mode .nav-link:hover {
-  color: #007a50 !important;
-  border-color: rgba(0,122,80,0.4) !important;
-  background: rgba(0,122,80,0.06) !important;
-}
-body.light-mode .glass-section {
-  background: rgba(255,255,255,0.75) !important;
-  border-color: rgba(0,0,0,0.1) !important;
-  color: #1a2332 !important;
-}
-body.light-mode .part-header,
-body.light-mode .part-header h2 {
-  background: rgba(0,0,0,0.04) !important;
-  color: #1a2332 !important;
-  border-color: rgba(0,0,0,0.1) !important;
-}
-body.light-mode h1, body.light-mode h2,
-body.light-mode h3, body.light-mode h4 {
-  color: #1a2332 !important;
-}
-body.light-mode p, body.light-mode li,
-body.light-mode td, body.light-mode th {
-  color: #2a3a4a !important;
-}
-body.light-mode table {
-  border-color: rgba(0,0,0,0.12) !important;
-}
-body.light-mode th {
-  background: rgba(0,0,0,0.06) !important;
-}
-body.light-mode tr:nth-child(even) td {
-  background: rgba(0,0,0,0.025) !important;
-}
-body.light-mode .kicker,
-body.light-mode .subtitle,
-body.light-mode .meta-item,
-body.light-mode .page-meta {
-  color: rgba(0,0,0,0.55) !important;
-}
-body.light-mode blockquote {
-  border-color: rgba(0,122,80,0.4) !important;
-  background: rgba(0,122,80,0.05) !important;
-  color: #2a3a4a !important;
-}
-body.light-mode pre, body.light-mode code {
-  background: rgba(0,0,0,0.05) !important;
-  color: #1a2332 !important;
-}
-body.light-mode .highlight,
-body.light-mode .warning-box,
-body.light-mode .callout {
-  background: rgba(0,0,0,0.04) !important;
-  border-color: rgba(0,0,0,0.12) !important;
-  color: #1a2332 !important;
-}
-/* SVG charts in light mode */
-body.light-mode svg text { fill: #2a3a4a !important; }
-body.light-mode svg .grid-line { stroke: rgba(0,0,0,0.08) !important; }
-
-/* ── Print / PDF ── */
-@media print {
-  .ui-controls { display: none !important; }
-  .navbar { display: none !important; }
-  .breadcrumb { display: none !important; }
-  body { background: #fff !important; color: #000 !important; }
-  body::before { display: none !important; }
-  .glass-section {
-    background: #fff !important;
-    border: 1px solid #ddd !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    break-inside: avoid;
-  }
-  .part-header { background: #f0f0f0 !important; break-after: avoid; }
-  h1, h2, h3, h4, p, li, td, th { color: #000 !important; }
-  table { border-collapse: collapse; }
-  td, th { border: 1px solid #ccc !important; }
-  pre { background: #f5f5f5 !important; border: 1px solid #ddd !important; }
-  a { color: #000 !important; text-decoration: none !important; }
-}
-</style>
-<style id="sn-css">
-.sn{position:fixed;top:0;left:0;right:0;z-index:2000;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(100,255,180,0.12);padding:0 1.5rem;height:48px;display:flex;align-items:center;justify-content:space-between;font-family:'Space Grotesk',sans-serif}
-.sn a{font-size:0.82rem;color:rgba(255,255,255,0.5);text-decoration:none;white-space:nowrap;transition:color 0.2s}
-.sn a:hover{color:#64ffb4}
-.sn-r{display:flex;gap:1.2rem;align-items:center}
-.sn-hub{padding:0.25rem 0.7rem;border:1px solid rgba(255,255,255,0.12);border-radius:5px}
-.sn-hub:hover{border-color:rgba(100,255,180,0.3)}
-.sn-logout{color:rgba(255,100,100,0.7)!important;padding:0.25rem 0.7rem;border:1px solid rgba(255,100,100,0.2);border-radius:5px}
-.sn-logout:hover{color:#ff6464!important;border-color:rgba(255,100,100,0.4)}
-@media(max-width:480px){.sn{padding:0 0.75rem;height:42px}.sn a{font-size:0.72rem}.sn-r{gap:0.6rem}}
 </style>
 </head>
 <body>
-<script>if("scrollRestoration"in history)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
-  <nav class="sn">
-  <a href="../../index.html">Home</a>
-  <div class="sn-r">
-    <a href="../../tools/maritime-ai-role.html">Role Brief</a>
-    <a href="../../cv.html">CV</a>
-    <a href="../../projects-hub.html" class="sn-hub">&larr; Hub</a>
-  </div>
-</nav>
+  <nav class="navbar">
+    <span class="navbar-brand">An <a href="../../index.html">oceandatum.ai</a> project</span>
+    <div class="navbar-right">
+      <a href="../../projects-hub.html" class="nav-link">Projects</a>
+      <a href="../../index.html" class="nav-link">Home</a>
+    </div>
+  </nav>
   <div class="breadcrumb">
     <a href="../../index.html">Home</a> / <a href="../../projects-hub.html">Projects</a> / SEDNA Analysis
   </div>
@@ -513,31 +400,6 @@ body.light-mode svg .grid-line { stroke: rgba(0,0,0,0.08) !important; }
     <p>oceandatum.ai &mdash; Maritime &amp; Commodity Intelligence</p>
     <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">February 2026 &mdash; Confidential Working Paper</p>
   </footer>
-
-<script>
-(function(){
-  var btn = document.getElementById('theme-btn');
-  function applyTheme(light){
-    if(light){
-      document.body.classList.add('light-mode');
-      btn.textContent='\u263D Dark';
-      btn.style.color='#1a2332';
-      btn.style.borderColor='rgba(0,0,0,0.25)';
-    } else {
-      document.body.classList.remove('light-mode');
-      btn.textContent='\u2600 Light';
-      btn.style.color='';
-      btn.style.borderColor='';
-    }
-  }
-  window.toggleTheme=function(){
-    var l=!document.body.classList.contains('light-mode');
-    localStorage.setItem('od-theme',l?'light':'dark');
-    applyTheme(l);
-  };
-  applyTheme(localStorage.getItem('od-theme')==='light');
-})();
-</script>
-
+<script src="../../od-theme-pdf.js"></script>
 </body>
 </html>
