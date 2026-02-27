@@ -202,16 +202,26 @@ body.light-mode svg .grid-line { stroke: rgba(0,0,0,0.08) !important; }
   a { color: #000 !important; text-decoration: none !important; }
 }
 </style>
+<style id="sn-css">
+.sn{position:sticky;top:0;z-index:1000;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(100,255,180,0.12);padding:0 1.5rem;height:48px;display:flex;align-items:center;justify-content:space-between;font-family:'Space Grotesk',sans-serif}
+.sn a{font-size:0.82rem;color:rgba(255,255,255,0.5);text-decoration:none;white-space:nowrap;transition:color 0.2s}
+.sn a:hover{color:#64ffb4}
+.sn-r{display:flex;gap:1.2rem;align-items:center}
+.sn-hub{padding:0.25rem 0.7rem;border:1px solid rgba(255,255,255,0.12);border-radius:5px}
+.sn-hub:hover{border-color:rgba(100,255,180,0.3)}
+.sn-logout{color:rgba(255,100,100,0.7)!important;padding:0.25rem 0.7rem;border:1px solid rgba(255,100,100,0.2);border-radius:5px}
+.sn-logout:hover{color:#ff6464!important;border-color:rgba(255,100,100,0.4)}
+@media(max-width:480px){.sn{padding:0 0.75rem;height:42px}.sn a{font-size:0.72rem}.sn-r{gap:0.6rem}}
+</style>
 </head>
 <body>
 
-<nav class="navbar">
-  <span class="navbar-brand"><a href="../../index.html" style="color:rgba(255,255,255,0.9);text-decoration:none;font-weight:600">OceanDatum</a></span>
-  <div class="navbar-right">
-    <button id="theme-btn" onclick="toggleTheme()" class="nav-link" style="background:none;cursor:pointer;font-family:inherit;">&#9788; Light</button>
-      <button onclick="window.print()" class="nav-link" style="background:none;cursor:pointer;font-family:inherit;">&#8595; PDF</button>
-      <a href="../../projects-hub.html" class="nav-link">Projects</a>
-    <a href="../../index.html" class="nav-link">Home</a>
+<nav class="sn">
+  <a href="../../index.html">Home</a>
+  <div class="sn-r">
+    <a href="../../tools/maritime-ai-role.html">Role Brief</a>
+    <a href="../../cv.html">CV</a>
+    <a href="../../projects-hub.html" class="sn-hub">&larr; Hub</a>
   </div>
 </nav>
 <div class="breadcrumb">

@@ -12,14 +12,27 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
+<style id="sn-css">
+.sn{position:sticky;top:0;z-index:1000;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(100,255,180,0.12);padding:0 1.5rem;height:48px;display:flex;align-items:center;justify-content:space-between;font-family:'Space Grotesk',sans-serif}
+.sn a{font-size:0.82rem;color:rgba(255,255,255,0.5);text-decoration:none;white-space:nowrap;transition:color 0.2s}
+.sn a:hover{color:#64ffb4}
+.sn-r{display:flex;gap:1.2rem;align-items:center}
+.sn-hub{padding:0.25rem 0.7rem;border:1px solid rgba(255,255,255,0.12);border-radius:5px}
+.sn-hub:hover{border-color:rgba(100,255,180,0.3)}
+.sn-logout{color:rgba(255,100,100,0.7)!important;padding:0.25rem 0.7rem;border:1px solid rgba(255,100,100,0.2);border-radius:5px}
+.sn-logout:hover{color:#ff6464!important;border-color:rgba(255,100,100,0.4)}
+@media(max-width:480px){.sn{padding:0 0.75rem;height:42px}.sn a{font-size:0.72rem}.sn-r{gap:0.6rem}}
+</style>
 </head>
 <body>
-  <nav style="background:#0d3b66;padding:0.6rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:2px solid rgba(255,255,255,0.1)">
-    <span style="font-size:0.85rem;color:rgba(255,255,255,0.7)"><a href="../index.html" style="color:#fff;text-decoration:none;font-weight:600">OceanDatum</a></span>
-    <div style="display:flex;gap:1rem;align-items:center">
-      <a href="../projects-hub.html" style="font-size:0.85rem;color:rgba(255,255,255,0.8);text-decoration:none;padding:0.3rem 0.8rem;border:1px solid rgba(255,255,255,0.2);border-radius:5px">&#x2190; Hub</a>
-    </div>
-  </nav>
+  <nav class="sn">
+  <a href="../index.html">Home</a>
+  <div class="sn-r">
+    <a href="../tools/maritime-ai-role.html">Role Brief</a>
+    <a href="../cv.html">CV</a>
+    <a href="../projects-hub.html" class="sn-hub">&larr; Hub</a>
+  </div>
+</nav>
   <div class="container">
     <!-- Header -->
     <header class="header">
