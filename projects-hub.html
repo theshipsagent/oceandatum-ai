@@ -239,6 +239,46 @@
             transform: translateX(5px);
         }
 
+        /* Think Tank items — non-linked, with priority badge */
+        .think-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.85rem 1rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            color: rgba(255,255,255,0.75);
+            font-size: 0.92rem;
+            cursor: default;
+        }
+        .think-item span { flex: 1; }
+        .badge {
+            flex-shrink: 0;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.55rem;
+            border-radius: 20px;
+        }
+        .badge-high {
+            background: rgba(100,255,180,0.15);
+            color: #64ffb4;
+            border: 1px solid rgba(100,255,180,0.35);
+        }
+        .badge-med {
+            background: rgba(255,193,7,0.12);
+            color: #ffc107;
+            border: 1px solid rgba(255,193,7,0.3);
+        }
+        .badge-low {
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.4);
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
         .empty-state {
             padding: 2rem;
             text-align: center;
@@ -400,6 +440,33 @@
                     <a href="tools/bibliography.html" class="project-item">Professional Bibliography</a>
                 </div>
             </div>
+
+            <!-- Think Tank -->
+            <div class="category-section">
+                <div class="category-header">
+                    <svg class="category-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <h2 class="category-title">Think Tank</h2>
+                </div>
+                <p class="category-description">Ideas under consideration — rated by priority. Move to active when ready.</p>
+                <div class="project-list">
+                    <div class="think-item"><span>PDA / Ship Agency Fee Estimator</span><span class="badge badge-high">High</span></div>
+                    <div class="think-item"><span>Demurrage &amp; Laytime Calculator</span><span class="badge badge-high">High</span></div>
+                    <div class="think-item"><span>Gulf Coast Terminal Directory (Interactive Map)</span><span class="badge badge-high">High</span></div>
+                    <div class="think-item"><span>USACE Waterway Tonnage Statistics Viewer</span><span class="badge badge-med">Med</span></div>
+                    <div class="think-item"><span>Mississippi River Lock &amp; Dam Reference Guide</span><span class="badge badge-med">Med</span></div>
+                    <div class="think-item"><span>Barge Freight Rate Estimator</span><span class="badge badge-med">Med</span></div>
+                    <div class="think-item"><span>Bulk Commodity Flow Guide (Origin &amp; Termination)</span><span class="badge badge-med">Med</span></div>
+                    <div class="think-item"><span>Louisiana Industrial Corridor Map (All Sectors)</span><span class="badge badge-med">Med</span></div>
+                    <div class="think-item"><span>River Draft &amp; Gauge Dashboard</span><span class="badge badge-low">Low</span></div>
+                    <div class="think-item"><span>Cargo Loading Rate Calculator</span><span class="badge badge-low">Low</span></div>
+                    <div class="think-item"><span>Jones Act Bulk Fleet Directory</span><span class="badge badge-low">Low</span></div>
+                    <div class="think-item"><span>LNG Export Terminal Tracker</span><span class="badge badge-low">Low</span></div>
+                    <div class="think-item"><span>Inland Waterway Vessel Class Reference</span><span class="badge badge-low">Low</span></div>
+                </div>
+            </div>
+
         </div>
     </div>
 
