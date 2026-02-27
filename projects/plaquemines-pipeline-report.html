@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Plaquemines Parish Pipeline Connectivity Report — Southeast Louisiana natural gas, LNG, crude oil, and pipeline infrastructure analysis with interactive map.">
+<title>Plaquemines Parish Pipeline Connectivity Report | OceanDatum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Space Grotesk',-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#e8eaf0;line-height:1.7;}
+body::before{content:'';position:fixed;inset:0;background:linear-gradient(135deg,#0a0a0a 0%,#0d1117 40%,#0f1a2e 70%,#0a0f1a 100%);z-index:-1;}
+.navbar{position:fixed;top:0;left:0;right:0;background:rgba(0,0,0,0.45);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.12);padding:0.75rem 2rem;z-index:1000;display:flex;align-items:center;justify-content:space-between;}
+.navbar-brand{font-size:0.85rem;font-weight:300;font-style:italic;color:rgba(255,255,255,0.65);}
+.navbar-brand a{color:rgba(255,255,255,0.9);font-weight:600;font-style:normal;text-decoration:none;}
+.navbar-brand a:hover{color:#64ffb4;}
+.navbar-right{display:flex;align-items:center;gap:0.75rem;}
+.nav-link{font-family:'Space Grotesk',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.75);text-decoration:none;padding:0.4rem 0.85rem;border:1px solid rgba(255,255,255,0.18);border-radius:6px;transition:all 0.25s;cursor:pointer;}
+.nav-link:hover{color:#64ffb4;border-color:rgba(100,255,180,0.4);background:rgba(100,255,180,0.06);}
+.page-wrapper{max-width:960px;margin:0 auto;padding:0 2rem 4rem;}
+.hero{padding:7rem 0 3rem;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:3rem;}
+.kicker{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#64ffb4;margin-bottom:0.75rem;}
+.hero h1{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:700;color:#fff;line-height:1.25;margin-bottom:1rem;}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.65);max-width:680px;margin-bottom:1.5rem;}
+.meta-row{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.meta-item{font-size:0.8rem;color:rgba(255,255,255,0.45);letter-spacing:0.04em;}
+.meta-item span{color:rgba(255,255,255,0.75);}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:2rem 0;}
+.stat-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:1.25rem;text-align:center;}
+.stat-value{font-size:1.5rem;font-weight:700;color:#64ffb4;display:block;}
+.stat-label{font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:0.3rem;letter-spacing:0.04em;line-height:1.35;}
+.part-header{background:rgba(100,255,180,0.06);border:1px solid rgba(100,255,180,0.18);border-radius:10px;padding:1.25rem 1.75rem;margin:3rem 0 1.5rem;display:flex;align-items:center;gap:1rem;}
+.part-number{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#64ffb4;white-space:nowrap;}
+.part-header h2{font-size:1.2rem;font-weight:700;color:#fff;}
+h3{font-size:1.05rem;font-weight:700;color:#e8eaf0;margin:2rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+h4{font-size:0.9rem;font-weight:600;color:#64ffb4;margin:1.25rem 0 0.5rem;letter-spacing:0.03em;}
+.glass{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;backdrop-filter:blur(8px);}
+.glass p{color:rgba(255,255,255,0.78);font-size:0.92rem;margin-bottom:0.85rem;}
+.glass p:last-child{margin-bottom:0;}
+.tbl-wrap{overflow-x:auto;margin:1.25rem 0;}
+table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+th{background:rgba(100,255,180,0.08);color:#64ffb4;font-weight:600;padding:0.65rem 0.9rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.2);letter-spacing:0.04em;font-size:0.78rem;text-transform:uppercase;}
+td{padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);}
+td strong{color:#e8eaf0;}
+tr:hover td{background:rgba(255,255,255,0.025);}
+tr:last-child td{border-bottom:none;}
+.callout{border-left:3px solid #64ffb4;background:rgba(100,255,180,0.05);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1.25rem 0;}
+.callout strong{color:#64ffb4;}
+.callout p{color:rgba(255,255,255,0.78);font-size:0.9rem;margin:0 0 0.5rem;}
+.callout p:last-child{margin:0;}
+.callout h4{color:#64ffb4;margin:0 0 0.5rem;}
+.info-box{border-left:3px solid #4ea8de;background:rgba(78,168,222,0.05);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1.25rem 0;}
+.info-box h4{color:#4ea8de;margin:0 0 0.5rem;}
+.info-box p{color:rgba(255,255,255,0.78);font-size:0.9rem;margin:0 0 0.4rem;}
+.info-box p:last-child{margin:0;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin:1.25rem 0;}
+.card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.4rem;}
+.card h4{margin-top:0;}
+.card p{font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.55;margin:0;}
+.card strong{color:#e8eaf0;}
+.map-wrap{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:12px;overflow:hidden;margin:1.5rem 0;}
+.map-header{padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.08);}
+.map-header h4{margin:0 0 0.25rem;color:#64ffb4;}
+.map-header p{font-size:0.82rem;color:rgba(255,255,255,0.5);margin:0;}
+.map-footer{padding:0.75rem 1.5rem;border-top:1px solid rgba(255,255,255,0.08);font-size:0.8rem;color:rgba(255,255,255,0.45);}
+ul,ol{padding-left:1.5rem;margin:0.75rem 0;}
+li{margin-bottom:0.35rem;color:rgba(255,255,255,0.78);font-size:0.92rem;}
+li strong{color:#e8eaf0;}
+.page-footer{border-top:1px solid rgba(255,255,255,0.08);padding:2rem 0 1rem;margin-top:4rem;text-align:center;font-size:0.78rem;color:rgba(255,255,255,0.3);letter-spacing:0.04em;}
+body.light-mode{color:#1a2332;}
+body.light-mode::before{background:linear-gradient(135deg,#f0f4ff 0%,#e8f0fa 50%,#f0f4ff 100%) !important;}
+body.light-mode .navbar{background:rgba(255,255,255,0.88) !important;border-bottom-color:rgba(0,0,0,0.1) !important;}
+body.light-mode .navbar-brand,body.light-mode .navbar-brand a,body.light-mode .nav-link{color:rgba(0,0,0,0.75) !important;}
+body.light-mode .nav-link{border-color:rgba(0,0,0,0.18) !important;}
+body.light-mode .nav-link:hover{color:#007a50 !important;border-color:rgba(0,122,80,0.4) !important;background:rgba(0,122,80,0.06) !important;}
+body.light-mode .hero h1,body.light-mode h3{color:#1a2332 !important;}
+body.light-mode .glass{background:rgba(255,255,255,0.75) !important;border-color:rgba(0,0,0,0.1) !important;}
+body.light-mode .glass p,body.light-mode li{color:#2a3a4a !important;}
+body.light-mode td{color:#2a3a4a !important;}
+body.light-mode th{background:rgba(0,0,0,0.06) !important;color:#007a50 !important;}
+body.light-mode .stat-card{background:rgba(0,0,0,0.04) !important;border-color:rgba(0,0,0,0.1) !important;}
+body.light-mode .stat-label{color:rgba(0,0,0,0.5) !important;}
+body.light-mode .card{background:rgba(0,0,0,0.04) !important;border-color:rgba(0,0,0,0.1) !important;}
+body.light-mode .card p{color:#2a3a4a !important;}
+body.light-mode .callout{background:rgba(0,122,80,0.06) !important;}
+body.light-mode .callout p,body.light-mode .info-box p{color:#2a3a4a !important;}
+body.light-mode .part-header{background:rgba(0,0,0,0.04) !important;border-color:rgba(0,0,0,0.12) !important;}
+body.light-mode .part-header h2,body.light-mode .kicker,body.light-mode .hero-sub,body.light-mode .meta-item{color:#1a2332 !important;}
+body.light-mode .map-wrap{background:rgba(0,0,0,0.03) !important;border-color:rgba(0,0,0,0.08) !important;}
+body.light-mode .page-footer{color:rgba(0,0,0,0.35) !important;}
+@media print{
+  .navbar{display:none !important;}
+  body::before{display:none !important;}
+  body{background:#fff !important;color:#000 !important;}
+  .glass,.card,.map-wrap{background:#fff !important;border:1px solid #ddd !important;}
+  .part-header{background:#f0f0f0 !important;}
+  h3,h4,td,th,p,li{color:#000 !important;}
+  td,th{border:1px solid #ccc !important;}
+  iframe{display:none !important;}
+}
+@media(max-width:640px){
+  .navbar{padding:0.6rem 1rem;}
+  .page-wrapper{padding:0 1rem 3rem;}
+  .hero{padding:5.5rem 0 2rem;}
+  .hero h1{font-size:1.5rem;}
+  .stat-grid{grid-template-columns:repeat(2,1fr);}
+  .card-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand"><a href="../index.html">OceanDatum</a> — Maritime &amp; Commodity Intelligence</div>
+  <div class="navbar-right">
+    <button id="theme-btn" onclick="toggleTheme()" class="nav-link" style="background:none;cursor:pointer;font-family:inherit;">&#9788; Light</button>
+    <button onclick="window.print()" class="nav-link" style="background:none;cursor:pointer;font-family:inherit;">&#8595; PDF</button>
+    <a href="../projects-hub.html" class="nav-link">Projects</a>
+    <a href="../index.html" class="nav-link">Home</a>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+
+<!-- ── HERO ─────────────────────────────────────────────────────────────────── -->
+<div class="hero">
+  <div class="kicker">Pipeline Infrastructure Analysis — Southeast Louisiana</div>
+  <h1>Plaquemines Parish<br>Pipeline Connectivity Report</h1>
+  <p class="hero-sub">Comprehensive overview of Southeast Louisiana natural gas, crude oil, NGL, and refined products pipeline infrastructure — including LNG export capacity, construction materials demand, and an interactive regional map.</p>
+  <div class="meta-row">
+    <div class="meta-item">Coverage <span>Southeast Louisiana</span></div>
+    <div class="meta-item">Data Through <span>February 2026</span></div>
+    <div class="meta-item">Sections <span>7 — incl. Interactive Map</span></div>
+  </div>
+</div>
+
+<!-- ── KEY STATS ─────────────────────────────────────────────────────────────── -->
+<div class="stat-grid">
+  <div class="stat-card"><span class="stat-value">10+</span><div class="stat-label">Major Gas Transmission<br>Systems</div></div>
+  <div class="stat-card"><span class="stat-value">30+ Bcf/d</span><div class="stat-label">Combined Pipeline<br>Capacity</div></div>
+  <div class="stat-card"><span class="stat-value">15.3 Bcf/d</span><div class="stat-label">LNG Operating<br>Capacity (5 Facilities)</div></div>
+  <div class="stat-card"><span class="stat-value">12.9 Bcf/d</span><div class="stat-label">LNG Under Construction<br>(2025–2028)</div></div>
+  <div class="stat-card"><span class="stat-value">3–5M CY</span><div class="stat-label">Concrete Demand<br>2024–2030</div></div>
+  <div class="stat-card"><span class="stat-value">&lt;5 mi</span><div class="stat-label">Harvest CAM Crude<br>Pipeline Proximity</div></div>
+</div>
+
+<div class="callout">
+  <h4>Regional Infrastructure Investment</h4>
+  <p>Southeast Louisiana is experiencing significant natural gas infrastructure investment, with $20–30 billion in pipeline, LNG, storage, and power generation projects under construction or planned through 2030. The region's pipeline network connects Haynesville production to Gulf Coast export markets and serves growing industrial and power generation demand across Louisiana and the Gulf Coast.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 1: EXECUTIVE SUMMARY                                                 -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 01</div>
+  <h2>Executive Summary</h2>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <h4>10+ Natural Gas Systems</h4>
+    <p>Transco, TETCO, Tennessee, Gulf South, LEG, NG3, LEAP, and others combine for 30+ Bcf/d capacity. Recent additions (LEG 1.8, NG3 2.2, LEAP 0.3 Bcf/d) serve LNG growth. Gulf South intrastate system estimated 10–25 miles from site.</p>
+  </div>
+  <div class="card">
+    <h4>15.3 Bcf/d LNG Capacity</h4>
+    <p>Five operating facilities (Cameron, Corpus Christi, Sabine, Calcasieu Pass, Plaquemines) consume massive natural gas volumes. Plaquemines LNG (2.9 Bcf/d) located 50–75 miles south in same parish, with Gator Express feed pipeline.</p>
+  </div>
+  <div class="card">
+    <h4>Massive Materials Demand</h4>
+    <p>LNG construction (1.5–2.5M CY concrete), data center buildout (Meta Richland Parish: 350K–500K CY), pipeline projects, and power generation drive 3–5 million CY concrete demand through 2030. Import gap creates terminal opportunity.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 2: REGIONAL PIPELINE INFRASTRUCTURE                                  -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 02</div>
+  <h2>Regional Pipeline Infrastructure</h2>
+</div>
+
+<h3>Interstate Natural Gas Transmission</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>System</th><th>Operator</th><th>Louisiana Capacity</th><th>Primary Route</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Transco (Zone 3)</strong></td><td>Williams</td><td>~15 Bcf/d</td><td>Gulf Coast to Northeast</td><td>Operating</td></tr>
+    <tr><td><strong>TETCO</strong></td><td>Enbridge</td><td>~8–10 Bcf/d</td><td>Northern LA to Northeast</td><td>Operating</td></tr>
+    <tr><td><strong>Tennessee Gas</strong></td><td>Kinder Morgan</td><td>~11 Bcf/d</td><td>Gulf Coast to Midwest</td><td>Operating</td></tr>
+    <tr><td><strong>Columbia Gulf</strong></td><td>TC Energy</td><td>~4–5 Bcf/d</td><td>LA Gulf Coast to Tennessee</td><td>Operating</td></tr>
+    <tr><td><strong>ANR Pipeline</strong></td><td>TC Energy</td><td>~3–4 Bcf/d</td><td>Northern LA to Midwest</td><td>Operating</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Intrastate &amp; Recently Constructed Systems</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>System</th><th>Operator</th><th>Capacity</th><th>Route / Coverage</th><th>ISD / Status</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Gulf South Pipeline</strong></td><td>Boardwalk</td><td>~3 Bcf/d</td><td>LA intrastate network (SE LA dense coverage)</td><td>Operating</td></tr>
+    <tr><td><strong>Louisiana Energy Gateway (LEG)</strong></td><td>Williams</td><td>1.8 Bcf/d</td><td>Haynesville to Gillis hub</td><td>2025 Operating</td></tr>
+    <tr><td><strong>NG3 Pipeline</strong></td><td>Momentum Midstream</td><td>2.2 Bcf/d</td><td>Haynesville to Gulf Coast</td><td>2025 Operating</td></tr>
+    <tr><td><strong>LEAP Phase 4</strong></td><td>DT Midstream</td><td>+0.3 Bcf/d</td><td>Haynesville expansion</td><td>2026 Operating</td></tr>
+    <tr><td><strong>Gator Express</strong></td><td>Venture Global</td><td>2.9 Bcf/d</td><td>Feed to Plaquemines LNG</td><td>Operating</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="info-box">
+  <h4>Key Takeaway: Gulf South Proximity</h4>
+  <p>Gulf South Pipeline's Louisiana-wide intrastate network provides estimated 10–25 mile distance to the project site and offers operational flexibility for interconnection. Recent systems (LEG, NG3, LEAP) add 5+ Bcf/d new capacity to serve LNG growth, demonstrating sustained infrastructure investment in the Southeast Louisiana corridor.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 3: SITE-PROXIMATE INFRASTRUCTURE                                     -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 03</div>
+  <h2>Site-Proximate Infrastructure</h2>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <h4>Harvest CAM — Crude Oil</h4>
+    <p><strong>Distance:</strong> &lt;5 miles (West Bank) &nbsp;|&nbsp; <strong>Type:</strong> Crude gathering system &nbsp;|&nbsp; <strong>Significance:</strong> Demonstrates existing pipeline ROW infrastructure in immediate vicinity. System may cross or adjoin property boundary.</p>
+  </div>
+  <div class="card">
+    <h4>Gulf South Pipeline — Natural Gas</h4>
+    <p><strong>Distance:</strong> 10–25 miles estimated &nbsp;|&nbsp; <strong>Type:</strong> Intrastate transmission, 3 Bcf/d &nbsp;|&nbsp; <strong>Significance:</strong> Louisiana-focused flexibility, dense SE LA network coverage, primary interconnection candidate for gas storage integration.</p>
+  </div>
+  <div class="card">
+    <h4>Cayenne NGL Pipeline</h4>
+    <p><strong>Distance:</strong> 10–20 miles estimated &nbsp;|&nbsp; <strong>Type:</strong> NGL river crossing &nbsp;|&nbsp; <strong>Significance:</strong> Natural gas liquids transport, demonstrates multi-modal pipeline corridor in regional proximity.</p>
+  </div>
+</div>
+
+<h3>Downstream Facilities (50–100 Mile Radius)</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Facility</th><th>Type</th><th>Capacity</th><th>Distance / Bank</th><th>Strategic Relevance</th></tr></thead>
+  <tbody>
+    <tr><td>Plaquemines LNG</td><td>LNG Export</td><td>2.9 Bcf/d</td><td>50–75 miles S (same parish)</td><td>Storage load-balancing; materials supply</td></tr>
+    <tr><td>PBF Chalmette Refinery</td><td>Petroleum Refining</td><td>190,000 BPD</td><td>15–20 miles E</td><td>Refinery turnaround materials, logistics</td></tr>
+    <tr><td>Phillips 66 Alliance</td><td>Petroleum Refining</td><td>250,000 BPD</td><td>20–25 miles W</td><td>Construction materials, support logistics</td></tr>
+    <tr><td>Colonial Pipeline (Line 1)</td><td>Refined Products</td><td>~1.25M BPD</td><td>15–30 miles E</td><td>Regional refined products infrastructure context</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 4: LNG FACILITIES                                                    -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 04</div>
+  <h2>LNG Export Facilities &amp; Growth</h2>
+</div>
+
+<h3>Operating Gulf Coast LNG Facilities</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Facility</th><th>Operator</th><th>Location</th><th>Capacity (Bcf/d)</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Cameron LNG</strong></td><td>Cheniere</td><td>Cameron, LA</td><td>2.2</td><td>Operating</td></tr>
+    <tr><td><strong>Corpus Christi LNG</strong></td><td>Cheniere</td><td>Corpus Christi, TX</td><td>3.3</td><td>Operating</td></tr>
+    <tr><td><strong>Sabine Pass LNG</strong></td><td>Cheniere</td><td>Port Arthur, TX</td><td>4.5</td><td>Operating</td></tr>
+    <tr><td><strong>Calcasieu Pass LNG</strong></td><td>Venture Global</td><td>Cameron, LA</td><td>1.6</td><td>2023 Operating</td></tr>
+    <tr><td><strong>Plaquemines LNG</strong></td><td>Venture Global</td><td>Plaquemines, LA</td><td>2.9</td><td>2023 Operating</td></tr>
+    <tr><td colspan="3"><strong>Total Operating:</strong></td><td><strong>15.3 Bcf/d</strong></td><td>(2024–2025)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Under Construction (2025–2028)</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Facility</th><th>Operator</th><th>Capacity (Bcf/d)</th><th>Location</th><th>ISD</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Golden Pass LNG</strong></td><td>Cheniere / QatarEnergy</td><td>4.5</td><td>Sabine Pass, TX</td><td>2026–2028</td></tr>
+    <tr><td><strong>Port Arthur LNG</strong></td><td>NextDecade</td><td>3.5</td><td>Port Arthur, TX</td><td>2027–2028</td></tr>
+    <tr><td><strong>Rio Grande LNG</strong></td><td>NextDecade</td><td>3.4</td><td>Brownsville, TX</td><td>2027–2028</td></tr>
+    <tr><td><strong>Corpus Christi Stage III</strong></td><td>Cheniere</td><td>1.5</td><td>Corpus Christi, TX</td><td>2027</td></tr>
+    <tr><td colspan="3"><strong>Total Under Construction:</strong></td><td><strong>12.9 Bcf/d</strong></td><td>(by 2028)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout">
+  <h4>LNG Construction Demand Driver</h4>
+  <p>LNG facilities under construction require 50,000–100,000 cubic yards concrete per 1.0 Bcf/d nameplate capacity. 12.9 Bcf/d under construction = 645,000–1,290,000 CY concrete demand. Combined with operating facility maintenance and data center/pipeline projects, total 2024–2030 demand reaches <strong>3–5 million CY concrete, 5–10 million tons aggregates, 500K–1M tons cement</strong>.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 5: MARKET DRIVERS & CONSTRUCTION DEMAND                              -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 05</div>
+  <h2>Market Drivers &amp; Construction Demand</h2>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <h4>LNG Export Construction — Primary Driver</h4>
+    <p><strong>Demand:</strong> 1.5–2.5M CY concrete, 300–500K tons cement<br>
+    <strong>Timeline:</strong> 2024–2028 peak<br>
+    <strong>Projects:</strong> Golden Pass, Port Arthur, Rio Grande, Corpus Christi Stage III<br>
+    <strong>Logistics:</strong> Import cement/aggregates, barge distribution to construction sites</p>
+  </div>
+  <div class="card">
+    <h4>Data Center Development — Growing Driver</h4>
+    <p><strong>Project:</strong> Meta Richland Parish ($10B investment)<br>
+    <strong>Demand:</strong> 350K–500K CY concrete over 4–6 years<br>
+    <strong>Power:</strong> 2,250 MW initial (5 GW full buildout)<br>
+    <strong>Gas Supply:</strong> 0.4–0.5 Bcf/d initial<br>
+    <strong>Benefit:</strong> Sustained materials demand through 2030</p>
+  </div>
+  <div class="card">
+    <h4>Pipeline &amp; Power Infrastructure</h4>
+    <p><strong>Gas Pipelines:</strong> 500–1,000 miles new construction, 50+ compressor stations<br>
+    <strong>Power Plants:</strong> 10–15 GW new gas-fired capacity (Entergy, others)<br>
+    <strong>Demand:</strong> 0.3–0.5M CY concrete for stations/infrastructure<br>
+    <strong>Timeline:</strong> 2025–2030</p>
+  </div>
+</div>
+
+<h3>2024–2030 Construction Materials Market Quantification</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Category</th><th>Concrete (CY)</th><th>Aggregates (MT)</th><th>Cement (MT)</th><th>Timeline</th></tr></thead>
+  <tbody>
+    <tr><td>LNG Facilities</td><td>1.5–2.0M</td><td>2.5–3.5M</td><td>250–350K</td><td>2024–2028</td></tr>
+    <tr><td>Data Centers</td><td>0.5–1.0M</td><td>0.8–1.2M</td><td>80–120K</td><td>2025–2030</td></tr>
+    <tr><td>Gas Pipelines</td><td>0.5–1.0M</td><td>0.8–1.5M</td><td>80–150K</td><td>2025–2030</td></tr>
+    <tr><td>Power Generation</td><td>0.3–0.5M</td><td>0.5–0.8M</td><td>50–100K</td><td>2025–2029</td></tr>
+    <tr><td><strong>Total Market</strong></td><td><strong>3–5M</strong></td><td><strong>5–10M</strong></td><td><strong>500K–1M</strong></td><td><strong>2024–2030</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 6: INTERACTIVE MAP                                                   -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 06</div>
+  <h2>Interactive Infrastructure Map</h2>
+</div>
+
+<div class="map-wrap">
+  <div class="map-header">
+    <h4>Lower Mississippi Pipeline &amp; Industrial Infrastructure</h4>
+    <p>Interactive Leaflet map — Toggle pipeline layers and facility markers. Allow a moment to load.</p>
+  </div>
+  <iframe src="Lower_Mississippi_Industrial_Infrastructure_Map.html"
+          width="100%" height="700"
+          style="border:none;display:block;"
+          title="Louisiana Pipeline Infrastructure Map"
+          loading="lazy"></iframe>
+  <div class="map-footer">
+    <strong>Map Features:</strong> Crude oil pipelines &nbsp;·&nbsp; Natural gas transmission systems &nbsp;·&nbsp; NGL pipelines &nbsp;·&nbsp; LNG facilities &nbsp;·&nbsp; Regional infrastructure corridors &nbsp;·&nbsp; Refineries and interconnection points
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 7: SUMMARY                                                           -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 07</div>
+  <h2>Regional Summary</h2>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <h4>Natural Gas Transmission</h4>
+    <p>Southeast Louisiana hosts 10+ major interstate gas transmission systems with combined capacity exceeding 30 Bcf/d, serving LNG export facilities, industrial demand, and power generation across the Gulf Coast region.</p>
+  </div>
+  <div class="card">
+    <h4>LNG Export Infrastructure</h4>
+    <p>Five operating Gulf Coast LNG facilities consume 15.3 Bcf/d of natural gas, with 12.9 Bcf/d of additional capacity under construction through 2028, requiring proportional pipeline infrastructure support.</p>
+  </div>
+  <div class="card">
+    <h4>Pipeline Proximity</h4>
+    <p>Harvest CAM crude (&lt;5 miles), Gulf South natural gas (10–25 miles), Cayenne NGL (10–20 miles), and Gator Express feed to Plaquemines LNG (50–75 miles) provide strong regional infrastructure context.</p>
+  </div>
+  <div class="card">
+    <h4>Regional Infrastructure Investment</h4>
+    <p>$20–30 billion in pipeline, LNG, storage, and power generation projects are under construction or planned through 2030, representing sustained investment in the Southeast Louisiana energy corridor.</p>
+  </div>
+</div>
+
+<div class="page-footer">
+  OceanDatum — Maritime &amp; Commodity Intelligence &nbsp;·&nbsp;
+  Plaquemines Parish Pipeline Connectivity Report &nbsp;·&nbsp;
+  Data through February 2026
+</div>
+
+</div><!-- /page-wrapper -->
+
+<script>
+(function(){
+  function applyTheme(isLight){
+    document.body.classList.toggle('light-mode', isLight);
+    var btn = document.getElementById('theme-btn');
+    if(btn) btn.textContent = isLight ? '\u263d Dark' : '\u2600 Light';
+  }
+  window.toggleTheme = function(){
+    var l = document.body.classList.contains('light-mode');
+    localStorage.setItem('od-theme', l ? 'dark' : 'light');
+    applyTheme(!l);
+  };
+  applyTheme(localStorage.getItem('od-theme') === 'light');
+})();
+</script>
+</body>
+</html>
