@@ -18,7 +18,9 @@
   // 1. Find the navbar-right container
   // -------------------------------------------------------
   var navRight = document.querySelector('.navbar-right')
-    || document.querySelector('.od-navbar-right');
+    || document.querySelector('.od-navbar-right')
+    || document.querySelector('.sn-r')
+    || document.querySelector('.nav-links');
 
   if (!navRight) return;
 

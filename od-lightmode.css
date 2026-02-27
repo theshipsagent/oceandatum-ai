@@ -1683,6 +1683,151 @@ body.light-mode .link:hover {
 
 
 /* =============================================================
+   MARITIME AI ROLE BRIEF (tools/maritime-ai-role.html)
+   Uses CSS variables and unique .sn, .wp-*, .case-*, .spec-* classes
+   ============================================================= */
+
+body.light-mode .sn {
+    background: rgba(255,255,255,0.95) !important;
+    border-bottom-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .sn a {
+    color: #555 !important;
+}
+
+body.light-mode .sn a:hover {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .sn-hub {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .tag {
+    background: rgba(13,59,102,0.06) !important;
+    color: #0d3b66 !important;
+    border-color: rgba(13,59,102,0.15) !important;
+}
+
+body.light-mode .toc-box {
+    background: #f7fafc !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .toc ol li a {
+    color: #555 !important;
+}
+
+body.light-mode .toc ol li a:hover {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .section-title {
+    color: #1a1a1a !important;
+    border-bottom-color: rgba(13,59,102,0.12) !important;
+}
+
+body.light-mode .sub-title {
+    color: #333 !important;
+    border-left-color: #0d3b66 !important;
+}
+
+body.light-mode .sub-title-sm {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .wp-p {
+    color: #555 !important;
+}
+
+body.light-mode .wp-p strong {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .wp-p em {
+    color: #444 !important;
+}
+
+body.light-mode .wp-ul li {
+    color: #555 !important;
+}
+
+body.light-mode .wp-ul li::before {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .callout {
+    background: #f0f7ff !important;
+    border-color: rgba(13,59,102,0.15) !important;
+    border-left-color: #0d3b66 !important;
+    color: #333 !important;
+}
+
+body.light-mode .callout.closing {
+    border-color: rgba(13,59,102,0.15) !important;
+}
+
+body.light-mode .case-card {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .case-card:hover {
+    border-color: rgba(13,59,102,0.2) !important;
+}
+
+body.light-mode .case-row-text {
+    color: #555 !important;
+}
+
+body.light-mode .case-row-text.accent {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .spec-box {
+    background: #f7fafc !important;
+    border-color: rgba(13,59,102,0.12) !important;
+}
+
+body.light-mode .spec-item p,
+body.light-mode .spec-item li {
+    color: #555 !important;
+}
+
+body.light-mode .spec-divider {
+    background: rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode .why-card {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .why-num {
+    color: rgba(13,59,102,0.15) !important;
+}
+
+body.light-mode .why-card h4 {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .why-card p {
+    color: #555 !important;
+}
+
+body.light-mode .resp-num {
+    background: rgba(13,59,102,0.06) !important;
+    border-color: rgba(13,59,102,0.2) !important;
+    color: #0d3b66 !important;
+}
+
+body.light-mode .hero {
+    border-bottom-color: rgba(0,0,0,0.06) !important;
+}
+
+
+/* =============================================================
    PRINT — light mode auto-applied
    ============================================================= */
 
