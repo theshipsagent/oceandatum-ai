@@ -1267,6 +1267,422 @@ body.light-mode .grade-partial {
 
 
 /* =============================================================
+   PAGE HEADER — borders, kicker, meta
+   ============================================================= */
+
+body.light-mode .page-header {
+    border-bottom-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .page-header .kicker {
+    color: #78909c !important;
+}
+
+body.light-mode .page-title {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .page-subtitle {
+    color: #555 !important;
+}
+
+body.light-mode .meta-item {
+    color: #78909c !important;
+}
+
+body.light-mode .meta-item span {
+    color: #555 !important;
+}
+
+body.light-mode hr {
+    border-top-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode em {
+    color: #555 !important;
+}
+
+
+/* =============================================================
+   GLASS SECTION — h4, borders
+   ============================================================= */
+
+body.light-mode .glass-section h4 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .glass-section h2 {
+    border-bottom-color: rgba(0,0,0,0.08) !important;
+}
+
+
+/* =============================================================
+   PART HEADER (ship-agency-strategy-v2)
+   ============================================================= */
+
+body.light-mode .part-header {
+    background: linear-gradient(135deg, rgba(13,59,102,0.04), rgba(0,0,0,0)) !important;
+    border-left-color: #0d3b66 !important;
+}
+
+body.light-mode .part-header h2 {
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   TABLE OF CONTENTS
+   ============================================================= */
+
+body.light-mode .toc {
+    background: #f7fafc !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .toc h3 {
+    color: #78909c !important;
+}
+
+body.light-mode .toc li {
+    color: #555 !important;
+}
+
+body.light-mode .toc a,
+body.light-mode .toc li a {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .toc a:hover,
+body.light-mode .toc li a:hover {
+    color: #155a99 !important;
+}
+
+
+/* =============================================================
+   CODE / PRE ELEMENTS
+   ============================================================= */
+
+body.light-mode code {
+    background: #f0f4f8 !important;
+    color: #0d3b66 !important;
+}
+
+body.light-mode pre {
+    color: #0d3b66 !important;
+    border-color: rgba(0,0,0,0.08) !important;
+    background: #f0f4f8 !important;
+}
+
+
+/* =============================================================
+   PROJECTS HUB
+   ============================================================= */
+
+body.light-mode .category-section {
+    border-color: rgba(0,0,0,0.08) !important;
+    background: #ffffff !important;
+}
+
+body.light-mode .category-section:hover {
+    border-color: rgba(13,59,102,0.25) !important;
+}
+
+body.light-mode .category-icon {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .category-title {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .category-description {
+    color: #555 !important;
+}
+
+body.light-mode .project-item {
+    background: #f7fafc !important;
+    border-color: rgba(0,0,0,0.06) !important;
+    color: #333 !important;
+}
+
+body.light-mode .project-item:hover {
+    background: rgba(13,59,102,0.05) !important;
+    border-color: rgba(13,59,102,0.25) !important;
+    color: #0d3b66 !important;
+}
+
+body.light-mode .empty-state {
+    color: #78909c !important;
+    background: #f7fafc !important;
+    border-color: rgba(0,0,0,0.1) !important;
+}
+
+
+/* =============================================================
+   POSTS PAGE
+   ============================================================= */
+
+body.light-mode .post-card {
+    border-color: rgba(0,0,0,0.08) !important;
+    background: #ffffff !important;
+}
+
+body.light-mode .post-card:hover {
+    border-color: rgba(13,59,102,0.25) !important;
+}
+
+body.light-mode .post-card:hover .post-title {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .post-label {
+    color: #0d3b66 !important;
+    background: rgba(13,59,102,0.06) !important;
+    border-color: rgba(13,59,102,0.15) !important;
+}
+
+body.light-mode .post-title {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .post-subtitle {
+    color: #555 !important;
+}
+
+body.light-mode .post-meta {
+    color: #78909c !important;
+}
+
+body.light-mode .site-footer {
+    border-top-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .site-footer .brand a {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .site-footer .copyright {
+    color: #78909c !important;
+}
+
+body.light-mode .hamburger-button:hover {
+    background: rgba(13,59,102,0.05) !important;
+}
+
+
+/* =============================================================
+   BIBLIOGRAPHY & DATA SOURCES (tools/)
+   ============================================================= */
+
+body.light-mode .container {
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .header {
+    border-bottom-color: rgba(13,59,102,0.15) !important;
+    color: #1a1a1a !important;
+}
+
+body.light-mode .header h1 {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .header p {
+    color: #555 !important;
+}
+
+body.light-mode .stats-container {
+    border-bottom-color: rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode .stat-card:hover {
+    border-color: rgba(13,59,102,0.25) !important;
+    background: rgba(13,59,102,0.03) !important;
+}
+
+body.light-mode .stat-number {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .stat-label {
+    color: #555 !important;
+}
+
+body.light-mode .controls {
+    border-bottom-color: rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode .search-box {
+    border-color: rgba(0,0,0,0.12) !important;
+    color: #333 !important;
+    background: #f7fafc !important;
+}
+
+body.light-mode .search-box::placeholder {
+    color: #999 !important;
+}
+
+body.light-mode .search-box:focus {
+    border-color: #0d3b66 !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 2px rgba(13,59,102,0.15) !important;
+}
+
+body.light-mode .filter-group label {
+    color: #555 !important;
+}
+
+body.light-mode select {
+    border-color: rgba(0,0,0,0.12) !important;
+    color: #333 !important;
+    background: #f7fafc !important;
+}
+
+body.light-mode select option {
+    color: #333 !important;
+    background: #ffffff !important;
+}
+
+body.light-mode select:focus {
+    border-color: #0d3b66 !important;
+}
+
+body.light-mode .button {
+    background: rgba(13,59,102,0.08) !important;
+    color: #0d3b66 !important;
+    border-color: rgba(13,59,102,0.2) !important;
+}
+
+body.light-mode .button:hover {
+    background: rgba(13,59,102,0.15) !important;
+    border-color: rgba(13,59,102,0.35) !important;
+    box-shadow: 0 4px 12px rgba(13,59,102,0.08) !important;
+}
+
+body.light-mode .button.secondary {
+    background: rgba(0,0,0,0.03) !important;
+    color: #555 !important;
+    border-color: rgba(0,0,0,0.12) !important;
+}
+
+body.light-mode .button.secondary:hover {
+    background: rgba(0,0,0,0.06) !important;
+    border-color: rgba(0,0,0,0.18) !important;
+    color: #333 !important;
+}
+
+body.light-mode th:hover {
+    background: rgba(13,59,102,0.05) !important;
+    color: #0d3b66 !important;
+}
+
+body.light-mode th.sort-asc::after,
+body.light-mode th.sort-desc::after {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .entry-title {
+    color: #333 !important;
+}
+
+body.light-mode .entry-title:hover {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .category-badge {
+    background: rgba(13,59,102,0.06) !important;
+    color: #0d3b66 !important;
+    border-color: rgba(13,59,102,0.15) !important;
+}
+
+body.light-mode .year-badge {
+    color: #78909c !important;
+}
+
+body.light-mode .modal-content {
+    border-color: rgba(0,0,0,0.1) !important;
+    background: #ffffff !important;
+}
+
+body.light-mode .modal-header {
+    border-bottom-color: rgba(13,59,102,0.15) !important;
+    color: #1a1a1a !important;
+}
+
+body.light-mode .close-button {
+    background: rgba(0,0,0,0.05) !important;
+    border-color: rgba(0,0,0,0.12) !important;
+    color: #555 !important;
+}
+
+body.light-mode .close-button:hover {
+    background: rgba(13,59,102,0.1) !important;
+    border-color: rgba(13,59,102,0.3) !important;
+}
+
+body.light-mode .detail-row {
+    border-bottom-color: rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode .detail-label {
+    color: #78909c !important;
+}
+
+body.light-mode .detail-value {
+    color: #333 !important;
+}
+
+body.light-mode .detail-value a {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .no-results {
+    color: #78909c !important;
+}
+
+body.light-mode .no-results h3 {
+    color: #555 !important;
+}
+
+body.light-mode ::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.02) !important;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.1) !important;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb:hover {
+    background: rgba(13,59,102,0.25) !important;
+}
+
+
+/* =============================================================
+   DATA SOURCES — unique selectors
+   ============================================================= */
+
+body.light-mode .source-id {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .dataset-name {
+    color: #333 !important;
+}
+
+body.light-mode .dataset-name:hover {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .link {
+    color: #555 !important;
+}
+
+body.light-mode .link:hover {
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
    PRINT — light mode auto-applied
    ============================================================= */
 
