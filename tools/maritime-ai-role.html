@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Missing Role in Maritime's AI Transformation | OceanDatum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#64ffb4;--bg:#0a0a0a;--nav-h:56px;
+  --text:rgba(255,255,255,0.88);--sub:rgba(255,255,255,0.5);
+  --dim:rgba(255,255,255,0.25);--border:rgba(255,255,255,0.07);
+  --glass:rgba(255,255,255,0.03);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;line-height:1.7}
+
+nav{position:sticky;top:0;height:var(--nav-h);background:rgba(10,10,10,0.93);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(100,255,180,0.12);
+  display:flex;align-items:center;justify-content:space-between;padding:0 2rem;z-index:100}
+.nav-brand{display:flex;align-items:center;gap:0.5rem;text-decoration:none}
+.nav-dot{width:7px;height:7px;background:var(--accent);border-radius:50%}
+.nav-logo{font-size:0.85rem;font-weight:700;color:#fff;letter-spacing:0.02em}
+.nav-logo em{font-style:normal;color:var(--accent)}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-links a{font-size:0.8rem;color:var(--sub);text-decoration:none;letter-spacing:0.03em;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-back{border:1px solid var(--border);padding:0.3rem 0.8rem;border-radius:5px}
+
+/* Hero */
+.hero{padding:4rem 2rem 3rem;max-width:860px;margin:0 auto;border-bottom:1px solid var(--border)}
+.hero-eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem}
+.hero h1{font-size:clamp(1.6rem,3vw,2.6rem);font-weight:700;line-height:1.18;margin-bottom:0.6rem;letter-spacing:-0.02em}
+.hero-sub{font-size:1rem;color:var(--sub);margin-bottom:1.5rem;font-style:italic;line-height:1.5}
+.hero-meta{font-size:0.75rem;color:var(--dim);display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}
+.tag{font-size:0.7rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:0.2rem 0.7rem;border-radius:20px;background:rgba(100,255,180,0.07);color:rgba(100,255,180,0.7);border:1px solid rgba(100,255,180,0.2)}
+
+/* Stats bar */
+.stats-bar{max-width:860px;margin:2rem auto 0;padding:0 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.stat-cell{background:var(--glass);padding:1.1rem 1.25rem;text-align:center}
+.stat-cell .val{font-size:1.4rem;font-weight:700;color:var(--accent);line-height:1;margin-bottom:0.25rem}
+.stat-cell .lbl{font-size:0.65rem;color:var(--sub);letter-spacing:0.04em;text-transform:uppercase}
+
+/* TOC */
+.toc{max-width:860px;margin:2.5rem auto;padding:0 2rem}
+.toc-box{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.75rem}
+.toc-title{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.toc ol{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.35rem 2rem;counter-reset:toc}
+.toc ol li{counter-increment:toc}
+.toc ol li a{font-size:0.82rem;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.2s;display:flex;gap:0.5rem;align-items:baseline}
+.toc ol li a::before{content:counter(toc)".";color:var(--accent);font-weight:700;font-size:0.7rem;flex-shrink:0}
+.toc ol li a:hover{color:var(--accent)}
+
+/* Article */
+.article{max-width:860px;margin:0 auto;padding:0 2rem 5rem}
+.wp-section{margin-bottom:3.5rem;padding-top:0.5rem}
+.wp-section-anchor{display:block;height:var(--nav-h);margin-top:calc(-1 * var(--nav-h));visibility:hidden}
+.section-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem}
+.section-title{font-size:1.3rem;font-weight:700;margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(100,255,180,0.12);letter-spacing:-0.01em}
+.sub-title{font-size:0.98rem;font-weight:700;color:var(--text);margin:1.5rem 0 0.5rem;padding-left:0.75rem;border-left:2px solid rgba(100,255,180,0.4)}
+.sub-title-sm{font-size:0.88rem;font-weight:700;color:rgba(100,255,180,0.9);margin:1.2rem 0 0.4rem}
+.wp-p{font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.75;margin-bottom:0.9rem}
+.wp-p strong{color:var(--text)}
+.wp-p em{color:rgba(255,255,255,0.75);font-style:italic}
+.wp-ul{list-style:none;padding:0;margin:0.5rem 0 1rem;display:flex;flex-direction:column;gap:0.45rem}
+.wp-ul li{font-size:0.86rem;color:rgba(255,255,255,0.6);line-height:1.6;padding-left:1.1rem;position:relative}
+.wp-ul li::before{content:'·';position:absolute;left:0;color:var(--accent);font-weight:700}
+.wp-ul li strong{color:var(--text)}
+.callout{background:rgba(100,255,180,0.04);border:1px solid rgba(100,255,180,0.15);border-left:3px solid var(--accent);border-radius:8px;padding:1.1rem 1.4rem;font-size:0.87rem;color:rgba(255,255,255,0.7);line-height:1.7;margin:1.25rem 0}
+.callout strong{color:var(--text)}
+.callout.amber{background:rgba(255,193,7,0.04);border-color:rgba(255,193,7,0.2);border-left-color:rgba(255,193,7,0.7)}
+.callout.closing{font-size:0.92rem;font-style:italic;text-align:center;border-left:none;border-color:rgba(100,255,180,0.2);padding:1.5rem 2rem}
+
+/* Use case cards */
+.case-grid{display:flex;flex-direction:column;gap:1.25rem;margin:1rem 0}
+.case-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.5rem}
+.case-card:hover{border-color:rgba(100,255,180,0.2)}
+.case-num{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem}
+.case-card h4{font-size:0.95rem;font-weight:700;margin-bottom:0.9rem}
+.case-row{display:grid;grid-template-columns:90px 1fr;gap:0.5rem 1rem;margin-bottom:0.5rem;align-items:start;font-size:0.82rem}
+.case-row-label{font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--dim);padding-top:0.15rem}
+.case-row-text{color:rgba(255,255,255,0.6);line-height:1.55}
+.case-row-text.accent{color:rgba(100,255,180,0.85);font-weight:600}
+.case-row-text.warn{color:rgba(255,193,7,0.75)}
+
+/* Role spec */
+.spec-box{background:rgba(100,255,180,0.03);border:1px solid rgba(100,255,180,0.15);border-radius:12px;padding:1.75rem 2rem;margin:1rem 0}
+.spec-title{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;text-align:center}
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem}
+.spec-item h5{font-size:0.72rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--sub);margin-bottom:0.4rem}
+.spec-item p,.spec-item li{font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.55}
+.spec-item ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:0.3rem}
+.spec-item ul li{padding-left:0.9rem;position:relative}
+.spec-item ul li::before{content:'·';position:absolute;left:0;color:var(--accent)}
+.spec-divider{height:1px;background:rgba(255,255,255,0.06);margin:1.25rem 0}
+
+/* Why now cards */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin:1rem 0 1.5rem}
+.why-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem}
+.why-num{font-size:2rem;font-weight:700;color:rgba(100,255,180,0.15);line-height:1;margin-bottom:0.4rem}
+.why-card h4{font-size:0.88rem;font-weight:700;margin-bottom:0.5rem}
+.why-card p{font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.6}
+
+/* Title options table */
+.tbl-wrap{border-radius:10px;border:1px solid var(--border);overflow:hidden;margin:1.25rem 0 1.75rem;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:0.8rem}
+thead th{background:rgba(100,255,180,0.06);color:rgba(100,255,180,0.8);font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.65rem 1rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.12)}
+tbody td{padding:0.65rem 1rem;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;color:rgba(255,255,255,0.6);line-height:1.45}
+tbody td:first-child{color:var(--text);font-weight:600}
+tbody tr:last-child td{border-bottom:none}
+
+/* Responsibility section numbers */
+.resp-num{display:inline-block;width:24px;height:24px;border-radius:50%;background:rgba(100,255,180,0.1);border:1px solid rgba(100,255,180,0.3);color:var(--accent);font-size:0.72rem;font-weight:700;text-align:center;line-height:22px;margin-right:0.5rem;flex-shrink:0}
+.resp-header{display:flex;align-items:center;margin:1.5rem 0 0.5rem}
+.resp-header-text{font-size:0.95rem;font-weight:700}
+
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:0.75rem;color:var(--dim)}
+
+@media(max-width:640px){
+  .hero,.toc,.article{padding-left:1.25rem;padding-right:1.25rem}
+  .toc ol{grid-template-columns:1fr}
+  .why-grid,.spec-grid{grid-template-columns:1fr}
+  .case-row{grid-template-columns:1fr;gap:0.2rem}
+  .case-row-label{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-brand"><div class="nav-dot"></div><span class="nav-logo">Ocean<em>Datum</em></span></a>
+  <div class="nav-links">
+    <a href="../tools/sedna-analysis.html">Sedna Analysis</a>
+    <a href="../projects-hub.html" class="nav-back">&#x2190; Hub</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Maritime Intelligence &middot; Role Definition Paper</div>
+  <h1>The Missing Role in Maritime&rsquo;s AI Transformation</h1>
+  <p class="hero-sub">Why Every Terminal Operator, Ship Agency, and Stevedore Needs a Domain Intelligence Architect &mdash; And Doesn&rsquo;t Know It Yet</p>
+  <div class="hero-meta">
+    <span class="tag">Industry Analysis</span>
+    <span class="tag">AI Strategy</span>
+    <span class="tag">Role Definition</span>
+    <span style="color:var(--dim)">William S. Davis III &mdash; Maritime Industry Consultant</span>
+  </div>
+</div>
+
+<div class="stats-bar" style="margin:2rem 2rem 0;max-width:860px">
+  <div class="stat-cell"><div class="val">15+</div><div class="lbl">Years Required</div></div>
+  <div class="stat-cell"><div class="val">5</div><div class="lbl">Responsibility Areas</div></div>
+  <div class="stat-cell"><div class="val">4</div><div class="lbl">Live Use Cases</div></div>
+  <div class="stat-cell"><div class="val">90d</div><div class="lbl">Systems Operational</div></div>
+  <div class="stat-cell"><div class="val">C-Suite</div><div class="lbl">Reports To</div></div>
+</div>
+
+<div class="toc">
+  <div class="toc-box">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#s1">The Problem No One Can Name</a></li>
+      <li><a href="#s2">The Latent Space Framework</a></li>
+      <li><a href="#s3">Role Definition</a></li>
+      <li><a href="#s4">Responsibility Areas</a></li>
+      <li><a href="#s5">Qualifications That Actually Matter</a></li>
+      <li><a href="#s6">Use Cases: What This Role Delivers</a></li>
+      <li><a href="#s7">Why Now</a></li>
+      <li><a href="#s8">One-Page Role Specification</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="article">
+
+<!-- S1 -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s1"></span>
+  <div class="section-label">The Problem</div>
+  <div class="section-title">The Problem No One Can Name</div>
+  <p class="wp-p">The maritime industry is sitting on a paradox. AI tools have never been more powerful. Trade data has never been more accessible. Automation platforms promise to revolutionize port operations, cargo logistics, and commercial decision-making.</p>
+  <p class="wp-p">And yet &mdash; almost none of it is working the way it should.</p>
+  <p class="wp-p">Terminal operators are buying dashboards nobody uses. Ship agencies are drowning in data they can&rsquo;t interpret. Stevedoring companies are watching competitors talk about &ldquo;digital transformation&rdquo; while their own operations still run on tribal knowledge, spreadsheets, and phone calls.</p>
+  <div class="callout amber">The problem isn&rsquo;t the technology. The technology works. The problem isn&rsquo;t the people. The people know their business cold. <strong>The problem is the space between them.</strong></div>
+  <p class="wp-p">There is no one in the room who can translate thirty years of vessel nomination patterns into a structured data model. No one who can look at a government trade manifest dataset and see the commercial intelligence buried inside it. No one who can sit with a terminal operator and say, &ldquo;Here&rsquo;s what AI can actually do for your specific cargo mix, your specific berth constraints, your specific customer relationships&rdquo; &mdash; and then build it.</p>
+  <p class="wp-p"><strong>That role doesn&rsquo;t exist yet. This paper defines it.</strong></p>
+</div>
+
+<!-- S2 -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s2"></span>
+  <div class="section-label">Framework</div>
+  <div class="section-title">The Latent Space: Understanding the Gap</div>
+  <p class="wp-p">In machine learning, &ldquo;latent space&rdquo; refers to the hidden dimensions where meaning lives &mdash; the compressed representation between raw input and useful output. A model doesn&rsquo;t just memorize data; it learns to navigate a space of relationships that aren&rsquo;t visible on the surface.</p>
+  <p class="wp-p">The maritime industry has its own latent space problem. On one side: <strong>business expertise</strong> &mdash; decades of operational knowledge about how cargo moves, how vessels are coordinated, how commercial relationships drive port throughput. On the other side: <strong>AI capability</strong> &mdash; models that can process hundreds of thousands of trade records, identify supply chain patterns, optimize logistics networks, and generate predictive intelligence.</p>
+  <p class="wp-p">Between them: nothing. A void.</p>
+  <p class="wp-p">The business experts can&rsquo;t access the AI because they don&rsquo;t speak its language. The AI engineers can&rsquo;t build for the business because they don&rsquo;t understand what matters &mdash; which vessel movements signal a market shift, why a particular berth assignment decision has downstream commercial consequences, how a change in rail tariff structure reshapes an entire commodity corridor.</p>
+  <div class="callout">This gap isn&rsquo;t a training problem. You can&rsquo;t solve it with a workshop or a SaaS subscription. It requires a person &mdash; someone who has lived inside maritime operations for decades and who has also developed the technical fluency to architect AI-driven systems from the inside. <strong>That person is the Domain Intelligence Architect.</strong></div>
+</div>
+
+<!-- S3 -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s3"></span>
+  <div class="section-label">The Role</div>
+  <div class="section-title">Domain Intelligence Architect &mdash; Maritime &amp; Port Operations</div>
+
+  <div class="sub-title">Title Options</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Title Variant</th><th>Emphasis</th><th>Best Fit For</th></tr></thead>
+      <tbody>
+        <tr><td>Domain Intelligence Architect</td><td>Bridge function between expertise and technology</td><td>Technology-forward organizations, recommended default</td></tr>
+        <tr><td>Maritime AI Transformation Officer</td><td>Strategic leadership of digital change</td><td>Organizations mid-transformation with exec sponsorship</td></tr>
+        <tr><td>Commercial Intelligence Strategist &mdash; Maritime Operations</td><td>Revenue and market intelligence output</td><td>Commercially-driven ship agency or commodity trader</td></tr>
+        <tr><td>Director of Operational Intelligence &mdash; Port &amp; Terminal Systems</td><td>Integration into operations leadership</td><td>Terminal operators with existing ops structure</td></tr>
+        <tr><td>Chief Maritime Intelligence Officer</td><td>Executive-level strategic function</td><td>Organizations ready to elevate this to C-suite</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="wp-p" style="font-size:0.8rem;color:var(--dim)">Recommended for maximum market recognition and recruiter discoverability: <strong style="color:var(--text)">Domain Intelligence Architect</strong> with subtitle <em>Maritime &amp; Port Operations</em>.</p>
+
+  <div class="sub-title">Role Definition</div>
+  <p class="wp-p">The Domain Intelligence Architect serves as the translation layer between maritime domain expertise and artificial intelligence capability. This role does not replace data scientists, software engineers, or operations managers. <strong>It makes all of them effective</strong> by providing the contextual intelligence that determines whether an AI initiative produces actionable commercial value or expensive noise.</p>
+  <div class="callout">This is not an IT role. It is not a consulting engagement. It is a <strong>permanent strategic function</strong> that sits at the intersection of operations, commercial strategy, and technology &mdash; reporting to the C-suite and embedded in the decision-making architecture of the organization.</div>
+
+  <p class="wp-p"><strong>Core Function:</strong> Translate the unstructured, experiential knowledge that drives maritime commercial operations into structured, AI-ready frameworks that produce measurable intelligence and competitive advantage.</p>
+
+  <div class="sub-title">What This Role Is Not</div>
+  <ul class="wp-ul">
+    <li><strong>Not a data scientist.</strong> Data scientists build models. This role defines what models need to exist and why.</li>
+    <li><strong>Not an IT director.</strong> IT manages infrastructure. This role architects the intelligence layer that runs on top of it.</li>
+    <li><strong>Not a management consultant.</strong> Consultants deliver reports and leave. This role is embedded, permanent, and accountable for outcomes.</li>
+    <li><strong>Not a business analyst.</strong> Analysts describe what happened. This role builds systems that predict what will happen and recommend what to do about it.</li>
+  </ul>
+</div>
+
+<!-- S4 -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s4"></span>
+  <div class="section-label">Responsibilities</div>
+  <div class="section-title">Responsibility Areas</div>
+
+  <div class="resp-header"><span class="resp-num">1</span><span class="resp-header-text">Trade Flow Intelligence &amp; Market Sensing</span></div>
+  <ul class="wp-ul">
+    <li>Design and operate AI-driven commodity trade flow analysis systems using government manifest data, vessel tracking, and commercial intelligence sources</li>
+    <li>Build entity resolution and classification pipelines for bulk commodity import/export tracking across U.S. ports</li>
+    <li>Develop predictive models for cargo volume forecasting by commodity, origin, and consignee</li>
+    <li>Transform raw Customs and Border Protection data into actionable commercial intelligence for terminal marketing and capacity planning</li>
+  </ul>
+
+  <div class="resp-header"><span class="resp-num">2</span><span class="resp-header-text">Port Operations &amp; Terminal Decision Support</span></div>
+  <ul class="wp-ul">
+    <li>Architect AI systems for berth scheduling optimization, vessel turnaround analysis, and throughput forecasting</li>
+    <li>Build vessel voyage analysis tools that connect operational data to commercial outcomes</li>
+    <li>Develop infrastructure assessment frameworks for terminal acquisition due diligence, combining environmental, regulatory, and market data</li>
+    <li>Create automated monitoring systems for competitive terminal activity and market share analysis</li>
+  </ul>
+
+  <div class="resp-header"><span class="resp-num">3</span><span class="resp-header-text">Transportation Economics &amp; Supply Chain Modeling</span></div>
+  <ul class="wp-ul">
+    <li>Build multi-modal freight cost models integrating rail, barge, truck, and ocean transportation economics</li>
+    <li>Develop corridor analysis tools for commodity supply chain optimization (Mississippi River barge economics, Class I railroad tariff modeling)</li>
+    <li>Architect geospatial databases linking facility-level data to transportation network capabilities</li>
+    <li>Model landed cost scenarios across competing port-to-destination routing options</li>
+  </ul>
+
+  <div class="resp-header"><span class="resp-num">4</span><span class="resp-header-text">Regulatory &amp; Commercial Intelligence</span></div>
+  <ul class="wp-ul">
+    <li>Monitor and analyze regulatory developments affecting maritime operations (USTR Section 301 maritime actions, CBP procedural changes, environmental compliance)</li>
+    <li>Build automated intelligence distribution systems for industry stakeholders</li>
+    <li>Develop structured legal and regulatory research frameworks applicable to maritime employment, admiralty jurisdiction, and trade compliance</li>
+  </ul>
+
+  <div class="resp-header"><span class="resp-num">5</span><span class="resp-header-text">AI System Architecture &amp; Implementation</span></div>
+  <ul class="wp-ul">
+    <li>Serve as the requirements authority for all AI/ML initiatives, ensuring technology investments solve actual business problems</li>
+    <li>Translate operational workflows into data pipeline specifications</li>
+    <li>Design human-in-the-loop systems where AI augments rather than replaces domain expertise</li>
+    <li>Evaluate and select AI tools, platforms, and vendors based on maritime-specific requirements</li>
+    <li>Build proof-of-concept implementations that demonstrate value before full-scale deployment</li>
+  </ul>
+</div>
+
+<!-- S5 -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s5"></span>
+  <div class="section-label">Qualifications</div>
+  <div class="section-title">Qualifications That Actually Matter</div>
+  <div class="callout amber">This role cannot be filled by a technologist who reads about maritime operations, or by a maritime professional who attends an AI conference. The qualifying profile requires both &mdash; simultaneously.</div>
+  <ul class="wp-ul">
+    <li><strong>15+ years in maritime operations</strong> spanning ship agency, terminal operations, stevedoring, or port management with direct commercial responsibility</li>
+    <li><strong>Hands-on AI implementation experience</strong> &mdash; not theoretical awareness, but actual construction of data pipelines, analytical models, and intelligence systems using current AI tools</li>
+    <li><strong>Commodity market fluency</strong> across bulk materials (cement, aggregates, metals, forest products, agricultural commodities) with understanding of how physical supply chains create commercial leverage</li>
+    <li><strong>Multi-port operational knowledge</strong> across U.S. Atlantic and Gulf Coast port systems with understanding of competitive dynamics, infrastructure constraints, and regulatory environments</li>
+    <li><strong>Transportation economics expertise</strong> spanning ocean, rail, barge, and truck modes with ability to model total logistics costs and identify optimization opportunities</li>
+  </ul>
+</div>
+
+<!-- S6 -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s6"></span>
+  <div class="section-label">Use Cases</div>
+  <div class="section-title">What This Role Delivers</div>
+  <div class="case-grid">
+
+    <div class="case-card">
+      <div class="case-num">Case 1</div>
+      <h4>Ocean Manifest Intelligence System</h4>
+      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">A terminal operator wants to understand competitive cargo flows across a port range but has no way to process the hundreds of thousands of government trade records published annually.</div></div>
+      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">Designs a classification taxonomy based on commodity expertise, builds an automated entity resolution pipeline to match importers/exporters across inconsistent government records, and delivers a live intelligence system that tracks market share, identifies emerging trade lanes, and flags competitive threats &mdash; in terms the commercial team actually understands.</div></div>
+      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">The company either ignores the data entirely or pays a technology vendor who delivers a technically correct but commercially meaningless dashboard.</div></div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-num">Case 2</div>
+      <h4>Deep-Water Terminal Acquisition Due Diligence</h4>
+      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">An investor is evaluating a deep-water terminal asset and needs to understand whether the facility&rsquo;s commercial potential justifies the acquisition price.</div></div>
+      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">Builds a multi-layer assessment combining infrastructure condition analysis, environmental and regulatory risk profiling, commodity market demand forecasting, transportation network connectivity modeling, and competitive positioning analysis &mdash; synthesized into a decision framework that maps directly to investment thesis assumptions.</div></div>
+      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">The investor relies on separate engineering, environmental, and financial consultants who each deliver siloed reports that nobody integrates into a coherent commercial picture.</div></div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-num">Case 3</div>
+      <h4>Rail &amp; Barge Freight Cost Optimization</h4>
+      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">A bulk commodity importer needs to evaluate whether shifting volume from truck to rail or barge reduces total landed cost at inland destinations.</div></div>
+      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">Architects a multi-modal transportation cost model using Surface Transportation Board tariff data, Corps of Engineers waterway economics, and NTAD geospatial network data &mdash; producing a scenario analysis tool that lets the commercial team test routing alternatives against actual freight economics rather than broker quotes.</div></div>
+      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">Logistics decisions are made on incomplete information, gut instinct, and whatever rate a broker quoted last Tuesday.</div></div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-num">Case 4</div>
+      <h4>Regulatory Impact Assessment &mdash; USTR Section 301</h4>
+      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">A new USTR Section 301 action proposes fees on Chinese-built or Chinese-operated vessels calling U.S. ports. A terminal operator needs to understand the commercial exposure.</div></div>
+      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">Builds a vessel fleet analysis identifying affected tonnage in the operator&rsquo;s trade lanes, models the fee impact on freight economics, assesses the constitutional and administrative law vulnerabilities of the proposed rule, and delivers a scenario matrix showing exposure under multiple regulatory outcomes.</div></div>
+      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">The operator reads trade press summaries and hopes someone else figures out what it means for their business.</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- S7 -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s7"></span>
+  <div class="section-label">Timing</div>
+  <div class="section-title">Why Now</div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <h4>AI Capability Has Crossed the Utility Threshold</h4>
+      <p>Large language models, automated data pipelines, and accessible machine learning tools have moved from research curiosities to operational instruments. For the first time, a single skilled practitioner can build intelligence systems that previously required a full engineering team. But only if that practitioner knows what to build.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <h4>Data Availability Has Exploded</h4>
+      <p>Government trade data, vessel tracking feeds, regulatory filings, geospatial infrastructure databases, and commodity market intelligence are all programmatically accessible. The bottleneck is no longer access &mdash; it&rsquo;s interpretation. Raw data without domain context is noise.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <h4>The Competitive Window Is Open &mdash; But Closing</h4>
+      <p>The maritime companies that build domain-aware AI capability now will establish intelligence advantages that compound over time. Trade flow models get smarter with more data. Predictive systems improve with operational feedback. The companies that wait will find themselves competing against organizations that already know what they don&rsquo;t.</p>
+    </div>
+  </div>
+  <div class="callout">The Domain Intelligence Architect is not a future role. It is a current necessity that most organizations haven&rsquo;t recognized yet. <strong>The first companies to create this function will define the competitive landscape. The rest will spend the next decade trying to catch up.</strong></div>
+</div>
+
+<!-- S8 -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s8"></span>
+  <div class="section-label">Specification</div>
+  <div class="section-title">One-Page Role Specification</div>
+  <div class="spec-box">
+    <div class="spec-title">Domain Intelligence Architect &mdash; Maritime &amp; Port Operations</div>
+    <div class="spec-grid">
+      <div class="spec-item">
+        <h5>Reports To</h5>
+        <p>CEO / COO / Chief Commercial Officer</p>
+      </div>
+      <div class="spec-item">
+        <h5>Function</h5>
+        <p>Translate maritime domain expertise into AI-driven intelligence systems that produce measurable commercial advantage</p>
+      </div>
+      <div class="spec-item">
+        <h5>Compensation Benchmark</h5>
+        <p>Reflects the dual scarcity of deep maritime expertise and hands-on AI fluency &mdash; a combination that effectively does not exist in the current talent market</p>
+      </div>
+    </div>
+    <div class="spec-divider"></div>
+    <div class="spec-grid">
+      <div class="spec-item">
+        <h5>Key Deliverables</h5>
+        <ul>
+          <li>Commodity trade flow intelligence &amp; market sensing systems</li>
+          <li>AI-augmented terminal operations decision support</li>
+          <li>Multi-modal transportation cost modeling &amp; supply chain optimization</li>
+          <li>Regulatory impact assessment &amp; compliance intelligence</li>
+          <li>AI initiative requirements definition &amp; vendor evaluation</li>
+        </ul>
+      </div>
+      <div class="spec-item">
+        <h5>Required Experience</h5>
+        <ul>
+          <li>15+ years maritime operations (ship agency, terminal, stevedoring)</li>
+          <li>Demonstrated AI/ML implementation capability (not theoretical)</li>
+          <li>Bulk commodity market expertise across multiple material classes</li>
+          <li>Multi-port operational knowledge (U.S. Atlantic/Gulf Coast)</li>
+          <li>Transportation economics fluency (ocean, rail, barge, truck)</li>
+        </ul>
+      </div>
+      <div class="spec-item">
+        <h5>Success Metrics</h5>
+        <ul>
+          <li>Commercial intelligence systems operational within 90 days</li>
+          <li>Measurable improvement in cargo volume forecasting accuracy</li>
+          <li>Reduction in market intelligence latency from weeks to hours</li>
+          <li>AI initiative ROI demonstrable within first year</li>
+          <li>Competitive intelligence advantage documented and quantifiable</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout closing">
+    This paper was authored to define a role the maritime industry needs but has not yet named. The convergence of operational expertise and AI capability in a single practitioner represents a new category of strategic value &mdash; one that cannot be replicated by technology alone, consulting engagements alone, or traditional maritime management alone.<br><br>
+    <strong>The question is not whether this role will exist. It is who will fill it first.</strong>
+  </div>
+</div>
+
+</div><!-- end article -->
+
+<footer>
+  <p>OceanDatum Maritime &amp; Commodity Intelligence &nbsp;&middot;&nbsp; Industry Analysis &nbsp;&middot;&nbsp; 2026</p>
+</footer>
+
+</body>
+</html>
