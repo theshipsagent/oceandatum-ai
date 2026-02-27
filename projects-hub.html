@@ -239,37 +239,6 @@
             transform: translateX(5px);
         }
 
-        /* Tabs inside category-section */
-        .tab-bar {
-            display: flex;
-            gap: 0.25rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding-bottom: 0;
-        }
-        .tab-btn {
-            background: none;
-            border: none;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
-            padding: 0.45rem 0.9rem;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.35);
-            cursor: pointer;
-            transition: color 0.2s, border-color 0.2s;
-        }
-        .tab-btn:hover { color: rgba(255,255,255,0.7); }
-        .tab-btn.active {
-            color: #64ffb4;
-            border-bottom-color: #64ffb4;
-        }
-        .tab-panel { display: none; }
-        .tab-panel.active { display: block; }
-
         /* Think Tank / Project Backlog cards */
         .tt-card {
             display: block;
@@ -464,184 +433,14 @@
                     </svg>
                     <h2 class="category-title">Tool Kits</h2>
                 </div>
-                <div class="tab-bar">
-                    <button class="tab-btn active" onclick="switchTab(this,'tools-panel')">Tools</button>
-                    <button class="tab-btn" onclick="switchTab(this,'thinktank-panel')">Think Tank</button>
-                </div>
-                <div id="tools-panel" class="tab-panel active">
-                    <div class="project-list">
+
+                <div class="project-list">
                         <a href="tools/lower-miss-river-map.html" class="project-item">Lower Mississippi River Interactive Map</a>
                         <a href="tools/usace-permits.html" class="project-item">USACE Permits Search</a>
                         <a href="tools/data-sources.html" class="project-item">GIS Dataset Index</a>
-                    </div>
+                        <a href="tools/think-tank.html" class="project-item" style="border-color:rgba(100,255,180,0.25);color:#64ffb4;">&#9889; Think Tank — Project Backlog</a>
                 </div>
-                <div id="thinktank-panel" class="tab-panel">
-                    <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-bottom:0.85rem;letter-spacing:0.04em;text-transform:uppercase;">Project Backlog — click any card to open scope page</p>
-                    <div class="project-list">
 
-                        <a href="#" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">PDA / Ship Agency Fee Estimator</span>
-                                <span class="badge badge-high">High</span>
-                            </div>
-                            <div class="tt-card-meta">Calculator &middot; Maps &amp; Tools</div>
-                            <div class="tt-card-desc">Interactive pro-forma disbursement account builder. Input vessel type, port, and services — outputs itemized PDA breakdown. No clean public version exists anywhere.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Medium</span>
-                            </div>
-                        </a>
-
-                        <a href="#" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">Demurrage &amp; Laytime Calculator</span>
-                                <span class="badge badge-high">High</span>
-                            </div>
-                            <div class="tt-card-meta">Calculator &middot; Commercial Tools</div>
-                            <div class="tt-card-desc">Input cargo quantity, load/discharge rate, laycan, and daily rate — outputs laytime statement with demurrage or despatch. Fixture-ready output.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Medium</span>
-                            </div>
-                        </a>
-
-                        <a href="#" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">Gulf Coast Terminal Directory</span>
-                                <span class="badge badge-high">High</span>
-                            </div>
-                            <div class="tt-card-meta">Interactive Map &middot; Market Intelligence</div>
-                            <div class="tt-card-desc">Filterable map of Gulf Coast terminals by commodity type — bulk, liquid bulk, grain, break-bulk, container. Operator, berth depth, and rail access fields.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Complex</span>
-                            </div>
-                        </a>
-
-                        <a href="projects/inland-waterway-platform.html" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">USACE Waterway Tonnage Statistics Viewer</span>
-                                <span class="badge badge-med">Med</span>
-                            </div>
-                            <div class="tt-card-meta">Data Visualization &middot; Reference</div>
-                            <div class="tt-card-desc">Annual USACE tonnage data by commodity and waterway — visualized cleanly. Raw government data is ugly and hard to use; this makes it actionable.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Medium</span>
-                                <a class="tt-active-link" href="projects/inland-waterway-platform.html" onclick="event.stopPropagation()">→ Active: Inland Waterway Platform</a>
-                            </div>
-                        </a>
-
-                        <a href="#" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">Mississippi River Lock &amp; Dam Reference Guide</span>
-                                <span class="badge badge-med">Med</span>
-                            </div>
-                            <div class="tt-card-meta">Reference &middot; Inland Waterway</div>
-                            <div class="tt-card-desc">Chamber dimensions, mile markers, typical wait times, and commodity flow by lock. Companion to the barge fleet tool.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Quick</span>
-                                <a class="tt-active-link" href="projects/inland-waterway-platform.html" onclick="event.stopPropagation()">→ Active: Inland Waterway Platform</a>
-                            </div>
-                        </a>
-
-                        <a href="#" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">Barge Freight Rate Estimator</span>
-                                <span class="badge badge-med">Med</span>
-                            </div>
-                            <div class="tt-card-meta">Calculator &middot; Inland Waterway</div>
-                            <div class="tt-card-desc">Origin/destination on the river system, commodity type, tow config — outputs estimated freight range based on published tariff benchmarks.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Medium</span>
-                                <a class="tt-active-link" href="projects/inland-waterway-platform.html" onclick="event.stopPropagation()">→ Active: Inland Waterway Platform</a>
-                            </div>
-                        </a>
-
-                        <a href="#" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">Bulk Commodity Flow Guide</span>
-                                <span class="badge badge-med">Med</span>
-                            </div>
-                            <div class="tt-card-meta">Reference &middot; Market Intelligence</div>
-                            <div class="tt-card-desc">Where major commodities originate and terminate on the inland waterway system — grain, coal, fertilizer, petcoke, aggregates. Origin-to-port flow maps.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Medium</span>
-                            </div>
-                        </a>
-
-                        <a href="#" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">Louisiana Industrial Corridor Map</span>
-                                <span class="badge badge-med">Med</span>
-                            </div>
-                            <div class="tt-card-meta">Interactive Map &middot; Regional</div>
-                            <div class="tt-card-desc">Expanded version of the pipeline map — adds refineries, chemical plants, grain elevators, and terminals in a single layered view of the industrial corridor.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Complex</span>
-                                <a class="tt-active-link" href="projects/construction-materials.html" onclick="event.stopPropagation()">→ Active: Construction Materials Platform</a>
-                            </div>
-                        </a>
-
-                        <a href="#" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">River Draft &amp; Gauge Dashboard</span>
-                                <span class="badge badge-low">Low</span>
-                            </div>
-                            <div class="tt-card-meta">Live Data &middot; Inland Waterway</div>
-                            <div class="tt-card-desc">Current gauge readings at key stations — Baton Rouge, Natchez, Memphis — with draft restriction alerts. Links to USACE gauge data.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Quick</span>
-                            </div>
-                        </a>
-
-                        <a href="#" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">Cargo Loading Rate Calculator</span>
-                                <span class="badge badge-low">Low</span>
-                            </div>
-                            <div class="tt-card-meta">Calculator &middot; Commercial Tools</div>
-                            <div class="tt-card-desc">Tons per hour to vessel days — converts terminal loading rates into time-on-berth for fixture and scheduling use.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Quick</span>
-                            </div>
-                        </a>
-
-                        <a href="#" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">Jones Act Bulk Fleet Directory</span>
-                                <span class="badge badge-low">Low</span>
-                            </div>
-                            <div class="tt-card-meta">Reference &middot; Regulatory</div>
-                            <div class="tt-card-desc">US-flag vessels eligible for domestic coastwise moves — bulk carriers, tankers, barges. Operator, capacity, and trade route fields.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Medium</span>
-                            </div>
-                        </a>
-
-                        <a href="#" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">LNG Export Terminal Tracker</span>
-                                <span class="badge badge-low">Low</span>
-                            </div>
-                            <div class="tt-card-meta">Reference &middot; Energy &amp; Infrastructure</div>
-                            <div class="tt-card-desc">Operating and under-construction US LNG export capacity — status, offtake agreements, and throughput. Companion to the pipeline report.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Quick</span>
-                                <a class="tt-active-link" href="projects/plaquemines-pipeline-report.html" onclick="event.stopPropagation()">→ See: Pipeline Infrastructure Report</a>
-                            </div>
-                        </a>
-
-                        <a href="#" class="tt-card">
-                            <div class="tt-card-top">
-                                <span class="tt-card-title">Inland Waterway Vessel Class Reference</span>
-                                <span class="badge badge-low">Low</span>
-                            </div>
-                            <div class="tt-card-meta">Reference &middot; Inland Waterway</div>
-                            <div class="tt-card-desc">Tow dimensions, max draft by river segment, and lock clearances for all major vessel classes operating the Mississippi-Ohio-Illinois system.</div>
-                            <div class="tt-card-footer">
-                                <span class="tt-effort">Effort: Quick</span>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>                </div>
             </div>
 
             <!-- Projects on Hold -->
@@ -706,15 +505,6 @@
             window.location.href = 'index.html';
         });
 
-        // Tab switching for Tool Kits / Think Tank
-        function switchTab(btn, panelId) {
-            var bar = btn.closest('.tab-bar');
-            bar.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
-            btn.classList.add('active');
-            var section = bar.closest('.category-section');
-            section.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
-            section.querySelector('#' + panelId).classList.add('active');
-        }
     </script>
 
     <!-- Cloudflare Web Analytics -->
