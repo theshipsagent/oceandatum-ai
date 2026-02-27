@@ -123,7 +123,7 @@ td.savings{color:var(--accent);font-weight:600;}
   <span class="nav-title">AI Value Tracker</span>
   <div class="nav-actions">
     <button class="btn btn-csv" onclick="exportCSV()">Export CSV</button>
-    <button class="btn btn-back" onclick="history.back()">← Back</button>
+    <a href="../projects-hub.html" class="btn btn-back">← Back</a>
   </div>
 </nav>
 
@@ -228,6 +228,7 @@ const ROWS = [
 ];
 
 function fmt(n){ return '$' + Math.round(n).toLocaleString(); }
+function fmtSav(n){ return '-$' + Math.round(n).toLocaleString(); }
 
 function recalc(){
   const tradRate    = parseFloat(document.getElementById('tradRate').value)    || 110;
@@ -246,7 +247,7 @@ function recalc(){
 
   document.getElementById('kpiTrad').textContent  = fmt(totalTradCost);
   document.getElementById('kpiAI').textContent    = fmt(totalAICost);
-  document.getElementById('kpiDelta').textContent = fmt(savings);
+  document.getElementById('kpiDelta').textContent = fmtSav(savings);
   document.getElementById('kpiMult').textContent  = multiplier.toFixed(1) + 'x';
   document.getElementById('kpiHours').textContent = totalTradHours.toLocaleString();
   document.getElementById('kpiSub').textContent   = fmt(aiSubTotal);
@@ -265,7 +266,7 @@ function recalc(){
     sumTrad += trad; sumAI += ai;
     tr.querySelector('.trad-cost').textContent = fmt(trad);
     tr.querySelector('.ai-cost').textContent   = fmt(ai);
-    tr.querySelector('.savings').textContent   = fmt(sav);
+    tr.querySelector('.savings').textContent   = fmtSav(sav);
     tr.querySelector('.hrs').textContent       = r.hours;
   });
 
@@ -273,7 +274,7 @@ function recalc(){
   const tot = tbody.querySelector('tr:last-child');
   tot.querySelector('.trad-cost').textContent = fmt(totalTradCost);
   tot.querySelector('.ai-cost').textContent   = fmt(totalAICost);
-  tot.querySelector('.savings').textContent   = fmt(savings);
+  tot.querySelector('.savings').textContent   = fmtSav(savings);
   tot.querySelector('.hrs').textContent       = totalTradHours;
 }
 

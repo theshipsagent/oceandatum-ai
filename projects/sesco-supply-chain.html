@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inventory & Supply Chain Optimization Platform | OceanDatum</title>
+<title>Mediterranean–US Gulf Supply Chain Platform | OceanDatum</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -31,7 +31,27 @@ nav{position:sticky;top:0;height:var(--nav-h);background:rgba(10,10,10,0.93);
 .nav-links a:hover{color:var(--accent)}
 .nav-back{border:1px solid var(--border);padding:0.3rem 0.8rem;border-radius:5px}
 
-.hero{padding:4rem 2rem 3rem;max-width:1100px;margin:0 auto;border-bottom:1px solid var(--border)}
+/* Tab bar */
+.tab-bar{
+  max-width:1100px;margin:0 auto;padding:1.25rem 2rem 0;
+  display:flex;gap:0.5rem;border-bottom:1px solid var(--border);
+}
+.tab-btn{
+  font-family:'Space Grotesk',sans-serif;font-size:0.78rem;font-weight:700;
+  letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;
+  padding:0.5rem 1.2rem;border-radius:6px 6px 0 0;border:1px solid transparent;
+  background:none;color:var(--sub);transition:all 0.2s;
+}
+.tab-btn.active{
+  color:var(--accent);background:rgba(100,255,180,0.06);
+  border-color:rgba(100,255,180,0.2);border-bottom-color:var(--bg);
+  position:relative;bottom:-1px;
+}
+.tab-btn:not(.active):hover{color:var(--text);background:rgba(255,255,255,0.04)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+.hero{padding:3rem 2rem 2.5rem;max-width:1100px;margin:0 auto;border-bottom:1px solid var(--border)}
 .hero-eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem}
 .hero h1{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;line-height:1.2;margin-bottom:0.75rem;letter-spacing:-0.01em}
 .hero-sub{font-size:1rem;color:var(--sub);max-width:700px;margin-bottom:1.75rem}
@@ -71,10 +91,6 @@ nav{position:sticky;top:0;height:var(--nav-h);background:rgba(10,10,10,0.93);
   padding:0 0.25rem;flex-shrink:0;
   color:rgba(100,255,180,0.4);font-size:1.1rem;
 }
-.flow-label{
-  position:absolute;top:-1.5rem;left:50%;transform:translateX(-50%);
-  font-size:0.6rem;color:var(--dim);white-space:nowrap;letter-spacing:0.04em;text-transform:uppercase;
-}
 
 /* Section */
 .section{max-width:1100px;margin:0 auto;padding:0 2rem 3rem}
@@ -100,11 +116,51 @@ nav{position:sticky;top:0;height:var(--nav-h);background:rgba(10,10,10,0.93);
 .unique-card h4{font-size:0.85rem;font-weight:700;color:var(--accent);margin-bottom:0.4rem}
 .unique-card p{font-size:0.79rem;color:rgba(255,255,255,0.55);line-height:1.5}
 
+/* White paper styles */
+.wp-body{max-width:900px;margin:0 auto;padding:2rem 2rem 4rem}
+.wp-title{font-size:1.5rem;font-weight:700;margin-bottom:0.4rem;letter-spacing:-0.01em}
+.wp-subtitle{font-size:0.9rem;color:var(--sub);margin-bottom:2rem}
+.wp-section{margin-bottom:2.5rem}
+.wp-section-title{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(100,255,180,0.12)}
+.wp-h3{font-size:1rem;font-weight:700;color:var(--text);margin:1.25rem 0 0.5rem}
+.wp-p{font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:0.75rem}
+.wp-p strong{color:var(--text)}
+.wp-ul{list-style:none;padding:0;margin:0.5rem 0 1rem;display:flex;flex-direction:column;gap:0.4rem}
+.wp-ul li{font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.55;padding-left:1rem;position:relative}
+.wp-ul li::before{content:'·';position:absolute;left:0;color:var(--accent)}
+.wp-pre{
+  background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);border-radius:8px;
+  padding:1.25rem 1.5rem;font-family:monospace;font-size:0.72rem;
+  color:rgba(255,255,255,0.7);line-height:1.5;overflow-x:auto;
+  white-space:pre;margin:1rem 0 1.5rem;
+}
+.wp-pre.arch{color:rgba(100,255,180,0.85);font-size:0.68rem}
+.wp-table{width:100%;border-collapse:collapse;font-size:0.8rem;margin:1rem 0 1.5rem}
+.wp-table thead th{background:rgba(100,255,180,0.06);color:rgba(100,255,180,0.8);font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.6rem 0.9rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.12)}
+.wp-table tbody td{padding:0.65rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;color:rgba(255,255,255,0.6);line-height:1.4}
+.wp-table tbody td:first-child{color:var(--text);font-weight:600}
+.wp-table tbody tr:last-child td{border-bottom:none}
+.wp-kv{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin:1rem 0 1.5rem}
+.wp-kv-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:8px;padding:1rem 1.1rem}
+.wp-kv-card h5{font-size:0.8rem;font-weight:700;color:var(--text);margin-bottom:0.4rem}
+.wp-kv-card p{font-size:0.77rem;color:rgba(255,255,255,0.5);line-height:1.5}
+.wp-roadmap{display:flex;flex-direction:column;gap:1rem;margin:1rem 0}
+.wp-week{display:grid;grid-template-columns:80px 1fr;gap:1rem;align-items:start}
+.wp-week-num{font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);padding:0.3rem 0.6rem;background:rgba(100,255,180,0.08);border:1px solid rgba(100,255,180,0.2);border-radius:6px;text-align:center}
+.wp-week-content h4{font-size:0.88rem;font-weight:700;margin-bottom:0.35rem}
+.wp-week-content p{font-size:0.8rem;color:rgba(255,255,255,0.55);line-height:1.55}
+.wp-week-content .deliverable{font-size:0.75rem;color:var(--accent);font-weight:600;margin-top:0.4rem}
+.wp-callout{background:rgba(100,255,180,0.04);border:1px solid rgba(100,255,180,0.15);border-left:3px solid var(--accent);border-radius:8px;padding:1.1rem 1.4rem;font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.65;margin:1rem 0 1.5rem}
+.wp-callout strong{color:var(--text)}
+.wp-meta{font-size:0.72rem;color:var(--dim);border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2rem;line-height:1.8}
+
 footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:0.75rem;color:var(--dim)}
 
 @media(max-width:640px){
   .hero,.intro-callout,.flow-section,.section{padding-left:1.25rem;padding-right:1.25rem}
-  .scope-grid,.unique-grid{grid-template-columns:1fr}
+  .scope-grid,.unique-grid,.wp-kv{grid-template-columns:1fr}
+  .tab-bar{padding-left:1.25rem;padding-right:1.25rem}
+  .wp-body{padding:1.5rem 1.25rem 3rem}
 }
 </style>
 </head>
@@ -113,23 +169,33 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 <nav>
   <a href="../index.html" class="nav-brand"><div class="nav-dot"></div><span class="nav-logo">Ocean<em>Datum</em></span></a>
   <div class="nav-links">
+    <a href="../tools/value-tracker.html">&#x2190; Value Tracker</a>
     <a href="../projects-hub.html">Projects</a>
-    <a href="../projects-hub.html" class="nav-back">← Hub</a>
+    <a href="../projects-hub.html" class="nav-back">&#x2190; Hub</a>
   </div>
 </nav>
 
+<!-- Tabs -->
+<div class="tab-bar">
+  <button class="tab-btn active" id="btn-scope" onclick="switchTab('scope')">Scope of Work</button>
+  <button class="tab-btn" id="btn-whitepaper" onclick="switchTab('whitepaper')">Technical White Paper</button>
+</div>
+
+<!-- ======== TAB 1: SCOPE OF WORK ======== -->
+<div id="tab-scope" class="tab-panel active">
+
 <div class="hero">
-  <div class="confidential-badge">⚠ Confidential Client</div>
-  <div class="hero-eyebrow">Active Development · International Bulk Commodity Logistics</div>
+  <div class="confidential-badge">&#x26A0; Confidential Client</div>
+  <div class="hero-eyebrow">Active Development &middot; International Bulk Commodity Logistics</div>
   <h1>Inventory &amp; Supply Chain Optimization Platform</h1>
-  <p class="hero-sub">AI-powered vessel scheduling, inventory forecasting, and demurrage management system for a white cement importer operating a complex Egypt–Houston supply chain. Transforms manual operational data into predictive intelligence — preventing stockouts, minimizing demurrage, and automating scheduling coordination across a tightly-coupled 7-stage logistics network.</p>
+  <p class="hero-sub">AI-powered vessel scheduling, inventory forecasting, and demurrage management system for a bulk commodity importer operating a complex Mediterranean-to-US Gulf supply chain. Transforms manual operational data into predictive intelligence &mdash; preventing stockouts, minimizing demurrage, and automating scheduling coordination across a tightly-coupled 7-stage logistics network.</p>
   <div class="hero-tags">
     <span class="tag">Supply Chain Optimization</span>
     <span class="tag">FastAPI Backend</span>
     <span class="tag">Bulk Shipping</span>
     <span class="tag">Demurrage Intelligence</span>
     <span class="tag amber">Phases 1 &amp; 3 Complete</span>
-    <span class="tag gray">Confidential · Active</span>
+    <span class="tag gray">Confidential &middot; Active</span>
   </div>
 </div>
 
@@ -144,72 +210,72 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
 <div class="intro-callout">
   <div class="callout-box">
-    <strong>Project Overview:</strong> End-to-end supply chain intelligence platform covering a Handymax bulk carrier operation importing white Portland cement from Egypt to a Houston Ship Channel terminal. The system addresses three core operational pain points: $280K/year in avoidable demurrage costs, 3–4 annual stockout events, and 40 hours/week of manual scheduling conflict resolution. Delivered as a production-grade Python/FastAPI backend with a PostgreSQL data layer, scheduling optimizer, laytime/demurrage calculation engine, truck dispatch scheduler, and interactive HTML dashboard.
+    <strong>Project Overview:</strong> End-to-end supply chain intelligence platform covering a Handymax bulk carrier operation importing specialty cement from a Mediterranean origin facility to a US Gulf terminal. The system addresses three core operational pain points: $280K/year in avoidable demurrage costs, 3&ndash;4 annual stockout events, and 40 hours/week of manual scheduling conflict resolution. Delivered as a production-grade Python/FastAPI backend with a PostgreSQL data layer, scheduling optimizer, laytime/demurrage calculation engine, truck dispatch scheduler, and interactive HTML dashboard.
   </div>
 </div>
 
 <!-- Supply Chain Flow Diagram -->
 <div class="flow-section">
-  <div class="section-title" style="margin-bottom:1rem">Supply Chain Pipeline — 7 Stages</div>
+  <div class="section-title" style="margin-bottom:1rem">Supply Chain Pipeline &mdash; 7 Stages</div>
   <div class="flow-wrap">
     <div class="flow-diagram">
 
       <div class="flow-node highlight">
-        <div class="f-icon">🏭</div>
+        <div class="f-icon">&#x1F3ED;</div>
         <div class="f-title">Production</div>
-        <div class="f-sub">Royal El Minya Plant, Egypt</div>
+        <div class="f-sub">Mediterranean Origin Facility</div>
         <div class="f-data">~1.1M t/year</div>
       </div>
 
-      <div class="flow-arrow">→</div>
+      <div class="flow-arrow">&rarr;</div>
 
       <div class="flow-node">
-        <div class="f-icon">🚛</div>
+        <div class="f-icon">&#x1F69B;</div>
         <div class="f-title">Truck Transit</div>
-        <div class="f-sub">Plant → Alexandria Port</div>
-        <div class="f-data">1–3 hrs · 20–30 t/truck</div>
+        <div class="f-sub">Facility &rarr; Load Port</div>
+        <div class="f-data">1&ndash;3 hrs &middot; 20&ndash;30 t/truck</div>
       </div>
 
-      <div class="flow-arrow">→</div>
+      <div class="flow-arrow">&rarr;</div>
 
       <div class="flow-node highlight">
-        <div class="f-icon">⚓</div>
+        <div class="f-icon">&#x2693;</div>
         <div class="f-title">Load Port</div>
-        <div class="f-sub">Alexandria, Egypt</div>
-        <div class="f-data">48–96 hr window · $15–25K/day DEM</div>
+        <div class="f-sub">Mediterranean Origin Port</div>
+        <div class="f-data">48&ndash;96 hr window &middot; $15&ndash;25K/day DEM</div>
       </div>
 
-      <div class="flow-arrow">→</div>
+      <div class="flow-arrow">&rarr;</div>
 
       <div class="flow-node">
-        <div class="f-icon">🚢</div>
+        <div class="f-icon">&#x1F6A2;</div>
         <div class="f-title">Ocean Transit</div>
-        <div class="f-sub">Alexandria → Houston</div>
-        <div class="f-data">18–22 days · Suez Canal routing</div>
+        <div class="f-sub">Mediterranean &rarr; US Gulf</div>
+        <div class="f-data">18&ndash;22 days &middot; Suez Canal routing</div>
       </div>
 
-      <div class="flow-arrow">→</div>
+      <div class="flow-arrow">&rarr;</div>
 
       <div class="flow-node highlight">
-        <div class="f-icon">🏗️</div>
+        <div class="f-icon">&#x1F3D7;&#xFE0F;</div>
         <div class="f-title">Discharge Port</div>
-        <div class="f-sub">Houston Ship Channel</div>
-        <div class="f-data">4–6 days · 200–300 t/hr</div>
+        <div class="f-sub">US Gulf Terminal</div>
+        <div class="f-data">4&ndash;6 days &middot; 200&ndash;300 t/hr</div>
       </div>
 
-      <div class="flow-arrow">→</div>
+      <div class="flow-arrow">&rarr;</div>
 
       <div class="flow-node">
-        <div class="f-icon">🏠</div>
+        <div class="f-icon">&#x1F3E0;</div>
         <div class="f-title">Dome Storage</div>
-        <div class="f-sub">Houston Terminal</div>
-        <div class="f-data">10–12K t capacity · 60–90 day dwell</div>
+        <div class="f-sub">Terminal Storage Facility</div>
+        <div class="f-data">10&ndash;12K t capacity &middot; 60&ndash;90 day dwell</div>
       </div>
 
-      <div class="flow-arrow">→</div>
+      <div class="flow-arrow">&rarr;</div>
 
       <div class="flow-node highlight">
-        <div class="f-icon">📦</div>
+        <div class="f-icon">&#x1F4E6;</div>
         <div class="f-title">Distribution</div>
         <div class="f-sub">3 Channels</div>
         <div class="f-data">Bag 600 + Truck 240 + Rail 100 t/day</div>
@@ -221,91 +287,91 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
 <!-- Scope of Work -->
 <div class="section">
-  <div class="section-title">Scope of Work — Development &amp; Analysis Categories</div>
+  <div class="section-title">Scope of Work &mdash; Development &amp; Analysis Categories</div>
   <div class="scope-grid">
 
     <div class="scope-card">
-      <div class="scope-card-top"><div class="scope-icon">🗄️</div><h3>Database Architecture &amp; API Development</h3></div>
+      <div class="scope-card-top"><div class="scope-icon">&#x1F5C4;&#xFE0F;</div><h3>Database Architecture &amp; API Development</h3></div>
       <p>10-entity PostgreSQL schema (Vessel, Voyage, WeatherEvent, DischargeEvent, Dome, DomeInventory, CustomerOrder, OutboundShipment, Alert, AuditLog). 30+ RESTful FastAPI endpoints with Pydantic validation, pagination, filtering, and auto-generated Swagger docs. Alembic schema migrations, Docker Compose infrastructure.</p>
       <div class="scope-pills"><span class="pill">FastAPI</span><span class="pill">PostgreSQL 15</span><span class="pill">SQLAlchemy</span><span class="pill">Pydantic</span><span class="pill">Docker</span></div>
-      <span class="status-badge status-done">✓ Complete</span>
+      <span class="status-badge status-done">&#x2713; Complete</span>
     </div>
 
     <div class="scope-card">
-      <div class="scope-card-top"><div class="scope-icon">🧠</div><h3>Scheduling Optimizer Engine</h3></div>
+      <div class="scope-card-top"><div class="scope-icon">&#x1F9E0;</div><h3>Scheduling Optimizer Engine</h3></div>
       <p>370-line AI-powered conflict detection engine. Three conflict types: Capacity Overflow (dome &gt;9,000t), Stockout Risk (&lt;2,000t), Discharge Congestion (vessels &lt;5 days apart). 30-day inventory simulation with day-by-day projections. Multi-vessel sequence optimization with ETA adjustment recommendations and projected savings quantification.</p>
       <div class="scope-pills"><span class="pill">Conflict Detection</span><span class="pill">Inventory Simulation</span><span class="pill">Cost Quantification</span><span class="pill">ETA Optimization</span></div>
-      <span class="status-badge status-done">✓ Complete</span>
+      <span class="status-badge status-done">&#x2713; Complete</span>
     </div>
 
     <div class="scope-card">
-      <div class="scope-card-top"><div class="scope-icon">⏱️</div><h3>Laytime &amp; Demurrage Calculation Engine</h3></div>
-      <p>Industry-standard laytime calculation engine supporting all major commencement rules (NOR Tendered, Berthed, NOR+6H, NOR+24H). "Once on demurrage, always on demurrage" logic. Mid-period laytime expiry handling. HTML statement renderer in industry format. Validated against actual charter party documents and Statement of Facts data.</p>
+      <div class="scope-card-top"><div class="scope-icon">&#x23F1;&#xFE0F;</div><h3>Laytime &amp; Demurrage Calculation Engine</h3></div>
+      <p>Industry-standard laytime calculation engine supporting all major commencement rules (NOR Tendered, Berthed, NOR+6H, NOR+24H). &ldquo;Once on demurrage, always on demurrage&rdquo; logic. Mid-period laytime expiry handling. HTML statement renderer in industry format. Validated against actual charter party documents and Statement of Facts data.</p>
       <div class="scope-pills"><span class="pill">NOR Rules</span><span class="pill">Demurrage Calc</span><span class="pill">Despatch</span><span class="pill">Charter Party</span></div>
-      <span class="status-badge status-done">✓ Complete</span>
+      <span class="status-badge status-done">&#x2713; Complete</span>
     </div>
 
     <div class="scope-card">
-      <div class="scope-card-top"><div class="scope-icon">🚛</div><h3>Truck Fleet Dispatch Scheduler</h3></div>
+      <div class="scope-card-top"><div class="scope-icon">&#x1F69B;</div><h3>Truck Fleet Dispatch Scheduler</h3></div>
       <p>Load port truck scheduling engine modeling gang capacity by shift: 5 gangs day (450 MT/hr), 2 gangs night (180 MT/hr). Round-robin stagger dispatch. For a 45,000t vessel: 150 trucks, 1,800 trips, 101 hours. 3-panel matplotlib visualization (cumulative progress, throughput, queue). CSV export without pandas dependency.</p>
       <div class="scope-pills"><span class="pill">Gang Modeling</span><span class="pill">Fleet Scheduling</span><span class="pill">Round-Robin Dispatch</span><span class="pill">CSV Export</span></div>
-      <span class="status-badge status-done">✓ Complete</span>
+      <span class="status-badge status-done">&#x2713; Complete</span>
     </div>
 
     <div class="scope-card">
-      <div class="scope-card-top"><div class="scope-icon">📊</div><h3>Inventory Tracking &amp; Forecasting</h3></div>
-      <p>Dual-facility inventory model: Egypt silo (50,000t) + Houston dome (65,000t). Event-driven tracking (Production, Vessel Load, Vessel Discharge, Consumption, Adjustment). 30-day forward projection with scheduled vessel tracking. Risk classification: OK / LOW / HIGH / STOCKOUT / OVERFLOW. Days-of-supply calculation with 4-panel visualization.</p>
+      <div class="scope-card-top"><div class="scope-icon">&#x1F4CA;</div><h3>Inventory Tracking &amp; Forecasting</h3></div>
+      <p>Dual-facility inventory model: origin silo (50,000t) + destination dome (65,000t). Event-driven tracking (Production, Vessel Load, Vessel Discharge, Consumption, Adjustment). 30-day forward projection with scheduled vessel tracking. Risk classification: OK / LOW / HIGH / STOCKOUT / OVERFLOW. Days-of-supply calculation with 4-panel visualization.</p>
       <div class="scope-pills"><span class="pill">Dual Facility</span><span class="pill">30-Day Forecast</span><span class="pill">Risk Classification</span><span class="pill">Days-of-Supply</span></div>
-      <span class="status-badge status-done">✓ Complete</span>
+      <span class="status-badge status-done">&#x2713; Complete</span>
     </div>
 
     <div class="scope-card">
-      <div class="scope-card-top"><div class="scope-icon">📡</div><h3>Data Integration Architecture</h3></div>
+      <div class="scope-card-top"><div class="scope-icon">&#x1F4E1;</div><h3>Data Integration Architecture</h3></div>
       <p>Framework and endpoint structure for live data ingestion: AIS vessel position tracking, NOAA weather API (storm delays, routing impacts), Google Drive document sync (Bills of Lading, Packing Lists, Certificates of Analysis). Scheduled pipeline architecture with error handling and retry logic. Integration layer ready for connection.</p>
       <div class="scope-pills"><span class="pill">AIS Tracking</span><span class="pill">NOAA Weather</span><span class="pill">Google Drive Sync</span><span class="pill">BOL / CoA</span></div>
-      <span class="status-badge status-planned">⏸ Integration Pending</span>
+      <span class="status-badge status-planned">&#x23F8; Integration Pending</span>
     </div>
 
     <div class="scope-card">
-      <div class="scope-card-top"><div class="scope-icon">🖥️</div><h3>Interactive Operations Dashboard</h3></div>
+      <div class="scope-card-top"><div class="scope-icon">&#x1F5A5;&#xFE0F;</div><h3>Interactive Operations Dashboard</h3></div>
       <p>Standalone HTML/Chart.js dashboard deployable without a server. Real-time stats visualization, interactive inventory projection chart, conflict cards with actionable recommendations, 10-day forecast table, and responsive mobile-friendly design. Prototype for the full React UI in Phase 5.</p>
       <div class="scope-pills"><span class="pill">Chart.js</span><span class="pill">Standalone HTML</span><span class="pill">Inventory Chart</span><span class="pill">Conflict Cards</span></div>
-      <span class="status-badge status-done">✓ Demo Ready</span>
+      <span class="status-badge status-done">&#x2713; Demo Ready</span>
     </div>
 
     <div class="scope-card">
-      <div class="scope-card-top"><div class="scope-icon">📚</div><h3>Domain Knowledge Engineering</h3></div>
-      <p>300+ MB curated knowledge base: laytime &amp; demurrage reference library (4th Ed. Voyage Charters), 24+ extracted academic and industry papers across 6 categories (maritime operations, inventory IoT, bulk shipping analytics, terminal equipment), real charter party documents, and actual Statement of Facts validation data for MV BIRDIE.</p>
+      <div class="scope-card-top"><div class="scope-icon">&#x1F4DA;</div><h3>Domain Knowledge Engineering</h3></div>
+      <p>300+ MB curated knowledge base: laytime &amp; demurrage reference library (4th Ed. Voyage Charters), 24+ extracted academic and industry papers across 6 categories (maritime operations, inventory IoT, bulk shipping analytics, terminal equipment), real charter party documents, and Statement of Facts validation data against historical vessel operations.</p>
       <div class="scope-pills"><span class="pill">Laytime Library</span><span class="pill">Charter Parties</span><span class="pill">SOF Documents</span><span class="pill">Academic Research</span></div>
-      <span class="status-badge status-done">✓ Complete</span>
+      <span class="status-badge status-done">&#x2713; Complete</span>
     </div>
 
     <div class="scope-card">
-      <div class="scope-card-top"><div class="scope-icon">💰</div><h3>Financial Impact Modeling</h3></div>
-      <p>Cost quantification framework integrated into the optimizer: demurrage at $15,000–$25,000/day, stockout costs at $50,000/day. Annual savings projection ($200K–$500K), 3-month ROI analysis, scenario-based cost-benefit breakdown. Optimization scoring (0–100) with projected savings output per API call.</p>
+      <div class="scope-card-top"><div class="scope-icon">&#x1F4B0;</div><h3>Financial Impact Modeling</h3></div>
+      <p>Cost quantification framework integrated into the optimizer: demurrage at $15,000&ndash;$25,000/day, stockout costs at $50,000/day. Annual savings projection ($200K&ndash;$500K), 3-month ROI analysis, scenario-based cost-benefit breakdown. Optimization scoring (0&ndash;100) with projected savings output per API call.</p>
       <div class="scope-pills"><span class="pill">Demurrage Costing</span><span class="pill">ROI Analysis</span><span class="pill">Scenario Modeling</span><span class="pill">Optimization Score</span></div>
-      <span class="status-badge status-done">✓ Complete</span>
+      <span class="status-badge status-done">&#x2713; Complete</span>
     </div>
 
     <div class="scope-card">
-      <div class="scope-card-top"><div class="scope-icon">🧪</div><h3>Testing &amp; Quality Assurance</h3></div>
+      <div class="scope-card-top"><div class="scope-icon">&#x1F9EA;</div><h3>Testing &amp; Quality Assurance</h3></div>
       <p>10+ unit tests for the optimizer engine covering conflict detection logic, cost calculation accuracy, inventory simulation correctness, score calculation, and edge cases (simultaneous stockout and overflow, vessel congestion thresholds). Integration testing against seeded database. API endpoint validation via Swagger UI. &lt;50ms average API response time.</p>
       <div class="scope-pills"><span class="pill">Unit Tests</span><span class="pill">Integration Tests</span><span class="pill">Edge Cases</span><span class="pill">Performance</span></div>
-      <span class="status-badge status-done">✓ Complete</span>
+      <span class="status-badge status-done">&#x2713; Complete</span>
     </div>
 
     <div class="scope-card">
-      <div class="scope-card-top"><div class="scope-icon">🔮</div><h3>Predictive Analytics &amp; ML Framework</h3></div>
+      <div class="scope-card-top"><div class="scope-icon">&#x1F52E;</div><h3>Predictive Analytics &amp; ML Framework</h3></div>
       <p>Architecture and data pipeline designed for ML-based ETA prediction, demand forecasting, and Monte Carlo simulation for uncertainty modeling. Historical delay pattern logging for model training. Framework supports future upgrade to genetic algorithm or simulated annealing optimization. AIS position data pipeline ready for connection.</p>
       <div class="scope-pills"><span class="pill">ETA Prediction</span><span class="pill">Demand Forecast</span><span class="pill">Monte Carlo</span><span class="pill">ML-Ready</span></div>
-      <span class="status-badge status-planned">⏸ Phase 4–6</span>
+      <span class="status-badge status-planned">&#x23F8; Phase 4&ndash;6</span>
     </div>
 
     <div class="scope-card">
-      <div class="scope-card-top"><div class="scope-icon">📁</div><h3>Technical Documentation &amp; Handover</h3></div>
+      <div class="scope-card-top"><div class="scope-icon">&#x1F4C1;</div><h3>Technical Documentation &amp; Handover</h3></div>
       <p>Complete technical documentation package: README, Quickstart (7-step setup), Master Status document, Phase completion reports, Optimizer technical spec (150+ lines), Demo summary (370+ lines), 5-minute demo script, session handoff notes. Obsidian knowledge vault for ongoing operational reference. Sample data seeding scripts.</p>
       <div class="scope-pills"><span class="pill">README</span><span class="pill">API Docs</span><span class="pill">Demo Scripts</span><span class="pill">Knowledge Vault</span></div>
-      <span class="status-badge status-done">✓ Complete</span>
+      <span class="status-badge status-done">&#x2713; Complete</span>
     </div>
 
   </div>
@@ -318,40 +384,434 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
     <div class="unique-card">
       <h4>Zero-Buffer Supply Chain Problem</h4>
-      <p>SESCO operates with no meaningful inventory buffer at the origin port — the Egypt silo and Houston dome are the only buffers across an 18-22 day ocean transit. A single scheduling misstep cascades into $25K/day demurrage or $50K/day stockout events. The optimizer directly addresses this structural fragility.</p>
+      <p>This operation runs with no meaningful inventory buffer at the origin port &mdash; the origin silo and destination dome are the only buffers across an 18&ndash;22 day ocean transit. A single scheduling misstep cascades into $25K/day demurrage or $50K/day stockout events. The optimizer directly addresses this structural fragility.</p>
     </div>
 
     <div class="unique-card">
       <h4>Validated Against Real Charter Party Data</h4>
-      <p>Laytime engine calibrated against actual MV BIRDIE Statement of Facts documents and real charter party agreements. Domain parameters validated through the 4th Edition Voyage Charters reference and six landmark demurrage case precedents (Johanna Oldendorff, Kyzikos, President Brand, etc.).</p>
+      <p>Laytime engine calibrated against actual Statement of Facts documents and real charter party agreements. Domain parameters validated through the 4th Edition Voyage Charters reference and six landmark demurrage case precedents (Johanna Oldendorff, Kyzikos, President Brand, and others).</p>
     </div>
 
     <div class="unique-card">
       <h4>Multi-Constraint Optimization in &lt;1 Second</h4>
-      <p>Simultaneous constraint satisfaction across 30-day horizon: dome capacity limits, minimum safety stock, vessel discharge congestion, and ETA forecast uncertainty — all resolved in under 1 second API response time. Specific ETA adjustment recommendations with dollar-value cost impact per recommendation.</p>
+      <p>Simultaneous constraint satisfaction across 30-day horizon: dome capacity limits, minimum safety stock, vessel discharge congestion, and ETA forecast uncertainty &mdash; all resolved in under 1 second API response time. Specific ETA adjustment recommendations with dollar-value cost impact per recommendation.</p>
     </div>
 
     <div class="unique-card">
       <h4>Production-Grade Architecture from Day One</h4>
-      <p>Clean three-layer architecture (routers → services → models), type hints throughout, Pydantic validation on all inputs/outputs, Alembic schema migrations, Docker Compose deployment, and comprehensive error handling. Designed to scale from demo to production without architectural rework.</p>
+      <p>Clean three-layer architecture (routers &rarr; services &rarr; models), type hints throughout, Pydantic validation on all inputs/outputs, Alembic schema migrations, Docker Compose deployment, and comprehensive error handling. Designed to scale from demo to production without architectural rework.</p>
     </div>
 
     <div class="unique-card">
       <h4>85% Demurrage Reduction Target</h4>
-      <p>$280K/year current demurrage cost driven by vessel arrival timing misalignment with dome capacity. Optimizer targets $238K annual reduction by detecting conflicts 7–30 days in advance and issuing specific ETA delay/expedite recommendations with quantified cost justification.</p>
+      <p>$280K/year current demurrage cost driven by vessel arrival timing misalignment with dome capacity. Optimizer targets $238K annual reduction by detecting conflicts 7&ndash;30 days in advance and issuing specific ETA delay/expedite recommendations with quantified cost justification.</p>
     </div>
 
     <div class="unique-card">
       <h4>Dual-Facility Inventory Architecture</h4>
-      <p>Inventory model spans both Egyptian origin silo (50,000t) and Houston dome (65,000t simultaneously — tracking production, vessel loading, ocean transit, discharge, and three-channel outbound distribution in a single coherent data model. Rare in off-the-shelf supply chain software.</p>
+      <p>Inventory model spans both origin silo and destination dome simultaneously &mdash; tracking production, vessel loading, ocean transit, discharge, and three-channel outbound distribution in a single coherent data model. Rare in off-the-shelf supply chain software for maritime bulk operations.</p>
     </div>
 
   </div>
 </div>
 
+</div><!-- end tab-scope -->
+
+
+<!-- ======== TAB 2: TECHNICAL WHITE PAPER ======== -->
+<div id="tab-whitepaper" class="tab-panel">
+<div class="wp-body">
+
+  <p class="wp-subtitle" style="margin-top:2rem;margin-bottom:0.2rem;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent)">Technical White Paper</p>
+  <h1 class="wp-title">Mediterranean&ndash;US Gulf Bulk Commodity<br>Supply Chain Optimization Framework</h1>
+  <p class="wp-subtitle">From Unstructured Operational Data to Predictive Scheduling Intelligence &mdash; A Claude Desktop + Obsidian Approach</p>
+
+  <!-- Executive Overview -->
+  <div class="wp-section">
+    <div class="wp-section-title">Executive Overview</div>
+    <div class="wp-callout">
+      <strong>Challenge:</strong> This operation&rsquo;s supply chain runs with zero buffer storage at the load port. Every scheduling delay cascades downstream. Coordinating truck arrivals, vessel windows, port capacity, ocean transit uncertainties, and distribution requirements requires real-time intelligence across multiple interdependent variables.<br><br>
+      <strong>Opportunity:</strong> Transform scattered operational data (charter parties, truck logs, vessel schedules, weather records, port reports) into an organized knowledge base that becomes the foundation for an AI-assisted scheduling application.<br><br>
+      <strong>Outcome:</strong> A production-grade FastAPI/PostgreSQL backend with scheduling optimizer, laytime engine, inventory tracker, and truck dispatch scheduler &mdash; demonstrating how LLM-augmented data organization bridges the gap from &ldquo;scheduling chaos&rdquo; to &ldquo;predictive orchestration.&rdquo;
+    </div>
+  </div>
+
+  <!-- Stage-by-Stage -->
+  <div class="wp-section">
+    <div class="wp-section-title">The Supply Chain: Stage by Stage</div>
+
+    <div class="wp-h3">Stage 1 &mdash; Origin Production &amp; Loading</div>
+    <p class="wp-p"><strong>Key Parameters:</strong> Production capacity ~1.1M tons/year, specialty bulk commodity (white Portland cement grades CEM I 52.5 N, CEM II). Truck intake rate 8&ndash;12 trucks/day at 20&ndash;30 tons each. Staging buffer minimal (no storage at load port). Load-out window: 48&ndash;96 hours before vessel arrival.</p>
+    <ul class="wp-ul">
+      <li>Production run date, batch quality number &amp; test results</li>
+      <li>Truck arrival timestamps, destination dome assignment</li>
+      <li>Origin weather affecting truck routing, port congestion status</li>
+      <li>Document types: quality certificates, truck manifests, daily production logs, port pre-clearance forms</li>
+    </ul>
+
+    <div class="wp-h3">Stage 2 &mdash; Ocean Transit</div>
+    <p class="wp-p"><strong>Key Parameters:</strong> Typical vessel: Handymax bulk carrier (~35,000 tons capacity), voyage charter terms. Transit time 18&ndash;22 days baseline. Possible delays: weather routing (+2&ndash;5 days), Suez congestion (+1&ndash;3 days), mechanical (+1&ndash;7 days).</p>
+    <ul class="wp-ul">
+      <li>Vessel name &amp; IMO number, departure date (actual vs. scheduled)</li>
+      <li>ETA constantly updated from AIS, weather patterns en route</li>
+      <li>Cargo specs (cement type, moisture content), historical delay patterns (ML input)</li>
+    </ul>
+    <div class="wp-callout"><strong>Key Insight:</strong> A 3-day ocean delay doesn&rsquo;t just shift arrival &mdash; it disrupts the entire distribution window if domes are full and no outbound capacity exists.</div>
+
+    <div class="wp-h3">Stage 3 &mdash; Discharge Port &amp; Dome Storage</div>
+    <p class="wp-p"><strong>Key Parameters:</strong> US Gulf terminal facility. Unload rate 200&ndash;300 tons/hour (weather dependent). Typical discharge time 4&ndash;6 days per vessel. Storage: sealed dome silos, ~10,000 tons total capacity. Max dwell time 60&ndash;90 days before cement quality degradation.</p>
+    <ul class="wp-ul">
+      <li>Vessel arrival time (actual), start discharge date/time, discharge rate (tons/hour)</li>
+      <li>Dome assignment &amp; current inventory, dome utilization (%)</li>
+      <li>Environmental conditions (humidity, temperature), forecast outbound demand (next 10&ndash;14 days)</li>
+    </ul>
+    <div class="wp-callout"><strong>Key Insight:</strong> Discharge delays directly block the next vessel arrival. If domes are at 85% capacity and discharge slows from weather, the subsequent vessel must anchor at additional cost.</div>
+
+    <div class="wp-h3">Stage 4 &mdash; Distribution</div>
+    <p class="wp-p"><strong>Key Parameters:</strong> Three distribution channels operating in parallel: Bagging plant (500&ndash;800 tons/day, labor &amp; equipment intensive, 3&ndash;5 day lead time); Bulk truck (25&ndash;30 tons/truck, 8&ndash;12 trucks/day); Rail bulk (2&ndash;4 cars/week, ~100 tons/car).</p>
+    <ul class="wp-ul">
+      <li>Customer orders by channel &amp; destination, bagging capacity (daily slots), truck driver availability</li>
+      <li>Rail car availability, 30-day demand forecast, committed orders vs. inventory on hand</li>
+      <li>Days-of-supply calculation (dome inventory / daily outbound)</li>
+    </ul>
+    <div class="wp-callout"><strong>Key Insight:</strong> Misalignment between inbound vessel schedule and outbound capacity creates inventory pile-up. A vessel arriving early with full domes means delayed discharge and increased costs. A vessel arriving late means stockouts and customer penalties.</div>
+  </div>
+
+  <!-- Data Architecture -->
+  <div class="wp-section">
+    <div class="wp-section-title">Data Architecture</div>
+    <p class="wp-p">To build an effective scheduling application, the following data entities must be collected and structured. The implemented PostgreSQL schema covers all seven core entities with full audit logging.</p>
+    <table class="wp-table">
+      <thead>
+        <tr><th>Entity</th><th>Key Fields</th><th>Source</th><th>Update Frequency</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Vessel</td><td>Name, IMO, capacity, charter party terms, arrival window, cargo specs</td><td>Broker comms, manifests</td><td>Real-time</td></tr>
+        <tr><td>Discharge Event</td><td>Vessel ID, start/end time, rate (T/hr), delays, reason code</td><td>Port logs, terminal records</td><td>Daily</td></tr>
+        <tr><td>Dome Inventory</td><td>Dome ID, capacity, current tons, date filled, moisture level</td><td>SCADA systems, manual audit</td><td>Daily / Hourly</td></tr>
+        <tr><td>Outbound Order</td><td>Customer, quantity, channel (bag/truck/rail), due date, priority</td><td>ERP, sales system</td><td>Real-time</td></tr>
+        <tr><td>Truck Movement</td><td>Origin, timestamp, tonnage, driver ID, destination</td><td>Dispatch logs, GPS, manifests</td><td>Real-time</td></tr>
+        <tr><td>Weather</td><td>Location, wind speed, precipitation, impact (delay risk score)</td><td>NOAA, port reports, AIS</td><td>Real-time</td></tr>
+        <tr><td>Delay Record</td><td>Vessel ID, type (weather/mechanical/port), duration, cost impact</td><td>Historical logs, post-mortems</td><td>On completion</td></tr>
+      </tbody>
+    </table>
+
+    <div class="wp-h3">Data Quality Layers</div>
+    <div class="wp-kv">
+      <div class="wp-kv-card">
+        <h5>Level 1 &mdash; Transaction Data</h5>
+        <p>Operational, captured automatically: GPS truck locations, port discharge stamps, vessel AIS position, customer order entry, bagging production counts</p>
+      </div>
+      <div class="wp-kv-card">
+        <h5>Level 2 &mdash; Contextual Data</h5>
+        <p>Manually or semi-automated: weather forecasts &amp; advisories, charter party terms &amp; demurrage rates, port congestion alerts, quality test results, customer forecast updates</p>
+      </div>
+      <div class="wp-kv-card">
+        <h5>Level 3 &mdash; Analytical Data</h5>
+        <p>Derived &amp; calculated: delay patterns (by vessel type, route, season), forecasted dome inventory (7/14/30 days), distribution capacity utilization, cost impact per delay scenario, optimal vessel arrival window</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Claude + Obsidian Workflow -->
+  <div class="wp-section">
+    <div class="wp-section-title">Claude Desktop + Obsidian Workflow</div>
+    <p class="wp-p">The knowledge management architecture uses a three-phase approach to bridge unstructured operational documents and a live scheduling application.</p>
+
+    <div class="wp-h3">Phase 1 &mdash; Document Collection &amp; Ingestion (Obsidian)</div>
+    <p class="wp-p">Obsidian becomes the data funnel, ingesting documents from multiple sources and organizing them into a queryable knowledge base:</p>
+    <pre class="wp-pre">Input Sources:
+&#x251C;&#x2500;&#x2500; Google Drive (shared vessel schedules, customer forecasts)
+&#x251C;&#x2500;&#x2500; Local hard drive (historical charter parties, port reports)
+&#x251C;&#x2500;&#x2500; Email attachments (daily discharge updates, weather alerts)
+&#x251C;&#x2500;&#x2500; GitHub (vessel tracking scripts, data pipelines)
+&#x251C;&#x2500;&#x2500; Direct paste (real-time port messages, broker communications)
+&#x2514;&#x2500;&#x2500; Web links (weather forecasts, AIS tracking, port authority notices)
+
+         &#x2193; [All normalized to Markdown + metadata]
+
+Obsidian Vault Structure:
+&#x251C;&#x2500;&#x2500; &#x1F4C2; Vessels/
+&#x2502;   &#x251C;&#x2500;&#x2500; MV_[VesselName]_2026.md (charter party, specs, historical performance)
+&#x2502;   &#x2514;&#x2500;&#x2500; Templates/ (standardized vessel profile template)
+&#x251C;&#x2500;&#x2500; &#x1F4C2; Discharge_Events/
+&#x2502;   &#x2514;&#x2500;&#x2500; Discharge_2026_01_[Vessel].md (rate, delays, duration, weather)
+&#x251C;&#x2500;&#x2500; &#x1F4C2; Customer_Orders/
+&#x2502;   &#x2514;&#x2500;&#x2500; Order_[Customer]_[Month].md
+&#x251C;&#x2500;&#x2500; &#x1F4C2; Historical_Analytics/
+&#x2502;   &#x251C;&#x2500;&#x2500; Delay_Patterns.md (seasonal trends, failure rates)
+&#x2502;   &#x251C;&#x2500;&#x2500; Weather_Impact_Analysis.md
+&#x2502;   &#x2514;&#x2500;&#x2500; Cost_Analysis.md (demurrage rates, detention costs)
+&#x251C;&#x2500;&#x2500; &#x1F4C2; Operational_Status/
+&#x2502;   &#x251C;&#x2500;&#x2500; Dome_Inventory_Today.md (current levels, 14-day forecast)
+&#x2502;   &#x2514;&#x2500;&#x2500; Next_7_Vessels.md (ETAs, discharge windows, order alignment)
+&#x2514;&#x2500;&#x2500; &#x1F4C2; System_Docs/
+    &#x251C;&#x2500;&#x2500; Data_Dictionary.md (field definitions, quality rules)
+    &#x2514;&#x2500;&#x2500; Query_Examples.md (how to ask Claude questions about the data)</pre>
+
+    <div class="wp-h3">Phase 2 &mdash; Intelligent Document Analysis (Claude Desktop)</div>
+    <p class="wp-p">Claude Desktop runs locally with file access, reads the Obsidian vault, and performs semantic analysis. This is where LLM reasoning emerges from operational data:</p>
+    <pre class="wp-pre">Example Query to Claude Desktop:
+  "Given current dome inventory (7,200 tons) and outbound commitments
+   (next 14 days), what's the maximum delay we can absorb on the
+   incoming vessel before triggering customer delays?"
+
+Claude Processing:
+  1. Reads Dome_Inventory_Today.md &#x2192; 7,200 tons, 72% capacity
+  2. Reads Customer_Orders &#x2192; committed outbound next 14 days
+  3. Reads Delay_Patterns.md &#x2192; "Weather delays avg 2.3 days"
+  4. Reads Outbound_Capacity.md &#x2192; Bag:600 T/d + Truck:240 + Rail:100 = 940 T/d
+  5. Calculates: buffer days = (inventory - 14d_demand) / daily_outbound
+  6. Cross-references vessel weather risk from vessel profile
+
+Claude Output:
+  "Current inventory supports a 4.5-day delay before customer stockouts.
+   Incoming vessel has 60% probability of 2-3 day delay (weather pattern).
+   RECOMMENDATION: Accelerate bagging plan by 15% this week to build buffer.
+   Risk Level: MEDIUM. Cost impact if customer delay: $42,000."
+
+Structured JSON also extracted automatically for application ingestion:
+{
+  "dome_inventory": 7200,
+  "daily_outbound": 940,
+  "max_absorbable_delay_days": 4.5,
+  "weather_delay_probability": 0.60,
+  "weather_delay_expected_days": 2.3,
+  "recommendation": "Accelerate bagging by 15%",
+  "risk_level": "MEDIUM",
+  "cost_exposure_usd": 42000
+}</pre>
+
+    <div class="wp-h3">Phase 3 &mdash; Structured Data Extraction &amp; Logic Formalization</div>
+    <p class="wp-p">Claude Desktop outputs structured data (JSON, Python data classes) that becomes the <strong>specification</strong> the development team uses to build the actual application. Scheduling rules, data models, and forecasting algorithms are all Claude-generated and then formalized into code:</p>
+    <pre class="wp-pre">Example: Claude-Generated Scheduling Rules &#x2192; Application Logic
+
+{
+  "scheduling_rules": [
+    {
+      "rule_id": "max_delay_buffer",
+      "logic": "IF dome_inventory_days > 5 THEN vessel_can_delay_2_days",
+      "priority": 1
+    },
+    {
+      "rule_id": "weather_routing",
+      "logic": "IF wind_forecast > 30_knots THEN add_3_day_buffer_to_ETA",
+      "priority": 2
+    },
+    {
+      "rule_id": "discharge_optimization",
+      "logic": "IF next_vessel_ETA < dome_forecast_full_date THEN discharge_faster",
+      "priority": 3
+    }
+  ],
+  "forecast_model": {
+    "type": "ensemble",
+    "components": [
+      {"name": "historical_delay_regression", "weight": 0.4},
+      {"name": "weather_impact_model", "weight": 0.3},
+      {"name": "port_congestion_index", "weight": 0.3}
+    ]
+  }
+}</pre>
+  </div>
+
+  <!-- Technical Architecture -->
+  <div class="wp-section">
+    <div class="wp-section-title">Technical Architecture</div>
+    <pre class="wp-pre arch">&#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
+&#x2502;                  SUPPLY CHAIN OPTIMIZATION SYSTEM                         &#x2502;
+&#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
+
+DATA INGESTION LAYER:
+&#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;  &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;  &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
+&#x2502;  Google Drive    &#x2502;  &#x2502;  GitHub            &#x2502;  &#x2502;  Email/Messaging     &#x2502;
+&#x2502; (Forecasts,     &#x2502;  &#x2502; (Vessel Tracking, &#x2502;  &#x2502; (Alerts, Updates)  &#x2502;
+&#x2502;  Schedules)     &#x2502;  &#x2502;  Historical Data)  &#x2502;  &#x2502;                    &#x2502;
+&#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;  &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;  &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
+         &#x2502;                     &#x2502;                     &#x2502;
+         &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
+                               &#x2502;
+                      &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x25BC;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
+                      &#x2502;  OBSIDIAN VAULT &#x2502;  &#x25C4;&#x2500; Local file system
+                      &#x2502;  (Knowledge     &#x2502;
+                      &#x2502;   Base)          &#x2502;
+                      &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
+                               &#x2502;
+ANALYSIS LAYER:     Claude Desktop (local LLM + file access)
+                    Pattern Extraction &amp; Rule Generation
+                               &#x2502;
+STRUCTURED OUTPUT:
+         &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x25BC;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
+         &#x2502;  Decision Rules (JSON)                  &#x2502;
+         &#x2502;  Data Model (Entity-Relationship)       &#x2502;
+         &#x2502;  Forecasting Algorithms (Pseudocode)    &#x2502;
+         &#x2502;  Performance Patterns (CSV/Chart)       &#x2502;
+         &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
+                              &#x2502;
+APPLICATION LAYER:  Python/FastAPI + PostgreSQL
+    &#x2503; Scheduling Optimizer (Conflict Detection, 30-day Simulation)
+    &#x2503; Laytime/Demurrage Engine (NOR Rules, Charter Party Validation)
+    &#x2503; Truck Dispatch Scheduler (Gang Modeling, Round-Robin)
+    &#x2503; Inventory Tracker (Dual-Facility, Days-of-Supply)
+    &#x2503; REST API (30+ endpoints, Swagger UI, &lt;50ms response)
+    &#x2503; Interactive Dashboard (Chart.js, Standalone HTML)
+         &#x2502;
+    &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x25BC;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;  &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x25BC;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;  &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x25BC;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
+    &#x2502; Vessel  &#x2502;  &#x2502; Dome Inventory &#x2502;  &#x2502; Distribution&#x2502;
+    &#x2502; Schedule&#x2502;  &#x2502;    Service     &#x2502;  &#x2502;  Planning   &#x2502;
+    &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;  &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;  &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
+         &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
+                               &#x2502;
+    &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x25BC;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
+    &#x2502;  Continuous Feedback Loop                    &#x2502;
+    &#x2502;  New Data &#x2192; Updated Forecasts &#x2192; Alerts      &#x2502;
+    &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;</pre>
+  </div>
+
+  <!-- Implementation Roadmap -->
+  <div class="wp-section">
+    <div class="wp-section-title">Implementation Roadmap</div>
+    <div class="wp-roadmap">
+      <div class="wp-week">
+        <div class="wp-week-num">Week 1</div>
+        <div class="wp-week-content">
+          <h4>Setup &amp; Collection</h4>
+          <p>Create Obsidian vault structure with templates for Vessel, DischargeEvent, Order, etc. Connect integrations: Google Drive (auto-sync customer forecasts), GitHub (historical vessel tracking), email forwarding (port alerts to Obsidian inbox). Backfill 6 months of vessel records, discharge logs, and historical delays. Configure Claude Desktop with local file access.</p>
+          <div class="deliverable">&#x2713; Deliverable: Working Obsidian vault with ~50 vessels, ~200 discharge events, 18+ orders</div>
+        </div>
+      </div>
+      <div class="wp-week">
+        <div class="wp-week-num">Week 2</div>
+        <div class="wp-week-content">
+          <h4>Analysis &amp; Pattern Extraction</h4>
+          <p>Run Claude analyses on historical data: seasonal delay patterns, weather-to-discharge-time correlations, demurrage rate vs. vessel size relationships, customer delay sensitivity ranking. Claude outputs: pattern report (markdown + charts), structured delay data (CSV), decision rule library, data quality audit (missing fields, inconsistencies).</p>
+          <div class="deliverable">&#x2713; Deliverable: Decision rule library, data quality report, confirmed pattern definitions</div>
+        </div>
+      </div>
+      <div class="wp-week">
+        <div class="wp-week-num">Week 3</div>
+        <div class="wp-week-content">
+          <h4>Data Model &amp; Application Skeleton</h4>
+          <p>Claude generates entity-relationship diagram, field definitions &amp; validation rules, calculated fields (days_of_supply, delay_probability, cost_impact), and forecasting algorithm specifications. Generate Python classes for Vessel, DomeInventory, ScheduleOptimizer, full PostgreSQL schema, and FastAPI endpoint stubs. Load mock data, test algorithm flow.</p>
+          <div class="deliverable">&#x2713; Deliverable: Application code skeleton (Python/FastAPI + frontend stub)</div>
+        </div>
+      </div>
+      <div class="wp-week">
+        <div class="wp-week-num">Week 4</div>
+        <div class="wp-week-content">
+          <h4>Integration &amp; Real-Time Demo</h4>
+          <p>Connect application to live Obsidian vault: new vessel arrival triggers Claude analysis and forecast update; new order triggers buffer recalculation and schedule adjustment; weather alert triggers delay probability update. Build dashboard prototype: current dome inventory (live), next 7 vessels with delay forecasts, customer order status, recommended actions.</p>
+          <div class="deliverable">&#x2713; Deliverable: Working prototype + demo script for stakeholder presentation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Value Proposition -->
+  <div class="wp-section">
+    <div class="wp-section-title">Value Proposition</div>
+    <div class="wp-kv">
+      <div class="wp-kv-card">
+        <h5>For Management</h5>
+        <p>Real-time visibility into actual vs. forecast ETA (no surprises). Schedule optimization minimizing demurrage + maximizing dome utilization. Quantified risk: &ldquo;This weather delay has 68% probability and costs $52K if customer delay occurs.&rdquo; Decision support with specific recommended actions.</p>
+      </div>
+      <div class="wp-kv-card">
+        <h5>For IT Team</h5>
+        <p>Clear specification: Claude-generated data model + algorithm = unambiguous development brief. Open technology stack (Python, PostgreSQL, FastAPI, React). ML-ready architecture: historical data feeds continuous model improvement. Every decision tied back to data + reasoning.</p>
+      </div>
+      <div class="wp-kv-card">
+        <h5>For Operations</h5>
+        <p>Reduced manual coordination: system alerts when action is needed. 7&ndash;10 day advance visibility on problems vs. crisis-reactive model. Better utilization of domes, trucks, and bagging capacity. Demurrage, detention, and staffing costs predicted and minimized.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Metrics -->
+  <div class="wp-section">
+    <div class="wp-section-title">Success Metrics &mdash; 6-Month Targets</div>
+    <table class="wp-table">
+      <thead>
+        <tr><th>Metric</th><th>Current State</th><th>Target (6 months)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Vessel ETA Forecast Accuracy</td><td>&plusmn;5 days</td><td>90%+ within &plusmn;2 days</td></tr>
+        <tr><td>Customer Stockout Events/Year</td><td>3&ndash;4 events</td><td>0 (despite ocean delays)</td></tr>
+        <tr><td>Dome Utilization Range</td><td>70% or 100% (pile-ups)</td><td>85&ndash;92% consistent</td></tr>
+        <tr><td>Demurrage + Detention Costs</td><td>$280K/year</td><td>12&ndash;15% reduction</td></tr>
+        <tr><td>Problem Visibility Lead Time</td><td>Crisis-reactive</td><td>7&ndash;10 days advance</td></tr>
+        <tr><td>Manual Scheduling Hours/Week</td><td>40 hours</td><td>30% reduction</td></tr>
+        <tr><td>API Response Time</td><td>N/A (manual)</td><td>&lt;50ms for all endpoints</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Optimizer Technical Spec -->
+  <div class="wp-section">
+    <div class="wp-section-title">Optimizer Technical Specification</div>
+    <p class="wp-p">The scheduling optimizer is the core intelligence engine. Key implementation details:</p>
+    <pre class="wp-pre">class SchedulingOptimizer:
+    # Operational constants (validated against real operations)
+    DEMURRAGE_COST_PER_DAY  = 25_000   # USD/day
+    STOCKOUT_COST_PER_DAY   = 50_000   # USD/day
+    SAFE_INVENTORY_MIN      = 2_000    # tons (safety floor)
+    SAFE_INVENTORY_MAX      = 9_000    # tons (dome safe limit)
+    DISCHARGE_RATE_TPD      = 1_500    # tons/day
+    CONSUMPTION_RATE_TPD    =   940    # tons/day (outbound)
+
+    # Conflict types detected:
+    #   CAPACITY_OVERFLOW   - dome exceeds SAFE_INVENTORY_MAX
+    #   STOCKOUT_RISK       - inventory falls below SAFE_INVENTORY_MIN
+    #   DISCHARGE_CONGESTION - vessel arrivals within 5 days of each other
+
+    # Optimization score: 0-100 (100 = perfect schedule)
+    #   CRITICAL conflict: -25 pts
+    #   HIGH conflict:     -15 pts
+    #   MEDIUM conflict:   -10 pts
+    #   LOW conflict:       -5 pts
+
+    # Inventory simulation: 30-day day-by-day projection
+    #   Accounts for daily consumption, scheduled vessel arrivals,
+    #   discharge over 5-day window, capacity constraints</pre>
+
+    <div class="wp-h3">API Endpoints</div>
+    <table class="wp-table">
+      <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>GET</td><td>/api/optimizer/analyze</td><td>Full schedule analysis, conflict detection, 30-day projection</td></tr>
+        <tr><td>POST</td><td>/api/optimizer/optimize-sequence</td><td>Multi-vessel ETA optimization, cost minimization</td></tr>
+        <tr><td>GET</td><td>/api/vessels</td><td>List vessels with current status and upcoming ETAs</td></tr>
+        <tr><td>POST</td><td>/api/voyages</td><td>Create/update voyage record with ETA and cargo details</td></tr>
+        <tr><td>GET</td><td>/api/inventory/forecast</td><td>30-day dome inventory projection with risk flags</td></tr>
+        <tr><td>POST</td><td>/api/laytime/calculate</td><td>Laytime and demurrage calculation from Statement of Facts</td></tr>
+        <tr><td>GET</td><td>/api/optimizer/health</td><td>Service health check, response time monitoring</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wp-meta">
+    <strong>Document Status:</strong> Internal Technical Reference &nbsp;&middot;&nbsp;
+    <strong>Version:</strong> 1.0 &nbsp;&middot;&nbsp;
+    <strong>Date:</strong> October 2025 &ndash; February 2026 &nbsp;&middot;&nbsp;
+    <strong>Classification:</strong> Confidential &mdash; Client &amp; Authorized Parties Only
+  </div>
+
+</div>
+</div><!-- end tab-whitepaper -->
+
 <footer>
-  <p>Confidential — For internal and authorized stakeholder use only &nbsp;·&nbsp; OceanDatum Maritime &amp; Commodity Intelligence &nbsp;·&nbsp; 2026</p>
+  <p>Confidential &mdash; For internal and authorized stakeholder use only &nbsp;&middot;&nbsp; OceanDatum Maritime &amp; Commodity Intelligence &nbsp;&middot;&nbsp; 2026</p>
 </footer>
 
+<script>
+function switchTab(name){
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    b.classList.toggle('active', b.id === 'btn-'+name);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p=>{
+    p.classList.toggle('active', p.id === 'tab-'+name);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
 </body>
 </html>
