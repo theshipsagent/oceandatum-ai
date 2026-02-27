@@ -10,12 +10,6 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --accent: #64ffb4;
-    --nav-bg: rgba(10,10,10,0.92);
-    --nav-h: 48px;
-  }
-
   html, body {
     height: 100%;
     overflow: hidden;
@@ -23,103 +17,54 @@
     font-family: 'Space Grotesk', sans-serif;
   }
 
-  /* ── Navbar ─────────────────────────────────── */
-  nav {
+  /* ── Nav (fixed for fullscreen iframe page) ── */
+  .sn {
     position: fixed;
     top: 0; left: 0; right: 0;
-    height: var(--nav-h);
-    background: var(--nav-bg);
+    height: 48px;
+    z-index: 1000;
+    background: rgba(10,10,10,0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(100,255,180,0.15);
+    border-bottom: 1px solid rgba(100,255,180,0.12);
+    padding: 0 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.25rem;
-    z-index: 1000;
   }
-
-  .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    text-decoration: none;
-  }
-  .nav-brand .dot {
-    width: 8px; height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .nav-brand span {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #fff;
-    letter-spacing: 0.02em;
-  }
-  .nav-brand span em {
-    font-style: normal;
-    color: var(--accent);
-  }
-
-  .nav-title {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: rgba(255,255,255,0.55);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    pointer-events: none;
-    white-space: nowrap;
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .nav-links a {
-    font-size: 0.78rem;
+  .sn a {
+    font-size: 0.82rem;
     color: rgba(255,255,255,0.5);
     text-decoration: none;
-    letter-spacing: 0.03em;
+    white-space: nowrap;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-links a.back {
-    color: var(--accent);
-    border: 1px solid rgba(100,255,180,0.3);
-    padding: 0.25rem 0.65rem;
-    border-radius: 4px;
-    font-weight: 500;
+  .sn a:hover { color: #64ffb4; }
+  .sn-r { display: flex; gap: 1.2rem; align-items: center; }
+  .sn-hub {
+    padding: 0.25rem 0.7rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 5px;
   }
-  .nav-links a.back:hover {
-    background: rgba(100,255,180,0.08);
+  .sn-hub:hover { border-color: rgba(100,255,180,0.3); }
+
+  @media (max-width: 480px) {
+    .sn { padding: 0 0.75rem; height: 42px; }
+    .sn a { font-size: 0.72rem; }
+    .sn-r { gap: 0.6rem; }
+    #map-frame { top: 42px; height: calc(100vh - 42px); }
   }
 
-  /* ── Map iframe ──────────────────────────────── */
+  /* ── Map iframe ── */
   #map-frame {
     position: fixed;
-    top: var(--nav-h);
+    top: 48px;
     left: 0; right: 0; bottom: 0;
     width: 100%;
-    height: calc(100vh - var(--nav-h));
+    height: calc(100vh - 48px);
     border: none;
     display: block;
   }
-</style>
-<style id="sn-css">
-.sn{position:sticky;top:0;z-index:1000;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(100,255,180,0.12);padding:0 1.5rem;height:48px;display:flex;align-items:center;justify-content:space-between;font-family:'Space Grotesk',sans-serif}
-.sn a{font-size:0.82rem;color:rgba(255,255,255,0.5);text-decoration:none;white-space:nowrap;transition:color 0.2s}
-.sn a:hover{color:#64ffb4}
-.sn-r{display:flex;gap:1.2rem;align-items:center}
-.sn-hub{padding:0.25rem 0.7rem;border:1px solid rgba(255,255,255,0.12);border-radius:5px}
-.sn-hub:hover{border-color:rgba(100,255,180,0.3)}
-.sn-logout{color:rgba(255,100,100,0.7)!important;padding:0.25rem 0.7rem;border:1px solid rgba(255,100,100,0.2);border-radius:5px}
-.sn-logout:hover{color:#ff6464!important;border-color:rgba(255,100,100,0.4)}
-@media(max-width:480px){.sn{padding:0 0.75rem;height:42px}.sn a{font-size:0.72rem}.sn-r{gap:0.6rem}}
 </style>
 </head>
 <body>
