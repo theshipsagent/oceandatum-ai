@@ -548,6 +548,7 @@
                 document.querySelectorAll('.map-section').forEach(s => s.classList.remove('active'));
                 tab.classList.add('active');
                 document.getElementById(tab.dataset.tab).classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
 

@@ -30,26 +30,6 @@
             color: var(--neutral-dark);
             line-height: 1.6;
         }
-        .nav {
-            background: var(--neutral-dark);
-            padding: 10px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .nav a {
-            color: var(--white);
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: background 0.3s;
-        }
-        .nav a:hover, .nav a.active {
-            background: var(--primary);
-        }
         .header {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
             color: var(--white);
@@ -193,7 +173,6 @@
         @media (max-width: 768px) {
             .header h1 { font-size: 2rem; }
             .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
-            .nav { justify-content: center; }
         }
     </style>
 <style id="sn-css">

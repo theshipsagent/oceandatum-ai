@@ -54,39 +54,6 @@
             transform: scale(1.3);
         }
 
-        /* Top nav bar */
-        .top-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(55, 71, 79, 0.95);
-            padding: 12px 30px;
-            z-index: 999;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
-        .top-nav .logo {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-light);
-            letter-spacing: 1px;
-        }
-        .top-nav .nav-links {
-            display: flex;
-            gap: 25px;
-        }
-        .top-nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        .top-nav a:hover { opacity: 1; }
-
         /* Slide container */
         .slide {
             min-height: 100vh;
@@ -431,7 +398,7 @@
         /* Print styles */
         @media print {
             .slide { page-break-after: always; min-height: auto; padding: 40px; }
-            .top-nav, .slide-nav { display: none; }
+            .sn, .slide-nav { display: none; }
         }
     </style>
 <style id="sn-css">
