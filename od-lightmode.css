@@ -12,6 +12,27 @@
 /* ----- Page background & body text ----- */
 
 body.light-mode {
+    /* Override CSS variables used across all pages */
+    --accent: #0d3b66 !important;
+    --accent-hover: #155a99 !important;
+    --od-accent: #0d3b66 !important;
+    --bg: #f7fafc !important;
+    --bg-page: #f7fafc !important;
+    --text: #333 !important;
+    --sub: #666 !important;
+    --dim: #aaa !important;
+    --border: rgba(0,0,0,0.08) !important;
+    --glass: rgba(0,0,0,0.02) !important;
+    --ink: #1a1a1a !important;
+    --ink-secondary: #2a2a2a !important;
+    --ink-muted: #555 !important;
+    --ink-faint: #888 !important;
+    --rule: #333 !important;
+    --rule-light: #ccc !important;
+    --rule-faint: #e0e0e0 !important;
+    --card-bg: #f0f4f8 !important;
+    --card-border: #d6dfe8 !important;
+
     background: #f7fafc !important;
     color: #333 !important;
 }
@@ -1824,6 +1845,152 @@ body.light-mode .resp-num {
 
 body.light-mode .hero {
     border-bottom-color: rgba(0,0,0,0.06) !important;
+}
+
+
+/* =============================================================
+   PORT SULPHUR REPORT — remaining hardcoded green overrides
+   ============================================================= */
+
+body.light-mode .source-count {
+    background: rgba(13,59,102,0.08) !important;
+    border-color: rgba(13,59,102,0.2) !important;
+    color: #0d3b66 !important;
+}
+
+body.light-mode .source-count svg {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .finding-icon {
+    background: #0d3b66 !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .metric-icon {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .investor-icon {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .block-title {
+    border-bottom-color: rgba(13,59,102,0.15) !important;
+}
+
+body.light-mode .investment-intro {
+    background: rgba(13,59,102,0.04) !important;
+    border-left-color: #0d3b66 !important;
+}
+
+body.light-mode .view-btn:hover {
+    border-color: #0d3b66 !important;
+    color: #0d3b66 !important;
+}
+
+body.light-mode .revenue-model-block {
+    background: rgba(13,59,102,0.05) !important;
+    border-color: rgba(13,59,102,0.2) !important;
+}
+
+body.light-mode .zoom-btn:hover {
+    background: rgba(13,59,102,0.08) !important;
+    border-color: #0d3b66 !important;
+    color: #0d3b66 !important;
+}
+
+body.light-mode .legend-dot {
+    background: #0d3b66 !important;
+}
+
+body.light-mode .risk-subsection h5 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .window-section h5 {
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   LOGIN PAGE
+   ============================================================= */
+
+body.light-mode .login-button {
+    background: rgba(13,59,102,0.08) !important;
+    border-color: rgba(13,59,102,0.3) !important;
+    color: #0d3b66 !important;
+}
+
+body.light-mode .login-button:hover {
+    background: rgba(13,59,102,0.15) !important;
+    border-color: rgba(13,59,102,0.5) !important;
+    box-shadow: 0 4px 12px rgba(13,59,102,0.15) !important;
+}
+
+
+/* =============================================================
+   THINK TANK (tools/think-tank.html)
+   ============================================================= */
+
+body.light-mode .btn-edit {
+    background: rgba(13,59,102,0.06) !important;
+    border-color: rgba(13,59,102,0.2) !important;
+}
+
+body.light-mode .btn-edit:hover {
+    background: rgba(13,59,102,0.12) !important;
+}
+
+body.light-mode .s-indev {
+    background: rgba(13,59,102,0.08) !important;
+    border-color: rgba(13,59,102,0.2) !important;
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   USACE PERMITS (tools/usace-permits.html)
+   ============================================================= */
+
+body.light-mode .district-checkbox:hover {
+    background: rgba(13,59,102,0.05) !important;
+    border-color: rgba(13,59,102,0.3) !important;
+}
+
+body.light-mode .btn-success {
+    background: rgba(13,59,102,0.08) !important;
+    border-color: rgba(13,59,102,0.2) !important;
+    color: #0d3b66 !important;
+}
+
+body.light-mode .btn-success:hover {
+    background: rgba(13,59,102,0.15) !important;
+    border-color: rgba(13,59,102,0.3) !important;
+}
+
+
+/* =============================================================
+   EVIDENCE PAGE
+   ============================================================= */
+
+body.light-mode .drive-btn:hover {
+    box-shadow: 0 6px 20px rgba(13,59,102,0.2) !important;
+}
+
+
+/* =============================================================
+   TAMPA CEMENT / PROJECT PAGES — misc
+   ============================================================= */
+
+body.light-mode .success-box {
+    background: rgba(13,59,102,0.06) !important;
+    border-left-color: #0d3b66 !important;
+}
+
+body.light-mode .tl-dot {
+    background: #0d3b66 !important;
 }
 
 
