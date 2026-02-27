@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Missing Role in Maritime's AI Transformation | OceanDatum</title>
+<title>Bridging the Latent Space | OceanDatum</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -39,8 +39,9 @@ nav{position:sticky;top:0;height:var(--nav-h);background:rgba(10,10,10,0.93);
 .hero-meta{font-size:0.75rem;color:var(--dim);display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}
 .tag{font-size:0.7rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:0.2rem 0.7rem;border-radius:20px;background:rgba(100,255,180,0.07);color:rgba(100,255,180,0.7);border:1px solid rgba(100,255,180,0.2)}
 
-/* Stats bar */
-.stats-bar{max-width:860px;margin:2rem auto 0;padding:0 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+/* Stats bar — fixed centering */
+.stats-bar{max-width:860px;margin:2rem auto 0;padding:0 2rem}
+.stats-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);border-radius:10px;overflow:hidden;border:1px solid var(--border)}
 .stat-cell{background:var(--glass);padding:1.1rem 1.25rem;text-align:center}
 .stat-cell .val{font-size:1.4rem;font-weight:700;color:var(--accent);line-height:1;margin-bottom:0.25rem}
 .stat-cell .lbl{font-size:0.65rem;color:var(--sub);letter-spacing:0.04em;text-transform:uppercase}
@@ -68,12 +69,12 @@ nav{position:sticky;top:0;height:var(--nav-h);background:rgba(10,10,10,0.93);
 .wp-p em{color:rgba(255,255,255,0.75);font-style:italic}
 .wp-ul{list-style:none;padding:0;margin:0.5rem 0 1rem;display:flex;flex-direction:column;gap:0.45rem}
 .wp-ul li{font-size:0.86rem;color:rgba(255,255,255,0.6);line-height:1.6;padding-left:1.1rem;position:relative}
-.wp-ul li::before{content:'·';position:absolute;left:0;color:var(--accent);font-weight:700}
+.wp-ul li::before{content:'\b7';position:absolute;left:0;color:var(--accent);font-weight:700}
 .wp-ul li strong{color:var(--text)}
 .callout{background:rgba(100,255,180,0.04);border:1px solid rgba(100,255,180,0.15);border-left:3px solid var(--accent);border-radius:8px;padding:1.1rem 1.4rem;font-size:0.87rem;color:rgba(255,255,255,0.7);line-height:1.7;margin:1.25rem 0}
 .callout strong{color:var(--text)}
 .callout.amber{background:rgba(255,193,7,0.04);border-color:rgba(255,193,7,0.2);border-left-color:rgba(255,193,7,0.7)}
-.callout.closing{font-size:0.92rem;font-style:italic;text-align:center;border-left:none;border-color:rgba(100,255,180,0.2);padding:1.5rem 2rem}
+.callout.closing{font-size:0.9rem;font-style:italic;text-align:center;border-left:none;border-color:rgba(100,255,180,0.2);padding:1.5rem 2rem}
 
 /* Use case cards */
 .case-grid{display:flex;flex-direction:column;gap:1.25rem;margin:1rem 0}
@@ -95,7 +96,7 @@ nav{position:sticky;top:0;height:var(--nav-h);background:rgba(10,10,10,0.93);
 .spec-item p,.spec-item li{font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.55}
 .spec-item ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:0.3rem}
 .spec-item ul li{padding-left:0.9rem;position:relative}
-.spec-item ul li::before{content:'·';position:absolute;left:0;color:var(--accent)}
+.spec-item ul li::before{content:'\b7';position:absolute;left:0;color:var(--accent)}
 .spec-divider{height:1px;background:rgba(255,255,255,0.06);margin:1.25rem 0}
 
 /* Why now cards */
@@ -105,14 +106,6 @@ nav{position:sticky;top:0;height:var(--nav-h);background:rgba(10,10,10,0.93);
 .why-card h4{font-size:0.88rem;font-weight:700;margin-bottom:0.5rem}
 .why-card p{font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.6}
 
-/* Title options table */
-.tbl-wrap{border-radius:10px;border:1px solid var(--border);overflow:hidden;margin:1.25rem 0 1.75rem;overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:0.8rem}
-thead th{background:rgba(100,255,180,0.06);color:rgba(100,255,180,0.8);font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.65rem 1rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.12)}
-tbody td{padding:0.65rem 1rem;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;color:rgba(255,255,255,0.6);line-height:1.45}
-tbody td:first-child{color:var(--text);font-weight:600}
-tbody tr:last-child td{border-bottom:none}
-
 /* Responsibility section numbers */
 .resp-num{display:inline-block;width:24px;height:24px;border-radius:50%;background:rgba(100,255,180,0.1);border:1px solid rgba(100,255,180,0.3);color:var(--accent);font-size:0.72rem;font-weight:700;text-align:center;line-height:22px;margin-right:0.5rem;flex-shrink:0}
 .resp-header{display:flex;align-items:center;margin:1.5rem 0 0.5rem}
@@ -121,7 +114,7 @@ tbody tr:last-child td{border-bottom:none}
 footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:0.75rem;color:var(--dim)}
 
 @media(max-width:640px){
-  .hero,.toc,.article{padding-left:1.25rem;padding-right:1.25rem}
+  .hero,.toc,.article,.stats-bar{padding-left:1.25rem;padding-right:1.25rem}
   .toc ol{grid-template-columns:1fr}
   .why-grid,.spec-grid{grid-template-columns:1fr}
   .case-row{grid-template-columns:1fr;gap:0.2rem}
@@ -140,167 +133,159 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 </nav>
 
 <div class="hero">
-  <div class="hero-eyebrow">Maritime Intelligence &middot; Role Definition Paper</div>
-  <h1>The Missing Role in Maritime&rsquo;s AI Transformation</h1>
-  <p class="hero-sub">Why Every Terminal Operator, Ship Agency, and Stevedore Needs a Domain Intelligence Architect &mdash; And Doesn&rsquo;t Know It Yet</p>
+  <div class="hero-eyebrow">Maritime Intelligence &middot; Role Definition</div>
+  <h1>Bridging the Latent Space</h1>
+  <p class="hero-sub">The Missing Role in Maritime&rsquo;s AI Transformation</p>
   <div class="hero-meta">
     <span class="tag">Industry Analysis</span>
     <span class="tag">AI Strategy</span>
     <span class="tag">Role Definition</span>
-    <span style="color:var(--dim)">William S. Davis III &mdash; Maritime Industry Consultant</span>
+    <span style="color:var(--dim)">William S. Davis III</span>
   </div>
 </div>
 
-<div class="stats-bar" style="margin:2rem 2rem 0;max-width:860px">
-  <div class="stat-cell"><div class="val">15+</div><div class="lbl">Years Required</div></div>
-  <div class="stat-cell"><div class="val">5</div><div class="lbl">Responsibility Areas</div></div>
-  <div class="stat-cell"><div class="val">4</div><div class="lbl">Live Use Cases</div></div>
-  <div class="stat-cell"><div class="val">90d</div><div class="lbl">Systems Operational</div></div>
-  <div class="stat-cell"><div class="val">C-Suite</div><div class="lbl">Reports To</div></div>
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-cell"><div class="val">6</div><div class="lbl">Responsibility Areas</div></div>
+    <div class="stat-cell"><div class="val">6</div><div class="lbl">Use Cases</div></div>
+    <div class="stat-cell"><div class="val">Global</div><div class="lbl">Scope</div></div>
+    <div class="stat-cell"><div class="val">C-Suite</div><div class="lbl">Reports To</div></div>
+  </div>
 </div>
 
 <div class="toc">
   <div class="toc-box">
     <div class="toc-title">Contents</div>
     <ol>
-      <li><a href="#s1">The Problem No One Can Name</a></li>
-      <li><a href="#s2">The Latent Space Framework</a></li>
-      <li><a href="#s3">Role Definition</a></li>
+      <li><a href="#s1">The Problem</a></li>
+      <li><a href="#s2">The Latent Space</a></li>
+      <li><a href="#s3">The Role</a></li>
       <li><a href="#s4">Responsibility Areas</a></li>
-      <li><a href="#s5">Qualifications That Actually Matter</a></li>
-      <li><a href="#s6">Use Cases: What This Role Delivers</a></li>
+      <li><a href="#s5">Qualifications</a></li>
+      <li><a href="#s6">Use Cases</a></li>
       <li><a href="#s7">Why Now</a></li>
-      <li><a href="#s8">One-Page Role Specification</a></li>
+      <li><a href="#s8">Role Specification</a></li>
     </ol>
   </div>
 </div>
 
 <div class="article">
 
-<!-- S1 -->
+<!-- S1: The Problem -->
 <div class="wp-section">
   <span class="wp-section-anchor" id="s1"></span>
   <div class="section-label">The Problem</div>
-  <div class="section-title">The Problem No One Can Name</div>
-  <p class="wp-p">The maritime industry is sitting on a paradox. AI tools have never been more powerful. Trade data has never been more accessible. Automation platforms promise to revolutionize port operations, cargo logistics, and commercial decision-making.</p>
-  <p class="wp-p">And yet &mdash; almost none of it is working the way it should.</p>
-  <p class="wp-p">Terminal operators are buying dashboards nobody uses. Ship agencies are drowning in data they can&rsquo;t interpret. Stevedoring companies are watching competitors talk about &ldquo;digital transformation&rdquo; while their own operations still run on tribal knowledge, spreadsheets, and phone calls.</p>
-  <div class="callout amber">The problem isn&rsquo;t the technology. The technology works. The problem isn&rsquo;t the people. The people know their business cold. <strong>The problem is the space between them.</strong></div>
-  <p class="wp-p">There is no one in the room who can translate thirty years of vessel nomination patterns into a structured data model. No one who can look at a government trade manifest dataset and see the commercial intelligence buried inside it. No one who can sit with a terminal operator and say, &ldquo;Here&rsquo;s what AI can actually do for your specific cargo mix, your specific berth constraints, your specific customer relationships&rdquo; &mdash; and then build it.</p>
-  <p class="wp-p"><strong>That role doesn&rsquo;t exist yet. This paper defines it.</strong></p>
+  <div class="section-title">The Problem</div>
+  <p class="wp-p">The maritime industry has access to more data and more capable AI tools than at any point in its history. Vessel tracking, government trade manifests, commodity market feeds, regulatory filings, and operational sensor data are all programmatically accessible. Large language models, automated pipelines, and machine learning platforms have moved from research tools to operational instruments.</p>
+  <p class="wp-p">And yet &mdash; the industry is struggling to convert any of it into sustained commercial value.</p>
+  <p class="wp-p">Shipowners invest in fleet performance platforms that operations teams don&rsquo;t trust. Commodity traders subscribe to market intelligence services that no one integrates. Terminal operators buy dashboards that look impressive in board presentations and collect dust afterward. Ship managers deploy predictive maintenance systems that generate alerts no one acts on.</p>
+  <div class="callout amber">The technology works. The people know their business. <strong>The problem is the space between them.</strong></div>
+  <p class="wp-p">There is no one in the room who can translate decades of operational knowledge &mdash; vessel nomination patterns, charter party economics, berth utilization dynamics, commodity flow relationships &mdash; into structured, AI-ready frameworks. And there is no one on the technology side who understands which data points actually drive commercial decisions in maritime operations.</p>
+  <p class="wp-p">That gap has a name in machine learning. It is called the <strong>latent space</strong>.</p>
 </div>
 
-<!-- S2 -->
+<!-- S2: The Latent Space -->
 <div class="wp-section">
   <span class="wp-section-anchor" id="s2"></span>
   <div class="section-label">Framework</div>
-  <div class="section-title">The Latent Space: Understanding the Gap</div>
-  <p class="wp-p">In machine learning, &ldquo;latent space&rdquo; refers to the hidden dimensions where meaning lives &mdash; the compressed representation between raw input and useful output. A model doesn&rsquo;t just memorize data; it learns to navigate a space of relationships that aren&rsquo;t visible on the surface.</p>
-  <p class="wp-p">The maritime industry has its own latent space problem. On one side: <strong>business expertise</strong> &mdash; decades of operational knowledge about how cargo moves, how vessels are coordinated, how commercial relationships drive port throughput. On the other side: <strong>AI capability</strong> &mdash; models that can process hundreds of thousands of trade records, identify supply chain patterns, optimize logistics networks, and generate predictive intelligence.</p>
-  <p class="wp-p">Between them: nothing. A void.</p>
-  <p class="wp-p">The business experts can&rsquo;t access the AI because they don&rsquo;t speak its language. The AI engineers can&rsquo;t build for the business because they don&rsquo;t understand what matters &mdash; which vessel movements signal a market shift, why a particular berth assignment decision has downstream commercial consequences, how a change in rail tariff structure reshapes an entire commodity corridor.</p>
-  <div class="callout">This gap isn&rsquo;t a training problem. You can&rsquo;t solve it with a workshop or a SaaS subscription. It requires a person &mdash; someone who has lived inside maritime operations for decades and who has also developed the technical fluency to architect AI-driven systems from the inside. <strong>That person is the Domain Intelligence Architect.</strong></div>
+  <div class="section-title">The Latent Space</div>
+  <p class="wp-p">In machine learning, &ldquo;latent space&rdquo; refers to the hidden representational layer between raw input and useful output &mdash; the compressed space where relationships and meaning exist but are not directly visible.</p>
+  <p class="wp-p">The maritime industry has its own latent space. On one side: <strong>deep operational expertise</strong> accumulated over decades &mdash; how cargo moves, how vessels are coordinated, how commercial relationships shape port throughput, how regulatory changes ripple through supply chains. On the other side: <strong>AI systems</strong> capable of processing millions of trade records, identifying patterns across global vessel movements, optimizing logistics networks, and generating predictive intelligence.</p>
+  <p class="wp-p">Between them: a structural gap.</p>
+  <p class="wp-p">The operational experts cannot access the AI because they do not speak its language. The AI engineers cannot build effectively for the business because they do not understand what matters &mdash; which vessel movements indicate a market shift, why a specific berth assignment has downstream commercial consequences, how a change in freight economics reshapes an entire commodity corridor.</p>
+  <div class="callout">This is not a training gap. It is not solved by a software subscription or a consulting engagement. It requires a practitioner who has worked inside maritime operations and has developed the technical capability to architect intelligence systems informed by that experience.</div>
 </div>
 
-<!-- S3 -->
+<!-- S3: The Role -->
 <div class="wp-section">
   <span class="wp-section-anchor" id="s3"></span>
   <div class="section-label">The Role</div>
-  <div class="section-title">Domain Intelligence Architect &mdash; Maritime &amp; Port Operations</div>
-
-  <div class="sub-title">Title Options</div>
-  <div class="tbl-wrap">
-    <table>
-      <thead><tr><th>Title Variant</th><th>Emphasis</th><th>Best Fit For</th></tr></thead>
-      <tbody>
-        <tr><td>Domain Intelligence Architect</td><td>Bridge function between expertise and technology</td><td>Technology-forward organizations, recommended default</td></tr>
-        <tr><td>Maritime AI Transformation Officer</td><td>Strategic leadership of digital change</td><td>Organizations mid-transformation with exec sponsorship</td></tr>
-        <tr><td>Commercial Intelligence Strategist &mdash; Maritime Operations</td><td>Revenue and market intelligence output</td><td>Commercially-driven ship agency or commodity trader</td></tr>
-        <tr><td>Director of Operational Intelligence &mdash; Port &amp; Terminal Systems</td><td>Integration into operations leadership</td><td>Terminal operators with existing ops structure</td></tr>
-        <tr><td>Chief Maritime Intelligence Officer</td><td>Executive-level strategic function</td><td>Organizations ready to elevate this to C-suite</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="wp-p" style="font-size:0.8rem;color:var(--dim)">Recommended for maximum market recognition and recruiter discoverability: <strong style="color:var(--text)">Domain Intelligence Architect</strong> with subtitle <em>Maritime &amp; Port Operations</em>.</p>
-
-  <div class="sub-title">Role Definition</div>
-  <p class="wp-p">The Domain Intelligence Architect serves as the translation layer between maritime domain expertise and artificial intelligence capability. This role does not replace data scientists, software engineers, or operations managers. <strong>It makes all of them effective</strong> by providing the contextual intelligence that determines whether an AI initiative produces actionable commercial value or expensive noise.</p>
-  <div class="callout">This is not an IT role. It is not a consulting engagement. It is a <strong>permanent strategic function</strong> that sits at the intersection of operations, commercial strategy, and technology &mdash; reporting to the C-suite and embedded in the decision-making architecture of the organization.</div>
-
-  <p class="wp-p"><strong>Core Function:</strong> Translate the unstructured, experiential knowledge that drives maritime commercial operations into structured, AI-ready frameworks that produce measurable intelligence and competitive advantage.</p>
+  <div class="section-title">Domain Intelligence Architect &mdash; Maritime Operations</div>
+  <p class="wp-p">The Domain Intelligence Architect serves as the translation layer between maritime domain expertise and AI capability. The role does not replace data scientists, software engineers, or operations managers. It makes them effective by providing the operational context that determines whether an AI initiative produces actionable intelligence or expensive noise.</p>
+  <p class="wp-p">This is a strategic function that sits at the intersection of operations, commercial strategy, and technology &mdash; working across departments to connect data systems with the people who make decisions.</p>
+  <p class="wp-p"><strong>Core Function:</strong> Translate the unstructured operational knowledge that drives maritime commercial decisions into structured, AI-informed frameworks that produce measurable intelligence.</p>
 
   <div class="sub-title">What This Role Is Not</div>
   <ul class="wp-ul">
     <li><strong>Not a data scientist.</strong> Data scientists build models. This role defines what models need to exist and why.</li>
-    <li><strong>Not an IT director.</strong> IT manages infrastructure. This role architects the intelligence layer that runs on top of it.</li>
-    <li><strong>Not a management consultant.</strong> Consultants deliver reports and leave. This role is embedded, permanent, and accountable for outcomes.</li>
-    <li><strong>Not a business analyst.</strong> Analysts describe what happened. This role builds systems that predict what will happen and recommend what to do about it.</li>
+    <li><strong>Not an IT director.</strong> IT manages infrastructure. This role architects the intelligence layer that runs on it.</li>
+    <li><strong>Not a management consultant.</strong> Consultants deliver reports and leave. This role is embedded and accountable for outcomes.</li>
+    <li><strong>Not a business analyst.</strong> Analysts describe what happened. This role builds systems that inform what to do next.</li>
   </ul>
 </div>
 
-<!-- S4 -->
+<!-- S4: Responsibility Areas -->
 <div class="wp-section">
   <span class="wp-section-anchor" id="s4"></span>
   <div class="section-label">Responsibilities</div>
   <div class="section-title">Responsibility Areas</div>
 
-  <div class="resp-header"><span class="resp-num">1</span><span class="resp-header-text">Trade Flow Intelligence &amp; Market Sensing</span></div>
+  <div class="resp-header"><span class="resp-num">1</span><span class="resp-header-text">Commercial Intelligence &amp; Market Analytics</span></div>
   <ul class="wp-ul">
-    <li>Design and operate AI-driven commodity trade flow analysis systems using government manifest data, vessel tracking, and commercial intelligence sources</li>
-    <li>Build entity resolution and classification pipelines for bulk commodity import/export tracking across U.S. ports</li>
-    <li>Develop predictive models for cargo volume forecasting by commodity, origin, and consignee</li>
-    <li>Transform raw Customs and Border Protection data into actionable commercial intelligence for terminal marketing and capacity planning</li>
+    <li>Design commodity trade flow analysis systems using government manifest data, vessel tracking, and commercial intelligence sources</li>
+    <li>Build entity resolution and classification pipelines for cargo import/export tracking across port systems</li>
+    <li>Develop cargo volume forecasting models by commodity, origin, consignee, and trade lane</li>
+    <li>Integrate disparate market intelligence sources into unified analytical frameworks</li>
   </ul>
 
-  <div class="resp-header"><span class="resp-num">2</span><span class="resp-header-text">Port Operations &amp; Terminal Decision Support</span></div>
+  <div class="resp-header"><span class="resp-num">2</span><span class="resp-header-text">Ocean Vessel Operations &mdash; Commercial &amp; Technical</span></div>
   <ul class="wp-ul">
-    <li>Architect AI systems for berth scheduling optimization, vessel turnaround analysis, and throughput forecasting</li>
-    <li>Build vessel voyage analysis tools that connect operational data to commercial outcomes</li>
-    <li>Develop infrastructure assessment frameworks for terminal acquisition due diligence, combining environmental, regulatory, and market data</li>
-    <li>Create automated monitoring systems for competitive terminal activity and market share analysis</li>
+    <li>Architect decision support for voyage estimation, fixture analysis, and charter party risk assessment</li>
+    <li>Build frameworks connecting vessel performance data to commercial outcomes &mdash; TCE optimization, bunker procurement, speed-to-market trade-offs</li>
+    <li>Develop maintenance-to-commercial decision bridges linking predictive maintenance outputs to fleet scheduling and charter obligations</li>
+    <li>Design fleet performance benchmarking systems connecting operational KPIs to actionable intelligence</li>
   </ul>
 
-  <div class="resp-header"><span class="resp-num">3</span><span class="resp-header-text">Transportation Economics &amp; Supply Chain Modeling</span></div>
+  <div class="resp-header"><span class="resp-num">3</span><span class="resp-header-text">Port Operations &amp; Terminal Development</span></div>
   <ul class="wp-ul">
-    <li>Build multi-modal freight cost models integrating rail, barge, truck, and ocean transportation economics</li>
-    <li>Develop corridor analysis tools for commodity supply chain optimization (Mississippi River barge economics, Class I railroad tariff modeling)</li>
+    <li>Architect AI systems for berth scheduling, vessel turnaround analysis, and throughput optimization &mdash; with emphasis on bulk cargo operations where standardized solutions lag behind container terminal technology</li>
+    <li>Develop infrastructure assessment frameworks for terminal investment due diligence, integrating engineering, environmental, regulatory, and market demand data</li>
+    <li>Build competitive intelligence systems for terminal market share analysis and cargo flow monitoring</li>
+    <li>Model terminal capacity against commodity demand forecasts and transportation network constraints</li>
+  </ul>
+
+  <div class="resp-header"><span class="resp-num">4</span><span class="resp-header-text">Supply Chain &amp; Transportation Economics</span></div>
+  <ul class="wp-ul">
+    <li>Build multi-modal freight cost models integrating ocean, rail, barge, and truck economics across dry bulk, liquid bulk, and breakbulk supply chains</li>
+    <li>Develop corridor analysis tools for supply chain optimization across competing routing options</li>
     <li>Architect geospatial databases linking facility-level data to transportation network capabilities</li>
-    <li>Model landed cost scenarios across competing port-to-destination routing options</li>
+    <li>Model landed cost scenarios incorporating freight, handling, storage, and regulatory cost variables</li>
   </ul>
 
-  <div class="resp-header"><span class="resp-num">4</span><span class="resp-header-text">Regulatory &amp; Commercial Intelligence</span></div>
+  <div class="resp-header"><span class="resp-num">5</span><span class="resp-header-text">Regulatory, Trade &amp; Maritime Compliance</span></div>
   <ul class="wp-ul">
-    <li>Monitor and analyze regulatory developments affecting maritime operations (USTR Section 301 maritime actions, CBP procedural changes, environmental compliance)</li>
-    <li>Build automated intelligence distribution systems for industry stakeholders</li>
-    <li>Develop structured legal and regulatory research frameworks applicable to maritime employment, admiralty jurisdiction, and trade compliance</li>
+    <li>Monitor and structure regulatory developments &mdash; CII/EEXI compliance, EU ETS and FuelEU Maritime cost modeling, trade policy actions, sanctions frameworks, port state control trends</li>
+    <li>Build compliance intelligence systems that connect regulatory requirements to operational and commercial decision-making</li>
+    <li>Develop structured research frameworks for trade compliance, environmental regulation, and maritime safety requirements</li>
+    <li>Integrate compliance cost modeling into voyage estimation and fleet strategy</li>
   </ul>
 
-  <div class="resp-header"><span class="resp-num">5</span><span class="resp-header-text">AI System Architecture &amp; Implementation</span></div>
+  <div class="resp-header"><span class="resp-num">6</span><span class="resp-header-text">AI System Architecture &amp; Implementation</span></div>
   <ul class="wp-ul">
-    <li>Serve as the requirements authority for all AI/ML initiatives, ensuring technology investments solve actual business problems</li>
+    <li>Serve as the requirements authority for AI/ML initiatives, ensuring technology investments address actual operational problems</li>
     <li>Translate operational workflows into data pipeline specifications</li>
-    <li>Design human-in-the-loop systems where AI augments rather than replaces domain expertise</li>
-    <li>Evaluate and select AI tools, platforms, and vendors based on maritime-specific requirements</li>
+    <li>Design human-in-the-loop systems where AI augments domain expertise</li>
+    <li>Evaluate AI tools, platforms, and vendors against maritime-specific requirements</li>
     <li>Build proof-of-concept implementations that demonstrate value before full-scale deployment</li>
+    <li>Facilitate adoption across departments &mdash; bridging the gap between technical teams and operational end users</li>
   </ul>
 </div>
 
-<!-- S5 -->
+<!-- S5: Qualifications -->
 <div class="wp-section">
   <span class="wp-section-anchor" id="s5"></span>
   <div class="section-label">Qualifications</div>
-  <div class="section-title">Qualifications That Actually Matter</div>
-  <div class="callout amber">This role cannot be filled by a technologist who reads about maritime operations, or by a maritime professional who attends an AI conference. The qualifying profile requires both &mdash; simultaneously.</div>
+  <div class="section-title">Qualifications</div>
   <ul class="wp-ul">
-    <li><strong>15+ years in maritime operations</strong> spanning ship agency, terminal operations, stevedoring, or port management with direct commercial responsibility</li>
-    <li><strong>Hands-on AI implementation experience</strong> &mdash; not theoretical awareness, but actual construction of data pipelines, analytical models, and intelligence systems using current AI tools</li>
-    <li><strong>Commodity market fluency</strong> across bulk materials (cement, aggregates, metals, forest products, agricultural commodities) with understanding of how physical supply chains create commercial leverage</li>
-    <li><strong>Multi-port operational knowledge</strong> across U.S. Atlantic and Gulf Coast port systems with understanding of competitive dynamics, infrastructure constraints, and regulatory environments</li>
-    <li><strong>Transportation economics expertise</strong> spanning ocean, rail, barge, and truck modes with ability to model total logistics costs and identify optimization opportunities</li>
+    <li><strong>Maritime operations experience</strong> spanning ship agency, terminal operations, vessel operations, or port management with direct commercial exposure</li>
+    <li><strong>Hands-on AI/ML implementation</strong> &mdash; demonstrated ability to build data pipelines, analytical models, and intelligence systems using current tools</li>
+    <li><strong>Commodity market knowledge</strong> across bulk materials with understanding of how physical supply chains create commercial dynamics</li>
+    <li><strong>Multi-port operational perspective</strong> with understanding of competitive positioning, infrastructure constraints, and regulatory environments across major trading regions</li>
+    <li><strong>Transportation economics fluency</strong> spanning ocean, rail, barge, and truck modes with ability to model logistics costs across competing options</li>
   </ul>
 </div>
 
-<!-- S6 -->
+<!-- S6: Use Cases -->
 <div class="wp-section">
   <span class="wp-section-anchor" id="s6"></span>
   <div class="section-label">Use Cases</div>
@@ -309,40 +294,56 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
     <div class="case-card">
       <div class="case-num">Case 1</div>
-      <h4>Ocean Manifest Intelligence System</h4>
-      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">A terminal operator wants to understand competitive cargo flows across a port range but has no way to process the hundreds of thousands of government trade records published annually.</div></div>
-      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">Designs a classification taxonomy based on commodity expertise, builds an automated entity resolution pipeline to match importers/exporters across inconsistent government records, and delivers a live intelligence system that tracks market share, identifies emerging trade lanes, and flags competitive threats &mdash; in terms the commercial team actually understands.</div></div>
-      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">The company either ignores the data entirely or pays a technology vendor who delivers a technically correct but commercially meaningless dashboard.</div></div>
+      <h4>Commodity Market Analytics &amp; Trade Research</h4>
+      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">An organization needs to understand competitive cargo flows, emerging trade lanes, and market share dynamics across a port range or commodity sector &mdash; but has no way to systematically process the hundreds of thousands of government trade records, vessel movements, and commercial data points generated annually.</div></div>
+      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">A structured intelligence system combining entity resolution across inconsistent shipper/consignee records, commodity classification informed by trade knowledge, and analytical frameworks that translate raw data into market intelligence the commercial team can act on. Connects cargo flow data to vessel tracking, freight economics, and supply chain context.</div></div>
+      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">The organization either ignores available data or purchases market intelligence platforms that deliver technically accurate but commercially disconnected outputs &mdash; because no one specified what questions the system needed to answer.</div></div>
     </div>
 
     <div class="case-card">
       <div class="case-num">Case 2</div>
-      <h4>Deep-Water Terminal Acquisition Due Diligence</h4>
-      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">An investor is evaluating a deep-water terminal asset and needs to understand whether the facility&rsquo;s commercial potential justifies the acquisition price.</div></div>
-      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">Builds a multi-layer assessment combining infrastructure condition analysis, environmental and regulatory risk profiling, commodity market demand forecasting, transportation network connectivity modeling, and competitive positioning analysis &mdash; synthesized into a decision framework that maps directly to investment thesis assumptions.</div></div>
-      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">The investor relies on separate engineering, environmental, and financial consultants who each deliver siloed reports that nobody integrates into a coherent commercial picture.</div></div>
+      <h4>Deepwater Port Operations &amp; Development</h4>
+      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">An investor or operator evaluating a port facility &mdash; whether for acquisition, expansion, or greenfield development &mdash; receives separate engineering assessments, environmental reports, market studies, and financial projections from consultants who work independently. No one integrates infrastructure capacity, commodity demand, transportation connectivity, regulatory risk, and competitive positioning into a coherent picture.</div></div>
+      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">A multi-layer assessment framework connecting physical infrastructure capability to actual commodity market demand, modeling throughput against realistic trade flow scenarios, and evaluating competitive positioning within the relevant port range &mdash; particularly for bulk operations, where standardized analytical tools lag behind the container sector.</div></div>
+      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">Investment decisions rely on siloed consultant reports that never connect to the commodity market dynamics that ultimately determine whether a facility fills its capacity.</div></div>
     </div>
 
     <div class="case-card">
       <div class="case-num">Case 3</div>
-      <h4>Rail &amp; Barge Freight Cost Optimization</h4>
-      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">A bulk commodity importer needs to evaluate whether shifting volume from truck to rail or barge reduces total landed cost at inland destinations.</div></div>
-      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">Architects a multi-modal transportation cost model using Surface Transportation Board tariff data, Corps of Engineers waterway economics, and NTAD geospatial network data &mdash; producing a scenario analysis tool that lets the commercial team test routing alternatives against actual freight economics rather than broker quotes.</div></div>
-      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">Logistics decisions are made on incomplete information, gut instinct, and whatever rate a broker quoted last Tuesday.</div></div>
+      <h4>Supply Chain &amp; Logistics Optimization</h4>
+      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">A commodity shipper or trader managing supply chains across ocean, rail, barge, and truck &mdash; whether dry bulk, liquid bulk, or breakbulk &mdash; needs to evaluate routing alternatives, optimize landed costs, and respond to disruptions. Logistics decisions are typically made on incomplete freight data, individual broker quotes, and institutional habit.</div></div>
+      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">Multi-modal transportation cost models integrating actual freight economics across all modes &mdash; tariff structures, waterway economics, port handling costs, storage, and regulatory surcharges. Scenario analysis tools that test routing alternatives against real cost inputs. Supply chain mapping that identifies optimization opportunities invisible to single-mode analysis.</div></div>
+      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">Routing decisions are based on the last quote received rather than total system economics. Opportunities to reduce landed cost by shifting modes, consolidating volumes, or repositioning inventory go unidentified.</div></div>
     </div>
 
     <div class="case-card">
       <div class="case-num">Case 4</div>
-      <h4>Regulatory Impact Assessment &mdash; USTR Section 301</h4>
-      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">A new USTR Section 301 action proposes fees on Chinese-built or Chinese-operated vessels calling U.S. ports. A terminal operator needs to understand the commercial exposure.</div></div>
-      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">Builds a vessel fleet analysis identifying affected tonnage in the operator&rsquo;s trade lanes, models the fee impact on freight economics, assesses the constitutional and administrative law vulnerabilities of the proposed rule, and delivers a scenario matrix showing exposure under multiple regulatory outcomes.</div></div>
-      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">The operator reads trade press summaries and hopes someone else figures out what it means for their business.</div></div>
+      <h4>Maritime &amp; Trade Compliance</h4>
+      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">The regulatory environment affecting maritime operations is accelerating &mdash; CII phase-in, EU ETS expansion, FuelEU Maritime intensity limits, sanctions frameworks, port state control changes, and trade policy actions. Most organizations track these developments reactively and in silos, with compliance teams disconnected from commercial decision-making.</div></div>
+      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">Compliance intelligence systems connecting regulatory requirements directly to commercial and operational decisions. CII trajectory modeling integrated with charter strategy. EU ETS cost exposure built into voyage estimation. Structured scenario analysis translating policy changes into quantified commercial impact across affected trade lanes and vessel classes.</div></div>
+      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">Compliance is treated as a reporting exercise rather than a variable in commercial strategy. Regulatory costs are discovered after fixtures are confirmed rather than factored into the decision.</div></div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-num">Case 5</div>
+      <h4>Ocean Vessel Commercial Operations</h4>
+      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">Commercial vessel management &mdash; chartering, voyage estimation, post-fixture execution, laytime and demurrage, claims &mdash; involves multiple departments working with overlapping but disconnected data. AI tools exist for individual functions but no system connects charter party terms to operational constraints to compliance obligations to financial outcomes in a single decision flow.</div></div>
+      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">An integrated commercial operations framework connecting fixture economics with operational reality &mdash; voyage estimation to berth availability, charter party analysis to CII budget impact, demurrage exposure to counterparty risk profiles, and claims identification to contract terms. A shared intelligence base replacing siloed departmental workflows.</div></div>
+      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">Departments sub-optimize independently. A fixture is confirmed before operations discovers a constraint. A CII-damaging voyage is accepted because the chartering desk does not see the regulatory cost. A valid claim goes unidentified because the documents are scattered across systems.</div></div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-num">Case 6</div>
+      <h4>Ocean Vessel Technical Operations</h4>
+      <div class="case-row"><div class="case-row-label">Problem</div><div class="case-row-text">Technical vessel management &mdash; maintenance planning, dry-docking, equipment monitoring, class compliance, hull performance &mdash; generates increasing volumes of sensor data and predictive analytics. But the output rarely connects to commercial decision-making. A maintenance alert does not tell the fleet manager whether to drydock now or push the window to complete a high-earning fixture.</div></div>
+      <div class="case-row"><div class="case-row-label">Delivers</div><div class="case-row-text accent">A decision bridge between technical and commercial operations &mdash; translating maintenance predictions into commercial terms (repair cost scenarios, off-hire exposure, fixture opportunity cost), connecting hull performance data to voyage economics, and aligning dry-dock scheduling with market conditions and class survey windows.</div></div>
+      <div class="case-row"><div class="case-row-label">Without It</div><div class="case-row-text warn">Maintenance decisions are either too conservative (pulling vessels from profitable trades prematurely) or too aggressive (running to failure at significantly higher emergency repair costs). Technical and commercial teams operate on different data and different priorities.</div></div>
     </div>
 
   </div>
 </div>
 
-<!-- S7 -->
+<!-- S7: Why Now -->
 <div class="wp-section">
   <span class="wp-section-anchor" id="s7"></span>
   <div class="section-label">Timing</div>
@@ -351,29 +352,28 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <div class="why-card">
       <div class="why-num">01</div>
       <h4>AI Capability Has Crossed the Utility Threshold</h4>
-      <p>Large language models, automated data pipelines, and accessible machine learning tools have moved from research curiosities to operational instruments. For the first time, a single skilled practitioner can build intelligence systems that previously required a full engineering team. But only if that practitioner knows what to build.</p>
+      <p>Current tools allow a skilled practitioner to build intelligence systems that previously required dedicated engineering teams. But capability without domain context produces tools that are technically functional and operationally irrelevant. Industry surveys consistently show the gap between AI pilots and scaled deployment remains wide &mdash; not because the technology fails, but because implementations lack operational knowledge.</p>
     </div>
     <div class="why-card">
       <div class="why-num">02</div>
-      <h4>Data Availability Has Exploded</h4>
-      <p>Government trade data, vessel tracking feeds, regulatory filings, geospatial infrastructure databases, and commodity market intelligence are all programmatically accessible. The bottleneck is no longer access &mdash; it&rsquo;s interpretation. Raw data without domain context is noise.</p>
+      <h4>Data Availability Has Outpaced Interpretation</h4>
+      <p>Government trade data, vessel tracking, regulatory filings, commodity market feeds, and operational sensor data are all accessible. The constraint is no longer access. It is the ability to determine which data matters, how it connects, and what it means in operational terms. Data without domain context is noise.</p>
     </div>
     <div class="why-card">
       <div class="why-num">03</div>
-      <h4>The Competitive Window Is Open &mdash; But Closing</h4>
-      <p>The maritime companies that build domain-aware AI capability now will establish intelligence advantages that compound over time. Trade flow models get smarter with more data. Predictive systems improve with operational feedback. The companies that wait will find themselves competing against organizations that already know what they don&rsquo;t.</p>
+      <h4>Regulatory Complexity Is Compounding</h4>
+      <p>CII, EU ETS, FuelEU Maritime, evolving sanctions regimes, and trade policy actions are creating a compliance environment that intersects with every commercial decision. Connecting regulatory intelligence to commercial strategy requires understanding both domains simultaneously.</p>
     </div>
   </div>
-  <div class="callout">The Domain Intelligence Architect is not a future role. It is a current necessity that most organizations haven&rsquo;t recognized yet. <strong>The first companies to create this function will define the competitive landscape. The rest will spend the next decade trying to catch up.</strong></div>
 </div>
 
-<!-- S8 -->
+<!-- S8: Role Specification -->
 <div class="wp-section">
   <span class="wp-section-anchor" id="s8"></span>
   <div class="section-label">Specification</div>
-  <div class="section-title">One-Page Role Specification</div>
+  <div class="section-title">Role Specification</div>
   <div class="spec-box">
-    <div class="spec-title">Domain Intelligence Architect &mdash; Maritime &amp; Port Operations</div>
+    <div class="spec-title">Domain Intelligence Architect &mdash; Maritime Operations</div>
     <div class="spec-grid">
       <div class="spec-item">
         <h5>Reports To</h5>
@@ -381,11 +381,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       </div>
       <div class="spec-item">
         <h5>Function</h5>
-        <p>Translate maritime domain expertise into AI-driven intelligence systems that produce measurable commercial advantage</p>
-      </div>
-      <div class="spec-item">
-        <h5>Compensation Benchmark</h5>
-        <p>Reflects the dual scarcity of deep maritime expertise and hands-on AI fluency &mdash; a combination that effectively does not exist in the current talent market</p>
+        <p>Translate maritime domain expertise into AI-informed intelligence systems that support commercial and operational decision-making</p>
       </div>
     </div>
     <div class="spec-divider"></div>
@@ -393,46 +389,46 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       <div class="spec-item">
         <h5>Key Deliverables</h5>
         <ul>
-          <li>Commodity trade flow intelligence &amp; market sensing systems</li>
-          <li>AI-augmented terminal operations decision support</li>
-          <li>Multi-modal transportation cost modeling &amp; supply chain optimization</li>
-          <li>Regulatory impact assessment &amp; compliance intelligence</li>
-          <li>AI initiative requirements definition &amp; vendor evaluation</li>
+          <li>Commodity trade flow intelligence &amp; market analytics</li>
+          <li>Vessel operations decision support &mdash; commercial &amp; technical</li>
+          <li>Port and terminal operations intelligence</li>
+          <li>Multi-modal supply chain cost modeling &amp; optimization</li>
+          <li>Regulatory &amp; compliance intelligence integrated with commercial strategy</li>
+          <li>AI initiative requirements, vendor evaluation &amp; implementation oversight</li>
         </ul>
       </div>
       <div class="spec-item">
-        <h5>Required Experience</h5>
+        <h5>Qualifications</h5>
         <ul>
-          <li>15+ years maritime operations (ship agency, terminal, stevedoring)</li>
-          <li>Demonstrated AI/ML implementation capability (not theoretical)</li>
-          <li>Bulk commodity market expertise across multiple material classes</li>
-          <li>Multi-port operational knowledge (U.S. Atlantic/Gulf Coast)</li>
-          <li>Transportation economics fluency (ocean, rail, barge, truck)</li>
+          <li>Maritime operations experience across ship agency, terminal &amp; vessel operations</li>
+          <li>Demonstrated AI/ML implementation capability</li>
+          <li>Commodity market knowledge across multiple material classes</li>
+          <li>Multi-port operational perspective across major trading regions</li>
+          <li>Transportation economics fluency &mdash; ocean, rail, barge &amp; truck</li>
         </ul>
       </div>
       <div class="spec-item">
-        <h5>Success Metrics</h5>
+        <h5>Success Indicators</h5>
         <ul>
-          <li>Commercial intelligence systems operational within 90 days</li>
-          <li>Measurable improvement in cargo volume forecasting accuracy</li>
-          <li>Reduction in market intelligence latency from weeks to hours</li>
-          <li>AI initiative ROI demonstrable within first year</li>
-          <li>Competitive intelligence advantage documented and quantifiable</li>
+          <li>Commercial intelligence systems operational and adopted by end users</li>
+          <li>Measurable improvement in decision-support quality</li>
+          <li>Reduction in market intelligence latency</li>
+          <li>AI initiatives producing demonstrable operational value</li>
+          <li>Cross-departmental data integration replacing siloed workflows</li>
         </ul>
       </div>
     </div>
   </div>
 
   <div class="callout closing">
-    This paper was authored to define a role the maritime industry needs but has not yet named. The convergence of operational expertise and AI capability in a single practitioner represents a new category of strategic value &mdash; one that cannot be replicated by technology alone, consulting engagements alone, or traditional maritime management alone.<br><br>
-    <strong>The question is not whether this role will exist. It is who will fill it first.</strong>
+    This paper describes a function the maritime industry has not yet formalized. The convergence of deep operational expertise and practical AI capability in a single practitioner represents a category of strategic value that is difficult to replicate through technology adoption alone, consulting engagements alone, or traditional maritime management alone. The role exists to bridge the gap between what the industry knows and what its systems can do.
   </div>
 </div>
 
 </div><!-- end article -->
 
 <footer>
-  <p>OceanDatum Maritime &amp; Commodity Intelligence &nbsp;&middot;&nbsp; Industry Analysis &nbsp;&middot;&nbsp; 2026</p>
+  <p>OceanDatum &nbsp;&middot;&nbsp; Maritime &amp; Commodity Intelligence &nbsp;&middot;&nbsp; 2026</p>
 </footer>
 
 </body>
