@@ -1995,6 +1995,199 @@ body.light-mode .tl-dot {
 
 
 /* =============================================================
+   PORT SULPHUR REPORT — comprehensive text color overrides
+   ============================================================= */
+
+body.light-mode .action-item,
+body.light-mode .agency-contact-card h4,
+body.light-mode .analysis-notes h4,
+body.light-mode .analysis-notes li::before,
+body.light-mode .area-card h4 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .assessments-table th,
+body.light-mode .banner-content strong,
+body.light-mode .baseline,
+body.light-mode .budget-summary,
+body.light-mode .category-title svg {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .chart-notes strong,
+body.light-mode .checklist li:before,
+body.light-mode .checklist-content strong,
+body.light-mode .checklist-items strong,
+body.light-mode .checklist-number {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .comparable-property h4,
+body.light-mode .comparables-table th,
+body.light-mode .contaminant-list li::before,
+body.light-mode .context-card h4,
+body.light-mode .context-card strong {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .cost-card h4,
+body.light-mode .cost-card li::before,
+body.light-mode .data-table th,
+body.light-mode .documentation-checklist strong,
+body.light-mode .due-diligence-requirements h4 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .due-diligence-requirements li::before,
+body.light-mode .event-card h4,
+body.light-mode .feasibility-badge,
+body.light-mode .financial-item h4,
+body.light-mode .financial-item.total .financial-range {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .framework-list li::before,
+body.light-mode .hero-badge,
+body.light-mode .highlight-badge,
+body.light-mode .highlight-box h4,
+body.light-mode .highlight-icon {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .highlight-list li::before,
+body.light-mode .highlight-number,
+body.light-mode .image-source,
+body.light-mode .implication-item h4,
+body.light-mode .infra-card h4 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .infrastructure-card h4,
+body.light-mode .infrastructure-list li::before,
+body.light-mode .insight-label,
+body.light-mode .investment-table th,
+body.light-mode .liability-header svg {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .location-icon,
+body.light-mode .map-coordinates,
+body.light-mode .map-note,
+body.light-mode .metric-baseline,
+body.light-mode .metric-primary .metric-icon {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .metric-value,
+body.light-mode .milestone-year,
+body.light-mode .mitigation-label,
+body.light-mode .overlay-card h4,
+body.light-mode .period-events-count {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .placeholder-icon,
+body.light-mode .placeholder-note code,
+body.light-mode .placeholder-note svg,
+body.light-mode .post-katrina-impacts h4,
+body.light-mode .post-katrina-impacts li::before {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .premium-category h4,
+body.light-mode .project-card h4,
+body.light-mode .recommendation-content h4,
+body.light-mode .regulation-authority,
+body.light-mode .revenue-model-block h4 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .revenue-value,
+body.light-mode .risk-location,
+body.light-mode .scenario-icon,
+body.light-mode .section-footer h4,
+body.light-mode .source-category h4 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .source-link,
+body.light-mode .source-list li::before,
+body.light-mode .source-type,
+body.light-mode .spec-category,
+body.light-mode .standard-requirements h5 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .stat-value,
+body.light-mode .status-existing,
+body.light-mode .status-pending,
+body.light-mode .styled-list li::before,
+body.light-mode .success-factors strong {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .summary-card h3,
+body.light-mode .summary-value,
+body.light-mode .swot-card.strengths h4,
+body.light-mode .timeline-content-item h4,
+body.light-mode .trend-card.positive .trend-value {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .value-metric,
+body.light-mode .vulnerability-factors h4,
+body.light-mode .workforce-analysis h4 {
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   PORT SULPHUR MIDSTREAM — text color overrides
+   ============================================================= */
+
+body.light-mode .cost-value,
+body.light-mode .design-considerations h4,
+body.light-mode .detail-section ul li::before,
+body.light-mode .regulatory-section h4,
+body.light-mode .regulatory-section ul li::before {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .revenue-structure h4,
+body.light-mode .section-header-row,
+body.light-mode .spec-value,
+body.light-mode .step-content h4,
+body.light-mode .timeline-phase h4 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .timeline-phase ul li::before {
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   RAIL ANALYTICS — text color overrides
+   ============================================================= */
+
+body.light-mode .circuity-display .circ-value,
+body.light-mode .code-box,
+body.light-mode .investigation-card a,
+body.light-mode .schematic {
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   SHIP AGENCY AI — text color overrides
+   ============================================================= */
+
+body.light-mode .cost-card.build .cost-footer {
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
    PRINT — light mode auto-applied
    ============================================================= */
 
