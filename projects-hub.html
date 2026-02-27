@@ -370,11 +370,10 @@
     </div>
 
     <nav class="navbar">
-        <span class="navbar-brand">An <a href="index.html">oceandatum.ai</a> company</span>
+        <a href="index.html" class="navbar-brand" style="font-style:normal;font-weight:600;color:rgba(255,255,255,0.9);text-decoration:none">OceanDatum</a>
         <div class="navbar-right">
-            <a href="index.html" class="navbar-link">Home</a>
+            <a href="tools/maritime-ai-role.html" class="navbar-link">Role Brief</a>
             <a href="cv.html" class="navbar-link">CV</a>
-            <a href="cv.html#biography" class="navbar-link">Biography</a>
             <a href="#" class="navbar-link logout-link" id="logoutBtn">Logout</a>
         </div>
     </nav>
@@ -496,19 +495,28 @@
     </div>
 
     <script>
-        // Check authentication
-        if (!sessionStorage.getItem('datum_auth')) {
-            window.location.href = 'login.html';
+        // Check authentication (session or remembered device)
+        function isAuth() {
+            if (sessionStorage.getItem('datum_auth')) return true;
+            if (localStorage.getItem('datum_auth') === 'true') {
+                var exp = parseInt(localStorage.getItem('datum_auth_expires') || '0');
+                if (Date.now() < exp) { sessionStorage.setItem('datum_auth','true'); return true; }
+                localStorage.removeItem('datum_auth');
+                localStorage.removeItem('datum_auth_expires');
+            }
+            return false;
         }
+        if (!isAuth()) window.location.href = 'login.html';
 
-        // Logout functionality
+        // Logout — clear both session and remembered device
         document.getElementById('logoutBtn').addEventListener('click', function(e) {
             e.preventDefault();
             sessionStorage.removeItem('datum_auth');
             sessionStorage.removeItem('datum_user');
+            localStorage.removeItem('datum_auth');
+            localStorage.removeItem('datum_auth_expires');
             window.location.href = 'index.html';
         });
-
     </script>
 
     <!-- Cloudflare Web Analytics -->
