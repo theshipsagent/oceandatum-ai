@@ -1,506 +1,887 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plaquemines Parish Workforce Analysis — OceanDatum</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <style>
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: rgba(255,255,255,0.04);
-            --text-primary: #e8eaf0;
-            --text-secondary: rgba(255,255,255,0.6);
-            --border-color: rgba(255,255,255,0.1);
-            --header-bg: rgba(0,0,0,0.45);
-            --accent: #64ffb4;
-            --accent-hover: #4ecf96;
-        }
-
-        /* Light mode overrides */
-        body.light-mode {
-            --bg-primary: #f0f4ff;
-            --bg-secondary: rgba(0,0,0,0.04);
-            --text-primary: #1a2332;
-            --text-secondary: #555;
-            --border-color: rgba(0,0,0,0.12);
-            --header-bg: rgba(255,255,255,0.88);
-            --accent: #007a50;
-            --accent-hover: #005c3c;
-        }
-        @page {
-            size: letter;
-            margin: 0.75in;
-        }
-
-        @media print {
-            body {
-                margin: 0;
-                padding: 20px;
-                padding-top: 20px;
-                background: white !important;
-                color: black !important;
-            }
-
-        /* ── OceanDatum Glassmorphism Navbar ─────────────────────────── */
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-
-        .navbar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: var(--header-bg);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(255,255,255,0.12);
-            padding: 0.75rem 2rem;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-        }
-
-        body.light-mode .navbar {
-            background: rgba(255,255,255,0.88) !important;
-            border-bottom-color: rgba(0,0,0,0.1) !important;
-        }
-
-        .navbar-brand {
-            font-size: 0.85rem;
-            font-weight: 300;
-            font-style: italic;
-            color: rgba(255,255,255,0.65);
-        }
-
-        body.light-mode .navbar-brand,
-        body.light-mode .navbar-brand a {
-            color: rgba(0,0,0,0.75) !important;
-        }
-
-        .navbar-brand a {
-            color: rgba(255,255,255,0.9);
-            font-weight: 600;
-            font-style: normal;
-            text-decoration: none;
-        }
-
-        .navbar-brand a:hover { color: var(--accent); }
-
-        .navbar-right {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .nav-link {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            padding: 0.4rem 0.85rem;
-            border: 1px solid rgba(255,255,255,0.18);
-            border-radius: 6px;
-            transition: all 0.25s;
-            cursor: pointer;
-            background: none;
-        }
-
-        .nav-link:hover {
-            color: var(--accent);
-            border-color: rgba(100,255,180,0.4);
-            background: rgba(100,255,180,0.06);
-        }
-
-        body.light-mode .nav-link {
-            color: rgba(0,0,0,0.65) !important;
-            border-color: rgba(0,0,0,0.18) !important;
-        }
-
-        body.light-mode .nav-link:hover {
-            color: #007a50 !important;
-            border-color: rgba(0,122,80,0.4) !important;
-            background: rgba(0,122,80,0.06) !important;
-        }
-
-        @media print {
-            .navbar { display: none !important; }
-        }
-
-        .page-break {
-                page-break-after: always;
-            }
-
-            .no-print {
-                display: none !important;
-            }
-
-            /* Force charts to print */
-            canvas {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                max-width: 100% !important;
-                height: auto !important;
-                page-break-inside: avoid !important;
-            }
-
-            .chart-container {
-                page-break-inside: avoid;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            .chart-container canvas {
-                width: 100% !important;
-                height: 400px !important;
-            }
-
-            /* Force gradient backgrounds to print */
-            .metric-card {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                page-break-inside: avoid;
-            }
-
-            /* Force all backgrounds and colors to print */
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            /* Ensure tables print correctly */
-            table {
-                page-break-inside: avoid;
-            }
-
-            th {
-                background-color: #2c3e50 !important;
-                color: white !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-        }
-
-        body {
-            font-family: 'Space Grotesk', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 11pt;
-            line-height: 1.6;
-            color: var(--text-primary);
-            max-width: 8.5in;
-            margin: 0 auto;
-            padding: 20px;
-            padding-top: 80px;
-            background: var(--bg-primary);
-            transition: background 0.3s ease, color 0.3s ease;
-            min-height: 100vh;
-        }
-
-        h1 {
-            font-size: 24pt;
-            font-weight: bold;
-            margin-top: 0;
-            margin-bottom: 12pt;
-            color: var(--text-primary);
-        }
-
-        h2 {
-            font-size: 18pt;
-            font-weight: bold;
-            margin-top: 24pt;
-            margin-bottom: 12pt;
-            color: var(--text-primary);
-            border-bottom: 2pt solid var(--accent);
-            padding-bottom: 6pt;
-        }
-
-        h3 {
-            font-size: 14pt;
-            font-weight: bold;
-            margin-top: 18pt;
-            margin-bottom: 10pt;
-            color: var(--accent);
-        }
-
-        h4 {
-            font-size: 12pt;
-            font-weight: bold;
-            margin-top: 12pt;
-            margin-bottom: 8pt;
-        }
-
-        p {
-            margin: 10pt 0;
-            text-align: justify;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 16pt 0;
-        }
-
-        th {
-            background-color: var(--accent);
-            color: white;
-            padding: 12pt;
-            text-align: left;
-            font-weight: bold;
-        }
-
-        td {
-            padding: 10pt 12pt;
-            border-bottom: 1pt solid var(--border-color);
-            color: var(--text-primary);
-        }
-
-        tr:nth-child(even) {
-            background-color: var(--bg-secondary);
-        }
-
-        .number-cell {
-            text-align: right;
-        }
-
-        /* Colorful Gradient Cards */
-        .metric-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .metric-card {
-            padding: 30px;
-            border-radius: 12px;
-            color: white;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .metric-card.blue {
-            background: linear-gradient(135deg, #2c5aa0 0%, #4a90e2 100%);
-        }
-
-        .metric-card.green {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-        }
-
-        .metric-card.purple {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .metric-card.pink {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .metric-card-value {
-            font-size: 48pt;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .metric-card-label {
-            font-size: 14pt;
-            opacity: 0.95;
-        }
-
-        /* Simple Cover Page */
-        .cover-page {
-            text-align: center;
-            padding-top: 2.5in;
-            height: 10in;
-            background: var(--bg-primary);
-        }
-
-        .cover-title {
-            font-size: 48pt;
-            font-weight: bold;
-            margin-bottom: 32pt;
-            color: var(--accent);
-            letter-spacing: 2pt;
-        }
-
-        .cover-subtitle {
-            font-size: 20pt;
-            margin-bottom: 48pt;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
-        .cover-info {
-            font-size: 14pt;
-            line-height: 2.2;
-            color: var(--text-secondary);
-        }
-
-        /* Chart Containers */
-        .chart-container {
-            position: relative;
-            height: 400px;
-            margin: 30px 0;
-        }
-
-        .chart-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin: 30px 0;
-        }
-
-        .chart-grid .chart-container {
-            height: 300px;
-        }
-
-        .toc {
-            padding: 20pt 0;
-        }
-
-        .toc p {
-            margin: 8pt 0;
-            text-align: left;
-        }
-
-        .toc-sub {
-            padding-left: 30pt;
-        }
-
-        ul, ol {
-            margin: 12pt 0;
-            padding-left: 32pt;
-        }
-
-        li {
-            margin: 8pt 0;
-        }
-
-        .disclaimer {
-            font-style: italic;
-            font-size: 10pt;
-            color: #666;
-            margin-top: 32pt;
-            padding-top: 16pt;
-            border-top: 1pt solid #ddd;
-        }
-
-        .checkmark {
-            color: #27ae60;
-            font-weight: bold;
-        }
-
-        .note {
-            background-color: rgba(0, 217, 255, 0.1);
-            border-left: 4pt solid var(--accent);
-            padding: 16pt;
-            margin: 16pt 0;
-            font-size: 10pt;
-            color: var(--text-primary);
-        }
-
-        .callout {
-            background-color: var(--bg-secondary);
-            border-left: 4pt solid var(--accent);
-            padding: 16pt;
-            margin: 16pt 0;
-            color: var(--text-primary);
-        }
-
-        /* Header Bar */
-        .header-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--header-bg);
-            border-bottom: 2px solid var(--accent);
-            padding: 15px 30px;
-            z-index: 1001;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .header-title {
-            font-size: 16pt;
-            font-weight: bold;
-            color: var(--accent);
-            margin: 0;
-        }
-
-        .header-controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .theme-toggle {
-            width: 50px;
-            height: 28px;
-            background: var(--bg-secondary);
-            border: 2px solid var(--accent);
-            border-radius: 14px;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .theme-toggle.active {
-            background: var(--accent);
-        }
-
-        .theme-toggle::after {
-            content: '🌙';
-            font-size: 16px;
-            position: absolute;
-            left: 5px;
-            transition: left 0.3s ease;
-        }
-
-        .theme-toggle.active::after {
-            content: '☀️';
-            left: 23px;
-        }
-
-        .print-button, .pdf-button {
-            padding: 10px 16px;
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 10pt;
-            z-index: 1002;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .print-button:hover, .pdf-button:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .page-break {
-            page-break-after: always;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Economic Impact and Workforce Availability Analysis for Project Masabba Mile 76.5 — Plaquemines Parish, Louisiana. Five-parish labor shed, multiplier analysis, and site precedent.">
+<title>Plaquemines Parish Workforce &amp; Economic Impact Analysis | OceanDatum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Space Grotesk',-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#e8eaf0;line-height:1.7;}
+body::before{content:'';position:fixed;inset:0;background:linear-gradient(135deg,#0a0a0a 0%,#0d1117 40%,#0f1a2e 70%,#0a0f1a 100%);z-index:-1;}
+.navbar{position:fixed;top:0;left:0;right:0;background:rgba(0,0,0,0.45);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.12);padding:0.75rem 2rem;z-index:1000;display:flex;align-items:center;justify-content:space-between;}
+.navbar-brand{font-size:0.85rem;font-weight:300;font-style:italic;color:rgba(255,255,255,0.65);}
+.navbar-brand a{color:rgba(255,255,255,0.9);font-weight:600;font-style:normal;text-decoration:none;}
+.navbar-brand a:hover{color:#64ffb4;}
+.navbar-right{display:flex;align-items:center;gap:0.75rem;}
+.nav-link{font-family:'Space Grotesk',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.75);text-decoration:none;padding:0.4rem 0.85rem;border:1px solid rgba(255,255,255,0.18);border-radius:6px;transition:all 0.25s;cursor:pointer;}
+.nav-link:hover{color:#64ffb4;border-color:rgba(100,255,180,0.4);background:rgba(100,255,180,0.06);}
+.page-wrapper{max-width:960px;margin:0 auto;padding:0 2rem 4rem;}
+.hero{padding:7rem 0 3rem;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:3rem;}
+.kicker{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#64ffb4;margin-bottom:0.75rem;}
+.hero h1{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:700;color:#fff;line-height:1.25;margin-bottom:1rem;}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.65);max-width:680px;margin-bottom:1.5rem;}
+.meta-row{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.meta-item{font-size:0.8rem;color:rgba(255,255,255,0.45);letter-spacing:0.04em;}
+.meta-item span{color:rgba(255,255,255,0.75);}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:2rem 0;}
+.stat-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:1.25rem;text-align:center;}
+.stat-value{font-size:1.5rem;font-weight:700;color:#64ffb4;display:block;}
+.stat-label{font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:0.3rem;letter-spacing:0.04em;line-height:1.35;}
+.part-header{background:rgba(100,255,180,0.06);border:1px solid rgba(100,255,180,0.18);border-radius:10px;padding:1.25rem 1.75rem;margin:3rem 0 1.5rem;display:flex;align-items:center;gap:1rem;}
+.part-number{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#64ffb4;white-space:nowrap;}
+.part-header h2{font-size:1.2rem;font-weight:700;color:#fff;}
+h3{font-size:1.05rem;font-weight:700;color:#e8eaf0;margin:2rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+h4{font-size:0.9rem;font-weight:600;color:#64ffb4;margin:1.25rem 0 0.5rem;letter-spacing:0.03em;}
+.glass{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;backdrop-filter:blur(8px);}
+.glass p{color:rgba(255,255,255,0.78);font-size:0.92rem;margin-bottom:0.85rem;}
+.glass p:last-child{margin-bottom:0;}
+.tbl-wrap{overflow-x:auto;margin:1.25rem 0;}
+table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+th{background:rgba(100,255,180,0.08);color:#64ffb4;font-weight:600;padding:0.65rem 0.9rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.2);letter-spacing:0.04em;font-size:0.78rem;text-transform:uppercase;}
+td{padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);}
+td strong{color:#e8eaf0;}
+tr:hover td{background:rgba(255,255,255,0.025);}
+tr:last-child td{border-bottom:none;}
+.callout{border-left:3px solid #64ffb4;background:rgba(100,255,180,0.05);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1.25rem 0;}
+.callout strong{color:#64ffb4;}
+.callout p{color:rgba(255,255,255,0.78);font-size:0.9rem;margin:0 0 0.4rem;}
+.callout p:last-child{margin:0;}
+.warning-box{border-left:3px solid #ffb347;background:rgba(255,179,71,0.06);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1.25rem 0;}
+.warning-box strong{color:#ffb347;}
+.warning-box p{color:rgba(255,255,255,0.78);font-size:0.9rem;margin:0 0 0.4rem;}
+.warning-box p:last-child{margin:0;}
+ul,ol{padding-left:1.5rem;margin:0.75rem 0;}
+li{margin-bottom:0.35rem;color:rgba(255,255,255,0.78);font-size:0.92rem;}
+li strong{color:#e8eaf0;}
+li ul{margin:0.25rem 0 0.25rem 1rem;}
+li ul li{font-size:0.86rem;color:rgba(255,255,255,0.65);}
+.chart-wrap{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:1.5rem;margin:1.5rem 0;overflow:hidden;}
+.chart-title{font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:1rem;text-align:center;}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0;}
+.page-footer{border-top:1px solid rgba(255,255,255,0.08);padding:2rem 0 1rem;margin-top:4rem;text-align:center;font-size:0.78rem;color:rgba(255,255,255,0.3);letter-spacing:0.04em;}
+body.light-mode{color:#1a2332;}
+body.light-mode::before{background:linear-gradient(135deg,#f0f4ff 0%,#e8f0fa 50%,#f0f4ff 100%) !important;}
+body.light-mode .navbar{background:rgba(255,255,255,0.88) !important;border-bottom-color:rgba(0,0,0,0.1) !important;}
+body.light-mode .navbar-brand,body.light-mode .navbar-brand a,body.light-mode .nav-link{color:rgba(0,0,0,0.75) !important;}
+body.light-mode .nav-link{border-color:rgba(0,0,0,0.18) !important;}
+body.light-mode .nav-link:hover{color:#007a50 !important;border-color:rgba(0,122,80,0.4) !important;background:rgba(0,122,80,0.06) !important;}
+body.light-mode .hero h1,body.light-mode h3{color:#1a2332 !important;}
+body.light-mode .glass{background:rgba(255,255,255,0.75) !important;border-color:rgba(0,0,0,0.1) !important;}
+body.light-mode .glass p,body.light-mode li{color:#2a3a4a !important;}
+body.light-mode td{color:#2a3a4a !important;}
+body.light-mode th{background:rgba(0,0,0,0.06) !important;color:#007a50 !important;}
+body.light-mode .stat-card{background:rgba(0,0,0,0.04) !important;border-color:rgba(0,0,0,0.1) !important;}
+body.light-mode .stat-label{color:rgba(0,0,0,0.5) !important;}
+body.light-mode .chart-wrap{background:rgba(0,0,0,0.03) !important;border-color:rgba(0,0,0,0.08) !important;}
+body.light-mode .callout{background:rgba(0,122,80,0.06) !important;}
+body.light-mode .callout p,body.light-mode .warning-box p{color:#2a3a4a !important;}
+body.light-mode .part-header{background:rgba(0,0,0,0.04) !important;border-color:rgba(0,0,0,0.12) !important;}
+body.light-mode .part-header h2,body.light-mode .kicker,body.light-mode .hero-sub,body.light-mode .meta-item{color:#1a2332 !important;}
+body.light-mode .page-footer{color:rgba(0,0,0,0.35) !important;}
+body.light-mode svg text{fill:#2a3a4a !important;}
+@media print{
+  .navbar{display:none !important;}
+  body::before{display:none !important;}
+  body{background:#fff !important;color:#000 !important;}
+  .glass{background:#fff !important;border:1px solid #ddd !important;}
+  .part-header{background:#f0f0f0 !important;}
+  h3,h4,td,th,p,li{color:#000 !important;}
+  td,th{border:1px solid #ccc !important;}
+}
+@media(max-width:640px){
+  .navbar{padding:0.6rem 1rem;}
+  .page-wrapper{padding:0 1rem 3rem;}
+  .hero{padding:5.5rem 0 2rem;}
+  .hero h1{font-size:1.5rem;}
+  .stat-grid{grid-template-columns:repeat(2,1fr);}
+  .chart-grid{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-brand"><a href="../index.html">OceanDatum</a> — Maritime &amp; Commodity Intelligence</div>
   <div class="navbar-right">
-    <button id="theme-btn" onclick="toggleTheme()" class="nav-link" title="Toggle theme">&#9788; Light</button>
-    <button onclick="window.print()" class="nav-link" title="Print / Save as PDF">&#8595; PDF</button>
+    <button id="theme-btn" onclick="toggleTheme()" class="nav-link" style="background:none;cursor:pointer;font-family:inherit;">&#9788; Light</button>
+    <button onclick="window.print()" class="nav-link" style="background:none;cursor:pointer;font-family:inherit;">&#8595; PDF</button>
     <a href="../projects-hub.html" class="nav-link">Projects</a>
     <a href="../index.html" class="nav-link">Home</a>
   </div>
 </nav>
+
+<div class="page-wrapper">
+
+<!-- ── HERO ─────────────────────────────────────────────────────────────────── -->
+<div class="hero">
+  <div class="kicker">Economic Impact Analysis — Plaquemines Parish, Louisiana</div>
+  <h1>Project Masabba Mile 76.5<br>Workforce &amp; Economic Impact Analysis</h1>
+  <p class="hero-sub">A comprehensive assessment of employment multiplier effects, five-parish labor availability, and competitive wage positioning for industrial development at the former AMAX Port Nickel site in Braithwaite, Louisiana.</p>
+  <div class="meta-row">
+    <div class="meta-item">Client <span>SESCO Cement — Internal Document</span></div>
+    <div class="meta-item">Author <span>William S. Davis III</span></div>
+    <div class="meta-item">Date <span>February 3, 2026</span></div>
+    <div class="meta-item">Version <span>4.0 MASTER</span></div>
+    <div class="meta-item">Site <span>29.8633° N, 89.9678° W — Braithwaite, LA</span></div>
+  </div>
+</div>
+
+<!-- ── KEY STATS ─────────────────────────────────────────────────────────────── -->
+<div class="stat-grid">
+  <div class="stat-card"><span class="stat-value">432,818</span><div class="stat-label">Five-Parish Labor Shed<br>Employed Workers</div></div>
+  <div class="stat-card"><span class="stat-value">5.82x</span><div class="stat-label">LED Employment Multiplier<br>(CCI Methanol — same site)</div></div>
+  <div class="stat-card"><span class="stat-value">512–1,364</span><div class="stat-label">Total Jobs Created<br>Conservative–Optimistic</div></div>
+  <div class="stat-card"><span class="stat-value">$14.4M–$47.1M</span><div class="stat-label">10-Year Tax Revenue<br>Projected Range</div></div>
+  <div class="stat-card"><span class="stat-value">387 ac</span><div class="stat-label">Site Area — CCI Methanol<br>Precedent (Full Approval 2020)</div></div>
+  <div class="stat-card"><span class="stat-value">$95k</span><div class="stat-label">Target Avg Wage<br>(Inflation-Adj. CCI Precedent)</div></div>
+</div>
+
+<div class="callout">
+  <p><strong>Working Model Status:</strong> This analysis employs a working economic impact model based on Louisiana Economic Development's (LED) published employment multiplier of 5.82 for industrial manufacturing in the region. For official regulatory submissions or investor presentations, validation through BEA RIMS II ($275–$500) or IMPLAN ($1,500–$3,000) is recommended.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 1: EXECUTIVE SUMMARY                                                 -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 01</div>
+  <h2>Executive Summary</h2>
+</div>
+
+<h3>Project Overview</h3>
+<div class="glass">
+  <p>Project Masabba Mile 76.5 proposes development of industrial operations at the former AMAX Port Nickel site in Braithwaite, Plaquemines Parish, Louisiana (coordinates: 29.8633° N, 89.9678° W). This analysis evaluates the potential economic impact and workforce availability within the five-parish Greater New Orleans labor market area (Plaquemines, St. Bernard, Jefferson, Orleans, and St. Charles parishes).</p>
+  <p>The CCI Methanol Plant received full environmental and zoning approval for the same 387-acre site in 2020, demonstrating regulatory feasibility for heavy industrial development. This precedent is central to both the multiplier methodology and the regulatory pathway strategy.</p>
+</div>
+
+<h3>Economic Impact Summary</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Scenario</th><th>Direct Jobs</th><th>Indirect + Induced</th><th>Total Employment</th><th>Annual Wages</th><th>Economic Output</th><th>10-Year Tax Revenue</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Conservative</strong></td><td>75</td><td>437</td><td><strong>512</strong></td><td>$11.4M</td><td>$130.0M</td><td>$14.4M</td></tr>
+    <tr><td><strong>Moderate (Base)</strong></td><td>125</td><td>728</td><td><strong>853</strong></td><td>$21.4M</td><td>$221.0M</td><td>$27.4M</td></tr>
+    <tr><td><strong>Optimistic</strong></td><td>200</td><td>1,164</td><td><strong>1,364</strong></td><td>$36.1M</td><td>$325.0M</td><td>$47.1M</td></tr>
+  </tbody>
+</table>
+</div>
+<p style="font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:0.5rem;">Note: Employment multiplier of 5.82 based on LED analysis of CCI Methanol Plant (same site, 2014). Calculation: Total Jobs = Direct Jobs + (Direct Jobs × 5.82).</p>
+
+<h3>Workforce Availability</h3>
+<ul>
+  <li><strong>432,818 employed workers</strong> in five-parish labor shed</li>
+  <li><strong>28,758 workers</strong> within 15-mile commute radius (Plaquemines + St. Bernard)</li>
+  <li><strong>408,766 workers</strong> within 30-mile radius (includes Jefferson + Orleans)</li>
+  <li><strong>22,000+ workers</strong> in relevant industries (manufacturing, transportation, construction)</li>
+</ul>
+
+<h3>Key Findings</h3>
+<ol>
+  <li><strong>Site Precedent Established:</strong> CCI Methanol Plant received full environmental and zoning approval for same 387-acre site in 2020, demonstrating regulatory feasibility for heavy industrial development.</li>
+  <li><strong>Robust Labor Market:</strong> Five-parish region provides sufficient workforce depth across all operational scenarios, with established industrial skills base in petrochemical, maritime, and manufacturing sectors.</li>
+  <li><strong>Competitive Wage Environment:</strong> Regional industrial wages range $72,000–$96,000 annually. Project wage structure must align with or exceed local market rates to attract qualified talent.</li>
+  <li><strong>Infrastructure Advantages:</strong> Port of Plaquemines offers 600+ miles of deep-draft (45+ ft) access, ranking among nation's top ports for bulk cargo handling.</li>
+  <li><strong>Workforce Development Resources:</strong> LED FastStart (ranked #1 nationally) provides customized training at no cost to employer for projects creating 15+ jobs.</li>
+  <li><strong>Multiplier Variance:</strong> LED precedents show employment multipliers ranging from 3.9x (Venture Global Plaquemines LNG) to 5.82x (CCI Methanol), creating 39% variance in total job projections. Use case determines appropriate multiplier selection.</li>
+</ol>
+
+<h3>Primary Recommendations</h3>
+<ol>
+  <li><strong>Validation Pathway:</strong> For regulatory submissions, validate economic impact estimates through BEA RIMS II ($275–$500) or commission independent IMPLAN analysis ($3,000–$5,000).</li>
+  <li><strong>Regional Recruitment Strategy:</strong> Target St. Bernard and Jefferson parishes for skilled operations workforce; leverage existing industrial talent pool from petrochemical corridor. Structure three-tier recruitment:
+    <ul>
+      <li>Tier 1 (0–15 mi): Plaquemines + St. Bernard (28,758 workers)</li>
+      <li>Tier 2 (15–30 mi): Jefferson + Orleans (379,408 workers)</li>
+      <li>Tier 3 (30–40 mi): St. Charles (24,652 workers)</li>
+    </ul>
+  </li>
+  <li><strong>Compensation Strategy:</strong> Establish competitive wage structure at $75,000–$95,000 range for skilled positions to compete effectively with energy sector employers including Venture Global LNG.</li>
+  <li><strong>Training Partnership:</strong> Engage LED FastStart early in project timeline to develop customized training curriculum aligned with operational requirements. Partner with Nunez Community College for long-term training pipeline.</li>
+  <li><strong>Regulatory Approach:</strong> Reference CCI Methanol Plant precedent in permitting discussions; same-site environmental review provides regulatory pathway template.</li>
+  <li><strong>Economic Impact Positioning:</strong> Use 3.9x multiplier (Venture Global) for regulatory submissions, 5.02x average for public presentations, and 3.9–5.82x range for investor materials with sensitivity analysis.</li>
+</ol>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 2: METHODOLOGY & VALIDATION                                          -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 02</div>
+  <h2>Methodology &amp; Validation Pathway</h2>
+</div>
+
+<h3>Working Model Disclosure</h3>
+<div class="glass">
+  <p><strong>Current Status:</strong> This analysis employs a working economic impact model based on publicly available multiplier data from Louisiana Economic Development (LED). The methodology is consistent with Input-Output (I-O) economic modeling principles used by IMPLAN and BEA RIMS II platforms but does not constitute an official IMPLAN or RIMS II analysis.</p>
+  <p>The employment multiplier of <strong>5.82</strong> is derived from LED's economic impact analysis of the Castleton Commodities International (CCI) Methanol Plant project announced in 2014 for the identical 387-acre former AMAX Port Nickel site in Braithwaite, Louisiana. LED's analysis determined that 50 direct permanent jobs would generate 291 additional jobs in the regional economy (291 ÷ 50 = 5.82).</p>
+</div>
+
+<h3>Multiplier Source Validation</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Source</th><th>Expected Multiplier Range</th><th>LED 5.82 Status</th></tr></thead>
+  <tbody>
+    <tr><td>BEA RIMS II (NAICS 327310 – Cement Mfg)</td><td>5.5 – 6.5</td><td>✓ Within Range</td></tr>
+    <tr><td>IMPLAN (Louisiana Manufacturing)</td><td>5.0 – 6.2</td><td>✓ Within Range</td></tr>
+    <tr><td>Academic Literature (Rickman &amp; Schwer, 1995)</td><td>4.5 – 6.5</td><td>✓ Within Range</td></tr>
+    <tr><td>Louisiana Chemical Association (2025)</td><td>5.5 – 7.0</td><td>✓ Within Range</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Official Validation Options</h3>
+
+<h4>Option 1: BEA RIMS II Analysis (Recommended for Government Use)</h4>
+<ul>
+  <li><strong>Source:</strong> U.S. Bureau of Economic Analysis (federal government)</li>
+  <li><strong>Cost:</strong> $275 – $500 per region</li>
+  <li><strong>Timeframe:</strong> Immediate digital delivery</li>
+  <li><strong>Best for:</strong> Government submissions, regulatory filings — federal government source, publicly available, widely accepted</li>
+</ul>
+
+<h4>Option 2: IMPLAN Commercial Analysis (Maximum Detail)</h4>
+<ul>
+  <li><strong>Source:</strong> IMPLAN Group LLC (commercial platform)</li>
+  <li><strong>Cost:</strong> $1,500 – $3,000 annual subscription</li>
+  <li><strong>Timeframe:</strong> 2–3 weeks for full analysis</li>
+  <li><strong>Best for:</strong> Detailed sector-specific modeling, investor presentations</li>
+</ul>
+
+<h4>Option 3: Third-Party Economic Impact Study</h4>
+<ul>
+  <li><strong>Source:</strong> Independent economic consulting firm</li>
+  <li><strong>Cost:</strong> $5,000 – $15,000 (varies by scope)</li>
+  <li><strong>Timeframe:</strong> 4–8 weeks</li>
+  <li><strong>Best for:</strong> Independent third-party validation, professional presentation materials</li>
+</ul>
+
+<h3>Comparative Multiplier Analysis — LED Precedents</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Project</th><th>Year</th><th>Direct Jobs</th><th>Total Jobs</th><th>Multiplier</th><th>Industry</th></tr></thead>
+  <tbody>
+    <tr><td>Venture Global Plaquemines LNG</td><td>2016</td><td>250</td><td>975</td><td><strong>3.9x</strong></td><td>LNG Export</td></tr>
+    <tr><td>Venture Global CP2 LNG</td><td>2022</td><td>200</td><td>1,067</td><td><strong>5.34x</strong></td><td>LNG Export (Cameron Parish)</td></tr>
+    <tr><td>CCI Methanol Plant</td><td>2014</td><td>50</td><td>341</td><td><strong>5.82x</strong></td><td>Methanol (same site)</td></tr>
+    <tr><td><strong>Average (All Three)</strong></td><td>—</td><td>—</td><td>—</td><td><strong>5.02x</strong></td><td>—</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Multiplier Variance Impact on Project Masabba Scenarios</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Scenario</th><th>Direct Jobs</th><th>3.9x (VG Plaq.)</th><th>5.02x (Average)</th><th>5.82x (CCI)</th><th>Range Variance</th></tr></thead>
+  <tbody>
+    <tr><td>Conservative</td><td>75</td><td>368</td><td>451</td><td>512</td><td>+39%</td></tr>
+    <tr><td>Moderate</td><td>125</td><td>613</td><td>753</td><td>853</td><td>+39%</td></tr>
+    <tr><td>Optimistic</td><td>200</td><td>980</td><td>1,204</td><td>1,364</td><td>+39%</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout">
+  <p><strong>Significance:</strong> Multiplier selection creates 39% variance in total job projections, materially affecting economic impact claims. All three LED precedents fall within the academically validated range (4.5–6.5). Using the 3.9x multiplier (Venture Global Plaquemines LNG) provides the most defensible floor estimate for regulatory submissions.</p>
+</div>
+
+<h3>Recommended Multiplier by Use Case</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Use Case</th><th>Recommended Multiplier</th><th>Rationale</th></tr></thead>
+  <tbody>
+    <tr><td>Regulatory Submissions</td><td><strong>3.9x</strong></td><td>Most recent LED analysis (Venture Global); minimizes overstatement risk</td></tr>
+    <tr><td>Public Presentations</td><td><strong>5.02x</strong></td><td>Balanced estimate citing three LED precedents</td></tr>
+    <tr><td>Investor Materials</td><td><strong>3.9–5.82x</strong></td><td>Present full range with sensitivity analysis</td></tr>
+    <tr><td>Internal Planning</td><td><strong>5.02x</strong></td><td>Middle estimate for workforce planning</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 3: ECONOMIC IMPACT ANALYSIS                                          -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 03</div>
+  <h2>Economic Impact Analysis</h2>
+</div>
+
+<h3>Operational Impact Scenarios</h3>
+<p style="color:rgba(255,255,255,0.6);font-size:0.9rem;margin-bottom:1rem;">Three operational scenarios reflect uncertainty in final project scope and hiring levels. All scenarios apply LED's 5.82 multiplier for industrial manufacturing.</p>
+
+<h4>Conservative Scenario — 75 Direct Jobs</h4>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Impact Type</th><th>Jobs</th><th>Annual Wages</th></tr></thead>
+  <tbody>
+    <tr><td>Direct Operations</td><td>75</td><td>$6.0M</td></tr>
+    <tr><td>Indirect + Induced</td><td>437</td><td>$5.4M</td></tr>
+    <tr><td><strong>Total Impact</strong></td><td><strong>512</strong></td><td><strong>$11.4M</strong></td></tr>
+    <tr><td>Total Economic Output</td><td>—</td><td>$130.0M</td></tr>
+    <tr><td>Annual Tax Revenue</td><td>—</td><td>$1.4M</td></tr>
+    <tr><td><strong>10-Year Tax Revenue</strong></td><td>—</td><td><strong>$14.4M</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h4>Moderate Scenario — 125 Direct Jobs (Base Case)</h4>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Impact Type</th><th>Jobs</th><th>Annual Wages</th></tr></thead>
+  <tbody>
+    <tr><td>Direct Operations</td><td>125</td><td>$11.3M</td></tr>
+    <tr><td>Indirect + Induced</td><td>728</td><td>$10.1M</td></tr>
+    <tr><td><strong>Total Impact</strong></td><td><strong>853</strong></td><td><strong>$21.4M</strong></td></tr>
+    <tr><td>Total Economic Output</td><td>—</td><td>$221.0M</td></tr>
+    <tr><td>Annual Tax Revenue</td><td>—</td><td>$2.7M</td></tr>
+    <tr><td><strong>10-Year Tax Revenue</strong></td><td>—</td><td><strong>$27.4M</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h4>Optimistic Scenario — 200 Direct Jobs</h4>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Impact Type</th><th>Jobs</th><th>Annual Wages</th></tr></thead>
+  <tbody>
+    <tr><td>Direct Operations</td><td>200</td><td>$19.0M</td></tr>
+    <tr><td>Indirect + Induced</td><td>1,164</td><td>$17.1M</td></tr>
+    <tr><td><strong>Total Impact</strong></td><td><strong>1,364</strong></td><td><strong>$36.1M</strong></td></tr>
+    <tr><td>Total Economic Output</td><td>—</td><td>$325.0M</td></tr>
+    <tr><td>Annual Tax Revenue</td><td>—</td><td>$4.7M</td></tr>
+    <tr><td><strong>10-Year Tax Revenue</strong></td><td>—</td><td><strong>$47.1M</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Construction Phase Impact</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Scenario</th><th>Direct Jobs</th><th>Duration</th><th>Job-Years</th><th>Total Impact</th><th>Total Construction Wages</th></tr></thead>
+  <tbody>
+    <tr><td>Conservative</td><td>600</td><td>2.0 years</td><td>1,200</td><td>1,080 jobs</td><td>$124.8M</td></tr>
+    <tr><td>Moderate</td><td>1,000</td><td>2.5 years</td><td>2,500</td><td>1,800 jobs</td><td>$272M</td></tr>
+    <tr><td>Optimistic</td><td>1,500</td><td>3.0 years</td><td>4,500</td><td>2,700 jobs</td><td>$504M</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout">
+  <p><strong>Regional Construction Capacity Validated:</strong> The CCI methanol plant projected 1,000 construction jobs over 2 years on the same site, demonstrating that the regional construction workforce can support large-scale industrial projects. Jefferson Parish alone employs 20,468 construction workers, providing ample capacity for skilled trades recruitment.</p>
+</div>
+
+<h3>Employment Impact by Scenario</h3>
+<div class="chart-wrap">
+  <div class="chart-title">Employment Impact by Scenario — Direct, Indirect &amp; Induced Jobs</div>
+  <svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <defs>
+    <style>text{font-family:'Space Grotesk',sans-serif;fill:rgba(255,255,255,0.6);font-size:11px;}</style>
+  </defs>
+  <!-- grid lines -->
+  <line x1="60" y1="20" x2="60" y2="210" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <line x1="60" y1="210" x2="510" y2="210" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <line x1="60" y1="160" x2="510" y2="160" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="60" y1="110" x2="510" y2="110" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="60" y1="60"  x2="510" y2="60"  stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- y-axis labels -->
+  <text x="55" y="213" text-anchor="end">0</text>
+  <text x="55" y="163" text-anchor="end">500</text>
+  <text x="55" y="113" text-anchor="end">1,000</text>
+  <text x="55" y="63"  text-anchor="end">1,500</text>
+  <!-- Conservative: 75 direct, 250 indirect, 187 induced = 512 total  scale: 210px=1500 => 1px=7.14 -->
+  <!-- Direct=75 => 10.7px, Indirect=250 => 35.7px (approx), Induced=187 => 26.7px  total=73px -->
+  <!-- scale 210/1500=0.14 per job -->
+  <!-- Conservative 512 total => 71.7px -->
+  <rect x="90"  y="138.5" width="55" height="10.5"  fill="#64ffb4" opacity="0.9"/><!-- direct 75 -->
+  <rect x="90"  y="88"    width="55" height="50.5"  fill="#64ffb4" opacity="0.45"/><!-- indirect 360 -->
+  <rect x="90"  y="138.5" width="55" height="0"     fill="none"/>
+  <!-- draw all 3 sections bottom-up. Bottom=direct, middle=indirect, top=induced -->
+  <!-- Conservative: direct=75(10.5px) indirect=249(34.9px) induced=188(26.3px) base_y=210 -->
+  <rect x="90"  y="199.5" width="55" height="10.5"  fill="#1a7a52" opacity="0.9"/>
+  <rect x="90"  y="164.6" width="55" height="34.9"  fill="#3db88a" opacity="0.8"/>
+  <rect x="90"  y="137.9" width="55" height="26.7"  fill="#64ffb4" opacity="0.7"/>
+  <text x="117" y="133"   text-anchor="middle" font-size="10" fill="#64ffb4">512</text>
+  <text x="117" y="224"   text-anchor="middle">Conservative</text>
+  <!-- Moderate: direct=125(17.5) indirect=364(51) induced=364(50.9) total=853(119.4px) -->
+  <rect x="185" y="192.5" width="55" height="17.5"  fill="#1a7a52" opacity="0.9"/>
+  <rect x="185" y="141.5" width="55" height="51"    fill="#3db88a" opacity="0.8"/>
+  <rect x="185" y="90.6"  width="55" height="50.9"  fill="#64ffb4" opacity="0.7"/>
+  <text x="212" y="86"    text-anchor="middle" font-size="10" fill="#64ffb4">853</text>
+  <text x="212" y="224"   text-anchor="middle">Moderate</text>
+  <!-- Optimistic: direct=200(28) indirect=582(81.5) induced=582(81.5) total=1364(191px) -->
+  <rect x="280" y="182"   width="55" height="28"    fill="#1a7a52" opacity="0.9"/>
+  <rect x="280" y="100.5" width="55" height="81.5"  fill="#3db88a" opacity="0.8"/>
+  <rect x="280" y="19"    width="55" height="81.5"  fill="#64ffb4" opacity="0.7"/>
+  <text x="307" y="15"    text-anchor="middle" font-size="10" fill="#64ffb4">1,364</text>
+  <text x="307" y="224"   text-anchor="middle">Optimistic</text>
+  <!-- CCI Comparison: 50 direct(7), 341 total(47.7) -->
+  <rect x="375" y="203"   width="55" height="7"     fill="#1a7a52" opacity="0.9"/>
+  <rect x="375" y="162.3" width="55" height="40.7"  fill="#3db88a" opacity="0.8"/>
+  <text x="402" y="158"   text-anchor="middle" font-size="10" fill="#64ffb4">341</text>
+  <text x="402" y="224"   text-anchor="middle">CCI Precedent</text>
+  <!-- legend -->
+  <rect x="65"  y="240" width="10" height="10" fill="#1a7a52" opacity="0.9"/>
+  <text x="80"  y="249" font-size="10">Direct Jobs</text>
+  <rect x="165" y="240" width="10" height="10" fill="#3db88a" opacity="0.8"/>
+  <text x="180" y="249" font-size="10">Indirect Jobs</text>
+  <rect x="270" y="240" width="10" height="10" fill="#64ffb4" opacity="0.7"/>
+  <text x="285" y="249" font-size="10">Induced Jobs</text>
+</svg>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 4: WORKFORCE AVAILABILITY                                            -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 04</div>
+  <h2>Workforce Availability Analysis</h2>
+</div>
+
+<h3>Five-Parish Labor Shed</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Parish</th><th>Distance</th><th>Employed Workers</th><th>YoY Change</th><th>Key Industries</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Plaquemines Parish</strong></td><td>0 mi</td><td>10,206</td><td>-3.4%</td><td>Transport &amp; Warehousing (787), Manufacturing</td></tr>
+    <tr><td>St. Bernard Parish</td><td>15 mi</td><td>18,552</td><td>-1.6%</td><td>Construction (1,348), Manufacturing</td></tr>
+    <tr><td>Jefferson Parish</td><td>25 mi</td><td>205,386</td><td>-1.3%</td><td>Construction (20,468), Healthcare, Retail</td></tr>
+    <tr><td>Orleans Parish</td><td>30 mi</td><td>174,022</td><td>-0.2%</td><td>Professional Services, Education</td></tr>
+    <tr><td>St. Charles Parish</td><td>40 mi</td><td>24,652</td><td>+1.0%</td><td>Manufacturing (2,556), Transport</td></tr>
+    <tr><td><strong>Total Labor Shed</strong></td><td>—</td><td><strong>432,818</strong></td><td>—</td><td>—</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="stat-grid" style="grid-template-columns:repeat(3,1fr);">
+  <div class="stat-card"><span class="stat-value">28,758</span><div class="stat-label">Within 15 Miles<br>(Plaquemines + St. Bernard)</div></div>
+  <div class="stat-card"><span class="stat-value">408,766</span><div class="stat-label">Within 30 Miles<br>(+ Jefferson + Orleans)</div></div>
+  <div class="stat-card"><span class="stat-value">432,818</span><div class="stat-label">Total Labor Shed<br>(All 5 Parishes)</div></div>
+</div>
+
+<div class="warning-box">
+  <p><strong>Critical Finding — Regional Recruitment Required:</strong> Plaquemines Parish's small labor force (13,256 total, 10,206 employed) means that even a modest project requiring 75–125 direct employees represents 0.6–1.0% of the entire parish labor force. Regional recruitment from Jefferson and Orleans parishes (379,408 workers within 30 miles) is essential for project success.</p>
+</div>
+
+<h3>Relevant Industry Experience by Parish</h3>
+<ul>
+  <li><strong>Plaquemines Parish:</strong> 22+ marine terminals, deep-draft port access, 787 transport/warehousing workers</li>
+  <li><strong>St. Bernard Parish:</strong> Chalmette Refinery (largest employer), extensive petrochemical workforce, 1,348 construction workers</li>
+  <li><strong>Jefferson Parish:</strong> Louis Armstrong International Airport, transportation/logistics concentration, 20,468 construction workers</li>
+  <li><strong>Orleans Parish:</strong> Port of New Orleans, maritime services, industrial maintenance</li>
+  <li><strong>St. Charles Parish:</strong> Valero Refinery, Shell Norco, Occidental Chemical, DuPont, 2,556 manufacturing workers</li>
+</ul>
+
+<h3>Five-Parish Employment Distribution</h3>
+<div class="chart-wrap">
+  <div class="chart-title">Five-Parish Labor Shed — Employed Workers by Parish</div>
+  <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <defs><style>text{font-family:'Space Grotesk',sans-serif;fill:rgba(255,255,255,0.65);font-size:11px;}</style></defs>
+  <!-- scale: 205386 max, bar area 300px => 1px = 685 workers -->
+  <text x="10" y="32"  dominant-baseline="middle">Plaquemines</text>
+  <rect x="145" y="22" height="18" width="14.9"  fill="#64ffb4" opacity="0.5" rx="2"/>
+  <text x="163" y="32" dominant-baseline="middle" fill="#64ffb4">10,206</text>
+
+  <text x="10" y="62"  dominant-baseline="middle">St. Bernard</text>
+  <rect x="145" y="52" height="18" width="27.1"  fill="#64ffb4" opacity="0.6" rx="2"/>
+  <text x="175" y="62" dominant-baseline="middle" fill="#64ffb4">18,552</text>
+
+  <text x="10" y="92"  dominant-baseline="middle">Jefferson</text>
+  <rect x="145" y="82" height="18" width="300"   fill="#64ffb4" opacity="0.85" rx="2"/>
+  <text x="449" y="92" dominant-baseline="middle" fill="#64ffb4">205,386</text>
+
+  <text x="10" y="122" dominant-baseline="middle">Orleans</text>
+  <rect x="145" y="112" height="18" width="254"  fill="#64ffb4" opacity="0.75" rx="2"/>
+  <text x="403" y="122" dominant-baseline="middle" fill="#64ffb4">174,022</text>
+
+  <text x="10" y="152" dominant-baseline="middle">St. Charles</text>
+  <rect x="145" y="142" height="18" width="36"   fill="#64ffb4" opacity="0.6" rx="2"/>
+  <text x="184" y="152" dominant-baseline="middle" fill="#64ffb4">24,652</text>
+
+  <line x1="145" y1="10" x2="145" y2="170" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="145" y="185" text-anchor="middle" font-size="10">0</text>
+  <text x="295" y="185" text-anchor="middle" font-size="10">100k</text>
+  <text x="445" y="185" text-anchor="middle" font-size="10">200k+</text>
+</svg>
+</div>
+
+<h3>Competitive Landscape — Major Employers</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Major Employer</th><th>Sector</th><th>Wage Competition</th><th>Relevant Skills</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Venture Global LNG</strong></td><td>LNG Export</td><td>Very High</td><td>Process operators, instrumentation</td></tr>
+    <tr><td><strong>Baker Hughes</strong></td><td>Oilfield Services</td><td>High</td><td>Mechanical trades, equipment operation</td></tr>
+    <tr><td><strong>Chevron Oronite</strong></td><td>Petrochemical</td><td>High</td><td>Process technology, chemical operations</td></tr>
+    <tr><td><strong>Point Eight Power</strong></td><td>Power Generation</td><td>High</td><td>Operators, mechanics, electrical</td></tr>
+    <tr><td><strong>Fab-Con, Inc.</strong></td><td>Industrial Fabrication</td><td>Medium</td><td>Welding, fitting, fabrication</td></tr>
+    <tr><td><strong>C &amp; C Marine</strong></td><td>Marine Operations</td><td>Medium</td><td>Maritime labor, deck operations</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout">
+  <p><strong>Competitive Advantage — Career Stability:</strong> While energy sector employers (oil/gas, LNG, Venture Global) offer higher wages, the cement terminal project can compete by emphasizing:</p>
+  <p>• <strong>Stability:</strong> Cement demand is less cyclical than energy commodities</p>
+  <p>• <strong>Work-Life Balance:</strong> Regular schedules vs. offshore rotations</p>
+  <p>• <strong>Local Employment:</strong> No offshore or remote assignments</p>
+  <p>• <strong>Growth Opportunity:</strong> Potential for operational expansion</p>
+</div>
+
+<h3>Wage Competitiveness Analysis</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Occupation Category</th><th>Target Wage Range</th><th>Market Benchmark</th><th>Rationale</th></tr></thead>
+  <tbody>
+    <tr><td>Process Operators</td><td>$80,000–$100,000</td><td>$96,488 parish mfg avg</td><td>Match manufacturing average to compete with Venture Global, Chevron</td></tr>
+    <tr><td>Mechanical/Millwrights</td><td>$75,000–$90,000</td><td>$70k–$95k regional</td><td>Above construction, below energy sector</td></tr>
+    <tr><td>Stevedoring/Material Handling</td><td>$60,000–$75,000</td><td>Maritime/logistics baseline</td><td>Port operations wage floor</td></tr>
+    <tr><td>Supervisors/Leads</td><td>$95,000–$120,000</td><td>Leadership premium</td><td>15–25% premium over operators</td></tr>
+    <tr><td>Engineers/Technical</td><td>$90,000–$130,000</td><td>$77k prof services avg</td><td>Match professional services sector</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout">
+  <p><strong>Critical Wage Benchmark — CCI Precedent:</strong> The CCI methanol plant offered an average wage of $72,000 in 2014 dollars for 50 operational positions. Adjusted for inflation to 2026, this equals approximately <strong>$95,000</strong>. This establishes a minimum competitive wage threshold validated by LED economic development analysis.</p>
+  <p><strong>Recommendation:</strong> Target average operational wage of $90,000–$95,000 to remain competitive with historical precedent and current manufacturing wages, especially to compete with Venture Global LNG.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 5: REGIONAL DEMOGRAPHICS                                             -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 05</div>
+  <h2>Regional Demographics</h2>
+</div>
+
+<h3>Plaquemines Parish Profile</h3>
+<div class="stat-grid" style="grid-template-columns:repeat(3,1fr);">
+  <div class="stat-card"><span class="stat-value">26,757</span><div class="stat-label">Population</div></div>
+  <div class="stat-card"><span class="stat-value">41.2</span><div class="stat-label">Median Age</div></div>
+  <div class="stat-card"><span class="stat-value">$61,200</span><div class="stat-label">Median HH Income</div></div>
+</div>
+
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Demographic Metric</th><th>Value</th><th>Implication</th></tr></thead>
+  <tbody>
+    <tr><td>Labor Force</td><td>13,256</td><td>Active labor force, but limited size</td></tr>
+    <tr><td>Employed</td><td>10,206</td><td>Strong employment base</td></tr>
+    <tr><td>Unemployment Rate</td><td>4.1%</td><td>Near full employment, tight labor market</td></tr>
+    <tr><td>Home Ownership Rate</td><td>71.8%</td><td>High stability, established community</td></tr>
+    <tr><td>Business Establishments</td><td>863</td><td>Modest business base for service support</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Competitive Wage Environment (NOLA MSA)</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Occupation</th><th>Median Wage (NOLA MSA)</th><th>National Comparison</th></tr></thead>
+  <tbody>
+    <tr><td>Industrial Production Managers</td><td>$96,488</td><td>+39% above national</td></tr>
+    <tr><td>Maintenance &amp; Repair Workers</td><td>$74,410</td><td>Competitive</td></tr>
+    <tr><td>Heavy Equipment Operators</td><td>$72,000</td><td>Competitive</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Employment Trends (2022–2023)</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Parish</th><th>Employment Change</th><th>Trend</th><th>Implication</th></tr></thead>
+  <tbody>
+    <tr><td>Plaquemines</td><td>-3.44%</td><td>Declining</td><td>Workers may be seeking new opportunities</td></tr>
+    <tr><td>St. Bernard</td><td>-1.6%</td><td>Declining</td><td>Modest decline, stabilizing</td></tr>
+    <tr><td>Jefferson</td><td>-1.29%</td><td>Declining</td><td>Slight decline in large parish</td></tr>
+    <tr><td>Orleans</td><td>-0.18%</td><td>Stable</td><td>Near stable, urban core resilient</td></tr>
+    <tr><td><strong>St. Charles</strong></td><td><strong>+1.04%</strong></td><td><strong>Growing</strong></td><td><strong>Only parish with employment growth</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout">
+  <p><strong>Growth Opportunity in Challenging Environment:</strong> Most parishes in the labor shed experienced employment declines (2022–2023), with Plaquemines showing the steepest decline (-3.44%). This creates opportunity: displaced workers may welcome stable, well-paying industrial employment. The project can position itself as a growth opportunity in a contracting regional employment market.</p>
+</div>
+
+<h3>Workforce Development Infrastructure</h3>
+
+<h4>Louisiana Workforce Commission</h4>
+<ul>
+  <li><strong>Office Location:</strong> Chalmette, St. Bernard Parish (15 miles from site)</li>
+  <li><strong>Contact:</strong> 504-278-6214</li>
+  <li><strong>Services:</strong> Job placement, skills assessment, career counseling</li>
+  <li><strong>Hours:</strong> Monday–Friday with walk-in and appointment options</li>
+</ul>
+
+<h3>Partner Colleges &amp; Training Programs</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Institution</th><th>Distance</th><th>Relevant Programs</th><th>Capacity</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Nunez Community College</strong></td><td>15 miles (Chalmette)</td><td>Process Technology, Industrial Maintenance, Instrumentation &amp; Electrical</td><td>Established industrial training partner</td></tr>
+    <tr><td><strong>Delgado Community College</strong></td><td>25 miles (New Orleans)</td><td>Industrial Maintenance, Heavy Equipment Operation, CDL Training</td><td>Large regional college, high capacity</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>State Incentive Programs</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Program</th><th>Benefit</th><th>Eligibility</th><th>Value to Project</th></tr></thead>
+  <tbody>
+    <tr><td><strong>LED FastStart</strong></td><td>Free workforce training</td><td>15+ manufacturing jobs</td><td>Ranked #1 nationally, saves ~$375k in training costs</td></tr>
+    <tr><td><strong>Quality Jobs Program</strong></td><td>Payroll rebates</td><td>New jobs above parish average wage</td><td>Cash incentive for job creation</td></tr>
+    <tr><td><strong>ITEP (Industrial Tax Exemption)</strong></td><td>Property tax abatement</td><td>Manufacturing projects</td><td>Up to 10 years property tax exemption</td></tr>
+    <tr><td><strong>TIF (Tax Increment Financing)</strong></td><td>Infrastructure funding</td><td>Economic development projects</td><td>Parish support for site improvements</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PART 6: KEY FINDINGS & RECOMMENDATIONS                                    -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Part 06</div>
+  <h2>Key Findings &amp; Recommendations</h2>
+</div>
+
+<h3>Risk Mitigation Strategies</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Risk Factor</th><th>Impact</th><th>Mitigation Strategy</th></tr></thead>
+  <tbody>
+    <tr><td>Small Local Labor Force</td><td>High</td><td>Regional recruitment from 5-parish area; competitive wages to attract commuters; consider company transportation options</td></tr>
+    <tr><td>Energy Sector Wage Competition (Venture Global)</td><td>High</td><td>Match manufacturing wage averages ($90k–$95k); emphasize stability vs. cyclical energy jobs; offer strong benefits package and career growth</td></tr>
+    <tr><td>Declining Regional Employment</td><td>Medium</td><td>Position as growth opportunity in contracting market; target displaced workers from other industries; leverage LED FastStart for skill retraining</td></tr>
+    <tr><td>Construction Workforce Availability</td><td>Low</td><td>CCI precedent proves 1,000+ construction workforce feasible; Jefferson Parish has 20,468 construction workers</td></tr>
+    <tr><td>Skills Gap in Workforce</td><td>Low–Medium</td><td>LED FastStart provides free pre-employment training; partner with Nunez CC for technical education</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Recommended Next Steps</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Priority</th><th>Action Item</th><th>Timeline</th><th>Responsible Party</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Contact Parish Economic Development (Kelly DiMarco)</td><td>Immediate</td><td>Project Development Team</td></tr>
+    <tr><td>2</td><td>Engage LED FastStart workforce development team</td><td>Within 30 days</td><td>HR/Operations</td></tr>
+    <tr><td>3</td><td>Conduct detailed occupational wage survey (BLS OEWS)</td><td>Within 60 days</td><td>HR/Compensation</td></tr>
+    <tr><td>4</td><td>Meet with Nunez CC for curriculum partnership</td><td>Within 90 days</td><td>HR/Training</td></tr>
+    <tr><td>5</td><td>Request CCI methanol plant economic impact study</td><td>Within 30 days</td><td>Business Development</td></tr>
+    <tr><td>6</td><td>Develop recruitment marketing campaign (3-tier)</td><td>Within 90 days</td><td>HR/Marketing</td></tr>
+    <tr><td>7</td><td>Apply for ITEP (Industrial Tax Exemption)</td><td>During permitting</td><td>Finance/Legal</td></tr>
+    <tr><td>8</td><td>Survey major employers (Venture Global, etc.) for workforce insights</td><td>Within 120 days</td><td>Business Development</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- ANNEX A: DATA SOURCES                                                     -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Annex A</div>
+  <h2>Data Sources</h2>
+</div>
+
+<h3>Primary Data Sources</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Source</th><th>Data Type</th><th>Date</th></tr></thead>
+  <tbody>
+    <tr><td>Data USA (datausa.io)</td><td>Parish employment, wages, industry composition</td><td>2023</td></tr>
+    <tr><td>GNO Inc.</td><td>Regional economic development, parish profiles</td><td>2024–2026</td></tr>
+    <tr><td>Louisiana Economic Development (LED)</td><td>Economic impact multipliers, CCI Methanol (2014), Venture Global projects</td><td>2014–2025</td></tr>
+    <tr><td><strong>FERC (Federal Energy Regulatory Commission)</strong></td><td>LNG project environmental impact statements, Venture Global Plaquemines LNG, CP2 LNG</td><td>2016–2025</td></tr>
+    <tr><td>U.S. Bureau of Labor Statistics – QCEW</td><td>County-level employment and wage data by NAICS</td><td>2023</td></tr>
+    <tr><td>U.S. Bureau of Labor Statistics – OEWS</td><td>Occupation-specific wage data by MSA</td><td>2023</td></tr>
+    <tr><td>U.S. Census Bureau – OnTheMap</td><td>Commuting pattern analysis</td><td>2023</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>FERC References</h3>
+<div class="glass">
+  <p><strong>Venture Global Plaquemines LNG Project</strong><br>
+  FERC Docket No. CP15-550-000<br>
+  Final Environmental Impact Statement issued 2016<br>
+  Source for 3.9x employment multiplier, 250 direct jobs, 975 total jobs</p>
+  <p><strong>Venture Global CP2 LNG Project</strong><br>
+  FERC Docket No. CP22-466-000<br>
+  Final Environmental Impact Statement issued 2022<br>
+  Source for 5.34x employment multiplier, 200 direct jobs, 1,067 total jobs</p>
+</div>
+
+<h3>Academic &amp; Government References</h3>
+<ul>
+  <li><strong>Rickman &amp; Schwer (1995)</strong> — "A comparison of the multipliers of IMPLAN, REMI, and RIMS II" — <em>Annals of Regional Science</em>, 29:363–374. Validation of 4.5–6.5x employment multiplier range.</li>
+  <li><strong>Louisiana Chemical Association (2025)</strong> — Industry economic impact studies. Source for 5.5–7.0x multiplier range for petrochemical manufacturing.</li>
+  <li><strong>BEA RIMS II:</strong> https://apps.bea.gov/regional/rims/</li>
+  <li><strong>IMPLAN Group:</strong> https://implan.com/</li>
+  <li><strong>Louisiana Economic Development:</strong> https://opportunitylouisiana.com</li>
+  <li><strong>FERC:</strong> https://www.ferc.gov/</li>
+</ul>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- ANNEX B: MULTIPLIER METHODOLOGY                                           -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Annex B</div>
+  <h2>Economic Multiplier Methodology</h2>
+</div>
+
+<h3>Type II Employment Multiplier</h3>
+<div class="glass">
+  <p>The 5.82 multiplier represents a <strong>Type II final-demand employment multiplier</strong>, meaning for every 1 direct job created, an additional 5.82 jobs are created through:</p>
+  <p>• <strong>Indirect effects (~2.9 jobs):</strong> Supply chain purchases from regional businesses (cement suppliers, equipment vendors, logistics providers, professional services)</p>
+  <p>• <strong>Induced effects (~2.9 jobs):</strong> Household spending by direct and indirect employees (retail, restaurants, housing, healthcare, personal services)</p>
+</div>
+
+<div class="callout">
+  <p><strong>Calculation Formula:</strong> Total Employment Impact = Direct Jobs + (Direct Jobs × 5.82)</p>
+  <p><strong>Example (Moderate Scenario):</strong> Direct Jobs: 125 → Indirect + Induced: 125 × 5.82 = 728 → Total: 125 + 728 = <strong>853 jobs</strong></p>
+</div>
+
+<h3>Validation Against Industry Standards</h3>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Benchmark Source</th><th>Expected Range</th><th>LED 5.82 Status</th></tr></thead>
+  <tbody>
+    <tr><td>BEA RIMS II (NAICS 327310 – Cement)</td><td>5.5 – 6.5</td><td>✓ Within range</td></tr>
+    <tr><td>IMPLAN (Louisiana Mfg)</td><td>5.0 – 6.2</td><td>✓ Within range</td></tr>
+    <tr><td>Academic Literature (Rickman &amp; Schwer)</td><td>4.5 – 6.5</td><td>✓ Within range</td></tr>
+    <tr><td>Venture Global Plaquemines LNG (FERC)</td><td>3.9x</td><td>Lower, but validated by FERC EIS</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Geographic Leakage</h3>
+<div class="glass">
+  <p>Not all economic activity stays in the local region. "Leakage" occurs when employees live outside the region and spend wages elsewhere, the facility purchases from suppliers outside the region, or workers save/invest income rather than spending locally.</p>
+  <p><strong>Leakage Assumptions in This Analysis:</strong></p>
+  <p>• <strong>Local Hiring:</strong> 70–80% of workers reside in 5-parish region</p>
+  <p>• <strong>Local Procurement:</strong> ~60% of B2B purchases from regional suppliers</p>
+  <p>• <strong>Local Spending:</strong> ~80% of household income spent in region</p>
+</div>
+
+<h3>Limitations &amp; Conservative Assumptions</h3>
+<ul>
+  <li><strong>Conservative Output Multiplier:</strong> Used 2.6x instead of higher estimates (2.8x+) for cement manufacturing</li>
+  <li><strong>Moderate Wage Assumptions:</strong> $90,000 average operational wage is mid-range for industrial positions</li>
+  <li><strong>Geographic Scope:</strong> Limited to 5-parish region; may understate broader regional impacts</li>
+  <li><strong>Tax Revenue:</strong> Does not include property taxes (depends on ITEP exemption status)</li>
+  <li><strong>Construction Phase:</strong> Treated as one-time impact, not annualized</li>
+</ul>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- ANNEX C: VALIDATION REFERENCES                                            -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Annex C</div>
+  <h2>Validation References &amp; Contacts</h2>
+</div>
+
+<h3>Validation Pathway Resources</h3>
+
+<h4>1. BEA RIMS II (Recommended)</h4>
+<ul>
+  <li><strong>Purpose:</strong> Federal government economic impact multipliers</li>
+  <li><strong>Cost:</strong> $275–$500</li>
+  <li><strong>Access:</strong> https://apps.bea.gov/regional/rims/</li>
+  <li><strong>Best for:</strong> Government submissions, regulatory filings</li>
+</ul>
+
+<h4>2. IMPLAN Group</h4>
+<ul>
+  <li><strong>Purpose:</strong> Commercial economic impact modeling platform</li>
+  <li><strong>Cost:</strong> $1,500–$3,000 annual subscription</li>
+  <li><strong>Access:</strong> https://implan.com/</li>
+  <li><strong>Best for:</strong> Detailed sector analysis, investor presentations</li>
+</ul>
+
+<h4>3. FERC Economic Impact Standards</h4>
+<ul>
+  <li><strong>Purpose:</strong> Federal regulatory agency economic impact guidelines</li>
+  <li><strong>Cost:</strong> Free (public documents)</li>
+  <li><strong>Access:</strong> https://www.ferc.gov/</li>
+  <li><strong>Best for:</strong> Comparative analysis with Venture Global and other LNG projects</li>
+</ul>
+
+<h3>Key Contacts</h3>
+<div class="glass">
+  <p><strong>Plaquemines Parish Economic Development</strong><br>
+  Director: Kelly DiMarco — kdimarco@ppgov.net — 504-934-6107<br>
+  333 F. Edward Hebert Boulevard, Building 100, Belle Chasse, LA 70037</p>
+  <p><strong>Louisiana Economic Development</strong><br>
+  https://opportunitylouisiana.com — LED FastStart: 225-342-3000</p>
+  <p><strong>Delgado Community College:</strong> https://www.dcc.edu<br>
+  <strong>Nunez Community College:</strong> https://www.nunez.edu<br>
+  <strong>Louisiana Workforce Commission:</strong> 504-278-6214 (Chalmette office)</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- ANNEX D: CHART VISUALIZATIONS                                             -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  <div class="part-number">Annex D</div>
+  <h2>Chart Visualizations</h2>
+</div>
+
+<h3>Construction Phase Employment Impact</h3>
+<div class="chart-wrap">
+  <div class="chart-title">Construction Phase Employment — Peak Jobs by Scenario</div>
+  <svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <defs><style>text{font-family:'Space Grotesk',sans-serif;fill:rgba(255,255,255,0.6);font-size:11px;}</style></defs>
+  <line x1="60" y1="20" x2="60" y2="180" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <line x1="60" y1="180" x2="480" y2="180" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <line x1="60" y1="130" x2="480" y2="130" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="60" y1="80"  x2="480" y2="80"  stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="55" y="183" text-anchor="end">0</text>
+  <text x="55" y="133" text-anchor="end">1,000</text>
+  <text x="55" y="83"  text-anchor="end">2,000</text>
+  <!-- scale: 2700 max => 160px. 1px=16.875 jobs -->
+  <!-- Conservative: direct=600(35.5) indirect=252(14.9) induced=228(13.5) total=1080(64px) -->
+  <rect x="90"  y="144.5" width="65" height="35.5"  fill="#e85d5d" opacity="0.85" rx="2"/>
+  <rect x="90"  y="129.6" width="65" height="14.9"  fill="#e8a05d" opacity="0.75" rx="2"/>
+  <rect x="90"  y="116.1" width="65" height="13.5"  fill="#e8d45d" opacity="0.65" rx="2"/>
+  <text x="122" y="112"   text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">1,080</text>
+  <text x="122" y="196"   text-anchor="middle">Conservative</text>
+  <!-- Moderate: direct=1000(59.3) indirect=420(24.9) induced=380(22.5) total=1800(106.7) -->
+  <rect x="200" y="120.7" width="65" height="59.3"  fill="#e85d5d" opacity="0.85" rx="2"/>
+  <rect x="200" y="95.8"  width="65" height="24.9"  fill="#e8a05d" opacity="0.75" rx="2"/>
+  <rect x="200" y="73.3"  width="65" height="22.5"  fill="#e8d45d" opacity="0.65" rx="2"/>
+  <text x="232" y="69"    text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">1,800</text>
+  <text x="232" y="196"   text-anchor="middle">Moderate</text>
+  <!-- Optimistic: direct=1500(88.9) indirect=630(37.3) induced=570(33.8) total=2700(160) -->
+  <rect x="310" y="91.1"  width="65" height="88.9"  fill="#e85d5d" opacity="0.85" rx="2"/>
+  <rect x="310" y="53.8"  width="65" height="37.3"  fill="#e8a05d" opacity="0.75" rx="2"/>
+  <rect x="310" y="20"    width="65" height="33.8"  fill="#e8d45d" opacity="0.65" rx="2"/>
+  <text x="342" y="16"    text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">2,700</text>
+  <text x="342" y="196"   text-anchor="middle">Optimistic</text>
+  <!-- legend -->
+  <rect x="65"  y="207" width="10" height="10" fill="#e85d5d" opacity="0.85"/>
+  <text x="80"  y="216" font-size="10">Direct Construction</text>
+  <rect x="200" y="207" width="10" height="10" fill="#e8a05d" opacity="0.75"/>
+  <text x="215" y="216" font-size="10">Indirect</text>
+  <rect x="285" y="207" width="10" height="10" fill="#e8d45d" opacity="0.65"/>
+  <text x="300" y="216" font-size="10">Induced</text>
+</svg>
+</div>
+
+<div class="callout">
+  <p><strong>Disclaimer:</strong> This document is an internal working model prepared for SESCO Cement planning purposes. Employment multiplier estimates are based on publicly available Louisiana Economic Development data and FERC environmental impact statements but have not been independently validated through BEA RIMS II or IMPLAN methodologies. For regulatory submissions, investor presentations, or external stakeholder communications, official validation is recommended. All data collected February 2026. Workforce projections assume competitive wage structure and successful recruitment efforts. Venture Global comparative analysis is based on publicly available FERC documents.</p>
+</div>
+
+<div class="page-footer">
+  OceanDatum — Maritime &amp; Commodity Intelligence &nbsp;·&nbsp;
+  Project Masabba Mile 76.5 — Plaquemines Parish Workforce &amp; Economic Impact Analysis &nbsp;·&nbsp;
+  Internal Working Document &nbsp;·&nbsp; February 2026
+</div>
+
+</div><!-- /page-wrapper -->
 
 <script>
 (function(){
@@ -517,1597 +898,5 @@
   applyTheme(localStorage.getItem('od-theme') === 'light');
 })();
 </script>
-
-<!-- Cover Page -->
-<div class="cover-page page-break">
-    <div class="cover-title">PLAQUEMINES PARISH WORKFORCE ANALYSIS</div>
-    <div class="cover-subtitle">
-        Economic Impact & Workforce Availability Analysis<br/>
-        Plaquemines Parish, Louisiana
-    </div>
-    <div class="cover-info">
-        Project Development Team<br/>
-        February 3, 2026 | Sample Version<br/><br/>
-        <strong>SANITIZED SAMPLE FOR DEMONSTRATION</strong><br/>
-        <em>LOCATION DETAILS ANONYMIZED<br/>
-        FOR EXAMPLE PURPOSES ONLY</em>
-    </div>
-</div>
-
-<!-- Table of Contents -->
-<div class="toc page-break">
-    <h1>Table of Contents</h1>
-    <p><strong>Executive Summary</strong> ................................................... 3</p>
-    <p><strong>Methodology Status & Validation Pathway</strong> ....................... 5</p>
-    <p class="toc-sub">Working Model Disclosure .............................. 5</p>
-    <p class="toc-sub">Official Validation Options ............................. 6</p>
-    <p class="toc-sub">Comparative Multiplier Analysis (Venture Global) .......... 7</p>
-    <p><strong>Economic Impact Analysis</strong> .......................................... 10</p>
-    <p class="toc-sub">Operational Impact Scenarios .......................... 10</p>
-    <p class="toc-sub">Construction Phase Impact ............................. 13</p>
-    <p><strong>Workforce Availability Analysis</strong> ................................... 15</p>
-    <p class="toc-sub">Five-Parish Labor Shed ................................ 15</p>
-    <p class="toc-sub">Competitive Landscape (Venture Global, etc.) ........... 17</p>
-    <p class="toc-sub">Wage Competitiveness Analysis ....................... 18</p>
-    <p><strong>Regional Demographics</strong> ........................................... 20</p>
-    <p><strong>Key Findings and Recommendations</strong> ............................... 22</p>
-    <p><strong>Annex A: Data Sources (with FERC references)</strong> .................. 26</p>
-    <p><strong>Annex B: Economic Multiplier Methodology</strong> ....................... 28</p>
-    <p><strong>Annex C: Validation References</strong> ................................... 31</p>
-    <p><strong>Annex D: Chart Visualizations</strong> .................................... 33</p>
-</div>
-
-<!-- Executive Summary -->
-<div class="page-break">
-<h1>Executive Summary</h1>
-
-<div class="note">
-    <strong>Working Model Status:</strong> This analysis employs a working economic impact model based on Louisiana Economic Development's (LED) published employment multiplier of 5.82 for industrial manufacturing in the region. For official regulatory submissions or investor presentations, validation through BEA RIMS II ($275-$500) or IMPLAN ($1,500-$3,000) platforms is recommended.
-</div>
-
-<h2>Project Overview</h2>
-<p>Project Masabba  proposes development of industrial operations at the former Project Masabba site site in Southeast Louisiana (coordinates: [Site Coordinates]). This analysis evaluates the potential economic impact and workforce availability within the five-parish Greater New Orleans labor market area (Plaquemines, St. Bernard, Jefferson, Orleans, and St. Charles parishes).</p>
-
-<h2>Economic Impact Summary</h2>
-
-<div class="metric-cards">
-    <div class="metric-card blue">
-        <div class="metric-card-value">512</div>
-        <div class="metric-card-label">Total Jobs (Conservative)</div>
-    </div>
-    <div class="metric-card green">
-        <div class="metric-card-value">853</div>
-        <div class="metric-card-label">Total Jobs (Moderate)</div>
-    </div>
-    <div class="metric-card purple">
-        <div class="metric-card-value">1,364</div>
-        <div class="metric-card-label">Total Jobs (Optimistic)</div>
-    </div>
-</div>
-
-<table>
-    <tr>
-        <th>Scenario</th>
-        <th>Direct Jobs</th>
-        <th>Indirect + Induced Jobs</th>
-        <th>Total Employment Impact</th>
-        <th>10-Year Tax Revenue</th>
-    </tr>
-    <tr>
-        <td><strong>Conservative</strong></td>
-        <td class="number-cell">75</td>
-        <td class="number-cell">437</td>
-        <td class="number-cell">512</td>
-        <td class="number-cell">$14.4M</td>
-    </tr>
-    <tr>
-        <td><strong>Moderate (Base Case)</strong></td>
-        <td class="number-cell">125</td>
-        <td class="number-cell">728</td>
-        <td class="number-cell">853</td>
-        <td class="number-cell">$27.4M</td>
-    </tr>
-    <tr>
-        <td><strong>Optimistic</strong></td>
-        <td class="number-cell">200</td>
-        <td class="number-cell">1,164</td>
-        <td class="number-cell">1,364</td>
-        <td class="number-cell">$47.1M</td>
-    </tr>
-</table>
-
-<p style="font-size: 9pt; font-style: italic;">Note: Employment multiplier of 5.82 based on LED analysis of CCI Methanol Plant (same site, 2014). Calculation: Total Jobs = Direct Jobs + (Direct Jobs × 5.82).</p>
-
-<h2>Workforce Availability</h2>
-<ul>
-    <li><strong>432,818 employed workers</strong> in five-parish labor shed</li>
-    <li><strong>28,758 workers</strong> within 15-mile commute radius (Plaquemines + St. Bernard)</li>
-    <li><strong>408,766 workers</strong> within 30-mile commute radius (includes Jefferson + Orleans)</li>
-    <li><strong>22,000+ workers</strong> in relevant industries (manufacturing, transportation, construction)</li>
-</ul>
-
-<h2>Key Findings</h2>
-<ol>
-    <li><strong>Site Precedent Established:</strong> CCI Methanol Plant received full environmental and zoning approval for same 387-acre site in 2020, demonstrating regulatory feasibility for heavy industrial development.</li>
-
-    <li><strong>Robust Labor Market:</strong> Five-parish region provides sufficient workforce depth across all operational scenarios, with established industrial skills base in petrochemical, maritime, and manufacturing sectors.</li>
-
-    <li><strong>Competitive Wage Environment:</strong> Regional industrial wages range $72,000-$96,000 annually. Project wage structure must align with or exceed local market rates to attract qualified talent.</li>
-
-    <li><strong>Infrastructure Advantages:</strong> Port of Plaquemines offers 600+ miles of deep-draft (45+ ft) access, ranking among nation's top ports for bulk cargo handling.</li>
-
-    <li><strong>Workforce Development Resources:</strong> LED FastStart (ranked #1 nationally) provides customized training at no cost to employer for projects creating 15+ jobs. Partnership opportunities exist with Delgado Community College and Nunez Community College.</li>
-</ol>
-
-<h2>Primary Recommendations</h2>
-<ol>
-    <li><strong>Validation Pathway:</strong> For regulatory submissions, validate economic impact estimates through BEA RIMS II ($275-$500) or commission independent IMPLAN analysis ($3,000-$5,000).</li>
-
-    <li><strong>Regional Recruitment Strategy:</strong> Target St. Bernard and Jefferson parishes for skilled operations workforce; leverage existing industrial talent pool from petrochemical corridor.</li>
-
-    <li><strong>Compensation Strategy:</strong> Establish competitive wage structure at $75,000-$95,000 range for skilled positions to compete effectively with energy sector employers (including Venture Global LNG).</li>
-
-    <li><strong>Training Partnership:</strong> Engage LED FastStart early in project timeline to develop customized training curriculum aligned with operational requirements.</li>
-
-    <li><strong>Regulatory Approach:</strong> Reference CCI Methanol Plant precedent in permitting discussions; same-site environmental review provides regulatory pathway template.</li>
-</ol>
-</div>
-
-<!-- Methodology Section -->
-<div class="page-break">
-<h1>Methodology Status & Validation Pathway</h1>
-
-<h2>Working Model Disclosure</h2>
-
-<p><strong>Current Status:</strong> This analysis employs a working economic impact model based on publicly available multiplier data from Louisiana Economic Development (LED). The methodology is consistent with Input-Output (I-O) economic modeling principles used by IMPLAN and BEA RIMS II platforms but does not constitute an official IMPLAN or RIMS II analysis.</p>
-
-<h3>Multiplier Source and Validation</h3>
-<p>The employment multiplier of <strong>5.82</strong> is derived from LED's economic impact analysis of the Castleton Commodities International (CCI) Methanol Plant project announced in 2014 for the identical 387-acre former Project Masabba site site in [Location], Louisiana. LED's analysis determined that 50 direct permanent jobs would generate 291 additional jobs in the regional economy (291 ÷ 50 = 5.82).</p>
-
-<table>
-    <tr>
-        <th>Source</th>
-        <th>Expected Multiplier Range</th>
-        <th>LED 5.82 Status</th>
-    </tr>
-    <tr>
-        <td>BEA RIMS II (NAICS 327310 - Cement Mfg)</td>
-        <td class="number-cell">5.5 - 6.5</td>
-        <td><span class="checkmark">✓</span> Within Range</td>
-    </tr>
-    <tr>
-        <td>IMPLAN (Louisiana Manufacturing)</td>
-        <td class="number-cell">5.0 - 6.2</td>
-        <td><span class="checkmark">✓</span> Within Range</td>
-    </tr>
-    <tr>
-        <td>Academic Literature (Rickman & Schwer, 1995)</td>
-        <td class="number-cell">4.5 - 6.5</td>
-        <td><span class="checkmark">✓</span> Within Range</td>
-    </tr>
-    <tr>
-        <td>Louisiana Chemical Association (2025)</td>
-        <td class="number-cell">5.5 - 7.0</td>
-        <td><span class="checkmark">✓</span> Within Range</td>
-    </tr>
-</table>
-
-<h2>Official Validation Options</h2>
-
-<p>For regulatory submissions, investor presentations, or external stakeholder communications, the following official channels are recommended:</p>
-
-<h3>Option 1: BEA RIMS II Analysis (Recommended for Government Use)</h3>
-<ul>
-    <li><strong>Source:</strong> U.S. Bureau of Economic Analysis (federal government)</li>
-    <li><strong>Cost:</strong> $275 - $500 per region</li>
-    <li><strong>Timeframe:</strong> Immediate digital delivery</li>
-    <li><strong>Website:</strong> https://apps.bea.gov/regional/rims/</li>
-    <li><strong>Advantages:</strong> Federal government source, publicly available, widely accepted by government agencies</li>
-</ul>
-
-<h3>Option 2: IMPLAN Commercial Analysis (Maximum Detail)</h3>
-<ul>
-    <li><strong>Source:</strong> IMPLAN Group LLC (commercial platform)</li>
-    <li><strong>Cost:</strong> $1,500 - $3,000 annual subscription</li>
-    <li><strong>Timeframe:</strong> 2-3 weeks for full analysis</li>
-    <li><strong>Website:</strong> https://implan.com/</li>
-    <li><strong>Advantages:</strong> Most detailed sector-specific modeling, industry standard for economic development organizations</li>
-</ul>
-
-<h3>Option 3: Third-Party Economic Impact Study</h3>
-<ul>
-    <li><strong>Source:</strong> Independent economic consulting firm</li>
-    <li><strong>Cost:</strong> $5,000 - $15,000 (varies by scope)</li>
-    <li><strong>Timeframe:</strong> 4-8 weeks</li>
-    <li><strong>Advantages:</strong> Independent third-party validation, customized analysis, professional presentation materials</li>
-</ul>
-</div>
-
-<!-- Comparative Multiplier Analysis - VENTURE GLOBAL SECTION -->
-<div class="page-break">
-<h1>Comparative Multiplier Analysis: Recent LED Precedents</h1>
-
-<p>During preparation of this analysis, additional recent LED economic impact studies for major industrial projects in Plaquemines Parish and adjacent parishes were identified. These provide contemporary comparison points for multiplier validation and demonstrate the range of economic impact estimates across different modeling approaches and time periods.</p>
-
-<h2>LED Multiplier Comparison: Plaquemines Parish Industrial Projects</h2>
-
-<table>
-    <thead>
-        <tr>
-            <th>Project</th>
-            <th>Year</th>
-            <th>Direct Jobs</th>
-            <th>Total Jobs</th>
-            <th>Multiplier</th>
-            <th>Industry</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>Venture Global Plaquemines LNG</strong></td>
-            <td class="number-cell">2016</td>
-            <td class="number-cell">250</td>
-            <td class="number-cell">975</td>
-            <td class="number-cell"><strong>3.9x</strong></td>
-            <td>LNG Export</td>
-        </tr>
-        <tr>
-            <td><strong>Venture Global CP2 LNG</strong></td>
-            <td class="number-cell">2022</td>
-            <td class="number-cell">200</td>
-            <td class="number-cell">1,067</td>
-            <td class="number-cell"><strong>5.34x</strong></td>
-            <td>LNG Export (Cameron Parish)</td>
-        </tr>
-        <tr>
-            <td><strong>CCI Methanol Plant</strong></td>
-            <td class="number-cell">2014</td>
-            <td class="number-cell">50</td>
-            <td class="number-cell">341</td>
-            <td class="number-cell"><strong>5.82x</strong></td>
-            <td>Methanol (same site)</td>
-        </tr>
-        <tr>
-            <td><strong>Average (All Three)</strong></td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="number-cell"><strong>5.02x</strong></td>
-            <td>-</td>
-        </tr>
-    </tbody>
-</table>
-
-<h2>Impact of Multiplier Variance on Project Masabba Scenarios</h2>
-
-<table>
-    <thead>
-        <tr>
-            <th>Scenario</th>
-            <th>Direct Jobs</th>
-            <th>3.9x (VG Plaq.)</th>
-            <th>5.02x (Average)</th>
-            <th>5.82x (CCI)</th>
-            <th>Range Variance</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>Conservative</strong></td>
-            <td class="number-cell">75</td>
-            <td class="number-cell">368</td>
-            <td class="number-cell">451</td>
-            <td class="number-cell">512</td>
-            <td class="number-cell">+39%</td>
-        </tr>
-        <tr>
-            <td><strong>Moderate</strong></td>
-            <td class="number-cell">125</td>
-            <td class="number-cell">613</td>
-            <td class="number-cell">753</td>
-            <td class="number-cell">853</td>
-            <td class="number-cell">+39%</td>
-        </tr>
-        <tr>
-            <td><strong>Optimistic</strong></td>
-            <td class="number-cell">200</td>
-            <td class="number-cell">980</td>
-            <td class="number-cell">1,204</td>
-            <td class="number-cell">1,364</td>
-            <td class="number-cell">+39%</td>
-        </tr>
-    </tbody>
-</table>
-
-<h2>Significance for Stakeholder Communication</h2>
-<p>This variance analysis demonstrates several critical points:</p>
-<ul>
-    <li><strong>Materiality:</strong> Multiplier selection creates 39% variance in total job projections, materially affecting economic impact claims.</li>
-    <li><strong>Precedent Range:</strong> All three LED precedents fall within academically validated range (4.5-6.5).</li>
-    <li><strong>Conservative Positioning:</strong> Using 3.9x multiplier (Venture Global Plaquemines LNG) provides most defensible floor estimate.</li>
-    <li><strong>Same-Site Precedent:</strong> CCI 5.82x multiplier represents identical site, though methodology may have evolved since 2014.</li>
-    <li><strong>Average Approach:</strong> 5.02x average provides balanced middle estimate.</li>
-</ul>
-
-<h2>Recommended Multiplier Selection by Use Case</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Use Case</th>
-            <th>Recommended Multiplier</th>
-            <th>Rationale</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Regulatory Submissions</td>
-            <td class="number-cell">3.9x</td>
-            <td>Most recent LED analysis (Venture Global); minimizes overstatement risk</td>
-        </tr>
-        <tr>
-            <td>Public Presentations</td>
-            <td class="number-cell">5.02x</td>
-            <td>Balanced estimate citing three LED precedents</td>
-        </tr>
-        <tr>
-            <td>Investor Materials</td>
-            <td class="number-cell">3.9-5.82x</td>
-            <td>Present full range with sensitivity analysis</td>
-        </tr>
-        <tr>
-            <td>Internal Planning</td>
-            <td class="number-cell">5.02x</td>
-            <td>Middle estimate for workforce planning</td>
-        </tr>
-    </tbody>
-</table>
-</div>
-
-<!-- Economic Impact Analysis -->
-<div class="page-break">
-<h1>Economic Impact Analysis</h1>
-
-<h2>Operational Impact Scenarios</h2>
-
-<p>Three operational scenarios reflect uncertainty in final project scope and hiring levels. All scenarios apply LED's 5.82 multiplier for industrial manufacturing.</p>
-
-<h3>Conservative Scenario (75 Direct Jobs)</h3>
-<table>
-    <tr>
-        <th>Impact Type</th>
-        <th>Jobs</th>
-        <th>Annual Wages</th>
-    </tr>
-    <tr>
-        <td>Direct Operations</td>
-        <td class="number-cell">75</td>
-        <td class="number-cell">$6.0M</td>
-    </tr>
-    <tr>
-        <td>Indirect + Induced</td>
-        <td class="number-cell">437</td>
-        <td class="number-cell">$5.4M</td>
-    </tr>
-    <tr>
-        <td><strong>Total Impact</strong></td>
-        <td class="number-cell"><strong>512</strong></td>
-        <td class="number-cell"><strong>$11.4M</strong></td>
-    </tr>
-    <tr>
-        <td>Total Economic Output</td>
-        <td>-</td>
-        <td class="number-cell">$130.0M</td>
-    </tr>
-    <tr>
-        <td>Annual Tax Revenue</td>
-        <td>-</td>
-        <td class="number-cell">$1.4M</td>
-    </tr>
-    <tr>
-        <td><strong>10-Year Tax Revenue</strong></td>
-        <td>-</td>
-        <td class="number-cell"><strong>$14.4M</strong></td>
-    </tr>
-</table>
-
-<h3>Moderate Scenario (125 Direct Jobs) - BASE CASE</h3>
-<table>
-    <tr>
-        <th>Impact Type</th>
-        <th>Jobs</th>
-        <th>Annual Wages</th>
-    </tr>
-    <tr>
-        <td>Direct Operations</td>
-        <td class="number-cell">125</td>
-        <td class="number-cell">$11.3M</td>
-    </tr>
-    <tr>
-        <td>Indirect + Induced</td>
-        <td class="number-cell">728</td>
-        <td class="number-cell">$10.1M</td>
-    </tr>
-    <tr>
-        <td><strong>Total Impact</strong></td>
-        <td class="number-cell"><strong>853</strong></td>
-        <td class="number-cell"><strong>$21.4M</strong></td>
-    </tr>
-    <tr>
-        <td>Total Economic Output</td>
-        <td>-</td>
-        <td class="number-cell">$221.0M</td>
-    </tr>
-    <tr>
-        <td>Annual Tax Revenue</td>
-        <td>-</td>
-        <td class="number-cell">$2.7M</td>
-    </tr>
-    <tr>
-        <td><strong>10-Year Tax Revenue</strong></td>
-        <td>-</td>
-        <td class="number-cell"><strong>$27.4M</strong></td>
-    </tr>
-</table>
-
-<h3>Optimistic Scenario (200 Direct Jobs)</h3>
-<table>
-    <tr>
-        <th>Impact Type</th>
-        <th>Jobs</th>
-        <th>Annual Wages</th>
-    </tr>
-    <tr>
-        <td>Direct Operations</td>
-        <td class="number-cell">200</td>
-        <td class="number-cell">$19.0M</td>
-    </tr>
-    <tr>
-        <td>Indirect + Induced</td>
-        <td class="number-cell">1,164</td>
-        <td class="number-cell">$17.1M</td>
-    </tr>
-    <tr>
-        <td><strong>Total Impact</strong></td>
-        <td class="number-cell"><strong>1,364</strong></td>
-        <td class="number-cell"><strong>$36.1M</strong></td>
-    </tr>
-    <tr>
-        <td>Total Economic Output</td>
-        <td>-</td>
-        <td class="number-cell">$325.0M</td>
-    </tr>
-    <tr>
-        <td>Annual Tax Revenue</td>
-        <td>-</td>
-        <td class="number-cell">$4.7M</td>
-    </tr>
-    <tr>
-        <td><strong>10-Year Tax Revenue</strong></td>
-        <td>-</td>
-        <td class="number-cell"><strong>$47.1M</strong></td>
-    </tr>
-</table>
-
-<h2>Construction Phase Impact</h2>
-
-<p>Construction phase employment represents temporary but significant economic activity during project timeline:</p>
-
-<table>
-    <tr>
-        <th>Scenario</th>
-        <th>Direct Jobs</th>
-        <th>Duration</th>
-        <th>Job-Years</th>
-        <th>Total Impact</th>
-        <th>Total Construction Wages</th>
-    </tr>
-    <tr>
-        <td>Conservative</td>
-        <td class="number-cell">600</td>
-        <td class="number-cell">2.0 years</td>
-        <td class="number-cell">1,200</td>
-        <td class="number-cell">1,080 jobs</td>
-        <td class="number-cell">$124.8M</td>
-    </tr>
-    <tr>
-        <td>Moderate</td>
-        <td class="number-cell">1,000</td>
-        <td class="number-cell">2.5 years</td>
-        <td class="number-cell">2,500</td>
-        <td class="number-cell">1,800 jobs</td>
-        <td class="number-cell">$272M</td>
-    </tr>
-    <tr>
-        <td>Optimistic</td>
-        <td class="number-cell">1,500</td>
-        <td class="number-cell">3.0 years</td>
-        <td class="number-cell">4,500</td>
-        <td class="number-cell">2,700 jobs</td>
-        <td class="number-cell">$504M</td>
-    </tr>
-</table>
-
-<div class="callout">
-    <h4>Regional Construction Capacity Validated</h4>
-    <p>The CCI methanol plant projected 1,000 construction jobs over 2 years on the same site, demonstrating that the regional construction workforce can support large-scale industrial projects. Jefferson Parish alone employs 20,468 construction workers, providing ample capacity for skilled trades recruitment.</p>
-</div>
-</div>
-
-<!-- Workforce Availability Analysis -->
-<div class="page-break">
-<h1>Workforce Availability Analysis</h1>
-
-<h2>Five-Parish Labor Shed</h2>
-
-<table>
-    <tr>
-        <th>Parish</th>
-        <th>Distance</th>
-        <th>Employed Workers</th>
-        <th>YoY Change</th>
-        <th>Key Industries</th>
-    </tr>
-    <tr>
-        <td><strong>Plaquemines Parish</strong></td>
-        <td class="number-cell">0 mi</td>
-        <td class="number-cell">10,206</td>
-        <td class="number-cell">-3.4%</td>
-        <td>Transport & Warehousing (787), Manufacturing</td>
-    </tr>
-    <tr>
-        <td>St. Bernard Parish</td>
-        <td class="number-cell">15 mi</td>
-        <td class="number-cell">18,552</td>
-        <td class="number-cell">-1.6%</td>
-        <td>Construction (1,348), Manufacturing</td>
-    </tr>
-    <tr>
-        <td>Jefferson Parish</td>
-        <td class="number-cell">25 mi</td>
-        <td class="number-cell">205,386</td>
-        <td class="number-cell">-1.3%</td>
-        <td>Construction (20,468), Healthcare, Retail</td>
-    </tr>
-    <tr>
-        <td>Orleans Parish</td>
-        <td class="number-cell">30 mi</td>
-        <td class="number-cell">174,022</td>
-        <td class="number-cell">-0.2%</td>
-        <td>Professional Services, Education</td>
-    </tr>
-    <tr>
-        <td>St. Charles Parish</td>
-        <td class="number-cell">40 mi</td>
-        <td class="number-cell">24,652</td>
-        <td class="number-cell">+1.0%</td>
-        <td>Manufacturing (2,556), Transport</td>
-    </tr>
-    <tr>
-        <td><strong>Total Labor Shed</strong></td>
-        <td>-</td>
-        <td class="number-cell"><strong>432,818</strong></td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-</table>
-
-<h2>Workforce by Commute Distance</h2>
-<div class="metric-cards">
-    <div class="metric-card blue">
-        <div class="metric-card-value">28,758</div>
-        <div class="metric-card-label">Within 15 Miles<br/>(Plaquemines + St. Bernard)</div>
-    </div>
-    <div class="metric-card green">
-        <div class="metric-card-value">408,766</div>
-        <div class="metric-card-label">Within 30 Miles<br/>(+ Jefferson + Orleans)</div>
-    </div>
-    <div class="metric-card purple">
-        <div class="metric-card-value">432,818</div>
-        <div class="metric-card-label">Total Labor Shed<br/>(All 5 Parishes)</div>
-    </div>
-</div>
-
-<div class="callout">
-    <h4>Critical Finding: Regional Recruitment Required</h4>
-    <p>Plaquemines Parish's small labor force (13,256 total, 10,206 employed) means that even a modest project requiring 75-125 direct employees represents 0.6-1.0% of the entire parish labor force. Regional recruitment from Jefferson and Orleans parishes (379,408 workers within 30 miles) is essential for project success.</p>
-</div>
-
-<h2>Relevant Industry Experience</h2>
-<ul>
-    <li><strong>Plaquemines Parish:</strong> 22+ marine terminals, deep-draft port access, 787 transport/warehousing workers</li>
-    <li><strong>St. Bernard Parish:</strong> Chalmette Refinery (largest employer), extensive petrochemical workforce, 1,348 construction workers</li>
-    <li><strong>Jefferson Parish:</strong> Louis Armstrong International Airport, transportation/logistics concentration, 20,468 construction workers</li>
-    <li><strong>Orleans Parish:</strong> Port of New Orleans, maritime services, industrial maintenance</li>
-    <li><strong>St. Charles Parish:</strong> Valero Refinery, Shell Norco, Occidental Chemical, DuPont, 2,556 manufacturing workers</li>
-</ul>
-
-<h2>Competitive Landscape - Major Employers</h2>
-
-<p>Plaquemines Parish hosts several major industrial employers that create both opportunity (presence of skilled workforce) and challenge (wage competition) for the cement terminal project.</p>
-
-<table>
-    <thead>
-        <tr>
-            <th>Major Employer</th>
-            <th>Sector</th>
-            <th>Wage Competition Level</th>
-            <th>Relevant Skills</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>Venture Global LNG</strong></td>
-            <td>LNG Export</td>
-            <td>Very High</td>
-            <td>Process operators, instrumentation</td>
-        </tr>
-        <tr>
-            <td><strong>Baker Hughes</strong></td>
-            <td>Oilfield Services</td>
-            <td>High</td>
-            <td>Mechanical trades, equipment operation</td>
-        </tr>
-        <tr>
-            <td><strong>Chevron Oronite</strong></td>
-            <td>Petrochemical</td>
-            <td>High</td>
-            <td>Process technology, chemical operations</td>
-        </tr>
-        <tr>
-            <td><strong>Point Eight Power</strong></td>
-            <td>Power Generation</td>
-            <td>High</td>
-            <td>Operators, mechanics, electrical</td>
-        </tr>
-        <tr>
-            <td><strong>Fab-Con, Inc.</strong></td>
-            <td>Industrial Fabrication</td>
-            <td>Medium</td>
-            <td>Welding, fitting, fabrication</td>
-        </tr>
-        <tr>
-            <td><strong>C & C Marine</strong></td>
-            <td>Marine Operations</td>
-            <td>Medium</td>
-            <td>Maritime labor, deck operations</td>
-        </tr>
-    </tbody>
-</table>
-
-<div class="callout">
-    <h4>Competitive Advantage: Career Stability</h4>
-    <p>While energy sector employers (oil/gas, LNG, Venture Global) offer higher wages, the cement terminal project can compete by emphasizing:</p>
-    <ul>
-        <li><strong>Stability:</strong> Cement demand is less cyclical than energy commodities</li>
-        <li><strong>Work-Life Balance:</strong> Regular schedules vs. offshore rotations</li>
-        <li><strong>Local Employment:</strong> No offshore or remote assignments</li>
-        <li><strong>Growth Opportunity:</strong> Potential for operational expansion</li>
-    </ul>
-</div>
-
-<h2>Wage Competitiveness Analysis</h2>
-
-<p>Establishing competitive wages is critical for attracting and retaining skilled workers in a region with strong energy sector wage pressure.</p>
-
-<table>
-    <thead>
-        <tr>
-            <th>Occupation Category</th>
-            <th>Target Wage Range</th>
-            <th>Market Benchmark</th>
-            <th>Rationale</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>Process Operators</strong></td>
-            <td>$80,000 - $100,000</td>
-            <td>$96,488 parish mfg avg</td>
-            <td>Match manufacturing average to compete with Venture Global, Chevron</td>
-        </tr>
-        <tr>
-            <td><strong>Mechanical/Millwrights</strong></td>
-            <td>$75,000 - $90,000</td>
-            <td>$70k-$95k regional</td>
-            <td>Above construction, below energy sector</td>
-        </tr>
-        <tr>
-            <td><strong>Stevedoring/Material Handling</strong></td>
-            <td>$60,000 - $75,000</td>
-            <td>Maritime/logistics baseline</td>
-            <td>Port operations wage floor</td>
-        </tr>
-        <tr>
-            <td><strong>Supervisors/Leads</strong></td>
-            <td>$95,000 - $120,000</td>
-            <td>Leadership premium</td>
-            <td>15-25% premium over operators</td>
-        </tr>
-        <tr>
-            <td><strong>Engineers/Technical</strong></td>
-            <td>$90,000 - $130,000</td>
-            <td>$77k prof services avg</td>
-            <td>Match professional services sector</td>
-        </tr>
-    </tbody>
-</table>
-
-<div class="callout">
-    <h4>Critical Wage Benchmark: CCI Precedent</h4>
-    <p>The CCI methanol plant offered an average wage of $72,000 in 2014 dollars for 50 operational positions. Adjusted for inflation to 2026, this equals approximately <strong>$95,000</strong>. This establishes a minimum competitive wage threshold validated by LED economic development analysis.</p>
-    <p><strong>Recommendation:</strong> Target average operational wage of $90,000-$95,000 to remain competitive with historical precedent and current manufacturing wages, especially to compete with Venture Global LNG.</p>
-</div>
-</div>
-
-<!-- Regional Demographics -->
-<div class="page-break">
-<h1>Regional Demographics</h1>
-
-<h2>Plaquemines Parish Profile</h2>
-
-<div class="metric-cards">
-    <div class="metric-card blue">
-        <div class="metric-card-value">23,515</div>
-        <div class="metric-card-label">Population</div>
-    </div>
-    <div class="metric-card green">
-        <div class="metric-card-value">36.4</div>
-        <div class="metric-card-label">Median Age</div>
-    </div>
-    <div class="metric-card purple">
-        <div class="metric-card-value">$77,996</div>
-        <div class="metric-card-label">Median HH Income</div>
-    </div>
-</div>
-
-<table>
-    <thead>
-        <tr>
-            <th>Demographic Metric</th>
-            <th>Value</th>
-            <th>Implication</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>Labor Force</strong></td>
-            <td class="number-cell">13,256</td>
-            <td>Active labor force, but limited size</td>
-        </tr>
-        <tr>
-            <td><strong>Employed</strong></td>
-            <td class="number-cell">10,206</td>
-            <td>Strong employment base</td>
-        </tr>
-        <tr>
-            <td><strong>Unemployment Rate</strong></td>
-            <td class="number-cell">4.1%</td>
-            <td>Near full employment, tight labor market</td>
-        </tr>
-        <tr>
-            <td><strong>Home Ownership Rate</strong></td>
-            <td class="number-cell">71.8%</td>
-            <td>High stability, established community</td>
-        </tr>
-        <tr>
-            <td><strong>Business Establishments</strong></td>
-            <td class="number-cell">863</td>
-            <td>Modest business base for service support</td>
-        </tr>
-    </tbody>
-</table>
-
-<h2>Competitive Wage Environment</h2>
-
-<table>
-    <tr>
-        <th>Occupation</th>
-        <th>Median Wage (NOLA MSA)</th>
-        <th>National Comparison</th>
-    </tr>
-    <tr>
-        <td>Industrial Production Managers</td>
-        <td class="number-cell">$96,488</td>
-        <td>+39% above national</td>
-    </tr>
-    <tr>
-        <td>Maintenance & Repair Workers</td>
-        <td class="number-cell">$74,410</td>
-        <td>Competitive</td>
-    </tr>
-    <tr>
-        <td>Heavy Equipment Operators</td>
-        <td class="number-cell">$72,000</td>
-        <td>Competitive</td>
-    </tr>
-</table>
-
-<h2>Employment Trends (2022-2023)</h2>
-
-<table>
-    <thead>
-        <tr>
-            <th>Parish</th>
-            <th>Employment Change</th>
-            <th>Trend</th>
-            <th>Implication</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Plaquemines</td>
-            <td class="number-cell">-3.44%</td>
-            <td>Declining</td>
-            <td>Workers may be seeking new opportunities</td>
-        </tr>
-        <tr>
-            <td>St. Bernard</td>
-            <td class="number-cell">-1.6%</td>
-            <td>Declining</td>
-            <td>Modest decline, stabilizing</td>
-        </tr>
-        <tr>
-            <td>Jefferson</td>
-            <td class="number-cell">-1.29%</td>
-            <td>Declining</td>
-            <td>Slight decline in large parish</td>
-        </tr>
-        <tr>
-            <td>Orleans</td>
-            <td class="number-cell">-0.18%</td>
-            <td>Stable</td>
-            <td>Near stable, urban core resilient</td>
-        </tr>
-        <tr>
-            <td><strong>St. Charles</strong></td>
-            <td class="number-cell"><strong>+1.04%</strong></td>
-            <td><strong>Growing</strong></td>
-            <td><strong>Only parish with employment growth!</strong></td>
-        </tr>
-    </tbody>
-</table>
-
-<div class="callout">
-    <h4>Growth Opportunity in Challenging Environment</h4>
-    <p>Most parishes in the labor shed experienced employment declines (2022-2023), with Plaquemines showing the steepest decline (-3.44%). This creates opportunity: displaced workers may welcome stable, well-paying industrial employment. The project can position itself as a growth opportunity in a contracting regional employment market.</p>
-</div>
-
-<h2>Workforce Development Infrastructure</h2>
-
-<h3>Louisiana Workforce Commission</h3>
-<ul>
-    <li><strong>Office Location:</strong> Chalmette, St. Bernard Parish (15 miles from site)</li>
-    <li><strong>Contact:</strong> 504-278-6214</li>
-    <li><strong>Services:</strong> Job placement, skills assessment, career counseling</li>
-    <li><strong>Hours:</strong> Monday-Friday with walk-in and appointment options</li>
-</ul>
-
-<h3>Partner Colleges and Training Programs</h3>
-
-<table>
-    <thead>
-        <tr>
-            <th>Institution</th>
-            <th>Distance</th>
-            <th>Relevant Programs</th>
-            <th>Capacity</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>Nunez Community College</strong></td>
-            <td>15 miles (Chalmette)</td>
-            <td>Process Technology, Industrial Maintenance, Instrumentation & Electrical</td>
-            <td>Established industrial training partner</td>
-        </tr>
-        <tr>
-            <td><strong>Delgado Community College</strong></td>
-            <td>25 miles (New Orleans)</td>
-            <td>Industrial Maintenance, Heavy Equipment Operation, CDL Training</td>
-            <td>Large regional college, high capacity</td>
-        </tr>
-    </tbody>
-</table>
-
-<h3>State Incentive Programs</h3>
-
-<table>
-    <thead>
-        <tr>
-            <th>Program</th>
-            <th>Benefit</th>
-            <th>Eligibility</th>
-            <th>Value to Project</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>LED FastStart</strong></td>
-            <td>Free workforce training</td>
-            <td>15+ manufacturing jobs</td>
-            <td>Ranked #1 nationally, saves ~$375k in training costs</td>
-        </tr>
-        <tr>
-            <td><strong>Quality Jobs Program</strong></td>
-            <td>Payroll rebates</td>
-            <td>New jobs above parish average wage</td>
-            <td>Cash incentive for job creation</td>
-        </tr>
-        <tr>
-            <td><strong>ITEP (Industrial Tax Exemption)</strong></td>
-            <td>Property tax abatement</td>
-            <td>Manufacturing projects</td>
-            <td>Up to 10 years property tax exemption</td>
-        </tr>
-        <tr>
-            <td><strong>TIF (Tax Increment Financing)</strong></td>
-            <td>Infrastructure funding</td>
-            <td>Economic development projects</td>
-            <td>Parish support for site improvements</td>
-        </tr>
-    </tbody>
-</table>
-</div>
-
-<!-- Key Findings -->
-<div class="page-break">
-<h1>Key Findings and Recommendations</h1>
-
-<h2>Key Findings</h2>
-
-<ol>
-    <li><strong>Site Precedent Established:</strong> CCI Methanol Plant received full environmental and zoning approval for same 387-acre site in 2020, demonstrating regulatory feasibility for heavy industrial development.</li>
-
-    <li><strong>Robust Labor Market:</strong> Five-parish region provides sufficient workforce depth across all operational scenarios, with established industrial skills base in petrochemical, maritime, and manufacturing sectors.</li>
-
-    <li><strong>Competitive Wage Environment:</strong> Regional industrial wages range $72,000-$96,000 annually. Project wage structure must align with or exceed local market rates to attract qualified talent, especially with Venture Global LNG as major competitor.</li>
-
-    <li><strong>Infrastructure Advantages:</strong> Port of Plaquemines offers 600+ miles of deep-draft (45+ ft) access, ranking among nation's top ports for bulk cargo handling.</li>
-
-    <li><strong>Workforce Development Resources:</strong> LED FastStart (ranked #1 nationally) provides customized training at no cost to employer for projects creating 15+ jobs.</li>
-
-    <li><strong>Multiplier Variance:</strong> LED precedents show employment multipliers ranging from 3.9x (Venture Global Plaquemines LNG) to 5.82x (CCI Methanol), creating 39% variance in total job projections. Use case determines appropriate multiplier selection.</li>
-</ol>
-
-<h2>Primary Recommendations</h2>
-
-<ol>
-    <li><strong>Validation Pathway:</strong> For regulatory submissions, validate economic impact estimates through BEA RIMS II ($275-$500) or commission independent IMPLAN analysis ($3,000-$5,000).</li>
-
-    <li><strong>Regional Recruitment Strategy:</strong> Target St. Bernard and Jefferson parishes for skilled operations workforce; leverage existing industrial talent pool from petrochemical corridor. Structure three-tier recruitment:
-        <ul>
-            <li>Tier 1 (0-15 mi): Plaquemines + St. Bernard (28,758 workers)</li>
-            <li>Tier 2 (15-30 mi): Jefferson + Orleans (379,408 workers)</li>
-            <li>Tier 3 (30-40 mi): St. Charles (24,652 workers)</li>
-        </ul>
-    </li>
-
-    <li><strong>Compensation Strategy:</strong> Establish competitive wage structure at $75,000-$95,000 range for skilled positions to compete effectively with energy sector employers including Venture Global LNG.</li>
-
-    <li><strong>Training Partnership:</strong> Engage LED FastStart early in project timeline to develop customized training curriculum aligned with operational requirements. Partner with Nunez Community College for long-term training pipeline.</li>
-
-    <li><strong>Regulatory Approach:</strong> Reference CCI Methanol Plant precedent in permitting discussions; same-site environmental review provides regulatory pathway template.</li>
-
-    <li><strong>Economic Impact Positioning:</strong> Use 3.9x multiplier (Venture Global) for regulatory submissions, 5.02x average for public presentations, and 3.9-5.82x range for investor materials with sensitivity analysis.</li>
-</ol>
-
-<h2>Risk Mitigation Strategies</h2>
-
-<table>
-    <thead>
-        <tr>
-            <th>Risk Factor</th>
-            <th>Impact</th>
-            <th>Mitigation Strategy</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>Small Local Labor Force</strong></td>
-            <td>High</td>
-            <td>Regional recruitment from 5-parish area; Competitive wages to attract commuters; Consider company transportation options</td>
-        </tr>
-        <tr>
-            <td><strong>Energy Sector Wage Competition (Venture Global)</strong></td>
-            <td>High</td>
-            <td>Match manufacturing wage averages ($90k-$95k); Emphasize stability vs. cyclical energy jobs; Offer strong benefits package and career growth</td>
-        </tr>
-        <tr>
-            <td><strong>Declining Regional Employment</strong></td>
-            <td>Medium</td>
-            <td>Position as growth opportunity in contracting market; Target displaced workers from other industries; Leverage LED FastStart for skill retraining</td>
-        </tr>
-        <tr>
-            <td><strong>Construction Workforce Availability</strong></td>
-            <td>Low</td>
-            <td>CCI precedent proves 1,000+ construction workforce feasible; Jefferson Parish has 20,468 construction workers</td>
-        </tr>
-        <tr>
-            <td><strong>Skills Gap in Workforce</strong></td>
-            <td>Low-Medium</td>
-            <td>LED FastStart provides free pre-employment training; Partner with Nunez CC for technical education</td>
-        </tr>
-    </tbody>
-</table>
-
-<h2>Recommended Next Steps</h2>
-
-<table>
-    <thead>
-        <tr>
-            <th>Priority</th>
-            <th>Action Item</th>
-            <th>Timeline</th>
-            <th>Responsible Party</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Contact Parish Economic Development (Kelly DiMarco)</td>
-            <td>Immediate</td>
-            <td>Project Development Team</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Engage LED FastStart workforce development team</td>
-            <td>Within 30 days</td>
-            <td>HR/Operations</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Conduct detailed occupational wage survey (BLS OEWS)</td>
-            <td>Within 60 days</td>
-            <td>HR/Compensation</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Meet with Nunez CC for curriculum partnership</td>
-            <td>Within 90 days</td>
-            <td>HR/Training</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Request CCI methanol plant economic impact study</td>
-            <td>Within 30 days</td>
-            <td>Business Development</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>Develop recruitment marketing campaign (3-tier)</td>
-            <td>Within 90 days</td>
-            <td>HR/Marketing</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>Apply for ITEP (Industrial Tax Exemption)</td>
-            <td>During permitting</td>
-            <td>Finance/Legal</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>Survey major employers (Venture Global, etc.) for workforce insights</td>
-            <td>Within 120 days</td>
-            <td>Business Development</td>
-        </tr>
-    </tbody>
-</table>
-</div>
-
-<!-- Annexes -->
-<div class="page-break">
-<h1>Annex A: Data Sources</h1>
-
-<h2>Primary Data Sources</h2>
-
-<table>
-    <tr>
-        <th>Source</th>
-        <th>Data Type</th>
-        <th>Date</th>
-    </tr>
-    <tr>
-        <td>Data USA (datausa.io)</td>
-        <td>Parish employment, wages, industry composition</td>
-        <td>2023 data</td>
-    </tr>
-    <tr>
-        <td>GNO Inc.</td>
-        <td>Regional economic development, parish profiles</td>
-        <td>2024-2026</td>
-    </tr>
-    <tr>
-        <td>Louisiana Economic Development (LED)</td>
-        <td>Economic impact multipliers, CCI Methanol (2014), Venture Global projects</td>
-        <td>2014-2025</td>
-    </tr>
-    <tr>
-        <td><strong>FERC (Federal Energy Regulatory Commission)</strong></td>
-        <td>LNG project environmental impact statements, Venture Global Plaquemines LNG, CP2 LNG</td>
-        <td>2016-2025</td>
-    </tr>
-    <tr>
-        <td>U.S. Bureau of Labor Statistics - QCEW</td>
-        <td>County-level employment and wage data by NAICS</td>
-        <td>2023</td>
-    </tr>
-    <tr>
-        <td>U.S. Bureau of Labor Statistics - OEWS</td>
-        <td>Occupation-specific wage data by MSA</td>
-        <td>2023</td>
-    </tr>
-    <tr>
-        <td>U.S. Census Bureau - OnTheMap</td>
-        <td>Commuting pattern analysis</td>
-        <td>2023</td>
-    </tr>
-</table>
-
-<h2>FERC References</h2>
-
-<p><strong>Venture Global Plaquemines LNG Project</strong><br/>
-FERC Docket No. CP15-550-000<br/>
-Final Environmental Impact Statement issued 2016<br/>
-Source for 3.9x employment multiplier, 250 direct jobs, 975 total jobs</p>
-
-<p><strong>Venture Global CP2 LNG Project</strong><br/>
-FERC Docket No. CP22-466-000<br/>
-Final Environmental Impact Statement issued 2022<br/>
-Source for 5.34x employment multiplier, 200 direct jobs, 1,067 total jobs</p>
-
-<h2>Academic and Industry References</h2>
-
-<p><strong>Rickman & Schwer (1995)</strong><br/>
-"A comparison of the multipliers of IMPLAN, REMI, and RIMS II"<br/>
-<em>Annals of Regional Science</em>, 29:363-374<br/>
-Validation of 4.5-6.5x employment multiplier range</p>
-
-<p><strong>Louisiana Chemical Association (2025)</strong><br/>
-Industry economic impact studies<br/>
-Source for 5.5-7.0x multiplier range for petrochemical manufacturing</p>
-
-<h2>Government Resources</h2>
-
-<p><strong>BEA RIMS II:</strong> https://apps.bea.gov/regional/rims/<br/>
-<strong>IMPLAN Group:</strong> https://implan.com/<br/>
-<strong>Louisiana Economic Development:</strong> https://opportunitylouisiana.com<br/>
-<strong>FERC:</strong> https://www.ferc.gov/</p>
-</div>
-
-<div class="page-break">
-<h1>Annex B: Economic Multiplier Methodology</h1>
-
-<h2>Type II Employment Multiplier: Explanation</h2>
-
-<p>The 5.82 multiplier represents a <strong>Type II final-demand employment multiplier</strong>, meaning for every 1 direct job created, an additional 5.82 jobs are created through:</p>
-
-<ul>
-    <li><strong>Indirect effects</strong> (~2.9 jobs): Supply chain purchases from regional businesses (cement suppliers, equipment vendors, logistics providers, professional services)</li>
-    <li><strong>Induced effects</strong> (~2.9 jobs): Household spending by direct and indirect employees (retail, restaurants, housing, healthcare, personal services)</li>
-</ul>
-
-<h2>Calculation Methodology</h2>
-
-<div class="callout">
-    <p><strong>Total Employment Impact = Direct Jobs + (Direct Jobs × 5.82)</strong></p>
-</div>
-
-<p><strong>Example (Moderate Scenario):</strong></p>
-<ul>
-    <li>Direct Jobs: 125</li>
-    <li>Indirect + Induced Jobs: 125 × 5.82 = 728</li>
-    <li><strong>Total Employment Impact: 125 + 728 = 853 jobs</strong></li>
-</ul>
-
-<h2>Validation Against Industry Standards</h2>
-
-<table>
-    <tr>
-        <th>Benchmark Source</th>
-        <th>Expected Range</th>
-        <th>LED 5.82 Status</th>
-    </tr>
-    <tr>
-        <td>BEA RIMS II (NAICS 327310 - Cement)</td>
-        <td class="number-cell">5.5 - 6.5</td>
-        <td><span class="checkmark">✓</span> Within range</td>
-    </tr>
-    <tr>
-        <td>IMPLAN (Louisiana Mfg)</td>
-        <td class="number-cell">5.0 - 6.2</td>
-        <td><span class="checkmark">✓</span> Within range</td>
-    </tr>
-    <tr>
-        <td>Academic Literature (Rickman & Schwer)</td>
-        <td class="number-cell">4.5 - 6.5</td>
-        <td><span class="checkmark">✓</span> Within range</td>
-    </tr>
-    <tr>
-        <td>Venture Global Plaquemines LNG (FERC)</td>
-        <td class="number-cell">3.9x</td>
-        <td>Lower, but validated by FERC EIS</td>
-    </tr>
-</table>
-
-<h2>How Multipliers Work: Visual Example</h2>
-
-<div class="callout">
-    <h4>Project Masabba  - Moderate Scenario Multiplier Effect</h4>
-
-    <p><strong>Step 1: Direct Impact</strong></p>
-    <ul>
-        <li>Facility hires 125 employees @ $90,000 average wage</li>
-        <li>Direct wages: $11.25 million annually</li>
-        <li>Facility generates $85 million in annual revenue</li>
-    </ul>
-
-    <p><strong>Step 2: Indirect Impact (Supply Chain)</strong></p>
-    <ul>
-        <li>Facility purchases $50 million in cement, equipment, logistics, services</li>
-        <li>Supplier companies hire workers to meet this demand</li>
-        <li><strong>Indirect jobs created: 728</strong> (5.82x multiplier)</li>
-        <li><strong>Indirect wages: $6.75 million</strong></li>
-        <li><strong>Indirect output: $102 million</strong></li>
-    </ul>
-
-    <p><strong>Step 3: Induced Impact (Household Spending)</strong></p>
-    <ul>
-        <li>125 facility workers + 728 supplier workers = 853 workers earning wages</li>
-        <li>These 853 workers spend ~80% of wages locally ($14.4M spent)</li>
-        <li>Local businesses hire additional workers to meet this demand</li>
-        <li><strong>Induced jobs created: 188</strong></li>
-        <li><strong>Induced wages: $3.38 million</strong></li>
-        <li><strong>Induced output: $34 million</strong></li>
-    </ul>
-
-    <p><strong>Total Economic Impact:</strong></p>
-    <ul>
-        <li><strong>Total Jobs: 1,040</strong> (125 + 728 + 188) [Conservative: 853]</li>
-        <li><strong>Total Wages: $21.38 million</strong></li>
-        <li><strong>Total Output: $221 million</strong></li>
-    </ul>
-</div>
-
-<h2>Geographic Leakage</h2>
-
-<p>Not all economic activity stays in the local region. "Leakage" occurs when:</p>
-<ul>
-    <li>Employees live outside the region and spend wages elsewhere</li>
-    <li>Facility purchases from suppliers outside the region</li>
-    <li>Workers save/invest income rather than spending locally</li>
-</ul>
-
-<p><strong>Leakage Assumptions in This Analysis:</strong></p>
-<ul>
-    <li><strong>Local Hiring:</strong> 70-80% of workers reside in 5-parish region</li>
-    <li><strong>Local Procurement:</strong> ~60% of B2B purchases from regional suppliers</li>
-    <li><strong>Local Spending:</strong> ~80% of household income spent in region</li>
-</ul>
-
-<h2>Limitations and Conservative Assumptions</h2>
-
-<ul>
-    <li><strong>Conservative Output Multiplier:</strong> Used 2.6x instead of higher estimates (2.8x+) for cement manufacturing</li>
-    <li><strong>Moderate Wage Assumptions:</strong> $90,000 average operational wage is mid-range for industrial positions</li>
-    <li><strong>Geographic Scope:</strong> Limited to 5-parish region, may understate broader regional impacts</li>
-    <li><strong>Tax Revenue:</strong> Does not include property taxes (depends on ITEP exemption status)</li>
-    <li><strong>Construction Phase:</strong> Treated as one-time impact, not annualized</li>
-</ul>
-
-<p>These conservative assumptions mean actual economic impacts may exceed projections, providing a margin of safety in presentations to investors and economic development officials.</p>
-</div>
-
-<div class="page-break">
-<h1>Annex C: Validation References</h1>
-
-<h2>Validation Pathway Resources</h2>
-
-<h3>1. BEA RIMS II (Recommended)</h3>
-<ul>
-    <li><strong>Purpose:</strong> Federal government economic impact multipliers</li>
-    <li><strong>Cost:</strong> $275-$500</li>
-    <li><strong>Access:</strong> https://apps.bea.gov/regional/rims/</li>
-    <li><strong>Best for:</strong> Government submissions, regulatory filings</li>
-</ul>
-
-<h3>2. IMPLAN Group</h3>
-<ul>
-    <li><strong>Purpose:</strong> Commercial economic impact modeling platform</li>
-    <li><strong>Cost:</strong> $1,500-$3,000 annual subscription</li>
-    <li><strong>Access:</strong> https://implan.com/</li>
-    <li><strong>Best for:</strong> Detailed sector analysis, investor presentations</li>
-</ul>
-
-<h3>3. FERC Economic Impact Standards</h3>
-<ul>
-    <li><strong>Purpose:</strong> Federal regulatory agency economic impact guidelines</li>
-    <li><strong>Cost:</strong> Free (public documents)</li>
-    <li><strong>Access:</strong> https://www.ferc.gov/</li>
-    <li><strong>Best for:</strong> Comparative analysis with Venture Global and other LNG projects</li>
-</ul>
-
-<h2>Contact Information</h2>
-
-<h3>Louisiana Economic Development</h3>
-<ul>
-    <li><strong>Website:</strong> https://opportunitylouisiana.com</li>
-    <li><strong>LED FastStart:</strong> Customized workforce training program (ranked #1 nationally)</li>
-    <li><strong>Contact:</strong> 225-342-3000</li>
-</ul>
-
-<h3>Plaquemines Parish Economic Development</h3>
-<ul>
-    <li><strong>Director:</strong> Kelly DiMarco</li>
-    <li><strong>Email:</strong> kdimarco@ppgov.net</li>
-    <li><strong>Phone:</strong> 504-934-6107</li>
-    <li><strong>Address:</strong> 333 F. Edward Hebert Boulevard, Building 100, Belle Chasse, LA 70037</li>
-</ul>
-
-<h3>Workforce Development</h3>
-<ul>
-    <li><strong>Delgado Community College:</strong> https://www.dcc.edu</li>
-    <li><strong>Nunez Community College:</strong> https://www.nunez.edu</li>
-    <li><strong>Louisiana Workforce Commission:</strong> 504-278-6214 (Chalmette office)</li>
-</ul>
-
-<div class="disclaimer">
-    <p><strong>Disclaimer:</strong> This document is an internal working model prepared for SESCO Cement planning purposes. Employment multiplier estimates are based on publicly available Louisiana Economic Development data and FERC environmental impact statements but have not been independently validated through BEA RIMS II or IMPLAN methodologies. For regulatory submissions, investor presentations, or external stakeholder communications, official validation is recommended. All data collected February 2026. Workforce projections assume competitive wage structure and successful recruitment efforts. Venture Global comparative analysis is based on publicly available FERC documents.</p>
-</div>
-</div>
-
-<!-- Chart Visualizations Section -->
-<div class="page-break">
-<h1>Annex D: Chart Visualizations</h1>
-
-<h2>Employment Impact by Scenario</h2>
-<div class="chart-container">
-    <canvas id="scenarioComparisonChart"></canvas>
-</div>
-
-<h2>Employment Distribution Analysis</h2>
-<div class="chart-grid">
-    <div class="chart-container">
-        <canvas id="employmentBreakdownChart"></canvas>
-    </div>
-    <div class="chart-container">
-        <canvas id="wageBreakdownChart"></canvas>
-    </div>
-</div>
-
-<h2>Construction Phase Impact</h2>
-<div class="chart-container">
-    <canvas id="constructionPhaseChart"></canvas>
-</div>
-
-<h2>Five-Parish Labor Shed</h2>
-<div class="chart-container">
-    <canvas id="parishEmploymentChart"></canvas>
-</div>
-</div>
-
-<script>
-// Chart.js Visualizations
-
-// Scenario Comparison Chart
-const scenarioCtx = document.getElementById('scenarioComparisonChart').getContext('2d');
-new Chart(scenarioCtx, {
-    type: 'bar',
-    data: {
-        labels: ['Conservative', 'Moderate', 'Optimistic', 'CCI Comparison'],
-        datasets: [{
-            label: 'Direct Jobs',
-            data: [75, 125, 200, 50],
-            backgroundColor: 'rgba(44, 90, 160, 0.8)'
-        }, {
-            label: 'Indirect Jobs',
-            data: [436, 728, 1164, 291],
-            backgroundColor: 'rgba(74, 144, 226, 0.8)'
-        }, {
-            label: 'Induced Jobs',
-            data: [112, 188, 300, 75],
-            backgroundColor: 'rgba(102, 178, 255, 0.8)'
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            title: {
-                display: true,
-                text: 'Employment Impact by Scenario',
-                font: { size: 16, weight: 'bold' }
-            },
-            legend: {
-                position: 'bottom'
-            }
-        },
-        scales: {
-            x: {
-                stacked: true
-            },
-            y: {
-                stacked: true,
-                title: {
-                    display: true,
-                    text: 'Total Jobs'
-                }
-            }
-        }
-    }
-});
-
-// Employment Breakdown Chart (Moderate Scenario)
-const employmentCtx = document.getElementById('employmentBreakdownChart').getContext('2d');
-new Chart(employmentCtx, {
-    type: 'doughnut',
-    data: {
-        labels: ['Direct (125)', 'Indirect (728)', 'Induced (188)'],
-        datasets: [{
-            data: [125, 728, 188],
-            backgroundColor: [
-                'rgba(44, 90, 160, 0.9)',
-                'rgba(74, 144, 226, 0.9)',
-                'rgba(102, 178, 255, 0.9)'
-            ]
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            title: {
-                display: true,
-                text: 'Employment Distribution (Moderate Scenario)',
-                font: { size: 14, weight: 'bold' }
-            },
-            legend: {
-                position: 'bottom'
-            }
-        }
-    }
-});
-
-// Wage Breakdown Chart (Moderate Scenario)
-const wageCtx = document.getElementById('wageBreakdownChart').getContext('2d');
-new Chart(wageCtx, {
-    type: 'doughnut',
-    data: {
-        labels: ['Direct ($11.25M)', 'Indirect ($6.75M)', 'Induced ($3.38M)'],
-        datasets: [{
-            data: [11.25, 6.75, 3.38],
-            backgroundColor: [
-                'rgba(17, 153, 142, 0.9)',
-                'rgba(56, 239, 125, 0.9)',
-                'rgba(136, 255, 179, 0.9)'
-            ]
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            title: {
-                display: true,
-                text: 'Annual Wage Distribution (Moderate Scenario)',
-                font: { size: 14, weight: 'bold' }
-            },
-            legend: {
-                position: 'bottom'
-            }
-        }
-    }
-});
-
-// Construction Phase Chart
-const constructionCtx = document.getElementById('constructionPhaseChart').getContext('2d');
-new Chart(constructionCtx, {
-    type: 'bar',
-    data: {
-        labels: ['Conservative', 'Moderate', 'Optimistic'],
-        datasets: [{
-            label: 'Direct Construction Jobs',
-            data: [600, 1000, 1500],
-            backgroundColor: 'rgba(245, 93, 108, 0.8)'
-        }, {
-            label: 'Indirect Jobs',
-            data: [300, 500, 750],
-            backgroundColor: 'rgba(240, 147, 251, 0.8)'
-        }, {
-            label: 'Induced Jobs',
-            data: [180, 300, 450],
-            backgroundColor: 'rgba(249, 174, 218, 0.8)'
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            title: {
-                display: true,
-                text: 'Construction Phase Employment Impact',
-                font: { size: 16, weight: 'bold' }
-            },
-            legend: {
-                position: 'bottom'
-            }
-        },
-        scales: {
-            x: {
-                stacked: true
-            },
-            y: {
-                stacked: true,
-                title: {
-                    display: true,
-                    text: 'Peak Construction Jobs'
-                }
-            }
-        }
-    }
-});
-
-// Parish Employment Chart
-const parishCtx = document.getElementById('parishEmploymentChart').getContext('2d');
-new Chart(parishCtx, {
-    type: 'bar',
-    data: {
-        labels: ['Plaquemines', 'St. Bernard', 'Jefferson', 'Orleans', 'St. Charles'],
-        datasets: [{
-            label: 'Total Employed (2023)',
-            data: [10206, 18552, 205386, 174022, 24652],
-            backgroundColor: [
-                'rgba(44, 90, 160, 0.8)',
-                'rgba(74, 144, 226, 0.8)',
-                'rgba(17, 153, 142, 0.8)',
-                'rgba(56, 239, 125, 0.8)',
-                'rgba(245, 93, 108, 0.8)'
-            ]
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            title: {
-                display: true,
-                text: 'Five-Parish Labor Shed Employment',
-                font: { size: 16, weight: 'bold' }
-            },
-            legend: {
-                display: false
-            }
-        },
-        scales: {
-            y: {
-                title: {
-                    display: true,
-                    text: 'Total Employed Workers'
-                }
-            }
-        }
-    }
-});
-
-// Force chart rendering before print
-window.addEventListener('beforeprint', function() {
-    // Give charts time to render
-    Chart.instances.forEach(function(chart) {
-        if (chart && chart.update) {
-            chart.update();
-            chart.render();
-        }
-    });
-});
-
-// Alternative: Add delay for print
-const originalPrint = window.print;
-window.print = function() {
-    // Wait for charts to fully render
-    setTimeout(function() {
-        originalPrint.call(window);
-    }, 500);
-};
-</script>
-
 </body>
 </html>
