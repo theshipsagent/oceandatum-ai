@@ -88,7 +88,14 @@
   // -------------------------------------------------------
   // 4. Insert buttons into navbar-right (before first link)
   // -------------------------------------------------------
-  var firstLink = navRight.querySelector('a');
+  // Find the first nav link (skip nested social-icon links)
+  var firstLink = navRight.querySelector('.navbar-link, .od-nav-link, .nav-link, .sn-a');
+  if (!firstLink) {
+    // Fallback: first direct-child <a>
+    for (var i = 0; i < navRight.children.length; i++) {
+      if (navRight.children[i].tagName === 'A') { firstLink = navRight.children[i]; break; }
+    }
+  }
   if (firstLink) {
     navRight.insertBefore(printBtn, firstLink);
     navRight.insertBefore(toggleBtn, printBtn);

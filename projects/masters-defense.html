@@ -964,39 +964,6 @@
 </div>
 
 <script>
-// Theme toggle
-const themeToggle = document.getElementById('themeToggle');
-const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-const body = document.body;
-
-function setTheme(mode) {
-  if (mode === 'light') {
-    body.classList.add('light-mode');
-    themeToggle.innerHTML = '&#9728;'; // sun
-  } else {
-    body.classList.remove('light-mode');
-    themeToggle.innerHTML = '&#9790;'; // moon
-  }
-  localStorage.setItem('od-theme', mode);
-}
-
-// Load saved preference
-const saved = localStorage.getItem('od-theme');
-if (saved === 'light') {
-  setTheme('light');
-}
-
-themeToggle.addEventListener('click', function() {
-  const isLight = body.classList.contains('light-mode');
-  setTheme(isLight ? 'dark' : 'light');
-});
-
-mobileThemeToggle.addEventListener('click', function(e) {
-  e.preventDefault();
-  const isLight = body.classList.contains('light-mode');
-  setTheme(isLight ? 'dark' : 'light');
-});
-
 // Hamburger menu
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const mobileMenu = document.getElementById('mobileMenu');
