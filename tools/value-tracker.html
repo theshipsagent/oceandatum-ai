@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Value Tracker — Development Cost Analysis | OceanDatum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#64ffb4;--bg:#0a0a0a;--nav-h:52px;
+  --text:rgba(255,255,255,0.88);--sub:rgba(255,255,255,0.45);
+  --dim:rgba(255,255,255,0.22);--border:rgba(255,255,255,0.07);
+  --glass:rgba(255,255,255,0.03);
+}
+html,body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;}
+
+/* Nav */
+nav{position:sticky;top:0;height:var(--nav-h);background:rgba(10,10,10,0.94);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(100,255,180,0.12);
+  display:flex;align-items:center;gap:1rem;padding:0 1.5rem;z-index:100;}
+.nav-brand{display:flex;align-items:center;gap:0.5rem;text-decoration:none;flex-shrink:0;}
+.nav-dot{width:7px;height:7px;background:var(--accent);border-radius:50%;}
+.nav-logo{font-size:0.82rem;font-weight:700;color:#fff;letter-spacing:0.02em;}
+.nav-logo em{font-style:normal;color:var(--accent);}
+.nav-title{font-size:0.8rem;color:var(--sub);font-weight:500;}
+.nav-actions{margin-left:auto;display:flex;gap:0.5rem;align-items:center;}
+.btn{font-family:'Space Grotesk',sans-serif;font-size:0.72rem;font-weight:600;
+  letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:5px;
+  padding:0.3rem 0.8rem;border:1px solid;transition:all 0.2s;white-space:nowrap;}
+.btn-csv{background:rgba(255,255,255,0.05);color:var(--sub);border-color:var(--border);}
+.btn-csv:hover{color:var(--text);border-color:rgba(255,255,255,0.2);}
+.btn-back{background:none;color:var(--dim);border-color:var(--border);}
+.btn-back:hover{color:var(--sub);}
+
+/* Layout */
+main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem;}
+.page-header{margin-bottom:2rem;}
+.page-header h1{font-size:1.3rem;font-weight:700;margin-bottom:0.3rem;}
+.page-header p{font-size:0.82rem;color:var(--sub);max-width:700px;}
+
+/* Assumptions row */
+.assumptions{
+  display:flex;flex-wrap:wrap;gap:1rem;
+  background:rgba(255,255,255,0.03);border:1px solid var(--border);
+  border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:2rem;
+  align-items:flex-end;
+}
+.assumption-field{display:flex;flex-direction:column;gap:0.35rem;}
+.assumption-field label{font-size:0.68rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--dim);}
+.assumption-field input{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  border-radius:6px;padding:0.4rem 0.7rem;
+  font-family:'Space Grotesk',sans-serif;font-size:0.88rem;font-weight:600;
+  color:var(--text);width:130px;
+  transition:border-color 0.2s;
+}
+.assumption-field input:focus{outline:none;border-color:rgba(100,255,180,0.4);}
+.assumption-note{font-size:0.72rem;color:var(--dim);align-self:flex-end;padding-bottom:0.2rem;flex:1;min-width:200px;}
+
+/* KPI cards */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2rem;}
+.kpi-card{
+  background:var(--glass);border:1px solid var(--border);border-radius:10px;
+  padding:1.25rem 1.4rem;text-align:center;
+}
+.kpi-card.highlight{
+  background:rgba(100,255,180,0.05);border-color:rgba(100,255,180,0.2);
+}
+.kpi-card .kpi-val{font-size:1.8rem;font-weight:700;color:var(--accent);line-height:1;margin-bottom:0.3rem;}
+.kpi-card .kpi-lbl{font-size:0.68rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--sub);}
+.kpi-card.trad .kpi-val{color:rgba(255,120,100,0.9);}
+.kpi-card.ai   .kpi-val{color:rgba(100,200,255,0.9);}
+.kpi-card.delta .kpi-val{font-size:2.2rem;}
+
+/* Table */
+.tbl-wrap{border-radius:10px;border:1px solid var(--border);overflow:hidden;margin-bottom:1rem;}
+table{width:100%;border-collapse:collapse;font-size:0.8rem;}
+thead th{
+  background:rgba(100,255,180,0.06);color:rgba(100,255,180,0.8);
+  font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.65rem 1rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.12);
+  white-space:nowrap;
+}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.15s;}
+tbody tr:last-child{border-bottom:none;font-weight:700;background:rgba(100,255,180,0.04);}
+tbody tr:last-child td{border-top:1px solid rgba(100,255,180,0.15);}
+tbody tr:not(:last-child):hover{background:rgba(255,255,255,0.025);}
+td{padding:0.7rem 1rem;vertical-align:top;}
+td.cat{font-weight:600;white-space:nowrap;min-width:180px;}
+td.desc{color:rgba(255,255,255,0.55);font-size:0.77rem;line-height:1.45;}
+td.note{color:var(--dim);font-size:0.72rem;font-style:italic;}
+td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;}
+td.trad-cost{color:rgba(255,140,120,0.85);}
+td.ai-cost{color:rgba(100,200,255,0.85);}
+td.savings{color:var(--accent);font-weight:600;}
+
+/* Footer note */
+.method-note{
+  background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:8px;
+  padding:1.1rem 1.4rem;font-size:0.77rem;color:var(--sub);line-height:1.6;
+}
+.method-note strong{color:var(--text);}
+
+@media(max-width:900px){
+  td.note{display:none;}
+  .assumptions{flex-direction:column;}
+}
+@media(max-width:640px){
+  main{padding:1.5rem 1rem 3rem;}
+  .kpi-grid{grid-template-columns:repeat(2,1fr);}
+  td.desc{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-brand"><div class="nav-dot"></div><span class="nav-logo">Ocean<em>Datum</em></span></a>
+  <span class="nav-title">AI Value Tracker</span>
+  <div class="nav-actions">
+    <button class="btn btn-csv" onclick="exportCSV()">Export CSV</button>
+    <button class="btn btn-back" onclick="history.back()">← Back</button>
+  </div>
+</nav>
+
+<main>
+  <div class="page-header">
+    <h1>AI-Assisted Development — Cost Comparison</h1>
+    <p>Estimated cost of all deliverables produced using AI-assisted development vs. equivalent traditional agency/contractor engagement. Adjust assumptions to model your own scenario.</p>
+  </div>
+
+  <!-- Assumptions -->
+  <div class="assumptions">
+    <div class="assumption-field">
+      <label>Traditional Rate ($/hr)</label>
+      <input type="number" id="tradRate" value="110" min="50" max="300" oninput="recalc()">
+    </div>
+    <div class="assumption-field">
+      <label>AI Subscription ($/mo)</label>
+      <input type="number" id="aiMonthly" value="125" min="20" max="500" oninput="recalc()">
+    </div>
+    <div class="assumption-field">
+      <label>Months Active</label>
+      <input type="number" id="months" value="8" min="1" max="36" oninput="recalc()">
+    </div>
+    <div class="assumption-field">
+      <label>Direction Time (hrs)</label>
+      <input type="number" id="directionHrs" value="100" min="0" max="500" oninput="recalc()">
+    </div>
+    <div class="assumption-field">
+      <label>Hourly Rate ($/hr)</label>
+      <input type="number" id="userRate" value="250" min="0" max="1000" oninput="recalc()">
+    </div>
+    <span class="assumption-note">All figures are illustrative estimates based on scope of work delivered. Traditional rate reflects blended agency/contractor cost including PM, design, dev, and research.</span>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card trad">
+      <div class="kpi-val" id="kpiTrad">—</div>
+      <div class="kpi-lbl">Traditional Cost</div>
+    </div>
+    <div class="kpi-card ai">
+      <div class="kpi-val" id="kpiAI">—</div>
+      <div class="kpi-lbl">AI-Assisted Cost</div>
+    </div>
+    <div class="kpi-card delta highlight">
+      <div class="kpi-val" id="kpiDelta">—</div>
+      <div class="kpi-lbl">Total Savings</div>
+    </div>
+    <div class="kpi-card highlight">
+      <div class="kpi-val" id="kpiMult">—</div>
+      <div class="kpi-lbl">Cost Efficiency</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val" id="kpiHours">—</div>
+      <div class="kpi-lbl">Est. Trad. Hours</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val" id="kpiSub">—</div>
+      <div class="kpi-lbl">Total AI Subscription</div>
+    </div>
+  </div>
+
+  <!-- Breakdown Table -->
+  <div class="tbl-wrap">
+    <table id="breakdownTable">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Est. Trad. Hours</th>
+          <th>Traditional Cost</th>
+          <th>AI-Assisted Cost</th>
+          <th>Savings</th>
+          <th class="note-col">Notes</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Methodology -->
+  <div class="method-note">
+    <strong>Methodology:</strong> Traditional cost estimates reflect a blended agency/contractor rate covering web development, data research, GIS/mapping, financial modeling, and content production — as would be quoted by a boutique consultancy or dev shop for equivalent deliverables. AI-assisted cost is the sum of subscription fees plus time spent directing and reviewing work at the specified hourly rate. <strong>No prior coding or development experience</strong> was required on the user side — direction was provided in plain language. Estimates are intentionally conservative on traditional hours; actual agency quotes for this scope would typically be higher. All figures are for illustrative and comparative purposes.
+  </div>
+</main>
+
+<script>
+const ROWS = [
+  {cat:"Website Core & Infrastructure",desc:"Custom dark-theme site (oceandatum.ai): auth system, projects hub, responsive navbar, CSS framework, GitHub Pages pipeline, video background, mobile UX. 71 HTML pages, zero build process.",hours:82,note:"Custom code only — no WordPress, no GoDaddy, no templates"},
+  {cat:"Ship Agency Financial Model",desc:"Full modular JS financial modeling system: 9 UI components, 13-port scenario engine, sensitivity analysis, corporate overhead allocation, cycle-time modeling, Excel/XLSX export (2,058-line export engine). ~42,000 lines of JS.",hours:420,note:"Enterprise-grade: equivalent to a custom SaaS tool"},
+  {cat:"Tampa Cement Market Intelligence",desc:"11-page project suite: cement infrastructure map (ArcGIS), national dashboard, pitch deck, Florida market report, executive summary, global trade flow map, trucking map, ready-mix customer map. 6 ArcGIS-integrated visualizations.",hours:320,note:"Full market intelligence package + GIS integration"},
+  {cat:"Mile Marker 39 Terminal Analysis",desc:"18-section modular report (60,000+ lines): navigation, bathymetry, environmental, permits, capex, econometrics, engineering, weather, geospatial, property, market, infrastructure, images. 18 Chart.js visualization modules + GeoJSON layers.",hours:520,note:"Enterprise analytical framework — most complex deliverable"},
+  {cat:"Rail Analytics Platform",desc:"9-page analytical suite: STB waybill flows, NOLA gateway analysis, merger analysis, network modeling, cement costing, geospatial rail network, market routing. Structured data tables + responsive dark-theme layout.",hours:220,note:"Multi-page platform, each page primary-researched"},
+  {cat:"Additional Research Reports",desc:"10 standalone reports: Egyptian Fertilizers, US Thermal Coal/India, Class I Railroads, Plaquemines Workforce Analysis (27 pages), Pipeline Infrastructure, Mile 76 Port Development scope, USTR Op-Ed, Ship Agency Strategy v2, Barge Fleet Analysis.",hours:280,note:"Each report: 20-40 hrs research + 10-20 hrs dev"},
+  {cat:"Interactive Tools Suite",desc:"6 purpose-built tools: USACE Permits Search (multi-district, CSV export), GIS Dataset Index (200+ sources), Think Tank Project Backlog (inline edit + localStorage), Bibliography system, Lower Miss River Map (full-viewport), Value Tracker.",hours:160,note:"Vanilla JS, no frameworks, fully standalone"},
+  {cat:"Geospatial & Interactive Maps",desc:"12+ map deliverables: 4.3MB Leaflet infrastructure map (multi-layer GIS), Mississippi Facilities Map, River System Overview, Tampa Cement ArcGIS embeds. GeoJSON datasets, bathymetry layers, property boundaries, pipeline overlays.",hours:260,note:"GIS specialist work — each map: 20-40 hrs"},
+  {cat:"Ship Agency Market Research",desc:"Full competitive intelligence package: market sizing, company profiles, competitive strategy report (149KB MD), investor presentation, SEDNA analysis, buy-vs-build analysis. 87MB of research, 147 source files. 11 Python data-scraping scripts.",hours:160,note:"Primary research + multi-source data aggregation"},
+  {cat:"Port Terminal Due Diligence",desc:"Full DD administrative package: document inventory (3.3MB PDF), executive summary, gap analysis framework, USACE permit database (66 permits, Mile 25-235), completeness scoring, prioritized investigation roadmap.",hours:140,note:"Regulatory + legal + infrastructure research"},
+  {cat:"Pipeline & GIS Research",desc:"Louisiana pipeline infrastructure analysis: 4.9MB final report, 5 inset maps, RBN intelligence research (8 maps, 8+ research docs), AMAX comprehensive analysis, site selection modeling.",hours:90,note:"GIS + energy sector research"},
+  {cat:"Data Automation & Scripting",desc:"Python automation pipeline: USACE RSS scraper, permit filter/download scripts, bibliography processor, PDF generator (Playwright), HTML generator scripts, batch sanitization tools, Excel data extraction.",hours:70,note:"Automation replacing 100s of hours of manual work"}
+];
+
+function fmt(n){ return '$' + Math.round(n).toLocaleString(); }
+
+function recalc(){
+  const tradRate    = parseFloat(document.getElementById('tradRate').value)    || 110;
+  const aiMonthly   = parseFloat(document.getElementById('aiMonthly').value)   || 125;
+  const months      = parseFloat(document.getElementById('months').value)      || 8;
+  const directionHrs= parseFloat(document.getElementById('directionHrs').value)|| 80;
+  const userRate    = parseFloat(document.getElementById('userRate').value)    || 250;
+
+  const totalTradHours = ROWS.reduce((s,r) => s + r.hours, 0);
+  const totalTradCost  = totalTradHours * tradRate;
+  const aiSubTotal     = aiMonthly * months;
+  const aiDirectionCost= directionHrs * userRate;
+  const totalAICost    = aiSubTotal + aiDirectionCost;
+  const savings        = totalTradCost - totalAICost;
+  const multiplier     = totalTradCost / totalAICost;
+
+  document.getElementById('kpiTrad').textContent  = fmt(totalTradCost);
+  document.getElementById('kpiAI').textContent    = fmt(totalAICost);
+  document.getElementById('kpiDelta').textContent = fmt(savings);
+  document.getElementById('kpiMult').textContent  = multiplier.toFixed(1) + 'x';
+  document.getElementById('kpiHours').textContent = totalTradHours.toLocaleString();
+  document.getElementById('kpiSub').textContent   = fmt(aiSubTotal);
+
+  // Apportion AI cost by % of trad hours
+  const tbody = document.getElementById('tableBody');
+  const rows  = tbody.querySelectorAll('tr:not(:last-child)');
+  let sumTrad=0, sumAI=0;
+
+  rows.forEach((tr, i) => {
+    if(i >= ROWS.length) return;
+    const r = ROWS[i];
+    const trad = r.hours * tradRate;
+    const ai   = (r.hours / totalTradHours) * totalAICost;
+    const sav  = trad - ai;
+    sumTrad += trad; sumAI += ai;
+    tr.querySelector('.trad-cost').textContent = fmt(trad);
+    tr.querySelector('.ai-cost').textContent   = fmt(ai);
+    tr.querySelector('.savings').textContent   = fmt(sav);
+    tr.querySelector('.hrs').textContent       = r.hours;
+  });
+
+  // Totals row
+  const tot = tbody.querySelector('tr:last-child');
+  tot.querySelector('.trad-cost').textContent = fmt(totalTradCost);
+  tot.querySelector('.ai-cost').textContent   = fmt(totalAICost);
+  tot.querySelector('.savings').textContent   = fmt(savings);
+  tot.querySelector('.hrs').textContent       = totalTradHours;
+}
+
+function buildTable(){
+  const tbody = document.getElementById('tableBody');
+  ROWS.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="cat">${r.cat}</td>
+      <td class="desc">${r.desc}</td>
+      <td class="num hrs" style="color:var(--sub)"></td>
+      <td class="num trad-cost"></td>
+      <td class="num ai-cost"></td>
+      <td class="num savings"></td>
+      <td class="num note">${r.note}</td>`;
+    tbody.appendChild(tr);
+  });
+  // Totals row
+  const tot = document.createElement('tr');
+  tot.innerHTML = `
+    <td class="cat" colspan="2">Total — All Deliverables</td>
+    <td class="num hrs"></td>
+    <td class="num trad-cost"></td>
+    <td class="num ai-cost"></td>
+    <td class="num savings"></td>
+    <td class="note"></td>`;
+  tbody.appendChild(tot);
+}
+
+function exportCSV(){
+  const tradRate    = parseFloat(document.getElementById('tradRate').value)    || 110;
+  const aiMonthly   = parseFloat(document.getElementById('aiMonthly').value)   || 125;
+  const months      = parseFloat(document.getElementById('months').value)      || 8;
+  const directionHrs= parseFloat(document.getElementById('directionHrs').value)|| 80;
+  const userRate    = parseFloat(document.getElementById('userRate').value)    || 250;
+  const totalTradHours = ROWS.reduce((s,r)=>s+r.hours,0);
+  const totalAICost = aiMonthly*months + directionHrs*userRate;
+
+  const headers = ['Category','Est Trad Hours','Traditional Cost','AI Cost','Savings','Notes'];
+  const dataRows = ROWS.map(r => {
+    const trad = r.hours * tradRate;
+    const ai   = (r.hours/totalTradHours)*totalAICost;
+    return [r.cat, r.hours, Math.round(trad), Math.round(ai), Math.round(trad-ai), r.note]
+      .map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',');
+  });
+  const csv = [headers.join(','), ...dataRows].join('\r\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download = 'oceandatum_value_tracker_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+
+buildTable();
+recalc();
+</script>
+</body>
+</html>
