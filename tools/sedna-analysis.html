@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEDNA vs. The New AI Landscape | OceanDatum Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#64ffb4;--bg:#0a0a0a;--nav-h:56px;
+  --text:rgba(255,255,255,0.88);--sub:rgba(255,255,255,0.5);
+  --dim:rgba(255,255,255,0.25);--border:rgba(255,255,255,0.07);
+  --glass:rgba(255,255,255,0.03);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;line-height:1.7}
+
+nav{position:sticky;top:0;height:var(--nav-h);background:rgba(10,10,10,0.93);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(100,255,180,0.12);
+  display:flex;align-items:center;justify-content:space-between;padding:0 2rem;z-index:100}
+.nav-brand{display:flex;align-items:center;gap:0.5rem;text-decoration:none}
+.nav-dot{width:7px;height:7px;background:var(--accent);border-radius:50%}
+.nav-logo{font-size:0.85rem;font-weight:700;color:#fff;letter-spacing:0.02em}
+.nav-logo em{font-style:normal;color:var(--accent)}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-links a{font-size:0.8rem;color:var(--sub);text-decoration:none;letter-spacing:0.03em;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-back{border:1px solid var(--border);padding:0.3rem 0.8rem;border-radius:5px}
+
+/* Hero */
+.hero{padding:4rem 2rem 3rem;max-width:860px;margin:0 auto;border-bottom:1px solid var(--border)}
+.hero-eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem}
+.hero h1{font-size:clamp(1.6rem,3vw,2.5rem);font-weight:700;line-height:1.2;margin-bottom:0.6rem;letter-spacing:-0.02em}
+.hero-sub{font-size:1.05rem;color:var(--sub);margin-bottom:1.5rem;font-style:italic}
+.hero-meta{font-size:0.75rem;color:var(--dim);display:flex;gap:1.5rem;flex-wrap:wrap}
+.conf-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,193,7,0.8);border:1px solid rgba(255,193,7,0.25);background:rgba(255,193,7,0.06);padding:0.25rem 0.7rem;border-radius:20px}
+
+/* TOC */
+.toc{max-width:860px;margin:2.5rem auto;padding:0 2rem}
+.toc-box{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.75rem}
+.toc-title{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.toc ol{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.3rem 2rem;counter-reset:toc}
+.toc ol li{counter-increment:toc;font-size:0.82rem}
+.toc ol li a{color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.2s;display:flex;gap:0.5rem;align-items:baseline}
+.toc ol li a::before{content:counter(toc)".";color:var(--accent);font-weight:700;font-size:0.7rem;flex-shrink:0}
+.toc ol li a:hover{color:var(--accent)}
+
+/* Article body */
+.article{max-width:860px;margin:0 auto;padding:0 2rem 5rem}
+.wp-section{margin-bottom:3.5rem;padding-top:0.5rem}
+.wp-section-anchor{display:block;height:var(--nav-h);margin-top:calc(-1 * var(--nav-h));visibility:hidden}
+.section-num{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem}
+.section-title{font-size:1.3rem;font-weight:700;margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(100,255,180,0.12);letter-spacing:-0.01em}
+.sub-title{font-size:0.98rem;font-weight:700;color:var(--text);margin:1.5rem 0 0.5rem}
+.wp-p{font-size:0.88rem;color:rgba(255,255,255,0.68);line-height:1.75;margin-bottom:0.9rem}
+.wp-p strong{color:var(--text)}
+.wp-ul{list-style:none;padding:0;margin:0.5rem 0 1rem;display:flex;flex-direction:column;gap:0.45rem}
+.wp-ul li{font-size:0.86rem;color:rgba(255,255,255,0.6);line-height:1.6;padding-left:1.1rem;position:relative}
+.wp-ul li::before{content:'·';position:absolute;left:0;color:var(--accent);font-weight:700}
+.callout{background:rgba(100,255,180,0.04);border:1px solid rgba(100,255,180,0.15);border-left:3px solid var(--accent);border-radius:8px;padding:1.1rem 1.4rem;font-size:0.85rem;color:rgba(255,255,255,0.68);line-height:1.7;margin:1.25rem 0}
+.callout strong{color:var(--text)}
+.callout.warn{background:rgba(255,193,7,0.04);border-color:rgba(255,193,7,0.2);border-left-color:rgba(255,193,7,0.7)}
+
+/* Tables */
+.tbl-wrap{border-radius:10px;border:1px solid var(--border);overflow:hidden;margin:1.25rem 0 1.75rem;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:0.8rem;min-width:500px}
+thead th{background:rgba(100,255,180,0.06);color:rgba(100,255,180,0.8);font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.65rem 1rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.12);white-space:nowrap}
+tbody td{padding:0.65rem 1rem;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;color:rgba(255,255,255,0.6);line-height:1.45}
+tbody td:first-child{color:var(--text);font-weight:600;white-space:nowrap}
+tbody td strong{color:var(--text)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(255,255,255,0.02)}
+
+/* Decision cards */
+.decision-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin:1rem 0 1.5rem}
+.decision-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem}
+.decision-card h4{font-size:0.85rem;font-weight:700;color:var(--accent);margin-bottom:0.6rem}
+.decision-card ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:0.35rem}
+.decision-card ul li{font-size:0.79rem;color:rgba(255,255,255,0.55);line-height:1.5;padding-left:1rem;position:relative}
+.decision-card ul li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-size:0.7rem}
+
+/* Sources */
+.sources{font-size:0.75rem;color:var(--dim);border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2rem;line-height:1.8;font-style:italic}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:0.75rem;color:var(--dim)}
+
+@media(max-width:640px){
+  .hero,.toc,.article{padding-left:1.25rem;padding-right:1.25rem}
+  .toc ol{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-brand"><div class="nav-dot"></div><span class="nav-logo">Ocean<em>Datum</em></span></a>
+  <div class="nav-links">
+    <a href="../tools.html">Tools</a>
+    <a href="../projects-hub.html" class="nav-back">&#x2190; Hub</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Maritime Technology Analysis &middot; February 2026</div>
+  <h1>SEDNA vs. The New AI Landscape</h1>
+  <p class="hero-sub">A Critical Analysis for Ship Agency Leadership &mdash; Is purpose-built maritime email software still the answer, or has AI made it possible to solve this problem internally?</p>
+  <div class="hero-meta">
+    <span class="conf-badge">&#x26A0; Confidential Working Paper</span>
+    <span>William S. Davis III &mdash; Maritime Industry Consultant</span>
+    <span>Revised Edition, February 2026</span>
+  </div>
+</div>
+
+<div class="toc">
+  <div class="toc-box">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#s1">Executive Summary</a></li>
+      <li><a href="#s2">The Problem: Why Agencies Need Email Intelligence</a></li>
+      <li><a href="#s3">Sedna: Product, Company &amp; Strategic Analysis</a></li>
+      <li><a href="#s4">The Investor Room: What Sedna Must Show to Survive</a></li>
+      <li><a href="#s5">Technical Architecture: What You Are Actually Buying</a></li>
+      <li><a href="#s6">The Microsoft 365 Alternative</a></li>
+      <li><a href="#s7">Cost Comparison: Sedna vs. Internal Development</a></li>
+      <li><a href="#s8">Transitioning Off Sedna: A Migration Framework</a></li>
+      <li><a href="#s9">Will Products Like Sedna Survive the AI Era?</a></li>
+      <li><a href="#s10">Alternative SaaS Platforms</a></li>
+      <li><a href="#s11">Decision Framework for Leadership</a></li>
+      <li><a href="#s12">Conclusion</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="article">
+
+<!-- ===== SECTION 1 ===== -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s1"></span>
+  <div class="section-num">Section 1</div>
+  <div class="section-title">Executive Summary</div>
+  <p class="wp-p">This paper examines Sedna, the dominant maritime email management platform, through the lens of a rapidly changing AI technology landscape and an increasingly revealing financial picture. The central question facing ship agency leadership is deceptively simple: Do we still need Sedna, or can we now solve this problem ourselves?</p>
+  <p class="wp-p">The answer is nuanced. Sedna solved a real and serious problem when it launched in 2017. Ship agents processing 500 to 1,500 emails per day were drowning in Outlook&rsquo;s limitations: no shared visibility, no auto-tagging, no cross-team searchability, and no way to tie an email thread to a vessel, voyage, or job number without manual filing. Sedna wrapped around Microsoft Exchange/Office 365 infrastructure and provided a purpose-built collaboration layer that Outlook was never designed to offer.</p>
+  <p class="wp-p">However, four fundamental shifts have occurred since Sedna&rsquo;s founding that warrant serious re-evaluation:</p>
+  <ul class="wp-ul">
+    <li><strong>Microsoft 365 Copilot and Power Automate</strong> now deliver many of the core capabilities that once required a third-party wrapper, including AI-powered email summarization, shared mailbox intelligence, auto-classification, and workflow automation.</li>
+    <li><strong>Large Language Models (LLMs)</strong> have matured to a point where custom AI agents can parse, classify, route, and summarize maritime email at a fraction of the cost and complexity of maintaining a dedicated SaaS platform.</li>
+    <li><strong>Sedna&rsquo;s own business trajectory</strong> raises strategic questions: $86 million in equity funding plus &euro;10 million in debt against estimated revenues of $2&ndash;4 million, an acquisition spree focused on buying customer books rather than technology, and a pivot from email management to &ldquo;The OS for Shipping&rdquo; that puts it in direct competition with established maritime software providers.</li>
+    <li><strong>The broader maritime platform ecosystem</strong> is consolidating around integration rather than ownership of the email layer. Marcura, with $326 million in revenue and 1,000+ employees, chose to partner with Sedna rather than build or acquire its own email capability&mdash;a signal that email management may be a feature rather than a platform.</li>
+  </ul>
+  <div class="callout">This paper does not advocate for or against Sedna. It provides a neutral, evidence-based framework for ship agency executives to evaluate their options, understand the risks of each path, and make a decision informed by technology reality, financial analysis, and market dynamics rather than vendor marketing or inertia.</div>
+</div>
+
+<!-- ===== SECTION 2 ===== -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s2"></span>
+  <div class="section-num">Section 2</div>
+  <div class="section-title">The Problem: Why Ship Agencies Need Email Intelligence</div>
+  <p class="wp-p">Before evaluating solutions, leadership must understand the problem clearly. A typical ship agent&rsquo;s inbox is not like a typical corporate inbox. The volume, velocity, and variety of maritime email creates operational challenges that generic email clients were never designed to handle.</p>
+
+  <div class="sub-title">2.1 &mdash; The Volume Problem</div>
+  <p class="wp-p">A single port call can generate 50 to 200 emails across arrival notices, customs declarations, berth requests, cargo documentation, crew lists, immigration forms, surveyor correspondence, principal instructions, and invoice reconciliation. A busy ship agency handling 10 to 20 port calls simultaneously may see individual agents processing 500 to 1,500 emails per day. These are not newsletters or CC chains&mdash;each email may contain actionable instructions, deadline-sensitive documents, or regulatory compliance requirements.</p>
+
+  <div class="sub-title">2.2 &mdash; The Visibility Problem</div>
+  <p class="wp-p">In a standard Outlook environment, email lives in individual mailboxes. When Agent A goes on leave, Agent B has no visibility into the 300 emails Agent A processed on a vessel that is still in port. The result is repeated requests to counterparties, missed instructions, and operational errors that cost money. Shared mailboxes in Outlook partially solve this but introduce their own chaos: everyone sees everything, there is no intelligent routing, and the filing burden actually increases.</p>
+
+  <div class="sub-title">2.3 &mdash; The Search and Retrieval Problem</div>
+  <p class="wp-p">Maritime operations are auditable. When a principal disputes a disbursement, when customs questions a declaration, when a P&amp;I club investigates an incident, the agency must produce email correspondence quickly and completely. Outlook&rsquo;s search has historically been slow, unreliable across large mailboxes, and incapable of cross-user search without Exchange eDiscovery tools that most ship agencies do not have configured.</p>
+
+  <div class="sub-title">2.4 &mdash; The Context Problem</div>
+  <p class="wp-p">The most costly inefficiency is context switching. An agent receives an email about MV Pacific Star&rsquo;s berth change. To act on it, they must cross-reference the vessel&rsquo;s current proforma, the principal&rsquo;s standing instructions, the port&rsquo;s berth allocation schedule, and the customs timeline. In Outlook, this means switching between folders, spreadsheets, port software, and agency management systems. In Sedna, this context is surfaced alongside the email through integrations and tagging.</p>
+  <div class="callout">These four problems are real, persistent, and directly impact operational efficiency and profitability. Any solution&mdash;whether Sedna, an internal build, or a hybrid approach&mdash;must address all four.</div>
+</div>
+
+<!-- ===== SECTION 3 ===== -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s3"></span>
+  <div class="section-num">Section 3</div>
+  <div class="section-title">Sedna: Product, Company &amp; Strategic Analysis</div>
+
+  <div class="sub-title">3.1 &mdash; What Sedna Actually Does</div>
+  <p class="wp-p">At its core, Sedna is an email middleware layer. It connects to a company&rsquo;s existing Microsoft 365 (or Google Workspace) email infrastructure via API, ingests all incoming and outgoing mail, and presents it through Sedna&rsquo;s own web and mobile interface. The underlying email infrastructure remains Microsoft&mdash;Sedna does not replace Exchange or Outlook. It wraps around them.</p>
+  <ul class="wp-ul">
+    <li><strong>Shared Team Inboxes:</strong> All team members see all relevant mail without forwarding. Emails can be followed, commented on internally, and tagged without cluttering the external thread.</li>
+    <li><strong>Auto-Tagging and Job Classification:</strong> Incoming emails are automatically tagged by vessel name, voyage number, or job reference using rule-based pattern matching and, more recently, AI classification.</li>
+    <li><strong>Rapid Search:</strong> Sedna&rsquo;s search indexes millions of messages and returns results in under one second with boolean precision&mdash;far outperforming Outlook&rsquo;s native search.</li>
+    <li><strong>Activity Panel:</strong> Internal comments, tasks, and notes are attached to individual emails without generating additional email traffic&mdash;effectively a Slack-like sidebar embedded in each message.</li>
+    <li><strong>Integration Layer:</strong> Sedna connects with Veson IMOS, Q88, Abraxa, Softmar, GAT-Ship, and Chain.io (CargoWise), pulling contextual data into the email view.</li>
+    <li><strong>Compliance and Archiving:</strong> All emails are immutably archived and searchable, supporting audit and regulatory requirements.</li>
+  </ul>
+
+  <div class="sub-title">3.2 &mdash; The Acquisition Strategy</div>
+  <p class="wp-p">Since its $42 million Series C in July 2023, Sedna has been on an aggressive acquisition and expansion path that signals a fundamental strategic pivot:</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Acquisition</th><th>Date</th><th>What They Got</th><th>Strategic Read</th></tr></thead>
+      <tbody>
+        <tr><td>Nordic IT</td><td>Nov 2024</td><td>~400 customers, reMARK/MARK5 platforms, 41 employees, DKK 4.7M EBITDA (~$680K)</td><td>Customer book acquisition. Founded 1981; technology was legacy code. Sedna committed to &ldquo;supporting&rdquo; existing platforms&mdash;industry code for planned migration.</td></tr>
+        <tr><td>CompassAir</td><td>Early 2025</td><td>Maritime workflow solutions, customer relationships</td><td>Customer book and workflow automation feature set.</td></tr>
+        <tr><td>Flytta</td><td>Mar 2025</td><td>AI workflow automation team from Casper Shipping, maritime LLM roadmap</td><td>Talent acquisition. AI engineering capability Sedna lacked internally.</td></tr>
+        <tr><td>Dataloy Systems</td><td>Jul 2025</td><td>Norwegian voyage management software, 500+ customers (Golden Ocean, Stena Bulk, Klaveness)</td><td>Largest strategic acquisition. Rebranded as &ldquo;Sedna Trade.&rdquo; Moves Sedna into VMS territory.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warn"><strong>Critical observation:</strong> Four acquisitions in less than twelve months, while simultaneously managing &euro;10 million in new debt. The Nordic IT acquisition is particularly instructive: a 40-year-old company with ancient technology but 400 paying customers. Sedna did not buy Nordic IT for its code&mdash;it bought customer relationships. FY2023 financials show Nordic IT generated DKK 12.9M in gross profit (~$1.9M USD) on DKK 4.7M EBITDA (~$680K). The acquisition allowed Sedna to report 500+ customers overnight, up from approximately 100.</div>
+  <p class="wp-p">The pattern is clear: Sedna is evolving from an email management tool into what it now calls &ldquo;The OS for Shipping&rdquo;&mdash;encompassing email (Sedna Stream), commercial trading (Sedna Trade, built on Dataloy), and custom development (Sedna Build). This puts Sedna in direct competition with established voyage management providers.</p>
+
+  <div class="sub-title">3.3 &mdash; Company Financials: The Funding Structure</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Round</th><th>Date</th><th>Amount</th><th>Lead Investor(s)</th><th>Cumulative</th></tr></thead>
+      <tbody>
+        <tr><td>Seed</td><td>2017</td><td>~$2M (est.)</td><td>GK Goh Holdings (Singapore)</td><td>~$2M</td></tr>
+        <tr><td>Series A</td><td>Nov 2020</td><td>$10M</td><td>Chalfen Ventures + Stride.VC</td><td>~$12M</td></tr>
+        <tr><td>Series B</td><td>Jul 2021</td><td>$34M</td><td>Insight Partners</td><td>~$46M</td></tr>
+        <tr><td>Series C</td><td>Jul 2023</td><td>$42M</td><td>Insight Partners + GK Goh</td><td>$86M (confirmed)</td></tr>
+        <tr><td>Debt</td><td>Apr 2025</td><td>&euro;10M (~$11M)</td><td>CIBC Innovation Banking</td><td>~$97M</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warn"><strong>The debt financing signal:</strong> In April 2025, Sedna raised &euro;10M from CIBC Innovation Banking rather than conducting another equity round. When a company with $86M in equity raised goes to a bank for debt, it typically signals one of three things: the company cannot raise equity at an acceptable valuation, it is trying to avoid further dilution, or it needs bridge capital to hit milestones. CIBC&rsquo;s venture debt typically provides 12&ndash;18 months of runway. Regardless of the specific reason, the shift from equity to debt warrants attention from customers evaluating long-term platform dependency.</div>
+
+  <div class="sub-title">3.4 &mdash; Revenue Reality and Burn Rate</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>Data Point</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Annual Revenue</td><td>$1.8M</td><td>Getlatka (2024 data)</td></tr>
+        <tr><td>Revenue (alt.)</td><td>4.2M SGD (~$3.1M USD)</td><td>Tracxn (May 2021)</td></tr>
+        <tr><td>Total Employees</td><td>120&ndash;134</td><td>PitchBook/Getlatka</td></tr>
+        <tr><td>Engineering Team</td><td>~20 engineers</td><td>LinkedIn analysis</td></tr>
+        <tr><td>Sales Team</td><td>18 quota-carrying reps</td><td>LinkedIn analysis</td></tr>
+        <tr><td>Pre-Acquisition Customers</td><td>~100</td><td>Sedna public statements</td></tr>
+        <tr><td>Post-Acquisition Customers</td><td>500+ (claimed)</td><td>Post-Nordic IT + Dataloy</td></tr>
+        <tr><td>Revenue-to-Funding Ratio</td><td><strong>2&ndash;4 cents per dollar raised</strong></td><td>Derived</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="wp-p">With 120&ndash;134 employees at an estimated average loaded cost of $120,000&ndash;$150,000/year (blended across London, Vancouver, Singapore, and Copenhagen), personnel costs alone are approximately $15&ndash;20 million per year. Adding infrastructure, sales, and acquisition expenses, total annual burn is conservatively <strong>$20&ndash;30 million</strong>. Against revenues of $2&ndash;4 million, the company is consuming $16&ndash;28 million more per year than it generates.</p>
+  <div class="callout"><strong>Counterpoint:</strong> Enterprise SaaS companies in niche verticals often have extended paths to profitability. The Dataloy acquisition brings 500+ customers into the ecosystem. Insight Partners, a top-tier software investor, continues to back the company. Pre-acquisition customers like Glencore, Bunge, NORDEN, Stena Bulk, and Oldendorff represent genuine blue-chip maritime validation.</div>
+
+  <div class="sub-title">3.5 &mdash; The Marcura Partnership: A Market Signal</div>
+  <p class="wp-p">In May 2025, Marcura and Sedna announced a formal integration partnership. Marcura is a Dubai-headquartered maritime technology company backed by Marlin Equity Partners ($8.9B AUM) with $326M+ in annual revenue and 1,000+ employees. Its stack includes DA-Desk (port cost management), PortLog (voyage optimization), MarTrust (maritime payments), ShipServ (procurement), and ClaimsHub (claims processing). The Sedna-Marcura integration gives chartering and operations teams access to ClaimsHub and AI Console directly within Sedna Stream. DA-Desk integration for inline PDA/FDA approvals followed in February 2026.</p>
+  <div class="callout"><strong>Why this matters:</strong> Marcura is the most acquisitive maritime platform consolidator in the market&mdash;having bought ShipServ (2023), VesselMan (Jan 2025), HubSE (Feb 2025), Shipster (Mar 2025), and Brightwell (Jul 2025). It has the capital and strategic appetite to build or acquire almost anything in the maritime technology stack. Yet Marcura chose to <em>partner</em> with Sedna rather than build or buy its own email layer. This implicitly values email management as a connector between more valuable systems&mdash;not a destination platform in its own right. For ship agency leadership: even the world&rsquo;s largest maritime platform company does not believe it needs to own the email management layer.</div>
+</div>
+
+<!-- ===== SECTION 4 ===== -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s4"></span>
+  <div class="section-num">Section 4</div>
+  <div class="section-title">The Investor Room: What Sedna Must Show to Survive</div>
+
+  <div class="sub-title">4.1 &mdash; What Insight Partners Needs</div>
+  <p class="wp-p">Insight Partners&rsquo; playbook for vertical SaaS requires companies that can reach $100M+ ARR, dominate a niche category, and compound at 30&ndash;40% annually toward an IPO or strategic exit. With approximately $76 million deployed across the Series B and C at likely valuations of $150&ndash;300 million, Insight needs a <strong>$750 million to $1.5 billion exit</strong> to achieve target returns. At the current revenue trajectory of $2&ndash;4 million ARR against $97 million in total capital, Sedna has generated roughly 2&ndash;4 cents of revenue per dollar invested&mdash;significantly below typical benchmarks for a Series C company.</p>
+
+  <div class="sub-title">4.2 &mdash; The License Math</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Scenario</th><th>Customers</th><th>Avg Users/Org</th><th>Blended Price/User/Mo</th><th>Estimated ARR</th></tr></thead>
+      <tbody>
+        <tr><td>Current State (est.)</td><td>500</td><td>30&ndash;50</td><td>$75&ndash;100</td><td>$13.5&ndash;30M potential; <strong>$2&ndash;4M actual</strong></td></tr>
+        <tr><td>Breakeven Target</td><td>750</td><td>75</td><td>$100</td><td>$67.5M</td></tr>
+        <tr><td>Investor Viability</td><td>1,000</td><td>100</td><td>$125</td><td>$150M</td></tr>
+        <tr><td>Category Leader</td><td>1,500</td><td>125</td><td>$150</td><td>$337.5M</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="wp-p">The gap between potential and actual ARR suggests: many Nordic IT legacy customers on low-cost contracts not yet migrated to Sedna pricing, low seat penetration within organizations (10&ndash;20 users rather than 50), and heavy discounting to land competitive accounts.</p>
+
+  <div class="sub-title">4.3 &mdash; Market Size Constraints</div>
+  <ul class="wp-ul">
+    <li>Global maritime software market: ~$1.8&ndash;$4.5 billion (2025), growing 7&ndash;15% CAGR</li>
+    <li>Maritime email &amp; communications management: estimated <strong>$90&ndash;180 million</strong> addressable</li>
+    <li>Global addressable organizations: ~5,000&ndash;8,000 maritime companies with sufficient email volume</li>
+    <li>Total addressable seats: 250,000&ndash;800,000 at 50&ndash;100 users per organization</li>
+    <li>Sedna&rsquo;s current position: estimated 15,000&ndash;25,000 seats = <strong>3&ndash;10% penetration</strong></li>
+  </ul>
+  <div class="callout warn">Even at full market saturation, the maritime email management market does not support a $1 billion revenue company. This is precisely why Sedna is pivoting to &ldquo;The OS for Shipping.&rdquo; By expanding into voyage management (Dataloy), AI document processing (Flytta), and claims integration (Marcura), Sedna is attempting to expand its TAM to $500M+. Whether it can credibly compete in these broader categories against established players is the central strategic risk.</div>
+
+  <div class="sub-title">4.4 &mdash; What Sedna Is Likely Showing Investors</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Year</th><th>Projected ARR</th><th>Narrative</th></tr></thead>
+      <tbody>
+        <tr><td>2025</td><td>$8&ndash;12M</td><td>Nordic IT customer migration, upsell existing base, Dataloy close</td></tr>
+        <tr><td>2026</td><td>$25&ndash;35M</td><td>Platform cross-sell accelerates, Marcura integration drives shared customers</td></tr>
+        <tr><td>2027</td><td>$60&ndash;80M</td><td>&ldquo;OS for Shipping&rdquo; traction, new verticals open</td></tr>
+        <tr><td>2028</td><td>$120&ndash;150M</td><td>Market leadership position, IPO-ready metrics</td></tr>
+        <tr><td>2029</td><td>$200M+</td><td>Path to profitability or strategic exit</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="wp-p">This projection requires 50&ndash;100% year-over-year growth sustained for five years, achieved with approximately 20 engineers, while integrating four acquisitions, defending against Microsoft Copilot commoditization of core features, and competing with Veson IMOS and Q88 in voyage management. For customers, the question is not whether this projection is achievable&mdash;it may be&mdash;but what happens to the platform if it is not.</p>
+</div>
+
+<!-- ===== SECTION 5 ===== -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s5"></span>
+  <div class="section-num">Section 5</div>
+  <div class="section-title">Technical Architecture: What You Are Actually Buying</div>
+
+  <div class="sub-title">5.1 &mdash; Sedna&rsquo;s Technology Stack</div>
+  <ul class="wp-ul">
+    <li><strong>Backend:</strong> Node.js with TypeScript</li>
+    <li><strong>Search:</strong> OpenSearch (open-source Elasticsearch fork)</li>
+    <li><strong>Frontend:</strong> React-based web application</li>
+    <li><strong>Infrastructure:</strong> Cloud-native (AWS or Azure)</li>
+    <li><strong>Email Connectivity:</strong> Microsoft Exchange Web Services (EWS) and Graph API for O365 integration</li>
+    <li><strong>Security:</strong> ISO certified, GDPR and CPA compliant, corporate MFA integration</li>
+  </ul>
+  <div class="callout"><strong>Key insight:</strong> None of these technologies are proprietary. Sedna&rsquo;s competitive advantage is not in its technology stack&mdash;it is in its maritime domain knowledge, its pre-built integrations with shipping-specific systems, and its seven years of customer-driven feature refinement. This distinction matters because it tells you exactly what you would need to replicate (the domain layer) versus what is readily available as commodity technology (the email processing, search, and AI classification layers).</div>
+
+  <div class="sub-title">5.2 &mdash; The O365 Wrapper Architecture</div>
+  <p class="wp-p">Sedna does not replace your email server. Your Microsoft 365 licenses, Exchange Online mailboxes, and Outlook installations all remain in place. Sedna connects via API and creates a parallel view of your email with additional intelligence layered on top. This means:</p>
+  <ul class="wp-ul">
+    <li>You are paying for Microsoft 365 <em>and</em> Sedna simultaneously.</li>
+    <li>If Sedna experiences an outage, your email still functions through Outlook.</li>
+    <li>If you leave Sedna, your email history remains in Microsoft 365&mdash;though Sedna-specific metadata (tags, comments, activity panel data) would be lost unless exported.</li>
+    <li>Sedna&rsquo;s value is entirely in the intelligence, collaboration, and workflow layer&mdash;not in email transport or storage.</li>
+  </ul>
+  <p class="wp-p">This architecture means transitioning off Sedna is technically straightforward (email never leaves Microsoft), but operationally complex (workflow habits, tag taxonomies, and institutional knowledge embedded in Sedna&rsquo;s collaboration features must be replicated elsewhere).</p>
+</div>
+
+<!-- ===== SECTION 6 ===== -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s6"></span>
+  <div class="section-num">Section 6</div>
+  <div class="section-title">The Microsoft 365 Alternative: What Can Be Done Internally Now</div>
+
+  <div class="sub-title">6.1 &mdash; Microsoft 365 Copilot in Outlook</div>
+  <p class="wp-p">As of late 2025, Microsoft 365 Copilot delivers the following capabilities directly within Outlook:</p>
+  <ul class="wp-ul">
+    <li><strong>Email Summarization:</strong> Condenses lengthy threads into concise summaries highlighting decisions, action items, and key information.</li>
+    <li><strong>Shared Mailbox Intelligence:</strong> Copilot now works within shared mailboxes, allowing teams to use AI to manage shared inboxes collaboratively&mdash;directly addressing the visibility problem.</li>
+    <li><strong>Draft Generation:</strong> Context-aware reply drafting that cites relevant attachments and prior correspondence.</li>
+    <li><strong>Search Enhancement:</strong> Copilot-powered search spans email, Teams messages, and OneDrive/SharePoint documents in a single query.</li>
+    <li><strong>Attachment Processing:</strong> Copilot reads Word, Excel, PDF, JSON, and XML attachments and includes that information in responses.</li>
+  </ul>
+
+  <div class="sub-title">6.2 &mdash; Power Automate and Copilot Studio</div>
+  <ul class="wp-ul">
+    <li><strong>Email Classification Agents:</strong> Autonomous AI agents in Copilot Studio can monitor shared mailboxes, identify intent (vessel arrival, cargo documentation, customs query, invoice, etc.), and route messages to appropriate teams or folders.</li>
+    <li><strong>Auto-Tagging:</strong> Power Automate flows can extract vessel names, IMO numbers, voyage references, and job numbers from email content and apply labels, move to folders, or update SharePoint lists.</li>
+    <li><strong>SharePoint Document Management:</strong> Attachments can be automatically saved to structured SharePoint libraries organized by vessel, voyage, or port call.</li>
+    <li><strong>CRM/ERP Integration:</strong> Copilot agents can connect to Dynamics 365, SharePoint, and third-party systems to fetch and display contextual data.</li>
+    <li><strong>Automated Responses:</strong> For routine queries (ETA requests, standard disbursement acknowledgments), AI agents can draft and send responses with human oversight.</li>
+  </ul>
+
+  <div class="sub-title">6.3 &mdash; What Microsoft 365 Cannot Yet Do (Sedna&rsquo;s Remaining Moat)</div>
+  <ul class="wp-ul">
+    <li><strong>Pre-Built Maritime Integrations:</strong> Sedna&rsquo;s plug-and-play connections with Veson IMOS, Q88, Abraxa, Softmar, GAT-Ship, Chain.io/CargoWise, and Marcura&rsquo;s ClaimsHub/DA-Desk are genuinely valuable. Replicating these internally requires API development and ongoing maintenance.</li>
+    <li><strong>Seven Years of Maritime UX Refinement:</strong> Sedna&rsquo;s interface was designed by people who understand shipping workflows. The tag taxonomy, the job reference system, the activity panel UX&mdash;built through thousands of hours of feedback from ship operators, charterers, and agents.</li>
+    <li><strong>Immutable Email Archive:</strong> While Microsoft 365 offers litigation hold and retention policies, Sedna&rsquo;s approach to email immutability is a simpler compliance story for maritime operations.</li>
+    <li><strong>Cross-Organization Email Visibility:</strong> Sedna provides a single pane of glass across the entire organization&rsquo;s email, more seamlessly than configuring shared mailbox access in Exchange Online.</li>
+  </ul>
+</div>
+
+<!-- ===== SECTION 7 ===== -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s7"></span>
+  <div class="section-num">Section 7</div>
+  <div class="section-title">Cost Comparison: Sedna vs. Internal Development</div>
+  <p class="wp-p">The following comparison models a mid-sized ship agency with 50 operational users. All costs in USD per year.</p>
+
+  <div class="sub-title">Option A &mdash; Sedna (Status Quo)</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Cost Component</th><th>Monthly/User</th><th>Annual (50 Users)</th></tr></thead>
+      <tbody>
+        <tr><td>Microsoft 365 E3 (required baseline)</td><td>$36</td><td>$21,600</td></tr>
+        <tr><td>Sedna License (est. $75&ndash;$130/user)</td><td>$100 (mid)</td><td>$60,000</td></tr>
+        <tr><td>Sedna Implementation (one-time, amortized 3 yr)</td><td>&mdash;</td><td>$10,000</td></tr>
+        <tr><td>Internal IT Support</td><td>&mdash;</td><td>$5,000</td></tr>
+        <tr><td><strong>Total</strong></td><td></td><td><strong>$96,600/year</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-title">Option B &mdash; Microsoft 365 + Copilot (Enhanced Native)</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Cost Component</th><th>Monthly/User</th><th>Annual (50 Users)</th></tr></thead>
+      <tbody>
+        <tr><td>Microsoft 365 E3</td><td>$36</td><td>$21,600</td></tr>
+        <tr><td>Microsoft 365 Copilot Add-On</td><td>$30</td><td>$18,000</td></tr>
+        <tr><td>Power Automate Premium (10 flow licenses)</td><td>$15/flow</td><td>$1,800</td></tr>
+        <tr><td>Internal Configuration and Training (amortized)</td><td>&mdash;</td><td>$8,000</td></tr>
+        <tr><td>Ongoing IT Administration</td><td>&mdash;</td><td>$6,000</td></tr>
+        <tr><td><strong>Total</strong></td><td></td><td><strong>$55,400/year</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-title">Option C &mdash; Custom AI-Enhanced Solution (Internal Build)</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Cost Component</th><th>Annual (50 Users)</th></tr></thead>
+      <tbody>
+        <tr><td>Microsoft 365 E3</td><td>$21,600</td></tr>
+        <tr><td>Microsoft 365 Copilot Add-On</td><td>$18,000</td></tr>
+        <tr><td>Azure OpenAI Service (email processing)</td><td>$3,600&ndash;$7,200</td></tr>
+        <tr><td>Custom Development (contract/consultant, Year 1)</td><td>$40,000&ndash;$80,000</td></tr>
+        <tr><td>Ongoing Maintenance (Year 2+)</td><td>$15,000&ndash;$25,000</td></tr>
+        <tr><td>SharePoint/Power Platform configuration</td><td>$5,000</td></tr>
+        <tr><td><strong>Total (Year 1)</strong></td><td><strong>$88,200&ndash;$131,800</strong></td></tr>
+        <tr><td><strong>Total (Year 2+)</strong></td><td><strong>$63,200&ndash;$75,800</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-title">Three-Year Cost Summary</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Option</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>3-Year Total</th></tr></thead>
+      <tbody>
+        <tr><td>A: Sedna</td><td>$96,600</td><td>$96,600</td><td>$96,600</td><td><strong>$289,800</strong></td></tr>
+        <tr><td>B: M365 + Copilot</td><td>$55,400</td><td>$47,400</td><td>$47,400</td><td><strong>$150,200</strong></td></tr>
+        <tr><td>C: Custom Build</td><td>$110,000</td><td>$69,500</td><td>$69,500</td><td><strong>$249,000</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout"><strong>Key takeaway:</strong> Option B (Microsoft 365 + Copilot) represents the lowest total cost of ownership over three years at $150,200&mdash;nearly half the cost of Sedna. Option C (custom build) has the highest first-year cost but converges with Sedna by Year 3 while offering greater long-term flexibility and zero vendor dependency. The &ldquo;convenience tax&rdquo; for Sedna over the Microsoft-native approach is approximately <strong>$140,000 over three years</strong> for a 50-user agency.</div>
+</div>
+
+<!-- ===== SECTION 8 ===== -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s8"></span>
+  <div class="section-num">Section 8</div>
+  <div class="section-title">Transitioning Off Sedna: A Practical Migration Framework</div>
+
+  <div class="sub-title">Phase 1 &mdash; Data Inventory and Export (Weeks 1&ndash;4)</div>
+  <ul class="wp-ul">
+    <li>Export all Sedna tags, job references, and classification taxonomies into a structured spreadsheet.</li>
+    <li>Export activity panel comments and internal notes (if Sedna provides an export API; verify with Sedna support).</li>
+    <li>Document all active Sedna integrations (Veson, Q88, Marcura, etc.) and identify which will need alternative connections.</li>
+    <li>Confirm that all historical email is accessible through Microsoft 365 (it should be, since Sedna wraps around Exchange).</li>
+  </ul>
+
+  <div class="sub-title">Phase 2 &mdash; Build the Replacement Layer (Weeks 2&ndash;8)</div>
+  <ul class="wp-ul">
+    <li>Configure shared mailboxes in Exchange Online with appropriate permissions.</li>
+    <li>Deploy Microsoft 365 Copilot to all operational users.</li>
+    <li>Build Power Automate flows for email classification, auto-tagging, and document routing.</li>
+    <li>Create SharePoint libraries structured by vessel, voyage, and job reference.</li>
+    <li>Configure Microsoft Teams channels as the replacement for Sedna&rsquo;s Activity Panel (internal comments per vessel/job).</li>
+    <li>If custom AI agents are desired, begin Azure OpenAI integration for maritime-specific email parsing.</li>
+  </ul>
+
+  <div class="sub-title">Phase 3 &mdash; Parallel Running (Weeks 6&ndash;12)</div>
+  <ul class="wp-ul">
+    <li>Run both Sedna and the new system simultaneously.</li>
+    <li>Assign 2&ndash;3 power users to each system to validate that all use cases are covered.</li>
+    <li>Document gaps&mdash;any workflow that works in Sedna but does not yet work in the replacement.</li>
+    <li>Address gaps through additional Power Automate flows or custom development.</li>
+  </ul>
+
+  <div class="sub-title">Phase 4 &mdash; Cutover (Weeks 12&ndash;16)</div>
+  <ul class="wp-ul">
+    <li>Migrate all users to the new system.</li>
+    <li>Maintain Sedna in read-only mode for 90 days for historical reference.</li>
+    <li>Terminate Sedna licenses at contract renewal.</li>
+  </ul>
+  <div class="callout warn"><strong>Risk mitigation:</strong> The biggest risk in this transition is not technical&mdash;it is behavioral. Users who have spent years in Sedna will resist change. Executive sponsorship, clear communication about the reasons for the change, and adequate training are essential. Budget 2&ndash;4 weeks of productivity dip during transition.</div>
+</div>
+
+<!-- ===== SECTION 9 ===== -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s9"></span>
+  <div class="section-num">Section 9</div>
+  <div class="section-title">Will Products Like Sedna Survive the AI Era?</div>
+
+  <div class="sub-title">9.1 &mdash; The Case That Sedna Survives and Thrives</div>
+  <ul class="wp-ul">
+    <li><strong>Maritime is a conservative industry.</strong> Adoption cycles are long. Many agencies will not build internally because they lack IT capability or appetite for technology risk.</li>
+    <li><strong>Sedna is evolving.</strong> Dataloy gives Sedna a voyage management system. Flytta gives it AI capability. The Marcura partnership connects it to the largest maritime back-office platform in the world.</li>
+    <li><strong>Domain expertise matters.</strong> Microsoft Copilot is a general-purpose AI. It does not know what a Notice of Readiness is, what a Statement of Facts looks like, or how to parse a Proforma DA. Sedna&rsquo;s maritime-specific AI could maintain a meaningful quality advantage.</li>
+    <li><strong>Switching costs are real.</strong> Agencies with years of tag taxonomies, workflow habits, and institutional knowledge embedded in Sedna face genuine friction in leaving.</li>
+  </ul>
+
+  <div class="sub-title">9.2 &mdash; The Case That Sedna Becomes Obsolete</div>
+  <ul class="wp-ul">
+    <li><strong>The wrapper business model is inherently fragile.</strong> When the platform you wrap around (Microsoft 365) develops the same capabilities natively, the wrapper&rsquo;s value proposition erodes. Microsoft&rsquo;s 2025 Copilot updates directly attack Sedna&rsquo;s core feature set.</li>
+    <li><strong>AI commoditization is accelerating.</strong> The ability to classify, tag, route, and summarize emails is no longer a differentiator&mdash;it is a commodity capability available through Azure OpenAI or open-source models. What was a competitive moat in 2019 is table stakes in 2026.</li>
+    <li><strong>Revenue-to-funding disparity.</strong> At $2&ndash;4M revenue against $97M capital, Sedna needs 15&ndash;30x revenue growth. If this does not materialize, investors may push for cost cuts, acquisition, or wind-down, creating platform risk for customers.</li>
+    <li><strong>Acquisition integration risk.</strong> Integrating four acquisitions in less than twelve months with approximately 20 engineers is operationally challenging. History shows this often results in fragmented products and distracted engineering teams.</li>
+    <li><strong>The &ldquo;OS for Shipping&rdquo; positioning competes with established players.</strong> Sedna now competes directly with Veson IMOS and Q88, which have deeper market penetration and longer customer relationships.</li>
+    <li><strong>The Marcura precedent.</strong> The world&rsquo;s largest maritime platform evaluated the email management problem and concluded that partnership (not ownership) was the right approach&mdash;implicitly valuing email management as a connector, not a platform. Connectors are historically vulnerable to commoditization.</li>
+  </ul>
+
+  <div class="sub-title">9.3 &mdash; The Most Likely Outcome</div>
+  <div class="callout">Based on current trajectory, the most probable scenario is that Sedna persists as a viable product for the next 3&ndash;5 years but faces increasing pressure on three fronts: pricing pressure as Microsoft native capabilities improve, competitive pressure as its &ldquo;OS for Shipping&rdquo; strategy brings it into conflict with established maritime software providers, and economic pressure from the gap between its cost base and revenue. Ship agency leadership should not expect Sedna to disappear overnight, but should actively reduce single-vendor dependency and ensure their email infrastructure can function independently of Sedna at any point.</div>
+</div>
+
+<!-- ===== SECTION 10 ===== -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s10"></span>
+  <div class="section-num">Section 10</div>
+  <div class="section-title">Alternative SaaS Platforms</div>
+
+  <div class="sub-title">10.1 &mdash; Maritime-Specific Alternatives</div>
+  <ul class="wp-ul">
+    <li><strong>Dualog (now Voyager Portal):</strong> Norwegian maritime communications platform, more vessel-focused than agency-focused.</li>
+    <li><strong>CompassAir:</strong> Was an independent maritime email workflow tool before Sedna acquired it in 2025. No longer an independent option.</li>
+    <li><strong>Shipfix:</strong> Focuses on maritime email parsing and trade intelligence&mdash;a narrower slice (commodity trade email parsing) rather than full email management.</li>
+    <li><strong>Nordic IT reMARK:</strong> The primary Sedna alternative before being acquired in November 2024. No longer independent. The acquisition of both CompassAir and Nordic IT leaves Sedna with <em>no direct maritime-specific email management competitor</em>&mdash;a fact that should concern customers negotiating pricing.</li>
+  </ul>
+
+  <div class="sub-title">10.2 &mdash; General Team Email Management</div>
+  <ul class="wp-ul">
+    <li><strong>Front (front.com):</strong> Shared inbox platform with AI capabilities and workflow automation. Not maritime-specific but highly configurable. Pricing: $19&ndash;$229/user/month.</li>
+    <li><strong>Hiver:</strong> Shared inbox built on top of Gmail/Outlook. Simpler and cheaper than Sedna but lacks maritime integrations. Pricing: $19&ndash;$49/user/month.</li>
+    <li><strong>Missive:</strong> Collaborative email platform with team inboxes, internal chat, and task management. Pricing: $14&ndash;$26/user/month.</li>
+  </ul>
+  <div class="callout">None of these general platforms offer Sedna&rsquo;s maritime-specific integrations or domain expertise. However, they demonstrate that the core technology of shared inbox management, email tagging, and team collaboration is widely available at significantly lower price points. The &ldquo;maritime-specific&rdquo; premium Sedna commands should be evaluated against the actual cost of configuring a general platform for maritime use&mdash;particularly given that Sedna&rsquo;s acquisition of both major maritime email competitors has eliminated alternatives, potentially reducing competitive pricing pressure.</div>
+</div>
+
+<!-- ===== SECTION 11 ===== -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s11"></span>
+  <div class="section-num">Section 11</div>
+  <div class="section-title">Decision Framework for Ship Agency Leadership</div>
+  <div class="decision-grid">
+    <div class="decision-card">
+      <h4>Stay with Sedna If&hellip;</h4>
+      <ul>
+        <li>Your organization lacks internal IT capability to build and maintain custom solutions</li>
+        <li>You rely heavily on Sedna&rsquo;s pre-built integrations with Veson, Q88, Marcura, or other maritime systems</li>
+        <li>Your team has deep institutional knowledge embedded in Sedna&rsquo;s tag structure and workflows</li>
+        <li>You are willing to accept the platform risk in exchange for operational simplicity</li>
+        <li>Your contract terms are favorable and pricing has been negotiated below list rates</li>
+      </ul>
+    </div>
+    <div class="decision-card">
+      <h4>Move to M365 + Copilot If&hellip;</h4>
+      <ul>
+        <li>You already have Microsoft 365 E3 or E5 licenses deployed</li>
+        <li>Your organization has basic IT capability (or access to a Microsoft partner) for configuration</li>
+        <li>You want the lowest ongoing cost of ownership</li>
+        <li>You are comfortable with 70&ndash;80% of Sedna&rsquo;s functionality natively, with the remaining gap addressable through Power Automate</li>
+        <li>You value strategic independence from niche SaaS vendors</li>
+      </ul>
+    </div>
+    <div class="decision-card">
+      <h4>Build a Custom AI Solution If&hellip;</h4>
+      <ul>
+        <li>You view email intelligence as a competitive advantage worth investing in</li>
+        <li>You have access to development resources (internal or contracted)</li>
+        <li>You want 100% control over your data, workflows, and AI behavior</li>
+        <li>You are willing to accept higher Year 1 costs for lower long-term costs and greater flexibility</li>
+        <li>You anticipate AI capabilities will continue to improve rapidly, and you want to ride that curve rather than be locked into a vendor&rsquo;s roadmap</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 12 ===== -->
+<div class="wp-section">
+  <span class="wp-section-anchor" id="s12"></span>
+  <div class="section-num">Section 12</div>
+  <div class="section-title">Conclusion</div>
+  <p class="wp-p">Sedna solved a real problem at a time when the tools to solve it internally did not exist. In 2017, when Microsoft Outlook was the only interface to Exchange email and AI-powered email classification was science fiction, a purpose-built maritime email platform was the only viable answer to the 1,000-emails-a-day problem.</p>
+  <p class="wp-p">That is no longer the case. Microsoft 365 Copilot, Power Automate, Azure OpenAI, and the broader explosion of AI capabilities now provide ship agencies with the building blocks to address the same problems internally&mdash;at lower cost, with less vendor dependency, and with a technology trajectory that is accelerating in their favor.</p>
+  <p class="wp-p">The financial picture adds urgency to this assessment. Sedna has consumed approximately $97 million in capital to build a company generating $2&ndash;4 million in revenue. Its acquisition strategy&mdash;buying customer books from legacy providers like Nordic IT, absorbing competitors like CompassAir, and expanding into voyage management through Dataloy&mdash;is a rational response to the constraints of its email-only TAM, but it introduces significant execution risk. The company must simultaneously integrate four acquisitions, migrate legacy customers to premium pricing, defend against Microsoft&rsquo;s native AI improvements, and compete with established players in new categories. Even the Marcura partnership, while validating Sedna&rsquo;s product, implicitly confirms that the maritime industry&rsquo;s largest platform company views email management as a feature rather than a platform worth owning.</p>
+  <p class="wp-p">This does not mean Sedna is worthless. For organizations with limited IT capability, heavy reliance on maritime-specific integrations, or deep operational dependency on Sedna&rsquo;s workflows, the platform continues to deliver value. The convenience premium is real.</p>
+  <p class="wp-p">But leadership should understand what they are paying for: not proprietary technology, but a pre-assembled collection of capabilities that are increasingly available as commodity components. The &ldquo;convenience tax&rdquo; is approximately $140,000 over three years for a 50-user agency, over and above what a Microsoft-native solution would cost. Whether that premium is justified depends entirely on your organization&rsquo;s IT maturity, integration requirements, and appetite for change.</p>
+  <div class="callout"><strong>The strongest strategic position for any ship agency in 2026:</strong> Use whatever tools work today, but ensure that your email, data, and workflows are never locked into a single platform whose long-term viability depends on a financial trajectory that has not yet materialized. Whether you stay with Sedna, move to Microsoft native tools, or build a custom solution&mdash;own your data, control your workflows, and maintain the ability to switch.</div>
+
+  <div class="sources">
+    <em>Sources include: Sedna.com, Marcura.com, Crunchbase, Tracxn, PitchBook, Getlatka, G2, Capterra, GetApp, Software Advice, LinkedIn, Microsoft 365 documentation, Smart Maritime Network, Splash247, The Digital Ship, Maritime Executive, AJOT, and company press releases. Financial estimates derived from publicly available data and industry benchmarks.</em>
+  </div>
+</div>
+
+</div><!-- end article -->
+
+<footer>
+  <p>OceanDatum Maritime &amp; Commodity Intelligence &nbsp;&middot;&nbsp; Confidential Working Paper &nbsp;&middot;&nbsp; February 2026</p>
+</footer>
+
+</body>
+</html>
