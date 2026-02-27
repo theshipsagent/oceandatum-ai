@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US Thermal Coal Export to India — oceandatum.ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; color: rgba(255,255,255,0.9); min-height: 100vh; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%); z-index: -1; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6); }
+    .navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+    .navbar-brand a:hover { color: #64ffb4; }
+    .navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .nav-link { font-size: 0.85rem; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.4rem 0.9rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; transition: all 0.3s; }
+    .nav-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+    .breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.4); padding: 5.5rem 2rem 0; max-width: 1100px; margin: 0 auto; }
+    .breadcrumb a { color: rgba(100,255,180,0.8); text-decoration: none; }
+    .main-content { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+    .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .page-header h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 0.08em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-style: italic; }
+    .meta-row { display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; }
+    .meta-item { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+    .meta-item span { color: rgba(255,255,255,0.7); font-weight: 600; }
+    .glass-section { background: rgba(0,0,0,0.38); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+    .glass-section h2 { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.05em; text-transform: uppercase; }
+    .glass-section h3 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.75); margin: 1.4rem 0 0.75rem; }
+    .glass-section p { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-bottom: 0.85rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.87rem; overflow-x: auto; display: block; }
+    th { background: rgba(100,255,180,0.07); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.12); padding: 0.65rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; white-space: nowrap; }
+    td { border: 1px solid rgba(255,255,255,0.07); padding: 0.65rem 0.9rem; color: rgba(255,255,255,0.72); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .feature-list { list-style: none; padding: 0; }
+    .feature-list li { padding: 0.28rem 0 0.28rem 1.35rem; position: relative; color: rgba(255,255,255,0.68); font-size: 0.88rem; }
+    .feature-list li::before { content: '▸'; position: absolute; left: 0; color: #64ffb4; font-size: 0.78rem; }
+    .highlight-box { background: rgba(100,255,180,0.05); border-left: 3px solid rgba(100,255,180,0.55); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .highlight-box p { margin: 0 0 0.5rem; font-size: 0.88rem; }
+    .highlight-box p:last-child { margin: 0; }
+    .alert-box { background: rgba(255,200,80,0.05); border-left: 3px solid rgba(255,200,80,0.5); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .alert-box p { margin: 0 0 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .alert-box p:last-child { margin: 0; }
+    .danger-box { background: rgba(220,38,38,0.06); border-left: 3px solid rgba(220,38,38,0.5); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .danger-box p { margin: 0 0 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .danger-box p:last-child { margin: 0; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .stat-card { background: rgba(100,255,180,0.04); border: 1px solid rgba(100,255,180,0.15); border-radius: 10px; padding: 1.25rem; text-align: center; }
+    .stat-card .stat-value { font-size: 1.8rem; font-weight: 700; color: #64ffb4; display: block; }
+    .stat-card .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 0.3rem; }
+    .toc { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1.5rem 2rem; margin: 1.5rem 0; }
+    .toc h3 { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+    .toc ol { padding-left: 1.5rem; }
+    .toc li { font-size: 0.88rem; color: rgba(255,255,255,0.6); padding: 0.2rem 0; }
+    .toc a { color: rgba(100,255,180,0.8); text-decoration: none; }
+    .toc a:hover { color: #64ffb4; }
+    .formula-box { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; font-size: 0.85rem; color: rgba(100,255,180,0.85); line-height: 1.9; overflow-x: auto; white-space: pre; }
+    .confidential-banner { background: rgba(220,38,38,0.08); border: 1px solid rgba(220,38,38,0.25); border-radius: 8px; padding: 0.6rem 1.25rem; margin-bottom: 1.5rem; font-size: 0.78rem; color: rgba(220,120,120,0.9); letter-spacing: 0.08em; text-align: center; }
+    footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
+    @media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .breadcrumb { padding: 5.5rem 1rem 0; } .page-header h1 { font-size: 1.6rem; } .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media print { .navbar { display: none; } footer { display: none; } body { background: #fff; color: #000; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <span class="navbar-brand">An <a href="../index.html">oceandatum.ai</a> project</span>
+    <div class="navbar-right">
+      <a href="../projects-hub.html" class="nav-link">Projects</a>
+      <a href="../index.html" class="nav-link">Home</a>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a> / <a href="../projects-hub.html">Projects</a> / US Thermal Coal Export to India
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <h1>US THERMAL COAL EXPORT TO INDIA</h1>
+      <p class="subtitle">A Commercial Trading Primer — Pricing, Quality, Terms of Sale, Blending Economics &amp; Indian Demand Infrastructure</p>
+      <div class="meta-row">
+        <div class="meta-item">Date <span>February 2026</span></div>
+      </div>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+      <h3>Table of Contents</h3>
+      <ol>
+        <li><a href="#section-1">Executive Summary</a></li>
+        <li><a href="#section-2">US Coal Basins — Source Overview</a></li>
+        <li><a href="#section-3">Pricing Framework</a></li>
+        <li><a href="#section-4">Quality Specifications &amp; Testing</a></li>
+        <li><a href="#section-5">Terms of Sale &amp; Contract Structure</a></li>
+        <li><a href="#section-6">Blending Economics &amp; Strategy</a></li>
+        <li><a href="#section-7">US Export Port Infrastructure</a></li>
+        <li><a href="#section-8">Indian End-User Infrastructure &amp; Demand</a></li>
+        <li><a href="#section-9">Risk Factors &amp; Practical Considerations</a></li>
+        <li><a href="#section-10">Key Terms &amp; Glossary</a></li>
+      </ol>
+    </div>
+
+    <!-- KEY STATS -->
+    <div class="stat-grid">
+      <div class="stat-card">
+        <span class="stat-value">10.4 Mt</span>
+        <div class="stat-label">India imports from US (Jan–Oct 2024)</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">#1</span>
+        <div class="stat-label">India ranked as US thermal coal destination</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">3,500–4,500</span>
+        <div class="stat-label">Indian domestic coal quality (kcal/kg)</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">6,000–6,900+</span>
+        <div class="stat-label">US NAPP export quality (kcal/kg NAR)</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">~160 Mt</span>
+        <div class="stat-label">India thermal coal imports (2025)</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">75%</span>
+        <div class="stat-label">Share of India electricity from coal</div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: EXECUTIVE SUMMARY -->
+    <div class="glass-section" id="section-1">
+      <h2>1. Executive Summary</h2>
+      <p>India was the number one destination for US seaborne thermal coal exports through the first ten months of 2024, receiving approximately 10.4 million metric tons. The US functions as a swing supplier to India, shipping coal when international prices rise high enough for the longer transit to make economic sense versus Indonesia, South Africa, and Australia. The trade is concentrated through East Coast ports (Hampton Roads and Baltimore) and Gulf Coast ports (New Orleans and Mobile), primarily on Panamax and Capesize vessels.</p>
+      <div class="highlight-box">
+        <p>The core commercial opportunity lies in the quality differential: Indian domestic coal averages only 3,500–4,500 kcal/kg with 30–45% ash content, while US NAPP coal delivers 6,000–6,900+ kcal/kg NAR with ash under 10%. This quality premium drives persistent demand from Indian coastal power plants, cement kilns, sponge iron producers, and blending operations at domestic coal-based power plants.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2: US COAL BASINS -->
+    <div class="glass-section" id="section-2">
+      <h2>2. US Coal Basins — Source Overview</h2>
+
+      <h3>2.1 Northern Appalachia (NAPP)</h3>
+      <p>NAPP encompasses western Pennsylvania, northern West Virginia, Ohio, and Maryland. The dominant seam is the Pittsburgh No. 8, the most historically productive coal bed in the Appalachian Basin. NAPP is the primary basin for thermal coal export to India through the Port of Baltimore.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Range</th>
+            <th>Typical Export</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Calorific Value (BTU/lb)</td><td>10,300 – 13,500</td><td>12,500 – 13,000</td></tr>
+          <tr><td>Calorific Value (kcal/kg NAR)</td><td>5,700 – 7,500</td><td>6,700 – 6,900</td></tr>
+          <tr><td>Sulfur (%)</td><td>0.8 – 4.0</td><td>1.5 – 3.0</td></tr>
+          <tr><td>Ash (%)</td><td>6 – 14</td><td>7 – 10</td></tr>
+          <tr><td>Moisture (Total %)</td><td>6 – 12</td><td>7 – 10</td></tr>
+          <tr><td>Volatile Matter (%)</td><td>30 – 40</td><td>34 – 38</td></tr>
+          <tr><td>HGI (Hardgrove Index)</td><td>45 – 65</td><td>50 – 58</td></tr>
+          <tr><td>Rank</td><td>High-Vol Bituminous</td><td>High-Vol A/B Bit.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Key Producers</h3>
+      <ul class="feature-list">
+        <li>American Consolidated Natural Resources (ACNR, formerly Murray Energy) — largest NAPP producer, over one-third of basin output</li>
+        <li>CONSOL Energy / CNX Resources</li>
+        <li>Arch Resources (now CORE Natural Resources after Arch/Consol merger)</li>
+        <li>Alliance Resource Partners</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>Key Advantage:</strong> Proximity to the Port of Baltimore via CSX and Norfolk Southern rail. Baltimore is the second-largest US coal export hub (28% of total coal exports in 2023). India has been the primary destination for steam coal shipped from Baltimore.</p>
+      </div>
+
+      <div class="alert-box">
+        <p><strong>Key Consideration:</strong> NAPP coals tend to have higher sulfur than CAPP coals. This is manageable for Indian buyers as many coastal power plants have FGD (scrubber) capability, and blending with low-sulfur Indian domestic coal or Indonesian coal mitigates sulfur concerns.</p>
+      </div>
+
+      <h3>2.2 Central Appalachia (CAPP)</h3>
+      <p>CAPP covers southern West Virginia, eastern Kentucky, and southwestern Virginia. This basin produces both metallurgical and thermal coal, with thermal grades offering notably lower sulfur than NAPP.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Range</th>
+            <th>Typical Export</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Calorific Value (BTU/lb)</td><td>11,400 – 13,200</td><td>12,000 – 12,500</td></tr>
+          <tr><td>Sulfur (%)</td><td>0.2 – 2.0</td><td>0.6 – 1.2</td></tr>
+          <tr><td>Ash (%)</td><td>5 – 12</td><td>7 – 10</td></tr>
+          <tr><td>Moisture (%)</td><td>6 – 10</td><td>7 – 9</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p><strong>Key Advantage:</strong> Low sulfur content makes CAPP coal premium-priced. Ships primarily through Hampton Roads (Norfolk, VA), the largest US coal export port handling approximately 40% of all US coal exports.</p>
+        <p><strong>Pricing Reference:</strong> Platts CAPP 12,500 BTU/lb CSX rail coal averaged approximately $73/short ton in late 2024.</p>
+      </div>
+
+      <h3>2.3 Illinois Basin (ILB)</h3>
+      <p>The Illinois Basin covers Illinois, Indiana, and western Kentucky. ILB coal has competitive energy content (10,100–12,600 BTU/lb) but carries notably higher sulfur (1.0–4.3%). It exports primarily through the Gulf Coast, moving by barge down the Mississippi River to New Orleans-area terminals. ILB coal is viable for Indian buyers with FGD-equipped plants and is often priced at a discount to Appalachian coal, creating blending opportunities.</p>
+
+      <h3>2.4 Other Western Basins</h3>
+      <p>Rocky Mountain coals (Uinta Basin, Colorado) are high-quality, low-sulfur (0.4–0.8%), with BTU content of 10,000–12,200/lb. Arch Resources (now CORE) ships West Elk mine coal from the Gulf Coast port of Houston. These coals are competitive for Asian markets but represent a smaller share of India-bound thermal exports.</p>
+    </div>
+
+    <!-- SECTION 3: PRICING FRAMEWORK -->
+    <div class="glass-section" id="section-3">
+      <h2>3. Pricing Framework</h2>
+
+      <h3>3.1 Key Price Benchmarks</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Benchmark</th>
+            <th>Basis</th>
+            <th>Recent Price</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>FOB Baltimore 6,900 kcal/kg NAR</td><td>FOB Loadport</td><td>$75–80/mt</td><td>Primary India thermal benchmark; NAPP coal</td></tr>
+          <tr><td>FOB New Orleans 6,000 kcal/kg NAR</td><td>FOB Loadport</td><td>$68–76/mt</td><td>Gulf Coast benchmark; ILB/Western coal</td></tr>
+          <tr><td>CAPP 12,500 BTU/lb CSX</td><td>FOB Mine</td><td>$73–74/st</td><td>Domestic mine-mouth reference</td></tr>
+          <tr><td>Newcastle 6,000 kcal/kg NAR</td><td>FOB Australia</td><td>$111–116/mt</td><td>Global seaborne thermal benchmark</td></tr>
+          <tr><td>API2 CIF ARA</td><td>CIF Rotterdam</td><td>~$106/mt</td><td>European thermal benchmark</td></tr>
+        </tbody>
+      </table>
+
+      <div class="alert-box">
+        <p><strong>Unit Conversion Note:</strong> US domestic coal is quoted in short tons (st = 2,000 lbs). International/seaborne coal is quoted in metric tons (mt = 2,204.6 lbs). 1 short ton = 0.907185 metric tons. Always confirm the unit basis in contract negotiations.</p>
+      </div>
+
+      <h3>3.2 Price Structure — Mine to Vessel</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Cost Component</th>
+            <th>Indicative Range</th>
+            <th>Basis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Mine-Mouth Cost (NAPP)</td><td>$40–$55/st</td><td>FOB Mine</td></tr>
+          <tr><td>Rail Transportation to Port</td><td>$15–$30/st</td><td>Varies by origin/carrier</td></tr>
+          <tr><td>Terminal Throughput/Loading</td><td>$4–$8/mt</td><td>FOB Vessel</td></tr>
+          <tr><td>Ocean Freight (Panamax, E.Coast→India)</td><td>$18–$30/mt</td><td>Voyage dependent</td></tr>
+          <tr><td>Ocean Freight (Capesize, E.Coast→India)</td><td>$14–$22/mt</td><td>Voyage dependent</td></tr>
+          <tr><td>Insurance</td><td>$0.50–$1.50/mt</td><td>Cargo value dependent</td></tr>
+          <tr><td>Indian Port Discharge/Handling</td><td>$4–$8/mt</td><td>Terminal dependent</td></tr>
+          <tr><td>Estimated CFR India (Panamax)</td><td>$95–$120/mt</td><td>All-in delivered</td></tr>
+        </tbody>
+      </table>
+
+      <div class="alert-box">
+        <p>These ranges fluctuate with freight markets, rail tariffs, and coal market conditions. The US is considered a swing supplier: when Newcastle or API2 prices rise, the US East Coast-to-India route becomes economically viable. When global benchmarks soften, Indonesian and South African coal price US coal out of the Indian market.</p>
+      </div>
+
+      <h3>3.3 Pricing Mechanisms</h3>
+      <ul class="feature-list">
+        <li><strong>Fixed Price:</strong> Specified $/mt for the duration. Common for spot or short-term deals.</li>
+        <li><strong>Index-Linked / Formula-Based:</strong> Tied to published index (S&amp;P Global Platts, Argus) with differential adjustments. Common for term contracts.</li>
+        <li><strong>Calorific Value Adjustment (Pro-Rata):</strong> Price adjusts proportionally to actual CV delivered. Can be GAR or NAR basis — always confirm.</li>
+      </ul>
+
+      <h3>3.4 Calorific Value Reporting — GAR vs. NAR</h3>
+      <ul class="feature-list">
+        <li><strong>GAR (Gross As Received):</strong> Total heat content including latent heat of water vapor. Higher number. Used in some Asian markets.</li>
+        <li><strong>NAR (Net As Received):</strong> Heat available for useful work after deducting energy to evaporate moisture. Lower number. Standard for US export coal pricing to India.</li>
+      </ul>
+      <div class="formula-box">Approximate conversion:
+NAR ≈ GAR – (TM × 5.85 kcal/kg)
+where TM = total moisture %</div>
+    </div>
+
+    <!-- SECTION 4: QUALITY SPECIFICATIONS & TESTING -->
+    <div class="glass-section" id="section-4">
+      <h2>4. Quality Specifications &amp; Testing</h2>
+
+      <h3>4.1 Key Quality Parameters</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Calorific Value</td>
+            <td>Determines energy output per ton. Indian buyers focus on kcal/kg NAR. Higher CV = fewer tons needed = lower shipping cost per unit of energy.</td>
+          </tr>
+          <tr>
+            <td>Total Moisture</td>
+            <td>Reduces effective energy content. Excessive moisture adds weight and shipping cost with no energy benefit.</td>
+          </tr>
+          <tr>
+            <td>Ash Content</td>
+            <td>Non-combustible residue. High ash increases wear on equipment. Indian domestic coal averages 30–45% ash, so imported coal with &lt;10% ash is highly valued.</td>
+          </tr>
+          <tr>
+            <td>Sulfur Content</td>
+            <td>Determines SO2 emissions. Indian regulations are tightening. Low sulfur commands a premium. NAPP coal sulfur (1.5–3%) is manageable with FGD.</td>
+          </tr>
+          <tr>
+            <td>Volatile Matter</td>
+            <td>Affects ignition and combustion. Higher VM = easier ignition. US bituminous coals have good VM for power generation.</td>
+          </tr>
+          <tr>
+            <td>HGI (Hardgrove)</td>
+            <td>Grindability index. Higher = easier to pulverize. Indian plants designed for hard domestic coal (HGI 40–50) can handle US coal (50–60) easily.</td>
+          </tr>
+          <tr>
+            <td>Ash Fusion Temp</td>
+            <td>Temperature at which ash melts. Low AFT causes slagging/fouling of boiler tubes. US Eastern coals generally have excellent (high) AFT.</td>
+          </tr>
+          <tr>
+            <td>Size</td>
+            <td>Typically 0–50mm for power plant coal. Excessive fines cause handling/dust issues.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>4.2 Contract Quality Structure</h3>
+      <ul class="feature-list">
+        <li><strong>Guaranteed/Warranted Specification:</strong> The contractual commitment. Example: CV minimum 6,700 kcal/kg NAR; Ash maximum 10%; Sulfur maximum 2.5%; TM maximum 10%.</li>
+        <li><strong>Typical Specification:</strong> What the seller expects to deliver on average. Often better than the guarantee.</li>
+        <li><strong>Rejection Limits:</strong> If coal falls outside rejection limits, buyer can refuse the cargo entirely. Example: CV below 6,400 kcal/kg = rejection; Ash above 12% = rejection; Sulfur above 3.0% = rejection.</li>
+      </ul>
+
+      <h3>4.3 Price Adjustment (Bonus/Penalty) Mechanisms</h3>
+
+      <div class="formula-box">Calorific Value Pro-Rata Adjustment:
+  Adjusted Price = Contract Price × (Actual CV / Specified CV)
+
+  Example: Spec basis 6,900 kcal/kg NAR @ $80/mt
+           Delivered coal: 6,700 kcal/kg
+           Adjusted price = $80 × (6,700 / 6,900) = $77.68/mt
+
+Additional Adjustments:
+  Ash     → Typically $0.50–$1.50/mt per 1% above spec
+  Moisture → Penalty per percentage point above spec
+  Sulfur   → Penalty per 0.1% or per percentage point above spec</div>
+
+      <h3>4.4 Sampling &amp; Analysis</h3>
+      <p>Coal quality is determined by sampling at loadport (loadport sampling), governed by ASTM or ISO standards. Both buyer and seller retain sealed referee samples. If there is disagreement on results, an umpire lab provides a binding determination.</p>
+      <div class="highlight-box">
+        <p><strong>Independent Surveyors:</strong> SGS, Bureau Veritas, Intertek. Use reputable, mutually agreed surveyors and ensure referee sample procedures are explicitly defined in the contract.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 5: TERMS OF SALE & CONTRACT STRUCTURE -->
+    <div class="glass-section" id="section-5">
+      <h2>5. Terms of Sale &amp; Contract Structure</h2>
+
+      <h3>5.1 Incoterms for Coal Trade</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Incoterm</th>
+            <th>Full Name</th>
+            <th>Application</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>FOB</td>
+            <td>Free On Board</td>
+            <td>Most common. Seller delivers coal loaded onto vessel at US port. Buyer arranges ocean freight and insurance. Pricing: FOB Baltimore, FOB Norfolk, FOB New Orleans.</td>
+          </tr>
+          <tr>
+            <td>CFR</td>
+            <td>Cost and Freight</td>
+            <td>Seller pays freight to Indian discharge port but risk transfers at loadport. Buyer arranges insurance. Single landed price.</td>
+          </tr>
+          <tr>
+            <td>CIF</td>
+            <td>Cost, Insurance and Freight</td>
+            <td>Like CFR but seller provides marine cargo insurance. Used when buyer wants fully-bundled delivered price.</td>
+          </tr>
+          <tr>
+            <td>FAS</td>
+            <td>Free Alongside Ship</td>
+            <td>Seller delivers alongside vessel at loadport. Sometimes used for barge-delivered coal at Gulf Coast terminals.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p><strong>Strategic Note — FOB vs. CFR:</strong> FOB sales give maximum flexibility if you can source competitive freight. CFR simplifies buyer procurement. If you can lock in freight at below-market rates, CFR sales can be more profitable than FOB.</p>
+      </div>
+
+      <h3>5.2 Contract Types</h3>
+      <ul class="feature-list">
+        <li><strong>Spot / Single Cargo:</strong> One-off transaction. Typical cargo sizes: Panamax (65,000–80,000 mt) or Capesize (120,000–180,000 mt). Payment typically via Letter of Credit at sight.</li>
+        <li><strong>Term / Contract of Affreightment (COA):</strong> Multi-cargo agreement covering 6 months, 1 year, or longer. Provides supply security for buyers and volume certainty for sellers.</li>
+      </ul>
+
+      <h3>5.3 Key Contract Clauses</h3>
+      <ul class="feature-list">
+        <li><strong>Quantity &amp; Tolerance:</strong> +/- 10% at seller's option (MOLOO — More or Less at Owner's Option).</li>
+        <li><strong>Laycan:</strong> 7–15 day window for vessel arrival at loading port.</li>
+        <li><strong>Loading Rate / Demurrage / Despatch:</strong> Guaranteed loading rate (e.g., 25,000–40,000 mt PWWD SHINC). Demurrage runs $15,000–$35,000/day.</li>
+        <li><strong>Payment Terms:</strong> Irrevocable Letter of Credit at sight standard for new relationships. Established relationships may use CAD or open account 30–60 days from B/L date.</li>
+        <li><strong>Force Majeure:</strong> Excuses performance for events beyond reasonable control.</li>
+        <li><strong>Governing Law &amp; Arbitration:</strong> New York or English law. ICC, LCIA, or SIAC arbitration.</li>
+      </ul>
+
+      <h3>5.4 Documentary Requirements</h3>
+      <ul class="feature-list">
+        <li>Commercial Invoice</li>
+        <li>Full set of clean on-board Bills of Lading (3/3 originals)</li>
+        <li>Certificate of Quality</li>
+        <li>Certificate of Weight</li>
+        <li>Certificate of Origin</li>
+        <li>Packing List / Cargo Manifest</li>
+        <li>Insurance Certificate (if CIF terms)</li>
+      </ul>
+    </div>
+
+    <!-- SECTION 6: BLENDING ECONOMICS & STRATEGY -->
+    <div class="glass-section" id="section-6">
+      <h2>6. Blending Economics &amp; Strategy</h2>
+
+      <h3>6.1 Why Blending Matters</h3>
+      <p>Blending allows traders and end-users to achieve several objectives simultaneously:</p>
+      <ul class="feature-list">
+        <li>Optimize cost-per-calorie by mixing higher-CV with lower-CV coal</li>
+        <li>Manage sulfur limits by diluting high-sulfur coal with low-sulfur sources</li>
+        <li>Balance ash characteristics to avoid slagging and fouling</li>
+        <li>Create consistent feed for boilers designed for specific parameters</li>
+      </ul>
+
+      <h3>6.2 Indian Blending Context</h3>
+      <p>India's Central Electricity Authority (CEA) recommended blending 10–15% imported coal with Indian coal in 2012. Approximately 15 imported coal-based (ICB) power plants along India's coastline were purpose-built to burn imported coal exclusively.</p>
+      <div class="highlight-box">
+        <p>ICB plants cannot switch to domestic coal without expensive retrofits — representing a permanent, non-negotiable stream of import demand that persists regardless of domestic production growth or government policy preferences.</p>
+      </div>
+
+      <h3>6.3 Blending Arithmetic</h3>
+
+      <div class="formula-box">Blend Value = (Fraction A × Value A) + (Fraction B × Value B)
+
+Example: US NAPP coal (6,800 kcal/kg, 2.5% S) blended with
+         Indonesian coal (4,200 kcal/kg GAR, 0.3% S)
+         at a 40/60 ratio:
+
+  Blend CV      = (0.40 × 6,800) + (0.60 × 4,200)
+                = 2,720 + 2,520
+                = 5,240 kcal/kg
+
+  Blend Sulfur  = (0.40 × 2.5) + (0.60 × 0.3)
+                = 1.0 + 0.18
+                = 1.18%</div>
+
+      <h3>6.4 Blending Locations</h3>
+      <ul class="feature-list">
+        <li><strong>US export terminal:</strong> Pre-shipment blending of different mine sources before loading</li>
+        <li><strong>Indian receiving port:</strong> Most common location for import/domestic coal blending</li>
+        <li><strong>Power plant stockyard:</strong> Plant manages its own blend ratios from segregated stockpiles</li>
+      </ul>
+    </div>
+
+    <!-- SECTION 7: US EXPORT PORT INFRASTRUCTURE -->
+    <div class="glass-section" id="section-7">
+      <h2>7. US Export Port Infrastructure</h2>
+
+      <h3>7.1 East Coast</h3>
+
+      <p><strong>Hampton Roads (Norfolk, VA):</strong> Largest US coal export complex, handling approximately 40% of all US coal exports. Three principal terminals:</p>
+      <ul class="feature-list">
+        <li>NS Lamberts Point Pier 6 — 48M st/yr capacity; Capesize capable</li>
+        <li>Dominion Terminal Associates — 20M st/yr capacity; Capesize capable</li>
+        <li>Kinder Morgan Pier IX — 14M st/yr capacity; Capesize capable</li>
+      </ul>
+
+      <p><strong>Port of Baltimore, MD:</strong> Second-largest US coal export hub (28% of exports, approximately 28 million short tons in 2023). Primary outlet for NAPP coal to India.</p>
+      <ul class="feature-list">
+        <li>CORE Baltimore Marine Terminal (CSX/NS rail access) — Capesize capable</li>
+        <li>Curtis Bay Coal Piers (CSX) — combined capacity approximately 29M st/yr</li>
+      </ul>
+
+      <h3>7.2 Gulf Coast</h3>
+      <ul class="feature-list">
+        <li><strong>New Orleans, LA:</strong> Multiple terminals barge-delivered from Illinois Basin via Mississippi River. Key operators: United Bulk Terminals, Kinder Morgan, Associated Terminals. Primarily Panamax-capable.</li>
+        <li><strong>Mobile, AL:</strong> McDuffie Coal Terminal. Capesize capable. CSX and Norfolk Southern rail service.</li>
+        <li><strong>Houston, TX:</strong> CORE Natural Resources (formerly Arch Resources) for Rocky Mountain (West Elk mine) coal destined for Asian and Indian markets.</li>
+      </ul>
+
+      <h3>7.3 Vessel Classes</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Vessel Class</th>
+            <th>Cargo Capacity</th>
+            <th>US Load Ports</th>
+            <th>India Discharge</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Handysize</td>
+            <td>25,000–40,000 mt</td>
+            <td>All ports</td>
+            <td>All ports</td>
+          </tr>
+          <tr>
+            <td>Supramax</td>
+            <td>45,000–60,000 mt</td>
+            <td>All ports</td>
+            <td>All ports</td>
+          </tr>
+          <tr>
+            <td>Panamax</td>
+            <td>65,000–82,000 mt</td>
+            <td>All major ports</td>
+            <td>Most major ports</td>
+          </tr>
+          <tr>
+            <td>Capesize</td>
+            <td>120,000–180,000 mt</td>
+            <td>Hampton Roads, Baltimore, Mobile</td>
+            <td>Mundra, Krishnapatnam, Gangavaram, Dhamra, Jaigad</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>Panamax vessels dominate the US-India coal trade (46% of India's coal imports Jan–Sep 2025), followed by Capesize at 28%. The longer US East Coast-to-India transit (approximately 30–35 days via Cape of Good Hope) makes freight economics a critical variable.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 8: INDIAN END-USER INFRASTRUCTURE & DEMAND -->
+    <div class="glass-section" id="section-8">
+      <h2>8. Indian End-User Infrastructure &amp; Demand</h2>
+
+      <h3>8.1 Market Scale</h3>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <span class="stat-value">1,128 Mt</span>
+          <div class="stat-label">Total non-coking coal demand, FY2024–25</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">~160 Mt</span>
+          <div class="stat-label">Thermal coal imports, 2025</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">75%</span>
+          <div class="stat-label">Coal share of India electricity generation</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">210 GW</span>
+          <div class="stat-label">Installed thermal power capacity (of 454 GW total)</div>
+        </div>
+      </div>
+
+      <h3>8.2 Categories of Indian Coal Buyers</h3>
+
+      <p><strong>ICB Power Plants (Imported Coal-Based):</strong> Approximately 15 major ICB plants along India's coastline. These plants cannot switch to domestic coal — permanent import demand.</p>
+      <ul class="feature-list">
+        <li>Tata Power and Adani Power at Mundra, Gujarat — combined approximately 8,600 MW</li>
+        <li>Essar Power at Salaya, Gujarat</li>
+        <li>JSW Energy at Ratnagiri (Maharashtra) and Torangallu (Karnataka)</li>
+        <li>TANGEDCO (Tamil Nadu) — approximately 16 million mt/year</li>
+      </ul>
+
+      <p><strong>Domestic Coal-Based Plants (Blending Demand):</strong> Seasonal and policy-driven blending requirements. Government has mandated blending at 4–6% of requirements.</p>
+
+      <p><strong>Cement Industry:</strong> Approximately 46 million mt/year coal consumption. Less price sensitive than power generation; high-quality US coal valued for consistent kiln performance.</p>
+
+      <p><strong>Sponge Iron / DRI (Direct Reduced Iron):</strong> Approximately 54 million mt consumed in FY2024–25. Active importers of higher-quality thermal coal for process heat requirements.</p>
+
+      <p><strong>Captive Power Plants:</strong> Approximately 158 million mt/year aggregate consumption. Industrial facilities with own generation capacity across steel, aluminum, chemical, and manufacturing sectors.</p>
+
+      <h3>8.3 Major Indian Coal Receiving Ports</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Port</th>
+            <th>Jan–Sep 2025 (Mt)</th>
+            <th>Max Draft</th>
+            <th>Vessel Class</th>
+            <th>Key Consumers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Mundra (Gujarat)</td><td>22.5</td><td>22m</td><td>Capesize</td><td>Adani Power, Tata Power Mundra</td></tr>
+          <tr><td>Paradip (Odisha)</td><td>17.9</td><td>18m</td><td>Panamax+</td><td>NTPC, Essar, coastal plants</td></tr>
+          <tr><td>Dhamra (Odisha)</td><td>16.5</td><td>18m</td><td>Capesize</td><td>Tata Steel, NTPC</td></tr>
+          <tr><td>Krishnapatnam (AP)</td><td>16.4</td><td>18.5m</td><td>Capesize</td><td>Coastal power, cement</td></tr>
+          <tr><td>Visakhapatnam (AP)</td><td>12.0</td><td>17m</td><td>Panamax</td><td>Steel, power plants</td></tr>
+          <tr><td>Gangavaram (AP)</td><td>11.3</td><td>19.5m</td><td>Capesize</td><td>Power, cement, steel</td></tr>
+          <tr><td>Hazira (Gujarat)</td><td>10.9</td><td>14m</td><td>Panamax</td><td>Industrial/power</td></tr>
+          <tr><td>Kandla (Gujarat)</td><td>8.2</td><td>14m</td><td>Panamax</td><td>Industrial/captive power</td></tr>
+          <tr><td>Ennore/Kamarajar (TN)</td><td>6.3</td><td>13.5m</td><td>Panamax</td><td>TANGEDCO power plants</td></tr>
+          <tr><td>Tuticorin (TN)</td><td>7.0</td><td>12m</td><td>Supramax</td><td>TNEB, cement</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.4 Competitive Supply Landscape</h3>
+      <p>India's import mix, January–September 2025:</p>
+      <ul class="feature-list">
+        <li><strong>Indonesia:</strong> 40.3% — 70.6 Mt (declining 14% YoY)</li>
+        <li><strong>Australia:</strong> 18.0% — 31.6 Mt</li>
+        <li><strong>South Africa:</strong> 12.9% — 22.7 Mt (growing)</li>
+        <li><strong>Russia:</strong> 12.1% — 21.2 Mt (surging +10.5% YoY)</li>
+        <li><strong>United States:</strong> ~8–9% — 15.3 Mt (declining 6% YoY)</li>
+      </ul>
+      <div class="alert-box">
+        <p>The US competes primarily on quality (high CV, excellent combustion characteristics) rather than price. US coal is not the cheapest option on a $/mt basis but delivers superior cost-per-calorie economics for buyers focused on plant efficiency.</p>
+      </div>
+
+      <h3>8.5 Indian Government Policy Context</h3>
+      <p>India crossed 1 billion metric tons of domestic coal production for the first time in FY2024–25. Despite this milestone, structural import demand persists for the following reasons:</p>
+      <ul class="feature-list">
+        <li>ICB plants require imported coal by design — retrofitting is prohibitively expensive</li>
+        <li>Domestic coal quality remains low (3,500–4,500 kcal/kg, 30–45% ash)</li>
+        <li>Logistics bottlenecks prevent sufficient domestic coal from reaching many coastal plants</li>
+        <li>Electricity demand is growing at 6–8% annually, outpacing domestic production growth</li>
+      </ul>
+      <div class="highlight-box">
+        <p>Thermal coal imports will persist for the foreseeable future regardless of domestic production milestones. The ICB plant base alone guarantees a structural floor of 60–80 Mt/year of import demand.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 9: RISK FACTORS & PRACTICAL CONSIDERATIONS -->
+    <div class="glass-section" id="section-9">
+      <h2>9. Risk Factors &amp; Practical Considerations</h2>
+
+      <h3>9.1 Market Risks</h3>
+
+      <div class="danger-box">
+        <p><strong>Price Volatility:</strong> NAPP export pricing may compress further if Indonesian production cuts do not materialize. The US is a marginal, price-dependent supplier — economics can deteriorate rapidly if global benchmark prices fall.</p>
+      </div>
+
+      <ul class="feature-list">
+        <li><strong>Freight Exposure:</strong> US East Coast to India is one of the longest coal trade routes globally. Freight volatility can swing delivered economics by $5–15/mt, the difference between a profitable and unprofitable cargo.</li>
+        <li><strong>Currency Risk:</strong> Coal is priced in USD. Indian rupee depreciation increases the effective cost of imported coal for Indian buyers, potentially softening demand or accelerating domestic substitution.</li>
+        <li><strong>Indonesian Production Cuts:</strong> Indonesia is signaling output cuts from approximately 800 Mt (2025) to approximately 600 Mt (2026). If implemented, this could significantly tighten global seaborne supply and improve US export competitiveness.</li>
+      </ul>
+
+      <h3>9.2 Operational Risks</h3>
+
+      <ul class="feature-list">
+        <li><strong>Quality Claims:</strong> Use reputable independent surveyors at loadport and retain referee samples. Disputes are expensive and time-consuming — prevention through documented procedures is far cheaper than arbitration.</li>
+        <li><strong>Demurrage:</strong> Indian port congestion is common, particularly at high-volume terminals during peak demand periods. Budget $15,000–$35,000/day depending on vessel class. Include demurrage provisions in all contracts.</li>
+        <li><strong>Counterparty Credit:</strong> Indian state utilities (slow-paying but generally reliable) versus private traders (higher margin potential, higher credit risk). Letter of Credit terms are essential for any new trading relationship.</li>
+        <li><strong>Regulatory:</strong> Monitor Indian Ministry of Coal and Ministry of Power for changes to import duty structures and mandatory blending targets, which can materially affect import volumes at short notice.</li>
+      </ul>
+
+      <h3>9.3 2026 Market Outlook</h3>
+
+      <div class="highlight-box">
+        <p><strong>Natural gas pricing ($4–6/MMBtu range projected):</strong> Supports continued domestic coal burn in the US power sector, but also competes for coal demand globally.</p>
+        <p><strong>Global thermal coal prices:</strong> Projected to stabilize at $108–$117/mt (Newcastle basis) through 2026, maintaining a moderate price environment.</p>
+        <p><strong>Potential Indonesian production cut to 600 Mt:</strong> The single largest potential supply-side catalyst for US coal exports to India. If enacted, would tighten Asian seaborne coal supply materially and improve US competitiveness on the longer India trade route.</p>
+      </div>
+
+      <div class="alert-box">
+        <p>Monitor Indonesian production and export data closely throughout Q1–Q2 2026. Government-mandated cuts, if verified, represent the most significant near-term upside scenario for US thermal coal export economics.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 10: KEY TERMS & GLOSSARY -->
+    <div class="glass-section" id="section-10">
+      <h2>10. Key Terms &amp; Glossary</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th>Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>NAR</td>
+            <td>Net As Received — calorific value after deducting energy needed to evaporate moisture. Standard pricing basis for US export coal to India.</td>
+          </tr>
+          <tr>
+            <td>GAR</td>
+            <td>Gross As Received — total heat content including latent heat of water vapor. Higher number than NAR; used in some Asian markets, particularly for Indonesian coal.</td>
+          </tr>
+          <tr>
+            <td>NAPP</td>
+            <td>Northern Appalachia coal basin (western Pennsylvania, northern West Virginia, Ohio, Maryland). Primary US thermal export basin for India.</td>
+          </tr>
+          <tr>
+            <td>CAPP</td>
+            <td>Central Appalachia coal basin (southern West Virginia, eastern Kentucky, southwestern Virginia). Lower sulfur than NAPP; premium-priced.</td>
+          </tr>
+          <tr>
+            <td>ILB</td>
+            <td>Illinois Basin (Illinois, Indiana, western Kentucky). Higher sulfur; Gulf Coast export; priced at discount to Appalachian coal.</td>
+          </tr>
+          <tr>
+            <td>ICB</td>
+            <td>Imported Coal-Based power plant — Indian plants designed and built exclusively to burn imported coal. Cannot economically switch to domestic coal.</td>
+          </tr>
+          <tr>
+            <td>DCB</td>
+            <td>Domestic Coal-Based power plant — may blend imported coal with domestic CIL supply.</td>
+          </tr>
+          <tr>
+            <td>MOLOO</td>
+            <td>More or Less at Owner's Option — standard cargo quantity tolerance clause allowing +/- 10% of contracted volume.</td>
+          </tr>
+          <tr>
+            <td>PWWD SHINC</td>
+            <td>Per Weather Working Day, Sundays and Holidays Included, Not Counting — standard laytime calculation basis for coal loading operations.</td>
+          </tr>
+          <tr>
+            <td>B/L</td>
+            <td>Bill of Lading — the shipping document evidencing title to the cargo. Three original copies issued; full set required for payment under L/C.</td>
+          </tr>
+          <tr>
+            <td>L/C</td>
+            <td>Letter of Credit — bank-guaranteed payment instrument. Irrevocable, at-sight L/C is standard for new trading relationships in the coal market.</td>
+          </tr>
+          <tr>
+            <td>HGI</td>
+            <td>Hardgrove Grindability Index — measure of how easily coal can be pulverized in a mill. Higher index = softer coal, easier grinding. Relevant for plant equipment compatibility.</td>
+          </tr>
+          <tr>
+            <td>AFT</td>
+            <td>Ash Fusion Temperature — temperature at which coal ash softens and melts. Low AFT causes slagging and fouling of boiler tubes; US Eastern coals generally have high AFT.</td>
+          </tr>
+          <tr>
+            <td>FGD</td>
+            <td>Flue Gas Desulfurization — scrubber technology installed on boilers to remove sulfur dioxide (SO2) from combustion gases. Enables higher-sulfur coal combustion within emissions limits.</td>
+          </tr>
+          <tr>
+            <td>UMPP</td>
+            <td>Ultra Mega Power Project — Indian government program designating power stations of 4,000 MW or larger capacity, typically tendered as complete projects.</td>
+          </tr>
+          <tr>
+            <td>CEA</td>
+            <td>Central Electricity Authority of India — technical body under the Ministry of Power responsible for planning and policy for the power sector.</td>
+          </tr>
+          <tr>
+            <td>CIL</td>
+            <td>Coal India Limited — state-owned enterprise controlling approximately 80% of domestic Indian coal production. Benchmark supplier for domestic coal pricing.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- end main-content -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p>oceandatum.ai — Maritime &amp; Commodity Intelligence</p>
+    <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">February 2026</p>
+    <p style="margin-top:0.5rem;font-size:0.7rem;color:rgba(255,255,255,0.18);">This document is prepared for informational purposes only and does not constitute an offer to buy or sell coal or any commodity. Pricing data reflects approximate market conditions at time of preparation and should be verified through current market sources.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>U.S. Class I Railroad Corridor &amp; Directional Flow Reference Guide — oceandatum.ai</title>
+  <meta name="description" content="Point-to-point major rail lines, interchange gateways, and traffic patterns for all six U.S. Class I railroads.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; color: rgba(255,255,255,0.9); min-height: 100vh; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%); z-index: -1; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6); }
+    .navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+    .navbar-brand a:hover { color: #64ffb4; }
+    .navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .nav-link { font-size: 0.85rem; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.4rem 0.9rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; transition: all 0.3s; }
+    .nav-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+    .breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.4); padding: 5.5rem 2rem 0; max-width: 1100px; margin: 0 auto; }
+    .breadcrumb a { color: rgba(100,255,180,0.8); text-decoration: none; }
+    .main-content { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+    .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .page-header h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 0.08em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-style: italic; }
+    .meta-row { display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; }
+    .meta-item { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+    .meta-item span { color: rgba(255,255,255,0.7); font-weight: 600; }
+    .glass-section { background: rgba(0,0,0,0.38); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+    .glass-section h2 { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.05em; text-transform: uppercase; }
+    .glass-section h3 { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.75); margin: 1.4rem 0 0.75rem; }
+    .glass-section p { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-bottom: 0.85rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.87rem; overflow-x: auto; display: block; }
+    th { background: rgba(100,255,180,0.07); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.12); padding: 0.65rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; white-space: nowrap; }
+    td { border: 1px solid rgba(255,255,255,0.07); padding: 0.65rem 0.9rem; color: rgba(255,255,255,0.72); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .feature-list { list-style: none; padding: 0; }
+    .feature-list li { padding: 0.28rem 0 0.28rem 1.35rem; position: relative; color: rgba(255,255,255,0.68); font-size: 0.88rem; }
+    .feature-list li::before { content: '▸'; position: absolute; left: 0; color: #64ffb4; font-size: 0.78rem; }
+    .highlight-box { background: rgba(100,255,180,0.05); border-left: 3px solid rgba(100,255,180,0.55); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .highlight-box p { margin: 0 0 0.5rem; font-size: 0.88rem; }
+    .highlight-box p:last-child { margin: 0; }
+    .alert-box { background: rgba(255,200,80,0.05); border-left: 3px solid rgba(255,200,80,0.5); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .alert-box p { margin: 0 0 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .alert-box p:last-child { margin: 0; }
+    .danger-box { background: rgba(220,38,38,0.06); border-left: 3px solid rgba(220,38,38,0.5); padding: 1rem 1.35rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0; }
+    .danger-box p { margin: 0 0 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .stat-card { background: rgba(100,255,180,0.04); border: 1px solid rgba(100,255,180,0.15); border-radius: 10px; padding: 1.25rem; text-align: center; }
+    .stat-card .stat-value { font-size: 1.8rem; font-weight: 700; color: #64ffb4; display: block; }
+    .stat-card .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 0.3rem; }
+    .toc { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1.5rem 2rem; margin: 1.5rem 0; }
+    .toc h3 { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+    .toc ol { padding-left: 1.5rem; }
+    .toc li { font-size: 0.88rem; color: rgba(255,255,255,0.6); padding: 0.2rem 0; }
+    .toc li a { color: rgba(100,255,180,0.75); text-decoration: none; transition: color 0.2s; }
+    .toc li a:hover { color: #64ffb4; }
+    .railroad-badge { display: inline-block; padding: 0.2rem 0.65rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; margin-right: 0.5rem; }
+    .badge-up { background: rgba(255,165,0,0.15); color: #ffa500; border: 1px solid rgba(255,165,0,0.3); }
+    .badge-bnsf { background: rgba(255,140,0,0.15); color: #ff8c00; border: 1px solid rgba(255,140,0,0.3); }
+    .badge-csx { background: rgba(0,100,200,0.15); color: #4499ff; border: 1px solid rgba(0,100,200,0.3); }
+    .badge-ns { background: rgba(0,60,130,0.15); color: #5588dd; border: 1px solid rgba(0,60,130,0.3); }
+    .badge-cn { background: rgba(200,0,0,0.15); color: #ff6666; border: 1px solid rgba(200,0,0,0.3); }
+    .badge-cpkc { background: rgba(180,0,0,0.15); color: #ff4444; border: 1px solid rgba(180,0,0,0.3); }
+    .merger-banner { background: rgba(255,200,80,0.08); border: 1px solid rgba(255,200,80,0.3); border-radius: 8px; padding: 0.75rem 1.25rem; margin: 1.25rem 0; font-size: 0.85rem; color: rgba(255,200,80,0.9); }
+    footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
+    @media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .breadcrumb { padding: 5.5rem 1rem 0; } .page-header h1 { font-size: 1.6rem; } }
+    @media print { .navbar { display: none; } body { background: #fff; color: #000; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <span class="navbar-brand">An <a href="../index.html">oceandatum.ai</a> project</span>
+    <div class="navbar-right">
+      <a href="../projects-hub.html" class="nav-link">Projects</a>
+      <a href="../index.html" class="nav-link">Home</a>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a> / <a href="../projects-hub.html">Projects</a> / Class I Railroad Corridors
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <h1>U.S. CLASS I RAILROAD CORRIDOR &amp; DIRECTIONAL FLOW REFERENCE GUIDE</h1>
+      <p class="subtitle">Point-to-Point Major Rail Lines, Interchange Gateways &amp; Traffic Patterns</p>
+      <div class="meta-row">
+        <div class="meta-item">Date <span>February 2026</span></div>
+        <div class="meta-item">Sources <span>AAR, FRA NARN, STB filings, Trains Magazine</span></div>
+      </div>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="stat-grid">
+      <div class="stat-card">
+        <span class="stat-value">6</span>
+        <div class="stat-label">Active Class I Railroads</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">94,000</span>
+        <div class="stat-label">Route Miles Operated</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">$18.77/ton</span>
+        <div class="stat-label">Avg U.S. Coal Rail Transport Cost (2023)</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">69%</span>
+        <div class="stat-label">Rail Share of Coal Deliveries to Power Sector</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">80M+ tons</span>
+        <div class="stat-label">Hampton Roads Annual Coal Export Capacity</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">$200M</span>
+        <div class="stat-label">McDuffie Terminal Expansion Underway</div>
+      </div>
+    </div>
+
+    <!-- PENDING MERGER NOTE -->
+    <div class="merger-banner">
+      <strong>PENDING:</strong> UP and NS announced merger plans in late 2025, filing with the STB in December 2025. If approved, this would create America's first transcontinental railroad serving 43 states with 50,000+ route miles.
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+      <h3>Table of Contents</h3>
+      <ol>
+        <li><a href="#section-overview">Overview — The Six Active Class I Railroads</a></li>
+        <li><a href="#section-up">Union Pacific Railroad (UP)</a></li>
+        <li><a href="#section-bnsf">BNSF Railway</a></li>
+        <li><a href="#section-csx">CSX Transportation</a></li>
+        <li><a href="#section-ns">Norfolk Southern Railway (NS)</a></li>
+        <li><a href="#section-cn">Canadian National Railway (CN)</a></li>
+        <li><a href="#section-cpkc">Canadian Pacific Kansas City (CPKC)</a></li>
+        <li><a href="#section-gateways">Major Interchange Gateways — East-West Crossover Points</a></li>
+        <li><a href="#section-houston">Houston as a Rail Hub — Detailed Routing</a></li>
+        <li><a href="#section-routing">Practical Routing Notes</a></li>
+        <li><a href="#section-coal">Moving Coal by Rail</a></li>
+      </ol>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 1: OVERVIEW -->
+    <!-- ============================================================ -->
+    <div class="glass-section" id="section-overview">
+      <h2>Section 1 — Overview: The Six Active Class I Railroads</h2>
+
+      <p>As of 2026, six Class I freight railroads operate approximately 94,000 route miles across North America. The U.S. rail network is functionally divided into Western and Eastern halves, with interchange gateways concentrated along the Mississippi River corridor. Western roads — <span class="railroad-badge badge-bnsf">BNSF</span> and <span class="railroad-badge badge-up">UP</span> — dominate the region west of Chicago and the Mississippi; Eastern roads — <span class="railroad-badge badge-csx">CSX</span> and <span class="railroad-badge badge-ns">NS</span> — cover the densely populated and industrialized Eastern U.S. The two international carriers, <span class="railroad-badge badge-cn">CN</span> and <span class="railroad-badge badge-cpkc">CPKC</span>, bridge Canada, the U.S., and (in CPKC's case) Mexico on north-south corridors.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Railroad</th>
+            <th>Route Miles</th>
+            <th>Territory</th>
+            <th>Eastern Gateways</th>
+            <th>Key Hubs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="railroad-badge badge-bnsf">BNSF</span> BNSF Railway</td>
+            <td>33,400</td>
+            <td>Western U.S. (28 states)</td>
+            <td>Chicago, Memphis, St. Louis, KC</td>
+            <td>LA/LB, Seattle, Portland, Fort Worth, KC, Chicago</td>
+          </tr>
+          <tr>
+            <td><span class="railroad-badge badge-up">UP</span> Union Pacific</td>
+            <td>32,200</td>
+            <td>Western U.S. (23 states)</td>
+            <td>Chicago, St. Louis, KC, Memphis, New Orleans</td>
+            <td>Houston, LA/LB, Oakland, Chicago, Omaha, North Platte</td>
+          </tr>
+          <tr>
+            <td><span class="railroad-badge badge-csx">CSX</span> CSX Transportation</td>
+            <td>~21,000</td>
+            <td>Eastern U.S.</td>
+            <td>Chicago, Memphis, New Orleans, St. Louis</td>
+            <td>Jacksonville, Nashville, Louisville, Baltimore, NY/NJ</td>
+          </tr>
+          <tr>
+            <td><span class="railroad-badge badge-ns">NS</span> Norfolk Southern</td>
+            <td>~21,000</td>
+            <td>Eastern U.S.</td>
+            <td>Chicago, KC, Memphis, St. Louis, New Orleans, Shreveport</td>
+            <td>Atlanta, Norfolk, Harrisburg, Detroit, Chicago</td>
+          </tr>
+          <tr>
+            <td><span class="railroad-badge badge-cn">CN</span> Canadian National</td>
+            <td>~20,000 (6,400 US)</td>
+            <td>Canada + U.S.: IL, MS, LA, MI, MN, WI, AL</td>
+            <td>Chicago, Memphis, Jackson MS, New Orleans, Mobile</td>
+            <td>Chicago (Markham), Memphis, New Orleans, Baton Rouge</td>
+          </tr>
+          <tr>
+            <td><span class="railroad-badge badge-cpkc">CPKC</span> Canadian Pacific Kansas City</td>
+            <td>~20,000</td>
+            <td>Canada, U.S. mid-corridor, Mexico</td>
+            <td>Chicago, KC, Shreveport, Beaumont, Meridian MS</td>
+            <td>Kansas City, Laredo, Houston (via UP rights), Monterrey</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2: UNION PACIFIC -->
+    <!-- ============================================================ -->
+    <div class="glass-section" id="section-up">
+      <h2>Section 2 — <span class="railroad-badge badge-up">UP</span> Union Pacific Railroad</h2>
+
+      <p>The largest U.S. railroad by revenue, <span class="railroad-badge badge-up">UP</span> Union Pacific operates west of Chicago and New Orleans across 23 states. The modern UP was built through a series of major acquisitions: Southern Pacific (1996), Missouri Pacific (1982), Missouri-Kansas-Texas (1988), and Chicago &amp; North Western (1995). Headquarters: Omaha, Nebraska.</p>
+
+      <h3>Houston Directional Lines</h3>
+      <p>Houston is a major UP hub centered on Englewood Yard. Lines radiate in all cardinal directions, serving the Port of Houston and the Gulf Coast petrochemical and chemical corridor — one of the densest rail freight markets in the world.</p>
+
+      <ul class="feature-list">
+        <li><strong>West — Sunset Route (ex-SP):</strong> Houston → San Antonio → El Paso → Tucson → Los Angeles. Primary transcontinental link to Southern California ports and markets.</li>
+        <li><strong>North — Ex-MoPac Line:</strong> Houston → Palestine → Fort Worth/Dallas → Kansas City or northwest. From Fort Worth/Dallas: north to KC, then Omaha, then Chicago (via ex-C&amp;NW) or Pacific Northwest.</li>
+        <li><strong>East:</strong> Houston → Beaumont → Lake Charles → New Orleans. UP and BNSF share parallel tracks on the Houston–New Orleans segment via directional running. Interchange with NS, CSX, and CN at New Orleans.</li>
+        <li><strong>Northeast / North-Central:</strong> Houston → Longview → Little Rock → Memphis. Interchange with NS and CSX at Memphis. Houston → Shreveport → interchange with CPKC. Houston → Pine Bluff → St. Louis.</li>
+      </ul>
+
+      <h3>UP System-Wide Major Corridors</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Corridor</th>
+            <th>Route</th>
+            <th>Primary Traffic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Overland Route</td>
+            <td>Chicago → Omaha → Cheyenne → Ogden → NV → Sacramento/Oakland</td>
+            <td>Intermodal, merchandise</td>
+          </tr>
+          <tr>
+            <td>Sunset Route</td>
+            <td>New Orleans → Houston → San Antonio → El Paso → Tucson → LA</td>
+            <td>Intermodal, chemicals, autos</td>
+          </tr>
+          <tr>
+            <td>I-5 Corridor</td>
+            <td>LA → Bakersfield → Sacramento → Eugene → Portland → Seattle/Tacoma</td>
+            <td>Lumber south, consumer goods north, autos, coal</td>
+          </tr>
+          <tr>
+            <td>Central Corridor</td>
+            <td>Houston → Dallas → KC / Houston → Memphis → St. Louis → Chicago</td>
+            <td>Chemicals, grain, intermodal</td>
+          </tr>
+          <tr>
+            <td>Powder River Basin</td>
+            <td>WY coal fields → North Platte → multiple destinations</td>
+            <td>Unit coal trains</td>
+          </tr>
+          <tr>
+            <td>Golden State Route</td>
+            <td>El Paso → Tucumcari → KC (ex-Rock Island/SP)</td>
+            <td>Intermodal, Mexico traffic via Laredo/El Paso</td>
+          </tr>
+          <tr>
+            <td>Ogden – Portland</td>
+            <td>Ogden → Boise → Portland</td>
+            <td>Intermodal, grain</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p><strong>Note on UP-NS Merger:</strong> If the pending STB merger application (filed December 2025) is approved, UP would absorb NS's eastern network, creating the first single-line transcontinental railroad and eliminating Chicago/Mississippi River interchange delays on east-west traffic.</p>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: BNSF -->
+    <!-- ============================================================ -->
+    <div class="glass-section" id="section-bnsf">
+      <h2>Section 3 — <span class="railroad-badge badge-bnsf">BNSF</span> BNSF Railway</h2>
+
+      <p>The largest U.S. railroad by track mileage and second largest by revenue. <span class="railroad-badge badge-bnsf">BNSF</span> operates in 28 western states and is the dominant intermodal carrier, major grain hauler, and largest coal hauler in North America. Owned by Berkshire Hathaway since 2010. Formed from the 1995 merger of Burlington Northern and Atchison, Topeka &amp; Santa Fe.</p>
+
+      <h3>Named Transcontinental Corridors</h3>
+
+      <div class="highlight-box">
+        <p><strong>Southern Transcon (Primary Intermodal Highway):</strong> LA/Long Beach → Cajon Pass → Barstow → Needles → Albuquerque → Amarillo → Wichita → Kansas City → Fort Madison → Chicago. Approximately 2,200 miles, nearly 100% double-tracked. Handles ~300 trains daily at peak. BNSF's premier intermodal franchise. J.B. Hunt is a key partner on this corridor.</p>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Northern Transcon:</strong> Chicago → Twin Cities → Fargo → Minot → Havre → Glacier Park → Spokane → Seattle or Portland. Primary traffic: grain from the Northern Great Plains to Pacific Northwest export terminals, intermodal, and coal.</p>
+      </div>
+
+      <p><strong>Central Corridor / Transcon:</strong> Multiple variants through Nebraska and Colorado. Includes BNSF trackage rights on ex-SP lines (Houston–New Orleans), granted as a condition of the UP-SP merger in 1996. BNSF operates directional running with UP on the Houston–New Orleans segment.</p>
+
+      <h3>BNSF Key North-South &amp; Other Corridors</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Corridor</th>
+            <th>Route</th>
+            <th>Traffic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Texas North-South</td>
+            <td>Fort Worth/Dallas → Temple → Houston → Galveston</td>
+            <td>Grain, chemicals, intermodal</td>
+          </tr>
+          <tr>
+            <td>Powder River Basin</td>
+            <td>WY coal fields → Alliance, NE → multiple directions</td>
+            <td>Unit coal trains (shared with UP)</td>
+          </tr>
+          <tr>
+            <td>Pacific Northwest</td>
+            <td>Seattle/Portland → Vancouver BC connection</td>
+            <td>Grain export, lumber, intermodal</td>
+          </tr>
+          <tr>
+            <td>Midwest Grain Belt</td>
+            <td>MT, ND, MN → Gulf or PNW</td>
+            <td>Grain to export terminals</td>
+          </tr>
+          <tr>
+            <td>BNSF in Houston</td>
+            <td>Fort Worth → Houston (owns track) + trackage/haulage rights on UP through Houston terminal</td>
+            <td>Chemicals, intermodal, grain</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: CSX -->
+    <!-- ============================================================ -->
+    <div class="glass-section" id="section-csx">
+      <h2>Section 4 — <span class="railroad-badge badge-csx">CSX</span> CSX Transportation</h2>
+
+      <p><span class="railroad-badge badge-csx">CSX</span> operates approximately 21,000 miles across the Eastern U.S. and is the dominant carrier serving the Southeast and Florida. The modern CSX descends from the 1980 merger of Chessie System (Baltimore &amp; Ohio, Chesapeake &amp; Ohio) and Seaboard System, plus the 1999 division of Conrail between CSX and NS. Headquarters: Jacksonville, Florida.</p>
+
+      <h3>Major CSX Corridors</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Corridor</th>
+            <th>Route</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>B&amp;O Main (Water Level Route)</td>
+            <td>Chicago (Barr Yard) → Pittsburgh → Cumberland → Baltimore → Philadelphia/NY</td>
+            <td>Primary east-west artery. 40–50 trains/day.</td>
+          </tr>
+          <tr>
+            <td>National Gateway</td>
+            <td>Chicago/Midwest → OH → WV → VA → Wilmington NC / Norfolk area</td>
+            <td>Double-stack cleared corridor. East Coast port access.</td>
+          </tr>
+          <tr>
+            <td>Nashville Corridor</td>
+            <td>Chicago/Louisville → Nashville → Chattanooga → Atlanta</td>
+            <td>North-south merchandise and intermodal</td>
+          </tr>
+          <tr>
+            <td>Gulf Coast</td>
+            <td>New Orleans → Mobile → Pensacola → Jacksonville → Tampa/Miami</td>
+            <td>Dominant carrier in Florida</td>
+          </tr>
+          <tr>
+            <td>Northeast</td>
+            <td>NY/NJ → Philadelphia → Baltimore → Washington DC area</td>
+            <td>Major Northeast population centers</td>
+          </tr>
+          <tr>
+            <td>Appalachian Coal</td>
+            <td>WV/KY/VA coal fields → power plants and export terminals</td>
+            <td>Declining but still significant</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>CSX Interchange Gateways</h3>
+      <ul class="feature-list">
+        <li><strong>Chicago:</strong> Interchange with <span class="railroad-badge badge-up">UP</span>, <span class="railroad-badge badge-bnsf">BNSF</span>, <span class="railroad-badge badge-cn">CN</span>, <span class="railroad-badge badge-cpkc">CPKC</span></li>
+        <li><strong>St. Louis:</strong> Interchange with <span class="railroad-badge badge-up">UP</span>, <span class="railroad-badge badge-bnsf">BNSF</span></li>
+        <li><strong>Memphis:</strong> Interchange with <span class="railroad-badge badge-up">UP</span>, <span class="railroad-badge badge-bnsf">BNSF</span>, <span class="railroad-badge badge-cn">CN</span></li>
+        <li><strong>New Orleans:</strong> Interchange with <span class="railroad-badge badge-up">UP</span>, <span class="railroad-badge badge-cn">CN</span>, <span class="railroad-badge badge-cpkc">CPKC</span></li>
+        <li><strong>Myrtlewood, AL:</strong> Direct interchange with <span class="railroad-badge badge-cpkc">CPKC</span> via Meridian &amp; Bigbee line — a new Mexico-Southeast corridor established 2024.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: NORFOLK SOUTHERN -->
+    <!-- ============================================================ -->
+    <div class="glass-section" id="section-ns">
+      <h2>Section 5 — <span class="railroad-badge badge-ns">NS</span> Norfolk Southern Railway</h2>
+
+      <p><span class="railroad-badge badge-ns">NS</span> Norfolk Southern operates approximately 21,000 miles in the Eastern U.S. and is the dominant carrier in the central and southern Appalachian coal fields. The modern NS was formed by the 1982 merger of Norfolk &amp; Western (N&amp;W) and Southern Railway, plus the 1999 acquisition of roughly half of Conrail. Headquarters: Atlanta, Georgia.</p>
+
+      <h3>Major NS Corridors</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Corridor</th>
+            <th>Route</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Chicago Line</td>
+            <td>Chicago → Fort Wayne → Elkhart → Cleveland → Pittsburgh → Harrisburg → NJ/NY</td>
+            <td>Primary east-west corridor. Ex-Conrail/Penn Central.</td>
+          </tr>
+          <tr>
+            <td>Heartland Corridor</td>
+            <td>Columbus OH → Charleston WV → Norfolk VA</td>
+            <td>Double-stack cleared (tunnel modifications). Midwest to Norfolk port.</td>
+          </tr>
+          <tr>
+            <td>Meridian Speedway</td>
+            <td>Meridian MS → Shreveport → Dallas (joint NS/KCS)</td>
+            <td>East-west shortcut avoiding New Orleans. Intermodal.</td>
+          </tr>
+          <tr>
+            <td>Southern Main (ex-SOU)</td>
+            <td>New Orleans → Meridian → Birmingham → Atlanta → Charlotte → Roanoke → DC/NE</td>
+            <td>Major north-south spine through the Southeast</td>
+          </tr>
+          <tr>
+            <td>Wabash (ex-N&amp;W/Wabash)</td>
+            <td>Kansas City → Decatur IL → Fort Wayne → Detroit/Toledo/Buffalo</td>
+            <td>Cross-Midwest route. Critical in proposed UP-NS merger.</td>
+          </tr>
+          <tr>
+            <td>Pocahontas Division</td>
+            <td>Norfolk VA → Roanoke → Bluefield → Columbus OH/Cincinnati</td>
+            <td>Historic coal corridor. Steep Appalachian grades.</td>
+          </tr>
+          <tr>
+            <td>Piedmont Division</td>
+            <td>Atlanta → Charlotte → Greensboro → Roanoke</td>
+            <td>Major Southeast merchandise corridor</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p><strong>NS-UP Daily Interchange (2023):</strong> UP and NS exchanged approximately 1,637 manifest cars, 1,648 intermodal containers, and 122 bulk cars per day at Chicago, St. Louis, Kansas City, Memphis, Shreveport, and New Orleans — illustrating the scale of the current east-west interchange dependency that the proposed merger aims to eliminate.</p>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6: CANADIAN NATIONAL -->
+    <!-- ============================================================ -->
+    <div class="glass-section" id="section-cn">
+      <h2>Section 6 — <span class="railroad-badge badge-cn">CN</span> Canadian National Railway</h2>
+
+      <p><span class="railroad-badge badge-cn">CN</span> is primarily a north-south carrier in the United States, operating the ex-Illinois Central main line from Chicago straight south to New Orleans via Memphis and Jackson, MS. CN acquired the Illinois Central in 1998. It also has significant operations in Michigan, Minnesota, Wisconsin, and Alabama. U.S. route miles: approximately 6,400 of a total ~20,000 network.</p>
+
+      <h3>CN U.S. Corridors</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Corridor</th>
+            <th>Route</th>
+            <th>Traffic / Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Main Line (ex-IC)</td>
+            <td>Chicago → Champaign → Carbondale → Cairo → Fulton KY → Memphis → Jackson MS → New Orleans</td>
+            <td>Primary north-south spine. Chemicals, grain, coal, intermodal. Hosts Amtrak City of New Orleans.</td>
+          </tr>
+          <tr>
+            <td>Gulf Coast</td>
+            <td>New Orleans → Baton Rouge → Mobile AL</td>
+            <td>Petrochemical corridor. IC RailMarine Terminal at Convent, LA.</td>
+          </tr>
+          <tr>
+            <td>Michigan</td>
+            <td>Chicago → Kalamazoo → Lansing → Flint → Port Huron (Canada)</td>
+            <td>Auto parts, manufacturing</td>
+          </tr>
+          <tr>
+            <td>Upper Midwest</td>
+            <td>Chicago → Milwaukee → Green Bay / Duluth-Superior</td>
+            <td>Paper, forest products, iron ore</td>
+          </tr>
+          <tr>
+            <td>EJ&amp;E (Chicago Bypass)</td>
+            <td>Elgin, Joliet &amp; Eastern ring around west side of Chicago</td>
+            <td>Purchased from U.S. Steel 2009. Relieves Chicago terminal congestion.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>CN Key Interchange Points</h3>
+      <ul class="feature-list">
+        <li><strong>Chicago (Markham Yard):</strong> Interchange with all Class I carriers</li>
+        <li><strong>Memphis:</strong> Interchange with <span class="railroad-badge badge-up">UP</span>, <span class="railroad-badge badge-bnsf">BNSF</span>, <span class="railroad-badge badge-csx">CSX</span>, <span class="railroad-badge badge-ns">NS</span></li>
+        <li><strong>Jackson, MS:</strong> Interchange with <span class="railroad-badge badge-cpkc">CPKC</span></li>
+        <li><strong>New Orleans:</strong> Interchange with <span class="railroad-badge badge-up">UP</span>, <span class="railroad-badge badge-csx">CSX</span>, <span class="railroad-badge badge-ns">NS</span></li>
+        <li><strong>Mobile, AL:</strong> Port access and interchange with CSX</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 7: CPKC -->
+    <!-- ============================================================ -->
+    <div class="glass-section" id="section-cpkc">
+      <h2>Section 7 — <span class="railroad-badge badge-cpkc">CPKC</span> Canadian Pacific Kansas City</h2>
+
+      <p><span class="railroad-badge badge-cpkc">CPKC</span> was formed by the landmark 2023 merger of Canadian Pacific and Kansas City Southern, creating the only single-line railroad connecting Canada, the United States, and Mexico. The STB granted final approval in April 2023. CPKC is now the third-largest North American railroad by route miles (~20,000 miles across three countries).</p>
+
+      <h3>CPKC U.S. Corridors</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Corridor</th>
+            <th>Route</th>
+            <th>Traffic / Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mexico Midwest Express (MMX)</td>
+            <td>Chicago → KC → Shreveport → Beaumont → Houston area → Laredo → Monterrey → Mexico City</td>
+            <td>Premium single-line intermodal Canada–U.S.–Mexico service.</td>
+          </tr>
+          <tr>
+            <td>Meridian Speedway</td>
+            <td>Meridian MS → Shreveport → Dallas. Joint venture with NS.</td>
+            <td>East-west shortcut avoiding New Orleans. Intermodal.</td>
+          </tr>
+          <tr>
+            <td>Kansas City – Laredo</td>
+            <td>KC → Pittsburg KS → Shreveport → Beaumont → (UP trackage rights through Houston) → Laredo</td>
+            <td>Primary U.S.–Mexico corridor.</td>
+          </tr>
+          <tr>
+            <td>Upper Midwest (ex-CP)</td>
+            <td>Chicago → Milwaukee → Twin Cities → Fargo → Portal ND (Canada)</td>
+            <td>Grain, potash, intermodal.</td>
+          </tr>
+          <tr>
+            <td>Gulf Coast</td>
+            <td>Beaumont → Lake Charles → New Orleans → Gulfport → Mobile → Meridian</td>
+            <td>Chemical, intermodal.</td>
+          </tr>
+          <tr>
+            <td>Brownsville Branch</td>
+            <td>Robstown (near Corpus Christi) → Brownsville</td>
+            <td>Second Mexico border crossing. Agricultural and industrial freight.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>CPKC Key Infrastructure Points</h3>
+      <ul class="feature-list">
+        <li><strong>Laredo, TX — Patrick J. Ottensmeyer International Railway Bridge:</strong> Second span completed 2024, doubles cross-border rail capacity. Laredo is the busiest land border crossing for rail in North America.</li>
+        <li><strong>Myrtlewood, AL (new 2024):</strong> Direct interchange with <span class="railroad-badge badge-csx">CSX</span> via Meridian &amp; Bigbee line. Creates a new Mexico–Texas–Southeast corridor bypassing Chicago and New Orleans.</li>
+        <li><strong>Houston (UP trackage rights):</strong> CPKC operates through the Houston terminal on UP trackage rights and cannot freely serve local Houston traffic.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 8: INTERCHANGE GATEWAYS -->
+    <!-- ============================================================ -->
+    <div class="glass-section" id="section-gateways">
+      <h2>Section 8 — Major Interchange Gateways: East-West Crossover Points</h2>
+
+      <p>The Mississippi River corridor contains most of the critical interchange points where western and eastern Class I carriers exchange traffic. These gateways are chokepoints in the U.S. rail network — congestion at any major gateway ripples across the entire system.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Gateway City</th>
+            <th>Western Carriers</th>
+            <th>Eastern Carriers</th>
+            <th>Key Traffic Flows</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Chicago, IL</strong></td>
+            <td><span class="railroad-badge badge-up">UP</span> <span class="railroad-badge badge-bnsf">BNSF</span> <span class="railroad-badge badge-cn">CN</span> <span class="railroad-badge badge-cpkc">CPKC</span></td>
+            <td><span class="railroad-badge badge-csx">CSX</span> <span class="railroad-badge badge-ns">NS</span> <span class="railroad-badge badge-cn">CN</span> <span class="railroad-badge badge-cpkc">CPKC</span></td>
+            <td>Largest interchange hub in North America. All 6 Class I carriers present. Belt railroads (IHB, BRC) facilitate interchange. Notoriously congested — average transit delay 24–48 hours.</td>
+          </tr>
+          <tr>
+            <td><strong>St. Louis, MO</strong></td>
+            <td><span class="railroad-badge badge-up">UP</span> <span class="railroad-badge badge-bnsf">BNSF</span></td>
+            <td><span class="railroad-badge badge-csx">CSX</span> <span class="railroad-badge badge-ns">NS</span></td>
+            <td>Merchants Bridge (rebuilt 2022) is a key crossing. Viable alternative to Chicago congestion for east-west traffic.</td>
+          </tr>
+          <tr>
+            <td><strong>Kansas City, MO</strong></td>
+            <td><span class="railroad-badge badge-up">UP</span> <span class="railroad-badge badge-bnsf">BNSF</span> <span class="railroad-badge badge-cpkc">CPKC</span></td>
+            <td><span class="railroad-badge badge-ns">NS</span> (via Wabash) <span class="railroad-badge badge-cpkc">CPKC</span></td>
+            <td>Major classification hub. BNSF Southern Transcon passes through. CPKC headquarters.</td>
+          </tr>
+          <tr>
+            <td><strong>Memphis, TN</strong></td>
+            <td><span class="railroad-badge badge-up">UP</span> <span class="railroad-badge badge-bnsf">BNSF</span> <span class="railroad-badge badge-cn">CN</span></td>
+            <td><span class="railroad-badge badge-csx">CSX</span> <span class="railroad-badge badge-ns">NS</span> <span class="railroad-badge badge-cn">CN</span></td>
+            <td>Critical Gulf/Mid-South gateway. CN's north-south spine crosses here.</td>
+          </tr>
+          <tr>
+            <td><strong>New Orleans, LA</strong></td>
+            <td><span class="railroad-badge badge-up">UP</span> <span class="railroad-badge badge-cn">CN</span> <span class="railroad-badge badge-cpkc">CPKC</span></td>
+            <td><span class="railroad-badge badge-csx">CSX</span> <span class="railroad-badge badge-ns">NS</span> <span class="railroad-badge badge-cn">CN</span></td>
+            <td>Gulf Coast gateway. NS Southern Main connects to Southeast. CN's ex-IC spine terminates here.</td>
+          </tr>
+          <tr>
+            <td><strong>Shreveport, LA</strong></td>
+            <td><span class="railroad-badge badge-up">UP</span> <span class="railroad-badge badge-cpkc">CPKC</span></td>
+            <td><span class="railroad-badge badge-ns">NS</span> (Meridian Speedway)</td>
+            <td>UP-NS interchange point. CPKC main line junction. Growing importance as Chicago bypass.</td>
+          </tr>
+          <tr>
+            <td><strong>Meridian, MS</strong></td>
+            <td><span class="railroad-badge badge-cpkc">CPKC</span></td>
+            <td><span class="railroad-badge badge-ns">NS</span> <span class="railroad-badge badge-csx">CSX</span> (via Myrtlewood)</td>
+            <td>Growing gateway. New CPKC-CSX interchange at Myrtlewood (2024). Hub of the Meridian Speedway joint venture.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="alert-box">
+        <p><strong>Chicago Congestion:</strong> Chicago handles ~500 freight trains per day and approximately one-third of all North American rail traffic passes through or originates in the Chicago terminal area. Average dwell time for interchange cars: 24–48 hours. This congestion is a primary driver of the proposed UP-NS merger rationale and ongoing CREATE (Chicago Region Environmental and Transportation Efficiency) improvement program.</p>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 9: HOUSTON AS RAIL HUB -->
+    <!-- ============================================================ -->
+    <div class="glass-section" id="section-houston">
+      <h2>Section 9 — Houston as a Rail Hub: Detailed Routing</h2>
+
+      <p>Houston is one of the most complex and congested rail terminals in North America. Two Class I carriers have significant owned trackage — <span class="railroad-badge badge-up">UP</span> (Englewood Yard) and <span class="railroad-badge badge-bnsf">BNSF</span> — while <span class="railroad-badge badge-cpkc">CPKC</span> operates through the terminal on UP trackage rights. The Port Terminal Railway Association (PTRA) operates within and around the Port of Houston, serving the massive petrochemical industrial complex along the Houston Ship Channel.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Direction</th>
+            <th>Carrier</th>
+            <th>Route</th>
+            <th>Key Destinations</th>
+            <th>Interchange At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>West</td>
+            <td><span class="railroad-badge badge-up">UP</span></td>
+            <td>Sunset Route via San Antonio, El Paso</td>
+            <td>Los Angeles, Tucson, Phoenix</td>
+            <td>El Paso (BNSF), LA (BNSF)</td>
+          </tr>
+          <tr>
+            <td>Northwest</td>
+            <td><span class="railroad-badge badge-up">UP</span></td>
+            <td>Via Dallas/Fort Worth</td>
+            <td>KC, Omaha, Chicago, Pacific NW</td>
+            <td>KC (all), Chicago (all)</td>
+          </tr>
+          <tr>
+            <td>North</td>
+            <td><span class="railroad-badge badge-bnsf">BNSF</span></td>
+            <td>Via Temple to Fort Worth/Dallas</td>
+            <td>KC (Transcon), Chicago</td>
+            <td>KC (all), Chicago (all)</td>
+          </tr>
+          <tr>
+            <td>Northeast</td>
+            <td><span class="railroad-badge badge-up">UP</span></td>
+            <td>Via Longview to Little Rock, Memphis</td>
+            <td>Memphis, St. Louis, SE via NS</td>
+            <td>Memphis (NS, CSX, CN), St. Louis (NS, CSX)</td>
+          </tr>
+          <tr>
+            <td>East</td>
+            <td><span class="railroad-badge badge-up">UP</span> / <span class="railroad-badge badge-bnsf">BNSF</span></td>
+            <td>Via Beaumont to New Orleans (directional running)</td>
+            <td>New Orleans, SE, Florida</td>
+            <td>New Orleans (NS, CSX, CN, CPKC)</td>
+          </tr>
+          <tr>
+            <td>South</td>
+            <td><span class="railroad-badge badge-up">UP</span></td>
+            <td>To Galveston / Port of Houston</td>
+            <td>Port terminals, export</td>
+            <td>PTRA at port</td>
+          </tr>
+          <tr>
+            <td>South (Mexico)</td>
+            <td><span class="railroad-badge badge-cpkc">CPKC</span> (UP rights)</td>
+            <td>Via Victoria, Robstown to Laredo/Brownsville</td>
+            <td>Laredo, Monterrey, Mexico City</td>
+            <td>Laredo border (CPKC own track)</td>
+          </tr>
+          <tr>
+            <td>Northeast (alt)</td>
+            <td><span class="railroad-badge badge-up">UP</span></td>
+            <td>Via Shreveport</td>
+            <td>Shreveport, then east via CPKC/NS</td>
+            <td>Shreveport (CPKC, NS)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="alert-box">
+        <p><strong>PTRA — Port Terminal Railway Association:</strong> The PTRA is a switching railroad jointly owned by UP and BNSF. It operates ~25 miles of track within the Port of Houston complex, providing last-mile access to chemical plants and terminal facilities along the Houston Ship Channel. Cars are tendered to/from Class I carriers at Englewood (UP) and Settegast (BNSF) yards.</p>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 10: PRACTICAL ROUTING NOTES -->
+    <!-- ============================================================ -->
+    <div class="glass-section" id="section-routing">
+      <h2>Section 10 — Practical Routing Notes</h2>
+
+      <h3>Why Just Having Tracks Doesn't Mean Traffic Flows There</h3>
+
+      <ul class="feature-list">
+        <li><strong>Precision Scheduled Railroading (PSR):</strong> Since 2019, most Class I carriers adopted PSR — point-to-point operations, longer trains, reduced intermediate stops. Traffic has concentrated on fewer, higher-density corridors; many secondary routes see reduced frequency or none at all.</li>
+        <li><strong>Directional Running:</strong> On parallel routes (e.g., UP and BNSF Houston–New Orleans), two railroads agree to run trains in only one direction on each line, effectively creating a double-track railroad from two single-track lines. Speeds service and improves reliability, but means trains cannot deviate to the competing line.</li>
+        <li><strong>Trackage Rights vs. Owned Track:</strong> A railroad may operate on another's track subject to restrictions on intermediate stops, commodities served, or total volume. CPKC through Houston operates on UP trackage rights — it cannot freely serve Houston local traffic. This distinction is critical when evaluating whether a corridor can actually serve a given origin/destination pair.</li>
+        <li><strong>Abandoned/Downgraded Lines:</strong> Many branch lines have been abandoned or downgraded to Class 1–2 track (maximum 25 mph). Only main corridors designated Class 4 or Class 5 (60–79 mph freight speeds) handle through traffic at competitive cycle times.</li>
+      </ul>
+
+      <h3>Coast-to-Coast Routing Today</h3>
+      <p style="color:rgba(255,255,255,0.5);font-size:0.82rem;margin-bottom:0.75rem;">No single-line transcontinental service exists until UP-NS merger is approved.</p>
+
+      <ul class="feature-list">
+        <li><strong>LA → East Coast via Chicago (Most Common):</strong> <span class="railroad-badge badge-up">UP</span> or <span class="railroad-badge badge-bnsf">BNSF</span> to Chicago, interchange to <span class="railroad-badge badge-csx">CSX</span> or <span class="railroad-badge badge-ns">NS</span>. Adds 24–48 hours of interchange dwell in Chicago.</li>
+        <li><strong>LA → Southeast via Memphis:</strong> <span class="railroad-badge badge-up">UP</span> Sunset Route to Houston, northeast to Memphis, interchange to <span class="railroad-badge badge-ns">NS</span> or <span class="railroad-badge badge-csx">CSX</span>.</li>
+        <li><strong>LA → Southeast via Meridian Speedway:</strong> <span class="railroad-badge badge-up">UP</span> to Dallas or Shreveport → <span class="railroad-badge badge-ns">NS</span>/<span class="railroad-badge badge-cpkc">CPKC</span> Meridian Speedway to Meridian → then <span class="railroad-badge badge-ns">NS</span> to Atlanta. Avoids both New Orleans and Memphis congestion.</li>
+        <li><strong>Houston → Atlanta:</strong> <span class="railroad-badge badge-up">UP</span> to New Orleans, interchange to <span class="railroad-badge badge-ns">NS</span> Southern Main. Under proposed UP-NS merger, becomes single-line service.</li>
+        <li><strong>Mexico → Southeast:</strong> <span class="railroad-badge badge-cpkc">CPKC</span> single-line from Laredo through Meridian, then new interchange to <span class="railroad-badge badge-csx">CSX</span> at Myrtlewood, AL.</li>
+      </ul>
+
+      <h3>Key Data Sources</h3>
+      <ul class="feature-list">
+        <li><strong>FRA North American Rail Network (NARN):</strong> geodata.bts.gov</li>
+        <li><strong>UP System Maps:</strong> up.com/aboutup/reference/maps/</li>
+        <li><strong>BNSF Network Maps:</strong> bnsf.com/ship-with-bnsf/maps-and-shipping-locations/rail-network-maps.page</li>
+        <li><strong>CSX System Map &amp; Junction Lookup:</strong> csx.com</li>
+        <li><strong>STB Filings:</strong> stb.gov</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 11: MOVING COAL BY RAIL -->
+    <!-- ============================================================ -->
+    <div class="glass-section" id="section-coal">
+      <h2>Section 11 — Moving Coal by Rail</h2>
+
+      <p>Coal accounts for roughly 15% of Class I railroad revenue. Average transportation cost in 2023: <strong style="color:#64ffb4;">$18.77/short ton</strong>. Rail accounts for approximately <strong style="color:#64ffb4;">69%</strong> of all coal deliveries to the electric power sector in the U.S.</p>
+
+      <h3>Four Producing Regions</h3>
+
+      <ul class="feature-list">
+        <li><strong>Powder River Basin (PRB), Wyoming/Montana:</strong> Sub-bituminous, ~8,500 BTU/lb, very low sulfur. Largest producing region, 300M+ short tons annually. Accessed exclusively by <span class="railroad-badge badge-bnsf">BNSF</span> and <span class="railroad-badge badge-up">UP</span> via the 103-mile Joint Line (highest-tonnage mainline in the world — triple track, 21 miles of quadruple track over Logan Hill). Peak 2008: 168 loaded/empty coal trains per day. By 2024: ~70 trains combined.</li>
+        <li><strong>Central Appalachia (KY/WV):</strong> High-BTU, low-sulfur bituminous. Both <span class="railroad-badge badge-csx">CSX</span> and <span class="railroad-badge badge-ns">NS</span> compete for traffic. CSX hauls east via Richmond to export terminals at Newport News. NS hauls via Pocahontas Division to Lamberts Point, Norfolk.</li>
+        <li><strong>Northern Appalachia (PA/OH/WV):</strong> High-sulfur bituminous. Both <span class="railroad-badge badge-csx">CSX</span> and <span class="railroad-badge badge-ns">NS</span> serve. Export to Baltimore terminals and Pinney Dock (Lake Erie).</li>
+        <li><strong>Illinois Basin (IL/IN/KY):</strong> Higher sulfur but growing production relative to Appalachia. Rail moves to Ohio and Mississippi rivers for barge connections to Gulf Coast export terminals. <span class="railroad-badge badge-cn">CN</span>'s ex-IC main line provides direct rail access to Gulf.</li>
+      </ul>
+
+      <h3>Carrier-by-Carrier Coal Summary</h3>
+
+      <ul class="feature-list">
+        <li><span class="railroad-badge badge-bnsf">BNSF</span> <strong>Largest coal hauler in North America.</strong> Primary PRB carrier. Routes south through Colorado to Texas power plants. PRB coal east through Nebraska to Midwest. Pacific export to Westshore Terminals (Roberts Bank, BC) — record 8.2M tonnes in 2011.</li>
+        <li><span class="railroad-badge badge-up">UP</span> <strong>Second-largest coal carrier.</strong> PRB via ex-C&amp;NW route east through Nebraska. Also moves Illinois Basin coal. Sunset Route for some Texas export terminal traffic.</li>
+        <li><span class="railroad-badge badge-ns">NS</span> <strong>Dominant for Appalachian met/steam coal export.</strong> Pocahontas Division direct to Lamberts Point Pier 6 — 48M TPY capacity, largest in the Northern Hemisphere. Coal traffic generated ~two-thirds of freight rail tonnage in Virginia.</li>
+        <li><span class="railroad-badge badge-csx">CSX</span> <strong>Appalachian coal to Newport News</strong> (Dominion Terminal Associates 22M TPY, Kinder Morgan Pier IX 12M TPY) and Curtis Bay Baltimore. National Gateway double-stack corridor also handles coal unit trains.</li>
+        <li><span class="railroad-badge badge-cn">CN</span> <strong>North-south network.</strong> Illinois Basin mines through Memphis to New Orleans and Gulf Coast. IC RailMarine Terminal at Convent, LA (rail-to-ship). Also handles Alberta/BC mines to Westshore and Ridley Terminals in Canada.</li>
+        <li><span class="railroad-badge badge-cpkc">CPKC</span> <strong>Modest U.S. coal exposure.</strong> On the Canadian side, dominant hauler to Westshore Terminals (~65% of all coal through the facility from SE British Columbia mines).</li>
+      </ul>
+
+      <h3>Major Coal Export Terminals</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Terminal</th>
+            <th>Port</th>
+            <th>TPY Capacity</th>
+            <th>Rail Served By</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lamberts Point Pier 6</td>
+            <td>Norfolk, VA</td>
+            <td>48M</td>
+            <td><span class="railroad-badge badge-ns">NS</span></td>
+            <td>Largest in N. Hemisphere; 8,000 TPH loading rate; 5-way blending</td>
+          </tr>
+          <tr>
+            <td>Dominion Terminal Associates</td>
+            <td>Newport News, VA</td>
+            <td>22M</td>
+            <td><span class="railroad-badge badge-csx">CSX</span></td>
+            <td>Owned by Alpha/Arch; 5,700 TPH dumper</td>
+          </tr>
+          <tr>
+            <td>Kinder Morgan Pier IX</td>
+            <td>Newport News, VA</td>
+            <td>12M</td>
+            <td><span class="railroad-badge badge-csx">CSX</span></td>
+            <td>Also handles cement import</td>
+          </tr>
+          <tr>
+            <td>CONSOL Marine Terminal</td>
+            <td>Baltimore, MD</td>
+            <td>16M</td>
+            <td><span class="railroad-badge badge-ns">NS</span></td>
+            <td>7,000 TPH ship loader</td>
+          </tr>
+          <tr>
+            <td>Tradepoint Atlantic</td>
+            <td>Baltimore, MD</td>
+            <td>5M</td>
+            <td><span class="railroad-badge badge-ns">NS</span></td>
+            <td>Former Sparrows Point</td>
+          </tr>
+          <tr>
+            <td>Curtis Bay Pier</td>
+            <td>Baltimore, MD</td>
+            <td>6M</td>
+            <td><span class="railroad-badge badge-csx">CSX</span></td>
+            <td>Historic B&amp;O terminal</td>
+          </tr>
+          <tr>
+            <td>McDuffie Coal Terminal</td>
+            <td>Mobile, AL</td>
+            <td>30M</td>
+            <td><span class="railroad-badge badge-csx">CSX</span> <span class="railroad-badge badge-ns">NS</span> <span class="railroad-badge badge-cn">CN</span> <span class="railroad-badge badge-bnsf">BNSF</span> <span class="railroad-badge badge-up">UP</span></td>
+            <td>Served by 6 railroads &amp; barge; $200M expansion underway</td>
+          </tr>
+          <tr>
+            <td>United Bulk Terminal</td>
+            <td>Davant, LA (MS River)</td>
+            <td>10–20M</td>
+            <td>Barge-fed</td>
+            <td>Mile 55 Mississippi River; coal &amp; petcoke; 1,134 acres</td>
+          </tr>
+          <tr>
+            <td>IC RailMarine Terminal</td>
+            <td>Convent, LA</td>
+            <td>Varies</td>
+            <td><span class="railroad-badge badge-cn">CN</span></td>
+            <td>Rail-to-ship on Mississippi River; coal &amp; petcoke</td>
+          </tr>
+          <tr>
+            <td>Westshore Terminals</td>
+            <td>Roberts Bank, BC</td>
+            <td>33M</td>
+            <td><span class="railroad-badge badge-bnsf">BNSF</span> <span class="railroad-badge badge-cpkc">CPKC</span> <span class="railroad-badge badge-cn">CN</span></td>
+            <td>Largest Pacific Coast coal terminal; ships to 24+ countries</td>
+          </tr>
+          <tr>
+            <td>Ridley Terminals</td>
+            <td>Prince Rupert, BC</td>
+            <td>18M</td>
+            <td><span class="railroad-badge badge-cn">CN</span></td>
+            <td>Expanding met coal capacity</td>
+          </tr>
+          <tr>
+            <td>Pinney Dock</td>
+            <td>Ashtabula, OH</td>
+            <td>Varies</td>
+            <td><span class="railroad-badge badge-ns">NS</span></td>
+            <td>Lake Erie transload; coal to Canada/Great Lakes</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Hampton Roads: America's Coal Gateway</h3>
+      <div class="highlight-box">
+        <p>Hampton Roads — Norfolk and Newport News combined — has been the nation's premier coal export complex since the 1880s. Three active terminals with combined capacity exceeding <strong>80 million tons annually</strong>. <span class="railroad-badge badge-ns">NS</span> Lamberts Point Pier 6 dumped its billionth ton of coal in 1999 — the only facility in the world to reach that milestone.</p>
+        <p>The 1,850-foot pier features twin 18-story ship loaders capable of loading two vessels simultaneously at up to 8,000 tons per hour. Storage yards accommodate ~5,200 loaded coal cars (~520,000 tons). Largest single vessel loaded: MV China Prosperity (2019) — 156,779 metric tonnes.</p>
+      </div>
+
+      <h3>Gulf Coast Coal Export</h3>
+      <p>McDuffie Coal Terminal (Mobile) — 96 acres, 30M TPY capacity, <strong>$200M expansion underway</strong>. Uniquely served by six railroads plus barge. Lower Mississippi River: United Bulk Terminal at Davant and Kinder Morgan International Marine Terminal at Myrtle Grove. Coal exports from the New Orleans region peaked at 25M short tons in 2012.</p>
+
+      <h3>Pacific Coast</h3>
+      <div class="alert-box">
+        <p><strong>No active U.S. coal export terminals as of 2025.</strong> All Pacific-bound U.S. coal routes through Canadian terminals — Westshore Roberts Bank and Ridley Prince Rupert. Multiple proposed U.S. Pacific terminals (Gateway Pacific, Millennium Bulk) were rejected by Washington and Oregon regulators. U.S. coal for Pacific export must cross an international border.</p>
+      </div>
+
+      <h3>Unit Train Economics</h3>
+      <ul class="feature-list">
+        <li>Typical unit train: 100–135 hopper/gondola cars, 3–5 locomotives, ~10,000–16,000 short tons payload, ~1.3 miles long, ~18,000–19,000 gross tons loaded.</li>
+        <li>PRB coal trains: cycle in 5–7 days (Gulf Coast), ~100-hour rotation (Westshore).</li>
+      </ul>
+
+      <h3>Coal Rail Transportation Costs (EIA 2023)</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Value</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>U.S. average rail transport cost</td>
+            <td>$18.77/short ton</td>
+            <td>Declined from $19.29 in 2022</td>
+          </tr>
+          <tr>
+            <td>Transport as % of delivered cost</td>
+            <td>~41% national avg</td>
+            <td>Rising share year-over-year</td>
+          </tr>
+          <tr>
+            <td>PRB transport as % of delivered cost</td>
+            <td>~60%</td>
+            <td>Long distances + low commodity cost</td>
+          </tr>
+          <tr>
+            <td>PRB to Texas (typical)</td>
+            <td>$12–18/ton</td>
+            <td>~1,000 miles; <span class="railroad-badge badge-bnsf">BNSF</span> or <span class="railroad-badge badge-up">UP</span></td>
+          </tr>
+          <tr>
+            <td>Central Appalachia to Norfolk</td>
+            <td>$25–35/ton</td>
+            <td>~350–500 miles; <span class="railroad-badge badge-ns">NS</span> or <span class="railroad-badge badge-csx">CSX</span></td>
+          </tr>
+          <tr>
+            <td>N. Appalachia to North Carolina</td>
+            <td>$38/ton (2023)</td>
+            <td><span class="railroad-badge badge-ns">NS</span> or <span class="railroad-badge badge-csx">CSX</span></td>
+          </tr>
+          <tr>
+            <td>Illinois Basin to Kentucky</td>
+            <td>$7.62/ton (2023)</td>
+            <td>Short haul</td>
+          </tr>
+          <tr>
+            <td>General rail rate (1,000 mi)</td>
+            <td>~$0.16/ton-mile</td>
+            <td>Up sharply post-COVID</td>
+          </tr>
+          <tr>
+            <td>Pittsburgh Seam to East Coast pier</td>
+            <td>~$29.75/short ton</td>
+            <td>Mid-2023 export moves</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Unit Train Operating Cost Breakdown (Estimated, 1,000-Mile Haul)</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Cost Component</th>
+            <th>Estimated Range</th>
+            <th>Key Drivers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fuel (diesel)</td>
+            <td>$25,000–45,000/trip</td>
+            <td>3,000–5,000 gallons @ $3–5/gal</td>
+          </tr>
+          <tr>
+            <td>Crew (2-person, multiple districts)</td>
+            <td>$4,000–8,000/trip</td>
+            <td>Hours-of-service limits every 250–300 miles</td>
+          </tr>
+          <tr>
+            <td>Locomotive ownership/lease</td>
+            <td>$8,000–15,000/trip</td>
+            <td>4–5 units @ ~$150–200/day each</td>
+          </tr>
+          <tr>
+            <td>Car ownership/maintenance</td>
+            <td>$5,000–12,000/trip</td>
+            <td>110–135 cars @ $30–50/day each</td>
+          </tr>
+          <tr>
+            <td>Track maintenance allocation</td>
+            <td>$10,000–20,000/trip</td>
+            <td>Heavy axle loads (286K+ GWR)</td>
+          </tr>
+          <tr>
+            <td>Overhead / dispatching / admin</td>
+            <td>$3,000–6,000/trip</td>
+            <td>Signal maintenance, dispatching centers</td>
+          </tr>
+          <tr>
+            <td><strong>Total estimated per trip</strong></td>
+            <td><strong>$55,000–106,000</strong></td>
+            <td>~12,000-ton payload over 1,000 miles</td>
+          </tr>
+          <tr>
+            <td>Cost per ton (1,000 mi)</td>
+            <td>$4.60–8.80/ton</td>
+            <td>Before railroad margin</td>
+          </tr>
+          <tr>
+            <td>Charged rate per ton (typical)</td>
+            <td>$12–20/ton</td>
+            <td>Includes railroad margin of 30–50%+</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Outlook</h3>
+      <div class="highlight-box">
+        <p><strong>UP-NS Merger Impact on Coal:</strong> If approved, the merger would create the first single-line route from PRB mines to East Coast export terminals — eliminating interchange delays at Chicago, St. Louis, and Memphis that currently add 24–72 hours to total cycle time.</p>
+        <p><strong>PRB Infrastructure:</strong> <span class="railroad-badge badge-bnsf">BNSF</span> and <span class="railroad-badge badge-up">UP</span> have no plans to remove PRB route capacity despite declining domestic coal volumes. Both carriers are positioning the Joint Line for potential growth in export coal and alternative bulk commodity use.</p>
+        <p><strong>McDuffie Expansion:</strong> The $200M McDuffie Terminal expansion underway in Mobile, AL is designed to capture growing Alabama met coal export volumes and position the terminal for the next cycle of global steel demand.</p>
+      </div>
+    </div>
+
+  </div><!-- /.main-content -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p>oceandatum.ai — Maritime &amp; Commodity Intelligence</p>
+    <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">February 2026</p>
+    <p style="margin-top:0.5rem;font-size:0.7rem;color:rgba(255,255,255,0.18);">Sources: Carrier websites, AAR, FRA NARN, STB filings, Trains Magazine, EIA Form 923</p>
+  </footer>
+
+</body>
+</html>
