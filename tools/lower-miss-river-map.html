@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lower Mississippi River Interactive Map | OceanDatum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #64ffb4;
+    --nav-bg: rgba(10,10,10,0.92);
+    --nav-h: 48px;
+  }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    background: #0a0a0a;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* ── Navbar ─────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(100,255,180,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    z-index: 1000;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+  .nav-brand .dot {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .nav-brand span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+  .nav-brand span em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .nav-title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .nav-links a {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a.back {
+    color: var(--accent);
+    border: 1px solid rgba(100,255,180,0.3);
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .nav-links a.back:hover {
+    background: rgba(100,255,180,0.08);
+  }
+
+  /* ── Map iframe ──────────────────────────────── */
+  #map-frame {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0; bottom: 0;
+    width: 100%;
+    height: calc(100vh - var(--nav-h));
+    border: none;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-brand">
+    <div class="dot"></div>
+    <span>Ocean<em>Datum</em></span>
+  </a>
+
+  <span class="nav-title">Lower Mississippi River Interactive Map</span>
+
+  <div class="nav-links">
+    <a href="../projects-hub.html">Projects</a>
+    <a href="../projects-hub.html" class="back">← Tools</a>
+  </div>
+</nav>
+
+<iframe
+  id="map-frame"
+  src="../projects/Lower_Mississippi_Industrial_Infrastructure_Map.html"
+  title="Lower Mississippi River Industrial Infrastructure Map"
+  allowfullscreen
+  loading="eager">
+</iframe>
+
+</body>
+</html>
