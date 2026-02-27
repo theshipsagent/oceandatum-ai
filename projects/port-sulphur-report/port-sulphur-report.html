@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mile Marker 39 Terminal - Comprehensive Analysis of 106.99-Acre Deep-Water Industrial Site at Mississippi River Mile 39">
-    <title>Mile Marker 39 Terminal | Comprehensive Analysis</title>
+    <meta name="description" content="Port Sulphur Terminal - Comprehensive Analysis of 106.99-Acre Deep-Water Industrial Site at Mississippi River Mile 39">
+    <title>Port Sulphur Terminal | Comprehensive Analysis</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
+  <link rel="stylesheet" href="../../od-lightmode.css">
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -482,7 +484,7 @@
 
         /* Content */
         .content {
-            padding-top: 16px;
+            padding-top: 120px;
             max-width: 1400px;
             margin: 0 auto;
             padding-left: 2rem;
@@ -510,32 +512,49 @@
             }
         }
     </style>
-<style id="sn-css">
-.sn{position:fixed;top:0;left:0;right:0;z-index:2000;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(100,255,180,0.12);padding:0 1.5rem;height:48px;display:flex;align-items:center;justify-content:space-between;font-family:'Space Grotesk',sans-serif}
-.sn a{font-size:0.82rem;color:rgba(255,255,255,0.5);text-decoration:none;white-space:nowrap;transition:color 0.2s}
-.sn a:hover{color:#64ffb4}
-.sn-r{display:flex;gap:1.2rem;align-items:center}
-.sn-hub{padding:0.25rem 0.7rem;border:1px solid rgba(255,255,255,0.12);border-radius:5px}
-.sn-hub:hover{border-color:rgba(100,255,180,0.3)}
-.sn-logout{color:rgba(255,100,100,0.7)!important;padding:0.25rem 0.7rem;border:1px solid rgba(255,100,100,0.2);border-radius:5px}
-.sn-logout:hover{color:#ff6464!important;border-color:rgba(255,100,100,0.4)}
-@media(max-width:480px){.sn{padding:0 0.75rem;height:42px}.sn a{font-size:0.72rem}.sn-r{gap:0.6rem}}
-</style>
 </head>
 <body>
-<script>if("scrollRestoration"in history)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
     <!-- Navbar -->
         <!-- Navbar -->
-        <nav class="sn">
-  <a href="../../index.html">Home</a>
-  <div class="sn-r">
-    <a href="../../tools/maritime-ai-role.html">Role Brief</a>
-    <a href="../../cv.html">CV</a>
-    <a href="../../projects-hub.html" class="sn-hub">&larr; Hub</a>
-  </div>
-</nav>
+        <nav class="navbar">
+        <span class="navbar-brand">An <a href="../../index.html">oceandatum.ai</a> company</span>
 
-    <!-- Mobile menu (hidden by default) --><div class="mobile-menu-item">
+        <!-- Hamburger button (mobile only) -->
+        <button class="hamburger-button" id="hamburgerBtn" aria-label="Menu">
+            ☰
+        </button>
+
+        <!-- Desktop navigation -->
+        <div class="navbar-right">
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/theshipsagent" target="_blank" class="social-icon" title="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/theshipsagent" target="_blank" class="social-icon" title="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+            <a class="navbar-link" href="../../projects-hub.html">Projects Hub</a>
+            <a class="navbar-link" href="../../index.html">Home</a>
+        </div>
+    </nav>
+
+    <!-- Mobile menu (hidden by default) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-section">
+            <div class="mobile-menu-item">
+                <a href="../../projects-hub.html">Projects Hub</a>
+            </div>
+            <div class="mobile-menu-item">
                 <a href="../../index.html">Home</a>
             </div>
         </div>
@@ -585,7 +604,7 @@
 <div id="executive" class="tab-content active">
 <!-- ============================================
      EXECUTIVE SUMMARY SECTION
-     Mile Marker 39 Freeport Facility Investment Analysis
+     Port Sulphur Freeport Facility Investment Analysis
 
      Hero section with:
      - Full-width hero banner
@@ -603,14 +622,14 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-badge">Investment Opportunity</div>
-      <h1 class="hero-title">Mile Marker 39 Freeport Facility</h1>
+      <h1 class="hero-title">Port Sulphur Freeport Facility</h1>
       <p class="hero-subtitle">106.99-Acre Deep-Water Industrial Site at the Gateway to the Gulf</p>
       <div class="hero-location">
         <svg class="location-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
           <circle cx="12" cy="10" r="3"></circle>
         </svg>
-        <span>28310 Highway 23, Mile Marker 39, LA 70083 | Plaquemines Parish, Louisiana</span>
+        <span>28310 Highway 23, Port Sulphur, LA 70083 | Plaquemines Parish, Louisiana</span>
       </div>
     </div>
   </div>
@@ -727,7 +746,7 @@
         <h2 class="thesis-title">Investment Thesis</h2>
         <p class="thesis-text">
           Strategic deep-water industrial site at epicenter of $60+ billion regional development, offering superior Gulf access
-          and multimodal connectivity. The Mile Marker 39 facility combines remediated brownfield status, existing dock infrastructure
+          and multimodal connectivity. The Port Sulphur facility combines remediated brownfield status, existing dock infrastructure
           (52' draft capability), and 106.99 acres of Industrial District 3-zoned property at Mississippi River Mile Marker 39—the
           closest deep-water terminals to open water on the entire Mississippi River system.
         </p>
@@ -757,7 +776,7 @@
   <div class="investment-highlights">
     <div class="container">
       <h2 class="section-title">Investment Highlights</h2>
-      <p class="section-subtitle">Six strategic advantages positioning Mile Marker 39 as a premier industrial development opportunity</p>
+      <p class="section-subtitle">Six strategic advantages positioning Port Sulphur as a premier industrial development opportunity</p>
 
       <div class="highlights-grid">
 
@@ -1192,7 +1211,7 @@
   <div class="target-investors">
     <div class="container">
       <h2 class="section-title">Target Investors & Development Scenarios</h2>
-      <p class="section-subtitle">Ideal investor profiles and potential use cases for Mile Marker 39 facility</p>
+      <p class="section-subtitle">Ideal investor profiles and potential use cases for Port Sulphur facility</p>
 
       <div class="investors-grid">
 
@@ -2482,7 +2501,7 @@
 <div id="environmental" class="tab-content">
 <!-- ============================================================================
      ENVIRONMENTAL ANALYSIS SECTION
-     Mile Marker 39 Terminal Analysis
+     Port Sulphur Terminal Analysis
 
      Design System: oceandatum.ai
      - Dark gradient background (#0a0a0a to #1a1a2e)
@@ -2505,7 +2524,7 @@
           </svg>
           158 Source Documents
         </span>
-        <span class="facility-name">Former Freeport-McMoRan Mile Marker 39 Facility</span>
+        <span class="facility-name">Former Freeport-McMoRan Port Sulphur Facility</span>
       </div>
     </div>
   </div>
@@ -2515,7 +2534,7 @@
     <h3 class="card-title">Executive Summary</h3>
     <div class="summary-content">
       <p class="lead-text">
-        The former Freeport-McMoRan Mile Marker 39 facility presents significant environmental liabilities
+        The former Freeport-McMoRan Port Sulphur facility presents significant environmental liabilities
         stemming from 72 years of Frasch sulfur processing operations (1933-2005). The site carries
         exceptionally high environmental liability risks due to the combination of legacy contamination,
         extreme flood vulnerability, rapid coastal land loss, and EPA Non-NPL Superfund oversight.
@@ -2523,7 +2542,7 @@
       <div class="facility-info-grid">
         <div class="info-item">
           <span class="info-label">Facility Address</span>
-          <span class="info-value">28310 Highway 23, Mile Marker 39, Louisiana 70083</span>
+          <span class="info-value">28310 Highway 23, Port Sulphur, Louisiana 70083</span>
         </div>
         <div class="info-item">
           <span class="info-label">Coordinates</span>
@@ -4253,7 +4272,7 @@
 <div id="navigation" class="tab-content">
 <!-- ============================================ -->
 <!-- NAVIGATION & BATHYMETRY SECTION -->
-<!-- Mile Marker 39 Terminal Analysis -->
+<!-- Port Sulphur Terminal Analysis -->
 <!-- Generated: 2026-01-22 -->
 <!-- Sources: 134 navigation documents -->
 <!-- ============================================ -->
@@ -4650,7 +4669,7 @@
             Ideal conditions for construction activities and routine operations.</p>
 
             <p><strong>Winter Low Water (November-February):</strong> Discharge 131,000-222,000 cfs with velocities 1.0-1.5 fps.
-            Potential draft restrictions at other terminals during extreme low water events, but Mile Marker 39's exceptional depths
+            Potential draft restrictions at other terminals during extreme low water events, but Port Sulphur's exceptional depths
             (60-120 ft) provide competitive advantage when shallow-draft terminals face restrictions.</p>
         </div>
     </div>
@@ -4666,7 +4685,7 @@
         <div class="info-box-content">
             <ul>
                 <li><strong>Nestor Canal Light (RM 39.8)</strong> - Adjacent to facility, provides immediate positioning reference</li>
-                <li><strong>Mile Marker 39 Anchorage (RM 37.5-39.7)</strong> - Designated anchorage eliminates restrictions, facility within anchorage zone</li>
+                <li><strong>Port Sulphur Anchorage (RM 37.5-39.7)</strong> - Designated anchorage eliminates restrictions, facility within anchorage zone</li>
                 <li><strong>Home Place Lights (RM 37.0-37.6)</strong> - Downstream reference points for navigation</li>
                 <li><strong>USACE Chart No. 90</strong> - Covers RM 36.6 to 46.4 at 1:40,000 scale (revised May 6, 2016)</li>
             </ul>
@@ -4732,7 +4751,7 @@
         <h3 style="color: #2ECC40;">Strategic Competitive Advantages</h3>
         <div class="info-box-content">
             <ul>
-                <li><strong>Deeper than most Mississippi River terminals</strong> - Many terminals limited to 40-45 feet; Mile Marker 39 maintains 60-120 feet</li>
+                <li><strong>Deeper than most Mississippi River terminals</strong> - Many terminals limited to 40-45 feet; Port Sulphur maintains 60-120 feet</li>
                 <li><strong>Operations during low-water periods</strong> - Maintains full operations when competitors face draft restrictions</li>
                 <li><strong>Direct federal channel access</strong> - No private dredging costs, shared federal maintenance burden</li>
                 <li><strong>Shorter transit to Gulf</strong> - 39 miles versus 60+ miles for upriver terminals</li>
@@ -4799,7 +4818,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <span class="category-tag">Regional Analysis</span>
         </div>
         <p class="section-intro">
-            Comprehensive infrastructure assessment of the Mile Marker 39 Terminal and regional facilities,
+            Comprehensive infrastructure assessment of the Port Sulphur Terminal and regional facilities,
             including existing assets, planned developments, rail connectivity, and multimodal transportation networks.
             Analysis encompasses 106.99-acre deep-water site with connections to $22.8B in regional infrastructure investment.
         </p>
@@ -4807,7 +4826,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- Site Overview Hero -->
     <div class="info-box">
-        <h3>Mile Marker 39 Deep-Water Terminal - Site Overview</h3>
+        <h3>Port Sulphur Deep-Water Terminal - Site Overview</h3>
         <div class="hero-stats">
             <div class="hero-stat">
                 <div class="stat-value">106.99</div>
@@ -4837,7 +4856,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="map-container" id="infrastructureMap">
         <div class="map-header">
             <h3>Regional Infrastructure Facilities</h3>
-            <p>Mile Marker 39 Terminal and surrounding developments including NOLA Terminal, APM Terminals, Venture Global LNG, and rail connections</p>
+            <p>Port Sulphur Terminal and surrounding developments including NOLA Terminal, APM Terminals, Venture Global LNG, and rail connections</p>
         </div>
         <div id="infrastructureMapCanvas" style="width: 100%; height: 600px; background: rgba(0,0,0,0.2); position: relative;">
             <!-- Map will be initialized via Leaflet.js using GeoJSON data from infrastructure_data.json -->
@@ -4857,10 +4876,10 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3>Regional Facilities Comparison</h3>
         <div class="facility-grid">
 
-            <!-- Mile Marker 39 Terminal -->
+            <!-- Port Sulphur Terminal -->
             <div class="facility-card">
                 <div class="facility-header" style="background: rgba(100, 255, 180, 0.15);">
-                    <h4>Mile Marker 39 Deep-Water Terminal</h4>
+                    <h4>Port Sulphur Deep-Water Terminal</h4>
                     <span class="facility-status status-existing">Existing</span>
                 </div>
                 <div class="facility-details">
@@ -4904,7 +4923,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="facility-status status-planned">Planned</span>
                 </div>
                 <div class="facility-details">
-                    <p><strong>Location:</strong> Mile Marker 39 area, West Bank (near existing site)</p>
+                    <p><strong>Location:</strong> Port Sulphur area, West Bank (near existing site)</p>
                     <p><strong>Phase 1 Area:</strong> 200 acres (expandable to 900 acres)</p>
                     <p><strong>Investment:</strong> $500 million (privately funded by APM Terminals/Maersk)</p>
                     <p><strong>Vessel Capacity:</strong> 14,000-18,000 TEU (largest Panama Canal ships)</p>
@@ -4931,13 +4950,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="facility-status status-construction">Under Construction</span>
                 </div>
                 <div class="facility-details">
-                    <p><strong>Location:</strong> Adjacent to Mile Marker 39 area, 632 acres</p>
+                    <p><strong>Location:</strong> Adjacent to Port Sulphur area, 632 acres</p>
                     <p><strong>Investment:</strong> $21 billion</p>
                     <p><strong>Timeline:</strong> First phase operational mid-2024, full operations 2025</p>
                     <p><strong>Current Operations:</strong> 6,000 workers on-site, 30,000 nationally</p>
                     <p><strong>Infrastructure:</strong> Connected via 42-inch Gator Express Pipeline (15 miles current, 27-mile expansion 2025)</p>
                     <p style="margin-top: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
-                        Largest single infrastructure investment in region, borders Mile Marker 39 site with direct pipeline connections.
+                        Largest single infrastructure investment in region, borders Port Sulphur site with direct pipeline connections.
                     </p>
                 </div>
             </div>
@@ -4954,7 +4973,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p><strong>Investors:</strong> Ports America, Mediterranean Shipping Company</p>
                     <p><strong>Capacity:</strong> 2 million TEU per year at buildout</p>
                     <p style="margin-top: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
-                        Competes for same cargo flows, but Mile Marker 39's rail connectivity may provide complementary opportunities.
+                        Competes for same cargo flows, but Port Sulphur's rail connectivity may provide complementary opportunities.
                     </p>
                 </div>
             </div>
@@ -4987,7 +5006,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3>Rail Infrastructure & Connectivity</h3>
 
         <div class="highlight">
-            <p><strong>Current Status:</strong> No direct rail access. Nearest connection is New Orleans & Gulf Coast Railway (NOGC) terminus at Myrtle Grove, 8 miles north of Mile Marker 39.</p>
+            <p><strong>Current Status:</strong> No direct rail access. Nearest connection is New Orleans & Gulf Coast Railway (NOGC) terminus at Myrtle Grove, 8 miles north of Port Sulphur.</p>
         </div>
 
         <!-- NOGC Railway Overview -->
@@ -5013,8 +5032,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <!-- Planned Rail Spur Extension -->
         <div class="success-box">
-            <h4>Mile Marker 39 Rail Spur Extension - $85M Project</h4>
-            <p style="margin: 0.75rem 0;"><strong>Project:</strong> 32-mile rail spur from Mile Marker 39 to Belle Chasse, connecting to NOGC Railway and national Class I network.</p>
+            <h4>Port Sulphur Rail Spur Extension - $85M Project</h4>
+            <p style="margin: 0.75rem 0;"><strong>Project:</strong> 32-mile rail spur from Port Sulphur to Belle Chasse, connecting to NOGC Railway and national Class I network.</p>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0;">
                 <div>
@@ -5546,7 +5565,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="content-block">
     <h3>Executive Summary</h3>
     <p>
-      Mile Marker 39 Terminal operates at Mississippi River Mile 48.6 AHP within a remarkably consistent annual hydrologic cycle, shaped by three distinct seasonal patterns. The location experiences extreme variations in river discharge (131,000 to 650,000+ CFS), water velocity (1.2 to 5.0+ fps), and compound flooding risks from storm surge, river stage, and precipitation. However, post-Katrina levee improvements provide 100-year level protection, and the terminal's deep-water access creates strategic advantages during extreme low-water events.
+      Port Sulphur Terminal operates at Mississippi River Mile 48.6 AHP within a remarkably consistent annual hydrologic cycle, shaped by three distinct seasonal patterns. The location experiences extreme variations in river discharge (131,000 to 650,000+ CFS), water velocity (1.2 to 5.0+ fps), and compound flooding risks from storm surge, river stage, and precipitation. However, post-Katrina levee improvements provide 100-year level protection, and the terminal's deep-water access creates strategic advantages during extreme low-water events.
     </p>
     <p>
       <strong>Critical operational finding:</strong> The prime construction window (July-September) overlaps with peak hurricane season, requiring flexible scheduling and enhanced monitoring protocols. Winter low-water periods (November-February) offer ideal conditions for underwater work and maintenance, while spring high-water events (March-June) present the most challenging conditions with extreme current velocities.
@@ -5635,7 +5654,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="content-block">
     <h3>Historical Flood Events & Infrastructure Resilience</h3>
     <p>
-      Mile Marker 39 has experienced both catastrophic storm surge events and extreme river flooding, providing a comprehensive dataset for design envelope development. The 2005 Hurricane Katrina event with ~22 feet of inundation at Mile Marker 39 led to significant federal levee improvements under the HSDRRS (Hurricane and Storm Damage Risk Reduction System), which have been successfully validated during subsequent hurricanes Isaac (2012) and Ida (2021).
+      Port Sulphur has experienced both catastrophic storm surge events and extreme river flooding, providing a comprehensive dataset for design envelope development. The 2005 Hurricane Katrina event with ~22 feet of inundation at Port Sulphur led to significant federal levee improvements under the HSDRRS (Hurricane and Storm Damage Risk Reduction System), which have been successfully validated during subsequent hurricanes Isaac (2012) and Ida (2021).
     </p>
   </div>
 
@@ -5665,7 +5684,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="content-block">
     <h3>Compound Flooding Scenarios</h3>
     <p>
-      Mile Marker 39 faces unique compound flooding risks from the simultaneous interaction of multiple water sources. A tropical system can produce:
+      Port Sulphur faces unique compound flooding risks from the simultaneous interaction of multiple water sources. A tropical system can produce:
     </p>
     <ul class="detailed-list">
       <li><strong>Storm surge from Gulf of Mexico:</strong> 8-22+ feet depending on storm characteristics</li>
@@ -5693,7 +5712,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="content-block">
     <h3>Hurricane Season Risk Management</h3>
     <p>
-      Mile Marker 39 lies in the primary threat zone for Gulf of Mexico tropical systems, with hurricane season running June 1 - November 30 and peak activity during August-October. This creates a critical operational planning challenge: the prime construction window (July-September) overlaps directly with elevated hurricane risk.
+      Port Sulphur lies in the primary threat zone for Gulf of Mexico tropical systems, with hurricane season running June 1 - November 30 and peak activity during August-October. This creates a critical operational planning challenge: the prime construction window (July-September) overlaps directly with elevated hurricane risk.
     </p>
     <p>
       <strong>Risk mitigation strategies:</strong>
@@ -5753,7 +5772,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <h4>River Monitoring</h4>
     <p>
-      Comprehensive monitoring of river stage, velocity, and discharge at downstream monitoring stations with regional scaling factors applied for Mile Marker 39 conditions. These systems enable:
+      Comprehensive monitoring of river stage, velocity, and discharge at downstream monitoring stations with regional scaling factors applied for Port Sulphur conditions. These systems enable:
     </p>
     <ul class="detailed-list">
       <li>Operational planning and scheduling optimization</li>
@@ -5787,7 +5806,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <h4>Year-Round Operational Capability</h4>
     <p>
-      Unlike many terminals that face significant seasonal constraints, Mile Marker 39 maintains operational capability across the full range of river conditions through seasonal optimization:
+      Unlike many terminals that face significant seasonal constraints, Port Sulphur maintains operational capability across the full range of river conditions through seasonal optimization:
     </p>
     <ul class="detailed-list">
       <li><strong>Spring high water (Mar-Jun):</strong> Maximum draft capability despite challenging currents</li>
@@ -5803,7 +5822,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="event-detail">
       <h4>Hurricane Katrina (August 2005)</h4>
       <ul class="detailed-list">
-        <li><strong>Storm surge:</strong> 15-19 feet (Plaquemines Parish regional); ~22 feet inundation at Mile Marker 39 site</li>
+        <li><strong>Storm surge:</strong> 15-19 feet (Plaquemines Parish regional); ~22 feet inundation at Port Sulphur site</li>
         <li><strong>Impact:</strong> Catastrophic damage to sulfur facility structures; ~80% housing units affected in parish</li>
         <li><strong>Data quality:</strong> Multiple high-water mark datasets from FEMA WWL maps and USGS surveys</li>
         <li><strong>Legacy:</strong> Led to comprehensive federal levee improvements under HSDRRS program</li>
@@ -5835,7 +5854,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <h4>Hurricane Isaac (2012)</h4>
       <ul class="detailed-list">
         <li><strong>Significance:</strong> First major test of post-Katrina levee improvements</li>
-        <li><strong>Observations:</strong> "Mile Marker 39 is good; Buras is good; Venice is good"</li>
+        <li><strong>Observations:</strong> "Port Sulphur is good; Buras is good; Venice is good"</li>
         <li><strong>Evidence:</strong> Visible water lines on levees showed protection systems held during significant surge</li>
         <li><strong>Validation:</strong> No major damage reported, confirming infrastructure effectiveness</li>
       </ul>
@@ -5856,7 +5875,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <ul class="detailed-list">
         <li><strong>Discharge:</strong> 131,000 CFS (extreme low)</li>
         <li><strong>Impact:</strong> Industry-wide draft restrictions at shallow terminals</li>
-        <li><strong>Strategic advantage:</strong> Mile Marker 39's deep-water access maintained full operations</li>
+        <li><strong>Strategic advantage:</strong> Port Sulphur's deep-water access maintained full operations</li>
         <li><strong>Market opportunity:</strong> Revenue generation while competitors faced operational constraints</li>
       </ul>
     </div>
@@ -5866,7 +5885,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="content-block">
     <h3>Long-term Climate Considerations</h3>
     <p>
-      Future planning for Mile Marker 39 Terminal must account for evolving climate factors:
+      Future planning for Port Sulphur Terminal must account for evolving climate factors:
     </p>
     <ul class="detailed-list">
       <li><strong>Sea level rise:</strong> Expected gradual increase in storm surge potential and compound flooding risk</li>
@@ -5942,7 +5961,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <h4>Hurricane & Storm Surge Data</h4>
       <ul class="source-list">
         <li><a href="https://www.nhc.noaa.gov/data/tcr/AL122005_Katrina.pdf" target="_blank">NOAA/NHC Tropical Cyclone Report - Hurricane Katrina (updated Jan 4, 2023)</a> - Authoritative surge data (15-19 ft Plaquemines Parish)</li>
-        <li><a href="https://www.preventionweb.net/files/2737_katrinawwlrptla1.pdf" target="_blank">FEMA Wind-Water Line (WWL) Data Collection, Louisiana (June 9, 2006)</a> - Mile Marker 39 Sheet 50; high-water mark points</li>
+        <li><a href="https://www.preventionweb.net/files/2737_katrinawwlrptla1.pdf" target="_blank">FEMA Wind-Water Line (WWL) Data Collection, Louisiana (June 9, 2006)</a> - Port Sulphur Sheet 50; high-water mark points</li>
         <li><a href="https://pubs.usgs.gov/sir/2009/5230/pdf/sir2009-5230.pdf" target="_blank">USGS SIR 2009-5230 - Mapping and Visualization of Storm-Surge Dynamics</a> - Maximum storm-surge surface from surveyed high-water marks</li>
         <li><a href="https://biotech.law.lsu.edu/katrina/ipet/gpo/Vol%20IV%20The%20Storm%20-%20maintext.pdf" target="_blank">USACE IPET Volume IV: The Storm</a> - Surge/wave hindcasts; Plaquemines Parish levee overtopping analysis</li>
         <li><a href="https://www.weather.gov/media/publications/assessments/Katrina.pdf" target="_blank">NOAA Service Assessment - Hurricane Katrina (June 2006)</a> - Broader NOAA assessment with surge sections</li>
@@ -5967,7 +5986,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="source-category">
       <h4>River Monitoring & Operational Data</h4>
       <ul class="source-list">
-        <li>Mississippi River downstream monitoring stations with Mile Marker 39 scaling factors</li>
+        <li>Mississippi River downstream monitoring stations with Port Sulphur scaling factors</li>
         <li>NOAA coastal marine forecasting systems</li>
         <li>National Hurricane Center 5-day tropical forecasts</li>
         <li>Regional fog reporting and visibility monitoring network</li>
@@ -5975,7 +5994,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 
     <div class="note-box">
-      <strong>Data Quality Note:</strong> Hurricane Katrina surge data combines multiple authoritative sources. NHC TCR provides parish-level surge (15-19 ft); site-specific depths at Mile Marker 39 (~22 ft inundation) require integration of FEMA WWL maps (Sheet 50) and USGS high-water mark datasets. Many gauges failed near peak surge, requiring high-water mark surveys for accurate reconstruction.
+      <strong>Data Quality Note:</strong> Hurricane Katrina surge data combines multiple authoritative sources. NHC TCR provides parish-level surge (15-19 ft); site-specific depths at Port Sulphur (~22 ft inundation) require integration of FEMA WWL maps (Sheet 50) and USGS high-water mark datasets. Many gauges failed near peak surge, requiring high-water mark surveys for accurate reconstruction.
     </div>
   </div>
 
@@ -6400,7 +6419,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="overview-grid">
     <div class="overview-card">
       <h3>Location</h3>
-      <p><strong>28310 Highway 23, Mile Marker 39, LA 70083</strong></p>
+      <p><strong>28310 Highway 23, Port Sulphur, LA 70083</strong></p>
       <p>Plaquemines Parish, Louisiana</p>
       <p>West Bank Mississippi River Mile Marker 39</p>
       <p class="coordinates">29.4714°N, 89.6947°W</p>
@@ -6452,7 +6471,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <h3 class="block-title">Ownership & Operational Timeline (1932-2025)</h3>
     <div class="timeline-content">
       <div class="timeline-intro">
-        <p>The Mile Marker 39 terminal has a 93-year history spanning sulfur mining operations, corporate transitions, natural disaster, environmental remediation, and current availability for industrial redevelopment.</p>
+        <p>The Port Sulphur terminal has a 93-year history spanning sulfur mining operations, corporate transitions, natural disaster, environmental remediation, and current availability for industrial redevelopment.</p>
       </div>
 
       <div class="timeline-events">
@@ -6468,7 +6487,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="timeline-marker"></div>
           <div class="timeline-content-item">
             <h4>1933: Facility Construction & Operations Commence</h4>
-            <p>Mile Marker 39 facility construction began; operations commenced as logistics, refining, storage and shipping hub supporting the Frasch Process sulfur extraction.</p>
+            <p>Port Sulphur facility construction began; operations commenced as logistics, refining, storage and shipping hub supporting the Frasch Process sulfur extraction.</p>
           </div>
         </div>
 
@@ -6476,7 +6495,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="timeline-marker"></div>
           <div class="timeline-content-item">
             <h4>1933-1978: Primary Sulfur Mining Period</h4>
-            <p>45 years of primary sulfur mine operations at Grande Ecaille (10 miles west). Mile Marker 39 served as the processing and export hub, handling molten sulfur in insulated tanks and "vatting" operations.</p>
+            <p>45 years of primary sulfur mine operations at Grande Ecaille (10 miles west). Port Sulphur served as the processing and export hub, handling molten sulfur in insulated tanks and "vatting" operations.</p>
           </div>
         </div>
 
@@ -6629,7 +6648,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </thead>
         <tbody>
           <tr class="highlight-row">
-            <td><strong>Mile Marker 39 Terminal (Estimated)</strong></td>
+            <td><strong>Port Sulphur Terminal (Estimated)</strong></td>
             <td>Plaquemines</td>
             <td>2025</td>
             <td>106.99</td>
@@ -6711,7 +6730,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="analysis-notes">
       <h4>Transaction Analysis</h4>
       <ul>
-        <li><strong>Mile Marker 39 valuation</strong> at $137,420/acre represents the middle range for remediated brownfield sites with deep-water access.</li>
+        <li><strong>Port Sulphur valuation</strong> at $137,420/acre represents the middle range for remediated brownfield sites with deep-water access.</li>
         <li><strong>Avondale Marine</strong> demonstrates exceptional appreciation (450% from 2018-2024) due to premium location, existing infrastructure, and strategic acquisitions.</li>
         <li><strong>Louisiana International Terminal</strong> commands 62% premium due to deep-draft capabilities and container terminal development potential.</li>
         <li><strong>Phillips 66 Alliance</strong> transaction shows modest premium (14%) despite massive scale and operational refinery infrastructure.</li>
@@ -6741,7 +6760,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <li><strong>Natural Deep Water:</strong> 10-15% premium</li>
           <li><strong>Direct Highway Access:</strong> 10-15% premium</li>
           <li><strong>Interstate Proximity:</strong> 5-10% premium</li>
-          <li><strong>Class I Railroad Access:</strong> 5-10% premium (not currently available at Mile Marker 39)</li>
+          <li><strong>Class I Railroad Access:</strong> 5-10% premium (not currently available at Port Sulphur)</li>
         </ul>
       </div>
 
@@ -6915,7 +6934,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
 
       <div class="project-card">
-        <h4>Highway 23 Widening (Mile Marker 39/Happy Jack)</h4>
+        <h4>Highway 23 Widening (Port Sulphur/Happy Jack)</h4>
         <p class="project-value">$17 Million</p>
         <ul>
           <li>4-mile expansion</li>
@@ -6931,7 +6950,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <h3 class="block-title">Flood Risk & Hurricane Vulnerability</h3>
 
     <div class="risk-warning">
-      <p><strong>Critical Risk Factor:</strong> The Mile Marker 39 site is classified as a high-risk FEMA flood zone with site elevation of only 8 feet above sea level. Historical hurricane impacts demonstrate extreme vulnerability to storm surge.</p>
+      <p><strong>Critical Risk Factor:</strong> The Port Sulphur site is classified as a high-risk FEMA flood zone with site elevation of only 8 feet above sea level. Historical hurricane impacts demonstrate extreme vulnerability to storm surge.</p>
     </div>
 
     <div class="chart-container" style="height: 450px;">
@@ -6960,7 +6979,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="event-card historical">
         <h4>Hurricane Betsy (1965) & Camille (1969)</h4>
         <ul>
-          <li><strong>Site Impact:</strong> No flooding at Mile Marker 39 site</li>
+          <li><strong>Site Impact:</strong> No flooding at Port Sulphur site</li>
           <li><strong>Note:</strong> Earlier hurricanes did not produce significant storm surge at this location</li>
         </ul>
       </div>
@@ -8099,7 +8118,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <span class="source-count">15 images | 3 categories</span>
     </div>
     <p class="section-description">
-      Historical and contemporary photographic documentation of the Mile Marker 39 Terminal facility,
+      Historical and contemporary photographic documentation of the Port Sulphur Terminal facility,
       spanning from 1940s Library of Congress archives through modern aerial surveys and regulatory documentation.
     </p>
     <!-- Placeholder Notice -->
@@ -8195,7 +8214,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="image-caption">
         <h4 class="image-title">Sulphur Conveyor Belt and Dock Infrastructure</h4>
         <p class="image-description">
-          Conveyor belt systems and sulphur loading dock facilities at the Mile Marker 39 terminal.
+          Conveyor belt systems and sulphur loading dock facilities at the Port Sulphur terminal.
           <span class="archive-ref">OWI 33875 D</span>
         </p>
         <p class="image-source">Library of Congress - Office of War Information Collection</p>
@@ -8220,7 +8239,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="image-caption">
         <h4 class="image-title">Sulphur Barge Loading Operations</h4>
         <p class="image-description">
-          Aerial view of a barge loaded with sulphur at the Mile Marker 39 dock facility.
+          Aerial view of a barge loaded with sulphur at the Port Sulphur dock facility.
           <span class="archive-ref">OWI 478832 IMO</span>
         </p>
         <p class="image-source">Library of Congress - Office of War Information Collection</p>
@@ -8281,7 +8300,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="image-wrapper">
         <img
           src="https://via.placeholder.com/800x600/1a1a2e/64ffb4?text=Historical+Image+5"
-          alt="Mile Marker 39 Company Town Overview"
+          alt="Port Sulphur Company Town Overview"
           loading="lazy"
           onclick="openLightbox('img_005')"
         />
@@ -8293,7 +8312,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       </div>
       <div class="image-caption">
-        <h4 class="image-title">Mile Marker 39 Company Town Overview</h4>
+        <h4 class="image-title">Port Sulphur Company Town Overview</h4>
         <p class="image-description">
           Wide-angle view showing employee housing, water tower, and surrounding landscape.
           <span class="archive-ref">OWI 33881 D</span>
@@ -8370,7 +8389,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="image-caption">
         <h4 class="image-title">Property Boundary GIS View - Alternate Angle</h4>
         <p class="image-description">
-          Detailed property boundary delineation and parcel data for the Mile Marker 39 terminal site.
+          Detailed property boundary delineation and parcel data for the Port Sulphur terminal site.
         </p>
         <p class="image-source">GIS Public Viewer / Property Records System</p>
       </div>
@@ -8490,7 +8509,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="image-caption">
         <h4 class="image-title">Site Context Aerial Imagery</h4>
         <p class="image-description">
-          Aerial view providing context for the Mile Marker 39 terminal site location and surrounding area.
+          Aerial view providing context for the Port Sulphur terminal site location and surrounding area.
         </p>
         <p class="image-source">Aerial Imagery Platform</p>
       </div>
@@ -8514,7 +8533,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="image-caption">
         <h4 class="image-title">Detailed Site Aerial View</h4>
         <p class="image-description">
-          Detailed aerial photograph showing the Mile Marker 39 terminal site configuration and immediate surroundings.
+          Detailed aerial photograph showing the Port Sulphur terminal site configuration and immediate surroundings.
         </p>
         <p class="image-source">Aerial Imagery Platform</p>
       </div>
@@ -8539,7 +8558,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="image-caption">
         <h4 class="image-title">EPA ECHO Facility Report</h4>
         <p class="image-description">
-          EPA ECHO (Enforcement and Compliance History Online) Detailed Facility Report for Freeport McMoRan Energy LLC - Mile Marker 39 Facility.
+          EPA ECHO (Enforcement and Compliance History Online) Detailed Facility Report for Freeport McMoRan Energy LLC - Port Sulphur Facility.
           <span class="archive-ref">FRS ID: 110022408321</span>
         </p>
         <p class="image-source">EPA ECHO Database</p>
@@ -8554,7 +8573,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="map-placeholder">
         <p>Map view showing geolocated images</p>
         <p class="map-coordinates">Center: 29.473414°N, 89.686632°W</p>
-        <p class="map-note">All 15 images are located at the Mile Marker 39 Terminal site</p>
+        <p class="map-note">All 15 images are located at the Port Sulphur Terminal site</p>
       </div>
     </div>
     <div class="map-legend">
@@ -8635,7 +8654,7 @@ const galleryImages = [
   {
     id: 'img_001', category: 'historical', period: '1940s',
     title: 'Sulphur Conveyor Belt and Dock Infrastructure',
-    description: 'Black and white photograph showing conveyor belt systems and sulphur loading dock facilities at the Mile Marker 39 terminal. Visible infrastructure includes conveyor mechanisms, storage areas, and dock buildings.',
+    description: 'Black and white photograph showing conveyor belt systems and sulphur loading dock facilities at the Port Sulphur terminal. Visible infrastructure includes conveyor mechanisms, storage areas, and dock buildings.',
     source: 'Library of Congress - Office of War Information Collection',
     archiveRef: 'OWI 33875 D',
     context: 'Freeport Sulphur Company operated this facility from 1933-2005 as a logistics, refining, storage and shipping hub for sulphur operations. During WWII, sulphur was a critical strategic material for munitions production.',
@@ -8644,7 +8663,7 @@ const galleryImages = [
   {
     id: 'img_002', category: 'historical', period: '1940s',
     title: 'Sulphur Barge Loading Operations',
-    description: 'Aerial view of a barge loaded with sulphur at the Mile Marker 39 dock facility. The image shows conveyor systems, waterway access, and adjacent storage areas.',
+    description: 'Aerial view of a barge loaded with sulphur at the Port Sulphur dock facility. The image shows conveyor systems, waterway access, and adjacent storage areas.',
     source: 'Library of Congress - Office of War Information Collection',
     archiveRef: 'OWI 478832 IMO',
     context: 'This image captures the barge loading operations that were central to the facility\'s mission of shipping processed sulphur via the Mississippi River to Gulf of Mexico ports.',
@@ -8665,16 +8684,16 @@ const galleryImages = [
     description: 'View of waterfront showing towboats including the \'Homer A. Burnell\' moored at the dock, with processing buildings and employee housing visible in the background.',
     source: 'Library of Congress - Office of War Information Collection',
     archiveRef: 'OWI 33880 D',
-    context: 'Mile Marker 39 functioned as a company town with Freeport Sulphur providing housing and infrastructure for workers. The towboat fleet was essential for managing barge traffic on the Mississippi River.',
+    context: 'Port Sulphur functioned as a company town with Freeport Sulphur providing housing and infrastructure for workers. The towboat fleet was essential for managing barge traffic on the Mississippi River.',
     imgSrc: 'https://via.placeholder.com/800x600/1a1a2e/64ffb4?text=Historical+Image+4'
   },
   {
     id: 'img_005', category: 'historical', period: '1940s',
-    title: 'Mile Marker 39 Company Town Overview',
-    description: 'Wide-angle view of the Mile Marker 39 company town showing employee housing, water tower, and surrounding landscape.',
+    title: 'Port Sulphur Company Town Overview',
+    description: 'Wide-angle view of the Port Sulphur company town showing employee housing, water tower, and surrounding landscape.',
     source: 'Library of Congress - Office of War Information Collection',
     archiveRef: 'OWI 33881 D',
-    context: 'Freeport Sulphur developed Mile Marker 39 as a planned community to support its industrial operations, providing housing and amenities for workers and their families from 1933 until operations ceased.',
+    context: 'Freeport Sulphur developed Port Sulphur as a planned community to support its industrial operations, providing housing and amenities for workers and their families from 1933 until operations ceased.',
     imgSrc: 'https://via.placeholder.com/800x600/1a1a2e/64ffb4?text=Historical+Image+5'
   },
   {
@@ -8689,7 +8708,7 @@ const galleryImages = [
   {
     id: 'img_007', category: 'aerial', period: '2020s',
     title: 'Property Boundary GIS View',
-    description: 'GIS public viewer screenshot showing property boundaries, parcel information, and aerial imagery of the Mile Marker 39 terminal site along the Mississippi River.',
+    description: 'GIS public viewer screenshot showing property boundaries, parcel information, and aerial imagery of the Port Sulphur terminal site along the Mississippi River.',
     source: 'GIS Public Viewer / Property Records System',
     archiveRef: null,
     context: 'Current property status following cessation of operations in early 2000s and Hurricane Katrina damage in 2005. Site is being evaluated for redevelopment as a maritime terminal.',
@@ -8698,7 +8717,7 @@ const galleryImages = [
   {
     id: 'img_008', category: 'aerial', period: '2020s',
     title: 'Property Boundary GIS View - Alternate Angle',
-    description: 'Additional GIS public viewer screenshot showing detailed property boundary delineation and parcel data for the Mile Marker 39 terminal site.',
+    description: 'Additional GIS public viewer screenshot showing detailed property boundary delineation and parcel data for the Port Sulphur terminal site.',
     source: 'GIS Public Viewer / Property Records System',
     archiveRef: null,
     context: 'Property records and GIS data used for due diligence analysis of the former industrial site.',
@@ -8734,7 +8753,7 @@ const galleryImages = [
   {
     id: 'img_012', category: 'aerial', period: '2020s',
     title: 'Regional Context Aerial View',
-    description: 'Wide-area aerial/satellite view showing regional context of the Mile Marker 39 site in relation to surrounding properties and Mississippi River configuration.',
+    description: 'Wide-area aerial/satellite view showing regional context of the Port Sulphur site in relation to surrounding properties and Mississippi River configuration.',
     source: 'Satellite/Aerial Imagery Platform',
     archiveRef: null,
     context: 'Regional view showing the site\'s strategic location on the Mississippi River between New Orleans and the Gulf of Mexico.',
@@ -8743,7 +8762,7 @@ const galleryImages = [
   {
     id: 'img_013', category: 'aerial', period: '2020s',
     title: 'Site Context Aerial Imagery',
-    description: 'Aerial view providing context for the Mile Marker 39 terminal site location and surrounding area.',
+    description: 'Aerial view providing context for the Port Sulphur terminal site location and surrounding area.',
     source: 'Aerial Imagery Platform',
     archiveRef: null,
     context: 'Current aerial view showing post-Katrina site conditions and surrounding development.',
@@ -8752,7 +8771,7 @@ const galleryImages = [
   {
     id: 'img_014', category: 'aerial', period: '2020s',
     title: 'Detailed Site Aerial View',
-    description: 'Detailed aerial photograph showing the Mile Marker 39 terminal site configuration and immediate surroundings.',
+    description: 'Detailed aerial photograph showing the Port Sulphur terminal site configuration and immediate surroundings.',
     source: 'Aerial Imagery Platform',
     archiveRef: null,
     context: 'Detailed view of current site conditions for development planning and engineering assessment.',
@@ -8761,7 +8780,7 @@ const galleryImages = [
   {
     id: 'img_015', category: 'regulatory', period: '2020s',
     title: 'EPA ECHO Facility Report',
-    description: 'EPA ECHO (Enforcement and Compliance History Online) Detailed Facility Report for Freeport McMoRan Energy LLC - Mile Marker 39 Facility, showing compliance status, enforcement history, and regulatory information. Address: 28310 HWY 23, Mile Marker 39, LA 70083.',
+    description: 'EPA ECHO (Enforcement and Compliance History Online) Detailed Facility Report for Freeport McMoRan Energy LLC - Port Sulphur Facility, showing compliance status, enforcement history, and regulatory information. Address: 28310 HWY 23, Port Sulphur, LA 70083.',
     source: 'EPA ECHO Database',
     archiveRef: 'FRS ID: 110022408321',
     context: 'EPA regulatory compliance history for the former Freeport McMoRan facility, showing environmental monitoring and enforcement activities through 2003 when operations were winding down.',
@@ -8953,7 +8972,7 @@ document.addEventListener('keydown', function(e) {
 function initializeMap() {
   // In production, this would initialize a Leaflet map
   // For now, just show placeholder text
-  console.log('Map view initialized - all images located at Mile Marker 39 Terminal (29.473414, -89.686632)');
+  console.log('Map view initialized - all images located at Port Sulphur Terminal (29.473414, -89.686632)');
 }
 
 // Initialize gallery on page load
@@ -9486,7 +9505,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div id="market" class="tab-content">
 <!-- ============================================================================
      MARKET ANALYSIS SECTION
-     Mile Marker 39 Terminal Analysis - Mile Marker 39
+     Port Sulphur Terminal Analysis - Mile Marker 39
 
      Generated: 2026-01-22
      Data Source: market_data.json
@@ -9509,7 +9528,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <p>
             The Mississippi River System (MRS) handles approximately <strong>500 million short tons</strong>
             of freight annually, but 80-90% is classified as captive or through traffic that bypasses
-            intermediate ports. For Mile Marker 39 (Mile Marker 39 Terminal), the accessible non-captive
+            intermediate ports. For Mile Marker 39 (Port Sulphur Terminal), the accessible non-captive
             market is estimated at <strong>5-10 million tons annually</strong>, primarily industrial cargo
             including cement imports, metals, and bulk materials. Current capture rate remains at 1-2%,
             with rail connectivity identified as the critical constraint for growth.
@@ -9743,7 +9762,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="content-block">
         <h3>MM39-Specific Market Opportunity</h3>
         <p>
-            Mile Marker 39 (Mile Marker 39 Terminal) has access to <strong>5-10 million tons annually</strong>
+            Mile Marker 39 (Port Sulphur Terminal) has access to <strong>5-10 million tons annually</strong>
             of non-captive industrial cargo, but current capture rate remains at 1-2%. Primary commodities
             include cement imports, metals, and industrial materials. The critical constraint is rail
             connectivity via the New Orleans & Gulf Coast Railway (NOGC).
@@ -11693,7 +11712,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div id="history" class="tab-content">
 <!-- ============================================================================
-     HISTORY SECTION - Mile Marker 39 Terminal Historical Timeline
+     HISTORY SECTION - Port Sulphur Terminal Historical Timeline
 
      This section presents 3,025 years of history from Indigenous settlement
      to modern industrial reuse (1000 BCE - 2025 CE), featuring:
@@ -11818,7 +11837,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="milestone-year">1912</div>
                 <div class="milestone-title">Freeport Sulphur Company Founded</div>
                 <div class="milestone-description">
-                    Establishment of the company that would develop Mile Marker 39 operations,
+                    Establishment of the company that would develop Port Sulphur operations,
                     founding the city of Freeport, Texas near its sulfur mines.
                 </div>
             </div>
@@ -11829,7 +11848,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="milestone-title">Sulfur Rights Acquisition</div>
                 <div class="milestone-description">
                     Freeport acquires Lake Grande Écaille sulfur mining rights (10 miles west),
-                    initiating Mile Marker 39 terminal development.
+                    initiating Port Sulphur terminal development.
                 </div>
             </div>
 
@@ -11838,7 +11857,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="milestone-year">1933</div>
                 <div class="milestone-title">Facility Commissioning</div>
                 <div class="milestone-description">
-                    Mile Marker 39 facility begins operations with completion of 24' x 433' concrete
+                    Port Sulphur facility begins operations with completion of 24' x 433' concrete
                     dock rated for 10,000 tons with 52' draft access.
                 </div>
             </div>
@@ -11859,7 +11878,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="milestone-title">Liquid Sulfur Shipping Begins</div>
                 <div class="milestone-description">
                     Facility capabilities expand to include liquid sulfur barge shipments,
-                    first load shipped from Mile Marker 39.
+                    first load shipped from Port Sulphur.
                 </div>
             </div>
 
@@ -12022,11 +12041,11 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="period-content">
                 <div class="period-description">
                     In 1932, Freeport Sulphur Company acquired sulfur mining rights for Lake Grande Écaille
-                    (10 miles west of Mile Marker 39). Facility construction began in 1932-1933 to support
+                    (10 miles west of Port Sulphur). Facility construction began in 1932-1933 to support
                     logistics, refining, and shipping operations. The 24' x 433' concrete dock was completed
-                    in 1933, rated for 10,000 tons with 52' draft access. Mile Marker 39 facility began
+                    in 1933, rated for 10,000 tons with 52' draft access. Port Sulphur facility began
                     operations in 1933, processing sulfur from Grande Écaille via the Frasch Process.
-                    The company town of Mile Marker 39 grew around the site with worker housing and
+                    The company town of Port Sulphur grew around the site with worker housing and
                     supporting infrastructure.
                 </div>
                 <div class="period-events-count">
@@ -12051,7 +12070,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="period-content">
                 <div class="period-description">
-                    From 1933-1978, Grande Écaille served as the primary sulfur mine with Mile Marker 39
+                    From 1933-1978, Grande Écaille served as the primary sulfur mine with Port Sulphur
                     as the logistics and shipping hub. The facility supported multiple Frasch Process
                     sulfur mines throughout Louisiana, including offshore Main Pass Block 299 (50 miles
                     offshore, 300' water depth). Wartime production peaked during WWII, earning an
@@ -12141,7 +12160,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="context-icon">🏭</div>
                 <div class="context-title">72 Years of Operations</div>
                 <div class="context-text">
-                    Mile Marker 39 facility operated continuously from 1933-2005 as a logistics,
+                    Port Sulphur facility operated continuously from 1933-2005 as a logistics,
                     refining, storage, and shipping hub for Freeport Sulphur Company's sulfur mining
                     operations, supporting multiple Frasch Process mines throughout Louisiana.
                 </div>
@@ -12164,7 +12183,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="context-text">
                     During World War II, the facility received the Army-Navy "E" Award in 1944
                     for excellence in wartime defense production. Sulfur was critical for
-                    munitions manufacturing, making Mile Marker 39 a strategic national asset.
+                    munitions manufacturing, making Port Sulphur a strategic national asset.
                 </div>
             </div>
 
@@ -12220,7 +12239,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="source-item">
                 <div class="source-type">Historical Archives</div>
                 <div class="source-name">National Archives, MD</div>
-                <div class="source-details">1944 photograph of Town of Mile Marker 39</div>
+                <div class="source-details">1944 photograph of Town of Port Sulphur</div>
             </div>
             <div class="source-item">
                 <div class="source-type">Sustainability Report</div>
@@ -12857,7 +12876,7 @@ function initializeTimelineChart() {
 
 <div id="econometrics" class="tab-content">
 <!-- ECONOMETRICS SECTION -->
-<!-- Mile Marker 39 Terminal - Financial Analysis -->
+<!-- Port Sulphur Terminal - Financial Analysis -->
 <!-- Generated: 2026-01-22 -->
 
 <section id="econometrics" class="report-section">
@@ -13079,14 +13098,14 @@ function initializeTimelineChart() {
   <div class="chart-container">
     <div class="chart-header">
       <h3>Land Valuation Comparison - Plaquemines Parish</h3>
-      <p class="chart-description">Mile Marker 39 commands 102% premium over market average due to 52' draft and River Mile 39 location</p>
+      <p class="chart-description">Port Sulphur commands 102% premium over market average due to 52' draft and River Mile 39 location</p>
     </div>
     <div class="chart-wrapper">
       <canvas id="landValuationChart" aria-label="Horizontal bar chart comparing land valuations per acre"></canvas>
     </div>
     <div class="chart-notes">
       <p><strong>Waterfront Premium</strong>: 72% premium over general parish land ($68K vs $39.5K per acre)</p>
-      <p><strong>Mile Marker 39 Premium Justified By</strong>: Deepest water access on Lower Mississippi (52' draft), closest deepwater terminal to open water (3+ hour advantage), no air draft restrictions</p>
+      <p><strong>Port Sulphur Premium Justified By</strong>: Deepest water access on Lower Mississippi (52' draft), closest deepwater terminal to open water (3+ hour advantage), no air draft restrictions</p>
       <p><strong>Risk Discount Factors</strong>: Hurricane/flood vulnerability, environmental verification needs, no direct rail access (8 miles to nearest rail)</p>
     </div>
   </div>
@@ -13095,7 +13114,7 @@ function initializeTimelineChart() {
   <div class="chart-container">
     <div class="chart-header">
       <h3>Infrastructure Premiums - Market Comparison</h3>
-      <p class="chart-description">Typical market premiums versus Mile Marker 39 actual infrastructure advantages</p>
+      <p class="chart-description">Typical market premiums versus Port Sulphur actual infrastructure advantages</p>
     </div>
     <div class="chart-wrapper">
       <canvas id="infrastructurePremiumsChart" aria-label="Radar chart showing infrastructure premium percentages"></canvas>
@@ -13223,7 +13242,7 @@ function initializeTimelineChart() {
     <h3>Comparable Transactions & Valuation Context</h3>
 
     <div class="comparable-property">
-      <h4>Mile Marker 76 Industrial Complex</h4>
+      <h4>Port Nickel Industrial Complex</h4>
       <div class="comp-details">
         <p><strong>Size</strong>: 387 acres with 5,720 linear feet river frontage</p>
         <p><strong>Infrastructure</strong>: 510' x 52' dock, 66,763 sqft warehouse, 386,000 sqft laydown yard</p>
@@ -13247,12 +13266,12 @@ function initializeTimelineChart() {
         <p><strong>Size</strong>: 10 acres urban riverfront</p>
         <p><strong>Land Cost</strong>: $5M minimum ($500K per acre)</p>
         <p><strong>Zoning</strong>: Marine Industrial District</p>
-        <p><strong>Premium Type</strong>: Urban location premium commands 10x+ Mile Marker 39 price per acre</p>
+        <p><strong>Premium Type</strong>: Urban location premium commands 10x+ Port Sulphur price per acre</p>
       </div>
     </div>
 
     <div class="valuation-notes">
-      <p><strong>Mile Marker 39 Positioning</strong>: $137,407 per acre asking price represents 102% premium over Plaquemines Parish waterfront average ($68K/acre)</p>
+      <p><strong>Port Sulphur Positioning</strong>: $137,407 per acre asking price represents 102% premium over Plaquemines Parish waterfront average ($68K/acre)</p>
       <p><strong>Premium Justification</strong>: 52' draft (deepest on Lower Mississippi), River Mile 39 location (closest deepwater to open water), 3+ hour shipping time advantage, no air draft restrictions</p>
       <p><strong>Risk Offsets to Premium</strong>: Extreme hurricane/flood vulnerability, legacy environmental contamination requiring verification, no current rail access (8 miles to terminus), coastal erosion and subsidence threats</p>
     </div>
@@ -13323,7 +13342,7 @@ function initializeTimelineChart() {
     <h3>Investment Recommendation Summary</h3>
     <div class="recommendation-content">
       <p class="recommendation-headline">
-        Mile Marker 39 Terminal presents a <strong>high-risk, high-reward</strong> opportunity requiring sophisticated environmental risk management and patient capital with 5-7 year horizons.
+        Port Sulphur Terminal presents a <strong>high-risk, high-reward</strong> opportunity requiring sophisticated environmental risk management and patient capital with 5-7 year horizons.
       </p>
 
       <h4>Primary Investment Thesis</h4>
@@ -14006,7 +14025,7 @@ function initializeTimelineChart() {
   <div class="content-block">
     <h3>Investment Overview</h3>
     <p>
-      The Mile Marker 39 Terminal development requires a total project investment ranging from
+      The Port Sulphur Terminal development requires a total project investment ranging from
       <strong>$27.95M to $52.65M</strong>, with a base case estimate of <strong>$35.0M</strong>.
       The project timeline spans <strong>39-81 months (3.25-6.75 years)</strong> across four major phases:
       due diligence, environmental remediation, permitting, and construction.
@@ -14058,7 +14077,7 @@ function initializeTimelineChart() {
       </div>
       <div class="category-details">
         <ul>
-          <li><strong>Location:</strong> 28310 Highway 23, Mile Marker 39, LA 70083</li>
+          <li><strong>Location:</strong> 28310 Highway 23, Port Sulphur, LA 70083</li>
           <li><strong>Total Acreage:</strong> 107 acres at $137,500/acre</li>
           <li><strong>River Frontage:</strong> 10,693 linear feet at Mile 39 (Mississippi River)</li>
           <li><strong>Draft Capacity:</strong> 52-foot draft (Post-Panamax capable)</li>
@@ -14361,7 +14380,7 @@ function initializeTimelineChart() {
     <h3>Financing Structures & Opportunities</h3>
     <p>
       Multiple financing pathways exist for port and terminal infrastructure development, combining
-      public and private capital sources. The Mile Marker 39 Terminal project is eligible for several
+      public and private capital sources. The Port Sulphur Terminal project is eligible for several
       tax-advantaged and federal credit programs due to its maritime infrastructure classification.
     </p>
 
@@ -14454,7 +14473,7 @@ function initializeTimelineChart() {
   <div class="content-block">
     <h3>Regional Infrastructure Investment Context</h3>
     <p>
-      Mile Marker 39 Terminal sits within an unprecedented regional infrastructure investment corridor,
+      Port Sulphur Terminal sits within an unprecedented regional infrastructure investment corridor,
       with <strong>$21+ billion in active Plaquemines Parish projects</strong> and <strong>$60+ billion
       in Louisiana's industrial development pipeline</strong>. This creates strong market demand for
       port and terminal capacity.
@@ -14480,7 +14499,7 @@ function initializeTimelineChart() {
         <div class="project-investment">$85 Million</div>
         <p><strong>Funding:</strong> 85% federal (RAISE grant: $72M), state match from PPMTD</p>
         <p><strong>Timeline:</strong> Design completed May 2025, construction bids Q4 2025, completion 2028-2029</p>
-        <p><strong>Distance:</strong> 32 miles connecting Mile Marker 39 area to Class I rail</p>
+        <p><strong>Distance:</strong> 32 miles connecting Port Sulphur area to Class I rail</p>
       </div>
 
       <div class="project-card">
@@ -14492,7 +14511,7 @@ function initializeTimelineChart() {
       <div class="project-card">
         <h4>LA 23 Highway Widening</h4>
         <div class="project-investment">$17 Million</div>
-        <p>Happy Jack to Mile Marker 39 corridor expansion, environmental clearance underway</p>
+        <p>Happy Jack to Port Sulphur corridor expansion, environmental clearance underway</p>
       </div>
 
       <div class="project-card">
@@ -14505,7 +14524,7 @@ function initializeTimelineChart() {
     <div class="info-box">
       <strong>Strategic Implication:</strong> Total regional transportation and industrial investment exceeds
       <strong>$21.8 billion in active/near-term projects</strong>, creating robust demand for port services,
-      barge fleeting, and vessel mooring. Mile Marker 39 Terminal is strategically positioned to capture
+      barge fleeting, and vessel mooring. Port Sulphur Terminal is strategically positioned to capture
       this regional growth.
     </div>
   </div>
@@ -14695,7 +14714,7 @@ function initializeTimelineChart() {
           <li>Mile 39 on Mississippi River (federal navigation system)</li>
           <li>52-foot draft capacity (Post-Panamax capable) - rare deep-water access</li>
           <li>10,693 linear feet of river frontage</li>
-          <li>Within Mile Marker 39 revetment protection system (RM 41.1-34.3)</li>
+          <li>Within Port Sulphur revetment protection system (RM 41.1-34.3)</li>
         </ul>
       </div>
 
@@ -14723,7 +14742,7 @@ function initializeTimelineChart() {
       <div class="advantage-card">
         <h4>Comparable Land Values</h4>
         <ul>
-          <li><strong>Mile Marker 39:</strong> $137,500/acre</li>
+          <li><strong>Port Sulphur:</strong> $137,500/acre</li>
           <li><strong>State Acquisition (2022):</strong> $60,000/acre (Plaquemines Parish)</li>
           <li><strong>Violet Dock Port:</strong> $222,222/acre (St. Bernard Parish, 81 acres, $18M)</li>
           <li>Acquisition price competitive relative to regional port land values</li>
@@ -14781,7 +14800,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div id="permitting" class="tab-content">
 <!-- ============================================================================
      REGULATORY & PERMITTING SECTION
-     Mile Marker 39 Terminal Analysis
+     Port Sulphur Terminal Analysis
      Generated: 2026-01-22
      Data Sources: 5 files from permitting analysis
      ============================================================================ -->
@@ -14796,7 +14815,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="content-block">
     <h3>Integrated Permitting Strategy</h3>
     <p class="lead-text">
-      Mile Marker 39 Terminal development requires coordination across multiple regulatory authorities
+      Port Sulphur Terminal development requires coordination across multiple regulatory authorities
       with overlapping but distinct jurisdictions. The integrated permitting approach treats
       <strong>Section 408 permission</strong> as the primary regulatory pathway, with Section 10 and
       Section 404 permits processed concurrently under USACE New Orleans District coordination.
@@ -15308,7 +15327,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </p>
         <p>
           <strong>Regulatory Impact:</strong> Established precedents and streamlined processes
-          benefit complementary infrastructure projects like Mile Marker 39 expansion
+          benefit complementary infrastructure projects like Port Sulphur expansion
         </p>
       </div>
 
@@ -15771,7 +15790,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="content-block">
     <h3>Executive Summary</h3>
     <p class="summary-text">
-      Critical due diligence assessment for Mile Marker 39 Terminal acquisition reveals significant
+      Critical due diligence assessment for Port Sulphur Terminal acquisition reveals significant
       environmental liabilities, extreme flood vulnerabilities, and substantial financial exposure.
       The site's 45+ years of sulfur processing operations, combined with its below-sea-level location
       and history of catastrophic flooding (22 feet during Hurricane Katrina in 2005), create
@@ -16802,7 +16821,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div id="engineering" class="tab-content">
 <!-- ENGINEERING SPECIFICATIONS SECTION -->
-<!-- Mile Marker 39 Terminal Analysis -->
+<!-- Port Sulphur Terminal Analysis -->
 <!-- Generated: 2026-01-22 -->
 
 <section id="engineering" class="report-section">
@@ -16820,7 +16839,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="content-block summary-block">
     <h3>Engineering Overview</h3>
     <p>
-      Mile Marker 39 Terminal (River Mile 39) sits entirely within the federally-protected Mile Marker 39 Revetment reach
+      Port Sulphur Terminal (River Mile 39) sits entirely within the federally-protected Port Sulphur Revetment reach
       (RM 41.1-34.3), creating a complex engineering environment where Mississippi River dynamics intersect with
       comprehensive bank protection systems. The site's engineering requirements are defined by extreme current
       velocity variations (1.0-4.0 ft/sec), articulated concrete mat revetment systems requiring specialized
@@ -16839,7 +16858,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="chart-container">
     <div class="chart-header">
       <h3>Seasonal Current Velocity Patterns</h3>
-      <p class="chart-subtitle">Estimated velocities at Mile Marker 39 (RM 39) based on Belle Chasse USGS 07374525 hydrographic data</p>
+      <p class="chart-subtitle">Estimated velocities at Port Sulphur (RM 39) based on Belle Chasse USGS 07374525 hydrographic data</p>
     </div>
     <div class="chart-wrapper">
       <canvas id="seasonalOperationsChart" aria-label="Bar chart showing seasonal current velocity patterns"></canvas>
@@ -16913,7 +16932,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <!-- Technical Specifications Table -->
   <div class="content-block table-block">
     <h3>Design Parameters Specification Summary</h3>
-    <p class="table-subtitle">Mile Marker 39 Terminal - Engineering Design Criteria</p>
+    <p class="table-subtitle">Port Sulphur Terminal - Engineering Design Criteria</p>
 
     <!-- Current Velocities -->
     <div class="spec-table-container">
@@ -17347,7 +17366,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="implication-item">
         <h4>Bank Stability History</h4>
         <p>
-          Multiple revetment systems (Point Michel, Mile Marker 39, Bohemia) indicate historically unstable
+          Multiple revetment systems (Point Michel, Port Sulphur, Bohemia) indicate historically unstable
           banks requiring comprehensive protection. Foundation design must account for underlying bank
           instability and integrate with existing federal infrastructure.
         </p>
@@ -17387,7 +17406,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="reference-note">
       <strong>Hydrographic Data Source:</strong> USGS 07374525 - Mississippi River at Belle Chasse, LA (RM 76)
       <br>
-      <strong>Reference Station:</strong> 37 miles downstream from Mile Marker 39
+      <strong>Reference Station:</strong> 37 miles downstream from Port Sulphur
       <br>
       <strong>Current Observation:</strong> 1.94 ft/sec (1.32 mph) - September 2025
       <br>
@@ -17851,7 +17870,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <h3 class="placeholder-title">Reserved for Future Map Layers</h3>
 
     <p class="placeholder-description">
-      Interactive geospatial visualization of Mile Marker 39 Terminal location, infrastructure assets,
+      Interactive geospatial visualization of Port Sulphur Terminal location, infrastructure assets,
       navigation channels, and environmental features will be displayed here when coordinate data becomes available.
     </p>
 
@@ -18188,7 +18207,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <span class="source-count">0 sources</span>
     </div>
     <p class="section-description">
-      Regulatory permits and compliance documentation for the Mile Marker 39 Terminal facility.
+      Regulatory permits and compliance documentation for the Port Sulphur Terminal facility.
       This section is reserved for interactive document viewer functionality when permit documentation becomes available.
     </p>
   </div>
@@ -18659,5 +18678,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     </script>
+<script src="../../od-theme-pdf.js"></script>
 </body>
 </html>

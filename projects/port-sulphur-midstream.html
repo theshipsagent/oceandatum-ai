@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mile Marker 39 Midstream Operations - Comprehensive analysis of proposed dry cargo mooring facility at Mississippi River Mile 46.3">
-    <title>Mile Marker 39 Midstream Operations | OceanDatum</title>
+    <meta name="description" content="Port Sulphur Midstream Operations - Comprehensive analysis of proposed dry cargo mooring facility at Mississippi River Mile 46.3">
+    <title>Port Sulphur Midstream Operations | OceanDatum</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
+  <link rel="stylesheet" href="../od-lightmode.css">
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -482,7 +484,7 @@
 
         /* Content */
         .content {
-            padding-top: 16px;
+            padding-top: 80px;
             max-width: 1400px;
             margin: 0 auto;
             padding-left: 2rem;
@@ -1091,32 +1093,49 @@
             }
         }
     </style>
-<style id="sn-css">
-.sn{position:fixed;top:0;left:0;right:0;z-index:2000;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(100,255,180,0.12);padding:0 1.5rem;height:48px;display:flex;align-items:center;justify-content:space-between;font-family:'Space Grotesk',sans-serif}
-.sn a{font-size:0.82rem;color:rgba(255,255,255,0.5);text-decoration:none;white-space:nowrap;transition:color 0.2s}
-.sn a:hover{color:#64ffb4}
-.sn-r{display:flex;gap:1.2rem;align-items:center}
-.sn-hub{padding:0.25rem 0.7rem;border:1px solid rgba(255,255,255,0.12);border-radius:5px}
-.sn-hub:hover{border-color:rgba(100,255,180,0.3)}
-.sn-logout{color:rgba(255,100,100,0.7)!important;padding:0.25rem 0.7rem;border:1px solid rgba(255,100,100,0.2);border-radius:5px}
-.sn-logout:hover{color:#ff6464!important;border-color:rgba(255,100,100,0.4)}
-@media(max-width:480px){.sn{padding:0 0.75rem;height:42px}.sn a{font-size:0.72rem}.sn-r{gap:0.6rem}}
-</style>
 </head>
 <body>
-<script>if("scrollRestoration"in history)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
     <!-- Navbar -->
         <!-- Navbar -->
-        <nav class="sn">
-  <a href="../index.html">Home</a>
-  <div class="sn-r">
-    <a href="../tools/maritime-ai-role.html">Role Brief</a>
-    <a href="../cv.html">CV</a>
-    <a href="../projects-hub.html" class="sn-hub">&larr; Hub</a>
-  </div>
-</nav>
+        <nav class="navbar">
+        <span class="navbar-brand">An <a href="../index.html">oceandatum.ai</a> company</span>
 
-    <!-- Mobile menu (hidden by default) --><div class="mobile-menu-item">
+        <!-- Hamburger button (mobile only) -->
+        <button class="hamburger-button" id="hamburgerBtn" aria-label="Menu">
+            ☰
+        </button>
+
+        <!-- Desktop navigation -->
+        <div class="navbar-right">
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/theshipsagent" target="_blank" class="social-icon" title="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/theshipsagent" target="_blank" class="social-icon" title="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+            <a class="navbar-link" href="../projects-hub.html">Projects Hub</a>
+            <a class="navbar-link" href="../index.html">Home</a>
+        </div>
+    </nav>
+
+    <!-- Mobile menu (hidden by default) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-section">
+            <div class="mobile-menu-item">
+                <a href="../projects-hub.html">Projects Hub</a>
+            </div>
+            <div class="mobile-menu-item">
                 <a href="../index.html">Home</a>
             </div>
         </div>
@@ -1145,7 +1164,7 @@
     <div class="content">
         <!-- Hero Section -->
         <div class="hero">
-            <h1>Mile Marker 39 Midstream Operations</h1>
+            <h1>Port Sulphur Midstream Operations</h1>
             <p>Comprehensive analysis of proposed dry cargo mooring facility at Mississippi River Mile 46.3, Plaquemines Parish, Louisiana</p>
         </div>
 
@@ -1804,413 +1823,6 @@
                 </div>
             </div>
 
-            <!-- ══════════════════════════════════════════════
-                 USACE PERMIT & ENGINEERING DOCUMENTATION
-                 Pelican Terminals LLC — MVN-2025-00276-EPP
-                 Mississippi River Mile 46.3 AHP
-            ══════════════════════════════════════════════ -->
-            <div class="content-block" style="margin-top:3rem;">
-                <div style="background:rgba(100,255,180,0.05);border:1px solid rgba(100,255,180,0.18);border-radius:10px;padding:1.25rem 1.75rem;margin-bottom:2rem;display:flex;align-items:center;gap:1rem;">
-                    <div style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#64ffb4;white-space:nowrap;">Regulatory Filing</div>
-                    <div style="font-size:1.15rem;font-weight:700;color:#fff;">USACE Permit Application — Engineering Documentation</div>
-                </div>
-
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.85rem;margin-bottom:2rem;">
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;text-align:center;">
-                        <span style="font-size:1.15rem;font-weight:700;color:#64ffb4;display:block;">MVN-2025-00276</span>
-                        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;letter-spacing:0.04em;">USACE Permit Number</div>
-                    </div>
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;text-align:center;">
-                        <span style="font-size:1.15rem;font-weight:700;color:#64ffb4;display:block;">Mile 46.3 AHP</span>
-                        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;letter-spacing:0.04em;">Mississippi River Location</div>
-                    </div>
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;text-align:center;">
-                        <span style="font-size:1.15rem;font-weight:700;color:#64ffb4;display:block;">750&prime; &times; 106&prime;</span>
-                        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;letter-spacing:0.04em;">Design Vessel (Panamax+)</div>
-                    </div>
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;text-align:center;">
-                        <span style="font-size:1.15rem;font-weight:700;color:#64ffb4;display:block;">5 &times; 48&Prime; Piles</span>
-                        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;letter-spacing:0.04em;">Anchor Piles, 200&prime; Depth</div>
-                    </div>
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;text-align:center;">
-                        <span style="font-size:1.15rem;font-weight:700;color:#64ffb4;display:block;">20 Sheets</span>
-                        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;letter-spacing:0.04em;">Engineering Drawing Set</div>
-                    </div>
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;text-align:center;">
-                        <span style="font-size:1.15rem;font-weight:700;color:#64ffb4;display:block;">$2.7M–$4.0M</span>
-                        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;letter-spacing:0.04em;">Mooring System Cost Est.</div>
-                    </div>
-                </div>
-
-                <h3 style="font-size:1rem;font-weight:700;color:#e8eaf0;margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08);">Permit Overview</h3>
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.5rem;margin-bottom:1.5rem;">
-                    <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;margin-bottom:0.75rem;">Pelican Terminals LLC (Applicant: Juan Carlos Carbone) filed USACE Public Notice MVN-2025-00276-EPP for a proposed midstream dry-cargo mooring facility at Bohemia, Louisiana — Mississippi River Mile 46.3 Above Head of Passes (AHP). Engineering drawings prepared by Lanier &amp; Associates, licensed engineers. The 20-sheet permit set includes vicinity maps, general notes, existing and proposed site plans, and detailed cross-section profiles.</p>
-                    <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;margin-bottom:0.75rem;"><strong style="color:#64ffb4;">Proposed Facility Configuration:</strong> A 7-tier × 8-wide barge fleet (56 barges) anchored by 12 typical monopiles, a captive barge dock, a 250&prime; × 72&prime; crane barge, 200&prime; × 35&prime; product barges, and a midstream ship berth (750&prime; × 106&prime;) served by five anchor piles and five navigation buoys. Total facility designed for Panamax+ class bulk carriers.</p>
-                    <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;"><strong style="color:#64ffb4;">Key Elevations:</strong> Project flowline +11.25&prime; NAVD 88 &nbsp;|&nbsp; Low Water Reference Plane (LWRP) +0.25&prime; &nbsp;|&nbsp; Anchor pile tip elevation −200.0&prime; NAVD 88 &nbsp;|&nbsp; Coordinates: 29.551389°N, 89.764444°W</p>
-                </div>
-
-                <!-- SHEET 4 RECREATION: Proposed Site Plan SVG -->
-                <h3 style="font-size:1rem;font-weight:700;color:#e8eaf0;margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08);">Sheet 4 — Proposed Site Plan (Recreation)</h3>
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.5rem;margin-bottom:1.5rem;">
-                    <div style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-align:center;margin-bottom:1rem;">Pelican Terminals LLC — Proposed Midstream Facility / Mississippi River Mile 46.3 AHP / Not to Scale</div>
-                    <svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:'Space Grotesk',sans-serif;">
-
-                        <!-- River background -->
-                        <rect x="0" y="0" width="800" height="520" fill="#0a1520"/>
-
-                        <!-- River water -->
-                        <rect x="0" y="80" width="800" height="360" fill="#0d2a45" opacity="0.7"/>
-
-                        <!-- River flow arrow -->
-                        <text x="700" y="32" fill="rgba(100,200,255,0.4)" font-size="11" letter-spacing="1">RIVER FLOW ↓</text>
-                        <text x="700" y="46" fill="rgba(100,200,255,0.3)" font-size="10">SOUTH / DOWNRIVER</text>
-
-                        <!-- LEVEE / BANK (left side) -->
-                        <polygon points="0,80 120,80 100,440 0,440" fill="#2a3a25" stroke="rgba(100,255,180,0.25)" stroke-width="1.5"/>
-                        <text x="35" y="265" fill="rgba(100,255,180,0.65)" font-size="10" font-weight="600" transform="rotate(-90,35,265)">LEVEE / BANK</text>
-                        <text x="55" y="260" fill="rgba(100,255,180,0.4)" font-size="9" transform="rotate(-90,55,260)">BOHEMIA, LA</text>
-
-                        <!-- Revetment line -->
-                        <line x1="100" y1="80" x2="100" y2="440" stroke="#64ffb4" stroke-width="2" stroke-dasharray="6,4" opacity="0.5"/>
-                        <text x="103" y="95" fill="rgba(100,255,180,0.55)" font-size="9">REVETMENT</text>
-                        <text x="103" y="106" fill="rgba(100,255,180,0.55)" font-size="9">LINE</text>
-
-                        <!-- BARGE FLEET: 7 tiers × 8 wide. Each barge ~52×16px. Start x=135, y=100 -->
-                        <!-- Tier labels on top -->
-                        <text x="143" y="95" fill="rgba(255,255,255,0.4)" font-size="9">←— BARGE FLEET (7 TIERS × 8 WIDE = 56 BARGES) —→</text>
-                        <!-- Draw 7 tiers (columns), each with 8 barges (rows) -->
-                        <!-- Tier 1 (closest to bank) x=135 -->
-                        <!-- Tier 2 x=193 -->
-                        <!-- ... -->
-                        <!-- Using loop-like repetition in SVG -->
-                        <!-- Tier 1 -->
-                        <rect x="130" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <!-- Tier 2 -->
-                        <rect x="185" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <!-- Tier 3 -->
-                        <rect x="240" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <!-- Tier 4 -->
-                        <rect x="295" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <!-- Tier 5 -->
-                        <rect x="350" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <!-- Tier 6 -->
-                        <rect x="405" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <!-- Tier 7 -->
-                        <rect x="460" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-
-                        <!-- MONOPILES for barge fleet (12 typical, shown as circles at key corners/midpoints) -->
-                        <circle cx="130" cy="100" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="182" cy="100" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="294" cy="100" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="405" cy="100" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="512" cy="100" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="130" cy="242" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="182" cy="242" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="294" cy="242" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="405" cy="242" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="512" cy="242" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="320" cy="170" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="455" cy="170" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <text x="530" y="170" fill="rgba(100,255,180,0.65)" font-size="9">● MONOPILE</text>
-                        <text x="530" y="181" fill="rgba(100,255,180,0.45)" font-size="8">48&quot; dia (typ.)</text>
-
-                        <!-- CRANE BARGE: 250'×72' — shown below barge fleet -->
-                        <rect x="130" y="258" width="110" height="30" rx="3" fill="rgba(255,165,0,0.3)" stroke="rgba(255,165,0,0.7)" stroke-width="1.5"/>
-                        <!-- Crane symbol -->
-                        <line x1="185" y1="258" x2="185" y2="245" stroke="rgba(255,165,0,0.8)" stroke-width="2"/>
-                        <line x1="185" y1="245" x2="215" y2="250" stroke="rgba(255,165,0,0.8)" stroke-width="1.5"/>
-                        <text x="137" y="277" fill="rgba(255,165,0,0.9)" font-size="9" font-weight="600">CRANE BARGE</text>
-                        <text x="137" y="287" fill="rgba(255,165,0,0.65)" font-size="8">250&prime; × 72&prime;</text>
-
-                        <!-- PRODUCT BARGES (200'×35') -->
-                        <rect x="255" y="258" width="90" height="14" rx="2" fill="rgba(150,220,255,0.25)" stroke="rgba(150,220,255,0.5)" stroke-width="1"/>
-                        <rect x="255" y="275" width="90" height="14" rx="2" fill="rgba(150,220,255,0.25)" stroke="rgba(150,220,255,0.5)" stroke-width="1"/>
-                        <text x="258" y="300" fill="rgba(150,220,255,0.7)" font-size="9">PRODUCT BARGES 200&prime;×35&prime;</text>
-
-                        <!-- CAPTIVE BARGE DOCK -->
-                        <rect x="130" y="300" width="80" height="18" rx="2" fill="rgba(180,100,255,0.3)" stroke="rgba(180,100,255,0.6)" stroke-width="1.5"/>
-                        <text x="133" y="313" fill="rgba(180,100,255,0.85)" font-size="9" font-weight="600">CAPTIVE DOCK</text>
-
-                        <!-- MIDSTREAM SHIP BERTH (750'×106') — large vessel in main channel -->
-                        <rect x="120" y="345" width="540" height="80" rx="5" fill="rgba(100,255,180,0.07)" stroke="rgba(100,255,180,0.45)" stroke-width="2" stroke-dasharray="8,4"/>
-                        <!-- Ship hull shape inside -->
-                        <ellipse cx="390" cy="385" rx="260" ry="34" fill="rgba(100,255,180,0.12)" stroke="rgba(100,255,180,0.5)" stroke-width="1.5"/>
-                        <text x="390" y="381" text-anchor="middle" fill="rgba(100,255,180,0.85)" font-size="11" font-weight="600">SHIP BERTH — 750&prime; × 106&prime;</text>
-                        <text x="390" y="395" text-anchor="middle" fill="rgba(100,255,180,0.55)" font-size="9">MIDSTREAM VESSEL (PANAMAX+)</text>
-                        <text x="390" y="408" text-anchor="middle" fill="rgba(100,255,180,0.45)" font-size="8">Design Depth: −40&prime; MLLW</text>
-
-                        <!-- ANCHOR PILES for ship berth (5 piles shown as large circles) -->
-                        <circle cx="155" cy="380" r="7" fill="rgba(255,200,0,0.2)" stroke="rgba(255,200,0,0.8)" stroke-width="2"/>
-                        <circle cx="245" cy="352" r="7" fill="rgba(255,200,0,0.2)" stroke="rgba(255,200,0,0.8)" stroke-width="2"/>
-                        <circle cx="390" cy="345" r="7" fill="rgba(255,200,0,0.2)" stroke="rgba(255,200,0,0.8)" stroke-width="2"/>
-                        <circle cx="535" cy="352" r="7" fill="rgba(255,200,0,0.2)" stroke="rgba(255,200,0,0.8)" stroke-width="2"/>
-                        <circle cx="625" cy="380" r="7" fill="rgba(255,200,0,0.2)" stroke="rgba(255,200,0,0.8)" stroke-width="2"/>
-
-                        <!-- BUOYS (5 navigation buoys, shown as diamonds) -->
-                        <polygon points="155,428 163,436 155,444 147,436" fill="rgba(255,80,80,0.4)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <polygon points="245,428 253,436 245,444 237,436" fill="rgba(255,80,80,0.4)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <polygon points="390,428 398,436 390,444 382,436" fill="rgba(255,80,80,0.4)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <polygon points="535,428 543,436 535,444 527,436" fill="rgba(255,80,80,0.4)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <polygon points="625,428 633,436 625,444 617,436" fill="rgba(255,80,80,0.4)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <!-- Chain lines pile to buoy -->
-                        <line x1="155" y1="387" x2="155" y2="428" stroke="rgba(255,200,0,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/>
-                        <line x1="245" y1="359" x2="245" y2="428" stroke="rgba(255,200,0,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/>
-                        <line x1="390" y1="352" x2="390" y2="428" stroke="rgba(255,200,0,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/>
-                        <line x1="535" y1="359" x2="535" y2="428" stroke="rgba(255,200,0,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/>
-                        <line x1="625" y1="387" x2="625" y2="428" stroke="rgba(255,200,0,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/>
-
-                        <!-- PARKING 200'×200' -->
-                        <rect x="10" y="100" width="85" height="60" rx="3" fill="rgba(100,100,100,0.25)" stroke="rgba(200,200,200,0.3)" stroke-width="1"/>
-                        <text x="52" y="127" text-anchor="middle" fill="rgba(200,200,200,0.55)" font-size="9">PARKING</text>
-                        <text x="52" y="138" text-anchor="middle" fill="rgba(200,200,200,0.4)" font-size="8">200&prime;×200&prime;</text>
-
-                        <!-- Navigation channel label -->
-                        <text x="700" y="390" text-anchor="middle" fill="rgba(100,200,255,0.4)" font-size="10">MAIN</text>
-                        <text x="700" y="403" text-anchor="middle" fill="rgba(100,200,255,0.4)" font-size="10">CHANNEL</text>
-
-                        <!-- LEGEND -->
-                        <rect x="10" y="450" width="780" height="65" rx="5" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-                        <text x="20" y="465" fill="rgba(255,255,255,0.5)" font-size="9" font-weight="600" letter-spacing="1">LEGEND</text>
-                        <rect x="20" y="470" width="16" height="8" rx="1" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <text x="40" y="479" fill="rgba(255,255,255,0.6)" font-size="9">Barges</text>
-                        <circle cx="85" cy="474" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <text x="93" y="479" fill="rgba(255,255,255,0.6)" font-size="9">Monopile (48&quot;)</text>
-                        <circle cx="175" cy="474" r="6" fill="rgba(255,200,0,0.2)" stroke="rgba(255,200,0,0.8)" stroke-width="2"/>
-                        <text x="185" y="479" fill="rgba(255,255,255,0.6)" font-size="9">Anchor Pile (Ship Berth)</text>
-                        <polygon points="278,474 284,480 278,486 272,480" fill="rgba(255,80,80,0.4)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <text x="290" y="479" fill="rgba(255,255,255,0.6)" font-size="9">Navigation Buoy</text>
-                        <rect x="360" y="469" width="30" height="11" rx="2" fill="rgba(255,165,0,0.3)" stroke="rgba(255,165,0,0.7)" stroke-width="1.5"/>
-                        <text x="396" y="479" fill="rgba(255,255,255,0.6)" font-size="9">Crane Barge 250&prime;×72&prime;</text>
-                        <rect x="490" y="470" width="25" height="8" rx="2" fill="rgba(150,220,255,0.25)" stroke="rgba(150,220,255,0.5)" stroke-width="1"/>
-                        <text x="520" y="479" fill="rgba(255,255,255,0.6)" font-size="9">Product Barge 200&prime;×35&prime;</text>
-                        <!-- Row 2 -->
-                        <rect x="20" y="485" width="25" height="8" rx="2" fill="rgba(100,255,180,0.07)" stroke="rgba(100,255,180,0.45)" stroke-width="1.5"/>
-                        <text x="50" y="495" fill="rgba(255,255,255,0.6)" font-size="9">Ship Berth 750&prime;×106&prime; (dashed outline)</text>
-                        <line x1="200" y1="489" x2="220" y2="489" stroke="rgba(255,200,0,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/>
-                        <text x="225" y="495" fill="rgba(255,255,255,0.6)" font-size="9">Mooring Chain (Pile to Buoy)</text>
-                        <line x1="360" y1="489" x2="380" y2="489" stroke="#64ffb4" stroke-width="2" stroke-dasharray="6,4" opacity="0.5"/>
-                        <text x="385" y="495" fill="rgba(255,255,255,0.6)" font-size="9">Revetment Line</text>
-                    </svg>
-                </div>
-
-                <!-- CROSS-SECTIONS -->
-                <h3 style="font-size:1rem;font-weight:700;color:#e8eaf0;margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08);">Cross-Section Profiles — Sheets 5–10 (Recreation)</h3>
-                <p style="color:rgba(255,255,255,0.6);font-size:0.85rem;margin-bottom:1rem;">River cross-sections A, B, and C show the Mississippi River bed profile, existing levee/bank, high water and low water levels, and the proposed structures at their respective stations.</p>
-
-                <!-- Section A: Through Barge Fleet -->
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.25rem;margin-bottom:1rem;">
-                    <div style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;text-align:center;">Section A–A′ — Through Barge Fleet / Looking Downriver</div>
-                    <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:'Space Grotesk',sans-serif;">
-                        <!-- Water background -->
-                        <rect x="0" y="0" width="720" height="200" fill="#0a1520"/>
-                        <!-- Water fill -->
-                        <rect x="0" y="65" width="720" height="100" fill="#0d2a45" opacity="0.6"/>
-                        <!-- River bed (undulating) -->
-                        <path d="M0,165 Q80,155 160,162 Q240,170 320,158 Q400,148 480,155 Q560,163 640,157 Q680,154 720,160" fill="none" stroke="#8b6914" stroke-width="2"/>
-                        <path d="M0,165 Q80,155 160,162 Q240,170 320,158 Q400,148 480,155 Q560,163 640,157 Q680,154 720,160 L720,200 L0,200 Z" fill="#3a2a0a" opacity="0.7"/>
-                        <!-- Elevation labels -->
-                        <!-- High Water line -->
-                        <line x1="0" y1="40" x2="720" y2="40" stroke="rgba(100,200,255,0.3)" stroke-width="1" stroke-dasharray="8,4"/>
-                        <text x="5" y="36" fill="rgba(100,200,255,0.55)" font-size="9">HWL</text>
-                        <!-- Project flowline +11.25' NAVD -->
-                        <line x1="0" y1="65" x2="720" y2="65" stroke="rgba(100,200,255,0.5)" stroke-width="1.5" stroke-dasharray="6,3"/>
-                        <text x="5" y="61" fill="rgba(100,200,255,0.75)" font-size="9">+11.25&apos; NAVD (Flowline)</text>
-                        <!-- LWRP +0.25' -->
-                        <line x1="0" y1="108" x2="720" y2="108" stroke="rgba(100,255,180,0.4)" stroke-width="1" stroke-dasharray="5,3"/>
-                        <text x="5" y="104" fill="rgba(100,255,180,0.65)" font-size="9">+0.25&apos; LWRP</text>
-                        <!-- Levee/Bank LEFT -->
-                        <polygon points="0,40 70,40 55,108 0,108" fill="#2a3a25" opacity="0.85"/>
-                        <polygon points="0,40 70,40 55,200 0,200" fill="#2a3a25" opacity="0.6"/>
-                        <text x="25" y="80" fill="rgba(100,255,180,0.6)" font-size="10" font-weight="600" transform="rotate(-90,25,80)">LEVEE</text>
-                        <!-- Existing revetment -->
-                        <line x1="70" y1="40" x2="55" y2="200" stroke="#64ffb4" stroke-width="2" opacity="0.5" stroke-dasharray="5,3"/>
-                        <!-- Barges (cross section: rectangular shapes in water) -->
-                        <rect x="80" y="60" width="45" height="18" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.5)" stroke-width="1"/>
-                        <rect x="130" y="62" width="45" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.4)" stroke-width="1"/>
-                        <rect x="180" y="63" width="45" height="15" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.35)" stroke-width="1"/>
-                        <!-- Monopile through barge fleet -->
-                        <rect x="152" y="62" width="4" height="80" rx="1" fill="#64ffb4" opacity="0.7"/>
-                        <text x="158" y="155" fill="rgba(100,255,180,0.6)" font-size="8">MONOPILE 48&quot;</text>
-                        <!-- Open river channel -->
-                        <text x="400" y="95" text-anchor="middle" fill="rgba(100,200,255,0.4)" font-size="10">MAIN CHANNEL</text>
-                        <text x="400" y="108" text-anchor="middle" fill="rgba(100,200,255,0.3)" font-size="9">Navigation Depth</text>
-                        <!-- Right bank -->
-                        <polygon points="630,40 720,40 720,200 615,200" fill="#2a3a25" opacity="0.6"/>
-                        <polygon points="630,40 720,40 720,108 645,108" fill="#2a3a25" opacity="0.85"/>
-                        <!-- Labels -->
-                        <text x="360" y="188" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="9">RIVER BED (NAVD 88 profile varies with scour)</text>
-                        <text x="5" y="195" fill="rgba(255,255,255,0.25)" font-size="8">WEST BANK</text>
-                        <text x="665" y="195" fill="rgba(255,255,255,0.25)" font-size="8">EAST BANK</text>
-                    </svg>
-                </div>
-
-                <!-- Section B: Through Ship Berth -->
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.25rem;margin-bottom:1rem;">
-                    <div style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;text-align:center;">Section B–B′ — Through Ship Berth / Anchor Pile Profile / Looking Downriver</div>
-                    <svg viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:'Space Grotesk',sans-serif;">
-                        <rect x="0" y="0" width="720" height="210" fill="#0a1520"/>
-                        <!-- Water -->
-                        <rect x="0" y="55" width="720" height="100" fill="#0d2a45" opacity="0.6"/>
-                        <!-- River bed -->
-                        <path d="M0,155 Q100,145 200,152 Q340,162 450,148 Q560,140 660,148 Q690,150 720,155" fill="none" stroke="#8b6914" stroke-width="2"/>
-                        <path d="M0,155 Q100,145 200,152 Q340,162 450,148 Q560,140 660,148 Q690,150 720,155 L720,210 L0,210 Z" fill="#3a2a0a" opacity="0.7"/>
-                        <!-- HWL -->
-                        <line x1="0" y1="30" x2="720" y2="30" stroke="rgba(100,200,255,0.25)" stroke-width="1" stroke-dasharray="8,4"/>
-                        <text x="5" y="27" fill="rgba(100,200,255,0.45)" font-size="9">HWL</text>
-                        <!-- Flowline -->
-                        <line x1="0" y1="55" x2="720" y2="55" stroke="rgba(100,200,255,0.5)" stroke-width="1.5" stroke-dasharray="6,3"/>
-                        <text x="5" y="51" fill="rgba(100,200,255,0.75)" font-size="9">+11.25&apos; NAVD</text>
-                        <!-- LWRP -->
-                        <line x1="0" y1="98" x2="720" y2="98" stroke="rgba(100,255,180,0.4)" stroke-width="1" stroke-dasharray="5,3"/>
-                        <text x="5" y="94" fill="rgba(100,255,180,0.65)" font-size="9">+0.25&apos; LWRP</text>
-                        <!-- Levee left -->
-                        <polygon points="0,30 65,30 50,210 0,210" fill="#2a3a25" opacity="0.7"/>
-                        <text x="20" y="75" fill="rgba(100,255,180,0.55)" font-size="10" font-weight="600" transform="rotate(-90,20,75)">LEVEE</text>
-                        <!-- ANCHOR PILE (full depth) — ship berth pile -->
-                        <rect x="310" y="38" width="6" height="162" rx="2" fill="rgba(255,200,0,0.8)"/>
-                        <!-- Pile tip arrow -->
-                        <polygon points="310,200 316,200 313,207" fill="rgba(255,200,0,0.8)"/>
-                        <text x="320" y="55" fill="rgba(255,200,0,0.85)" font-size="9" font-weight="600">ANCHOR PILE</text>
-                        <text x="320" y="65" fill="rgba(255,200,0,0.65)" font-size="8">48&quot; dia</text>
-                        <text x="320" y="200" fill="rgba(255,200,0,0.65)" font-size="8">−200&apos; NAVD tip</text>
-                        <!-- Chain to buoy -->
-                        <line x1="313" y1="38" x2="313" y2="20" stroke="rgba(255,200,0,0.5)" stroke-width="1.5" stroke-dasharray="3,2"/>
-                        <!-- BUOY at surface -->
-                        <ellipse cx="313" cy="17" rx="10" ry="7" fill="rgba(255,80,80,0.5)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <text x="327" y="20" fill="rgba(255,120,120,0.8)" font-size="9">NAV. BUOY</text>
-                        <!-- VESSEL outline (section) -->
-                        <ellipse cx="370" cy="78" rx="120" ry="28" fill="rgba(100,255,180,0.08)" stroke="rgba(100,255,180,0.35)" stroke-width="1.5" stroke-dasharray="6,3"/>
-                        <text x="370" y="82" text-anchor="middle" fill="rgba(100,255,180,0.6)" font-size="10" font-weight="600">VESSEL (750&prime;×106&prime;)</text>
-                        <!-- Mooring lines from vessel to buoy (angled) -->
-                        <line x1="250" y1="78" x2="313" y2="17" stroke="rgba(255,200,0,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
-                        <!-- Right bank -->
-                        <polygon points="655,30 720,30 720,210 640,210" fill="#2a3a25" opacity="0.6"/>
-                        <text x="5" y="207" fill="rgba(255,255,255,0.2)" font-size="8">WEST</text>
-                        <text x="680" y="207" fill="rgba(255,255,255,0.2)" font-size="8">EAST</text>
-                        <text x="360" y="175" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="9">RIVER BED (−40 to −60&apos; channel depth)</text>
-                    </svg>
-                </div>
-
-                <!-- Engineering Specs Table -->
-                <h3 style="font-size:1rem;font-weight:700;color:#e8eaf0;margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08);">Mooring System Cost Estimates — Per Permit Specifications</h3>
-                <div style="overflow-x:auto;margin:1rem 0;">
-                    <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
-                        <thead>
-                            <tr>
-                                <th style="background:rgba(100,255,180,0.08);color:#64ffb4;font-weight:600;padding:0.65rem 0.9rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.2);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Component</th>
-                                <th style="background:rgba(100,255,180,0.08);color:#64ffb4;font-weight:600;padding:0.65rem 0.9rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.2);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Qty</th>
-                                <th style="background:rgba(100,255,180,0.08);color:#64ffb4;font-weight:600;padding:0.65rem 0.9rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.2);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Unit Cost</th>
-                                <th style="background:rgba(100,255,180,0.08);color:#64ffb4;font-weight:600;padding:0.65rem 0.9rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.2);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Total Range</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">48&Prime; Anchor Piles (200&prime; depth)</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">5</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$300k–$420k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$1.5M–$2.1M</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Marine Installation (5 piles)</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">5</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$80k–$120k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$400k–$600k</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Commercial Navigation Buoys (GPS/AIS)</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">5</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$40k–$65k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$200k–$325k</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Marine Anchor Chains (Grade 70+)</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">5 sets</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$35k–$55k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$175k–$275k</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Quick-Release Hardware</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">5 sets</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$15k–$25k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$75k–$125k</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Marine Engineering (mooring analysis)</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">1</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$150k–$250k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$150k–$250k</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Installation Coordination</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">1</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$100k–$180k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$100k–$180k</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Testing &amp; Commissioning</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">1</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$75k–$125k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$75k–$125k</td></tr>
-                            <tr style="background:rgba(100,255,180,0.05);"><td style="padding:0.7rem 0.9rem;color:#64ffb4;font-weight:700;" colspan="3">TOTAL PROJECT ESTIMATE</td><td style="padding:0.7rem 0.9rem;color:#64ffb4;font-weight:700;">$2.7M – $4.0M</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Regulatory compliance summary -->
-                <h3 style="font-size:1rem;font-weight:700;color:#e8eaf0;margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08);">Regulatory Compliance Summary</h3>
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.85rem;margin-bottom:1.5rem;">
-                    <div style="background:rgba(100,255,180,0.04);border:1px solid rgba(100,255,180,0.15);border-radius:8px;padding:1rem;">
-                        <div style="font-size:0.78rem;font-weight:600;color:#64ffb4;margin-bottom:0.4rem;">USACE Section 408</div>
-                        <div style="font-size:0.82rem;color:rgba(255,255,255,0.65);">Rivers and Harbors Act, Section 14. Alteration of Corps Civil Works project revetment. MVN-2025-00276-EPP</div>
-                    </div>
-                    <div style="background:rgba(100,255,180,0.04);border:1px solid rgba(100,255,180,0.15);border-radius:8px;padding:1rem;">
-                        <div style="font-size:0.78rem;font-weight:600;color:#64ffb4;margin-bottom:0.4rem;">Louisiana Coastal Zone</div>
-                        <div style="font-size:0.82rem;color:rgba(255,255,255,0.65);">Coastal Use Permit P20250196 (LDNR). Consistency with Louisiana Coastal Zone Management Program.</div>
-                    </div>
-                    <div style="background:rgba(100,255,180,0.04);border:1px solid rgba(100,255,180,0.15);border-radius:8px;padding:1rem;">
-                        <div style="font-size:0.78rem;font-weight:600;color:#64ffb4;margin-bottom:0.4rem;">Environmental</div>
-                        <div style="font-size:0.82rem;color:rgba(255,255,255,0.65);">Essential Fish Habitat: 0.92 acres minimal impact. Standard Manatee Conditions. Pallid Sturgeon measures. Section 404/10 compliance.</div>
-                    </div>
-                    <div style="background:rgba(100,255,180,0.04);border:1px solid rgba(100,255,180,0.15);border-radius:8px;padding:1rem;">
-                        <div style="font-size:0.78rem;font-weight:600;color:#64ffb4;margin-bottom:0.4rem;">Technical Standards</div>
-                        <div style="font-size:0.82rem;color:rgba(255,255,255,0.65);">USACE Standard H-18-45204-99 revetment. Grade 70+ marine chain. 16-mil coal tar epoxy steel coating. 3:1 safety factor (permanent moorings). 25-year design life.</div>
-                    </div>
-                </div>
-
-                <!-- Construction timeline -->
-                <h3 style="font-size:1rem;font-weight:700;color:#e8eaf0;margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08);">Procurement &amp; Construction Timeline</h3>
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.5rem;">
-                    <div style="display:flex;flex-direction:column;gap:0.75rem;">
-                        <div style="display:flex;align-items:flex-start;gap:1rem;">
-                            <div style="min-width:130px;font-size:0.8rem;font-weight:600;color:#64ffb4;">Permit Approval</div>
-                            <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);">USACE public notice review period; typical 60–90 day comment period; complex projects may extend to 12–18 months with ESA consultation</div>
-                        </div>
-                        <div style="display:flex;align-items:flex-start;gap:1rem;">
-                            <div style="min-width:130px;font-size:0.8rem;font-weight:600;color:#64ffb4;">Procurement</div>
-                            <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);">4–6 month lead time for custom 48&Prime; anchor piles. Buoys (GPS/AIS): 8–12 weeks. Grade 70+ marine chain with certified load testing: 6–10 weeks</div>
-                        </div>
-                        <div style="display:flex;align-items:flex-start;gap:1rem;">
-                            <div style="min-width:130px;font-size:0.8rem;font-weight:600;color:#64ffb4;">Installation Window</div>
-                            <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);">Weather-optimal May–October. Pile driving: specialized marine equipment; river stage-dependent. Chain deployment: anchor handling vessels</div>
-                        </div>
-                        <div style="display:flex;align-items:flex-start;gap:1rem;">
-                            <div style="min-width:130px;font-size:0.8rem;font-weight:600;color:#64ffb4;">Testing &amp; Certification</div>
-                            <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);">2–3 weeks for load testing. Third-party anchor chain certification required. USCG navigation marking/lighting verification. Final USACE acceptance inspection</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </section>
     </div>
 
@@ -2285,5 +1897,6 @@
             }
         });
     </script>
+<script src="../od-theme-pdf.js"></script>
 </body>
 </html>

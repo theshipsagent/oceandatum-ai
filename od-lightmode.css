@@ -1,0 +1,1285 @@
+/* =============================================================
+   od-lightmode.css
+   Light-mode overrides for oceandatum.ai project/report pages.
+   Activated by: body.light-mode  (toggled via od-theme-pdf.js)
+
+   Palette matches proven cv.html / inland-waterway colors:
+     Page bg:  #f7fafc   Text: #333 / #555   Accent: #0d3b66
+     Cards:    #ffffff    Borders: rgba(0,0,0,0.08)
+     Tables:   #f0f4f8   Navbar: rgba(255,255,255,0.85)
+   ============================================================= */
+
+/* ----- Page background & body text ----- */
+
+body.light-mode {
+    background: #f7fafc !important;
+    color: #333 !important;
+}
+
+body.light-mode::before {
+    background: #f7fafc !important;
+    opacity: 1 !important;
+}
+
+
+/* =============================================================
+   NAVBAR  (covers .navbar + .nav-link variant AND .navbar-link variant)
+   ============================================================= */
+
+body.light-mode .navbar {
+    background: rgba(255,255,255,0.85) !important;
+    border-bottom-color: rgba(0,0,0,0.1) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+}
+
+body.light-mode .navbar-brand {
+    color: rgba(0,0,0,0.5) !important;
+}
+
+body.light-mode .navbar-brand a {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .navbar-brand a:hover {
+    color: #155a99 !important;
+}
+
+body.light-mode .navbar-right {
+    /* inherits; no override needed unless mobile open state */
+}
+
+/* .nav-link variant (buy-vs-build, why-you-cant-buy, rail-analytics) */
+body.light-mode .nav-link {
+    color: #333 !important;
+    border-color: rgba(0,0,0,0.15) !important;
+}
+
+body.light-mode .nav-link:hover {
+    color: #0d3b66 !important;
+    border-color: rgba(13,59,102,0.4) !important;
+    background: rgba(13,59,102,0.05) !important;
+}
+
+/* .navbar-link variant (port-sulphur, port-sulphur-midstream, port-sulphur-report) */
+body.light-mode .navbar-link {
+    color: #333 !important;
+    border-color: rgba(0,0,0,0.15) !important;
+}
+
+body.light-mode .navbar-link:hover {
+    color: #0d3b66 !important;
+    border-color: rgba(13,59,102,0.4) !important;
+    background: rgba(13,59,102,0.05) !important;
+}
+
+/* Social icons */
+body.light-mode .social-icons .social-icon {
+    color: rgba(0,0,0,0.45) !important;
+}
+
+body.light-mode .social-icons .social-icon:hover {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .social-icon {
+    color: rgba(0,0,0,0.45) !important;
+}
+
+body.light-mode .social-icon:hover {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .social-icon svg {
+    fill: currentColor;
+}
+
+/* Hamburger button (port-sulphur-midstream) */
+body.light-mode .hamburger-button {
+    border-color: rgba(0,0,0,0.2) !important;
+    color: #333 !important;
+}
+
+body.light-mode .hamburger-button:hover {
+    border-color: #0d3b66 !important;
+    color: #0d3b66 !important;
+}
+
+/* Mobile menu (port-sulphur-midstream) */
+body.light-mode .mobile-menu {
+    background: rgba(255,255,255,0.98) !important;
+    border-top-color: rgba(13,59,102,0.3) !important;
+    border-bottom-color: rgba(13,59,102,0.3) !important;
+}
+
+body.light-mode .mobile-menu-item a {
+    color: #333 !important;
+    border-bottom-color: rgba(0,0,0,0.1) !important;
+}
+
+body.light-mode .mobile-menu-item a:hover {
+    background: rgba(13,59,102,0.1) !important;
+    color: #0d3b66 !important;
+}
+
+body.light-mode .mobile-menu-social {
+    border-top-color: rgba(0,0,0,0.1) !important;
+}
+
+body.light-mode .mobile-menu-social a {
+    color: rgba(0,0,0,0.45) !important;
+}
+
+body.light-mode .mobile-menu-social a:hover {
+    color: #0d3b66 !important;
+}
+
+/* Dropdown (port-sulphur-midstream) */
+body.light-mode .dropdown-content {
+    background: rgba(255,255,255,0.95) !important;
+    border-color: rgba(0,0,0,0.1) !important;
+}
+
+body.light-mode .dropdown-content a {
+    color: #333 !important;
+}
+
+body.light-mode .dropdown-content a:hover {
+    background: rgba(13,59,102,0.08) !important;
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   BREADCRUMB
+   ============================================================= */
+
+body.light-mode .breadcrumb {
+    color: rgba(0,0,0,0.5) !important;
+}
+
+body.light-mode .breadcrumb a {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .breadcrumb a:hover {
+    color: #155a99 !important;
+}
+
+
+/* =============================================================
+   PAGE HEADER
+   ============================================================= */
+
+body.light-mode .page-header h1 {
+    color: #1a1a1a !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #1a1a1a !important;
+    background-clip: unset !important;
+}
+
+body.light-mode .page-header .subtitle {
+    color: #555 !important;
+}
+
+body.light-mode .page-header .meta {
+    color: #78909c !important;
+}
+
+
+/* =============================================================
+   HERO SECTIONS
+   ============================================================= */
+
+body.light-mode .hero {
+    background: linear-gradient(135deg, #f7fafc 0%, #e8f4fd 100%) !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .hero h1 {
+    color: #1a1a1a !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #1a1a1a !important;
+    background-clip: unset !important;
+}
+
+body.light-mode .hero .subtitle,
+body.light-mode .hero p {
+    color: #555 !important;
+}
+
+body.light-mode .hero-stats {
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode .hero-stat {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .hero-stat:hover {
+    border-color: rgba(13,59,102,0.3) !important;
+}
+
+body.light-mode .hero-stat .value {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .hero-stat .label {
+    color: #555 !important;
+}
+
+
+/* =============================================================
+   GLASS SECTIONS / CONTENT SECTIONS
+   ============================================================= */
+
+body.light-mode .glass-section {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+
+body.light-mode .glass-section h2 {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .glass-section h3 {
+    color: #333 !important;
+}
+
+body.light-mode .glass-section p {
+    color: #555 !important;
+}
+
+/* .section variant (port-sulphur) */
+body.light-mode .section {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .section h2 {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .section h3 {
+    color: #333 !important;
+}
+
+body.light-mode .section h4 {
+    color: #444 !important;
+}
+
+body.light-mode .section p {
+    color: #555 !important;
+}
+
+body.light-mode .section ul li {
+    color: #555 !important;
+}
+
+body.light-mode .section ul li:before {
+    color: #0d3b66 !important;
+}
+
+/* Colored left borders — darken for light mode */
+body.light-mode .section.blue {
+    border-left-color: #1565c0 !important;
+}
+
+body.light-mode .section.orange {
+    border-left-color: #e65100 !important;
+}
+
+body.light-mode .section.green {
+    border-left-color: #2e7d32 !important;
+}
+
+body.light-mode .section.red {
+    border-left-color: #c62828 !important;
+}
+
+/* Content block (port-sulphur-midstream) */
+body.light-mode .content-block {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .content-block h3 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .content-block h4 {
+    color: #333 !important;
+}
+
+body.light-mode .content-block p {
+    color: #555 !important;
+}
+
+/* Section header (port-sulphur-midstream) */
+body.light-mode .section-header {
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .section-header h2 {
+    color: #1a1a1a !important;
+}
+
+
+/* =============================================================
+   SECTION TITLE (rail-analytics)
+   ============================================================= */
+
+body.light-mode .section-title {
+    color: #1a1a1a !important;
+    border-bottom-color: rgba(0,0,0,0.1) !important;
+}
+
+
+/* =============================================================
+   TAB NAVIGATION (port-sulphur, port-sulphur-report)
+   ============================================================= */
+
+body.light-mode .tab-nav {
+    background: rgba(0,0,0,0.02) !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .tab-nav::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.03) !important;
+}
+
+body.light-mode .tab-nav::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.15) !important;
+}
+
+body.light-mode .tab-button {
+    color: #555 !important;
+    background: transparent !important;
+}
+
+body.light-mode .tab-button:hover {
+    color: #0d3b66 !important;
+    background: rgba(13,59,102,0.05) !important;
+}
+
+body.light-mode .tab-button.active {
+    color: #0d3b66 !important;
+    background: rgba(13,59,102,0.08) !important;
+    border-color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   TABLES
+   ============================================================= */
+
+body.light-mode table {
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode th {
+    background: #f0f4f8 !important;
+    color: #0d3b66 !important;
+    border-color: rgba(13,59,102,0.15) !important;
+}
+
+body.light-mode td {
+    color: #444 !important;
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode tr:hover td {
+    background: rgba(13,59,102,0.03) !important;
+}
+
+/* Data table variant (port-sulphur-midstream) */
+body.light-mode .data-table thead th {
+    background: #f0f4f8 !important;
+    color: #0d3b66 !important;
+}
+
+body.light-mode .data-table tbody td {
+    color: #444 !important;
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode .data-table tbody tr:hover {
+    background: rgba(13,59,102,0.03) !important;
+}
+
+/* Breakdown table (rail-analytics calculators) */
+body.light-mode .breakdown-table th {
+    background: #f0f4f8 !important;
+    color: #555 !important;
+}
+
+body.light-mode .breakdown-table td {
+    color: #444 !important;
+}
+
+body.light-mode .breakdown-table tr.total-row td {
+    color: #2e7d32 !important;
+    border-top-color: #2e7d32 !important;
+}
+
+
+/* =============================================================
+   LISTS
+   ============================================================= */
+
+body.light-mode .feature-list li {
+    color: #555 !important;
+}
+
+body.light-mode .feature-list li::before {
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   HIGHLIGHT / ALERT / DANGER BOXES
+   ============================================================= */
+
+body.light-mode .highlight-box {
+    background: #f0f7ff !important;
+    border-color: #0d3b66 !important;
+    border-left-color: #0d3b66 !important;
+}
+
+body.light-mode .highlight-box p {
+    color: #333 !important;
+}
+
+body.light-mode .alert-box {
+    background: #fff8e1 !important;
+    border-color: #f9a825 !important;
+    border-left-color: #f9a825 !important;
+}
+
+body.light-mode .alert-box p {
+    color: #333 !important;
+}
+
+body.light-mode .danger-box {
+    background: #fff5f5 !important;
+    border-color: #c62828 !important;
+    border-left-color: #c62828 !important;
+}
+
+body.light-mode .danger-box p {
+    color: #333 !important;
+}
+
+/* Insight box (port-sulphur-midstream) */
+body.light-mode .insight-box {
+    background: #f0f7ff !important;
+    border-color: rgba(13,59,102,0.15) !important;
+}
+
+body.light-mode .insight-box p {
+    color: #333 !important;
+}
+
+
+/* =============================================================
+   CARDS — all variants
+   ============================================================= */
+
+/* Vendor cards (buy-vs-build) */
+body.light-mode .vendor-card {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode .vendor-card:hover {
+    border-color: rgba(13,59,102,0.25) !important;
+}
+
+body.light-mode .vendor-card h4 {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .vendor-card .grade {
+    /* keep existing color per grade type */
+}
+
+body.light-mode .vendor-card p {
+    color: #555 !important;
+}
+
+body.light-mode .vendor-card a {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .vendor-card a:hover {
+    color: #155a99 !important;
+}
+
+/* Stat cards */
+body.light-mode .stat-card {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .stat-card .stat-value {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .stat-card .stat-label {
+    color: #555 !important;
+}
+
+/* Metric cards (port-sulphur, rail-analytics) */
+body.light-mode .metric-card {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .metric-card:hover {
+    border-color: rgba(13,59,102,0.25) !important;
+}
+
+body.light-mode .metric-card .metric-value,
+body.light-mode .metric-card .value {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .metric-card .metric-label,
+body.light-mode .metric-card .label {
+    color: #555 !important;
+}
+
+body.light-mode .metric-card .metric-note {
+    color: #78909c !important;
+}
+
+/* Mini cards (buy-vs-build) */
+body.light-mode .mini-card {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .mini-card h4 {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .mini-card p {
+    color: #555 !important;
+}
+
+body.light-mode .mini-card.accent-green {
+    border-color: #2e7d32 !important;
+    background: rgba(46,125,50,0.04) !important;
+}
+
+body.light-mode .mini-card.accent-red {
+    border-color: #c62828 !important;
+    background: rgba(198,40,40,0.04) !important;
+}
+
+/* Phase cards (buy-vs-build) */
+body.light-mode .phase-card {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .phase-card h4 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .phase-card p {
+    color: #555 !important;
+}
+
+/* Component cards (rail-analytics landing) */
+body.light-mode .component-card {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode .component-card:hover {
+    border-color: rgba(13,59,102,0.3) !important;
+    box-shadow: 0 8px 32px rgba(13,59,102,0.1) !important;
+}
+
+body.light-mode .card-title {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .card-desc {
+    color: #555 !important;
+}
+
+body.light-mode .card-meta {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .card-link {
+    color: #0d3b66 !important;
+    border-color: rgba(13,59,102,0.3) !important;
+}
+
+body.light-mode .card-link:hover {
+    background: #0d3b66 !important;
+    color: #ffffff !important;
+}
+
+/* Summary cards (port-sulphur-midstream) */
+body.light-mode .summary-card {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .card-label {
+    color: #555 !important;
+}
+
+body.light-mode .card-value {
+    color: #0d3b66 !important;
+}
+
+/* Spec cards (port-sulphur-midstream) */
+body.light-mode .spec-card {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .spec-card h4 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .spec-card ul li {
+    color: #555 !important;
+}
+
+/* Cost cards (why-you-cant-buy) */
+body.light-mode .cost-card {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .cost-card h3 {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .cost-card.cots h3 {
+    color: #c62828 !important;
+}
+
+body.light-mode .cost-card.build h3 {
+    color: #2e7d32 !important;
+}
+
+body.light-mode .cost-card .total {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .cost-card.cots .total {
+    color: #c62828 !important;
+}
+
+body.light-mode .cost-card.build .total {
+    color: #2e7d32 !important;
+}
+
+body.light-mode .cost-card ul li {
+    color: #555 !important;
+}
+
+body.light-mode .cost-card .cost-footer {
+    border-top-color: rgba(0,0,0,0.08) !important;
+    color: #555 !important;
+}
+
+/* Tech blocks (rail-analytics landing) */
+body.light-mode .tech-block {
+    background: #f7fafc !important;
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode .tech-block h4 {
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   COMPARISON GRID (buy-vs-build)
+   ============================================================= */
+
+body.light-mode .comparison-col h3 {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .col-buy h3 {
+    color: #c62828 !important;
+}
+
+body.light-mode .col-build h3 {
+    color: #2e7d32 !important;
+}
+
+
+/* =============================================================
+   VERDICT / OBJECTION / TEST BOXES (why-you-cant-buy)
+   ============================================================= */
+
+body.light-mode .verdict-no {
+    background: #fff5f5 !important;
+    border-color: rgba(198,40,40,0.3) !important;
+}
+
+body.light-mode .verdict-no .verdict-text {
+    color: #c62828 !important;
+}
+
+body.light-mode .verdict-no p {
+    color: #555 !important;
+}
+
+body.light-mode .verdict-yes {
+    background: #f0fff4 !important;
+    border-color: rgba(46,125,50,0.3) !important;
+}
+
+body.light-mode .verdict-yes .verdict-text {
+    color: #2e7d32 !important;
+}
+
+body.light-mode .verdict-yes p {
+    color: #555 !important;
+}
+
+body.light-mode .objection-box {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .objection-box .question {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .objection-box .answer {
+    color: #555 !important;
+}
+
+body.light-mode .objection-box .killer {
+    color: #c62828 !important;
+}
+
+body.light-mode .test-box {
+    background: #f7fafc !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .test-box h3 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .email-sample {
+    background: #f0f4f8 !important;
+    color: #333 !important;
+    border-color: rgba(0,0,0,0.1) !important;
+}
+
+body.light-mode .test-steps li {
+    color: #555 !important;
+}
+
+body.light-mode .nine-truths {
+    background: #f7fafc !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .nine-truths h3 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .nine-truths p {
+    color: #555 !important;
+}
+
+
+/* =============================================================
+   BADGES (port-sulphur)
+   ============================================================= */
+
+body.light-mode .badge {
+    border: 1px solid currentColor;
+}
+
+body.light-mode .badge.success {
+    color: #2e7d32 !important;
+    background: rgba(46,125,50,0.08) !important;
+}
+
+body.light-mode .badge.warning {
+    color: #e65100 !important;
+    background: rgba(230,81,0,0.08) !important;
+}
+
+body.light-mode .badge.danger {
+    color: #c62828 !important;
+    background: rgba(198,40,40,0.08) !important;
+}
+
+body.light-mode .badge.info {
+    color: #1565c0 !important;
+    background: rgba(21,101,192,0.08) !important;
+}
+
+/* Status badges (rail-analytics) */
+body.light-mode .status-badge {
+    border: 1px solid currentColor;
+}
+
+body.light-mode .status-complete {
+    color: #2e7d32 !important;
+    background: rgba(46,125,50,0.08) !important;
+}
+
+body.light-mode .status-demo {
+    color: #1565c0 !important;
+    background: rgba(21,101,192,0.08) !important;
+}
+
+body.light-mode .status-ref {
+    color: #7b1fa2 !important;
+    background: rgba(123,31,162,0.08) !important;
+}
+
+/* Source badge (port-sulphur-midstream) */
+body.light-mode .source-badge {
+    background: rgba(13,59,102,0.06) !important;
+    border-color: rgba(13,59,102,0.2) !important;
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   TIMELINE (buy-vs-build)
+   ============================================================= */
+
+body.light-mode .timeline-item {
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .timeline-item .year {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .timeline-item strong {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .timeline-item p {
+    color: #555 !important;
+}
+
+
+/* =============================================================
+   PROCESS FLOW / SAAS CHAIN (buy-vs-build)
+   ============================================================= */
+
+body.light-mode .process-step {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+    color: #333 !important;
+}
+
+body.light-mode .process-arrow {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .saas-link {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+    color: #333 !important;
+}
+
+body.light-mode .chain-plus {
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   QUOTE BLOCK (buy-vs-build)
+   ============================================================= */
+
+body.light-mode .quote-block {
+    background: #f7fafc !important;
+    border-left-color: #0d3b66 !important;
+    color: #333 !important;
+}
+
+body.light-mode .quote-block .attribution {
+    color: #78909c !important;
+}
+
+
+/* =============================================================
+   BIG STAT (buy-vs-build)
+   ============================================================= */
+
+body.light-mode .big-stat {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .big-stat .number {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .big-stat .label {
+    color: #555 !important;
+}
+
+
+/* =============================================================
+   NAVIGATION BUTTONS
+   ============================================================= */
+
+body.light-mode .nav-btn {
+    color: #333 !important;
+    border-color: rgba(0,0,0,0.15) !important;
+}
+
+body.light-mode .nav-btn:hover {
+    color: #0d3b66 !important;
+    border-color: rgba(13,59,102,0.4) !important;
+    background: rgba(13,59,102,0.05) !important;
+}
+
+body.light-mode .nav-btn.primary {
+    color: #ffffff !important;
+    background: #0d3b66 !important;
+    border-color: #0d3b66 !important;
+}
+
+body.light-mode .nav-btn.primary:hover {
+    background: #155a99 !important;
+    border-color: #155a99 !important;
+}
+
+
+/* =============================================================
+   INLINE LINKS
+   ============================================================= */
+
+body.light-mode .inline-link {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .inline-link:hover {
+    color: #155a99 !important;
+}
+
+body.light-mode a {
+    /* Only override non-classed links inside content areas */
+}
+
+
+/* =============================================================
+   CALCULATOR (rail-analytics sub-pages)
+   ============================================================= */
+
+body.light-mode .calculator {
+    background: #ffffff !important;
+    border-color: rgba(13,59,102,0.2) !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode .calculator h2 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .calc-field label {
+    color: #333 !important;
+}
+
+body.light-mode .calc-field input,
+body.light-mode .calc-field select {
+    background: #f7fafc !important;
+    color: #333 !important;
+    border-color: rgba(0,0,0,0.12) !important;
+}
+
+body.light-mode .calc-field input:focus,
+body.light-mode .calc-field select:focus {
+    border-color: #0d3b66 !important;
+    box-shadow: 0 0 0 2px rgba(13,59,102,0.15) !important;
+}
+
+body.light-mode .calc-field select option {
+    background: #ffffff !important;
+    color: #333 !important;
+}
+
+body.light-mode .calc-field .hint {
+    color: #78909c !important;
+}
+
+body.light-mode .calc-btn {
+    color: #0d3b66 !important;
+    border-color: #0d3b66 !important;
+    background: transparent !important;
+}
+
+body.light-mode .calc-btn:hover {
+    background: #0d3b66 !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .result-card {
+    background: #f7fafc !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .result-card .r-label {
+    color: #555 !important;
+}
+
+body.light-mode .result-card .r-value {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .result-card .r-sub {
+    color: #78909c !important;
+}
+
+body.light-mode .rvc-display {
+    background: #f7fafc !important;
+}
+
+body.light-mode .rvc-below {
+    border-color: #2e7d32 !important;
+    background: rgba(46,125,50,0.04) !important;
+}
+
+body.light-mode .rvc-below .rvc-num {
+    color: #2e7d32 !important;
+}
+
+body.light-mode .rvc-above {
+    border-color: #c62828 !important;
+    background: rgba(198,40,40,0.04) !important;
+}
+
+body.light-mode .rvc-above .rvc-num {
+    color: #c62828 !important;
+}
+
+body.light-mode .rvc-display .rvc-label {
+    color: #555 !important;
+}
+
+
+/* =============================================================
+   FORMULA BOX (rail-analytics)
+   ============================================================= */
+
+body.light-mode .formula-box {
+    background: #f0f4f8 !important;
+    color: #0d3b66 !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+
+/* =============================================================
+   BRAND LOCKUP (port-sulphur-midstream)
+   ============================================================= */
+
+body.light-mode .brand-lockup {
+    color: #333 !important;
+}
+
+body.light-mode .brand-name {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .brand-tagline {
+    color: #555 !important;
+}
+
+body.light-mode .logo-symbol svg {
+    fill: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   MODAL (port-sulphur-midstream)
+   ============================================================= */
+
+body.light-mode .modal-overlay .contact-box {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.1) !important;
+}
+
+body.light-mode .contact-title {
+    color: #1a1a1a !important;
+}
+
+body.light-mode .contact-item {
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode .contact-item a {
+    color: #333 !important;
+}
+
+body.light-mode .contact-item:hover {
+    background: rgba(13,59,102,0.05) !important;
+}
+
+body.light-mode .close-btn {
+    color: #555 !important;
+}
+
+body.light-mode .close-btn:hover {
+    color: #c62828 !important;
+}
+
+
+/* =============================================================
+   CHART.JS CANVASES — invert for readability
+   ============================================================= */
+
+body.light-mode .chart-container {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+
+/* =============================================================
+   FLEETING DETAILS (port-sulphur-midstream)
+   ============================================================= */
+
+body.light-mode .fleeting-details {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .detail-section h4 {
+    color: #0d3b66 !important;
+}
+
+body.light-mode .detail-section ul li {
+    color: #555 !important;
+}
+
+
+/* =============================================================
+   FOOTER
+   ============================================================= */
+
+body.light-mode footer {
+    color: #78909c !important;
+    border-top-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode footer a {
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   GENERIC HEADINGS (catch-all for unstyled h-tags in content)
+   ============================================================= */
+
+body.light-mode h1 {
+    color: #1a1a1a !important;
+}
+
+body.light-mode h2 {
+    color: #1a1a1a !important;
+}
+
+body.light-mode h3 {
+    color: #333 !important;
+}
+
+body.light-mode h4 {
+    color: #444 !important;
+}
+
+body.light-mode p {
+    color: #555 !important;
+}
+
+body.light-mode li {
+    color: #555 !important;
+}
+
+body.light-mode strong {
+    color: #1a1a1a !important;
+}
+
+
+/* =============================================================
+   INJECTED TOGGLE + PDF BUTTONS (from od-theme-pdf.js)
+   ============================================================= */
+
+body.light-mode .od-theme-toggle {
+    border-color: rgba(0,0,0,0.18) !important;
+    color: #444 !important;
+    background: rgba(0,0,0,0.03) !important;
+}
+
+body.light-mode .od-theme-toggle:hover {
+    border-color: rgba(13,59,102,0.4) !important;
+    color: #0d3b66 !important;
+    background: rgba(13,59,102,0.05) !important;
+}
+
+body.light-mode .od-print-btn {
+    border-color: rgba(0,0,0,0.15) !important;
+    color: rgba(0,0,0,0.5) !important;
+}
+
+body.light-mode .od-print-btn:hover {
+    border-color: rgba(13,59,102,0.4) !important;
+    color: #0d3b66 !important;
+}
+
+
+/* =============================================================
+   GRADE COLORS — preserve semantic meaning in light mode
+   ============================================================= */
+
+body.light-mode .grade-fail {
+    color: #c62828 !important;
+}
+
+body.light-mode .grade-pass {
+    color: #2e7d32 !important;
+}
+
+body.light-mode .grade-partial {
+    color: #e65100 !important;
+}
+
+
+/* =============================================================
+   PRINT — light mode auto-applied
+   ============================================================= */
+
+@media print {
+    body.light-mode {
+        background: #ffffff !important;
+    }
+
+    body.light-mode .navbar,
+    body.light-mode .tab-nav,
+    body.light-mode .nav-buttons,
+    body.light-mode .od-theme-toggle,
+    body.light-mode .od-print-btn {
+        display: none !important;
+    }
+}

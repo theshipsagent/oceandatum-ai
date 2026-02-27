@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mile Marker 39 Terminal | MM 39 Development Analysis</title>
+    <title>Port Sulphur Terminal | MM 39 Development Analysis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+  <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
+  <link rel="stylesheet" href="../od-lightmode.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -445,649 +447,28 @@
                 color: black;
             }
         }
-    
-        /* ── Midstream Operations CSS ─────────────────────── */
-/* Content */
-        .content {
-            padding-top: 16px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-            padding-bottom: 4rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 4rem 0 3rem 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #64ffb4 0%, #7fffc4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.7);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Section Headers */
-        .section-header {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .source-badge {
-            background: rgba(100, 255, 180, 0.1);
-            border: 1px solid rgba(100, 255, 180, 0.3);
-            color: #64ffb4;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        /* Content Blocks */
-        .content-block {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .content-block h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #64ffb4;
-            margin-bottom: 1.5rem;
-        }
-
-        .content-block h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 1rem;
-        }
-
-        /* Chart Container */
-        .chart-container {
-            position: relative;
-            height: 400px;
-            margin-bottom: 2rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            padding: 1rem;
-        }
-
-        .chart-container canvas {
-            max-height: 100%;
-        }
-
-        /* Tables */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        .data-table thead th {
-            background: rgba(100, 255, 180, 0.1);
-            color: #64ffb4;
-            padding: 0.75rem;
-            text-align: left;
-            font-weight: 600;
-            border-bottom: 2px solid rgba(100, 255, 180, 0.3);
-        }
-
-        .data-table tbody td {
-            padding: 0.75rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .data-table tbody tr:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        /* Insight Box */
-        .insight-box {
-            background: rgba(100, 255, 180, 0.1);
-            border: 1px solid rgba(100, 255, 180, 0.2);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .insight-box p {
-            margin: 0.5rem 0;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Summary Cards Grid */
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .summary-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.25rem;
-        }
-
-        .card-label {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-value {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-        }
-
-        /* Specs Grid */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .spec-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .spec-card h4 {
-            color: #64ffb4;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .spec-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .spec-card ul li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .spec-card ul li:last-child {
-            border-bottom: none;
-        }
-
-        /* Fleeting Details */
-        .fleeting-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .detail-section h4 {
-            color: #64ffb4;
-            margin-bottom: 1rem;
-        }
-
-        .detail-section ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .detail-section ul li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .detail-section ul li::before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: #64ffb4;
-        }
-
-        /* Capacity Overview */
-        .capacity-overview {
-            background: rgba(100, 255, 180, 0.1);
-            border: 1px solid rgba(100, 255, 180, 0.2);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .capacity-overview p {
-            margin: 0.5rem 0;
-        }
-
-        /* Revenue Structure */
-        .revenue-structure {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .revenue-structure h4 {
-            color: #64ffb4;
-            margin-bottom: 1rem;
-        }
-
-        /* Cost Summary */
-        .cost-summary {
-            margin-bottom: 2rem;
-        }
-
-        .cost-range {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cost-item {
-            text-align: center;
-        }
-
-        .cost-label {
-            display: block;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 0.5rem;
-        }
-
-        .cost-value {
-            display: block;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #64ffb4;
-        }
-
-        .alternative-estimates {
-            background: rgba(255, 193, 7, 0.1);
-            border: 1px solid rgba(255, 193, 7, 0.2);
-            border-radius: 8px;
-            padding: 1rem 1.5rem;
-        }
-
-        .alternative-estimates p {
-            margin: 0.5rem 0;
-        }
-
-        /* Mooring Cost Summary */
-        .mooring-cost-summary {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .mooring-cost-summary ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .mooring-cost-summary ul li {
-            padding: 0.5rem 0;
-        }
-
-        /* Timeline Overview */
-        .timeline-overview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .timeline-phase {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .timeline-phase h4 {
-            color: #64ffb4;
-            margin-bottom: 0.75rem;
-        }
-
-        .timeline-phase p {
-            margin: 0.5rem 0 1rem 0;
-            font-weight: 500;
-        }
-
-        .timeline-phase ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .timeline-phase ul li {
-            padding: 0.4rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 0.9rem;
-        }
-
-        .timeline-phase ul li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #64ffb4;
-        }
-
-        /* Installation Steps */
-        .installation-steps {
-            display: grid;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .step-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .step-number {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            background: #64ffb4;
-            color: #0a0a0a;
-            font-weight: bold;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .step-content h4 {
-            color: #64ffb4;
-            margin: 0 0 0.5rem 0;
-            font-size: 1.1rem;
-        }
-
-        .step-content p {
-            margin: 0;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Design Considerations */
-        .design-considerations {
-            background: rgba(100, 200, 255, 0.1);
-            border: 1px solid rgba(100, 200, 255, 0.2);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .design-considerations h4 {
-            color: #64ffb4;
-            margin-bottom: 1rem;
-        }
-
-        .design-considerations ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .design-considerations ul li {
-            padding: 0.75rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .design-considerations ul li::before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: rgba(100, 200, 255, 1);
-        }
-
-        /* Regulatory Sections */
-        .regulatory-section {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .regulatory-section h4 {
-            color: #64ffb4;
-            margin-bottom: 1rem;
-        }
-
-        .regulatory-section ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .regulatory-section ul li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .regulatory-section ul li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #64ffb4;
-        }
-
-        /* Specs Summary Grid */
-        .specs-summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .spec-summary-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .spec-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .spec-label {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        .spec-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #64ffb4;
-            margin-bottom: 0.5rem;
-        }
-
-        .spec-detail {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Findings List */
-        .findings-list {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .finding-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.25rem;
-        }
-
-        .finding-icon {
-            flex-shrink: 0;
-            width: 28px;
-            height: 28px;
-            background: #64ffb4;
-            color: #0a0a0a;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .finding-text {
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
-        }
-
-        /* Table Specific Styles */
-        .section-header-row {
-            background: rgba(100, 255, 180, 0.1) !important;
-            color: #64ffb4 !important;
-            font-weight: bold !important;
-        }
-
-        .subtotal-row {
-            background: rgba(255, 255, 255, 0.05);
-            font-weight: 600;
-        }
-
-        .total-row {
-            background: rgba(100, 255, 180, 0.15);
-            font-weight: bold;
-        }
-
-        .highlight-row {
-            background: rgba(100, 255, 180, 0.08);
-            border-left: 3px solid #64ffb4;
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .content {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-
-            .navbar-links {
-                display: none;
-            }
-
-            .summary-grid,
-            .specs-grid,
-            .fleeting-details,
-            .timeline-overview,
-            .specs-summary-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cost-range {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .step-card {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .finding-item {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .chart-container {
-                height: 300px;
-            }
-        }
-    
-        </style>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<style id="sn-css">
-.sn{position:fixed;top:0;left:0;right:0;z-index:2000;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(100,255,180,0.12);padding:0 1.5rem;height:48px;display:flex;align-items:center;justify-content:space-between;font-family:'Space Grotesk',sans-serif}
-.sn a{font-size:0.82rem;color:rgba(255,255,255,0.5);text-decoration:none;white-space:nowrap;transition:color 0.2s}
-.sn a:hover{color:#64ffb4}
-.sn-r{display:flex;gap:1.2rem;align-items:center}
-.sn-hub{padding:0.25rem 0.7rem;border:1px solid rgba(255,255,255,0.12);border-radius:5px}
-.sn-hub:hover{border-color:rgba(100,255,180,0.3)}
-.sn-logout{color:rgba(255,100,100,0.7)!important;padding:0.25rem 0.7rem;border:1px solid rgba(255,100,100,0.2);border-radius:5px}
-.sn-logout:hover{color:#ff6464!important;border-color:rgba(255,100,100,0.4)}
-@media(max-width:480px){.sn{padding:0 0.75rem;height:42px}.sn a{font-size:0.72rem}.sn-r{gap:0.6rem}}
-</style>
+    </style>
 </head>
 <body>
-<script>if("scrollRestoration"in history)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
     <!-- Navigation Bar -->
-    <nav class="sn">
-  <a href="../index.html">Home</a>
-  <div class="sn-r">
-    <a href="../tools/maritime-ai-role.html">Role Brief</a>
-    <a href="../cv.html">CV</a>
-    <a href="../projects-hub.html" class="sn-hub">&larr; Hub</a>
-  </div>
-</nav>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            Project for <a href="/">oceandatum.ai</a>
+        </div>
+        <div class="navbar-right">
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/williamsdavis" target="_blank" class="social-icon" title="LinkedIn">in</a>
+                <a href="https://theshipsagent.com" target="_blank" class="social-icon" title="Website">@</a>
+            </div>
+            <a href="../projects-hub.html" class="navbar-link">Projects Hub</a>
+            <a href="../index.html" class="navbar-link">Home</a>
+        </div>
+    </nav>
 
     <div class="container">
         <!-- Hero Section -->
         <div class="hero">
-            <h1>Mile Marker 39 Terminal</h1>
+            <h1>Port Sulphur Terminal</h1>
             <p class="subtitle">Mississippi River Mile 39 Development Analysis</p>
 
             <div class="hero-stats">
@@ -1120,16 +501,15 @@
             <button class="tab-button" onclick="showTab('maps')">Maps</button>
             <button class="tab-button" onclick="showTab('executive')">Executive Summary</button>
             <button class="tab-button" onclick="showTab('report')">Full Report</button>
-            <button class="tab-button" onclick="showTab('midstream')">Midstream Ops</button>
         </div>
 
         <!-- Overview Tab -->
         <div id="overview" class="tab-content active">
             <div class="section">
                 <h2>Project Overview</h2>
-                <p>The former Freeport-McMoRan Mile Marker 39 facility represents a strategic deep-water terminal development opportunity at Mississippi River Mile Marker 39. The 106.99-acre site features 2,800 linear feet of Mississippi River frontage and 52-foot draft capability, presenting unique advantages for maritime commerce despite environmental legacy considerations and flood risk exposure.</p>
+                <p>The former Freeport-McMoRan Port Sulphur facility represents a strategic deep-water terminal development opportunity at Mississippi River Mile Marker 39. The 106.99-acre site features 2,800 linear feet of Mississippi River frontage and 52-foot draft capability, presenting unique advantages for maritime commerce despite environmental legacy considerations and flood risk exposure.</p>
 
-                <p><strong>Location:</strong> 28310 Highway 23, Mile Marker 39, LA 70083, Plaquemines Parish<br>
+                <p><strong>Location:</strong> 28310 Highway 23, Port Sulphur, LA 70083, Plaquemines Parish<br>
                 <strong>River Position:</strong> Left Descending Bank, Mile Marker 39<br>
                 <strong>Key Infrastructure:</strong> 24' × 433' concrete dock, 5,000 SF warehouse, Industrial District 3 zoning</p>
             </div>
@@ -1170,7 +550,7 @@
 
             <div class="section green">
                 <h2>Historical Background</h2>
-                <p>The Mile Marker 39 site operated as a major sulfur processing terminal from 1933 to 1978, utilizing the Frasch Process for sulfur extraction and handling. The facility was constructed by Freeport Sulphur Company and represented a significant industrial operation in Plaquemines Parish for over 70 years.</p>
+                <p>The Port Sulphur site operated as a major sulfur processing terminal from 1933 to 1978, utilizing the Frasch Process for sulfur extraction and handling. The facility was constructed by Freeport Sulphur Company and represented a significant industrial operation in Plaquemines Parish for over 70 years.</p>
 
                 <h3>Key Historical Milestones</h3>
                 <ul>
@@ -1457,7 +837,7 @@
         <div id="financial" class="tab-content">
             <div class="section">
                 <h2>Financial Analysis</h2>
-                <p>The Mile Marker 39 terminal presents multiple development pathways with varying capital requirements and return profiles. Financial modeling indicates break-even at approximately 1.5-2 million tons annually at $5-8/ton handling rates, achievable within 3-5 years given the site's strategic positioning.</p>
+                <p>The Port Sulphur terminal presents multiple development pathways with varying capital requirements and return profiles. Financial modeling indicates break-even at approximately 1.5-2 million tons annually at $5-8/ton handling rates, achievable within 3-5 years given the site's strategic positioning.</p>
             </div>
 
             <div class="section blue">
@@ -1605,7 +985,7 @@
         <div id="infrastructure" class="tab-content">
             <div class="section">
                 <h2>Regional Infrastructure Context</h2>
-                <p>Mile Marker 39 is positioned within a rapidly developing industrial corridor along the Lower Mississippi River. Major infrastructure projects in Plaquemines Parish demonstrate regional commitment to maritime and energy logistics, creating a favorable environment for terminal development.</p>
+                <p>Port Sulphur is positioned within a rapidly developing industrial corridor along the Lower Mississippi River. Major infrastructure projects in Plaquemines Parish demonstrate regional commitment to maritime and energy logistics, creating a favorable environment for terminal development.</p>
             </div>
 
             <div class="section blue">
@@ -1633,14 +1013,14 @@
                     <li><strong>Investment:</strong> $169 million</li>
                     <li><strong>Completed:</strong> 2023</li>
                     <li><strong>Impact:</strong> Eliminated air draft restriction at 73 feet</li>
-                    <li><strong>Benefit:</strong> Unrestricted barge tow access between Mile Marker 39 and Gulf</li>
+                    <li><strong>Benefit:</strong> Unrestricted barge tow access between Port Sulphur and Gulf</li>
                 </ul>
 
                 <h3>NOGC Railway</h3>
                 <ul>
                     <li><strong>Asset:</strong> 32-mile shortline railroad</li>
                     <li><strong>Utilization:</strong> <10% current capacity</li>
-                    <li><strong>Opportunity:</strong> 8-mile spur extension feasibility to Mile Marker 39</li>
+                    <li><strong>Opportunity:</strong> 8-mile spur extension feasibility to Port Sulphur</li>
                     <li><strong>Impact:</strong> Rail integration could increase throughput potential to 3-5M tons</li>
                 </ul>
             </div>
@@ -1684,7 +1064,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Mile Marker 39 (Project Site)</strong></td>
+                            <td><strong>Port Sulphur (Project Site)</strong></td>
                             <td>MM 39</td>
                             <td>52</td>
                             <td>Deep draft, no air draft limits, closest to Gulf</td>
@@ -1722,17 +1102,17 @@
         <div id="maps" class="tab-content">
             <div class="section">
                 <h2>Interactive Mapping</h2>
-                <p>Geographic intelligence and spatial analysis for the Mile Marker 39 terminal site and regional infrastructure context.</p>
+                <p>Geographic intelligence and spatial analysis for the Port Sulphur terminal site and regional infrastructure context.</p>
             </div>
 
             <div class="section blue">
-                <h2>ESRI ArcGIS Web Map - Mile Marker 39 Terminal</h2>
+                <h2>ESRI ArcGIS Web Map - Port Sulphur Terminal</h2>
                 <div style="border: 2px dashed rgba(100,255,180,0.3); padding: 3rem; text-align: center; background: rgba(100,255,180,0.05); border-radius: 8px; min-height: 600px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                     <div style="font-size: 3rem; color: rgba(100,255,180,0.5); margin-bottom: 1rem;">🗺️</div>
                     <h3 style="color: #64ffb4; margin-bottom: 1rem;">ESRI Map Placeholder</h3>
                     <p style="color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto;">
                         Interactive ESRI ArcGIS map will be embedded here showing:<br><br>
-                        • Mile Marker 39 site boundary and parcels<br>
+                        • Port Sulphur site boundary and parcels<br>
                         • Mississippi River navigation channel<br>
                         • Regional terminals and infrastructure<br>
                         • APM Terminals, Venture Global LNG, Belle Chasse Bridge<br>
@@ -1784,7 +1164,7 @@
         <div id="executive" class="tab-content">
             <div class="section">
                 <h2>Executive Summary</h2>
-                <p>This comprehensive analysis validates the Mile Marker 39 terminal opportunity while providing critical intelligence on environmental legacy, flood risk, market dynamics, and development economics. The following synthesis integrates 12 GB of source research into actionable recommendations.</p>
+                <p>This comprehensive analysis validates the Port Sulphur terminal opportunity while providing critical intelligence on environmental legacy, flood risk, market dynamics, and development economics. The following synthesis integrates 12 GB of source research into actionable recommendations.</p>
             </div>
 
             <div class="section blue">
@@ -1912,7 +1292,7 @@
 
             <div class="section">
                 <h2>Conclusion</h2>
-                <p>The Mile Marker 39 terminal represents a calculated risk with asymmetric upside potential. The site's strategic location, deep-draft capability, and regional infrastructure momentum create a compelling acquisition opportunity—provided environmental liabilities prove manageable and market capture assumptions are validated through shipper commitments.</p>
+                <p>The Port Sulphur terminal represents a calculated risk with asymmetric upside potential. The site's strategic location, deep-draft capability, and regional infrastructure momentum create a compelling acquisition opportunity—provided environmental liabilities prove manageable and market capture assumptions are validated through shipper commitments.</p>
 
                 <p>The $14.7M asking price appears reasonable on a $/acre basis ($137K/acre) compared to recent Lower Mississippi terminal transactions ($30K-$1.3M/acre), but significant environmental and flood risk discounts are warranted. A risk-adjusted valuation in the $10M-13M range better reflects the site's condition and required investment.</p>
 
@@ -1923,7 +1303,7 @@
         <!-- Full Report Tab -->
         <div id="report" class="tab-content">
             <div class="section">
-                <h2 style="font-size: 2rem; text-align: center; margin-bottom: 2rem;">Mile Marker 39 Terminal Development Analysis</h2>
+                <h2 style="font-size: 2rem; text-align: center; margin-bottom: 2rem;">Port Sulphur Terminal Development Analysis</h2>
                 <p style="text-align: center; font-size: 1.1rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem;">
                     Comprehensive Due Diligence Report<br>
                     Mississippi River Mile Marker 39, Plaquemines Parish, Louisiana
@@ -1935,9 +1315,9 @@
                 <h2>Chapter 1: Executive Summary</h2>
 
                 <h3>Project Overview</h3>
-                <p>This comprehensive analysis validates and expands the assessment of the former Freeport-McMoRan Mile Marker 39 facility as a strategic deep-water terminal development opportunity at Mississippi River Mile Marker 39. The 106.99-acre site, featuring 2,800 linear feet of Mississippi River frontage and 52-foot draft capability, presents unique advantages for maritime commerce despite environmental legacy considerations and flood risk exposure.</p>
+                <p>This comprehensive analysis validates and expands the assessment of the former Freeport-McMoRan Port Sulphur facility as a strategic deep-water terminal development opportunity at Mississippi River Mile Marker 39. The 106.99-acre site, featuring 2,800 linear feet of Mississippi River frontage and 52-foot draft capability, presents unique advantages for maritime commerce despite environmental legacy considerations and flood risk exposure.</p>
 
-                <p><strong>Location:</strong> 28310 Highway 23, Mile Marker 39, LA 70083, Plaquemines Parish<br>
+                <p><strong>Location:</strong> 28310 Highway 23, Port Sulphur, LA 70083, Plaquemines Parish<br>
                 <strong>River Position:</strong> Left Descending Bank, Mile Marker 39<br>
                 <strong>Key Infrastructure:</strong> 24' × 433' concrete dock (10,000-ton capacity), 5,000 SF warehouse, Industrial District 3 zoning</p>
 
@@ -2021,7 +1401,7 @@
                     <li><strong>APM Terminals (MM 51):</strong> $500M investment, 200-900 acres, 1.0M TEU capacity</li>
                     <li><strong>Venture Global LNG:</strong> $21B investment, 20M tonnes/year, largest U.S. construction project</li>
                     <li><strong>Belle Chasse Bridge:</strong> $169M completed 2023, eliminated 73-foot air draft restriction</li>
-                    <li><strong>NOGC Railway:</strong> 32-mile shortline, <10% utilized, 8-mile spur feasibility to Mile Marker 39</li>
+                    <li><strong>NOGC Railway:</strong> 32-mile shortline, <10% utilized, 8-mile spur feasibility to Port Sulphur</li>
                 </ul>
             </div>
 
@@ -2030,7 +1410,7 @@
                 <h2>Chapter 2: Property & Site Analysis</h2>
 
                 <h3>Legal Description</h3>
-                <p><strong>Address:</strong> 28310 Highway 23, Mile Marker 39, LA 70083<br>
+                <p><strong>Address:</strong> 28310 Highway 23, Port Sulphur, LA 70083<br>
                 <strong>Parish:</strong> Plaquemines Parish<br>
                 <strong>Total Acreage:</strong> 106.99 acres<br>
                 <strong>River Frontage:</strong> 2,800 linear feet (Left Descending Bank)<br>
@@ -2128,7 +1508,7 @@
                 </table>
 
                 <h3>Competitive Analysis</h3>
-                <p>Mile Marker 39 competes with established terminals along the Lower Mississippi River corridor, each with distinct advantages and specializations. Key differentiators include draft capability, location relative to Gulf access, infrastructure investment, and operational flexibility.</p>
+                <p>Port Sulphur competes with established terminals along the Lower Mississippi River corridor, each with distinct advantages and specializations. Key differentiators include draft capability, location relative to Gulf access, infrastructure investment, and operational flexibility.</p>
 
                 <h3>Market Capture Scenarios</h3>
                 <ul>
@@ -2143,7 +1523,7 @@
                 <h2>Chapter 4: Environmental Due Diligence</h2>
 
                 <h3>Historical Operations Summary</h3>
-                <p>The Mile Marker 39 facility operated as a major sulfur extraction and processing terminal from 1933 to 2005, representing 72 years of industrial activity. The Frasch Process, used extensively at this site, involved injecting superheated water (300°F+) into underground sulfur deposits, melting the sulfur, and pumping it to the surface for processing and barge loading.</p>
+                <p>The Port Sulphur facility operated as a major sulfur extraction and processing terminal from 1933 to 2005, representing 72 years of industrial activity. The Frasch Process, used extensively at this site, involved injecting superheated water (300°F+) into underground sulfur deposits, melting the sulfur, and pumping it to the surface for processing and barge loading.</p>
 
                 <h3>Contamination Concerns</h3>
 
@@ -2339,1085 +1719,12 @@
                 </ul>
 
                 <p style="margin-top: 2rem; padding: 1.5rem; background: rgba(100,255,180,0.1); border-left: 4px solid #64ffb4; border-radius: 6px;">
-                    <strong>Bottom Line:</strong> The Mile Marker 39 terminal represents a calculated risk with asymmetric upside. Success requires rigorous environmental due diligence, realistic market capture assumptions, and comprehensive flood risk mitigation. A risk-adjusted acquisition price of $10M-13M better reflects the site's condition and required investment compared to the $14.7M asking price.
+                    <strong>Bottom Line:</strong> The Port Sulphur terminal represents a calculated risk with asymmetric upside. Success requires rigorous environmental due diligence, realistic market capture assumptions, and comprehensive flood risk mitigation. A risk-adjusted acquisition price of $10M-13M better reflects the site's condition and required investment compared to the $14.7M asking price.
                 </p>
             </div>
         </div>
 
     </div>
-
-
-        <!-- Midstream Operations Tab -->
-        <div id="midstream" class="tab-content">
-            <div class="section">
-                <div class="section-header">
-                    <h2>Midstream Operations</h2>
-                    <span class="source-badge">MVN-2025-00276-EPP</span>
-                </div>
-
-            <div class="section-header">
-                <h2>Midstream Operations</h2>
-                <div class="source-count">
-                    <span class="source-badge">10 sources</span>
-                </div>
-            </div>
-
-            <!-- Executive Overview -->
-            <div class="content-block">
-                <h3>Executive Summary</h3>
-                <div class="summary-grid">
-                    <div class="summary-card">
-                        <div class="card-label">Project Type</div>
-                        <div class="card-value">Midstream Dry Cargo Mooring Facility</div>
-                    </div>
-                    <div class="summary-card">
-                        <div class="card-label">Location</div>
-                        <div class="card-value">Mississippi River Mile 46.3 AHP, Plaquemines Parish, LA</div>
-                    </div>
-                    <div class="summary-card">
-                        <div class="card-label">Permit Number</div>
-                        <div class="card-value">MVN-2025-00276-EPP</div>
-                    </div>
-                    <div class="summary-card">
-                        <div class="card-label">Coordinates</div>
-                        <div class="card-value">29.551389°N, 89.764444°W</div>
-                    </div>
-                </div>
-
-                <div class="insight-box">
-                    <p><strong>Service Model:</strong> Fee-based mooring infrastructure for customer-owned vessels and barges, providing midstream mooring for supramax bulk carriers and barge fleeting operations.</p>
-                    <p><strong>Jurisdiction:</strong> US Army Corps of Engineers New Orleans District</p>
-                </div>
-            </div>
-
-            <!-- Mooring System Specifications -->
-            <div class="content-block">
-                <h3>Mooring System Specifications</h3>
-
-                <div class="chart-container">
-                    <canvas id="mooringSystemSpecsChart"></canvas>
-                </div>
-
-                <div class="specs-grid">
-                    <div class="spec-card">
-                        <h4>5-Point Anchor Configuration</h4>
-                        <ul>
-                            <li><strong>Anchor Piles:</strong> 5 units, 48" diameter, 200' depth</li>
-                            <li><strong>Material:</strong> Steel with 16 mil coal tar epoxy coating</li>
-                            <li><strong>Elevation:</strong> -200.0' NAVD 88</li>
-                            <li><strong>Safety Factor:</strong> 3:1 minimum for permanent moorings</li>
-                        </ul>
-                    </div>
-
-                    <div class="spec-card">
-                        <h4>Navigation Buoy System</h4>
-                        <ul>
-                            <li><strong>Quantity:</strong> 5 commercial-grade units</li>
-                            <li><strong>Diameter:</strong> 8-12 feet</li>
-                            <li><strong>Type:</strong> Steel construction with quick-release mooring hooks</li>
-                            <li><strong>Features:</strong> Fairleads, GPS-guided placement, USCG-compliant marking</li>
-                        </ul>
-                    </div>
-
-                    <div class="spec-card">
-                        <h4>Anchor Chain System</h4>
-                        <ul>
-                            <li><strong>Grade:</strong> Grade 70+ marine certified</li>
-                            <li><strong>Link Size:</strong> 2-3 inches</li>
-                            <li><strong>Strength:</strong> High-tensile strength</li>
-                            <li><strong>Scope Adjustment:</strong> Accommodates 40+ foot river stage variations</li>
-                        </ul>
-                    </div>
-
-                    <div class="spec-card">
-                        <h4>Design Vessel Capacity</h4>
-                        <ul>
-                            <li><strong>Type:</strong> Supramax Bulk Carrier (Panamax+)</li>
-                            <li><strong>Length Overall:</strong> 750' (max 800')</li>
-                            <li><strong>Beam:</strong> 106' (max 75')</li>
-                            <li><strong>Gross Registered Tonnage:</strong> 30,000 tons (typical)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Barge Fleeting Operations -->
-            <div class="content-block">
-                <h3>Barge Fleeting Operations</h3>
-
-                <div class="chart-container">
-                    <canvas id="bargeFleetingCapacityChart"></canvas>
-                </div>
-
-                <div class="fleeting-details">
-                    <div class="detail-section">
-                        <h4>Configuration</h4>
-                        <ul>
-                            <li><strong>Grid Pattern:</strong> 7-tier long by 8-wide</li>
-                            <li><strong>Total Positions:</strong> 56 barge positions</li>
-                            <li><strong>Footprint:</strong> 1,400' × 280' (9 acres water surface)</li>
-                            <li><strong>Barge Type:</strong> Standard deck/hopper barges (open/closed), 200' × 35'</li>
-                        </ul>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>Monopile Support System</h4>
-                        <ul>
-                            <li><strong>Total Quantity:</strong> 12 monopiles (2 per tier)</li>
-                            <li><strong>Diameter:</strong> 48 inches</li>
-                            <li><strong>Depth:</strong> 100' (elevation -100.0' NAVD 88)</li>
-                            <li><strong>Material:</strong> Steel with 16 mil coal tar epoxy coating</li>
-                            <li><strong>Connection System:</strong> Capture yoke systems for barge fleet connections</li>
-                        </ul>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>Captive Dock Barge</h4>
-                        <ul>
-                            <li><strong>Purpose:</strong> Service platform for line handling and vessel coordination</li>
-                            <li><strong>System:</strong> Specialized yoke welded to captive dock barge</li>
-                            <li><strong>Access:</strong> Single captive barge for line handling operations</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Operational Capacity -->
-            <div class="content-block">
-                <h3>Operational Capacity Analysis</h3>
-
-                <div class="chart-container">
-                    <canvas id="operationalCapacityChart"></canvas>
-                </div>
-
-                <div class="capacity-overview">
-                    <p><strong>Operating Days:</strong> 280 days annually</p>
-                    <p><strong>Revenue per Call:</strong> $24,900 ($0.78/GRT + $1,500 security fee for 30,000 GRT vessels)</p>
-                </div>
-
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Utilization Level</th>
-                            <th>Calls per Week</th>
-                            <th>Annual Calls</th>
-                            <th>Gross Revenue</th>
-                            <th>Net Revenue (after 20% OpEx)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Conservative</strong></td>
-                            <td>2</td>
-                            <td>104</td>
-                            <td>$2,590,000</td>
-                            <td>$2,070,000</td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td><strong>Base Case</strong></td>
-                            <td>3</td>
-                            <td>156</td>
-                            <td>$3,880,000</td>
-                            <td>$3,100,000</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Optimistic</strong></td>
-                            <td>4</td>
-                            <td>208</td>
-                            <td>$5,180,000</td>
-                            <td>$4,140,000</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Revenue Projections -->
-            <div class="content-block">
-                <h3>Revenue Projections by Scenario</h3>
-
-                <div class="chart-container">
-                    <canvas id="revenueProjectionsChart"></canvas>
-                </div>
-
-                <div class="revenue-structure">
-                    <h4>Revenue Structure</h4>
-                    <ul>
-                        <li><strong>Dockage Rate:</strong> $0.78 per gross registered ton</li>
-                        <li><strong>Security Fee:</strong> $1,500 per vessel call</li>
-                        <li><strong>Calculation:</strong> (30,000 GRT × $0.78) + $1,500 = $24,900 per call</li>
-                        <li><strong>Operating Expenses:</strong> 20% of gross revenue</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Infrastructure Investment -->
-            <div class="content-block">
-                <h3>Total Infrastructure Investment</h3>
-
-                <div class="chart-container">
-                    <canvas id="costBreakdownChart"></canvas>
-                </div>
-
-                <div class="cost-summary">
-                    <div class="cost-range">
-                        <div class="cost-item">
-                            <span class="cost-label">Low Estimate:</span>
-                            <span class="cost-value">$5.2M</span>
-                        </div>
-                        <div class="cost-item">
-                            <span class="cost-label">Base Case:</span>
-                            <span class="cost-value">$7.5M</span>
-                        </div>
-                        <div class="cost-item">
-                            <span class="cost-label">High Estimate:</span>
-                            <span class="cost-value">$10.8M</span>
-                        </div>
-                    </div>
-
-                    <div class="alternative-estimates">
-                        <p><strong>Alternative Estimates Range:</strong> $6.9M - $27.7M</p>
-                        <p><em>Note: Cost estimates vary between documents reflecting different analysis methodologies and complexity assumptions.</em></p>
-                    </div>
-                </div>
-
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Component Category</th>
-                            <th>Low Estimate</th>
-                            <th>High Estimate</th>
-                            <th>Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Pile Installation & Materials</strong></td>
-                            <td>$1,800,000</td>
-                            <td>$4,200,000</td>
-                            <td>17 piles total (12 monopiles + 5 anchor piles at 200' depth)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Marine Construction Management</strong></td>
-                            <td>$1,500,000</td>
-                            <td>$3,100,000</td>
-                            <td>Project management, equipment mobilization, weather delays</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Engineering/Permitting</strong></td>
-                            <td>$700,000</td>
-                            <td>$1,400,000</td>
-                            <td>Section 408 permit, environmental compliance, professional services</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Revetment Repair</strong></td>
-                            <td>$400,000</td>
-                            <td>$1,200,000</td>
-                            <td>Bank stabilization per USACE Standard H-18-45204-99</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Mooring/Navigation System</strong></td>
-                            <td>$300,000</td>
-                            <td>$800,000</td>
-                            <td>5 buoys, chains, anchor hardware</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Land Improvements</strong></td>
-                            <td>$300,000</td>
-                            <td>$600,000</td>
-                            <td>0.92 acres clearing, basic access</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Captive Dock Barge</strong></td>
-                            <td>$200,000</td>
-                            <td>$500,000</td>
-                            <td>Service platform with capture yoke</td>
-                        </tr>
-                        <tr class="total-row">
-                            <td><strong>TOTAL INFRASTRUCTURE</strong></td>
-                            <td><strong>$5,200,000</strong></td>
-                            <td><strong>$10,800,000</strong></td>
-                            <td><strong>Base Case: $7,500,000</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Mooring System Detailed Cost Analysis -->
-            <div class="content-block">
-                <h3>Mooring Buoy System - Detailed Cost Analysis</h3>
-
-                <div class="chart-container">
-                    <canvas id="mooringSystemCostChart"></canvas>
-                </div>
-
-                <div class="mooring-cost-summary">
-                    <p><strong>Total System Cost Range:</strong></p>
-                    <ul>
-                        <li><strong>Conservative:</strong> $2.7M (standard specifications, minimal complexity)</li>
-                        <li><strong>Most Likely:</strong> $3.4M (commercial-grade, per permit specifications)</li>
-                        <li><strong>High-End:</strong> $4.0M (premium components, enhanced safety margins)</li>
-                    </ul>
-                </div>
-
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Component</th>
-                            <th>Quantity</th>
-                            <th>Unit Cost Range</th>
-                            <th>Total Cost Range</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="4" class="section-header-row"><strong>Anchor Pile System</strong></td>
-                        </tr>
-                        <tr>
-                            <td>48" Anchor Piles (200' depth)</td>
-                            <td>5</td>
-                            <td>$300,000 - $420,000</td>
-                            <td>$1,500,000 - $2,100,000</td>
-                        </tr>
-                        <tr>
-                            <td>Marine Installation</td>
-                            <td>5</td>
-                            <td>$80,000 - $120,000</td>
-                            <td>$400,000 - $600,000</td>
-                        </tr>
-                        <tr class="subtotal-row">
-                            <td colspan="3"><strong>Subtotal Anchor Piles</strong></td>
-                            <td><strong>$1,900,000 - $2,700,000</strong></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="section-header-row"><strong>Buoy & Chain System</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Commercial Navigation Buoys</td>
-                            <td>5</td>
-                            <td>$40,000 - $65,000</td>
-                            <td>$200,000 - $325,000</td>
-                        </tr>
-                        <tr>
-                            <td>Marine Anchor Chains</td>
-                            <td>5 sets</td>
-                            <td>$35,000 - $55,000</td>
-                            <td>$175,000 - $275,000</td>
-                        </tr>
-                        <tr>
-                            <td>Quick-Release Hardware</td>
-                            <td>5 sets</td>
-                            <td>$15,000 - $25,000</td>
-                            <td>$75,000 - $125,000</td>
-                        </tr>
-                        <tr class="subtotal-row">
-                            <td colspan="3"><strong>Subtotal Buoys & Chains</strong></td>
-                            <td><strong>$450,000 - $725,000</strong></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="section-header-row"><strong>Engineering & Installation</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Marine Engineering</td>
-                            <td>-</td>
-                            <td>Mooring analysis, design</td>
-                            <td>$150,000 - $250,000</td>
-                        </tr>
-                        <tr>
-                            <td>Installation Coordination</td>
-                            <td>-</td>
-                            <td>Specialized marine contractors</td>
-                            <td>$100,000 - $180,000</td>
-                        </tr>
-                        <tr>
-                            <td>Testing & Commissioning</td>
-                            <td>-</td>
-                            <td>Load testing, certification</td>
-                            <td>$75,000 - $125,000</td>
-                        </tr>
-                        <tr class="subtotal-row">
-                            <td colspan="3"><strong>Subtotal Engineering</strong></td>
-                            <td><strong>$325,000 - $555,000</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Development Timeline -->
-            <div class="content-block">
-                <h3>Development Timeline</h3>
-
-                <div class="chart-container">
-                    <canvas id="projectTimelineChart"></canvas>
-                </div>
-
-                <div class="timeline-overview">
-                    <div class="timeline-phase">
-                        <h4>Permitting Phase</h4>
-                        <p><strong>Duration:</strong> 18-36 months</p>
-                        <ul>
-                            <li>Section 408 permit (Rivers and Harbors Act)</li>
-                            <li>Section 404/Section 10 permit</li>
-                            <li>Louisiana Coastal Use Permit</li>
-                            <li>Water Quality Certification (LDEQ)</li>
-                            <li>Cultural resources review (Section 106)</li>
-                            <li>Endangered Species consultation (ESA Section 7)</li>
-                        </ul>
-                    </div>
-
-                    <div class="timeline-phase">
-                        <h4>Construction Phase</h4>
-                        <p><strong>Duration:</strong> 6-15 months</p>
-                        <ul>
-                            <li>Pile installation (17 piles total)</li>
-                            <li>Mooring system deployment</li>
-                            <li>Revetment repair</li>
-                            <li>Land improvements</li>
-                            <li>Testing and commissioning</li>
-                        </ul>
-                    </div>
-
-                    <div class="timeline-phase">
-                        <h4>Total Project Duration</h4>
-                        <p><strong>Range:</strong> 24-51 months</p>
-                        <ul>
-                            <li>Simple projects: 12-18 months</li>
-                            <li>Standard midstream terminal: 18-36 months</li>
-                            <li>Complex/controversial projects: 36+ months</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="insight-box">
-                    <p><strong>Critical Delay Factors:</strong> Incomplete applications, ESA consultation complexity, public opposition, multi-agency coordination issues</p>
-                </div>
-            </div>
-
-            <!-- Installation Procedures -->
-            <div class="content-block">
-                <h3>Buoy Installation Process</h3>
-
-                <div class="installation-steps">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Pre-Installation Survey</h4>
-                            <p>Detailed bathymetric mapping to confirm buoy positions clear of navigation hazards and revetment</p>
-                        </div>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Anchor Pile Installation</h4>
-                            <p>Five 48" diameter anchor piles driven to 200' depth using specialized marine pile driving equipment</p>
-                        </div>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Chain Deployment</h4>
-                            <p>Heavy anchor chain laid from pile to buoy position using anchor handling vessels</p>
-                        </div>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h4>Buoy Positioning</h4>
-                            <p>GPS-guided placement ensuring proper spacing and alignment with river flow patterns</p>
-                        </div>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h4>Load Testing</h4>
-                            <p>Full-scale testing with simulated vessel loads to verify system integrity</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="design-considerations">
-                    <h4>Critical Design Considerations</h4>
-                    <ul>
-                        <li><strong>Revetment Clearance:</strong> Buoys positioned in main channel to avoid interference with bank protection systems</li>
-                        <li><strong>River Flow Dynamics:</strong> Positioned to minimize current stress while providing optimal vessel approach angles</li>
-                        <li><strong>Navigation Safety:</strong> Coordinated with USCG for proper marking, lighting, and chart notation</li>
-                        <li><strong>Seasonal Adjustment:</strong> Chain scope allows for 40+ foot river stage variations without repositioning</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Regulatory Framework -->
-            <div class="content-block">
-                <h3>Regulatory Framework</h3>
-
-                <div class="regulatory-section">
-                    <h4>Section 408 Permit</h4>
-                    <p><strong>Authority:</strong> Section 14 of the Rivers and Harbors Act of 1899</p>
-                    <p><strong>Reason:</strong> Activities would alter, occupy, or use Corps Civil Works projects</p>
-                    <p><strong>Evaluation Criteria:</strong></p>
-                    <ul>
-                        <li>Potential to impair project usefulness</li>
-                        <li>Potential to be injurious to public interest</li>
-                        <li>Cumulative effects on conservation, economic development, environmental impacts, water quality, flood hazards, navigation, and recreation</li>
-                    </ul>
-                </div>
-
-                <div class="regulatory-section">
-                    <h4>Revetment Requirements</h4>
-                    <p><strong>Standard:</strong> USACE Standard H-18-45204-99</p>
-                    <p><strong>Purpose:</strong></p>
-                    <ul>
-                        <li>Bank stabilization using articulated concrete mattresses and stone</li>
-                        <li>Prevents undermining of pile foundations</li>
-                        <li>Maintains navigation channel integrity</li>
-                    </ul>
-                    <p><strong>Context:</strong> Below New Orleans in dynamic river environment with ongoing bank erosion concern</p>
-                </div>
-
-                <div class="regulatory-section">
-                    <h4>Environmental Compliance</h4>
-                    <ul>
-                        <li><strong>Louisiana Coastal Zone Management:</strong> Coastal Use Permit (P20250196)</li>
-                        <li><strong>Water Quality Certification:</strong> Louisiana Department of Environmental Quality (LDEQ)</li>
-                        <li><strong>Essential Fish Habitat:</strong> Minimal permanent impact (0.92 acres) with NMFS coordination</li>
-                        <li><strong>Endangered Species:</strong> Standard Manatee Conditions for in-water activities</li>
-                        <li><strong>Wetland Impacts:</strong> 0.92 acres jurisdictional wetlands requiring mitigation bank credits</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Technical Specifications Summary -->
-            <div class="content-block">
-                <h3>Technical Specifications Summary</h3>
-
-                <div class="specs-summary-grid">
-                    <div class="spec-summary-card">
-                        <div class="spec-icon">🔩</div>
-                        <div class="spec-label">Total Steel Piles</div>
-                        <div class="spec-value">17</div>
-                        <div class="spec-detail">All 48" diameter</div>
-                    </div>
-
-                    <div class="spec-summary-card">
-                        <div class="spec-icon">📏</div>
-                        <div class="spec-label">Maximum Depth</div>
-                        <div class="spec-value">200 feet</div>
-                        <div class="spec-detail">Below Mean Low Water</div>
-                    </div>
-
-                    <div class="spec-summary-card">
-                        <div class="spec-icon">⚓</div>
-                        <div class="spec-label">Navigation Buoys</div>
-                        <div class="spec-value">5</div>
-                        <div class="spec-detail">Commercial-grade units</div>
-                    </div>
-
-                    <div class="spec-summary-card">
-                        <div class="spec-icon">🔗</div>
-                        <div class="spec-label">Chain Grade</div>
-                        <div class="spec-value">Grade 70+</div>
-                        <div class="spec-detail">Marine certified</div>
-                    </div>
-
-                    <div class="spec-summary-card">
-                        <div class="spec-icon">🛡️</div>
-                        <div class="spec-label">Safety Factor</div>
-                        <div class="spec-value">3:1</div>
-                        <div class="spec-detail">Permanent moorings</div>
-                    </div>
-
-                    <div class="spec-summary-card">
-                        <div class="spec-icon">🌿</div>
-                        <div class="spec-label">Wetland Impact</div>
-                        <div class="spec-value">0.92 acres</div>
-                        <div class="spec-detail">Jurisdictional wetlands</div>
-                    </div>
-
-                    <div class="spec-summary-card">
-                        <div class="spec-icon">🚢</div>
-                        <div class="spec-label">Design Vessel</div>
-                        <div class="spec-value">800' LOA</div>
-                        <div class="spec-detail">Supramax capacity</div>
-                    </div>
-
-                    <div class="spec-summary-card">
-                        <div class="spec-icon">📦</div>
-                        <div class="spec-label">Barge Capacity</div>
-                        <div class="spec-value">56 positions</div>
-                        <div class="spec-detail">200' × 35' barges</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Key Findings -->
-            <div class="content-block">
-                <h3>Key Findings</h3>
-
-                <div class="findings-list">
-                    <div class="finding-item">
-                        <div class="finding-icon">✓</div>
-                        <div class="finding-text">
-                            <strong>Comprehensive Mooring Infrastructure:</strong> 5-point anchor system with 17 total piles (5 anchor piles at 200' depth, 12 monopiles at 100' depth) designed for supramax bulk carriers up to 800' LOA and 56 barge positions.
-                        </div>
-                    </div>
-
-                    <div class="finding-item">
-                        <div class="finding-icon">✓</div>
-                        <div class="finding-text">
-                            <strong>Revenue Potential:</strong> Base case scenario projects $3.88M gross annual revenue ($3.1M net) with 156 vessel calls per year at $24,900 per call.
-                        </div>
-                    </div>
-
-                    <div class="finding-item">
-                        <div class="finding-icon">✓</div>
-                        <div class="finding-text">
-                            <strong>Infrastructure Investment:</strong> Total project cost ranges from $5.2M to $10.8M (base case $7.5M), with alternative estimates up to $27.7M depending on complexity assumptions.
-                        </div>
-                    </div>
-
-                    <div class="finding-item">
-                        <div class="finding-icon">✓</div>
-                        <div class="finding-text">
-                            <strong>Development Timeline:</strong> 24-51 months total (18-36 months permitting, 6-15 months construction), requiring coordination across multiple federal and state agencies.
-                        </div>
-                    </div>
-
-                    <div class="finding-item">
-                        <div class="finding-icon">✓</div>
-                        <div class="finding-text">
-                            <strong>Regulatory Complexity:</strong> Requires Section 408 permit, Section 404/10 permits, Louisiana Coastal Use Permit, Water Quality Certification, ESA consultation, and revetment repair per USACE standards.
-                        </div>
-                    </div>
-
-                    <div class="finding-item">
-                        <div class="finding-icon">✓</div>
-                        <div class="finding-text">
-                            <strong>Environmental Impact:</strong> Minimal permanent impact (0.92 acres jurisdictional wetlands) requiring mitigation bank credits and standard manatee protection conditions.
-                        </div>
-                    </div>
-
-                    <div class="finding-item">
-                        <div class="finding-icon">✓</div>
-                        <div class="finding-text">
-                            <strong>River Adaptation:</strong> Mooring system designed to accommodate 40+ foot seasonal river stage variations with adjustable chain scope and GPS-guided buoy positioning.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ══════════════════════════════════════════════
-                 USACE PERMIT & ENGINEERING DOCUMENTATION
-                 Pelican Terminals LLC — MVN-2025-00276-EPP
-                 Mississippi River Mile 46.3 AHP
-            ══════════════════════════════════════════════ -->
-            <div class="content-block" style="margin-top:3rem;">
-                <div style="background:rgba(100,255,180,0.05);border:1px solid rgba(100,255,180,0.18);border-radius:10px;padding:1.25rem 1.75rem;margin-bottom:2rem;display:flex;align-items:center;gap:1rem;">
-                    <div style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#64ffb4;white-space:nowrap;">Regulatory Filing</div>
-                    <div style="font-size:1.15rem;font-weight:700;color:#fff;">USACE Permit Application — Engineering Documentation</div>
-                </div>
-
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.85rem;margin-bottom:2rem;">
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;text-align:center;">
-                        <span style="font-size:1.15rem;font-weight:700;color:#64ffb4;display:block;">MVN-2025-00276</span>
-                        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;letter-spacing:0.04em;">USACE Permit Number</div>
-                    </div>
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;text-align:center;">
-                        <span style="font-size:1.15rem;font-weight:700;color:#64ffb4;display:block;">Mile 46.3 AHP</span>
-                        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;letter-spacing:0.04em;">Mississippi River Location</div>
-                    </div>
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;text-align:center;">
-                        <span style="font-size:1.15rem;font-weight:700;color:#64ffb4;display:block;">750&prime; &times; 106&prime;</span>
-                        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;letter-spacing:0.04em;">Design Vessel (Panamax+)</div>
-                    </div>
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;text-align:center;">
-                        <span style="font-size:1.15rem;font-weight:700;color:#64ffb4;display:block;">5 &times; 48&Prime; Piles</span>
-                        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;letter-spacing:0.04em;">Anchor Piles, 200&prime; Depth</div>
-                    </div>
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;text-align:center;">
-                        <span style="font-size:1.15rem;font-weight:700;color:#64ffb4;display:block;">20 Sheets</span>
-                        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;letter-spacing:0.04em;">Engineering Drawing Set</div>
-                    </div>
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;text-align:center;">
-                        <span style="font-size:1.15rem;font-weight:700;color:#64ffb4;display:block;">$2.7M–$4.0M</span>
-                        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;letter-spacing:0.04em;">Mooring System Cost Est.</div>
-                    </div>
-                </div>
-
-                <h3 style="font-size:1rem;font-weight:700;color:#e8eaf0;margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08);">Permit Overview</h3>
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.5rem;margin-bottom:1.5rem;">
-                    <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;margin-bottom:0.75rem;">Pelican Terminals LLC (Applicant: Juan Carlos Carbone) filed USACE Public Notice MVN-2025-00276-EPP for a proposed midstream dry-cargo mooring facility at Bohemia, Louisiana — Mississippi River Mile 46.3 Above Head of Passes (AHP). Engineering drawings prepared by Lanier &amp; Associates, licensed engineers. The 20-sheet permit set includes vicinity maps, general notes, existing and proposed site plans, and detailed cross-section profiles.</p>
-                    <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;margin-bottom:0.75rem;"><strong style="color:#64ffb4;">Proposed Facility Configuration:</strong> A 7-tier × 8-wide barge fleet (56 barges) anchored by 12 typical monopiles, a captive barge dock, a 250&prime; × 72&prime; crane barge, 200&prime; × 35&prime; product barges, and a midstream ship berth (750&prime; × 106&prime;) served by five anchor piles and five navigation buoys. Total facility designed for Panamax+ class bulk carriers.</p>
-                    <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;"><strong style="color:#64ffb4;">Key Elevations:</strong> Project flowline +11.25&prime; NAVD 88 &nbsp;|&nbsp; Low Water Reference Plane (LWRP) +0.25&prime; &nbsp;|&nbsp; Anchor pile tip elevation −200.0&prime; NAVD 88 &nbsp;|&nbsp; Coordinates: 29.551389°N, 89.764444°W</p>
-                </div>
-
-                <!-- SHEET 4 RECREATION: Proposed Site Plan SVG -->
-                <h3 style="font-size:1rem;font-weight:700;color:#e8eaf0;margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08);">Sheet 4 — Proposed Site Plan (Recreation)</h3>
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.5rem;margin-bottom:1.5rem;">
-                    <div style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-align:center;margin-bottom:1rem;">Pelican Terminals LLC — Proposed Midstream Facility / Mississippi River Mile 46.3 AHP / Not to Scale</div>
-                    <svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:'Space Grotesk',sans-serif;">
-
-                        <!-- River background -->
-                        <rect x="0" y="0" width="800" height="520" fill="#0a1520"/>
-
-                        <!-- River water -->
-                        <rect x="0" y="80" width="800" height="360" fill="#0d2a45" opacity="0.7"/>
-
-                        <!-- River flow arrow -->
-                        <text x="700" y="32" fill="rgba(100,200,255,0.4)" font-size="11" letter-spacing="1">RIVER FLOW ↓</text>
-                        <text x="700" y="46" fill="rgba(100,200,255,0.3)" font-size="10">SOUTH / DOWNRIVER</text>
-
-                        <!-- LEVEE / BANK (left side) -->
-                        <polygon points="0,80 120,80 100,440 0,440" fill="#2a3a25" stroke="rgba(100,255,180,0.25)" stroke-width="1.5"/>
-                        <text x="35" y="265" fill="rgba(100,255,180,0.65)" font-size="10" font-weight="600" transform="rotate(-90,35,265)">LEVEE / BANK</text>
-                        <text x="55" y="260" fill="rgba(100,255,180,0.4)" font-size="9" transform="rotate(-90,55,260)">BOHEMIA, LA</text>
-
-                        <!-- Revetment line -->
-                        <line x1="100" y1="80" x2="100" y2="440" stroke="#64ffb4" stroke-width="2" stroke-dasharray="6,4" opacity="0.5"/>
-                        <text x="103" y="95" fill="rgba(100,255,180,0.55)" font-size="9">REVETMENT</text>
-                        <text x="103" y="106" fill="rgba(100,255,180,0.55)" font-size="9">LINE</text>
-
-                        <!-- BARGE FLEET: 7 tiers × 8 wide. Each barge ~52×16px. Start x=135, y=100 -->
-                        <!-- Tier labels on top -->
-                        <text x="143" y="95" fill="rgba(255,255,255,0.4)" font-size="9">←— BARGE FLEET (7 TIERS × 8 WIDE = 56 BARGES) —→</text>
-                        <!-- Draw 7 tiers (columns), each with 8 barges (rows) -->
-                        <!-- Tier 1 (closest to bank) x=135 -->
-                        <!-- Tier 2 x=193 -->
-                        <!-- ... -->
-                        <!-- Using loop-like repetition in SVG -->
-                        <!-- Tier 1 -->
-                        <rect x="130" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <rect x="130" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <!-- Tier 2 -->
-                        <rect x="185" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <rect x="185" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.35)" stroke-width="0.8"/>
-                        <!-- Tier 3 -->
-                        <rect x="240" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <rect x="240" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.3)" stroke-width="0.8"/>
-                        <!-- Tier 4 -->
-                        <rect x="295" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <rect x="295" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.4)" stroke="rgba(100,200,255,0.25)" stroke-width="0.8"/>
-                        <!-- Tier 5 -->
-                        <rect x="350" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <rect x="350" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.35)" stroke="rgba(100,200,255,0.22)" stroke-width="0.8"/>
-                        <!-- Tier 6 -->
-                        <rect x="405" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <rect x="405" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.3)" stroke="rgba(100,200,255,0.18)" stroke-width="0.8"/>
-                        <!-- Tier 7 -->
-                        <rect x="460" y="100" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="118" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="136" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="154" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="172" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="190" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="208" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-                        <rect x="460" y="226" width="52" height="16" rx="2" fill="rgba(70,130,180,0.25)" stroke="rgba(100,200,255,0.15)" stroke-width="0.8"/>
-
-                        <!-- MONOPILES for barge fleet (12 typical, shown as circles at key corners/midpoints) -->
-                        <circle cx="130" cy="100" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="182" cy="100" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="294" cy="100" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="405" cy="100" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="512" cy="100" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="130" cy="242" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="182" cy="242" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="294" cy="242" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="405" cy="242" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="512" cy="242" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="320" cy="170" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <circle cx="455" cy="170" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <text x="530" y="170" fill="rgba(100,255,180,0.65)" font-size="9">● MONOPILE</text>
-                        <text x="530" y="181" fill="rgba(100,255,180,0.45)" font-size="8">48&quot; dia (typ.)</text>
-
-                        <!-- CRANE BARGE: 250'×72' — shown below barge fleet -->
-                        <rect x="130" y="258" width="110" height="30" rx="3" fill="rgba(255,165,0,0.3)" stroke="rgba(255,165,0,0.7)" stroke-width="1.5"/>
-                        <!-- Crane symbol -->
-                        <line x1="185" y1="258" x2="185" y2="245" stroke="rgba(255,165,0,0.8)" stroke-width="2"/>
-                        <line x1="185" y1="245" x2="215" y2="250" stroke="rgba(255,165,0,0.8)" stroke-width="1.5"/>
-                        <text x="137" y="277" fill="rgba(255,165,0,0.9)" font-size="9" font-weight="600">CRANE BARGE</text>
-                        <text x="137" y="287" fill="rgba(255,165,0,0.65)" font-size="8">250&prime; × 72&prime;</text>
-
-                        <!-- PRODUCT BARGES (200'×35') -->
-                        <rect x="255" y="258" width="90" height="14" rx="2" fill="rgba(150,220,255,0.25)" stroke="rgba(150,220,255,0.5)" stroke-width="1"/>
-                        <rect x="255" y="275" width="90" height="14" rx="2" fill="rgba(150,220,255,0.25)" stroke="rgba(150,220,255,0.5)" stroke-width="1"/>
-                        <text x="258" y="300" fill="rgba(150,220,255,0.7)" font-size="9">PRODUCT BARGES 200&prime;×35&prime;</text>
-
-                        <!-- CAPTIVE BARGE DOCK -->
-                        <rect x="130" y="300" width="80" height="18" rx="2" fill="rgba(180,100,255,0.3)" stroke="rgba(180,100,255,0.6)" stroke-width="1.5"/>
-                        <text x="133" y="313" fill="rgba(180,100,255,0.85)" font-size="9" font-weight="600">CAPTIVE DOCK</text>
-
-                        <!-- MIDSTREAM SHIP BERTH (750'×106') — large vessel in main channel -->
-                        <rect x="120" y="345" width="540" height="80" rx="5" fill="rgba(100,255,180,0.07)" stroke="rgba(100,255,180,0.45)" stroke-width="2" stroke-dasharray="8,4"/>
-                        <!-- Ship hull shape inside -->
-                        <ellipse cx="390" cy="385" rx="260" ry="34" fill="rgba(100,255,180,0.12)" stroke="rgba(100,255,180,0.5)" stroke-width="1.5"/>
-                        <text x="390" y="381" text-anchor="middle" fill="rgba(100,255,180,0.85)" font-size="11" font-weight="600">SHIP BERTH — 750&prime; × 106&prime;</text>
-                        <text x="390" y="395" text-anchor="middle" fill="rgba(100,255,180,0.55)" font-size="9">MIDSTREAM VESSEL (PANAMAX+)</text>
-                        <text x="390" y="408" text-anchor="middle" fill="rgba(100,255,180,0.45)" font-size="8">Design Depth: −40&prime; MLLW</text>
-
-                        <!-- ANCHOR PILES for ship berth (5 piles shown as large circles) -->
-                        <circle cx="155" cy="380" r="7" fill="rgba(255,200,0,0.2)" stroke="rgba(255,200,0,0.8)" stroke-width="2"/>
-                        <circle cx="245" cy="352" r="7" fill="rgba(255,200,0,0.2)" stroke="rgba(255,200,0,0.8)" stroke-width="2"/>
-                        <circle cx="390" cy="345" r="7" fill="rgba(255,200,0,0.2)" stroke="rgba(255,200,0,0.8)" stroke-width="2"/>
-                        <circle cx="535" cy="352" r="7" fill="rgba(255,200,0,0.2)" stroke="rgba(255,200,0,0.8)" stroke-width="2"/>
-                        <circle cx="625" cy="380" r="7" fill="rgba(255,200,0,0.2)" stroke="rgba(255,200,0,0.8)" stroke-width="2"/>
-
-                        <!-- BUOYS (5 navigation buoys, shown as diamonds) -->
-                        <polygon points="155,428 163,436 155,444 147,436" fill="rgba(255,80,80,0.4)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <polygon points="245,428 253,436 245,444 237,436" fill="rgba(255,80,80,0.4)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <polygon points="390,428 398,436 390,444 382,436" fill="rgba(255,80,80,0.4)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <polygon points="535,428 543,436 535,444 527,436" fill="rgba(255,80,80,0.4)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <polygon points="625,428 633,436 625,444 617,436" fill="rgba(255,80,80,0.4)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <!-- Chain lines pile to buoy -->
-                        <line x1="155" y1="387" x2="155" y2="428" stroke="rgba(255,200,0,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/>
-                        <line x1="245" y1="359" x2="245" y2="428" stroke="rgba(255,200,0,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/>
-                        <line x1="390" y1="352" x2="390" y2="428" stroke="rgba(255,200,0,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/>
-                        <line x1="535" y1="359" x2="535" y2="428" stroke="rgba(255,200,0,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/>
-                        <line x1="625" y1="387" x2="625" y2="428" stroke="rgba(255,200,0,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/>
-
-                        <!-- PARKING 200'×200' -->
-                        <rect x="10" y="100" width="85" height="60" rx="3" fill="rgba(100,100,100,0.25)" stroke="rgba(200,200,200,0.3)" stroke-width="1"/>
-                        <text x="52" y="127" text-anchor="middle" fill="rgba(200,200,200,0.55)" font-size="9">PARKING</text>
-                        <text x="52" y="138" text-anchor="middle" fill="rgba(200,200,200,0.4)" font-size="8">200&prime;×200&prime;</text>
-
-                        <!-- Navigation channel label -->
-                        <text x="700" y="390" text-anchor="middle" fill="rgba(100,200,255,0.4)" font-size="10">MAIN</text>
-                        <text x="700" y="403" text-anchor="middle" fill="rgba(100,200,255,0.4)" font-size="10">CHANNEL</text>
-
-                        <!-- LEGEND -->
-                        <rect x="10" y="450" width="780" height="65" rx="5" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-                        <text x="20" y="465" fill="rgba(255,255,255,0.5)" font-size="9" font-weight="600" letter-spacing="1">LEGEND</text>
-                        <rect x="20" y="470" width="16" height="8" rx="1" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.4)" stroke-width="0.8"/>
-                        <text x="40" y="479" fill="rgba(255,255,255,0.6)" font-size="9">Barges</text>
-                        <circle cx="85" cy="474" r="5" fill="none" stroke="#64ffb4" stroke-width="2"/>
-                        <text x="93" y="479" fill="rgba(255,255,255,0.6)" font-size="9">Monopile (48&quot;)</text>
-                        <circle cx="175" cy="474" r="6" fill="rgba(255,200,0,0.2)" stroke="rgba(255,200,0,0.8)" stroke-width="2"/>
-                        <text x="185" y="479" fill="rgba(255,255,255,0.6)" font-size="9">Anchor Pile (Ship Berth)</text>
-                        <polygon points="278,474 284,480 278,486 272,480" fill="rgba(255,80,80,0.4)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <text x="290" y="479" fill="rgba(255,255,255,0.6)" font-size="9">Navigation Buoy</text>
-                        <rect x="360" y="469" width="30" height="11" rx="2" fill="rgba(255,165,0,0.3)" stroke="rgba(255,165,0,0.7)" stroke-width="1.5"/>
-                        <text x="396" y="479" fill="rgba(255,255,255,0.6)" font-size="9">Crane Barge 250&prime;×72&prime;</text>
-                        <rect x="490" y="470" width="25" height="8" rx="2" fill="rgba(150,220,255,0.25)" stroke="rgba(150,220,255,0.5)" stroke-width="1"/>
-                        <text x="520" y="479" fill="rgba(255,255,255,0.6)" font-size="9">Product Barge 200&prime;×35&prime;</text>
-                        <!-- Row 2 -->
-                        <rect x="20" y="485" width="25" height="8" rx="2" fill="rgba(100,255,180,0.07)" stroke="rgba(100,255,180,0.45)" stroke-width="1.5"/>
-                        <text x="50" y="495" fill="rgba(255,255,255,0.6)" font-size="9">Ship Berth 750&prime;×106&prime; (dashed outline)</text>
-                        <line x1="200" y1="489" x2="220" y2="489" stroke="rgba(255,200,0,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/>
-                        <text x="225" y="495" fill="rgba(255,255,255,0.6)" font-size="9">Mooring Chain (Pile to Buoy)</text>
-                        <line x1="360" y1="489" x2="380" y2="489" stroke="#64ffb4" stroke-width="2" stroke-dasharray="6,4" opacity="0.5"/>
-                        <text x="385" y="495" fill="rgba(255,255,255,0.6)" font-size="9">Revetment Line</text>
-                    </svg>
-                </div>
-
-                <!-- CROSS-SECTIONS -->
-                <h3 style="font-size:1rem;font-weight:700;color:#e8eaf0;margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08);">Cross-Section Profiles — Sheets 5–10 (Recreation)</h3>
-                <p style="color:rgba(255,255,255,0.6);font-size:0.85rem;margin-bottom:1rem;">River cross-sections A, B, and C show the Mississippi River bed profile, existing levee/bank, high water and low water levels, and the proposed structures at their respective stations.</p>
-
-                <!-- Section A: Through Barge Fleet -->
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.25rem;margin-bottom:1rem;">
-                    <div style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;text-align:center;">Section A–A′ — Through Barge Fleet / Looking Downriver</div>
-                    <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:'Space Grotesk',sans-serif;">
-                        <!-- Water background -->
-                        <rect x="0" y="0" width="720" height="200" fill="#0a1520"/>
-                        <!-- Water fill -->
-                        <rect x="0" y="65" width="720" height="100" fill="#0d2a45" opacity="0.6"/>
-                        <!-- River bed (undulating) -->
-                        <path d="M0,165 Q80,155 160,162 Q240,170 320,158 Q400,148 480,155 Q560,163 640,157 Q680,154 720,160" fill="none" stroke="#8b6914" stroke-width="2"/>
-                        <path d="M0,165 Q80,155 160,162 Q240,170 320,158 Q400,148 480,155 Q560,163 640,157 Q680,154 720,160 L720,200 L0,200 Z" fill="#3a2a0a" opacity="0.7"/>
-                        <!-- Elevation labels -->
-                        <!-- High Water line -->
-                        <line x1="0" y1="40" x2="720" y2="40" stroke="rgba(100,200,255,0.3)" stroke-width="1" stroke-dasharray="8,4"/>
-                        <text x="5" y="36" fill="rgba(100,200,255,0.55)" font-size="9">HWL</text>
-                        <!-- Project flowline +11.25' NAVD -->
-                        <line x1="0" y1="65" x2="720" y2="65" stroke="rgba(100,200,255,0.5)" stroke-width="1.5" stroke-dasharray="6,3"/>
-                        <text x="5" y="61" fill="rgba(100,200,255,0.75)" font-size="9">+11.25&apos; NAVD (Flowline)</text>
-                        <!-- LWRP +0.25' -->
-                        <line x1="0" y1="108" x2="720" y2="108" stroke="rgba(100,255,180,0.4)" stroke-width="1" stroke-dasharray="5,3"/>
-                        <text x="5" y="104" fill="rgba(100,255,180,0.65)" font-size="9">+0.25&apos; LWRP</text>
-                        <!-- Levee/Bank LEFT -->
-                        <polygon points="0,40 70,40 55,108 0,108" fill="#2a3a25" opacity="0.85"/>
-                        <polygon points="0,40 70,40 55,200 0,200" fill="#2a3a25" opacity="0.6"/>
-                        <text x="25" y="80" fill="rgba(100,255,180,0.6)" font-size="10" font-weight="600" transform="rotate(-90,25,80)">LEVEE</text>
-                        <!-- Existing revetment -->
-                        <line x1="70" y1="40" x2="55" y2="200" stroke="#64ffb4" stroke-width="2" opacity="0.5" stroke-dasharray="5,3"/>
-                        <!-- Barges (cross section: rectangular shapes in water) -->
-                        <rect x="80" y="60" width="45" height="18" rx="2" fill="rgba(70,130,180,0.55)" stroke="rgba(100,200,255,0.5)" stroke-width="1"/>
-                        <rect x="130" y="62" width="45" height="16" rx="2" fill="rgba(70,130,180,0.5)" stroke="rgba(100,200,255,0.4)" stroke-width="1"/>
-                        <rect x="180" y="63" width="45" height="15" rx="2" fill="rgba(70,130,180,0.45)" stroke="rgba(100,200,255,0.35)" stroke-width="1"/>
-                        <!-- Monopile through barge fleet -->
-                        <rect x="152" y="62" width="4" height="80" rx="1" fill="#64ffb4" opacity="0.7"/>
-                        <text x="158" y="155" fill="rgba(100,255,180,0.6)" font-size="8">MONOPILE 48&quot;</text>
-                        <!-- Open river channel -->
-                        <text x="400" y="95" text-anchor="middle" fill="rgba(100,200,255,0.4)" font-size="10">MAIN CHANNEL</text>
-                        <text x="400" y="108" text-anchor="middle" fill="rgba(100,200,255,0.3)" font-size="9">Navigation Depth</text>
-                        <!-- Right bank -->
-                        <polygon points="630,40 720,40 720,200 615,200" fill="#2a3a25" opacity="0.6"/>
-                        <polygon points="630,40 720,40 720,108 645,108" fill="#2a3a25" opacity="0.85"/>
-                        <!-- Labels -->
-                        <text x="360" y="188" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="9">RIVER BED (NAVD 88 profile varies with scour)</text>
-                        <text x="5" y="195" fill="rgba(255,255,255,0.25)" font-size="8">WEST BANK</text>
-                        <text x="665" y="195" fill="rgba(255,255,255,0.25)" font-size="8">EAST BANK</text>
-                    </svg>
-                </div>
-
-                <!-- Section B: Through Ship Berth -->
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.25rem;margin-bottom:1rem;">
-                    <div style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;text-align:center;">Section B–B′ — Through Ship Berth / Anchor Pile Profile / Looking Downriver</div>
-                    <svg viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:'Space Grotesk',sans-serif;">
-                        <rect x="0" y="0" width="720" height="210" fill="#0a1520"/>
-                        <!-- Water -->
-                        <rect x="0" y="55" width="720" height="100" fill="#0d2a45" opacity="0.6"/>
-                        <!-- River bed -->
-                        <path d="M0,155 Q100,145 200,152 Q340,162 450,148 Q560,140 660,148 Q690,150 720,155" fill="none" stroke="#8b6914" stroke-width="2"/>
-                        <path d="M0,155 Q100,145 200,152 Q340,162 450,148 Q560,140 660,148 Q690,150 720,155 L720,210 L0,210 Z" fill="#3a2a0a" opacity="0.7"/>
-                        <!-- HWL -->
-                        <line x1="0" y1="30" x2="720" y2="30" stroke="rgba(100,200,255,0.25)" stroke-width="1" stroke-dasharray="8,4"/>
-                        <text x="5" y="27" fill="rgba(100,200,255,0.45)" font-size="9">HWL</text>
-                        <!-- Flowline -->
-                        <line x1="0" y1="55" x2="720" y2="55" stroke="rgba(100,200,255,0.5)" stroke-width="1.5" stroke-dasharray="6,3"/>
-                        <text x="5" y="51" fill="rgba(100,200,255,0.75)" font-size="9">+11.25&apos; NAVD</text>
-                        <!-- LWRP -->
-                        <line x1="0" y1="98" x2="720" y2="98" stroke="rgba(100,255,180,0.4)" stroke-width="1" stroke-dasharray="5,3"/>
-                        <text x="5" y="94" fill="rgba(100,255,180,0.65)" font-size="9">+0.25&apos; LWRP</text>
-                        <!-- Levee left -->
-                        <polygon points="0,30 65,30 50,210 0,210" fill="#2a3a25" opacity="0.7"/>
-                        <text x="20" y="75" fill="rgba(100,255,180,0.55)" font-size="10" font-weight="600" transform="rotate(-90,20,75)">LEVEE</text>
-                        <!-- ANCHOR PILE (full depth) — ship berth pile -->
-                        <rect x="310" y="38" width="6" height="162" rx="2" fill="rgba(255,200,0,0.8)"/>
-                        <!-- Pile tip arrow -->
-                        <polygon points="310,200 316,200 313,207" fill="rgba(255,200,0,0.8)"/>
-                        <text x="320" y="55" fill="rgba(255,200,0,0.85)" font-size="9" font-weight="600">ANCHOR PILE</text>
-                        <text x="320" y="65" fill="rgba(255,200,0,0.65)" font-size="8">48&quot; dia</text>
-                        <text x="320" y="200" fill="rgba(255,200,0,0.65)" font-size="8">−200&apos; NAVD tip</text>
-                        <!-- Chain to buoy -->
-                        <line x1="313" y1="38" x2="313" y2="20" stroke="rgba(255,200,0,0.5)" stroke-width="1.5" stroke-dasharray="3,2"/>
-                        <!-- BUOY at surface -->
-                        <ellipse cx="313" cy="17" rx="10" ry="7" fill="rgba(255,80,80,0.5)" stroke="#ff6b6b" stroke-width="1.5"/>
-                        <text x="327" y="20" fill="rgba(255,120,120,0.8)" font-size="9">NAV. BUOY</text>
-                        <!-- VESSEL outline (section) -->
-                        <ellipse cx="370" cy="78" rx="120" ry="28" fill="rgba(100,255,180,0.08)" stroke="rgba(100,255,180,0.35)" stroke-width="1.5" stroke-dasharray="6,3"/>
-                        <text x="370" y="82" text-anchor="middle" fill="rgba(100,255,180,0.6)" font-size="10" font-weight="600">VESSEL (750&prime;×106&prime;)</text>
-                        <!-- Mooring lines from vessel to buoy (angled) -->
-                        <line x1="250" y1="78" x2="313" y2="17" stroke="rgba(255,200,0,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
-                        <!-- Right bank -->
-                        <polygon points="655,30 720,30 720,210 640,210" fill="#2a3a25" opacity="0.6"/>
-                        <text x="5" y="207" fill="rgba(255,255,255,0.2)" font-size="8">WEST</text>
-                        <text x="680" y="207" fill="rgba(255,255,255,0.2)" font-size="8">EAST</text>
-                        <text x="360" y="175" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="9">RIVER BED (−40 to −60&apos; channel depth)</text>
-                    </svg>
-                </div>
-
-                <!-- Engineering Specs Table -->
-                <h3 style="font-size:1rem;font-weight:700;color:#e8eaf0;margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08);">Mooring System Cost Estimates — Per Permit Specifications</h3>
-                <div style="overflow-x:auto;margin:1rem 0;">
-                    <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
-                        <thead>
-                            <tr>
-                                <th style="background:rgba(100,255,180,0.08);color:#64ffb4;font-weight:600;padding:0.65rem 0.9rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.2);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Component</th>
-                                <th style="background:rgba(100,255,180,0.08);color:#64ffb4;font-weight:600;padding:0.65rem 0.9rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.2);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Qty</th>
-                                <th style="background:rgba(100,255,180,0.08);color:#64ffb4;font-weight:600;padding:0.65rem 0.9rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.2);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Unit Cost</th>
-                                <th style="background:rgba(100,255,180,0.08);color:#64ffb4;font-weight:600;padding:0.65rem 0.9rem;text-align:left;border-bottom:1px solid rgba(100,255,180,0.2);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Total Range</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">48&Prime; Anchor Piles (200&prime; depth)</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">5</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$300k–$420k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$1.5M–$2.1M</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Marine Installation (5 piles)</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">5</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$80k–$120k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$400k–$600k</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Commercial Navigation Buoys (GPS/AIS)</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">5</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$40k–$65k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$200k–$325k</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Marine Anchor Chains (Grade 70+)</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">5 sets</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$35k–$55k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$175k–$275k</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Quick-Release Hardware</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">5 sets</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$15k–$25k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$75k–$125k</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Marine Engineering (mooring analysis)</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">1</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$150k–$250k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$150k–$250k</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Installation Coordination</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">1</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$100k–$180k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$100k–$180k</td></tr>
-                            <tr><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">Testing &amp; Commissioning</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">1</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$75k–$125k</td><td style="padding:0.6rem 0.9rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.78);">$75k–$125k</td></tr>
-                            <tr style="background:rgba(100,255,180,0.05);"><td style="padding:0.7rem 0.9rem;color:#64ffb4;font-weight:700;" colspan="3">TOTAL PROJECT ESTIMATE</td><td style="padding:0.7rem 0.9rem;color:#64ffb4;font-weight:700;">$2.7M – $4.0M</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Regulatory compliance summary -->
-                <h3 style="font-size:1rem;font-weight:700;color:#e8eaf0;margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08);">Regulatory Compliance Summary</h3>
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.85rem;margin-bottom:1.5rem;">
-                    <div style="background:rgba(100,255,180,0.04);border:1px solid rgba(100,255,180,0.15);border-radius:8px;padding:1rem;">
-                        <div style="font-size:0.78rem;font-weight:600;color:#64ffb4;margin-bottom:0.4rem;">USACE Section 408</div>
-                        <div style="font-size:0.82rem;color:rgba(255,255,255,0.65);">Rivers and Harbors Act, Section 14. Alteration of Corps Civil Works project revetment. MVN-2025-00276-EPP</div>
-                    </div>
-                    <div style="background:rgba(100,255,180,0.04);border:1px solid rgba(100,255,180,0.15);border-radius:8px;padding:1rem;">
-                        <div style="font-size:0.78rem;font-weight:600;color:#64ffb4;margin-bottom:0.4rem;">Louisiana Coastal Zone</div>
-                        <div style="font-size:0.82rem;color:rgba(255,255,255,0.65);">Coastal Use Permit P20250196 (LDNR). Consistency with Louisiana Coastal Zone Management Program.</div>
-                    </div>
-                    <div style="background:rgba(100,255,180,0.04);border:1px solid rgba(100,255,180,0.15);border-radius:8px;padding:1rem;">
-                        <div style="font-size:0.78rem;font-weight:600;color:#64ffb4;margin-bottom:0.4rem;">Environmental</div>
-                        <div style="font-size:0.82rem;color:rgba(255,255,255,0.65);">Essential Fish Habitat: 0.92 acres minimal impact. Standard Manatee Conditions. Pallid Sturgeon measures. Section 404/10 compliance.</div>
-                    </div>
-                    <div style="background:rgba(100,255,180,0.04);border:1px solid rgba(100,255,180,0.15);border-radius:8px;padding:1rem;">
-                        <div style="font-size:0.78rem;font-weight:600;color:#64ffb4;margin-bottom:0.4rem;">Technical Standards</div>
-                        <div style="font-size:0.82rem;color:rgba(255,255,255,0.65);">USACE Standard H-18-45204-99 revetment. Grade 70+ marine chain. 16-mil coal tar epoxy steel coating. 3:1 safety factor (permanent moorings). 25-year design life.</div>
-                    </div>
-                </div>
-
-                <!-- Construction timeline -->
-                <h3 style="font-size:1rem;font-weight:700;color:#e8eaf0;margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08);">Procurement &amp; Construction Timeline</h3>
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.5rem;">
-                    <div style="display:flex;flex-direction:column;gap:0.75rem;">
-                        <div style="display:flex;align-items:flex-start;gap:1rem;">
-                            <div style="min-width:130px;font-size:0.8rem;font-weight:600;color:#64ffb4;">Permit Approval</div>
-                            <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);">USACE public notice review period; typical 60–90 day comment period; complex projects may extend to 12–18 months with ESA consultation</div>
-                        </div>
-                        <div style="display:flex;align-items:flex-start;gap:1rem;">
-                            <div style="min-width:130px;font-size:0.8rem;font-weight:600;color:#64ffb4;">Procurement</div>
-                            <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);">4–6 month lead time for custom 48&Prime; anchor piles. Buoys (GPS/AIS): 8–12 weeks. Grade 70+ marine chain with certified load testing: 6–10 weeks</div>
-                        </div>
-                        <div style="display:flex;align-items:flex-start;gap:1rem;">
-                            <div style="min-width:130px;font-size:0.8rem;font-weight:600;color:#64ffb4;">Installation Window</div>
-                            <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);">Weather-optimal May–October. Pile driving: specialized marine equipment; river stage-dependent. Chain deployment: anchor handling vessels</div>
-                        </div>
-                        <div style="display:flex;align-items:flex-start;gap:1rem;">
-                            <div style="min-width:130px;font-size:0.8rem;font-weight:600;color:#64ffb4;">Testing &amp; Certification</div>
-                            <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);">2–3 weeks for load testing. Third-party anchor chain certification required. USCG navigation marking/lighting verification. Final USACE acceptance inspection</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        
-            </div>
-        </div>
 
     <script>
         // Check authentication
@@ -3444,25 +1751,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
-
-    <script src="port-sulphur-report/visualizations/mid_stream_charts.js"></script>
-    <script>
-        // Initialize Midstream Operations Charts
-    document.addEventListener('DOMContentLoaded', function() {
-        if (typeof Chart !== 'undefined') {
-            initializeMidStreamCharts({
-                mooringSpecs: 'mooringSystemSpecsChart',
-                operationalCapacity: 'operationalCapacityChart',
-                revenue: 'revenueProjectionsChart',
-                costBreakdown: 'costBreakdownChart',
-                mooringCost: 'mooringSystemCostChart',
-                timeline: 'projectTimelineChart',
-                bargeFleeting: 'bargeFleetingCapacityChart'
-            });
-        } else {
-            console.error('Chart.js not loaded - midstream charts cannot be initialized');
-        }
-    });
-    </script>
+<script src="../od-theme-pdf.js"></script>
 </body>
 </html>
