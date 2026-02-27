@@ -788,6 +788,249 @@ APPLICATION LAYER:  Python/FastAPI + PostgreSQL
     </table>
   </div>
 
+  <!-- M365 Enterprise Implementation -->
+  <div class="wp-section">
+    <div class="wp-section-title">Microsoft 365 Enterprise Implementation</div>
+    <p class="wp-p">The standalone Python/PostgreSQL architecture described above is purpose-built for maximum operational flexibility. For deployment inside a corporate Microsoft 365 environment &mdash; where SAS serves as the ERP, Teams is the primary collaboration layer, SharePoint hosts documents (often in scattered, unstructured locations), and Azure is the cloud backbone &mdash; each component maps to a Microsoft-native equivalent with specific integration bridges required to pull data from those fragmented sources.</p>
+
+    <div class="wp-h3">Environment Mapping</div>
+    <table class="wp-table">
+      <thead><tr><th>Framework Component</th><th>Standalone (Current)</th><th>M365 Enterprise Equivalent</th></tr></thead>
+      <tbody>
+        <tr><td>Database</td><td>PostgreSQL 15</td><td>Azure SQL Database (SQL Server engine, T-SQL)</td></tr>
+        <tr><td>Backend API</td><td>FastAPI (local / Docker)</td><td>FastAPI on Azure App Service or Azure Container Apps</td></tr>
+        <tr><td>Authentication</td><td>None (internal)</td><td>Azure Active Directory (MSAL) + role-based access</td></tr>
+        <tr><td>Knowledge Base / Docs</td><td>Obsidian local vault</td><td>SharePoint document libraries + Teams channel files</td></tr>
+        <tr><td>Document Ingestion</td><td>Local file watch</td><td>Microsoft Graph API + Power Automate flows</td></tr>
+        <tr><td>ERP / Operational Data</td><td>Manual CSV / seeded data</td><td>SAS ERP export bridge (see below)</td></tr>
+        <tr><td>Alerts &amp; Notifications</td><td>Dashboard conflict cards</td><td>Teams webhook / Adaptive Cards via Power Automate</td></tr>
+        <tr><td>Executive Dashboard</td><td>Standalone HTML / Chart.js</td><td>Power BI report embedded in Teams or SharePoint</td></tr>
+        <tr><td>Operations GUI</td><td>HTML prototype / React (future)</td><td>Teams Tab App (React + MSAL) or Power Apps Canvas App</td></tr>
+        <tr><td>Scheduler / Automation</td><td>Manual API calls / cron</td><td>Azure Functions (timer-triggered) or Power Automate</td></tr>
+      </tbody>
+    </table>
+
+    <div class="wp-h3">The Core Problem: Fragmented SharePoint &amp; Teams</div>
+    <p class="wp-p">In practice, critical supply chain documents &mdash; charter parties, bills of lading, discharge reports, Statement of Facts files, customer order confirmations &mdash; end up scattered across multiple locations with no consistent structure:</p>
+    <ul class="wp-ul">
+      <li>Teams channel file tabs (each channel has its own SharePoint document library)</li>
+      <li>Individual OneDrive folders shared to a Teams channel or colleague</li>
+      <li>SharePoint team sites vs. communication sites (different URL roots, different permissions)</li>
+      <li>Email attachments in Outlook that never get filed anywhere</li>
+      <li>Ad hoc &ldquo;I&rsquo;ll just drop it in the General channel&rdquo; files</li>
+    </ul>
+    <div class="wp-callout"><strong>Solution: Microsoft Graph API Unified Search.</strong> The Graph API&rsquo;s <code>/search/query</code> endpoint searches across <em>all</em> SharePoint sites, Teams document libraries, and OneDrive in a single authenticated query &mdash; regardless of where a file lives. This is the key bridge: the application does not need to know the exact SharePoint URL. It queries Graph API by file name pattern, metadata, or content keyword, finds the file wherever it is, and ingests it. Combined with SharePoint webhooks (change notifications), the system can also <em>watch</em> for new files as they land.</div>
+
+    <div class="wp-h3">Data Bridge 1 &mdash; SharePoint / Teams Document Ingestion</div>
+    <pre class="wp-pre">APPROACH A: Graph API Unified Search (recommended for fragmented environments)
+
+  # Python — find a charter party wherever it landed in M365
+  import msal, requests
+
+  token = get_access_token(tenant_id, client_id, client_secret,
+                           scope=["https://graph.microsoft.com/.default"])
+
+  results = requests.post(
+      "https://graph.microsoft.com/v1.0/search/query",
+      headers={"Authorization": f"Bearer {token}"},
+      json={"requests": [{
+          "entityTypes": ["driveItem"],
+          "query": {"queryString": "charter party filetype:pdf"},
+          "fields": ["name","webUrl","lastModifiedDateTime","parentReference"]
+      }]}
+  ).json()
+
+  # Returns files from ALL sites, channels, OneDrives — no URL needed
+
+APPROACH B: SharePoint Webhook (change notification on a known library)
+
+  # Register subscription on a specific document library
+  POST https://graph.microsoft.com/v1.0/subscriptions
+  {
+    "changeType": "created,updated",
+    "notificationUrl": "https://[your-azure-function]/api/sp-webhook",
+    "resource": "sites/{site-id}/drives/{drive-id}/root",
+    "expirationDateTime": "2026-12-31T00:00:00Z"
+  }
+  # Azure Function receives notification → fetches file → ingests
+
+APPROACH C: Power Automate (no-code, good for Teams channel monitoring)
+
+  Trigger: "When a file is created in a folder" (SharePoint connector)
+       ↓
+  Parse filename / metadata
+       ↓
+  HTTP POST to FastAPI endpoint with file content or metadata
+       ↓
+  FastAPI writes structured record to Azure SQL</pre>
+
+    <div class="wp-h3">Data Bridge 2 &mdash; SAS ERP Integration</div>
+    <p class="wp-p">SAS environments vary significantly in version and licensing. Four practical options, ranked from simplest to most powerful:</p>
+    <table class="wp-table">
+      <thead><tr><th>Option</th><th>Method</th><th>Complexity</th><th>Best For</th></tr></thead>
+      <tbody>
+        <tr><td>A &mdash; File Drop</td><td>SAS PROC EXPORT → CSV/XLSX → SharePoint folder → Graph API picks up</td><td>Low</td><td>Daily batch sync, no additional SAS licensing</td></tr>
+        <tr><td>B &mdash; Direct SQL</td><td>SAS/ACCESS for SQL Server → PROC SQL PASSTHROUGH → write to Azure SQL</td><td>Medium</td><td>Real-time sync if SAS/ACCESS licensed; cleanest integration</td></tr>
+        <tr><td>C &mdash; ODBC Bridge</td><td>SAS ODBC driver → pyodbc in Python → pull SAS datasets directly</td><td>Medium</td><td>When SAS runs on-prem, Python app on same network</td></tr>
+        <tr><td>D &mdash; SAS Viya REST API</td><td>SAS Viya: REST endpoints available for stored processes and CAS tables</td><td>High</td><td>Modern Viya environments, full programmatic access</td></tr>
+      </tbody>
+    </table>
+    <div class="wp-callout"><strong>Recommended path (Option A):</strong> Schedule a SAS job to run nightly &mdash; PROC EXPORT of key tables (inventory levels, customer orders, shipment records) to a designated SharePoint folder. Power Automate or an Azure Function detects the new file, parses it, and writes structured records to Azure SQL. Zero additional SAS licensing. Delay is &lt;24 hours, acceptable for planning-horizon data. If real-time ERP sync is required, Option B (SAS/ACCESS + PROC SQL PASSTHROUGH) writes directly to Azure SQL on a scheduled or triggered basis.</div>
+
+    <pre class="wp-pre">/* SAS Option A — nightly export to SharePoint-synced folder */
+PROC EXPORT DATA=work.dome_inventory
+  OUTFILE="\\sharepoint-sync\SupplyChain\exports\dome_inventory_&sysdate..csv"
+  DBMS=CSV REPLACE;
+  PUTNAMES=YES;
+RUN;
+
+/* SAS Option B — direct write to Azure SQL via PROC SQL PASSTHROUGH */
+PROC SQL;
+  CONNECT TO SQLSERVER AS azdb (
+    SERVER="your-server.database.windows.net"
+    DATABASE="supplychain_db"
+    UID="sas_service_acct" PWD="&vault_password"
+  );
+  EXECUTE (
+    MERGE dbo.dome_inventory AS target
+    USING (VALUES (&dome_id, &current_tons, GETDATE()))
+          AS source (dome_id, current_tons, updated_at)
+    ON target.dome_id = source.dome_id
+    WHEN MATCHED THEN UPDATE SET current_tons=source.current_tons, ...
+    WHEN NOT MATCHED THEN INSERT ...
+  ) BY azdb;
+  DISCONNECT FROM azdb;
+QUIT;</pre>
+
+    <div class="wp-h3">Data Bridge 3 &mdash; Teams Alerts &amp; Notifications</div>
+    <pre class="wp-pre">APPROACH: Power Automate + Adaptive Cards (no custom code required)
+
+  Trigger: HTTP request from FastAPI (POST to Power Automate webhook URL)
+  Payload:
+  {
+    "conflict_type": "CAPACITY_OVERFLOW",
+    "severity": "HIGH",
+    "vessel_name": "M/V PEARL CARRIER",
+    "eta": "2026-03-15",
+    "cost_impact_usd": 37500,
+    "recommendation": "Delay vessel arrival by 2 days"
+  }
+
+  Power Automate Flow:
+    1. Receive HTTP POST
+    2. Parse JSON payload
+    3. Post Adaptive Card to Operations Teams channel:
+
+  ┌─────────────────────────────────────────────────────┐
+  │ ⚠ HIGH SEVERITY — Schedule Conflict Detected        │
+  │ Vessel: M/V PEARL CARRIER (ETA: 15 Mar 2026)        │
+  │ Issue: Dome will exceed safe capacity by 1,200 tons  │
+  │ Cost Impact: $37,500                                 │
+  │ ─────────────────────────────────────────────────── │
+  │ Recommendation: Delay vessel arrival by 2 days       │
+  │ [Acknowledge]  [View Full Analysis]  [Reassign]      │
+  └─────────────────────────────────────────────────────┘
+
+  [Acknowledge] button triggers a Power Automate action
+  that PATCHes the conflict status via the FastAPI endpoint.</pre>
+
+    <div class="wp-h3">Database Layer: Azure SQL Migration</div>
+    <p class="wp-p">Azure SQL Database uses the SQL Server engine (T-SQL), not PostgreSQL. The migration is straightforward with minor syntax changes. SQLAlchemy (used by FastAPI) handles both engines via connection string swap:</p>
+    <pre class="wp-pre"># PostgreSQL (current)
+DATABASE_URL = "postgresql://user:pass@localhost/supplychain"
+
+# Azure SQL (M365 deployment)
+DATABASE_URL = (
+    "mssql+pyodbc://user:pass@"
+    "your-server.database.windows.net/supplychain_db"
+    "?driver=ODBC+Driver+18+for+SQL+Server"
+    "&Encrypt=yes&TrustServerCertificate=no"
+)
+
+# Key T-SQL differences to adjust:
+#   PostgreSQL SERIAL / BIGSERIAL  → SQL Server IDENTITY(1,1)
+#   PostgreSQL NOW()               → SQL Server GETDATE() / SYSDATETIME()
+#   PostgreSQL BOOLEAN             → SQL Server BIT
+#   PostgreSQL TEXT                → SQL Server NVARCHAR(MAX)
+#   PostgreSQL ILIKE               → SQL Server LIKE (case-insensitive collation)
+
+# Alembic migration: set dialect in env.py
+# from alembic.ddl.mssql import MSSQLDDLCompiler  (auto-detected)</pre>
+
+    <div class="wp-h3">GUI Recommendation for M365 Environment</div>
+    <p class="wp-p">Three GUI layers are recommended, each serving a different audience and already available within the M365 license stack:</p>
+    <div class="wp-kv">
+      <div class="wp-kv-card">
+        <h5>1. Power BI &mdash; Executive &amp; Management</h5>
+        <p>Connect Power BI Desktop to Azure SQL (native connector). Publish to Power BI Service → embed in SharePoint intranet page or pin as Teams tab. Auto-refresh every 15 minutes. KPI cards, inventory trend charts, demurrage cost tracker. No coding required for ongoing maintenance. <strong>Best fit for management review meetings.</strong></p>
+      </div>
+      <div class="wp-kv-card">
+        <h5>2. Teams Tab App &mdash; Daily Operations</h5>
+        <p>The existing HTML/Chart.js dashboard (or a React upgrade) hosted on Azure Static Web Apps with MSAL authentication. Pinned as a tab in the Operations Teams channel. Ops team sees live inventory, conflict cards, and vessel ETAs without leaving Teams. Full interactivity. <strong>Best fit for the daily scheduling workflow.</strong></p>
+      </div>
+      <div class="wp-kv-card">
+        <h5>3. Power Apps Canvas App &mdash; Data Entry</h5>
+        <p>Low-code canvas app connected to Azure SQL via Power Apps connector. Operations team enters new vessel ETAs, logs discharge events, updates customer orders. Embeds in Teams. No SQL knowledge required from end users. Validates inputs against business rules. <strong>Best fit for replacing manual spreadsheet data entry.</strong></p>
+      </div>
+    </div>
+
+    <div class="wp-h3">M365 Architecture Overview</div>
+    <pre class="wp-pre arch">┌────────────────────────────────────────────────────────────────────────┐
+│                     MICROSOFT 365 TENANT                               │
+│                                                                        │
+│  SharePoint Sites  │  Teams Channels   │  OneDrive  │  Outlook        │
+│  (charter parties, │  (discharge rpts, │  (shared   │  (BOL email     │
+│   SOF docs, orders)│   weather alerts) │   folders) │   attachments)  │
+└──────────────────────────────────────┬─────────────────────────────────┘
+                                       │
+                           Microsoft Graph API
+                        (unified search + webhooks)
+                                       │
+                         ┌─────────────▼──────────────┐
+                         │  Power Automate Flows        │
+                         │  Azure Functions (timer)     │
+                         │  (ingestion + alerting)      │
+                         └─────────────┬────────────────┘
+                                       │
+          ┌────────────────────────────┼────────────────────────┐
+          │                            │                        │
+ ┌────────▼────────┐        ┌──────────▼──────────┐   ┌───────▼────────┐
+ │   SAS ERP        │        │  FastAPI Backend     │   │  AIS / NOAA    │
+ │  (PROC EXPORT    │        │  Azure App Service   │   │  Weather APIs  │
+ │   → SharePoint   │───────►│  or Container Apps   │◄──│  (external)    │
+ │   or PASSTHROUGH │        │                      │   └────────────────┘
+ │   → Azure SQL)   │        └──────────┬───────────┘
+ └──────────────────┘                   │
+                               ┌────────▼────────┐
+                               │  Azure SQL DB    │
+                               │  (replaces       │
+                               │   PostgreSQL)    │
+                               └────────┬─────────┘
+                                        │
+              ┌─────────────────────────┼──────────────────────────┐
+              │                         │                          │
+   ┌──────────▼──────┐     ┌────────────▼─────────┐   ┌───────────▼──────┐
+   │  Power BI        │     │  Teams Tab App         │   │  Power Apps      │
+   │  (executive      │     │  (operations daily     │   │  (data entry,    │
+   │   dashboards,    │     │   view: inventory,     │   │   vessel ETAs,   │
+   │   SP/Teams embed)│     │   conflicts, vessels)  │   │   order updates) │
+   └──────────────────┘     └────────────────────────┘   └──────────────────┘
+              │                         │
+              └─────────────────────────┘
+                  Teams Adaptive Card Alerts
+              (conflict notifications → ops channel)</pre>
+
+    <div class="wp-h3">Additional M365 Implementation Considerations</div>
+    <ul class="wp-ul">
+      <li><strong>Azure Key Vault:</strong> Store all credentials (SAS DB passwords, API keys, Graph API secrets) in Azure Key Vault &mdash; never in code or config files. FastAPI reads secrets at startup via the Azure SDK.</li>
+      <li><strong>Azure AD App Registration:</strong> Register one enterprise application for the backend. Grant Microsoft Graph API permissions: <code>Files.Read.All</code>, <code>Sites.Read.All</code>, <code>Mail.Read</code> (for Outlook attachment ingestion). Use client credentials flow (service account, not delegated).</li>
+      <li><strong>SharePoint Folder Convention:</strong> Establish a single &ldquo;drop zone&rdquo; SharePoint folder as the canonical intake point &mdash; all supply chain documents get copied here (manually or via Power Automate rules). Graph API webhooks watch only this folder, eliminating the fragmentation problem for new documents. Historical documents are found via unified search.</li>
+      <li><strong>Power BI Incremental Refresh:</strong> Configure the Azure SQL data source with incremental refresh (last-modified-date filter) so Power BI only pulls new/updated rows rather than full table scans on each refresh cycle.</li>
+      <li><strong>SAS Schedule Alignment:</strong> If SAS ERP runs nightly batch jobs, schedule the Azure Function ingestion 30 minutes after the SAS job completes to ensure fresh data is available for the morning operations review in Teams.</li>
+      <li><strong>IT Governance:</strong> The Azure AD App Registration and Azure SQL firewall rules require coordination with corporate IT. Budget 1&ndash;2 weeks for provisioning approvals in a standard enterprise environment. Request access early in the project.</li>
+    </ul>
+  </div>
+
   <div class="wp-meta">
     <strong>Document Status:</strong> Internal Technical Reference &nbsp;&middot;&nbsp;
     <strong>Version:</strong> 1.0 &nbsp;&middot;&nbsp;
