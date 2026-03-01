@@ -440,12 +440,22 @@
 
   /* ── PRINT ── */
   @media print {
-    body { background: #fff; color: #000; }
-    .navbar, .hamburger-button, .mobile-menu { display: none; }
+    body { background: #fff !important; color: #000 !important; }
+    .navbar, .hamburger-button, .mobile-menu { display: none !important; }
     .article-container { max-width: none; padding: 0; }
-    .article-glass { background: none; backdrop-filter: none; border: none; padding: 0; }
-    .article-body p { color: #000; }
-    .post-hero-img { box-shadow: none; }
+    .article-glass { background: none !important; backdrop-filter: none !important; border: none; padding: 0; }
+    * { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+    /* Fix CSS variable colors that stay white/green in dark mode */
+    .title-block h1, .title-block .subtitle, .title-block .byline,
+    .masthead, .mast-label, .mast-date { color: #000 !important; }
+    .article-body p, .article-body h2, .article-body p.sub-head,
+    .article-body li, .divider { color: #000 !important; }
+    .drop-cap::first-letter { color: #333 !important; }
+    .bio p, .bio strong { color: #000 !important; }
+    /* Ensure float image prints */
+    .post-float-img { float: left; margin: 0 1.5rem 1rem 0; width: 200px; }
+    .post-float-img img { display: block !important; width: 100% !important; }
+    figure.post-float-img .post-float-caption { color: #555 !important; }
   }
 </style>
 </head>
