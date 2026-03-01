@@ -426,7 +426,10 @@
     .article-glass { padding: 2rem 1.2rem 3rem; border-radius: 8px; }
     .title-block h1 { font-size: 1.9rem; }
     .hamburger-button { display: block; }
-    .navbar-right { display: none; }
+    /* Hide nav links + social icons but keep toggle/print buttons visible */
+    .navbar-right .social-icons,
+    .navbar-right .navbar-link { display: none; }
+    .navbar-right { display: flex; gap: 0.5rem; }
     .navbar { padding: 0.6rem 1rem; }
     /* Mobile reading: more breathing room between paragraphs and sections */
     .article-body p { margin-bottom: 1.4em; line-height: 1.85; }
