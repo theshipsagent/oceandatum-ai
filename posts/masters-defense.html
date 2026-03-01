@@ -720,26 +720,32 @@
     .divider { margin: 2em 0; }
   }
 
-  /* ── PRINT ── */
+  /* ── PRINT — always renders as light mode regardless of current theme ── */
   @media print {
-    body { background: #fff !important; color: #000 !important; }
+    :root {
+      --ink: #1a1a1a;
+      --ink-secondary: #2a2a2a;
+      --ink-muted: #555;
+      --ink-faint: #888;
+      --accent: #0d3b66;
+      --bg-page: #ffffff;
+      --bg-container: #ffffff;
+      --rule: #333;
+      --rule-light: #ccc;
+      --rule-faint: #e0e0e0;
+      --card-bg: #f0f4f8;
+      --card-border: #d6dfe8;
+      --download-bg: #f0f4f8;
+      --download-btn-bg: #0d3b66;
+      --download-btn-color: #ffffff;
+    }
+    body { background: #fff !important; }
     .navbar, .hamburger-button, .mobile-menu, .theme-toggle, .download-bar { display: none !important; }
     .article-container { max-width: none; padding: 0; }
-    .article-glass { background: none !important; backdrop-filter: none !important; border: none; padding: 0; }
-    * { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
-    /* Fix CSS variable colors that stay white/green in dark mode */
-    .title-block h1, .title-block .subtitle, .title-block .byline,
-    .masthead, .mast-label, .mast-date { color: #000 !important; }
-    .article-body p, .article-body li, .divider { color: #000 !important; }
-    .drop-cap::first-letter { color: #333 !important; }
-    .bio p, .bio strong { color: #000 !important; }
-    .sources-section h2, .source-cat-title, .source-item,
-    .source-item strong, .source-item .num { color: #000 !important; }
+    .article-glass { background: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; border: none; padding: 0; }
     .source-item { background: none; border: none; padding: 0.2rem 0; }
-    /* Ensure float image prints */
     .post-float-img { float: left; margin: 0 1.5rem 1rem 0; width: 200px; }
     .post-float-img img { display: block !important; width: 100% !important; }
-    figure.post-float-img .post-float-caption { color: #555 !important; }
   }
 </style>
 </head>
