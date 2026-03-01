@@ -2193,19 +2193,57 @@ body.light-mode .cost-card.build .cost-footer {
 
 
 /* =============================================================
-   PRINT — light mode auto-applied
+   PRINT — always light mode regardless of current theme
    ============================================================= */
 
 @media print {
-    body.light-mode {
-        background: #ffffff !important;
+    /* Override CSS variables to light values universally */
+    :root {
+        --ink: #1a1a1a;
+        --ink-secondary: #2a2a2a;
+        --ink-muted: #555;
+        --ink-faint: #888;
+        --accent: #0d3b66;
+        --accent-hover: #155a99;
+        --bg: #ffffff;
+        --bg-page: #ffffff;
+        --bg-container: rgba(255,255,255,0.9);
+        --rule: #333;
+        --rule-light: #ccc;
+        --rule-faint: #e0e0e0;
+        --card-bg: #f0f4f8;
+        --card-border: #d6dfe8;
+        --toggle-bg: rgba(0,0,0,0.05);
+        --toggle-border: rgba(0,0,0,0.15);
+        --toggle-color: #333;
     }
 
-    body.light-mode .navbar,
-    body.light-mode .tab-nav,
-    body.light-mode .nav-buttons,
-    body.light-mode .od-theme-toggle,
-    body.light-mode .od-print-btn {
+    body {
+        background: #ffffff !important;
+        color: #1a1a1a !important;
+    }
+
+    /* Hide all nav chrome and UI controls */
+    .navbar,
+    .tab-nav,
+    .nav-buttons,
+    .od-theme-toggle,
+    .od-print-btn,
+    .hamburger-button,
+    .mobile-menu,
+    .download-bar {
         display: none !important;
+    }
+
+    /* Strip glass/blur effects */
+    * {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    /* Ensure images print */
+    img {
+        display: block !important;
+        max-width: 100% !important;
     }
 }
