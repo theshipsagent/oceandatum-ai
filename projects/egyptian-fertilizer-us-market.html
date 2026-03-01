@@ -152,17 +152,79 @@ body.light-mode svg .axis-line,body.light-mode svg .grid-line{stroke:rgba(0,0,0,
 .sn-logout:hover{color:#ff6464!important;border-color:rgba(255,100,100,0.4)}
 @media(max-width:480px){.sn{padding:0 0.75rem;height:42px}.sn a{font-size:0.72rem}.sn-r{gap:0.6rem}}
 </style>
+<style>
+/* ── Standard Navbar ── */
+.navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between; font-family: 'Space Grotesk', sans-serif; }
+.navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.7); }
+.navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal;
+  text-decoration: none; transition: color 0.3s; }
+.navbar-brand a:hover { color: #64ffb4; }
+.navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+
+/* ── Standard Nav (hamburger + mobile menu) ── */
+.navbar-link { font-size: 0.82rem; color: rgba(255,255,255,0.75); text-decoration: none;
+  padding: 0.35rem 0.75rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px;
+  transition: all 0.3s; white-space: nowrap; }
+.navbar-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+.social-icons { display: flex; gap: 0.5rem; align-items: center; }
+.social-icon { font-size: 0.75rem; color: rgba(255,255,255,0.6); text-decoration: none;
+  width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; transition: all 0.3s; }
+.social-icon:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); }
+.hamburger-button { display: none; background: none; border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px; color: rgba(255,255,255,0.8); cursor: pointer;
+  padding: 0.4rem 0.6rem; font-size: 1.1rem; line-height: 1; transition: all 0.3s; }
+.hamburger-button:hover { border-color: #64ffb4; color: #64ffb4; background: rgba(100,255,180,0.05); }
+.mobile-menu { display: none; max-height: 0; overflow: hidden;
+  background: rgba(5,15,25,0.98); border-bottom: 1px solid rgba(100,255,180,0.15);
+  position: fixed; top: 53px; left: 0; right: 0; z-index: 999; }
+.mobile-menu.active { display: block; max-height: 500px; }
+.mobile-menu-section { padding: 10px 0; }
+.mobile-menu-item a { display: block; padding: 12px 24px; color: rgba(255,255,255,0.8);
+  text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); transition: all 0.2s; }
+.mobile-menu-item a:hover { background: rgba(100,255,180,0.1); color: #64ffb4; padding-left: 30px; }
+@media (max-width: 768px) {
+  .hamburger-button { display: block; }
+  .navbar-right .social-icons, .navbar-right .navbar-link { display: none; }
+  .navbar-right { display: flex; gap: 0.5rem; }
+  .navbar { padding: 0.6rem 1rem; }
+}
+
+body { padding-top: 56px; }
+</style>
 </head>
 <body>
 <script>if("scrollRestoration"in history)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
 
-<nav class="sn">
-  <a href="../index.html">Home</a>
-  <div class="sn-r">
-    <a href="../tools/maritime-ai-role.html">Role Brief</a>
-    <a href="../cv.html">CV</a>
-    <a href="../projects-hub.html" class="sn-hub">&larr; Hub</a>
-  </div>
+<nav class="navbar">
+    <span class="navbar-brand"></span>
+    <div class="navbar-right">
+        <button class="hamburger-button" id="hamburgerBtn" aria-label="Menu">&#9776;</button>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        </div>
+        <a href="../index.html" class="navbar-link">Home</a>
+        <a href="https://whatsapp.com/channel/0029VbBE27p4IBhIrzjoRD36" target="_blank" class="navbar-link">News Feed</a>
+        <a href="../posts.html" class="navbar-link">Blog</a>
+        <a href="../tools/maritime-ai-role.html" class="navbar-link">Role Brief</a>
+        <a href="../cv.html" class="navbar-link">CV</a>
+        <a href="mailto:wsd@oceandatum.ai" class="navbar-link">Contact</a>
+        <a href="../login.html" class="navbar-link">Projects</a>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-section">
+            <div class="mobile-menu-item"><a href="../index.html">Home</a></div>
+            <div class="mobile-menu-item"><a href="https://whatsapp.com/channel/0029VbBE27p4IBhIrzjoRD36" target="_blank">News Feed</a></div>
+            <div class="mobile-menu-item"><a href="../posts.html">Blog</a></div>
+            <div class="mobile-menu-item"><a href="../tools/maritime-ai-role.html">Role Brief</a></div>
+            <div class="mobile-menu-item"><a href="../cv.html">CV</a></div>
+            <div class="mobile-menu-item"><a href="mailto:wsd@oceandatum.ai">Contact</a></div>
+            <div class="mobile-menu-item"><a href="../login.html">Projects</a></div>
+        </div>
+    </div>
 </nav>
 
 <div class="page-wrapper">
@@ -718,6 +780,18 @@ body.light-mode svg .axis-line,body.light-mode svg .grid-line{stroke:rgba(0,0,0,
     applyTheme(l);
   };
   applyTheme(localStorage.getItem('od-theme')==='light');
+})();
+</script>
+<script>
+(function() {
+  var btn = document.getElementById('hamburgerBtn');
+  var menu = document.getElementById('mobileMenu');
+  if (btn && menu) {
+    btn.addEventListener('click', function(e) { e.stopPropagation(); menu.classList.toggle('active'); });
+    document.addEventListener('click', function(e) {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) menu.classList.remove('active');
+    });
+  }
 })();
 </script>
 </body>
