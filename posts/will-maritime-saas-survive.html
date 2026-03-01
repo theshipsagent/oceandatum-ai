@@ -290,24 +290,43 @@
     margin: 0;
   }
 
-  /* ── HERO IMAGE ── */
-  .post-hero-img {
-    margin: 2rem auto 2.5rem;
-    max-width: 620px;
-    border-radius: 12px;
+  /* ── INLINE FLOAT IMAGE ── */
+  .post-float-img {
+    float: left;
+    width: 260px;
+    margin: 0.2rem 1.8rem 1rem 0;
+    border-radius: 8px;
     overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.12);
   }
 
-  .post-hero-img img {
+  .post-float-img img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 12px;
+    border-radius: 8px;
   }
 
-  body.light-mode .post-hero-img {
-    box-shadow: 0 6px 28px rgba(0,0,0,0.22);
-    border: 1px solid rgba(0,0,0,0.12);
+  body.light-mode .post-float-img {
+    border-color: rgba(0,0,0,0.12);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+
+  .post-float-caption {
+    font-size: 0.68rem;
+    color: var(--ink-faint);
+    margin: 0.4rem 0 0;
+    font-style: italic;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .post-float-img {
+      float: none;
+      width: 100%;
+      margin: 0 0 1.5rem 0;
+    }
   }
 
   /* ── ARTICLE BODY ── */
@@ -409,6 +428,11 @@
     .hamburger-button { display: block; }
     .navbar-right { display: none; }
     .navbar { padding: 0.6rem 1rem; }
+    /* Mobile reading: more breathing room between paragraphs and sections */
+    .article-body p { margin-bottom: 1.4em; line-height: 1.85; }
+    .article-body h2 { margin-top: 2.8rem; margin-bottom: 1rem; font-size: 1.2rem; }
+    .article-body p.sub-head { margin-top: 2rem; }
+    .divider { margin: 2em 0; }
   }
 
   /* ── PRINT ── */
@@ -476,17 +500,20 @@
       <p class="byline">William S. Davis III &middot; March 2026</p>
     </div>
 
-    <figure class="post-hero-img">
-      <img src="images/red-blue-pill.jpg" alt="Red pill or blue pill — the AI platform decision facing maritime operations">
-    </figure>
-
     <div class="article-body">
+
+      <figure class="post-float-img">
+        <img src="images/red-blue-pill.jpg" alt="Red pill or blue pill — The Matrix (1999)">
+        <p class="post-float-caption"><em>The Matrix</em> (1999), dir. Lana &amp; Lilly Wachowski, Warner Bros. — buy the platform or build your own.</p>
+      </figure>
 
       <p class="drop-cap no-indent">The maritime technology stack is under more structural pressure than at any point since the industry moved from telex to email. Not because the platforms are failing &mdash; most of them work fine for what they were designed to do &mdash; but because the assumptions underneath them are eroding faster than anyone expected.</p>
 
       <p>The question is not whether AI will reshape maritime software. It already is. The question is which platforms adapt, which ones get absorbed into the baseline, and which ones become the next generation&rsquo;s cautionary tale about paying rent on capabilities you could own.</p>
 
       <p>This is not a technology argument. It is a business strategy argument. And the decisions being made &mdash; or deferred &mdash; in maritime C-suites right now will determine which organizations spend the next five years building competitive advantage and which ones spend it managing vendor dependency.</p>
+
+      <div style="clear:both"></div>
 
       <h2>The Current Stack: What Maritime Companies Actually Pay For</h2>
 
