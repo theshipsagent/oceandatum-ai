@@ -1378,6 +1378,11 @@ body.light-mode .toc li a:hover {
     color: #155a99 !important;
 }
 
+/* Inline style="color:#64ffb4" overrides (TOC links + body anchors) */
+body.light-mode a[style*="color:#64ffb4"] {
+    color: #0d3b66 !important;
+}
+
 
 /* =============================================================
    CODE / PRE ELEMENTS
