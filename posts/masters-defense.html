@@ -436,32 +436,43 @@
     margin: 0;
   }
 
-  /* ── HERO IMAGE ── */
-  .post-hero-img {
-    margin: 2rem auto 2.5rem;
-    max-width: 560px;
-    border-radius: 12px;
+  /* ── INLINE FLOAT IMAGE ── */
+  .post-float-img {
+    float: left;
+    width: 260px;
+    margin: 0.2rem 1.8rem 1rem 0;
+    border-radius: 8px;
     overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.12);
   }
 
-  .post-hero-img img {
+  .post-float-img img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 12px;
+    border-radius: 8px;
   }
 
-  body.light-mode .post-hero-img {
-    box-shadow: 0 6px 28px rgba(0,0,0,0.18);
-    border: 1px solid rgba(0,0,0,0.1);
+  body.light-mode .post-float-img {
+    border-color: rgba(0,0,0,0.12);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
   }
 
-  .post-hero-caption {
-    text-align: center;
-    font-size: 0.72rem;
+  .post-float-caption {
+    font-size: 0.68rem;
     color: var(--ink-faint);
-    margin-top: 0.5rem;
+    margin: 0.4rem 0 0;
     font-style: italic;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .post-float-img {
+      float: none;
+      width: 100%;
+      margin: 0 0 1.5rem 0;
+    }
   }
 
   /* ── DOWNLOAD BAR ── */
@@ -801,12 +812,12 @@
     <p class="byline">William S. Davis III &middot; February 2026</p>
   </div>
 
-  <figure class="post-hero-img">
-    <img src="images/mckinley-tariff-cartoon.jpg" alt="W.A. Rogers political cartoon — Republican Platform store with war-taxed cloth and untaxed whiskey, McKinley Tariff era circa 1890">
-    <p class="post-hero-caption">W.A. Rogers, <em>Harper&rsquo;s Weekly</em>, July 7, 1888 &mdash; The McKinley Tariff: war-taxed cloth at 89%, untaxed whiskey at 20&cent;/gal. Library of Congress. Public domain.</p>
-  </figure>
-
   <div class="article-body">
+
+    <figure class="post-float-img">
+      <img src="images/mckinley-tariff-cartoon.jpg" alt="W.A. Rogers, Harper's Weekly, 1888 — McKinley Tariff cartoon">
+      <p class="post-float-caption">W.A. Rogers, <em>Harper&rsquo;s Weekly</em>, July 7, 1888. The McKinley Tariff. Library of Congress. Public domain.</p>
+    </figure>
 
     <p class="drop-cap no-indent">Last Friday, the Supreme Court struck down President Trump&rsquo;s sweeping IEEPA tariffs in <em>Learning Resources, Inc. v. Trump</em>, ruling 6-3 that the International Emergency Economic Powers Act does not give the president the power to impose tariffs. The taxing power belongs to Congress. The Court left refund mechanics to future proceedings, and as Justice Barrett noted during oral arguments, &ldquo;it seems like it could be a mess.&rdquo; She&rsquo;s right. For importers, it will be. Thousands of companies, tens of billions of dollars, a customs system never designed to process refunds at that scale. What&rsquo;s next for the USTR&rsquo;s ship tax, and how will owners seek refund?</p>
 
@@ -817,6 +828,8 @@
     <p>The matter strikes at the very heart of the constitutional design. Customs receipts&mdash;from cargo duties and vessel tonnage taxes together&mdash;constituted eighty to ninety percent of all federal revenue through the early industrial revolution. Until the Sixteenth Amendment authorized the income tax in 1913, the customs house was the United States Treasury. The first Act of the First Congress was a tariff bill. The second was the Collection Act that created the Customs Service and designated ports of entry. The framers separated cargo duties from vessel charges&mdash;Article I, Section 8 for the former; Article I, Section 10 for the latter&mdash;with the precision of men who understood that control of port revenue meant control of national solvency. The Supreme Court has enforced this divide for over 150 years. To President Trump&rsquo;s credit, the instinct to treat trade as a matter of national solvency and security is not wrong, nor new. It is just that the manner in which the administration has approached the matter is not right.</p>
 
     <p>The Section 301 fees shatter this framework. They are triggered by vessel characteristics&mdash;Chinese build, Chinese ownership, Chinese charter&mdash;but assessed per TEU, per CEU, or per net ton of cargo capacity. They are a charge on the ship dressed up as a charge on the cargo. Decades of customs procedure and law do not support this construct.</p>
+
+    <div style="clear:both"></div>
 
     <p class="divider">&middot; &nbsp; &middot; &nbsp; &middot;</p>
 
