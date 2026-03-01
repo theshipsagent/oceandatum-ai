@@ -161,9 +161,16 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 .sn-r{display:flex;gap:1.2rem;align-items:center}
 .sn-hub{padding:0.25rem 0.7rem;border:1px solid rgba(255,255,255,0.12);border-radius:5px}
 .sn-hub:hover{border-color:rgba(100,255,180,0.3)}
-.sn-logout{color:rgba(255,100,100,0.7)!important;padding:0.25rem 0.7rem;border:1px solid rgba(255,100,100,0.2);border-radius:5px}
-.sn-logout:hover{color:#ff6464!important;border-color:rgba(255,100,100,0.4)}
-@media(max-width:480px){.sn{padding:0 0.75rem;height:42px}.sn a{font-size:0.72rem}.sn-r{gap:0.6rem}}
+.sn-ham{display:none;background:none;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.6);font-size:1rem;padding:0.2rem 0.55rem;border-radius:5px;cursor:pointer;transition:all 0.2s}
+.sn-ham:hover{border-color:#64ffb4;color:#64ffb4}
+.sn-mobile{display:none;position:sticky;top:48px;z-index:999;background:rgba(10,10,10,0.98);border-bottom:1px solid rgba(100,255,180,0.12);flex-direction:column;font-family:'Space Grotesk',sans-serif}
+.sn-mobile a{display:block;padding:13px 1.5rem;font-size:0.88rem;color:rgba(255,255,255,0.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.06);transition:all 0.2s}
+.sn-mobile a:hover{background:rgba(100,255,180,0.07);color:#64ffb4;padding-left:2rem}
+.sn-mobile.active{display:flex}
+@media(max-width:640px){
+  .sn-r{display:none}
+  .sn-ham{display:block}
+}
 </style>
 </head>
 <body>
@@ -171,12 +178,24 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
 <nav class="sn">
   <a href="../index.html">Home</a>
-  <div class="sn-r">
+  <button class="sn-ham" id="snHamBtn" aria-label="Menu">&#9776;</button>
+  <div class="sn-r" id="snLinks">
+    <a href="https://whatsapp.com/channel/0029VbBE27p4IBhIrzjoRD36" target="_blank">News Feed</a>
+    <a href="../posts.html">Blog</a>
     <a href="maritime-ai-role.html">Role Brief</a>
     <a href="../cv.html">CV</a>
-    <a href="../projects-hub.html" class="sn-hub">&larr; Hub</a>
+    <a href="mailto:wsd@oceandatum.ai">Contact</a>
+    <a href="../login.html" class="sn-hub">Projects</a>
   </div>
 </nav>
+<div class="sn-mobile" id="snMobile">
+  <a href="https://whatsapp.com/channel/0029VbBE27p4IBhIrzjoRD36" target="_blank">News Feed</a>
+  <a href="../posts.html">Blog</a>
+  <a href="maritime-ai-role.html">Role Brief</a>
+  <a href="../cv.html">CV</a>
+  <a href="mailto:wsd@oceandatum.ai">Contact</a>
+  <a href="../login.html">Projects</a>
+</div>
 
 <div class="hero">
   <div class="hero-eyebrow">Maritime Intelligence &middot; Role Definition</div>
@@ -477,6 +496,13 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <p>OceanDatum &nbsp;&middot;&nbsp; Maritime &amp; Commodity Intelligence &nbsp;&middot;&nbsp; 2026</p>
 </footer>
 
+<script>
+(function(){
+  var btn=document.getElementById('snHamBtn'), menu=document.getElementById('snMobile');
+  btn.addEventListener('click',function(e){e.stopPropagation();menu.classList.toggle('active');});
+  document.addEventListener('click',function(e){if(!menu.contains(e.target)&&!btn.contains(e.target))menu.classList.remove('active');});
+})();
+</script>
 <script src="../od-theme-pdf.js"></script>
 </body>
 </html>
