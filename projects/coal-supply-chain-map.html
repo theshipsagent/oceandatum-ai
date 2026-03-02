@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US Coal Supply Chain Map — oceandatum.ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
+  <link rel="stylesheet" href="../od-lightmode.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; color: rgba(255,255,255,0.9); min-height: 100vh; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%); z-index: -1; }
+
+    .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6); }
+    .navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
+    .navbar-brand a:hover { color: #64ffb4; }
+    .navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .navbar-link { font-size: 0.85rem; color: rgba(255,255,255,0.75); text-decoration: none; letter-spacing: 0.04em; padding: 0.35rem 0.75rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 5px; transition: all 0.2s; white-space: nowrap; }
+    .navbar-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+    .social-icons { display: flex; align-items: center; gap: 0.5rem; }
+    .social-icon { color: rgba(255,255,255,0.5); transition: color 0.2s; text-decoration: none; }
+    .social-icon:hover { color: #64ffb4; }
+    .hamburger-button { display: none; background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); font-size: 1.2rem; padding: 0.3rem 0.6rem; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+    .hamburger-button:hover { border-color: #64ffb4; color: #64ffb4; }
+    .mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,10,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(100,255,180,0.15); z-index: 999; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .mobile-menu.active { display: block; max-height: 500px; }
+    .mobile-menu-section { padding: 10px 0; }
+    .mobile-menu-item a { display: block; padding: 14px 20px; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.07); transition: all 0.2s; }
+    .mobile-menu-item a:hover { background: rgba(100,255,180,0.08); color: #64ffb4; padding-left: 28px; }
+    .mobile-menu-social { display: flex; justify-content: center; gap: 1.2rem; padding: 1rem; border-top: 1px solid rgba(255,255,255,0.08); }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 0.6rem 1rem; }
+      .hamburger-button { display: block; }
+      .navbar-right .social-icons, .navbar-right .navbar-link { display: none; }
+      .navbar-right { display: flex; gap: 0.5rem; }
+    }
+
+    .content { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+
+    .page-header { margin-bottom: 2.5rem; }
+    .breadcrumb { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+    .breadcrumb a { color: rgba(100,255,180,0.7); text-decoration: none; }
+    .breadcrumb a:hover { color: #64ffb4; }
+    h1 { font-size: 2.4rem; font-weight: 300; color: #fff; letter-spacing: 0.06em; line-height: 1.2; margin-bottom: 0.75rem; }
+    .subtitle { font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: 300; font-style: italic; margin-bottom: 1.5rem; }
+    .meta-row { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; }
+    .meta-tag { background: rgba(100,255,180,0.08); border: 1px solid rgba(100,255,180,0.2); border-radius: 4px; padding: 0.2rem 0.6rem; color: rgba(100,255,180,0.8); }
+
+    .intro { font-size: 1rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 2.5rem; max-width: 780px; }
+
+    .layer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+    .layer-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1rem 1.2rem; }
+    .layer-card h4 { font-size: 0.8rem; font-weight: 600; color: #64ffb4; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .layer-card p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+    .map-controls-note { background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1rem 1.4rem; margin-bottom: 2rem; font-size: 0.85rem; color: rgba(255,255,255,0.6); display: flex; gap: 2rem; flex-wrap: wrap; }
+    .map-controls-note span { white-space: nowrap; }
+    .map-controls-note strong { color: rgba(255,255,255,0.85); }
+
+    .fullscreen-link { display: inline-block; margin-bottom: 1.5rem; font-size: 0.85rem; color: rgba(100,255,180,0.8); text-decoration: none; border: 1px solid rgba(100,255,180,0.25); border-radius: 5px; padding: 0.4rem 1rem; transition: all 0.2s; }
+    .fullscreen-link:hover { background: rgba(100,255,180,0.08); color: #64ffb4; border-color: rgba(100,255,180,0.5); }
+
+    .map-wrapper { position: relative; width: 100%; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; background: #111; }
+    .map-wrapper iframe { display: block; width: 100%; height: 750px; border: none; }
+    .map-loading-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #111; color: rgba(255,255,255,0.5); font-size: 0.9rem; gap: 0.75rem; pointer-events: none; transition: opacity 0.4s; }
+    .map-loading-overlay.hidden { opacity: 0; }
+    .load-spinner { width: 28px; height: 28px; border: 2px solid rgba(100,255,180,0.2); border-top-color: #64ffb4; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .load-btn-row { text-align: center; padding: 3rem; }
+    .load-btn { background: rgba(100,255,180,0.1); border: 1px solid rgba(100,255,180,0.35); color: #64ffb4; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; padding: 0.75rem 2rem; border-radius: 7px; cursor: pointer; transition: all 0.2s; }
+    .load-btn:hover { background: rgba(100,255,180,0.18); }
+    .load-note { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-top: 0.6rem; }
+
+    .version-note { margin-top: 1.5rem; font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 1.6rem; }
+      .map-wrapper iframe { height: 500px; }
+      .map-controls-note { flex-direction: column; gap: 0.5rem; }
+    }
+
+    @media print {
+      .navbar, .mobile-menu, .fullscreen-link, .map-controls-note, .map-wrapper, .load-btn-row { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <span class="navbar-brand">a project of <a href="../index.html">oceandatum.ai</a></span>
+    <div class="navbar-right">
+      <button class="hamburger-button" id="hamburgerBtn" aria-label="Menu">&#9776;</button>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        <a href="https://twitter.com/theshipsagent" target="_blank" class="social-icon" title="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      </div>
+      <a href="../index.html" class="navbar-link">Home</a>
+      <a href="https://whatsapp.com/channel/0029VbBE27p4IBhIrzjoRD36" target="_blank" class="navbar-link">News Feed</a>
+      <a href="../posts.html" class="navbar-link">Blog</a>
+      <a href="../tools/maritime-ai-role.html" class="navbar-link">Role Brief</a>
+      <a href="../cv.html" class="navbar-link">CV</a>
+      <a href="mailto:wsd@oceandatum.ai" class="navbar-link">Contact</a>
+      <a href="../projects-hub.html" class="navbar-link">Projects</a>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-item"><a href="../index.html">Home</a></div>
+      <div class="mobile-menu-item"><a href="https://whatsapp.com/channel/0029VbBE27p4IBhIrzjoRD36" target="_blank">News Feed</a></div>
+      <div class="mobile-menu-item"><a href="../posts.html">Blog</a></div>
+      <div class="mobile-menu-item"><a href="../tools/maritime-ai-role.html">Role Brief</a></div>
+      <div class="mobile-menu-item"><a href="../cv.html">CV</a></div>
+      <div class="mobile-menu-item"><a href="mailto:wsd@oceandatum.ai">Contact</a></div>
+      <div class="mobile-menu-item"><a href="../projects-hub.html">Projects</a></div>
+    </div>
+    <div class="mobile-menu-social">
+      <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+      <a href="https://twitter.com/theshipsagent" target="_blank" class="social-icon" title="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="../projects-hub.html">Projects</a> / Coal Supply Chain Map</div>
+      <h1>US Coal Supply Chain Map</h1>
+      <p class="subtitle">Production basins, mine sites, rail corridors, barge waterways, and export terminals — interactive geospatial reference</p>
+      <div class="meta-row">
+        <span class="meta-tag">Geospatial</span>
+        <span class="meta-tag">Coal</span>
+        <span class="meta-tag">Supply Chain</span>
+        <span>v2 — 2026-03-02</span>
+        <span>MSHA | BTS NTAD | Class I Rail</span>
+      </div>
+    </div>
+
+    <div class="intro">
+      An interactive supply chain reference map covering the full US coal production and export geography.
+      Seven major basins from the Powder River Basin to the Gulf Lignite fields, 77 major mine sites
+      sized by annual output, Class I rail corridors, 373 segments of navigable coal waterways,
+      and the five principal US export terminals. Built from MSHA mine registry data aggregated
+      through 2024, BTS NTAD waterway networks, and field-verified terminal specs.
+    </div>
+
+    <div class="layer-grid">
+      <div class="layer-card">
+        <h4>Coal Basins</h4>
+        <p>7 basins: Powder River (PRB), Central Appalachia (CAPP), Northern Appalachia (NAPP), Illinois Basin (ILB), Black Warrior, Uinta-Piceance (UIB), Gulf Lignite</p>
+      </div>
+      <div class="layer-card">
+        <h4>Mine Sites</h4>
+        <p>77 major mines (≥1M ST/yr, always visible) + 152 smaller operations (clustered layer, toggle on). Circle size = production. Color = coal type.</p>
+      </div>
+      <div class="layer-card">
+        <h4>Class I Rail</h4>
+        <p>BNSF, UP, CSX, NS, CN, CPRS — the six principal carriers moving coal from basin to port. Color-coded by railroad.</p>
+      </div>
+      <div class="layer-card">
+        <h4>Waterways</h4>
+        <p>373 navigable segments: Ohio River system, Lower Mississippi, Monongahela, Black Warrior-Tombigbee, and Illinois River. BTS NTAD source.</p>
+      </div>
+      <div class="layer-card">
+        <h4>Export Terminals</h4>
+        <p>5 US export terminals with annual capacity, max vessel draft, and rail connection data. Tooltip on click.</p>
+      </div>
+      <div class="layer-card">
+        <h4>Coal Type Colors</h4>
+        <p>Deep red = HCC (coking) · Red = Met · Amber = Sub-bit (PRB) · Purple = ILB thermal · Blue = thermal bituminous · Gray = lignite</p>
+      </div>
+    </div>
+
+    <div class="map-controls-note">
+      <span><strong>Basemap:</strong> &#9728; Light / &#9790; Dark (default) / &#128752; Satellite — buttons top-right of map</span>
+      <span><strong>Layers:</strong> &#9776; toggle panel top-right</span>
+      <span><strong>Measure:</strong> distance/area tool top-left</span>
+      <span><strong>MiniMap:</strong> bottom-right toggle</span>
+    </div>
+
+    <a href="../assets/maps/coal_supply_chain_map_v2_2026-03-02.html" target="_blank" class="fullscreen-link">Open full screen &#x2197;</a>
+
+    <div class="map-wrapper" id="mapWrapper">
+      <div class="map-loading-overlay" id="mapOverlay">
+        <div class="load-spinner"></div>
+        <span>Loading map (~50 MB) ...</span>
+      </div>
+      <iframe
+        id="coalMapFrame"
+        src="../assets/maps/coal_supply_chain_map_v2_2026-03-02.html"
+        loading="lazy"
+        title="US Coal Supply Chain Map"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <p class="version-note">Snapshot v2 · 2026-03-02 · Source data: MSHA Mine Registry, BTS NTAD Waterway Networks, EIA terminal data. Dev session iterates independently; published here as a dated snapshot.</p>
+  </div>
+
+  <script>
+    // Hide overlay once iframe loads
+    const frame = document.getElementById('coalMapFrame');
+    const overlay = document.getElementById('mapOverlay');
+    frame.addEventListener('load', function() { overlay.classList.add('hidden'); });
+
+    // Hamburger menu
+    const hBtn = document.getElementById('hamburgerBtn');
+    const mMenu = document.getElementById('mobileMenu');
+    hBtn.addEventListener('click', function(e) { e.stopPropagation(); mMenu.classList.toggle('active'); });
+    document.addEventListener('click', function(e) { if (!mMenu.contains(e.target) && !hBtn.contains(e.target)) mMenu.classList.remove('active'); });
+  </script>
+
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5169a56446ff4380ad2f1785a86804b8"}'></script>
+  <script src="../od-theme-pdf.js"></script>
+</body>
+</html>
