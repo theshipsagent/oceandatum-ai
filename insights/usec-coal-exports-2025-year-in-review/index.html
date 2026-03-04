@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>US East Coast Coal Exports — 2025 Year in Review</title>
+<!-- Open Graph / Social sharing -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="US East Coast Coal Exports — 2025 Year in Review">
+<meta property="og:description" content="Hampton Roads and Baltimore shipped approximately ~63M tons of coal in 2025, sustaining near-record volumes as the industry restructured around its largest corporate consolidation in a decade.">
+<meta property="og:site_name" content="OceanDatum">
+<meta property="og:image" content="https://oceandatum.ai/assets/images/coalmine1.jpeg">
+<meta property="article:author" content="William S. Davis III">
+
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="US East Coast Coal Exports — 2025 Year in Review">
+<meta name="twitter:description" content="Hampton Roads and Baltimore shipped approximately ~63M tons of coal in 2025, sustaining near-record volumes.">
+<meta name="twitter:image" content="https://oceandatum.ai/assets/images/coalmine1.jpeg">
+
+<script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
+<link rel="stylesheet" href="../../od-lightmode.css">
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson@3.0.2/dist/topojson.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0a1520;
+  --surface: #0f1e2e;
+  --text:    rgba(255,255,255,0.90);
+  --muted:   rgba(255,255,255,0.60);
+  --faint:   rgba(255,255,255,0.30);
+  --accent:  #64ffb4;
+  --red:     #ff6464;
+  --border:  rgba(255,255,255,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.82;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAVBAR ── */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding: 0.8rem 2rem;
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+body.light-mode .navbar { background: rgba(255,255,255,0.85); border-bottom-color: rgba(0,0,0,0.1); }
+.navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.7); text-decoration: none; letter-spacing: 0.03em; }
+body.light-mode .navbar-brand { color: rgba(0,0,0,0.5); }
+.navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: all 0.3s ease; }
+.navbar-brand a:hover { color: #64ffb4; }
+body.light-mode .navbar-brand a { color: #0d3b66; }
+.navbar-right { display: flex; align-items: center; gap: 1rem; }
+.social-icons { display: flex; align-items: center; gap: 0.8rem; }
+.social-icon { color: rgba(255,255,255,0.7); transition: all 0.3s ease; text-decoration: none; }
+.social-icon:hover { color: #64ffb4; }
+body.light-mode .social-icon { color: rgba(0,0,0,0.5); }
+body.light-mode .social-icon:hover { color: #0d3b66; }
+.navbar-link { font-size: 0.9rem; color: rgba(255,255,255,0.8); text-decoration: none; letter-spacing: 0.05em; cursor: pointer; transition: all 0.3s ease; padding: 0.5rem 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; }
+.navbar-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+body.light-mode .navbar-link { color: #333; border-color: rgba(0,0,0,0.15); }
+body.light-mode .navbar-link:hover { color: #0d3b66; border-color: rgba(13,59,102,0.4); background: rgba(13,59,102,0.05); }
+.hamburger-button { display: none; background: none; border: 2px solid rgba(255,255,255,0.3); color: white; font-size: 1.5rem; width: 40px; height: 40px; cursor: pointer; border-radius: 6px; transition: all 0.3s ease; flex-shrink: 0; }
+.hamburger-button:hover { border-color: #64ffb4; color: #64ffb4; background: rgba(100,255,180,0.05); }
+body.light-mode .hamburger-button { border-color: rgba(0,0,0,0.2); color: #333; }
+.mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: rgba(0,0,0,0.98); border-top: 1px solid rgba(100,255,180,0.3); border-bottom: 1px solid rgba(100,255,180,0.3); z-index: 1000; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.mobile-menu.active { display: block; max-height: 500px; }
+body.light-mode .mobile-menu { background: rgba(255,255,255,0.98); border-top-color: rgba(13,59,102,0.3); border-bottom-color: rgba(13,59,102,0.3); }
+.mobile-menu-section { padding: 10px 0; }
+.mobile-menu-item a { display: block; padding: 15px 20px; color: rgba(255,255,255,0.9); text-decoration: none; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
+.mobile-menu-item a:hover { background: rgba(100,255,180,0.1); color: #64ffb4; padding-left: 30px; }
+body.light-mode .mobile-menu-item a { color: #333; border-bottom-color: rgba(0,0,0,0.1); }
+body.light-mode .mobile-menu-item a:hover { background: rgba(13,59,102,0.1); color: #0d3b66; }
+.mobile-menu-social { display: flex; justify-content: center; gap: 20px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.2); }
+body.light-mode .mobile-menu-social { border-top-color: rgba(0,0,0,0.1); }
+
+/* ── NAVBAR — push content below fixed bar ── */
+body { padding-top: 64px; }
+
+@media (max-width: 768px) {
+  .hamburger-button { display: block; }
+  .navbar-right .social-icons, .navbar-right .navbar-link { display: none; }
+  .navbar-right { display: flex; gap: 0.5rem; }
+  .navbar { padding: 0.6rem 1rem; }
+}
+
+/* ── IN-PAGE SUBNAV (section jump links) ── */
+.subnav {
+  background: rgba(10,21,32,0.6);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: flex-end;
+  padding: 0 32px; height: 40px;
+}
+body.light-mode .subnav { background: rgba(240,246,252,0.8); }
+.subnav-links { display: flex; gap: 24px; }
+.subnav-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; transition: color 0.2s; letter-spacing: 0.3px; }
+.subnav-links a:hover { color: var(--accent); }
+body.light-mode .subnav-links a { color: #555; }
+body.light-mode .subnav-links a:hover { color: #0d3b66; }
+
+/* ── LIGHT MODE ── */
+body.light-mode {
+  --bg:      #f7fafc;
+  --surface: #ffffff;
+  --text:    #1a1a1a;
+  --muted:   #333333;
+  --faint:   #666666;
+  --accent:  #0a7a5a;
+  --red:     #c0392b;
+  --border:  rgba(0,0,0,0.10);
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+/* Light mode — explicit element colors, no variable dependency */
+body.light-mode p,
+body.light-mode li,
+body.light-mode td,
+body.light-mode .hero-sub,
+body.light-mode .pull-note,
+body.light-mode .author-bio-text p,
+body.light-mode footer { color: #1a1a1a !important; }
+
+body.light-mode h2,
+body.light-mode h3 { color: #0d1117 !important; border-bottom-color: rgba(0,0,0,0.12) !important; }
+
+body.light-mode .hero h1 { color: #0d1117 !important; }
+body.light-mode .hero-byline,
+body.light-mode .hero-byline strong { color: #444444 !important; }
+body.light-mode .chart-label,
+body.light-mode .article-img-caption,
+body.light-mode .divider,
+body.light-mode .author-name,
+body.light-mode .map-footnote { color: #555555 !important; }
+
+body.light-mode .data-table th { background: rgba(10,122,90,0.08) !important; color: #0a7a5a !important; }
+body.light-mode .data-table td { color: #1a1a1a !important; border-bottom-color: rgba(0,0,0,0.06) !important; }
+body.light-mode .data-table .accent-cell { color: #0a7a5a !important; }
+
+body.light-mode .card { background: #f0f4f8 !important; }
+body.light-mode .map-area { background: #e8eef4 !important; }
+body.light-mode .chart-wrap { background: rgba(0,0,0,0.02) !important; border-color: rgba(0,0,0,0.08) !important; }
+body.light-mode .drop-cap::first-letter { color: #0d1117 !important; }
+
+/* ── PRINT ── */
+@media print {
+  :root {
+    --bg:      #ffffff !important;
+    --surface: #ffffff !important;
+    --text:    #1a1a1a !important;
+    --muted:   #333333 !important;
+    --faint:   #666666 !important;
+    --accent:  #0a7a5a !important;
+    --red:     #c0392b !important;
+    --border:  rgba(0,0,0,0.12) !important;
+  }
+  body { padding-top: 0 !important; }
+  .navbar, .hamburger-button, .mobile-menu, .subnav { display: none !important; }
+  .card { background: #f5f5f5 !important; }
+  .map-area { background: #f5f5f5 !important; }
+  .chart-wrap { background: #fafafa !important; border-color: #ddd !important; }
+  .header-strip { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .data-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body, p, li, td, .hero-sub, .pull-note,
+  .author-bio-text p, footer { color: #1a1a1a !important; }
+  h2, h3, .hero h1 { color: #0d1117 !important; }
+  .drop-cap::first-letter { color: #0d1117 !important; }
+  .chart-label, .map-footnote, .article-img-caption { color: #555 !important; }
+  .data-table td { color: #1a1a1a !important; }
+  .data-table th { color: #0a7a5a !important; }
+  .article-img-float { float: none; width: 100%; margin: 0 0 16px 0; }
+  h2 { break-after: avoid; page-break-after: avoid; }
+  h3 { break-after: avoid; page-break-after: avoid; }
+  .chart-wrap { break-inside: avoid; page-break-inside: avoid; }
+}
+
+/* ── HERO ── */
+.hero {
+  max-width: 760px; margin: 0 auto;
+  padding: 64px 24px 40px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+.hero-tag {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-size: 2.4rem; font-weight: 700; line-height: 1.15;
+  color: #fff; margin-bottom: 16px; letter-spacing: -0.5px;
+}
+.hero h1 em { font-style: italic; font-weight: 300; }
+.hero-sub {
+  font-size: 1.08rem; color: var(--muted); line-height: 1.7;
+  margin-bottom: 28px; font-weight: 300;
+}
+.hero hr { border: none; border-top: 1px solid var(--border); margin-bottom: 18px; }
+.hero-byline { font-size: 0.8rem; color: var(--faint); }
+.hero-byline strong { color: var(--muted); font-weight: 500; }
+
+/* ── ARTICLE BODY ── */
+.article-body {
+  max-width: 760px; margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+p + p { margin-top: 0.85em; text-indent: 1.5em; }
+
+h2 {
+  font-size: 1.22rem; font-weight: 500;
+  color: var(--text); letter-spacing: -0.2px;
+  margin: 52px 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+h3 {
+  font-size: 0.95rem; font-weight: 600;
+  color: var(--text); margin: 32px 0 10px;
+  letter-spacing: -0.1px;
+}
+
+/* ── SECTION DIVIDER ── */
+.divider {
+  text-align: center; color: var(--faint);
+  letter-spacing: 10px; font-size: 0.75rem;
+  margin: 52px 0; user-select: none;
+}
+
+/* ── TABLES ── */
+.data-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.85rem; margin: 24px 0;
+}
+.data-table th {
+  background: rgba(100,255,180,0.06);
+  color: var(--accent); font-weight: 600;
+  padding: 10px 14px; text-align: left;
+  font-size: 0.78rem; letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border);
+}
+.data-table td {
+  padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: var(--muted);
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.data-table .accent-cell { color: var(--accent); }
+
+/* ── CHARTS ── */
+.chart-wrap {
+  margin: 32px 0;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px; padding: 20px;
+}
+.chart-label {
+  font-size: 0.75rem; color: var(--faint);
+  letter-spacing: 0.5px; margin-bottom: 14px;
+  text-transform: uppercase; font-weight: 600;
+}
+canvas { max-height: 320px; }
+
+/* ── PULL NOTE ── */
+.pull-note {
+  border-left: 2px solid var(--accent);
+  padding: 12px 18px; margin: 28px 0;
+  font-size: 0.93rem; color: var(--muted);
+  font-style: italic; line-height: 1.65;
+}
+
+/* ── INLINE MAPS ── */
+.map-inline-wrap { margin: 32px 0; border-radius: 6px; overflow: hidden; }
+.card { background: #0a1520; }
+.header-strip { background: #c8102e; height: 6px; width: 100%; }
+.header-block { padding: 18px 24px 14px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.kicker { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c8102e; margin-bottom: 6px; }
+.main-title { font-size: 20px; font-weight: 700; color: #f5f0e8; line-height: 1.2; margin-bottom: 4px; }
+.subtitle { font-size: 13px; color: rgba(255,255,255,0.55); font-family: 'Arial', sans-serif; }
+.map-area { position: relative; background: #0a1520; }
+.legend-block { padding: 14px 24px 18px; display: flex; gap: 32px; align-items: flex-start; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; }
+.legend-title { font-family: 'Arial', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 6px; }
+.legend-row { display: flex; align-items: center; gap: 7px; font-family: 'Arial', sans-serif; font-size: 11px; color: rgba(255,255,255,0.55); margin-bottom: 4px; }
+.legend-swatch { width: 28px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.map-footnote { padding: 10px 24px 16px; font-family: 'Arial', sans-serif; font-size: 10px; color: rgba(255,255,255,0.28); line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.05); }
+
+/* ── DROP CAP ── */
+.drop-cap::first-letter {
+  font-size: 4.0em; font-weight: 700;
+  float: left; line-height: 0.73;
+  margin: 0.06em 0.12em 0 0;
+  color: #fff;
+}
+
+/* ── INLINE FLOAT IMAGE ── */
+.article-img-float {
+  float: left;
+  width: 210px;
+  margin: 4px 28px 20px 0;
+  clear: left;
+}
+.article-img-placeholder {
+  width: 100%; height: 155px;
+  background: rgba(255,255,255,0.025);
+  border: 1px dashed rgba(255,255,255,0.10);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 6px;
+}
+.article-img-placeholder span {
+  font-size: 0.66rem; letter-spacing: 1.5px;
+  text-transform: uppercase; color: rgba(255,255,255,0.18);
+}
+.article-img-placeholder svg { opacity: 0.12; }
+.article-img-caption {
+  font-size: 0.70rem; color: rgba(255,255,255,0.22);
+  text-align: center; margin-top: 6px;
+  font-style: italic; line-height: 1.4;
+}
+.article-img-clear { clear: both; }
+
+/* ── AUTHOR BIO ── */
+.author-bio {
+  max-width: 760px; margin: 0 auto;
+  padding: 40px 24px 52px;
+  border-top: 1px solid var(--border);
+  display: flex; gap: 22px; align-items: flex-start;
+}
+.author-bio-text { flex: 1; }
+.author-bio-text p {
+  font-size: 0.88rem; color: var(--faint);
+  line-height: 1.72; margin: 0; text-indent: 0 !important;
+}
+.author-bio-text p + p { margin-top: 0; text-indent: 0 !important; }
+.author-name {
+  font-size: 0.78rem; font-weight: 600; color: var(--muted);
+  letter-spacing: 0.5px; margin-bottom: 6px;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 24px; text-align: center;
+  font-size: 0.78rem; color: var(--faint);
+  max-width: 760px; margin: 0 auto;
+}
+footer strong { color: var(--muted); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.8rem; }
+  .hero, .article-body { padding-left: 18px; padding-right: 18px; }
+  .subnav-links { display: none; }
+}
+
+p strong { font-weight: inherit; color: inherit; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="navbar-brand"></span>
+  <div class="navbar-right">
+    <button class="hamburger-button" id="hamburgerBtn" aria-label="Menu">&#9776;</button>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+      <a href="https://twitter.com/theshipsagent" target="_blank" class="social-icon" title="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    </div>
+    <a class="navbar-link" href="../../index.html">Home</a>
+    <a class="navbar-link" href="https://whatsapp.com/channel/0029VbBE27p4IBhIrzjoRD36" target="_blank">News Feed</a>
+    <a class="navbar-link" href="../../posts.html">Blog</a>
+    <a class="navbar-link" href="../../tools/maritime-ai-role.html">Role Brief</a>
+    <a class="navbar-link" href="../../cv.html">CV</a>
+    <a class="navbar-link" href="mailto:wsd@oceandatum.ai">Contact</a>
+    <a class="navbar-link" href="../../login.html">Projects</a>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-item"><a href="../../index.html">Home</a></div>
+      <div class="mobile-menu-item"><a href="https://whatsapp.com/channel/0029VbBE27p4IBhIrzjoRD36" target="_blank">News Feed</a></div>
+      <div class="mobile-menu-item"><a href="../../posts.html">Blog</a></div>
+      <div class="mobile-menu-item"><a href="../../tools/maritime-ai-role.html">Role Brief</a></div>
+      <div class="mobile-menu-item"><a href="../../cv.html">CV</a></div>
+      <div class="mobile-menu-item"><a href="mailto:wsd@oceandatum.ai">Contact</a></div>
+      <div class="mobile-menu-item"><a href="../../login.html">Projects</a></div>
+    </div>
+    <div class="mobile-menu-social">
+      <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+      <a href="https://twitter.com/theshipsagent" target="_blank" class="social-icon" title="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<div class="subnav">
+  <div class="subnav-links">
+    <a href="#markets">Markets</a>
+    <a href="#supply">Supply Chain</a>
+    <a href="#economics">Economics</a>
+    <a href="#outlook">Outlook</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-tag">Ocean Datum &middot; Analysis &middot; March 03, 2026</div>
+  <h1>US East Coast Coal Exports<br><em>2025 Year in Review</em></h1>
+  <p class="hero-sub">
+    Hampton Roads and Baltimore shipped approximately ~63M tons of coal in 2025,
+    sustaining near-record volumes as the industry restructured around its largest
+    corporate consolidation in a decade.
+  </p>
+  <hr>
+  <div class="hero-byline"><strong>William S. Davis III</strong> &middot; Maritime &amp; Commodity Intelligence</div>
+</div>
+
+<div class="article-body">
+
+  <div class="article-img-float"><img src="data:image/jpeg;base64,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" alt="Working in the Coal Mine — Lee Dorsey" style="width:100%;display:block;"><div class="article-img-caption"><em>Working in the Coal Mine</em> — Lee Dorsey, 1966</div></div>
+
+  <p class="drop-cap">The year did not move the tonnage needle in any dramatic direction. Hampton Roads and
+  Baltimore together exported ~63M tons — within 1% of the prior year and approximately
+  +28% above the 2022 baseline. That stability is, itself, the story. The emergency
+  demand that drove USEC volumes sharply higher in 2022 and 2023 — European utilities
+  rebuilding stockpiles after Russian supply was sanctioned, Australian mine disruptions
+  redirecting Asian steel mills toward Appalachian alternatives — has fully unwound.
+  What has settled into place is something more durable: a trade anchored by long-term
+  blast furnace supply contracts, premium coal grades that command loyalty from buyers,
+  and two ports that have quietly become among the most consequential bulk export
+  facilities in the world.</p>
+
+  <p>69% of all USEC exports in 2025 were metallurgical coal — coking-grade
+  product destined for blast furnaces, not power plants. That fraction is a structural
+  characteristic, not a cyclical fluctuation. Metallurgical coal demand tracks crude steel
+  output, and crude steel output tracks capital investment in infrastructure and
+  manufacturing. Hampton Roads and Baltimore function, in that sense, as an industrial
+  barometer for global manufacturing health.</p>
+
+  <p>The most consequential development of the year occurred off the water entirely.
+  In December 2024, Arch Resources and CONSOL Energy completed a merger to form
+  Core Natural Resources — the largest US coal producer by combined output. The new
+  entity entered 2025 with loading positions at both Hampton Roads and Baltimore
+  simultaneously, a degree of terminal concentration with no recent precedent in the
+  USEC export complex. The integration was visible in the shipping record through the year:
+  Alpha, Arch, and CONSOL shipment identities consolidating, gradually, under a single banner.</p>
+
+  <div class="article-img-clear"></div>
+
+  <div class="chart-wrap">
+    <div class="chart-label">Annual export volume — Hampton Roads &amp; Baltimore (million metric tons)</div>
+    <canvas id="chartVolume"></canvas>
+  </div>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h2 id="markets">Where the Coal Went</h2>
+
+  <p>Four countries absorbed the majority of all USEC coal exports in 2025: India, Brazil,
+  the Netherlands, and China. No single secondary market approached the scale of any one
+  of these four. The destinations are more concentrated than they were five years ago —
+  a pattern consistent with the long-term supply contract structure that governs how
+  blast furnace coal is purchased.</p>
+
+  <div class="map-inline-wrap"><div class="card">
+
+  <div class="header-strip"></div>
+
+  <div class="header-block">
+    <div class="kicker">Trade Intelligence &middot; March 2026</div>
+    <div class="main-title">US East Coast Coal Export Trade Flows, 2025</div>
+    <div class="subtitle">
+      Hampton Roads and Baltimore — approximately 63 million tons shipped to steel mills
+      and power utilities across four continents
+    </div>
+  </div>
+
+  <div class="map-area">
+    <svg id="main-map" viewBox="0 0 1140 620" preserveAspectRatio="xMidYMid meet"
+         style="display:block;width:100%;"></svg>
+  </div>
+
+  <div class="legend-block">
+    <div>
+      <div class="legend-title">Trade Flow Arcs</div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:rgba(82,175,240,0.75);"></div>
+        Metallurgical coal — blast furnace coking grades
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:rgba(224,140,40,0.75);"></div>
+        Thermal &amp; crossover coal — power generation grades
+      </div>
+      <div class="legend-row" style="margin-top:3px;color:rgba(255,255,255,0.3);font-size:10px;">
+        Arc width proportional to tonnage. Narrow at load port, widening at destination.
+      </div>
+    </div>
+    <div>
+      <div class="legend-title">Destination Circles</div>
+      <div class="legend-row">
+        <div class="legend-dot" style="background:rgba(82,175,240,0.55);border:1px solid #52aff0;"></div>
+        Predominantly metallurgical (&ge;60% met)
+      </div>
+      <div class="legend-row">
+        <div class="legend-dot" style="background:rgba(224,140,40,0.55);border:1px solid #e08c28;"></div>
+        Predominantly thermal (&lt;60% met)
+      </div>
+      <div class="legend-row" style="margin-top:3px;color:rgba(255,255,255,0.3);font-size:10px;">
+        Circle area proportional to total tonnage received.
+      </div>
+    </div>
+    <div>
+      <div class="legend-title">Origin</div>
+      <div class="legend-row">
+        <div class="legend-dot" style="background:#f5f0e8;border:1.5px solid #c8102e;"></div>
+        US East Coast export complex (Hampton Roads &amp; Baltimore combined)
+      </div>
+    </div>
+  </div>
+
+
+</div></div>
+<script>(function() {
+const FLOWS    = [
+  {
+    "country": "India",
+    "country_key": "INDIA",
+    "iso": 356,
+    "lon": 78.9,
+    "lat": 20.6,
+    "total_mt": 10.62,
+    "met_mt": 4.46,
+    "th_mt": 6.16,
+    "met_pct": 42,
+    "calls": 132
+  },
+  {
+    "country": "Brazil",
+    "country_key": "BRAZIL",
+    "iso": 76,
+    "lon": -51.9,
+    "lat": -14.2,
+    "total_mt": 2.78,
+    "met_mt": 2.75,
+    "th_mt": 0.03,
+    "met_pct": 99,
+    "calls": 71
+  },
+  {
+    "country": "Netherlands",
+    "country_key": "NETHERLANDS",
+    "iso": 528,
+    "lon": 5.3,
+    "lat": 52.1,
+    "total_mt": 2.76,
+    "met_mt": 2.11,
+    "th_mt": 0.66,
+    "met_pct": 76,
+    "calls": 41
+  },
+  {
+    "country": "Morocco",
+    "country_key": "MOROCCO",
+    "iso": 504,
+    "lon": -7.1,
+    "lat": 31.8,
+    "total_mt": 1.43,
+    "met_mt": 0.0,
+    "th_mt": 1.43,
+    "met_pct": 0,
+    "calls": 21
+  },
+  {
+    "country": "Japan",
+    "country_key": "JAPAN",
+    "iso": 392,
+    "lon": 138.3,
+    "lat": 36.2,
+    "total_mt": 1.32,
+    "met_mt": 1.08,
+    "th_mt": 0.24,
+    "met_pct": 82,
+    "calls": 19
+  },
+  {
+    "country": "Egypt",
+    "country_key": "EGYPT",
+    "iso": 818,
+    "lon": 30.8,
+    "lat": 26.8,
+    "total_mt": 0.74,
+    "met_mt": 0.2,
+    "th_mt": 0.53,
+    "met_pct": 28,
+    "calls": 12
+  },
+  {
+    "country": "Turkey",
+    "country_key": "TURKEY",
+    "iso": 792,
+    "lon": 35.2,
+    "lat": 38.9,
+    "total_mt": 0.71,
+    "met_mt": 0.71,
+    "th_mt": 0.0,
+    "met_pct": 100,
+    "calls": 9
+  },
+  {
+    "country": "France",
+    "country_key": "FRANCE",
+    "iso": 250,
+    "lon": 2.2,
+    "lat": 46.2,
+    "total_mt": 0.67,
+    "met_mt": 0.66,
+    "th_mt": 0.02,
+    "met_pct": 98,
+    "calls": 22
+  },
+  {
+    "country": "Indonesia",
+    "country_key": "INDONESIA",
+    "iso": 360,
+    "lon": 113.9,
+    "lat": -0.8,
+    "total_mt": 0.65,
+    "met_mt": 0.65,
+    "th_mt": 0.0,
+    "met_pct": 100,
+    "calls": 8
+  },
+  {
+    "country": "Poland",
+    "country_key": "POLAND",
+    "iso": 616,
+    "lon": 19.1,
+    "lat": 52.0,
+    "total_mt": 0.58,
+    "met_mt": 0.58,
+    "th_mt": 0.0,
+    "met_pct": 100,
+    "calls": 13
+  },
+  {
+    "country": "Germany",
+    "country_key": "GERMANY",
+    "iso": 276,
+    "lon": 10.5,
+    "lat": 51.2,
+    "total_mt": 0.58,
+    "met_mt": 0.24,
+    "th_mt": 0.34,
+    "met_pct": 41,
+    "calls": 11
+  },
+  {
+    "country": "Spain",
+    "country_key": "SPAIN",
+    "iso": 724,
+    "lon": -3.7,
+    "lat": 40.5,
+    "total_mt": 0.56,
+    "met_mt": 0.56,
+    "th_mt": 0.0,
+    "met_pct": 100,
+    "calls": 31
+  },
+  {
+    "country": "China",
+    "country_key": "CHINA",
+    "iso": 156,
+    "lon": 104.2,
+    "lat": 35.9,
+    "total_mt": 0.54,
+    "met_mt": 0.54,
+    "th_mt": 0.0,
+    "met_pct": 100,
+    "calls": 8
+  },
+  {
+    "country": "Italy",
+    "country_key": "ITALY",
+    "iso": 380,
+    "lon": 12.5,
+    "lat": 41.9,
+    "total_mt": 0.44,
+    "met_mt": 0.44,
+    "th_mt": 0.0,
+    "met_pct": 100,
+    "calls": 19
+  },
+  {
+    "country": "Ukraine",
+    "country_key": "UKRAINE",
+    "iso": 804,
+    "lon": 31.2,
+    "lat": 48.4,
+    "total_mt": 0.36,
+    "met_mt": 0.36,
+    "th_mt": 0.0,
+    "met_pct": 100,
+    "calls": 5
+  }
+];
+const DEST_ISO = new Set([356, 76, 528, 504, 392, 818, 792, 250, 360, 616, 276, 724, 156, 380, 804]);
+const DEST_VOLS = {"356": 10.62, "76": 2.78, "528": 2.76, "504": 1.43, "392": 1.32, "818": 0.74, "792": 0.71, "250": 0.67, "360": 0.65, "616": 0.58, "276": 0.58, "724": 0.56, "156": 0.54, "380": 0.44, "804": 0.36};
+
+const ORIGIN = [-76.47, 37.9];   // USEC origin centroid
+
+const W = 1140, H = 620;
+const svg = d3.select("#main-map");
+
+// Translate x left (0.40) to reduce empty western Pacific dead space;
+// scale 220 zooms in slightly; rotate 20°W to centre Atlantic shipping lanes.
+const proj = d3.geoNaturalEarth1()
+  .scale(220)
+  .rotate([-20, 0, 0])
+  .translate([W * 0.40, H * 0.50]);
+
+const path = d3.geoPath().projection(proj);
+
+const maxMT   = d3.max(FLOWS, d => d.total_mt);
+const arcWidth = d3.scaleSqrt().domain([0, maxMT]).range([0, 18]);
+const dotR     = d3.scaleSqrt().domain([0, maxMT]).range([4, 22]);
+
+// Pre-compute origin screen position (available before JSON load)
+const originPx = proj(ORIGIN);
+
+// ── Geographic tapered arc (great-circle) — used for Atlantic/Indian Ocean dests ─
+function taperedArc(srcLL, dstLL, maxW, numPts) {
+  numPts = numPts || 90;
+  const interp = d3.geoInterpolate(srcLL, dstLL);
+  const pts = [];
+  for (let i = 0; i <= numPts; i++) {
+    const ll = interp(i / numPts);
+    const px = proj(ll);
+    if (!px) return null;
+    pts.push(px);
+  }
+  const left = [], right = [];
+  for (let i = 0; i <= numPts; i++) {
+    const t  = i / numPts;
+    const hw = t * maxW * 0.5;
+    const prev = pts[Math.max(0, i - 1)];
+    const next = pts[Math.min(numPts, i + 1)];
+    const dx = next[0] - prev[0], dy = next[1] - prev[1];
+    const len = Math.sqrt(dx*dx + dy*dy) || 1;
+    const nx = -dy / len, ny = dx / len;
+    const p = pts[i];
+    left.push( [p[0] + nx*hw, p[1] + ny*hw]);
+    right.push([p[0] - nx*hw, p[1] - ny*hw]);
+  }
+  const all = left.concat(right.reverse());
+  return 'M' + all.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join('L') + 'Z';
+}
+
+// ── Screen-space quadratic Bezier arc — used for Pacific dests ────────────────
+// Arc dips SOUTH through the bottom ocean space, creating a clean
+// visual separation from the Atlantic arcs that fan upward.
+function taperedBezier(p0, p2, ctrlY, maxW) {
+  const N = 90;
+  const ctrlX = (p0[0] + p2[0]) / 2;
+  const pts = [];
+  for (let i = 0; i <= N; i++) {
+    const t = i / N, mt = 1 - t;
+    pts.push([
+      mt*mt*p0[0] + 2*mt*t*ctrlX + t*t*p2[0],
+      mt*mt*p0[1] + 2*mt*t*ctrlY + t*t*p2[1],
+    ]);
+  }
+  const left = [], right = [];
+  for (let i = 0; i <= N; i++) {
+    const t  = i / N;
+    const hw = t * maxW * 0.5;
+    const prev = pts[Math.max(0, i - 1)];
+    const next = pts[Math.min(N, i + 1)];
+    const dx = next[0] - prev[0], dy = next[1] - prev[1];
+    const len = Math.sqrt(dx*dx + dy*dy) || 1;
+    const nx = -dy / len, ny = dx / len;
+    const p = pts[i];
+    left.push( [p[0] + nx*hw, p[1] + ny*hw]);
+    right.push([p[0] - nx*hw, p[1] - ny*hw]);
+  }
+  return 'M' + left.concat(right.reverse()).map(p => p[0].toFixed(1)+','+p[1].toFixed(1)).join('L') + 'Z';
+}
+
+d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(world => {
+
+  const countries = topojson.feature(world, world.objects.countries);
+  const borders   = topojson.mesh(world, world.objects.countries, (a,b) => a !== b);
+
+  // Ocean
+  svg.append("rect").attr("width", W).attr("height", H).attr("fill", "#0a1520");
+  svg.append("path").datum({ type: "Sphere" })
+     .attr("d", path).attr("fill", "#0e2035")
+     .attr("stroke", "rgba(255,255,255,0.06)").attr("stroke-width", 0.5);
+
+  // Countries
+  const maxDestVol    = d3.max(Object.values(DEST_VOLS).map(Number));
+  const destIntensity = d3.scaleLinear().domain([0, maxDestVol]).range([0, 1]).clamp(true);
+
+  svg.append("g").selectAll("path")
+    .data(countries.features)
+    .join("path").attr("d", path)
+    .attr("fill", d => {
+      const iso = +d.id;
+      if (+d.id === 840) return "#1e3550";           // US — origin highlight
+      if (DEST_ISO.has(iso)) {
+        const vol = DEST_VOLS[String(iso)] || 0;
+        const t   = destIntensity(vol);
+        return `rgba(40,${Math.round(80 + t*80)},${Math.round(120 + t*60)},${(0.35 + t*0.45).toFixed(2)})`;
+      }
+      return "#152234";
+    })
+    .attr("stroke", "rgba(255,255,255,0.08)").attr("stroke-width", 0.4);
+
+  svg.append("path").datum(borders).attr("d", path)
+     .attr("fill", "none").attr("stroke", "rgba(255,255,255,0.07)").attr("stroke-width", 0.3);
+
+  svg.append("path").datum(d3.geoGraticule()()).attr("d", path)
+     .attr("fill", "none").attr("stroke", "rgba(255,255,255,0.04)").attr("stroke-width", 0.3);
+
+  // Trade arcs — thermal behind, MET on top
+  // Pacific (lon > 100°E): screen-space Bezier dipping south through bottom ocean space
+  // Atlantic / Indian Ocean: geographic great-circle arcs fanning upper-right
+  const PACIFIC_CTRL_Y = H * 0.88;  // dips into lower ocean band; more room from Atlantic arcs
+  const arcLayer = svg.append("g");
+  function drawArc(flow, useMet) {
+    const mt = useMet ? flow.met_mt : flow.th_mt;
+    if (mt < 0.1) return;
+    const w   = arcWidth(mt);
+    const col  = useMet ? "rgba(82,175,240,0.70)"  : "rgba(224,140,40,0.72)";
+    const glow = useMet ? "rgba(82,175,240,0.10)"  : "rgba(224,140,40,0.10)";
+    let d, glowD;
+    if (flow.lon > 100) {
+      const destPx = proj([flow.lon, flow.lat]);
+      if (!destPx || !originPx) return;
+      glowD = taperedBezier(originPx, destPx, PACIFIC_CTRL_Y, w * 2.8);
+      d     = taperedBezier(originPx, destPx, PACIFIC_CTRL_Y, w);
+    } else {
+      glowD = taperedArc(ORIGIN, [flow.lon, flow.lat], w * 2.8);
+      d     = taperedArc(ORIGIN, [flow.lon, flow.lat], w);
+    }
+    if (glowD) arcLayer.append("path").attr("d", glowD).attr("fill", glow).attr("stroke","none");
+    if (d) arcLayer.append("path").attr("d", d).attr("fill", col).attr("stroke","none")
+             .append("title").text(`${flow.country} — ${mt.toFixed(1)}M t`);
+  }
+  FLOWS.forEach(f => drawArc(f, false));
+  FLOWS.forEach(f => drawArc(f, true));
+
+  // Destination circles
+  const destLayer = svg.append("g");
+  FLOWS.forEach(f => {
+    const px = proj([f.lon, f.lat]);
+    if (!px) return;
+    const r   = dotR(f.total_mt);
+    const col = f.met_pct >= 60 ? "#52aff0" : "#e08c28";
+    destLayer.append("circle").attr("cx", px[0]).attr("cy", px[1]).attr("r", r * 1.6)
+      .attr("fill", "none")
+      .attr("stroke", f.met_pct >= 60 ? "rgba(82,175,240,0.22)" : "rgba(224,140,40,0.22)")
+      .attr("stroke-width", 0.8);
+    destLayer.append("circle").attr("cx", px[0]).attr("cy", px[1]).attr("r", r)
+      .attr("fill", f.met_pct >= 60 ? "rgba(82,175,240,0.55)" : "rgba(224,140,40,0.55)")
+      .attr("stroke", f.met_pct >= 60 ? "#52aff0" : "#e08c28").attr("stroke-width", 0.8);
+  });
+
+  // Labels
+  const labelOffsets = {
+    'India': [14,-4], 'Brazil': [12,4], 'Netherlands': [10,-8],
+    'China': [12,-4], 'Japan': [12,4], 'Spain': [10,-8],
+    'Morocco': [-62,8], 'Turkey': [10,6], 'Egypt': [12,4],
+    'South Korea': [12,-6], 'Italy': [10,-8], 'Germany': [-76,-8],
+    'France': [-64,-8], 'Ukraine': [10,-8], 'Indonesia': [10,8], 'Poland': [10,-8],
+  };
+  const labelLayer = svg.append("g");
+  FLOWS.forEach(f => {
+    const px  = proj([f.lon, f.lat]);
+    if (!px) return;
+    const r   = dotR(f.total_mt);
+    const off = labelOffsets[f.country] || [r+5, -4];
+    const sz  = f.total_mt >= 5 ? "11px" : f.total_mt >= 2 ? "10px" : "9px";
+    const fw  = f.total_mt >= 3 ? "700" : "400";
+    const anc = off[0] < 0 ? "end" : "start";
+    labelLayer.append("text").attr("x", px[0]+off[0]).attr("y", px[1]+off[1])
+      .attr("font-family","Arial,sans-serif").attr("font-size",sz).attr("font-weight",fw)
+      .attr("fill","rgba(255,255,255,0.85)").attr("text-anchor",anc).text(f.country);
+    const mtStr = f.total_mt >= 1 ? `~${Math.round(f.total_mt)}M t` : `~${Math.round(f.total_mt*1000)}K t`;
+    const tag   = f.met_pct >= 60 ? "met" : f.met_pct <= 30 ? "thermal" : "mixed";
+    labelLayer.append("text").attr("x", px[0]+off[0]).attr("y", px[1]+off[1]+11)
+      .attr("font-family","Arial,sans-serif").attr("font-size","8.5px")
+      .attr("fill", f.met_pct >= 60 ? "rgba(82,175,240,0.7)" : "rgba(224,140,40,0.7)")
+      .attr("text-anchor",anc).text(`${mtStr} · ${tag}`);
+  });
+
+  // Origin marker — uses originPx from outer scope (set before d3.json call)
+  if (originPx) {
+    const portLayer = svg.append("g");
+    portLayer.append("circle").attr("cx",originPx[0]).attr("cy",originPx[1])
+      .attr("r",18).attr("fill","rgba(255,255,255,0.04)").attr("stroke","none");
+    portLayer.append("circle").attr("cx",originPx[0]).attr("cy",originPx[1])
+      .attr("r",7).attr("fill","rgba(245,240,232,0.9)")
+      .attr("stroke","#c8102e").attr("stroke-width",1.5);
+    portLayer.append("text").attr("x",originPx[0]+11).attr("y",originPx[1]-6)
+      .attr("font-family","Arial,sans-serif").attr("font-size","10px").attr("font-weight","700")
+      .attr("fill","rgba(255,255,255,0.9)").text("Hampton Roads");
+    portLayer.append("text").attr("x",originPx[0]+11).attr("y",originPx[1]+5)
+      .attr("font-family","Arial,sans-serif").attr("font-size","10px").attr("font-weight","700")
+      .attr("fill","rgba(255,255,255,0.9)").text("& Baltimore");
+  }
+
+}).catch(err => {
+  svg.append("text").attr("x",60).attr("y",60).attr("fill","#e08c28")
+     .text("Map data failed to load (check CDN). Error: " + err.message);
+});
+})();</script>
+
+  <div class="chart-wrap" style="max-height:380px;">
+    <div class="chart-label">Top export destinations by tonnage — 2025 (million MT)</div>
+    <canvas id="chartDest" style="max-height:300px;"></canvas>
+  </div>
+
+  <p>India is the only major destination purchasing significant volumes of both metallurgical
+  and thermal coal from US East Coast ports simultaneously. Blast furnace coking coal flows
+  to integrated steelworks at Visakhapatnam, Jamshedpur, and Bhilai. High-BTU thermal
+  bituminous flows to coastal power utilities. The split reflects India's simultaneous
+  expansion of industrial steel capacity and electricity generation infrastructure, and it
+  has made India the leading USEC destination by volume in every year since 2021.</p>
+
+  <p>Brazil's import book is a pure metallurgical programme. Domestic hard coking coal is
+  absent, and integrated steelmakers — including Gerdau, CSN, and Ternium — rely entirely
+  on imported blend components. Hampton Roads to Atlantic Brazil is a direct haul requiring
+  no canal transit, and multi-year supply contracts provide the volume stability that makes
+  Brazil one of the most predictable USEC destinations year on year. The route is among
+  the most logistically efficient in the global seaborne coal trade.</p>
+
+  <p>Netherlands tonnage is primarily Rotterdam in transit — coal arriving for blending and
+  onward distribution to ArcelorMittal's Belgian and Dutch steelworks, or movement up
+  the Rhine to German and French buyers. ArcelorMittal is the most prominent buyer in the
+  USEC shipping record overall, operating blast furnaces across Belgium, France, Spain,
+  and Brazil, none of which have access to domestic coking coal. Spain and Italy record
+  near-pure metallurgical imports as Iberian and Mediterranean steel producers supplement
+  declining European domestic coal supply with Appalachian coking grades.</p>
+
+  <p>China and Japan represent the premium-grade corridor. Both are purchasing high-CSR,
+  low-volatile coking coal for blast furnaces operating to stringent quality specifications.
+  The round-Cape freight to Japan runs $38–$52 per metric ton — the highest freight cost
+  in the USEC export matrix — but the premium grades destined for Japanese furnaces carry
+  margins sufficient to absorb it. The consistency of these supply relationships, maintained
+  across multiple price cycles, reflects how deeply Appalachian low-vol HCC is embedded
+  in Far East blast furnace blend specifications.</p>
+
+  <div class="pull-note">
+    Morocco and Egypt both recorded material import volumes in 2025 at minimal metallurgical
+    content. TAQA Morocco's Jorf Lasfar power complex and Egyptian utilities have been
+    building US coal procurement relationships as generation capacity expands and supply
+    diversification away from South African origins accelerates. Both markets were
+    negligible in 2021–2023.
+  </div>
+
+  <p>The steel mill buyer set behind these flows is anchored by a small number of very
+  large programmes. Indian state steelmakers SAIL and RINL have systematically expanded
+  US supply relationships as a hedge against concentration in Australian origins — a
+  strategy that accelerated after the Australia-China trade disruptions reshuffled global
+  met coal flows in 2020–2021. Shipments linked to what the market understands to be
+  Adani Group entities appeared in the USEC buyer set in 2025 — if confirmed, procurement
+  at that scale would reflect committed greenfield steelmaking capacity coming into
+  production, not opportunistic spot purchasing. SSAB's Swedish and Finnish
+  furnaces operate to stringent low-sulfur, low-volatile specifications that only a
+  limited number of global mines can satisfy. Metinvest of Ukraine has sustained USEC
+  procurement through redirected supply chains despite significant operational disruption —
+  an illustration of how blast furnace coal relationships function on multi-year contractual
+  frameworks that absorb short-term market dislocations.</p>
+
+  <p>On the thermal side, JERA — Japan's largest power generator — exemplifies the stable,
+  long-horizon buyer. Multi-year supply agreements with Northern Appalachian producers
+  underpin consistent Baltimore volumes that persist through spot market cycles. Morocco
+  and Egypt, as noted, represent the structural demand growth that is absorbing Northern
+  Appalachian thermal coal as US domestic utility consumption declines.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-label">Metallurgical vs thermal coal by port — 2025</div>
+    <canvas id="chartSplit"></canvas>
+  </div>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h2 id="supply">The Infrastructure Behind It</h2>
+
+  <p>Hampton Roads and Baltimore are not interchangeable. They serve different parts of the
+  same trade, connected by geography, geology, and the railroad systems that link Appalachian
+  mines to tidewater. Hampton Roads handled 62% of all USEC exports in 2025,
+  with 83% of that volume classified as metallurgical coal. Baltimore's share
+  was the remainder — a predominantly thermal book, served exclusively by CSX, with
+  metallurgical coal representing approximately 46% of throughput.</p>
+
+  <p>Within Hampton Roads, terminal specialisation is pronounced. Dominion Terminal
+  Associates operated as a near-pure metallurgical loading point in 2025 — the primary
+  berth for Core Natural Resources' coking coal programme following the Arch-CONSOL merger.
+  NS Lamberts Point, the largest coal export terminal in the Northern Hemisphere by
+  throughput capacity and capable of accommodating Capesize vessels at full draught, moved a predominantly
+  metallurgical book with a small crossover fraction. Pier IX at Newport News handled
+  the most diversified mix, receiving both CAPP coking coal and crossover-specification
+  material that prices into metallurgical or thermal markets depending on the prevailing
+  spread.</p>
+
+  <p>At Baltimore, the Core Natural Resources merger placed a single entity in effective
+  control of both Curtis Bay loading positions simultaneously. By mid-year, consolidated
+  shipments under the Core banner had surpassed legacy CONSOL volumes as pre-existing
+  contracts transitioned to the new operating structure. The March 2024 collapse of the
+  Francis Scott Key Bridge closed Baltimore's main shipping channel for eleven weeks, but
+  the Curtis Bay berths — accessed via the outer Chesapeake Bay approach — maintained
+  export operations through the closure using barge lightering and rerouted vessel calls;
+  full-year 2025 volumes confirmed the port's throughput capacity was not permanently impaired.</p>
+
+  <p>All coal loaded at both ports originates in the Appalachian coalfields and moves
+  exclusively by rail to tidewater. The specific corridor a mine connects to determines
+  everything downstream: which port it can serve, which terminal receives it, which
+  ocean market it can reach. NS's Pocahontas Division runs approximately 350 miles from
+  the coalfields centred on Williamson, West Virginia — the heart of the CAPP low-volatile
+  hard coking coal district — through Roanoke and into Hampton Roads. The geology along
+  this corridor produces the premium coking grades that steel mills in Brazil, Japan, and
+  Europe require as blast furnace blend components. NS Lamberts Point and Dominion Terminal
+  Associates sit at the tidal end of this line.</p>
+
+  <p>CSX's primary Appalachian route to Baltimore follows the former Baltimore &amp; Ohio
+  mainline, climbing Sand Patch Grade near Cumberland before descending into the Northern
+  Appalachian fields of southwestern Pennsylvania. Core Natural Resources' Bailey Mine
+  and Enlow Fork complex supply directly to Curtis Bay via this corridor — a haul of
+  approximately 200 rail miles, shorter than the Hampton Roads run, providing a cost
+  offset for a coal grade that does not command metallurgical premiums. A second CSX
+  route — the Cardinal Corridor through Huntington, West Virginia to Newport News — feeds
+  Pier IX with Central Appalachian crossover-specification coal that floats between
+  the two markets depending on the prevailing price spread.</p>
+
+  <div class="map-inline-wrap"><div class="card">
+
+  <div class="header-strip"></div>
+
+  <div class="header-block">
+    <div class="kicker">Supply Chain Intelligence &middot; March 2026</div>
+    <div class="main-title">Appalachian Mine Origins &amp; Rail Corridors</div>
+    <div class="subtitle">
+      Export-relevant coal mines by basin and grade — with the three principal rail corridors
+      serving Hampton Roads and Baltimore
+    </div>
+  </div>
+
+  <div class="map-area">
+    <svg id="origins-map" viewBox="0 0 1140 640" preserveAspectRatio="xMidYMid meet"
+         style="display:block;width:100%;"></svg>
+  </div>
+
+  <div class="legend-block">
+    <div>
+      <div class="legend-title">Mine Grade</div>
+      <div class="legend-row">
+        <div class="legend-dot" style="background:#52aff0;"></div>
+        Hard coking coal (HCC) — Central Appalachian low-volatile
+      </div>
+      <div class="legend-row">
+        <div class="legend-dot" style="background:#e08c28;"></div>
+        Thermal bituminous — Northern Appalachian (NAPP) high-BTU
+      </div>
+      <div class="legend-row">
+        <div class="legend-dot" style="background:#a0b8c8;"></div>
+        Crossover / semi-soft coking grades
+      </div>
+      <div class="legend-row" style="margin-top:3px;color:rgba(255,255,255,0.3);font-size:10px;">
+        Circle area proportional to annual production. Glow intensity reflects concentration.
+      </div>
+    </div>
+    <div>
+      <div class="legend-title">Rail Corridors</div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#52aff0;height:3px;border-radius:0;"></div>
+        NS Pocahontas Division — CAPP HCC to Hampton Roads
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#e08c28;height:3px;border-radius:0;"></div>
+        CSX B&amp;O / Sand Patch Grade — NAPP thermal to Baltimore
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#a0b8c8;height:3px;border-radius:0;"></div>
+        CSX Cardinal Corridor — CAPP crossover to Newport News
+      </div>
+    </div>
+    <div>
+      <div class="legend-title">Export Terminals</div>
+      <div class="legend-row">
+        <div class="legend-dot" style="background:#f5f0e8;border:1.5px solid #c8102e;"></div>
+        Hampton Roads (NS Lamberts Point, DTA, Pier IX at Newport News)
+      </div>
+      <div class="legend-row">
+        <div class="legend-dot" style="background:#f5f0e8;border:1.5px solid #c8102e;"></div>
+        Baltimore (CNX Marine Terminal, CSX Curtis Bay)
+      </div>
+    </div>
+  </div>
+
+
+</div></div>
+<script>(function() {
+const MINES = [
+  {
+    "name": "Bailey Mine",
+    "lat": 39.818,
+    "lon": -80.236,
+    "prod": 10.96,
+    "basin": "NAPP",
+    "grade": "thermal"
+  },
+  {
+    "name": "Enlow Fork Mine",
+    "lat": 39.862,
+    "lon": -80.297,
+    "prod": 8.9,
+    "basin": "NAPP",
+    "grade": "thermal"
+  },
+  {
+    "name": "Marshall County Mine",
+    "lat": 39.845,
+    "lon": -80.62,
+    "prod": 8.2,
+    "basin": "NAPP",
+    "grade": "thermal"
+  },
+  {
+    "name": "Tunnel Ridge Mine",
+    "lat": 39.987,
+    "lon": -80.748,
+    "prod": 6.8,
+    "basin": "NAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Harrison County Mine",
+    "lat": 39.585,
+    "lon": -80.709,
+    "prod": 6.3,
+    "basin": "NAPP",
+    "grade": "thermal"
+  },
+  {
+    "name": "Marion County Mine",
+    "lat": 39.458,
+    "lon": -80.401,
+    "prod": 6.2,
+    "basin": "NAPP",
+    "grade": "thermal"
+  },
+  {
+    "name": "Ohio County Mine",
+    "lat": 39.918,
+    "lon": -80.558,
+    "prod": 6.0,
+    "basin": "NAPP",
+    "grade": "thermal"
+  },
+  {
+    "name": "Harvey Mine",
+    "lat": 39.758,
+    "lon": -80.227,
+    "prod": 5.99,
+    "basin": "NAPP",
+    "grade": "thermal"
+  },
+  {
+    "name": "Cumberland Mine",
+    "lat": 39.828,
+    "lon": -80.157,
+    "prod": 5.5,
+    "basin": "NAPP",
+    "grade": "thermal"
+  },
+  {
+    "name": "Leer Mine",
+    "lat": 39.237,
+    "lon": -80.059,
+    "prod": 4.0,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Buchanan Mine No. 1",
+    "lat": 37.236,
+    "lon": -81.986,
+    "prod": 3.9,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Leer South Mine",
+    "lat": 39.157,
+    "lon": -80.041,
+    "prod": 2.7,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Deep Mine 41",
+    "lat": 37.211,
+    "lon": -82.223,
+    "prod": 2.4,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Kingston Mine (AMR)",
+    "lat": 37.237,
+    "lon": -82.048,
+    "prod": 1.6,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Road Fork #52 Mine",
+    "lat": 37.618,
+    "lon": -81.818,
+    "prod": 1.9,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Workman Creek Surface",
+    "lat": 37.762,
+    "lon": -81.347,
+    "prod": 1.8,
+    "basin": "CAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Lynn Branch No. 2 Mine",
+    "lat": 37.792,
+    "lon": -81.877,
+    "prod": 1.2,
+    "basin": "CAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Black Eagle Mine",
+    "lat": 37.842,
+    "lon": -81.278,
+    "prod": 1.0,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Stonecoal Branch Mine No. 2",
+    "lat": 37.869,
+    "lon": -81.897,
+    "prod": 0.6,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "No. 2 Gas Mine (Ramaco)",
+    "lat": 37.854,
+    "lon": -81.892,
+    "prod": 0.5,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Berwind Deep Mine",
+    "lat": 37.384,
+    "lon": -81.677,
+    "prod": 0.4,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Elk Creek Mine",
+    "lat": 37.172,
+    "lon": -81.601,
+    "prod": 0.2,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Leer Mine (Elk Creek Complex, Ramaco)",
+    "lat": 37.767,
+    "lon": -81.847,
+    "prod": 1.5,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Mountaineer II Mine",
+    "lat": 37.832,
+    "lon": -81.893,
+    "prod": 1.1,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Beckley Pocahontas Mine",
+    "lat": 37.823,
+    "lon": -81.163,
+    "prod": 1.1,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Mountain View Mine",
+    "lat": 39.082,
+    "lon": -79.577,
+    "prod": 1.0,
+    "basin": "NAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Glancy Surface Mine",
+    "lat": 37.664,
+    "lon": -81.879,
+    "prod": 0.8,
+    "basin": "CAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Affinity Mine",
+    "lat": 37.878,
+    "lon": -81.237,
+    "prod": 0.7,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Winchester Peerless Rachel Mine",
+    "lat": 38.002,
+    "lon": -81.728,
+    "prod": 0.7,
+    "basin": "CAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Longview Mine",
+    "lat": 39.002,
+    "lon": -80.068,
+    "prod": 0.7,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Itmann No. 5 Mine",
+    "lat": 37.538,
+    "lon": -81.851,
+    "prod": 0.4,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Mountain Laurel Mine",
+    "lat": 37.793,
+    "lon": -81.911,
+    "prod": 1.3,
+    "basin": "CAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Excel No. 5 Mine",
+    "lat": 37.552,
+    "lon": -82.382,
+    "prod": 1.1,
+    "basin": "CAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Blue Creek No. 1 UG Mine (Sev.en)",
+    "lat": 38.182,
+    "lon": -81.637,
+    "prod": 1.3,
+    "basin": "CAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Davy Branch Mine",
+    "lat": 37.811,
+    "lon": -81.877,
+    "prod": 0.8,
+    "basin": "CAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Eagle No. 1 Mine",
+    "lat": 37.787,
+    "lon": -81.892,
+    "prod": 0.8,
+    "basin": "CAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Jerry Fork Eagle Mine",
+    "lat": 38.182,
+    "lon": -80.827,
+    "prod": 0.7,
+    "basin": "CAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Panther Eagle Mine",
+    "lat": 37.808,
+    "lon": -81.288,
+    "prod": 0.6,
+    "basin": "CAPP",
+    "grade": "crossover"
+  },
+  {
+    "name": "Glen Alum Tunnel Mine",
+    "lat": 37.839,
+    "lon": -81.268,
+    "prod": 0.5,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Deep Mine 44",
+    "lat": 37.187,
+    "lon": -82.246,
+    "prod": 0.5,
+    "basin": "CAPP",
+    "grade": "hcc"
+  },
+  {
+    "name": "Republic Energy Surface",
+    "lat": 38.018,
+    "lon": -81.088,
+    "prod": 0.8,
+    "basin": "CAPP",
+    "grade": "crossover"
+  }
+];
+const RAILS = [{"name": "NS Pocahontas Division", "label": "NS Pocahontas Div.", "color": "#52aff0", "desc": "Williamson WV \u2192 Roanoke \u2192 Hampton Roads. Primary CAPP HCC corridor.", "coords": [[-82.27, 37.65], [-81.56, 37.27], [-80.41, 37.22], [-79.82, 37.0], [-77.4, 36.99], [-76.36, 36.92]]}, {"name": "CSX B&O / Sand Patch Grade", "label": "CSX B&O / Sand Patch", "color": "#e08c28", "desc": "Cumberland MD \u2192 Hagerstown \u2192 Baltimore Curtis Bay. NAPP thermal bituminous.", "coords": [[-80.25, 39.82], [-79.27, 39.49], [-78.8, 39.62], [-77.72, 39.72], [-76.59, 39.28]]}, {"name": "CSX Cardinal Corridor", "label": "CSX Cardinal Corridor", "color": "#a0b8c8", "desc": "Huntington WV \u2192 Newport News. Central Appalachian crossover grades.", "coords": [[-82.44, 38.42], [-81.11, 38.09], [-80.45, 37.78], [-79.87, 37.5], [-78.2, 37.28], [-76.46, 37.08]]}];
+const PORTS = [{"name": "Hampton Roads", "lon": -76.36, "lat": 36.92}, {"name": "Baltimore", "lon": -76.59, "lat": 39.28}];
+
+const W = 1140, H = 640;
+const svg = d3.select("#origins-map");
+
+// Mercator — CAPP + NAPP focus (Warrior Basin removed).
+// Content bounds: lon -82.5°W (CAPP west) to -76.4°W (Hampton Roads) = 6.1°
+//                 lat  36.5°N (HR / CAPP south) to 41.0°N (NAPP / Pittsburgh) = 4.5°
+// Scale 6500 fills canvas comfortably; shift translate right to centre on corridor midpoint.
+const proj = d3.geoMercator()
+  .center([-79.5, 38.5])
+  .scale(6500)
+  .translate([W * 0.52, H * 0.52]);
+
+const path = d3.geoPath().projection(proj);
+
+const maxProd = d3.max(MINES, d => d.prod);
+const mineR   = d3.scaleSqrt().domain([0, maxProd]).range([2.5, 11]);
+
+const colMap = { hcc: "#52aff0", thermal: "#e08c28", crossover: "#a0b8c8" };
+
+d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json").then(world => {
+
+  // Use 50m (higher resolution) for cleaner eastern US coastline
+  const countries = topojson.feature(world, world.objects.countries);
+
+  // Background ocean
+  svg.append("rect").attr("width", W).attr("height", H).attr("fill", "#0a1520");
+
+  // Only render North American countries — Mercator at this zoom renders the
+  // entire globe off-screen otherwise, causing rendering artifacts.
+  // US=840, Canada=124, Mexico=484, Cuba=192, Bahamas=44
+  const naIDs = new Set([840, 124, 484, 192, 44]);
+
+  svg.append("g").selectAll("path")
+    .data(countries.features.filter(d => naIDs.has(+d.id)))
+    .join("path").attr("d", path)
+    .attr("fill", d => +d.id === 840 ? "#1a2d40" : "#141f2d")
+    .attr("stroke", "rgba(255,255,255,0.12)").attr("stroke-width", 0.5);
+
+  // ── Basin shading (subtle) ─────────────────────────────────────────────────
+  // CAPP rectangle (rough outline)
+  const basins = [
+    { label:"CAPP", coords:[[-82.5,38.8],[-78.0,38.8],[-78.0,36.5],[-82.5,36.5]], color:"rgba(82,175,240,0.06)" },
+    { label:"NAPP", coords:[[-81.5,40.8],[-77.5,40.8],[-77.5,38.9],[-81.5,38.9]], color:"rgba(224,140,40,0.06)" },
+  ];
+  basins.forEach(b => {
+    const closed = [...b.coords, b.coords[0]];
+    const feat = { type:"Feature", geometry:{ type:"LineString", coordinates: closed.map(c => [c[0],c[1]]) } };
+    // Draw as filled path
+    const pts = b.coords.map(c => proj(c)).filter(Boolean);
+    if (pts.length) {
+      const d = 'M' + pts.map(p => p.join(',')).join('L') + 'Z';
+      svg.append("path").attr("d",d).attr("fill",b.color).attr("stroke","none");
+    }
+  });
+
+  // Basin labels
+  const basinLabels = [
+    { label:"CENTRAL APPALACHIAN\n(CAPP)", lon:-80.5, lat:37.3, color:"rgba(82,175,240,0.35)" },
+    { label:"NORTHERN APPALACHIAN\n(NAPP)", lon:-79.3, lat:40.1, color:"rgba(224,140,40,0.35)" },
+  ];
+  basinLabels.forEach(b => {
+    const px = proj([b.lon, b.lat]);
+    if (!px) return;
+    const lines = b.label.split('\n');
+    lines.forEach((line, i) => {
+      svg.append("text").attr("x", px[0]).attr("y", px[1] + i*11)
+        .attr("font-family","Arial,sans-serif").attr("font-size","8px")
+        .attr("font-weight","700").attr("letter-spacing","0.8px")
+        .attr("fill", b.color).attr("text-anchor","middle").text(line);
+    });
+  });
+
+  // ── Rail corridors ─────────────────────────────────────────────────────────
+  RAILS.forEach(rail => {
+    const feat = { type:"Feature", geometry:{ type:"LineString", coordinates: rail.coords } };
+    // Glow pass
+    svg.append("path").datum(feat).attr("d", path)
+       .attr("fill","none").attr("stroke", rail.color)
+       .attr("stroke-width", 5).attr("opacity", 0.10)
+       .attr("stroke-linecap","round");
+    // Main line
+    svg.append("path").datum(feat).attr("d", path)
+       .attr("fill","none").attr("stroke", rail.color)
+       .attr("stroke-width", 1.8).attr("stroke-dasharray","6,4")
+       .attr("opacity", 0.75).attr("stroke-linecap","round");
+  });
+
+  // ── Mine dots ─────────────────────────────────────────────────────────────
+  const mineLayer = svg.append("g");
+  MINES.forEach(m => {
+    const px = proj([m.lon, m.lat]);
+    if (!px) return;
+    const r   = mineR(m.prod);
+    const col = colMap[m.grade] || "#888";
+    // Glow rings
+    [3.0, 1.8].forEach((mult, i) => {
+      mineLayer.append("circle").attr("cx", px[0]).attr("cy", px[1])
+        .attr("r", r * mult).attr("fill", col)
+        .attr("opacity", i === 0 ? 0.07 : 0.13).attr("stroke","none");
+    });
+    // Core dot
+    mineLayer.append("circle").attr("cx", px[0]).attr("cy", px[1]).attr("r", r)
+      .attr("fill", col).attr("opacity", 0.78)
+      .attr("stroke","rgba(0,0,0,0.35)").attr("stroke-width", 0.4)
+      .append("title").text(`${m.name} (${m.basin}) — ${m.prod.toFixed(1)} M ST/yr`);
+  });
+
+  // ── Port markers ──────────────────────────────────────────────────────────
+  PORTS.forEach(p => {
+    const px = proj([p.lon, p.lat]);
+    if (!px) return;
+    // Glow
+    svg.append("circle").attr("cx",px[0]).attr("cy",px[1])
+       .attr("r",14).attr("fill","rgba(200,16,46,0.12)").attr("stroke","none");
+    svg.append("circle").attr("cx",px[0]).attr("cy",px[1])
+       .attr("r",6).attr("fill","rgba(245,240,232,0.9)")
+       .attr("stroke","#c8102e").attr("stroke-width",1.5);
+    svg.append("text").attr("x",px[0]+10).attr("y",px[1]-6)
+       .attr("font-family","Arial,sans-serif").attr("font-size","10px")
+       .attr("font-weight","700").attr("fill","rgba(255,255,255,0.9)")
+       .text(p.name);
+    // Terminal sub-label
+    const sub = p.name === "Hampton Roads"
+      ? "Lamberts Point · DTA · Pier IX"
+      : "CNX Marine · CSX Curtis Bay";
+    svg.append("text").attr("x",px[0]+10).attr("y",px[1]+5)
+       .attr("font-family","Arial,sans-serif").attr("font-size","7.5px")
+       .attr("fill","rgba(255,255,255,0.45)").text(sub);
+  });
+
+  // ── Rail corridor labels (end-point labels) ────────────────────────────────
+  // Place a small text label near the mine-origin end of each corridor
+  const railLabelPts = [
+    { rail: RAILS[0], idx: 0, dx: -8, dy: -8, anc: "end"   },  // NS Poca — WV end
+    { rail: RAILS[1], idx: 0, dx: -8, dy: -8, anc: "end"   },  // CSX B&O — WV end
+    { rail: RAILS[2], idx: 0, dx: -8, dy:  8, anc: "end"   },  // CSX Cardinal — WV end
+  ];
+  railLabelPts.forEach(lp => {
+    const coord = lp.rail.coords[lp.idx];
+    const px = proj(coord);
+    if (!px) return;
+    svg.append("text").attr("x", px[0]+lp.dx).attr("y", px[1]+lp.dy)
+       .attr("font-family","Arial,sans-serif").attr("font-size","8px")
+       .attr("font-weight","700").attr("letter-spacing","0.5px")
+       .attr("fill", lp.rail.color).attr("opacity", 0.75)
+       .attr("text-anchor", lp.anc).text(lp.rail.label);
+  });
+
+  // ── State boundaries (approximate — from country paths isn't enough;
+  //    draw key state name labels for orientation) ─────────────────────────
+  const stateLabels = [
+    { label:"W. VIRGINIA", lon:-80.5, lat:38.5 },
+    { label:"VIRGINIA",    lon:-78.5, lat:37.5 },
+    { label:"PENNSYLVANIA",lon:-77.5, lat:40.5 },
+    { label:"KENTUCKY",    lon:-83.5, lat:37.8 },
+    { label:"MARYLAND",    lon:-77.0, lat:39.5 },
+  ];
+  stateLabels.forEach(s => {
+    const px = proj([s.lon, s.lat]);
+    if (!px) return;
+    svg.append("text").attr("x",px[0]).attr("y",px[1])
+       .attr("font-family","Arial,sans-serif").attr("font-size","9px")
+       .attr("fill","rgba(255,255,255,0.18)").attr("text-anchor","middle")
+       .attr("letter-spacing","1px").text(s.label);
+  });
+
+}).catch(err => {
+  svg.append("text").attr("x",60).attr("y",60).attr("fill","#e08c28")
+     .text("Map data failed to load (check CDN). Error: " + err.message);
+});
+})();</script>
+
+  <p>For both Class I railroads, coal remains the single most significant bulk commodity
+  by revenue. Norfolk Southern recorded approximately $1.57 billion in coal revenue in
+  2024 — roughly 13% of total operating revenue — with export met coal the primary
+  driver. CSX's coal book is larger still: approximately $2.25 billion in 2024, or
+  roughly 15–16% of total revenue, reflecting the combined weight of NAPP thermal
+  exports through Baltimore and CAPP met exports through Newport News.
+  For CSX, coal is the single largest commodity segment by revenue. Any sustained shift
+  in export volumes registers directly in quarterly rail earnings — a structural linkage
+  that makes the carrier as much a stakeholder in global steel demand cycles as the
+  mines it serves.</p>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h2 id="economics">What It Costs to Move Coal to Water</h2>
+
+  <p>Appalachian coking coal is priced on a free-on-board basis at Hampton Roads or
+  Baltimore. Low-volatile hard coking coal from CAPP and the Warrior Basin traded in
+  the range of $170–$210 per metric ton FOB Hampton Roads through most of 2025 —
+  significantly off the $280–$340 range seen in 2022. Mid-volatile HCC settled in the
+  $145–$180 range. High-vol A and B specifications traded at $120–$150 FOB, competitive
+  with Australian mid-vol on a blend-adjusted basis. Baltimore thermal bituminous —
+  NAPP high-BTU coal from Core's Bailey and Enlow Fork complex — traded in the
+  $75–$100 per metric ton FOB range through 2025, a significant reduction from the 2022
+  peak above $300. At these levels, the spread between NAPP thermal and CAPP met coking
+  coal ran approximately $70–$110 per
+  ton FOB — the incentive that drives crossover-specification material toward the
+  metallurgical market whenever quality specifications allow.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Grade</th><th>Origin</th>
+        <th class="num">2025 FOB USEC</th>
+        <th class="num">2022 Peak</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Low-Vol HCC</td><td>CAPP / Warrior Basin</td><td class="num accent-cell">$170–$210/MT</td><td class="num">$280–$340</td></tr>
+      <tr><td>Mid-Vol HCC</td><td>CAPP</td><td class="num accent-cell">$145–$180/MT</td><td class="num">$240–$290</td></tr>
+      <tr><td>High-Vol A/B</td><td>CAPP / NAPP crossover</td><td class="num accent-cell">$120–$150/MT</td><td class="num">$200–$250</td></tr>
+      <tr><td>Thermal bituminous</td><td>NAPP</td><td class="num accent-cell">$75–$100/MT</td><td class="num">$280–$350</td></tr>
+    </tbody>
+  </table>
+
+  <p>Ocean freight ran well below the 2021–2022 surge levels across all USEC routes.
+  The trans-Atlantic haul to Rotterdam — the shortest voyage in the matrix — ran
+  $10–$18 per metric ton, making European steel mills the natural marginal buyer
+  when met coal premiums justify the FOB price. India is the highest-freight major
+  destination at $22–$32 per metric ton, offset by consistent and large demand
+  from multiple import terminals on both coasts. The round-Cape voyage to Japan
+  and South Korea ran $38–$52 per metric ton — the highest freight cost in the
+  matrix — absorbed by premium-grade margins on low-vol HCC.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Route</th><th>Vessel</th><th class="num">2025 Freight (approx.)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hampton Roads → Rotterdam</td><td>Capesize / Panamax</td><td class="num accent-cell">$10–$18/MT</td></tr>
+      <tr><td>Hampton Roads → Brazil</td><td>Panamax</td><td class="num accent-cell">$12–$17/MT</td></tr>
+      <tr><td>Hampton Roads → India</td><td>Capesize / Panamax</td><td class="num accent-cell">$22–$32/MT</td></tr>
+      <tr><td>Hampton Roads → Japan / Korea</td><td>Panamax (via Cape)</td><td class="num accent-cell">$38–$52/MT</td></tr>
+    </tbody>
+  </table>
+
+  <p>Rail is the dominant cost in the mine-to-ship stack. Unit train movements from
+  Central Appalachian origins to Hampton Roads ran approximately $18–$24 per short ton
+  in 2025. NAPP to Baltimore via CSX is a shorter corridor at approximately $14–$19.
+  Combined mine-to-ship cost for CAPP low-vol HCC loading at Hampton Roads runs
+  approximately $24–$30 per metric ton — well within the margin available at $170–$210
+  FOB. US metallurgical coal exports averaged approximately 45–55 million short tons
+  annually in 2024–2025, with USEC terminals accounting for approximately 65–70% of
+  that total. The remaining 30–35% moves through Gulf Coast terminals at higher rail
+  cost to origin but with access to Panama Canal routing for Pacific markets.</p>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h2 id="outlook">What 2025 Tells Us</h2>
+
+  <p>The structural story from 2025 is one of market entrenchment, not retreat. Total
+  volumes are off the emergency highs of 2022 and 2023, but the trade is durable. The
+  destinations are more concentrated — India, Brazil, and Europe now account for the
+  majority of all USEC throughput. The supply side is more concentrated too: Core Natural
+  Resources enters 2026 controlling production assets across both the CAPP coking belt
+  and the NAPP thermal complex, with captive loading positions at both major ports. No
+  other Appalachian exporter currently replicates that structural position.</p>
+
+  <p>The reported appearance of Adani Group-linked entities in the USEC buyer set is
+  perhaps the most significant demand-side signal of the year. A company widely understood
+  to be building greenfield steelmaking capacity in India at scale does not enter new
+  long-term coal supply relationships opportunistically. That procurement, if the market
+  attribution is correct, reflects a view about where steel demand will be in five years —
+  not where spot prices are today. It is a useful corrective to the narrative that coal
+  demand is in structural decline, at least in the blast furnace segment.</p>
+
+  <p>The risk that deserves attention is not on the demand side. Steel production is
+  growing in India, the Middle East, and Southeast Asia, and coking coal requirements
+  grow with it. The risk is supply-side concentration: Core Natural Resources controlling
+  a material share of Appalachian coking coal production and multiple Hampton Roads
+  loading positions means that any significant operational disruption — flood, strike,
+  geological event — now carries a larger market footprint than it would have five years
+  ago. The physical infrastructure provides a buffer: NS Lamberts Point at approximately
+  48 million short ton annual capacity is a facility built for a larger world than the
+  one it currently serves. Whether that headroom is a legacy artefact or a platform
+  for resumed growth is the question the next demand cycle will answer.</p>
+
+</div>
+
+<div class="author-bio">
+  <div class="author-bio-text">
+    <div class="author-name">William S. Davis III</div>
+    <p>William S. Davis III is a maritime operations and intelligence practitioner
+    with over 30 years of experience across ship agency, terminal operations, and
+    commercial maritime consulting on the U.S. Atlantic and Gulf Coasts. He works
+    at the intersection of maritime domain expertise and AI system architecture.</p>
+  </div>
+</div>
+
+<footer>
+  OceanDatum &middot; March 03, 2026
+</footer>
+
+<script>
+(function() {
+  Chart.defaults.color = 'rgba(255,255,255,0.45)';
+  Chart.defaults.font.family = "'Space Grotesk', system-ui, sans-serif";
+  Chart.defaults.font.size = 11;
+
+  var gridColor = 'rgba(255,255,255,0.06)';
+  var accent = '#64ffb4';
+  var balCol = 'rgba(255,100,100,0.75)';
+  var hrCol  = 'rgba(100,255,180,0.75)';
+
+  // ── Chart 1: Annual volume stacked bar ─────────────────────────────────────
+  new Chart(document.getElementById('chartVolume'), {
+    type: 'bar',
+    data: {
+      labels: ['2022', '2023', '2024', '2025'],
+      datasets: [
+        {
+          label: 'Hampton Roads',
+          data: [30.9, 33.4, 39.0, 39.0],
+          backgroundColor: hrCol,
+          borderRadius: 4,
+        },
+        {
+          label: 'Baltimore',
+          data: [18.0, 25.4, 23.7, 23.6],
+          backgroundColor: balCol,
+          borderRadius: 4,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: { position: 'top', labels: { boxWidth: 12, padding: 16 } },
+        tooltip: { callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + ctx.raw.toFixed(1) + ' MMT' } }
+      },
+      scales: {
+        x: { stacked: true, grid: { display: false } },
+        y: { stacked: true, grid: { color: gridColor }, ticks: { callback: v => v + ' MMT' } }
+      }
+    }
+  });
+
+  // ── Chart 2: Met/Thermal split by port ─────────────────────────────────────
+  var splitCtx = document.getElementById('chartSplit');
+  if (splitCtx) {
+    new Chart(splitCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Hampton Roads', 'Baltimore'],
+        datasets: [
+          {
+            label: 'Metallurgical',
+            data: [32315117.0, 10817438.0],
+            backgroundColor: 'rgba(82,175,240,0.75)',
+            borderRadius: 4,
+          },
+          {
+            label: 'Thermal',
+            data: [6668291.0, 12791165.0],
+            backgroundColor: 'rgba(224,140,40,0.70)',
+            borderRadius: 4,
+          }
+        ]
+      },
+      options: {
+        responsive: true, indexAxis: 'y',
+        plugins: { legend: { position: 'top', labels: { boxWidth: 12, padding: 16 } } },
+        scales: {
+          x: { stacked: true, grid: { color: gridColor }, ticks: { callback: v => v + ' MMT' } },
+          y: { stacked: true, grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  // ── Chart 3: Top destinations horizontal bar ────────────────────────────────
+  var destCtx = document.getElementById('chartDest');
+  if (destCtx) {
+    new Chart(destCtx, {
+      type: 'bar',
+      data: {
+        labels: ["India", "Brazil", "Netherlands", "Morocco", "Japan", "Egypt", "Turkey", "France"],
+        datasets: [{
+          label: 'Million MT',
+          data: [10.62, 2.78, 2.76, 1.43, 1.32, 0.74, 0.71, 0.67],
+          backgroundColor: 'rgba(100,255,180,0.65)',
+          borderRadius: 3,
+        }]
+      },
+      options: {
+        responsive: true, indexAxis: 'y',
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: gridColor }, ticks: { callback: v => v + ' MMT' } },
+          y: { grid: { display: false } }
+        }
+      }
+    });
+  }
+
+})();
+</script>
+
+<script src="../../od-theme-pdf.js"></script>
+</body>
+</html>
