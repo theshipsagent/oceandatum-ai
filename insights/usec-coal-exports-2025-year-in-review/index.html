@@ -374,11 +374,12 @@ footer strong { color: var(--muted); }
   .article-body { padding-left: 18px; padding-right: 18px; padding-top: 32px; }
   .subnav-links { display: none; }
   .article-img-float { float: none; width: 100%; margin: 0 0 14px 0; }
-  canvas { max-height: 200px !important; }
   .chart-wrap { padding: 14px; }
   .data-table { font-size: 0.78rem; }
   .data-table th, .data-table td { padding: 8px 10px; }
   .author-bio { flex-direction: column; gap: 12px; }
+  .map-inline-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .map-inline-wrap svg { min-width: 500px; }
 }
 
 p strong { font-weight: inherit; color: inherit; }
@@ -1859,6 +1860,15 @@ d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json").then(wo
 })();
 </script>
 
+<script>
+  var hamburgerBtn = document.getElementById('hamburgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (hamburgerBtn && mobileMenu) {
+    hamburgerBtn.addEventListener('click', function() {
+      mobileMenu.classList.toggle('active');
+    });
+  }
+</script>
 <script src="../../od-theme-pdf.js"></script>
 </body>
 </html>
