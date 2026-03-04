@@ -157,12 +157,14 @@ body.light-mode .card { background: #f0f4f8 !important; }
 body.light-mode .map-area { background: #e8eef4 !important; }
 
 /* ── INLINE MAP CARDS — always dark regardless of mode ── */
-/* SVG maps use hardcoded dark colors; forcing light bg breaks them */
-.map-inline-wrap .card { background: #0d1b2a !important; }
-.map-inline-wrap .map-area { background: #0d1b2a !important; }
-.map-inline-wrap .legend-block { background: #0d1b2a; }
+/* SVG maps use hardcoded dark colors; forcing light bg breaks them.
+   Use body prefix to match specificity of body.light-mode rules (0,0,2,1)
+   and win by source order (these rules appear later). */
+body .map-inline-wrap .card { background: #0d1b2a !important; }
+body .map-inline-wrap .map-area { background: #0d1b2a !important; }
+body .map-inline-wrap .legend-block { background: #0d1b2a !important; }
 /* Give SVGs explicit dark bg so there's no light flash while D3 fetches */
-#trade-map, #origins-map { background: #0d1b2a; }
+#main-map, #origins-map { background: #0d1b2a; }
 /* Card text — keep readable against dark card bg in light mode */
 .map-inline-wrap .main-title { color: #f5f0e8 !important; }
 .map-inline-wrap .subtitle { color: rgba(255,255,255,0.75) !important; }
