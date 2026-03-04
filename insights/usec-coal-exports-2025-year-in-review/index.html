@@ -155,6 +155,20 @@ body.light-mode .data-table .accent-cell { color: #0a7a5a !important; }
 
 body.light-mode .card { background: #f0f4f8 !important; }
 body.light-mode .map-area { background: #e8eef4 !important; }
+
+/* ── INLINE MAP CARDS — always dark regardless of mode ── */
+/* SVG maps use hardcoded dark colors; forcing light bg breaks them */
+.map-inline-wrap .card { background: #0d1b2a !important; }
+.map-inline-wrap .map-area { background: #0d1b2a !important; }
+.map-inline-wrap .legend-block { background: #0d1b2a; }
+/* Give SVGs explicit dark bg so there's no light flash while D3 fetches */
+#trade-map, #origins-map { background: #0d1b2a; }
+/* Card text — keep readable against dark card bg in light mode */
+.map-inline-wrap .main-title { color: #f5f0e8 !important; }
+.map-inline-wrap .subtitle { color: rgba(255,255,255,0.75) !important; }
+.map-inline-wrap .legend-title { color: rgba(255,255,255,0.65) !important; }
+.map-inline-wrap .legend-row { color: rgba(255,255,255,0.80) !important; }
+.map-inline-wrap .map-footnote { color: rgba(255,255,255,0.60) !important; }
 body.light-mode .chart-wrap { background: rgba(0,0,0,0.02) !important; border-color: rgba(0,0,0,0.08) !important; }
 body.light-mode .drop-cap::first-letter { color: #0d1117 !important; }
 
