@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capes Shipping — Port Intelligence Brief · March 5, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@400;700;800&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+  :root {
+    --navy: #184076;
+    --teal: #17a8a5;
+    --teal-dark: #025149;
+    --teal-light: #e8f7f7;
+    --white: #ffffff;
+    --gray-100: #f5f6f8;
+    --gray-200: #e8eaed;
+    --gray-400: #9aa0aa;
+    --gray-700: #444c5a;
+    --body: #3d4451;
+    --border: #d4d9e1;
+    --shadow: 0 2px 12px rgba(24,64,118,0.08);
+    --shadow-hover: 0 6px 24px rgba(24,64,118,0.14);
+    --radius: 8px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--gray-100);
+    color: var(--body);
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--teal); text-decoration: none; }
+  a:hover { color: var(--navy); text-decoration: underline; }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--navy);
+    padding: 0;
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 1.2rem; }
+  .logo-img { height: 52px; width: auto; }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-name {
+    font-family: 'Yanone Kaffeesatz', 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .logo-tagline {
+    font-size: 0.7rem;
+    color: var(--teal);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+    font-weight: 400;
+  }
+  .header-meta {
+    text-align: right;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+  .header-meta strong { color: var(--white); font-weight: 600; }
+  .header-edition {
+    display: inline-block;
+    background: var(--teal);
+    color: var(--white);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.7rem;
+    border-radius: 99px;
+    margin-top: 0.3rem;
+  }
+
+  /* ── HERO BANNER ── */
+  .hero {
+    background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
+    padding: 2.8rem 3rem;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.6rem;
+  }
+  .hero-title {
+    font-family: 'Yanone Kaffeesatz', 'Open Sans', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.03em;
+    line-height: 1.05;
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.2);
+    margin-bottom: 0.4rem;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.82);
+    font-style: italic;
+  }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    background: var(--white);
+    border-bottom: 3px solid var(--teal);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Yanone Kaffeesatz', 'Open Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .stat-lbl {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gray-400);
+    margin-top: 0.2rem;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main-wrap {
+    max-width: 1160px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* ── BRIEFING INTRO ── */
+  .briefing {
+    background: var(--white);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--teal);
+    padding: 2rem 2.2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+  }
+  .briefing-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--teal);
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+    display: block;
+  }
+  .briefing p {
+    font-size: 0.97rem;
+    color: var(--body);
+    line-height: 1.8;
+    margin-bottom: 1em;
+  }
+  .briefing p:last-child { margin-bottom: 0; }
+  .briefing p:first-of-type::first-letter {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 3.2em;
+    font-weight: 800;
+    color: var(--teal);
+    float: left;
+    line-height: 0.85;
+    margin: 0.04em 0.1em 0 0;
+  }
+
+  /* ── CATEGORY SECTIONS ── */
+  .category-section { margin-bottom: 2rem; }
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0;
+    border-bottom: 2px solid var(--navy);
+    margin-bottom: 1.2rem;
+  }
+  .section-icon { font-size: 1rem; }
+  .section-title {
+    font-family: 'Yanone Kaffeesatz', 'Open Sans', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    flex: 1;
+  }
+  .section-count {
+    font-size: 0.7rem;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── CARDS ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .cards-grid--single { grid-template-columns: 1fr; }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  }
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+    border-color: var(--teal);
+  }
+  .card--lead {
+    grid-column: 1 / -1;
+    border-left: 4px solid var(--teal);
+    background: linear-gradient(to right, var(--teal-light), var(--white) 40%);
+    padding: 1.8rem 2rem;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
+  .card-source {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--teal-dark);
+    font-weight: 700;
+  }
+  .rel-bar {
+    font-size: 0.55rem;
+    color: var(--teal);
+    letter-spacing: -0.5px;
+  }
+
+  .card-title {
+    font-family: 'Yanone Kaffeesatz', 'Open Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 0.6rem;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+  }
+  .card--lead .card-title { font-size: 1.25rem; }
+  .card-title a { color: inherit; }
+  .card-title a:hover { color: var(--teal); text-decoration: none; }
+
+  .card-summary {
+    font-size: 0.88rem;
+    color: var(--gray-700);
+    line-height: 1.65;
+    margin-bottom: 0.8rem;
+  }
+  .card--lead .card-summary { font-size: 0.94rem; }
+
+  .key-data {
+    font-size: 0.8rem;
+    color: var(--gray-700);
+    background: var(--gray-100);
+    border-left: 3px solid var(--teal);
+    padding: 0.5rem 0.8rem;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 0.8rem;
+    font-style: italic;
+  }
+  .key-data strong { color: var(--teal-dark); font-style: normal; }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .tag {
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    background: var(--gray-100);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+    font-weight: 600;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  /* ── SNAPSHOT ── */
+  .snapshot {
+    background: var(--white);
+    border-radius: var(--radius);
+    border-top: 3px solid var(--teal);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+  .snapshot-title {
+    font-family: 'Yanone Kaffeesatz', 'Open Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .snap-table { width: 100%; border-collapse: collapse; }
+  .snap-table tr + tr td { border-top: 1px solid var(--gray-200); }
+  .snap-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--teal-dark);
+    font-weight: 700;
+    padding: 0.45rem 0.6rem 0.45rem 0;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+  .snap-vals {
+    font-size: 0.78rem;
+    color: var(--gray-700);
+    padding: 0.45rem 0;
+    line-height: 1.5;
+  }
+  .snap-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .snap-tag {
+    font-size: 0.72rem;
+    color: var(--navy);
+    background: var(--teal-light);
+    border: 1px solid rgba(23,168,165,0.25);
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+    line-height: 1.4;
+  }
+  .snap-tag sup { font-size: 0.65em; color: var(--teal); }
+
+  /* ── CONTACT SIDEBAR CARD ── */
+  .contact-card {
+    background: var(--navy);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    color: var(--white);
+  }
+  .contact-card h4 {
+    font-family: 'Yanone Kaffeesatz', 'Open Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    margin-bottom: 0.8rem;
+  }
+  .contact-card p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  .contact-card a { color: var(--teal); }
+  .contact-cta {
+    display: inline-block;
+    margin-top: 0.8rem;
+    background: var(--teal);
+    color: var(--white) !important;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.5rem 1.2rem;
+    border-radius: 99px;
+    text-decoration: none !important;
+  }
+  .contact-cta:hover { background: var(--teal-dark); }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    margin-top: 3rem;
+    padding: 2rem 3rem;
+  }
+  .footer-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-brand {
+    font-family: 'Yanone Kaffeesatz', 'Open Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.04em;
+  }
+  .footer-brand span { color: var(--teal); }
+  .footer-copy { font-size: 0.72rem; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+  .footer-links a:hover { color: var(--teal); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .main-wrap { grid-template-columns: 1fr; }
+    .sidebar { order: -1; }
+    .header-top { padding: 1rem 1.5rem; }
+    .hero { padding: 2rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .stats-row { flex-wrap: wrap; }
+    .stat-item { padding: 1rem 1.5rem; }
+  }
+  @media (max-width: 600px) {
+    .header-top { flex-direction: column; gap: 1rem; text-align: center; }
+    .header-meta { text-align: center; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-top">
+    <div class="logo-wrap">
+      <img src="https://capesshipping.net/wp-content/uploads/2021/05/Capeslogo-300pxw.png" alt="Capes Shipping Agencies" class="logo-img" onerror="this.style.display='none'">
+      <div class="logo-text">
+        <span class="logo-name">Capes Shipping Agencies</span>
+        <span class="logo-tagline">Your eyes, ears, and voice in port since 1958</span>
+      </div>
+    </div>
+    <div class="header-meta">
+      <strong>Port Intelligence Brief</strong><br>
+      March 5, 2026<br>
+      <span class="header-edition">Edition 002</span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">As Needed, As Expected, and As Always</div>
+  <div class="hero-title">Today's Market Intelligence</div>
+  <div class="hero-sub">10 curated articles · 1 sources · 4 market categories</div>
+</div>
+
+<!-- STATS ROW -->
+<div class="stats-row">
+  <div class="stat-item">
+    <span class="stat-num">10</span>
+    <span class="stat-lbl">Articles</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">1</span>
+    <span class="stat-lbl">Sources</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">4</span>
+    <span class="stat-lbl">Categories</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">6</span>
+    <span class="stat-lbl">High Priority</span>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="main-wrap">
+
+  <!-- CONTENT COLUMN -->
+  <div class="content-col">
+
+    <!-- BRIEFING INTRO -->
+    <div class="briefing">
+      <span class="briefing-label">Senior Agent's Briefing — March 5, 2026</span>
+      <p># Market Intelligence Briefing – March 5, 2026</p><p>Middle Eastern geopolitical tensions are fundamentally reshaping global commodity flows and port logistics. The Strait of Hormuz remains under acute pressure following regional military escalations, with Aluminium Bahrain declaring force majeure and Qatar's Ras Laffan LNG complex taken offline. Oil prices have surged to $84 Brent on supply disruption fears, while LPG shipments through the Gulf have collapsed—only two laden VLGCs passing since February 28. Simultaneously, Iranian drone activity against Saudi refineries and proposed Trump administration naval escorts signal sustained volatility rather than imminent resolution. This disruption is diverting VLGCs toward the U.S. Gulf Coast and driving aggressive spot rate inflation across energy logistics.</p><p>For operators and charterers, margin compression is acute across agricultural and containerized exports, where even modest freight increases risk pricing commodities out of global markets. Energy clients face both opportunity and risk: crude tanker and LNG rates will remain elevated, but U.S. Gulf LNG capacity is expanding (Cheniere's new trains add 3.28 MMtpa), potentially offering arbitrage against constrained Middle Eastern supplies. Rail consolidation pressures—particularly the UP-NS merger debate—threaten inland logistics efficiency. Expect sustained premium rates through Q2 on energy vessels; lock agricultural contract terms now before further escalation.</p>
+    </div>
+
+    <!-- CATEGORY SECTIONS -->
+    <section class="category-section">
+    <div class="section-label">
+      <span class="section-icon">⚡</span>
+      <span class="section-title">Energy Commodities</span>
+      <span class="section-count">6 articles</span>
+    </div>
+    <div class="cards-grid">
+      <div class="card card--lead">
+      <div class="card-header">
+        <span class="card-source">Feedly Board — Maritime & Bulk</span>
+        <span class="rel-bar" title="Relevance 4/5">████░</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.hellenicshippingnews.com/vlgcs-could-turn-to-usgc-as-lpg-supply-tightens/" target="_blank" rel="noopener">VLGCs could turn to USGC as LPG supply tightens</a></h3>
+      <p class="card-summary">Middle East tensions have tightened LPG supply, with only two laden VLGCs passing through the Strait of Hormuz since February 28. With MEG exports potentially disrupted by up to 1.2mbd, VLGCs are being redeployed toward the U.S. Gulf Coast, where propane stocks remain elevated and exports hit 2.34mb in January, offering alternative supply for India and other Asian buyers.</p>
+      <div class="key-data"><strong>Key data:</strong> AFEI propane swaps rose to $751/t on March 2 (21% increase Friday-to-Monday); m1-m2 swaps widened to $75/t. Only 2 laden VLGCs through Strait of Hormuz since Feb 28. MEG LPG exports at risk: 1.2mbd. U.S. LPG exports hit 2.34mb in January. PADD 3 propane stocks ~20mb above last year levels. MEG supplies 92% (~720kbd) of India's LPG imports. At least 3 VLGCs signalled redeployment from MEG to USGC.</div>
+      <div class="card-tags"><span class="tag">VLGCs</span> <span class="tag">LPG</span> <span class="tag">Propane</span> <span class="tag">Butane</span></div>
+    </div>
+      <div class="card">
+      <div class="card-header">
+        <span class="card-source">Feedly Board — Maritime & Bulk</span>
+        <span class="rel-bar" title="Relevance 4/5">████░</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.rigzone.com/news/analysts_warn_of_largest_oil_supply_disruption_in_history-03-mar-2026-183112-article/?rss=true" target="_blank" rel="noopener">Analysts Warn of Largest Oil Supply Disruption in History</a></h3>
+      <p class="card-summary">S&P Global and BMI analysts warn that ongoing conflict between the U.S., Israel, and Iran could trigger the largest oil supply disruption in history if transit through the Strait of Hormuz is significantly disrupted or halted. Tanker traffic through the Strait has collapsed from ~60 vessels per day to just 5, with 20.8 million barrels per day of crude oil and products at risk, potentially exceeding supply losses from Russia's Ukraine invasion or Iraq's 1990 invasion of Kuwait.</p>
+      <div class="key-data"><strong>Key data:</strong> Tanker transits at Strait of Hormuz dropped from ~60/day to 5/day (March 1). 20.8M barrels per day of crude and products shipped via Strait in first two months of 2026. Up to 15M barrels per day at risk if tankers halt. 82% of flow goes to Asian markets. 18% of global LNG supply transits Strait. Supply disruption of 7-8M bpd would exceed Ukraine and Kuwait invasion impacts. BMI low case: $75-$90/bbl; mid case: $90-$110/bbl; high case: $110-$130/bbl with risk of >$130/bbl.</div>
+      <div class="card-tags"><span class="tag">Strait of Hormuz</span> <span class="tag">Iran</span> <span class="tag">United States</span> <span class="tag">Israel</span></div>
+    </div><div class="card">
+      <div class="card-header">
+        <span class="card-source">Feedly Board — Maritime & Bulk</span>
+        <span class="rel-bar" title="Relevance 3/5">███░░</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.rigzone.com/news/wire/saudis_biggest_oil_refinery_faces_another_attack-04-mar-2026-183127-article/?rss=true" target="_blank" rel="noopener">Saudi's Biggest Oil Refinery Faces Another Attack</a></h3>
+      <p class="card-summary">Saudi Arabia's Ras Tanura refinery, the country's largest with 550,000 bpd capacity, faced an attempted drone attack with no reported damage, following a previous strike that forced production shutdown. Saudi Aramco is diverting crude supplies from its eastern region via pipeline to Yanbu on the Red Sea to avoid the Strait of Hormuz, though the Red Sea poses risks from Houthi attacks. Regional energy infrastructure disruptions have pushed crude oil prices near $83/barrel and European gas to three-year highs.</p>
+      <div class="key-data"><strong>Key data:</strong> Ras Tanura refinery capacity 550,000 bpd. Crude oil prices near $83/barrel. European gas at three-year highs. Supply diversion from eastern region to Yanbu via pipeline to avoid Strait of Hormuz. Qatar LNG production stopped. Iraq forced into deep oil output cuts.</div>
+      <div class="card-tags"><span class="tag">Saudi Arabia</span> <span class="tag">Ras Tanura</span> <span class="tag">Saudi Aramco</span> <span class="tag">crude oil</span></div>
+    </div><div class="card">
+      <div class="card-header">
+        <span class="card-source">Feedly Board — Maritime & Bulk</span>
+        <span class="rel-bar" title="Relevance 3/5">███░░</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.rigzone.com/news/cheniere_gets_nonfta_permit_for_additional_corpus_christi_lng_trains-04-mar-2026-183129-article/?rss=true" target="_blank" rel="noopener">Cheniere Gets Non-FTA Permit for Additional Corpus Christi LNG Trains</a></h3>
+      <p class="card-summary">The U.S. Department of Energy granted non-FTA export authorization for Cheniere's two-train LNG expansion (Trains 8 and 9) at Corpus Christi, adding 3.28 MMtpa of capacity and making the terminal the second-largest LNG export facility in the U.S. with total authorized export capacity of 4.45 Bcf/d. The project received FTA approval in July 2023 and Cheniere issued a full notice to proceed to contractor Bechtel Corp in June 2025.</p>
+      <div class="key-data"><strong>Key data:</strong> Corpus Christi LNG authorized export capacity: 4.45 Bcf/d (second-largest in U.S.). Trains 8 and 9 expansion: 3.28 MMtpa (170 Bcf/year). Stage 3 Project: 10+ MMtpa capacity, 6 MMtpa operational as of end-2025. U.S. LNG exports: 15.0 Bcf/d in 2025, up from 0.5 Bcf/d in 2016. Export authorization through 2050 plus 3-year carve-out.</div>
+      <div class="card-tags"><span class="tag">Cheniere Energy</span> <span class="tag">Corpus Christi LNG</span> <span class="tag">Department of Energy</span> <span class="tag">U.S. LNG exports</span></div>
+    </div><div class="card">
+      <div class="card-header">
+        <span class="card-source">Feedly Board — Maritime & Bulk</span>
+        <span class="rel-bar" title="Relevance 3/5">███░░</span>
+      </div>
+      <h3 class="card-title"><a href="https://rbnenergy.com/daily-posts/analyst-insight/us-lng-production-ramps-qatar-shortfall-looms" target="_blank" rel="noopener">U.S. LNG Production Ramps Up, But Qatar Shortfall Looms</a></h3>
+      <p class="card-summary">Qatar's Ras Laffan LNG complex was targeted by Iranian drone attack and taken offline, disrupting global LNG supply while U.S. LNG production maintains full feedgas demand utilization.</p>
+      <div class="key-data"><strong>Key data:</strong> Qatar's Ras Laffan LNG export complex offline due to Iranian drone attack. U.S. LNG feedgas demand at full utilization.</div>
+      <div class="card-tags"><span class="tag">Qatar</span> <span class="tag">Ras Laffan</span> <span class="tag">LNG</span> <span class="tag">Iran</span></div>
+    </div><div class="card">
+      <div class="card-header">
+        <span class="card-source">Feedly Board — Maritime & Bulk</span>
+        <span class="rel-bar" title="Relevance 3/5">███░░</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Latest-Energy-News/World-News/Oil-Prices-Surge-to-84-as-Supply-Risk-Becomes-Real.html" target="_blank" rel="noopener">Oil Prices Surge to $84 as Supply Risk Becomes Real</a></h3>
+      <p class="card-summary">Oil prices surged 8% to $84.24 per barrel for Brent Crude and $76.93 for WTI on Tuesday amid Middle East supply disruption concerns and geopolitical tensions. Markets are pricing in risk of prolonged conflict affecting global crude supplies.</p>
+      <div class="key-data"><strong>Key data:</strong> Brent Crude up 8.36% to $84.24/bbl; WTI Crude up 8% to $76.93/bbl; 10% jump on Monday followed by continued gains on Tuesday amid geopolitical tensions.</div>
+      <div class="card-tags"><span class="tag">Brent Crude</span> <span class="tag">WTI Crude</span> <span class="tag">Middle East</span> <span class="tag">Iran</span></div>
+    </div>
+    </div>
+  </section>
+<section class="category-section">
+    <div class="section-label">
+      <span class="section-icon">📋</span>
+      <span class="section-title">Trade Policy</span>
+      <span class="section-count">2 articles</span>
+    </div>
+    <div class="cards-grid">
+      <div class="card card--lead">
+      <div class="card-header">
+        <span class="card-source">Feedly Board — Maritime & Bulk</span>
+        <span class="rel-bar" title="Relevance 4/5">████░</span>
+      </div>
+      <h3 class="card-title"><a href="https://theloadstar.com/shippers-warn-even-tiny-freight-rises-could-price-us-ag-exports-out-of-global-markets/" target="_blank" rel="noopener">Shippers warn even tiny freight rises could price US ag exports out of markets</a></h3>
+      <p class="card-summary">The Agriculture Transportation Coalition warns that even minimal freight cost increases could price U.S. agricultural exports out of global markets, citing the sensitivity of commodity exporters to logistics costs. Industry leaders are concerned about U.S. policy proposals targeting Chinese-built vessels and promoting domestic shipbuilding, which could raise transportation expenses for agricultural commodities like pistachios.</p>
+      <div class="key-data"><strong>Key data:</strong> Pistachio global price ~$1.17/pound; one-cent transport cost increase threatens export competitiveness; U.S. policy proposals targeting Chinese-built ships and domestic shipbuilding could raise freight costs for agricultural commodities.</div>
+      <div class="card-tags"><span class="tag">Agriculture Transportation Coalition</span> <span class="tag">AgTC</span> <span class="tag">Peter Friedmann</span> <span class="tag">U.S. agricultural exports</span></div>
+    </div>
+      <div class="card">
+      <div class="card-header">
+        <span class="card-source">Feedly Board — Maritime & Bulk</span>
+        <span class="rel-bar" title="Relevance 4/5">████░</span>
+      </div>
+      <h3 class="card-title"><a href="https://gcaptain.com/trumps-hormuz-assurances-only-a-partial-fix-shippers-say/" target="_blank" rel="noopener">Trump’s Hormuz Assurances Only a Partial Fix, Shippers Say</a></h3>
+      <p class="card-summary">Trump administration proposes insurance guarantees and naval escorts to maintain oil and gas flows through the Strait of Hormuz following US-Israeli strikes on Iran, but shipping industry warns the solution is insufficient given war risk insurance withdrawal, geopolitical uncertainty, and limited US naval capacity.</p>
+      <div class="key-data"><strong>Key data:</strong> Supertanker costs near $500,000/day. Major insurance mutuals withdrawn war-risk cover. Iraq cutting oil output as storage fills. US DFC proposed insurance backstop. Precedent: Ukraine grain maritime export facility established November 2023. Limited naval escort capacity cited as constraint.</div>
+      <div class="card-tags"><span class="tag">Strait of Hormuz</span> <span class="tag">Persian Gulf</span> <span class="tag">Trump administration</span> <span class="tag">Iran</span></div>
+    </div>
+    </div>
+  </section>
+<section class="category-section">
+    <div class="section-label">
+      <span class="section-icon">⚙</span>
+      <span class="section-title">Metals & Minerals</span>
+      <span class="section-count">1 article</span>
+    </div>
+    <div class="cards-grid cards-grid--single">
+      <div class="card card--lead">
+      <div class="card-header">
+        <span class="card-source">Feedly Board — Maritime & Bulk</span>
+        <span class="rel-bar" title="Relevance 4/5">████░</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.mining.com/aluminum-price-surges-to-4-year-high-on-bahrain-force-majeure/" target="_blank" rel="noopener">Aluminum price surges to 4-year high on Bahrain force majeure</a></h3>
+      <p class="card-summary">Aluminum prices surged to a 4-year high following Aluminium Bahrain's (Alba) force majeure declaration due to shipping disruptions through the Strait of Hormuz amid regional conflicts. The world's largest aluminum smelter outside China has halted shipments, with over 5 million tonnes of metal normally passing through the critical waterway annually, threatening widespread supply disruptions and potential price spikes to $3,600/tonne.</p>
+      <div class="key-data"><strong>Key data:</strong> Aluminum LME price +2.5% to $3,340/tonne (4-year high). Alba produced 1.62M tonnes in 2025. Over 5M tonnes annually pass through Strait of Hormuz. Goldman Sachs projects potential $3,600/tonne if regional production lost for one month. YTD aluminum up 9%.</div>
+      <div class="card-tags"><span class="tag">Aluminium Bahrain</span> <span class="tag">Alba</span> <span class="tag">aluminum</span> <span class="tag">Strait of Hormuz</span></div>
+    </div>
+      
+    </div>
+  </section>
+<section class="category-section">
+    <div class="section-label">
+      <span class="section-icon">🚂</span>
+      <span class="section-title">Rail Logistics</span>
+      <span class="section-count">1 article</span>
+    </div>
+    <div class="cards-grid cards-grid--single">
+      <div class="card card--lead">
+      <div class="card-header">
+        <span class="card-source">Feedly Board — Maritime & Bulk</span>
+        <span class="rel-bar" title="Relevance 4/5">████░</span>
+      </div>
+      <h3 class="card-title"><a href="https://theloadstar.com/up-ns-merger-sparks-fierce-industry-split-over-competition-and-control/" target="_blank" rel="noopener">UP-NS merger sparks fierce industry split over competition and control</a></h3>
+      <p class="card-summary">Union Pacific and Norfolk Southern proposed merger is generating industry debate, with rail executives touting a unified coast-to-coast network while competitors, exporters, and port operators express concerns about reduced competition and higher shipping costs.</p>
+      <div class="key-data"><strong>Key data:</strong> UP-NS merger proposed to create unified transcontinental rail network; concerns raised by competitors, exporters, and port operators regarding competition reduction and cost increases.</div>
+      <div class="card-tags"><span class="tag">Union Pacific</span> <span class="tag">Norfolk Southern</span> <span class="tag">Long Beach</span> <span class="tag">transcontinental rail</span></div>
+    </div>
+      
+    </div>
+  </section>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="snapshot">
+    <div class="snapshot-title">Intelligence Snapshot</div>
+    <table class="snap-table"><tr>
+        <td class="snap-label">Ports</td>
+        <td class="snap-vals">Corpus Christi LNG, Long Beach, Persian Gulf refineries, Port of Houston, Ras Laffan, Ras Tanura, Strait of Hormuz, Yanbu</td>
+      </tr><tr>
+        <td class="snap-label">Vessels</td>
+        <td class="snap-vals">VLGCs, bulk carriers, oil supertankers, oil tankers</td>
+      </tr><tr>
+        <td class="snap-label">Companies</td>
+        <td class="snap-vals">Agriculture Transportation Coalition, Alba, Aluminium Bahrain, Aon, BMI, Bechtel Corp, Cheniere Energy Inc, Fitch Group, Goldman Sachs, ING Groep NV</td>
+      </tr><tr>
+        <td class="snap-label">Commodities</td>
+        <td class="snap-vals">Brent Crude, Brent crude, LNG, LPG, WTI Crude, agricultural exports, alumina, aluminum, bauxite, butane</td>
+      </tr></table>
+    <div class="snap-tags"><span class="snap-tag">Strait of Hormuz <sup>5</sup></span> <span class="snap-tag">Iran <sup>5</sup></span> <span class="snap-tag">Qatar <sup>4</sup></span> <span class="snap-tag">Saudi Arabia <sup>4</sup></span> <span class="snap-tag">Middle East <sup>3</sup></span> <span class="snap-tag">LNG <sup>3</sup></span> <span class="snap-tag">Long Beach <sup>2</sup></span> <span class="snap-tag">Iraq <sup>2</sup></span> <span class="snap-tag">Red Sea <sup>2</sup></span> <span class="snap-tag">oil tankers <sup>2</sup></span> <span class="snap-tag">Ras Tanura <sup>2</sup></span> <span class="snap-tag">crude oil <sup>2</sup></span> <span class="snap-tag">Aluminium Bahrain <sup>1</sup></span> <span class="snap-tag">Alba <sup>1</sup></span> <span class="snap-tag">aluminum <sup>1</sup></span> <span class="snap-tag">London Metal Exchange <sup>1</sup></span></div>
+  </div>
+
+    <div class="contact-card">
+      <h4>24/7 Port Agency</h4>
+      <p>Capes Shipping Agencies provides vessel agency, freight forwarding, and logistics services across 11 U.S. port locations.</p>
+      <p>📞 (757) 625-3658<br>
+         Norfolk, VA · Baltimore · Savannah · Houston · Mississippi River</p>
+      <a href="https://capesshipping.net" class="contact-cta" target="_blank">Visit capesshipping.net »</a>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Capes <span>Shipping</span> Agencies</div>
+    <div class="footer-copy">© 2026 Capes Shipping Agencies · A division of CV International, Inc.<br>150 West Main Street, Suite 1120, Norfolk, VA 23510</div>
+    <div class="footer-links">
+      <a href="https://capesshipping.net/services/">Services</a>
+      <a href="https://capesshipping.net/locations/">Locations</a>
+      <a href="https://capesshipping.net/company/our-company/">About</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
