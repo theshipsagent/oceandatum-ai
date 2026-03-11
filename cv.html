@@ -539,9 +539,7 @@
     .competencies-grid { grid-template-columns: 1fr; }
 
     .hamburger-button { display: block; }
-    .navbar-right .social-icons,
-    .navbar-right .navbar-link { display: none; }
-    .navbar-right { display: flex; gap: 0.5rem; }
+    .navbar-right { display: none; }
     .navbar { padding: 0.6rem 1rem; }
   }
 
@@ -574,8 +572,9 @@
 <nav class="navbar">
     <span class="navbar-brand"></span>
 
+    <button class="hamburger-button" id="hamburgerBtn" aria-label="Menu">&#9776;</button>
+
     <div class="navbar-right">
-        <button class="hamburger-button" id="hamburgerBtn" aria-label="Menu">&#9776;</button>
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -594,24 +593,15 @@
             </a>
         </div>
         
-        <a href="index.html" class="navbar-link">Home</a>
-        <a href="https://whatsapp.com/channel/0029VbBE27p4IBhIrzjoRD36" target="_blank" class="navbar-link">News Feed</a>
         <a href="posts.html" class="navbar-link">Blog</a>
-        <a href="tools/maritime-ai-role.html" class="navbar-link">Role Brief</a>
-        <a href="cv.html" class="navbar-link">CV</a>
-        <a href="mailto:wsd@oceandatum.ai" class="navbar-link">Contact</a>
-        <a href="login.html" class="navbar-link">Projects</a>
+        <a href="index.html" class="navbar-link">Home</a>
     </div>
 
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-section">
-            <div class="mobile-menu-item"><a href="index.html">Home</a></div>
-            <div class="mobile-menu-item"><a href="https://whatsapp.com/channel/0029VbBE27p4IBhIrzjoRD36" target="_blank">News Feed</a></div>
             <div class="mobile-menu-item"><a href="posts.html">Blog</a></div>
-            <div class="mobile-menu-item"><a href="tools/maritime-ai-role.html">Role Brief</a></div>
-            <div class="mobile-menu-item"><a href="cv.html">CV</a></div>
-            <div class="mobile-menu-item"><a href="mailto:wsd@oceandatum.ai">Contact</a></div>
-            <div class="mobile-menu-item"><a href="login.html">Projects</a></div>
+            <div class="mobile-menu-item"><a href="index.html">Home</a></div>
+            
         </div>
         <div class="mobile-menu-social">
             <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn">
@@ -638,7 +628,7 @@
 
   <div class="cv-header">
     <h1>WILLIAM S. DAVIS III</h1>
-    <p class="cv-subtitle">Maritime Operations Executive / Commercial Development / Technology Implementation</p>
+    <p class="cv-subtitle">Maritime Operations Executive | Commercial Development | Technology Implementation</p>
     <div class="cv-contact">
         <strong>Chesapeake, VA</strong> | +1 (657) 477-0436 | <a href="mailto:wsd@oceandatum.ai">wsd@oceandatum.ai</a>
     </div>
@@ -697,14 +687,14 @@
     <p><strong>Commercial &amp; Business Development Achievements</strong></p>
     <ul>
       <li>Expanded customer base including major commodity traders (Glencore, Vitol, Cargill) across grain, petcoke, oil, gas, and breakbulk trades</li>
-      <li>Built and maintained relationships with terminal operators, pilots, port authorities, and shipping lines across 15 US ports</li>
+      <li>Built and maintained relationships with traders, shippers, receivers, terminal operators, pilots, port authorities, and shipping lines across 15 US ports</li>
       <li>Established performance metrics and KPIs resulting in measurable operational efficiency improvements</li>
       <li>Developed crisis management protocols maintaining service continuity during COVID-19 pandemic without business or customer loss</li>
     </ul>
 
     <p><strong>Technology &amp; Systems Leadership</strong></p>
     <ul>
-      <li>Led digital transformation implementing NetSuite ERP and CRM systems for 100+ users</li>
+      <li>Facilitated digital transformation implementing NetSuite ERP and CRM systems for 100+ users</li>
       <li>Replaced legacy systems with integrated platforms improving data visibility and operational efficiency</li>
       <li>Deployed proprietary geospatial tracking systems for vessel monitoring and analytics</li>
       <li>Implemented KYC due diligence platforms for compliance and regulatory requirements</li>
@@ -712,7 +702,7 @@
 
     <p><strong>M&amp;A Leadership &amp; Integration</strong></p>
     <ul>
-      <li>Directed integration of three ship agency acquisitions (Barwil Agencies merger 2017)</li>
+      <li>Directed integration of three ship agency acquisitions</li>
       <li>Established 9 new port offices (Savannah, Jacksonville, Charleston, Mobile, Gulfport, New Orleans, Brownsville, Houston, Freeport)</li>
       <li>Maintained 95%+ customer retention across all acquisitions through focused transition management</li>
       <li>Integrated operations, systems, and teams across geographically dispersed locations</li>
@@ -720,13 +710,13 @@
 
     <h3>WILHELMSEN SHIP SERVICES <span class="location">| Norfolk, VA</span></h3>
 
-    <h4>Operations Manager &ndash; Mississippi River <span class="dates">| December 1999 &ndash; October 2016</span></h4>
+    <h4>Operations / Business Development &ndash; Mississippi River <span class="dates">| December 1999 &ndash; October 2016</span></h4>
 
     <p><strong>Regional Operations &amp; Crisis Management</strong></p>
     <ul>
-      <li>Managed ship agency operations across Mississippi River and Gulf Coast ports handling 400+ annual port calls</li>
-      <li>Led Hurricane Katrina response (2005) coordinating vessel operations during and after the disaster&mdash;maintained service continuity and customer relationships</li>
-      <li>Established operations in new ports including Hampton Roads (first coal nomination on US East Coast), Baltimore, and Philadelphia</li>
+      <li>Diverse firsthand working experience with all major grain, coal, chemical, refining, midstream, general cargo and passenger port operations in the Lower Mississippi River</li>
+      <li>Hurricane Katrina response (2005) &mdash; part of on-ground team coordinating vessel operations during and after the disaster; maintained service continuity and customer relationships</li>
+      <li>Established operations in new ports including Hampton Roads (first coal nomination on US East Coast), Baltimore, and North Carolina Ports</li>
       <li>Developed crisis management protocols and maintained operations during major disruptions</li>
     </ul>
 
@@ -750,7 +740,7 @@
     <h4>Port Agent <span class="dates">| November 1995 &ndash; December 1999</span></h4>
 
     <ul>
-      <li>Managed ship agency operations in Baltimore handling diverse cargo types and vessel operations</li>
+      <li>Attended port calls in Baltimore handling diverse cargo types and vessel operations</li>
       <li>Coordinated with stevedores, terminal operators, customs officials, and ship&rsquo;s masters</li>
       <li>Handled disbursement accounting and proforma estimation for entry-level employees</li>
       <li>Gained foundational expertise in commercial business operations and customer service</li>
@@ -783,6 +773,7 @@
       <li>Basic Principles of Chartering &mdash; ASBA, 2014</li>
       <li>Maritime Transportation of Chemicals &amp; LPG &mdash; Tank Assist BV, 2015</li>
       <li>Leadership Development Program &mdash; Center for Creative Leadership, 2013</li>
+      <li>ICS-408 Planning of Port Committees &mdash; USCG, 2009</li>
     </ul>
 
     <p><strong>Academic Background:</strong></p>
@@ -793,15 +784,40 @@
 
     <hr>
 
-    <h2>Professional Affiliations</h2>
+    <h2>Professional Trade Events &amp; Associations</h2>
 
     <ul class="two-column">
-      <li>Society of Maritime Arbitrators (Member, 2021)</li>
-      <li>Association of Ship Brokers and Agents (Member, 2014)</li>
-      <li>Propeller Club of the United States (Member, 2002)</li>
-      <li>Hampton Roads Shipping Association (Member, 2002)</li>
-      <li>Virginia Maritime Association (Member, 2012)</li>
-      <li>Port of New Orleans (Member, 2002)</li>
+      <li>Connecticut Maritime Association</li>
+      <li>Society of Maritime Arbitrators</li>
+      <li>Association of Ship Brokers and Agents</li>
+      <li>Propeller Club of the United States</li>
+      <li>Virginia Maritime Association</li>
+      <li>Mississippi Valley Trade &amp; Transport Council</li>
+      <li>Jacobs Petcoke Conference</li>
+      <li>Argus Petcoke Conference</li>
+      <li>Breakbulk Americas</li>
+      <li>Southeast Fertilizer Association</li>
+      <li>US Industrial Pellet Association</li>
+      <li>Danish Shipbrokers Week</li>
+      <li>West Gulf Maritime Association</li>
+      <li>Greater Houston Port Bureau</li>
+      <li>Louisiana Maritime Association</li>
+      <li>New Orleans Board of Trade</li>
+      <li>North American Export Grain Association</li>
+      <li>National Association of Steel Pipe Distributors</li>
+      <li>Inland Rivers Ports &amp; Terminals</li>
+    </ul>
+
+    <h4>Port and Cargo Regulatory &amp; Trade Representation</h4>
+
+    <ul class="two-column">
+      <li>United States Coast Guard</li>
+      <li>US Customs &amp; Border Protection</li>
+      <li>US CBP Plant Protection &amp; Quarantine</li>
+      <li>USDA Federal Grain Inspection Service</li>
+      <li>US Army Corps of Engineers</li>
+      <li>Centers for Disease Control &amp; Prevention</li>
+      <li>Public Port Authorities &amp; Pilot Associations</li>
     </ul>
 
     <hr>
