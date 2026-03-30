@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Port Redwing Trucking Service Areas</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -121,38 +120,7 @@
             padding: 5px 0;
             font-size: 0.9rem;
         }
-        /* Tampa Cement map page light mode overrides */
-        body.light-mode {
-            background: #f7fafc !important;
-        }
-        body.light-mode .header {
-            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%) !important;
-            color: #1a1a1a !important;
-        }
-        body.light-mode .header h1 {
-            color: #1a1a1a !important;
-        }
-        body.light-mode .header .subtitle {
-            color: #555 !important;
-        }
-        body.light-mode .legend {
-            background: rgba(255,255,255,0.95) !important;
-            color: #333 !important;
-            border: 1px solid rgba(0,0,0,0.1) !important;
-        }
-        body.light-mode .legend h4 {
-            color: #1a1a1a !important;
-        }
-        body.light-mode .stats-panel {
-            background: rgba(255,255,255,0.95) !important;
-            color: #333 !important;
-            border: 1px solid rgba(0,0,0,0.1) !important;
-        }
-        body.light-mode .stats-panel h4 {
-            color: #1a1a1a !important;
-        }
     </style>
-    <link rel="stylesheet" href="../../od-lightmode.css">
 </head>
 <body>
 
@@ -393,6 +361,5 @@
             }).addTo(map);
         });
     </script>
-    <script src="../../od-theme-pdf.js"></script>
 </body>
 </html>

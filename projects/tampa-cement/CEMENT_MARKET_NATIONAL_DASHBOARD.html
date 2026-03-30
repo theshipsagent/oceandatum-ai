@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>US Cement Market Intelligence Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -206,50 +205,6 @@
 .mobile-menu-social { display:flex; gap:16px; padding:16px 24px; border-top:1px solid rgba(255,255,255,0.1); }
 @media (max-width:768px) { .hamburger-button { display:block; } .navbar-right { display:none; } .navbar { padding:0.6rem 1rem; } }
 </style>
-    <!-- Tampa Cement light mode overrides -->
-    <style>
-    body.light-mode {
-        background: #f7fafc !important;
-        color: #333 !important;
-    }
-    body.light-mode .navbar {
-        background: rgba(255,255,255,0.92) !important;
-        border-bottom: 1px solid rgba(0,0,0,0.1) !important;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
-    }
-    body.light-mode .navbar-brand {
-        color: #1a1a1a !important;
-    }
-    body.light-mode .navbar-link {
-        color: #333 !important;
-        border-color: rgba(0,0,0,0.15) !important;
-    }
-    body.light-mode .navbar-link:hover {
-        background: rgba(0,0,0,0.05) !important;
-        color: #1B5E20 !important;
-    }
-    body.light-mode .hamburger-button {
-        color: #333 !important;
-        border-color: rgba(0,0,0,0.2) !important;
-    }
-    body.light-mode .mobile-menu {
-        background: rgba(255,255,255,0.95) !important;
-        border-bottom: 1px solid rgba(0,0,0,0.1) !important;
-    }
-    body.light-mode .mobile-menu a {
-        color: #333 !important;
-    }
-    body.light-mode .social-icon {
-        fill: #555 !important;
-        color: #555 !important;
-    }
-    body.light-mode .hero-section,
-    body.light-mode .section-header,
-    body.light-mode [style*="linear-gradient"] {
-        filter: brightness(1.15) saturate(0.85);
-    }
-    </style>
-    <link rel="stylesheet" href="../../od-lightmode.css">
 </head>
 <body>
 <script>if("scrollRestoration"in history)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
@@ -858,6 +813,5 @@ if (hamburgerBtn && mobileMenu) {
   });
 }
 </script>
-<script src="../../od-theme-pdf.js"></script>
 </body>
 </html>
