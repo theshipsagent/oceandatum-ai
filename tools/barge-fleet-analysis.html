@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barge Fleet Analysis | Datum</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -661,6 +662,7 @@
 
 body { padding-top: 56px; }
 </style>
+<link rel="stylesheet" href="../od-lightmode.css">
 </head>
 <body>
 <script>if("scrollRestoration"in history)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
@@ -1365,5 +1367,6 @@ body { padding-top: 56px; }
   }
 })();
 </script>
+<script src="../od-theme-pdf.js"></script>
 </body>
 </html>

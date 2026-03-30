@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mediterranean–US Gulf Supply Chain Platform | OceanDatum</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -216,6 +217,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
 body { padding-top: 56px; }
 </style>
+<link rel="stylesheet" href="../od-lightmode.css">
 </head>
 <body>
 <script>if("scrollRestoration"in history)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
@@ -1158,5 +1160,6 @@ function switchTab(name){
   }
 })();
 </script>
+<script src="../od-theme-pdf.js"></script>
 </body>
 </html>
