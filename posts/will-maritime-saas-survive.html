@@ -440,25 +440,37 @@
   /* ── PRINT — always renders as light mode regardless of current theme ── */
   @media print {
     :root {
-      --ink: #1a1a1a;
-      --ink-secondary: #2a2a2a;
-      --ink-muted: #555;
-      --ink-faint: #888;
-      --accent: #0d3b66;
-      --bg-page: #ffffff;
-      --bg-container: #ffffff;
-      --rule: #333;
-      --rule-light: #ccc;
-      --rule-faint: #e0e0e0;
-      --card-bg: #f0f4f8;
-      --card-border: #d6dfe8;
+      --ink: #1a1a1a !important;
+      --ink-secondary: #2a2a2a !important;
+      --ink-muted: #555 !important;
+      --ink-faint: #888 !important;
+      --accent: #0d3b66 !important;
+      --accent-hover: #0d3b66 !important;
+      --bg: #ffffff !important;
+      --bg-page: #ffffff !important;
+      --bg-container: #ffffff !important;
+      --rule: #333 !important;
+      --rule-light: #ccc !important;
+      --rule-faint: #e0e0e0 !important;
+      --card-bg: #f0f4f8 !important;
+      --card-border: #d6dfe8 !important;
     }
-    body { background: #fff !important; }
-    .navbar, .hamburger-button, .mobile-menu { display: none !important; }
+    body { background: #ffffff !important; color: #1a1a1a !important; -webkit-print-color-adjust: exact; padding-top: 0 !important; }
+    body::before, body::after { display: none !important; }
+    * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+    .navbar, .hamburger-button, .mobile-menu, .od-print-btn, .od-theme-toggle, .site-footer { display: none !important; }
     .article-container { max-width: none; padding: 0; }
-    .article-glass { background: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; border: none; padding: 0; }
+    .article-glass { background: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; border: none; padding: 0; box-shadow: none !important; }
     .post-float-img { float: left; margin: 0 1.5rem 1rem 0; width: 200px; }
     .post-float-img img { display: block !important; width: 100% !important; }
+    /* Text */
+    h1, h2, h3, h4, h5, h6 { color: #1a1a1a !important; }
+    p, li, span, a, label { color: #333 !important; }
+    .drop-cap::first-letter { color: #0d1117 !important; }
+    footer { display: none !important; }
+    /* Page breaks */
+    h2, h3 { break-after: avoid; page-break-after: avoid; }
+    img { max-width: 100% !important; }
   }
 </style>
 </head>

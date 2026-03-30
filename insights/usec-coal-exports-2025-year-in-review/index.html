@@ -191,11 +191,22 @@ body.light-mode .drop-cap::first-letter { color: #0d1117 !important; }
   body { background: #ffffff !important; color: #1a1a1a !important; -webkit-print-color-adjust: exact; padding-top: 0 !important; }
   body::before, body::after { display: none !important; }
   * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
-  .navbar, .hamburger-button, .mobile-menu, .subnav, .od-print-btn, .od-theme-toggle { display: none !important; }
+  .navbar, .hamburger-button, .mobile-menu, .subnav, .od-print-btn, .od-theme-toggle, footer { display: none !important; }
   /* Cards and containers */
   .card, .map-area, .map-inline-wrap, .author-bio, .legend-block {
     background: #ffffff !important; border: 1px solid #ddd !important; box-shadow: none !important; color: #1a1a1a !important;
   }
+  /* Override high-specificity dark map card rules */
+  .map-inline-wrap .card,
+  .map-inline-wrap .map-area,
+  .map-inline-wrap .legend-block { background: #ffffff !important; color: #1a1a1a !important; }
+  #main-map, #origins-map { background: #ffffff !important; }
+  /* Override map card text (beats lines 171-175 specificity) */
+  .map-inline-wrap .main-title { color: #0d1117 !important; }
+  .map-inline-wrap .subtitle { color: #333 !important; }
+  .map-inline-wrap .legend-title { color: #555 !important; }
+  .map-inline-wrap .legend-row { color: #333 !important; }
+  .map-inline-wrap .map-footnote { color: #555 !important; }
   .chart-wrap { background: #fafafa !important; border: 1px solid #ddd !important; box-shadow: none !important; break-inside: avoid; page-break-inside: avoid; }
   .header-strip { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .header-block { background: #ffffff !important; }
@@ -214,7 +225,8 @@ body.light-mode .drop-cap::first-letter { color: #0d1117 !important; }
   /* Charts and SVG */
   canvas { max-width: 100% !important; }
   svg text { fill: #333 !important; }
-  svg path { stroke: #333 !important; }
+  /* Keep map/chart path colors — only override axis lines */
+  svg .domain, svg .tick line { stroke: #333 !important; }
   .legend-dot, .legend-swatch { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   /* Images */
   img { max-width: 100% !important; }
