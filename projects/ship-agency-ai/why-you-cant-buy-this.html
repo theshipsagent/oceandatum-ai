@@ -124,7 +124,63 @@
     .nine-truths p:last-child { margin-bottom: 0; }
     footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
     @media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .breadcrumb { padding: 5.5rem 1rem 0; } .page-header h1 { font-size: 1.6rem; } .comparison-grid { grid-template-columns: 1fr; } .card-grid-2 { grid-template-columns: 1fr; } .card-grid-3 { grid-template-columns: 1fr; } .cost-comparison { grid-template-columns: 1fr; } }
-    @media print { .navbar { display: none; } nav { display: none; } .nav-buttons { display: none; } body { background: #fff; color: #000; } }
+    @media print {
+      body { background: #ffffff !important; color: #1a1a1a !important; -webkit-print-color-adjust: exact; padding-top: 0 !important; }
+      body::before, body::after { display: none !important; }
+      * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+      .navbar, .hamburger-button, .mobile-menu, .nav-buttons, .nav-btn, .od-print-btn, .od-theme-toggle { display: none !important; }
+      .main-content { padding-top: 0 !important; }
+      .breadcrumb { color: #555 !important; }
+      /* Glass sections and cards */
+      .glass-section, .mini-card, .objection-box, .test-box, .highlight-box, .alert-box, .danger-box, .quote-block, .big-stat, .nine-truths,
+      .cost-card, .email-sample, [class*="card"], [class*="box"] {
+        background: #ffffff !important; border: 1px solid #ddd !important; box-shadow: none !important; color: #1a1a1a !important;
+      }
+      .mini-card.accent-green { border-left: 3px solid #15803d !important; }
+      .mini-card.accent-red { border-left: 3px solid #dc2626 !important; }
+      /* Objection and test boxes */
+      .objection-box .question { color: #1a1a1a !important; font-weight: 600; }
+      .objection-box .answer { color: #333 !important; }
+      .test-box .test-steps { color: #333 !important; }
+      .test-box .killer { color: #c0392b !important; }
+      /* Comparison grid */
+      .comparison-grid, .comparison-col { background: #ffffff !important; border: 1px solid #ddd !important; }
+      .col-buy, .col-build { background: #ffffff !important; color: #1a1a1a !important; }
+      /* Cost comparison */
+      .cost-comparison, .cost-card { background: #ffffff !important; color: #1a1a1a !important; }
+      .cost-card.cots, .cost-card.build { background: #ffffff !important; }
+      .cost-footer, .total { color: #1a1a1a !important; font-weight: 700; }
+      /* Verdict */
+      .verdict-yes, .verdict-no { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .verdict-text { color: #333 !important; }
+      /* Process flow */
+      .process-flow, .process-step { background: #ffffff !important; color: #1a1a1a !important; border: 1px solid #ddd !important; }
+      .process-arrow { color: #555 !important; }
+      /* SAAS chain */
+      .saas-chain, .saas-link { background: #f8f8f8 !important; color: #1a1a1a !important; border: 1px solid #ddd !important; }
+      .chain-plus { color: #555 !important; }
+      /* Nine truths */
+      .nine-truths h3 { color: #0d3b66 !important; }
+      .nine-truths p { color: #333 !important; }
+      /* Big stat */
+      .big-stat .number { color: #0d3b66 !important; }
+      .big-stat .label { color: #555 !important; }
+      /* Tables */
+      table { border-collapse: collapse; width: 100%; }
+      th { background: #f0f4f8 !important; color: #1a1a1a !important; border: 1px solid #ccc !important; }
+      td { color: #1a1a1a !important; border: 1px solid #ddd !important; }
+      /* Text */
+      h1, h2, h3, h4, h5, h6 { color: #1a1a1a !important; }
+      p, li, span, a, label, .subtitle, .description { color: #333 !important; }
+      .page-header h1 { color: #1a1a1a !important; }
+      .page-header .subtitle { color: #333 !important; }
+      .feature-list li { color: #333 !important; }
+      footer { display: none !important; }
+      /* Page breaks */
+      h2, h3 { break-after: avoid; }
+      .glass-section, .objection-box, .test-box, .cost-card, [class*="card"], table { break-inside: avoid; }
+      img { max-width: 100% !important; }
+    }
   </style>
 <style>
 /* ── Standard Nav (hamburger + mobile menu) ── */

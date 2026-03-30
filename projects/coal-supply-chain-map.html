@@ -85,7 +85,33 @@
     }
 
     @media print {
-      .navbar, .mobile-menu, .fullscreen-link, .map-controls-note, .map-wrapper, .load-btn-row { display: none !important; }
+      body { background: #ffffff !important; color: #1a1a1a !important; -webkit-print-color-adjust: exact; padding-top: 0 !important; }
+      body::before, body::after { display: none !important; }
+      * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+      .navbar, .hamburger-button, .mobile-menu, .fullscreen-link, .map-controls-note, .map-wrapper, .map-loading-overlay, .load-btn-row, .od-print-btn, .od-theme-toggle { display: none !important; }
+      .content { padding: 0 !important; }
+      .breadcrumb { color: #555 !important; }
+      /* Cards and containers */
+      .layer-card, .layer-grid, [class*="card"] {
+        background: #ffffff !important; border: 1px solid #ddd !important; box-shadow: none !important; color: #1a1a1a !important;
+      }
+      .intro { background: #ffffff !important; color: #333 !important; border: 1px solid #ddd !important; }
+      .version-note { color: #666 !important; }
+      .meta-row, .meta-tag { color: #555 !important; background: #f0f4f8 !important; border: 1px solid #ddd !important; }
+      /* Text */
+      h1, h2, h3, h4, h5, h6 { color: #1a1a1a !important; }
+      p, li, span, a, label, .subtitle, .description { color: #333 !important; }
+      .page-header h1 { color: #1a1a1a !important; }
+      .page-header .subtitle { color: #333 !important; }
+      /* SVG overrides */
+      canvas { max-width: 100% !important; }
+      svg text { fill: #333 !important; }
+      svg path { stroke: #333 !important; }
+      footer { display: none !important; }
+      /* Page breaks */
+      h2, h3 { break-after: avoid; }
+      .layer-card, [class*="card"] { break-inside: avoid; }
+      img { max-width: 100% !important; }
     }
   </style>
 </head>

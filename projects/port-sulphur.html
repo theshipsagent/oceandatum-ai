@@ -432,19 +432,50 @@
 
         /* Print Styles */
         @media print {
-            .navbar, .tab-nav {
-                display: none;
+            body { background: #ffffff !important; color: #1a1a1a !important; -webkit-print-color-adjust: exact; padding-top: 0 !important; }
+            body::before, body::after { display: none !important; }
+            * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+            .navbar, .hamburger-button, .mobile-menu, .tab-nav, .od-print-btn, .od-theme-toggle { display: none !important; }
+            /* Show all tabs when printing */
+            .tab-content { display: block !important; page-break-after: always; }
+            .container { background: #ffffff !important; max-width: none !important; }
+            /* Hero */
+            .hero { background: #ffffff !important; color: #1a1a1a !important; border-bottom: 2px solid #ddd !important; }
+            .hero h1 { color: #1a1a1a !important; }
+            .hero .subtitle { color: #333 !important; }
+            .hero-stats { background: #ffffff !important; }
+            .hero-stat { background: #f8f8f8 !important; border: 1px solid #ddd !important; color: #1a1a1a !important; }
+            .hero-stat .value { color: #0d3b66 !important; }
+            .hero-stat .label { color: #555 !important; }
+            /* Sections */
+            .section, .section.blue, .section.green, .section.orange, .section.red {
+                background: #ffffff !important; border: 1px solid #ddd !important; box-shadow: none !important; color: #1a1a1a !important;
             }
-
-            .tab-content {
-                display: block !important;
-                page-break-after: always;
+            /* Metric cards */
+            .metric-card, .metric-grid, [class*="card"] {
+                background: #ffffff !important; border: 1px solid #ddd !important; box-shadow: none !important; color: #1a1a1a !important;
             }
-
-            body {
-                background: white;
-                color: black;
-            }
+            .metric-value { color: #0d3b66 !important; }
+            .metric-label { color: #333 !important; }
+            .metric-note { color: #555 !important; }
+            /* Badges — keep semantic colors */
+            .badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .badge.success { background: #e6f4ea !important; color: #137333 !important; border: 1px solid #137333 !important; }
+            .badge.warning { background: #fef7e0 !important; color: #b45309 !important; border: 1px solid #b45309 !important; }
+            .badge.danger { background: #fce8e6 !important; color: #c5221f !important; border: 1px solid #c5221f !important; }
+            .badge.info { background: #e8f0fe !important; color: #1a73e8 !important; border: 1px solid #1a73e8 !important; }
+            /* Tables */
+            table { border-collapse: collapse; width: 100%; }
+            th { background: #f0f4f8 !important; color: #1a1a1a !important; border: 1px solid #ccc !important; }
+            td { color: #1a1a1a !important; border: 1px solid #ddd !important; }
+            /* Text */
+            h1, h2, h3, h4, h5, h6 { color: #1a1a1a !important; }
+            p, li, span, a, label, .subtitle, .description { color: #333 !important; }
+            footer { display: none !important; }
+            /* Page breaks */
+            h2, h3 { break-after: avoid; }
+            .metric-card, .section, [class*="card"], table { break-inside: avoid; }
+            img { max-width: 100% !important; }
         }
     </style>
 <style>

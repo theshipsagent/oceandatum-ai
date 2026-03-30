@@ -62,7 +62,43 @@
     .confidential-banner { background: rgba(220,38,38,0.08); border: 1px solid rgba(220,38,38,0.25); border-radius: 8px; padding: 0.6rem 1.25rem; margin-bottom: 1.5rem; font-size: 0.78rem; color: rgba(220,120,120,0.9); letter-spacing: 0.08em; text-align: center; }
     footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4rem; color: rgba(255,255,255,0.38); font-size: 0.8rem; line-height: 1.8; }
     @media (max-width: 768px) { .navbar { padding: 0.6rem 1rem; } .main-content { padding: 1.25rem 1rem 3rem; } .breadcrumb { padding: 5.5rem 1rem 0; } .page-header h1 { font-size: 1.6rem; } .stat-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media print { .navbar { display: none; } footer { display: none; } body { background: #fff; color: #000; } }
+    @media print {
+      body { background: #ffffff !important; color: #1a1a1a !important; -webkit-print-color-adjust: exact; padding-top: 0 !important; }
+      body::before, body::after { display: none !important; }
+      * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+      .navbar, .hamburger-button, .mobile-menu, .od-print-btn, .od-theme-toggle { display: none !important; }
+      .main-content { padding-top: 0 !important; }
+      .breadcrumb { color: #555 !important; }
+      /* Glass sections and cards */
+      .glass-section, .stat-card, .highlight-box, .alert-box, .danger-box, .formula-box,
+      [class*="card"], [class*="box"] {
+        background: #ffffff !important; border: 1px solid #ddd !important; box-shadow: none !important; color: #1a1a1a !important;
+      }
+      .formula-box { background: #f5f5f5 !important; color: #1a1a1a !important; font-family: 'Courier New', monospace; }
+      .stat-grid { break-inside: avoid; }
+      .stat-card { break-inside: avoid; }
+      .stat-value { color: #0d3b66 !important; }
+      .stat-label { color: #333 !important; }
+      .confidential-banner { background: #fff0f0 !important; color: #c0392b !important; border: 1px solid #c0392b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      /* Tables */
+      table { border-collapse: collapse; width: 100%; }
+      th { background: #f0f4f8 !important; color: #1a1a1a !important; border: 1px solid #ccc !important; }
+      td { color: #1a1a1a !important; border: 1px solid #ddd !important; }
+      /* Text */
+      h1, h2, h3, h4, h5, h6 { color: #1a1a1a !important; }
+      p, li, span, a, label, .subtitle, .description { color: #333 !important; }
+      .page-header h1 { color: #1a1a1a !important; }
+      .page-header .subtitle { color: #333 !important; }
+      .meta-row, .meta-item { color: #555 !important; }
+      .toc { background: #f8f8f8 !important; border: 1px solid #ddd !important; }
+      .toc a { color: #0d3b66 !important; }
+      .feature-list li { color: #333 !important; }
+      footer { display: none !important; }
+      /* Page breaks */
+      h2, h3 { break-after: avoid; }
+      .glass-section, .stat-card, .formula-box, [class*="card"], table { break-inside: avoid; }
+      img { max-width: 100% !important; }
+    }
   </style>
 <style>
 /* ── Standard Nav (hamburger + mobile menu) ── */
