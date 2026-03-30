@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Datum</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -228,37 +227,6 @@
         .mobile-menu-social { display:flex; gap:16px; padding:16px 24px; border-top:1px solid rgba(255,255,255,0.1); }
         @media (max-width:768px) { .hamburger-button { display:block; } .navbar-right { display:none; } .navbar { padding:0.6rem 1rem; } }
     </style>
-    <style>
-    /* Light mode overrides */
-    body.light-mode { background: #f7fafc !important; color: #333 !important; }
-    body.light-mode .bg-container { background: #e8eef4 !important; }
-    body.light-mode .overlay { background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(230,240,250,0.4) 50%, rgba(255,255,255,0.3) 100%) !important; }
-    body.light-mode .glass-overlay { backdrop-filter: blur(10px) !important; }
-    body.light-mode .login-container { background: rgba(255,255,255,0.75) !important; border-color: rgba(0,0,0,0.12) !important; box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05) inset !important; }
-    body.light-mode .logo-symbol { color: #1a1a1a !important; filter: none !important; }
-    body.light-mode .login-title { color: #1a1a1a !important; }
-    body.light-mode .login-subtitle { color: #555 !important; }
-    body.light-mode .form-label { color: #444 !important; }
-    body.light-mode .form-input { background: rgba(0,0,0,0.04) !important; border-color: rgba(0,0,0,0.15) !important; color: #333 !important; }
-    body.light-mode .form-input:focus { background: rgba(0,0,0,0.06) !important; border-color: rgba(0,122,80,0.5) !important; box-shadow: 0 0 0 3px rgba(0,122,80,0.1) !important; }
-    body.light-mode .login-button { background: rgba(0,122,80,0.1) !important; border-color: rgba(0,122,80,0.3) !important; color: #007a50 !important; }
-    body.light-mode .login-button:hover { background: rgba(0,122,80,0.2) !important; border-color: rgba(0,122,80,0.5) !important; }
-    body.light-mode .back-link { color: #555 !important; }
-    body.light-mode .back-link:hover { color: #007a50 !important; }
-    body.light-mode .navbar { background: rgba(255,255,255,0.85) !important; border-bottom: 1px solid rgba(0,0,0,0.1) !important; }
-    body.light-mode .navbar-brand { color: #1a1a1a !important; }
-    body.light-mode .navbar-link { color: #333 !important; border-color: rgba(0,0,0,0.15) !important; }
-    body.light-mode .navbar-link:hover { color: #007a50 !important; border-color: rgba(0,122,80,0.4) !important; background: rgba(0,122,80,0.05) !important; }
-    body.light-mode .social-icon { color: rgba(0,0,0,0.5) !important; }
-    body.light-mode .social-icon:hover { color: #007a50 !important; }
-    body.light-mode .hamburger-button { border-color: rgba(0,0,0,0.2) !important; color: #333 !important; }
-    body.light-mode .hamburger-button:hover { border-color: #007a50 !important; color: #007a50 !important; }
-    body.light-mode .mobile-menu { background: rgba(255,255,255,0.95) !important; border-color: rgba(0,0,0,0.1) !important; }
-    body.light-mode .mobile-menu-item a { color: #333 !important; border-bottom-color: rgba(0,0,0,0.05) !important; }
-    body.light-mode .mobile-menu-item a:hover { background: rgba(0,122,80,0.08) !important; color: #007a50 !important; }
-    body.light-mode #rememberMe + label { color: #555 !important; }
-    </style>
-    <link rel="stylesheet" href="od-lightmode.css">
 </head>
 <body>
     <nav class="navbar">
@@ -435,6 +403,5 @@
             75% { transform: translateX(10px); }
         }
     </style>
-    <script src="od-theme-pdf.js"></script>
 </body>
 </html>

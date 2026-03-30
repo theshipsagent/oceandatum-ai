@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mile Marker 39 Terminal - Interactive Map</title>
 
@@ -213,30 +212,6 @@
 .mobile-menu-social { display:flex; gap:16px; padding:16px 24px; border-top:1px solid rgba(255,255,255,0.1); }
 @media (max-width:768px) { .hamburger-button { display:block; } .navbar-right { display:none; } .navbar { padding:0.6rem 1rem; } }
 </style>
-<style>
-/* Light mode overrides */
-body.light-mode { background: #f7fafc !important; color: #333 !important; }
-body.light-mode .header { background: linear-gradient(135deg, #2e7d32 0%, #1565c0 100%) !important; }
-body.light-mode .info-panel { background: rgba(0,0,0,0.03) !important; border-color: rgba(0,0,0,0.1) !important; }
-body.light-mode .info-panel h3 { color: #007a50 !important; }
-body.light-mode .info-panel p { color: #555 !important; }
-body.light-mode .stat-card { background: linear-gradient(135deg, rgba(46,125,50,0.08) 0%, rgba(21,101,192,0.08) 100%) !important; border-color: rgba(0,122,80,0.15) !important; }
-body.light-mode .stat-card .value { color: #007a50 !important; }
-body.light-mode .stat-card .label { color: #555 !important; }
-body.light-mode #mapView { border-color: rgba(0,0,0,0.1) !important; }
-body.light-mode .loading-overlay { background: rgba(255,255,255,0.9) !important; }
-body.light-mode .navbar { background: rgba(255,255,255,0.85) !important; border-bottom: 1px solid rgba(0,0,0,0.1) !important; }
-body.light-mode .navbar-brand { color: #1a1a1a !important; }
-body.light-mode .navbar-link { color: #333 !important; border-color: rgba(0,0,0,0.15) !important; }
-body.light-mode .navbar-link:hover { color: #007a50 !important; border-color: rgba(0,122,80,0.4) !important; background: rgba(0,122,80,0.05) !important; }
-body.light-mode .social-icon { color: rgba(0,0,0,0.5) !important; }
-body.light-mode .social-icon:hover { color: #007a50 !important; }
-body.light-mode .hamburger-button { border-color: rgba(0,0,0,0.2) !important; color: #333 !important; }
-body.light-mode .mobile-menu { background: rgba(255,255,255,0.95) !important; border-color: rgba(0,0,0,0.1) !important; }
-body.light-mode .mobile-menu-item a { color: #333 !important; border-bottom-color: rgba(0,0,0,0.05) !important; }
-body.light-mode .mobile-menu-item a:hover { background: rgba(0,122,80,0.08) !important; color: #007a50 !important; }
-</style>
-<link rel="stylesheet" href="../../od-lightmode.css">
 </head>
 <body>
 <script>if("scrollRestoration"in history)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
@@ -498,6 +473,5 @@ if (hamburgerBtn && mobileMenu) {
   });
 }
 </script>
-<script src="../../od-theme-pdf.js"></script>
 </body>
 </html>

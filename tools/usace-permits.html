@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script>if(localStorage.getItem('od-theme')==='light')document.body.classList.add('light-mode');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USACE Public Notices Search Tool</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -391,47 +390,6 @@
 
 body { padding-top: 56px; }
 </style>
-<style>
-/* Light mode overrides */
-body.light-mode { background: linear-gradient(135deg, #f7fafc 0%, #e8ecf4 100%) !important; color: #333 !important; }
-body.light-mode .container { background: rgba(255,255,255,0.85) !important; border-color: rgba(0,0,0,0.1) !important; }
-body.light-mode .header { background: linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.06) 100%) !important; border-bottom-color: rgba(0,0,0,0.1) !important; }
-body.light-mode .header h1 { color: #1a1a1a !important; }
-body.light-mode .header p { color: #555 !important; }
-body.light-mode .controls { background: rgba(0,0,0,0.02) !important; border-bottom-color: rgba(0,0,0,0.06) !important; }
-body.light-mode .section-title { color: #555 !important; }
-body.light-mode .district-checkbox { background: rgba(0,0,0,0.03) !important; border-color: rgba(0,0,0,0.1) !important; color: #333 !important; }
-body.light-mode .district-checkbox:hover { border-color: rgba(0,122,80,0.4) !important; background: rgba(0,122,80,0.04) !important; }
-body.light-mode .btn-secondary { background: rgba(0,0,0,0.06) !important; color: #555 !important; border-color: rgba(0,0,0,0.12) !important; }
-body.light-mode .btn-secondary:hover { background: rgba(0,0,0,0.1) !important; color: #333 !important; }
-body.light-mode .btn-success { background: rgba(0,122,80,0.08) !important; color: #007a50 !important; border-color: rgba(0,122,80,0.2) !important; }
-body.light-mode .btn-success:hover { background: rgba(0,122,80,0.14) !important; border-color: rgba(0,122,80,0.35) !important; }
-body.light-mode .stats { background: rgba(0,122,80,0.04) !important; border-bottom-color: rgba(0,122,80,0.1) !important; }
-body.light-mode .stats-number { color: #007a50 !important; }
-body.light-mode .stats-label { color: #888 !important; }
-body.light-mode .search-box input { background: #fff !important; border-color: rgba(0,0,0,0.12) !important; color: #333 !important; }
-body.light-mode .search-box input::placeholder { color: rgba(0,0,0,0.35) !important; }
-body.light-mode .search-box input:focus { border-color: rgba(0,122,80,0.5) !important; box-shadow: 0 0 0 2px rgba(0,122,80,0.1) !important; }
-body.light-mode .permit-card { background: rgba(0,0,0,0.02) !important; border-color: rgba(0,0,0,0.08) !important; }
-body.light-mode .permit-card:hover { background: rgba(0,0,0,0.04) !important; border-color: rgba(0,0,0,0.12) !important; }
-body.light-mode .permit-number { color: #1a1a1a !important; }
-body.light-mode .district-badge { background: rgba(0,122,80,0.1) !important; color: #007a50 !important; border-color: rgba(0,122,80,0.2) !important; }
-body.light-mode .permit-description { color: #555 !important; }
-body.light-mode .permit-date { color: #888 !important; }
-body.light-mode .loading { color: #555 !important; }
-body.light-mode .navbar { background: rgba(255,255,255,0.85) !important; border-bottom: 1px solid rgba(0,0,0,0.1) !important; }
-body.light-mode .navbar-brand { color: #1a1a1a !important; }
-body.light-mode .navbar-brand a { color: #1a1a1a !important; }
-body.light-mode .navbar-link { color: #333 !important; border-color: rgba(0,0,0,0.15) !important; }
-body.light-mode .navbar-link:hover { color: #007a50 !important; border-color: rgba(0,122,80,0.4) !important; background: rgba(0,122,80,0.05) !important; }
-body.light-mode .social-icon { color: rgba(0,0,0,0.5) !important; border-color: rgba(0,0,0,0.15) !important; }
-body.light-mode .social-icon:hover { color: #007a50 !important; border-color: rgba(0,122,80,0.4) !important; }
-body.light-mode .hamburger-button { border-color: rgba(0,0,0,0.2) !important; color: #333 !important; }
-body.light-mode .mobile-menu { background: rgba(255,255,255,0.98) !important; border-color: rgba(0,0,0,0.1) !important; }
-body.light-mode .mobile-menu-item a { color: #333 !important; border-bottom-color: rgba(0,0,0,0.05) !important; }
-body.light-mode .mobile-menu-item a:hover { background: rgba(0,122,80,0.08) !important; color: #007a50 !important; }
-</style>
-<link rel="stylesheet" href="../od-lightmode.css">
 </head>
 <body>
 <script>if("scrollRestoration"in history)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
@@ -833,6 +791,5 @@ body.light-mode .mobile-menu-item a:hover { background: rgba(0,122,80,0.08) !imp
         // Initialize on page load
         initDistricts();
     </script>
-<script src="../od-theme-pdf.js"></script>
 </body>
 </html>
