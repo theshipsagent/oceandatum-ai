@@ -58,17 +58,16 @@ footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,
   width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
   border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; transition: all 0.3s; }
 .social-icon:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); }
-.hamburger-button { display: none; background: none; border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 6px; color: rgba(255,255,255,0.8); cursor: pointer;
-  padding: 0.4rem 0.6rem; font-size: 1.1rem; line-height: 1; transition: all 0.3s; }
+.hamburger-button { display: none; background: none; border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 6px; color: rgba(255,255,255,0.8); cursor: pointer; font-size: 1.1rem; line-height: 1; transition: all 0.3s; width: 40px; height: 40px;}
 .hamburger-button:hover { border-color: #64ffb4; color: #64ffb4; background: rgba(100,255,180,0.05); }
 .mobile-menu { display: none; max-height: 0; overflow: hidden;
-  background: rgba(5,15,25,0.98); border-bottom: 1px solid rgba(100,255,180,0.15);
-  position: fixed; top: 53px; left: 0; right: 0; z-index: 999; }
+  background: rgba(5,15,25,0.98); border-bottom: 1px solid rgba(100,255,180,0.3);
+  position: fixed; top: 60px; left: 0; right: 0; z-index: 999; border-top: 1px solid rgba(100,255,180,0.3);}
 .mobile-menu.active { display: block; max-height: 500px; }
 .mobile-menu-section { padding: 10px 0; }
-.mobile-menu-item a { display: block; padding: 12px 24px; color: rgba(255,255,255,0.8);
-  text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); transition: all 0.2s; }
+.mobile-menu-item a { display: block; padding: 15px 20px; color: rgba(255,255,255,0.8);
+  text-decoration: none; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); transition: all 0.2s; }
 .mobile-menu-item a:hover { background: rgba(100,255,180,0.1); color: #64ffb4; padding-left: 30px; }
 @media (max-width: 768px) {
   .hamburger-button { display: block; }
@@ -81,8 +80,8 @@ footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,
 <body>
   <nav class="navbar">
     <span class="navbar-brand"></span>
-    <div class="navbar-right">
-        <button class="hamburger-button" id="hamburgerBtn" aria-label="Menu">&#9776;</button>
+            <button class="hamburger-button" id="hamburgerBtn" aria-label="Menu">&#9776;</button>
+        <div class="navbar-right">
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/williamsdavis/" target="_blank" class="social-icon" title="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
             <a href="https://twitter.com/theshipsagent" target="_blank" class="social-icon" title="Twitter">
