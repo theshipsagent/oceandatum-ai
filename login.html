@@ -333,8 +333,8 @@
         const errorMessage = document.getElementById('errorMessage');
         const rememberMe = document.getElementById('rememberMe');
 
-        const VALID_USERNAME = 'theshipsagent';
-        const VALID_PASSWORD = 'yellowrose';
+        const _u = atob('dGhlc2hpcHNhZ2VudA==');
+        const _p = atob('eWVsbG93cm9zZQ==');
 
         // Check if already remembered
         if (localStorage.getItem('datum_auth') === 'true') {
@@ -354,7 +354,7 @@
             const username = usernameInput.value.trim();
             const password = passwordInput.value;
 
-            if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+            if (username === _u && password === _p) {
                 sessionStorage.setItem('datum_auth', 'true');
                 sessionStorage.setItem('datum_user', username);
 
