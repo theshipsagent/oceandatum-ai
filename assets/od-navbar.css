@@ -1,0 +1,180 @@
+/* oceandatum.ai — shared navbar styles
+   Source of truth for navbar appearance and behavior across the site.
+   Edit here once; every page that <link>s this file picks it up. */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding: 0.8rem 2rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-style: normal;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+}
+
+.navbar-brand:hover {
+    color: #64ffb4;
+}
+
+.navbar-brand a {
+    color: rgba(255,255,255,0.9);
+    font-weight: 600;
+    font-style: normal;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand a:hover {
+    color: #64ffb4;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.social-icon {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: #64ffb4;
+}
+
+.navbar-link {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+}
+
+.navbar-link:hover {
+    color: #64ffb4;
+    border-color: rgba(100,255,180,0.4);
+    background: rgba(100,255,180,0.05);
+}
+
+/* Hamburger button (shown at <=1024px) */
+.hamburger-button {
+    display: none;
+    background: none;
+    border: 2px solid rgba(255,255,255,0.3);
+    color: white;
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.hamburger-button:hover {
+    border-color: #64ffb4;
+    color: #64ffb4;
+    background: rgba(100,255,180,0.05);
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.98);
+    border-top: 1px solid rgba(100,255,180,0.3);
+    border-bottom: 1px solid rgba(100,255,180,0.3);
+    z-index: 1000;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.mobile-menu.active {
+    display: block;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+}
+
+.mobile-menu-section {
+    padding: 10px 0;
+}
+
+.mobile-menu-item {
+    display: block;
+}
+
+.mobile-menu-item a {
+    display: block;
+    padding: 15px 20px;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.mobile-menu-item a:hover {
+    background: rgba(100,255,180,0.1);
+    color: #64ffb4;
+    padding-left: 30px;
+}
+
+.mobile-menu-social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Breakpoint raised from 768px to 1024px: avoid cramped desktop nav on narrow windows */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0.6rem 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+
+    .hamburger-button {
+        display: block;
+    }
+
+    .navbar-right {
+        display: none;
+    }
+}
