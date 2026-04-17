@@ -40,3 +40,6 @@ video-demo.html
 # Keep login_bg_opt.mp4 and login_poster.jpg (essential for landing page)
 _drafts/
 _archive_react_app/
+
+# Claude audit session records (local only)
+AUDIT_LOG/
