@@ -307,7 +307,7 @@
         <form id="loginForm">
             <div class="form-group">
                 <label class="form-label" for="username">Username</label>
-                <input type="text" id="username" class="form-input" required autocomplete="username">
+                <input type="text" id="username" class="form-input" required autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false">
             </div>
 
             <div class="form-group">
@@ -351,8 +351,8 @@
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const username = usernameInput.value.trim();
-            const password = passwordInput.value;
+            const username = usernameInput.value.trim().toLowerCase();
+            const password = passwordInput.value.trim();
 
             if (username === _u && password === _p) {
                 sessionStorage.setItem('datum_auth', 'true');

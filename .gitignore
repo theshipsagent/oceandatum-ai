@@ -43,3 +43,4 @@ _archive_react_app/
 
 # Claude audit session records (local only)
 AUDIT_LOG/
+_archive/
