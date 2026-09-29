@@ -34,12 +34,11 @@ Read this first. It is the handoff point for any further changes.
 1. **Navbar breakpoint:** every page collapses to the hamburger below 768px, so a narrow desktop window loses the full bar. Wanted: hamburger on phones only. With News Feed gone the bar fits to ~600px. **Do this as the shared-navbar refactor** (`assets/od-navbar.css` / `od-navbar.js` exist but no page uses them yet) — the navbar is still inlined in ~56 pages, which is why nav fixes keep regressing.
 2. **`projects/tampa-cement.html` hamburger** is wired twice (opens then closes) — part of item 1.
 3. **SECURITY:** `_user_notes/totp+prompt_011626_1132.md` is committed and publicly served. Owner says TOTP was parked/unused. Recommended: `git rm --cached` it and add `_user_notes/` to `.gitignore` — awaiting owner OK.
-4. **Cloudflare Worker** (`/login`, `/admin`, `/api/*`) is deployed but its source was lost (/tmp wipe). Decision 2026-09-28: do not build on it; if real protection is ever needed use Cloudflare Access. Consider disabling the orphaned Worker.
-5. **Biography tab** may still carry claims the CV rewrite removed — review separately.
+4. **Cloudflare Worker — REMOVE (owner decided 2026-09-28).** Still live: `/login` (Worker "Sign in" page), `/register`, `/admin` (redirects to sign-in). Source was lost (/tmp wipe); nothing on the site uses it. Owner does the dashboard clicks (Workers & Pages → the worker → remove the oceandatum.ai routes, then delete the worker); afterwards `/login`, `/register`, `/admin` should return the GitHub Pages 404. If real protection is ever needed, use Cloudflare Access instead.
 
 ## Repository Overview
 
-**oceandatum.ai** is a professional static website showcasing maritime expertise, terminal development projects, and CV/biography. It uses pure HTML/CSS/JavaScript with no build process or dependencies.
+**oceandatum.ai** is a professional static website showcasing maritime expertise, terminal development projects, and a CV. It uses pure HTML/CSS/JavaScript with no build process or dependencies.
 
 - **Live Site**: https://oceandatum.ai
 - **Repository**: https://github.com/theshipsagent/oceandatum-ai
@@ -54,14 +53,17 @@ This is a **static HTML site** with the following key pages:
 
 ```
 index.html              # Landing page with video background
-cv.html                 # CV/Biography with tabbed interface (CV, Biography, Bibliography)
+cv.html                 # CV (single page, no tabs) with Download PDF button
+tools/bibliography.html # Professional bibliography (362 works)
 projects/
   └── tampa-cement.html # Project showcase page
 images/                 # Logos and graphics
 videos/                 # Background video files
 ```
 
-### Tabbed Interface System (cv.html, tampa-cement.html)
+### Tabbed Interface System (tampa-cement.html)
+
+`cv.html` no longer has tabs (no Biography or Bibliography tab); it is a single page.
 
 Pages use a custom JavaScript tab system:
 
@@ -109,15 +111,9 @@ All pages implement responsive navigation with:
 }
 ```
 
-### Bibliography System
+### Bibliography
 
-The bibliography on cv.html (362 maritime works in 11 categories) is **statically generated** and embedded in the HTML. It is NOT dynamically loaded.
-
-**Collapsible sections**:
-- Each category is wrapped in `.bib-section` with `.bib-section-header` (clickable)
-- JavaScript `toggleSection()` function manages expand/collapse state
-- "Expand All" / "Collapse All" controls available
-- Print mode auto-expands all sections via CSS `@media print`
+The bibliography (362 maritime works) lives on its own page, `tools/bibliography.html`. It is not part of `cv.html`.
 
 ## Development Workflow
 
@@ -160,7 +156,7 @@ Python scripts are used **offline** to process bibliography data from Zotero CSV
 1. Export bibliography from Zotero to CSV
 2. Run Python scripts to categorize and format entries
 3. Generate HTML snippet with `build_final_bibliography.py`
-4. Manually insert generated HTML into `cv.html`
+4. Update `tools/bibliography.html` with the generated output
 
 **Key scripts**:
 - `build_final_bibliography.py` - Main script to generate bibliography HTML from categorized CSV
@@ -214,7 +210,7 @@ Cloudflare Web Analytics installed on:
 1. Export new Zotero data to CSV
 2. Edit CSV to assign categories (manual step)
 3. Run `python build_final_bibliography.py` to generate HTML
-4. Copy generated HTML into cv.html bibliography tab section
+4. Update `tools/bibliography.html` with the generated output
 5. Commit and push
 
 ### Fixing Mobile Navigation Issues
@@ -226,7 +222,6 @@ The site uses horizontal scroll navigation on mobile. Key requirements:
 - Minimum touch targets: 44px height
 - Custom scrollbar styling for consistency
 
-Refer to cv.html:253-312 for reference implementation.
 
 ## Important Notes
 
