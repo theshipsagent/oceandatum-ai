@@ -9,7 +9,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Current State — stopping point 2026-09-28 (tag `stable-2026-09-28c`)
+## Current State — stopping point 2026-09-29 (tag `stable-2026-09-29`)
 
 Read this first. It is the handoff point for any further changes.
 
