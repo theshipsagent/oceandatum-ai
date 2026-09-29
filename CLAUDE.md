@@ -37,7 +37,7 @@ Read this first. It is the handoff point for any further changes.
 ### Known issues / next up (not done)
 1. **Navbar follow-ups (optional):** on compact pages the phone hamburger sits mid-bar (empty brand + space-between — unchanged look); `projects/hold-cleaning-intelligence.html` uses the hamburger up to ~790px (long brand + PDF button). Navbar Contact links go to `wsd@oceandatum.ai`, but `datum@oceandatum.ai` is noted as the canonical public contact — owner to confirm.
 2. **`projects/construction-materials.html`:** console error at load (`themeToggle` button no longer exists) — pre-existing, harmless, not fixed.
-3. **SECURITY:** `_user_notes/totp+prompt_011626_1132.md` is committed and publicly served. Owner says TOTP was parked/unused. Recommended: `git rm --cached` it and add `_user_notes/` to `.gitignore` — awaiting owner OK.
+3. **SECURITY — done 2026-09-28:** `_user_notes/totp+prompt_011626_1132.md` untracked (`git rm --cached`; local copy kept; `_user_notes/` is in `.gitignore`). It is **still in git history** of the public repo (commits before 2026-09-28). TOTP was parked/unused; if any code in it was ever used for a live account, treat it as exposed and reset it. Scrubbing history (git filter-repo + force push) only if the owner asks.
 4. **Cloudflare Worker — REMOVE (owner decided 2026-09-28).** Still live: `/login` (Worker "Sign in" page), `/register`, `/admin` (redirects to sign-in). Source was lost (/tmp wipe); nothing on the site uses it. Owner does the dashboard clicks (Workers & Pages → the worker → remove the oceandatum.ai routes, then delete the worker); afterwards `/login`, `/register`, `/admin` should return the GitHub Pages 404. If real protection is ever needed, use Cloudflare Access instead.
 
 ## Repository Overview

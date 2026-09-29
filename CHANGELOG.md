@@ -2,6 +2,10 @@
 
 Dated record of changes to oceandatum.ai. Newest first.
 
+## 2026-09-28 (late) — security cleanup
+
+- Stopped publishing `_user_notes/totp+prompt_011626_1132.md` (untracked; local copy kept; `_user_notes/` already in `.gitignore`). Note: it remains in the public repo's git history.
+
 ## 2026-09-28 (evening) — shared navbar + map backgrounds (`stable-2026-09-28c`)
 
 ### Navigation
