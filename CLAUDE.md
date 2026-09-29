@@ -9,12 +9,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Current State — stopping point 2026-09-28 (tag `stable-2026-09-28b`)
+## Current State — stopping point 2026-09-28 (tag `stable-2026-09-28c`)
 
 Read this first. It is the handoff point for any further changes.
 
 ### What is live
 - **Navbar (all pages):** Home · Blog · Role Brief · CV · Contact · Projects. **News Feed (WhatsApp channel) was removed site-wide** — failed workaround, do not re-add.
+- **Shared navbar (2026-09-28):** all 56 navbar pages load `assets/od-navbar.css` + `assets/od-navbar.js`. **Never add navbar CSS or a hamburger script to a page** — two hamburger scripts cancel each other (menu opens then closes). Each page keeps its own nav HTML (links, `../` prefixes). Look is chosen by a class on `<nav>`: none = compact (project/tool pages), `navbar-pill`, `navbar-main`, plus `navbar-hub` (projects hub, coal map, hold cleaning) and `navbar-top` (grain guide, z-index 1100). Page-level `body.light-mode` and `@media print` navbar rules are allowed and stay on the page.
+  - Hamburger at **≤640px** (phones). Wider: `od-navbar.js` checks the bar fits on one row; if not, hides the social icons, then falls back to the hamburger (`html.od-nav-no-social` / `html.od-nav-collapsed`).
+  - New page: copy the `<nav>` block from a page of the same style, then add `<link rel="stylesheet" href="…assets/od-navbar.css">` in `<head>` and `<script src="…assets/od-navbar.js"></script>` after `</nav>`.
+- **Map backgrounds (2026-09-28):** CARTO basemaps now return "API KEY REQUIRED" tiles. All Leaflet maps use `odEsri('Light'|'Dark', options)` from `assets/od-basemap.js` (Esri Gray Canvas + label layer, no key). Do not use `basemaps.cartocdn.com` again. Pages that embed maps in iframes add `?v=YYYY-MM-DD` to the `src`; bump it when a map changes so browsers don't show a cached copy.
 - **CV (`cv.html`):** content matches `assets/docs/William_S_Davis_III_Resume.pdf` **word for word**. The PDF is authoritative; it was produced outside this repo (Cowork). A **Download PDF** button at the top of the CV page downloads that file. The old navbar "PDF" (print) button was removed from `cv.html` only.
 - **Projects login (`login.html`):** client-side "curtain" gate, one shared username/password for everyone (see `login.html`). Works with iPhone Safari "Block All Cookies" on — all storage access is guarded (`safeStorage()` in login.html; `try/catch` around the auth check on `projects-hub.html` and the 4 gated project pages). Username is case-insensitive; password is trimmed.
 
@@ -31,8 +35,8 @@ Read this first. It is the handoff point for any further changes.
 - **Check the address bar:** `oceandatum.ai` = live site; `localhost` / `127.0.0.1` = local copy with unpushed changes.
 
 ### Known issues / next up (not done)
-1. **Navbar breakpoint:** every page collapses to the hamburger below 768px, so a narrow desktop window loses the full bar. Wanted: hamburger on phones only. With News Feed gone the bar fits to ~600px. **Do this as the shared-navbar refactor** (`assets/od-navbar.css` / `od-navbar.js` exist but no page uses them yet) — the navbar is still inlined in ~56 pages, which is why nav fixes keep regressing.
-2. **`projects/tampa-cement.html` hamburger** is wired twice (opens then closes) — part of item 1.
+1. **Navbar follow-ups (optional):** on compact pages the phone hamburger sits mid-bar (empty brand + space-between — unchanged look); `projects/hold-cleaning-intelligence.html` uses the hamburger up to ~790px (long brand + PDF button). Navbar Contact links go to `wsd@oceandatum.ai`, but `datum@oceandatum.ai` is noted as the canonical public contact — owner to confirm.
+2. **`projects/construction-materials.html`:** console error at load (`themeToggle` button no longer exists) — pre-existing, harmless, not fixed.
 3. **SECURITY:** `_user_notes/totp+prompt_011626_1132.md` is committed and publicly served. Owner says TOTP was parked/unused. Recommended: `git rm --cached` it and add `_user_notes/` to `.gitignore` — awaiting owner OK.
 4. **Cloudflare Worker — REMOVE (owner decided 2026-09-28).** Still live: `/login` (Worker "Sign in" page), `/register`, `/admin` (redirects to sign-in). Source was lost (/tmp wipe); nothing on the site uses it. Owner does the dashboard clicks (Workers & Pages → the worker → remove the oceandatum.ai routes, then delete the worker); afterwards `/login`, `/register`, `/admin` should return the GitHub Pages 404. If real protection is ever needed, use Cloudflare Access instead.
 
@@ -93,7 +97,7 @@ function showTab(tabName) {
 All pages implement responsive navigation with:
 
 - **Desktop**: Standard horizontal navigation bar
-- **Mobile (<768px)**: Hamburger menu OR horizontal scroll navigation
+- **Phones (≤640px)**: Hamburger menu (shared `assets/od-navbar.css/js` — see Current State)
 - **Touch handling**: Proper event listeners for mobile interactions
 - **Scroll snap**: CSS scroll-snap-align for smooth tab transitions
 

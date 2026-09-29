@@ -198,6 +198,7 @@
             animation: flowAnimation 1s linear infinite;
         }
     </style>
+<script src="../../assets/od-basemap.js"></script>
 </head>
 <body>
 
@@ -296,7 +297,7 @@
         });
 
         // Add tile layer
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        odEsri('Light', {
             attribution: '&copy; OpenStreetMap, &copy; CARTO',
             subdomains: 'abcd',
             maxZoom: 19

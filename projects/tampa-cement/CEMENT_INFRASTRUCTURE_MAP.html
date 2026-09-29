@@ -74,6 +74,7 @@
             font-weight: 600;
         }
     </style>
+<script src="../../assets/od-basemap.js"></script>
 </head>
 <body>
 
@@ -96,11 +97,11 @@
             attribution: '&copy; OpenStreetMap contributors'
         });
 
-        const cartoLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        const cartoLight = odEsri('Light', {
             attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
         }).addTo(map);
 
-        const cartoDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        const cartoDark = odEsri('Dark', {
             attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
         });
 

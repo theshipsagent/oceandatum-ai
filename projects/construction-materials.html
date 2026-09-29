@@ -493,6 +493,7 @@
 body { padding-top: 56px; }
 </style>
 <link rel="stylesheet" href="../assets/od-navbar.css">
+<script src="../assets/od-basemap.js"></script>
 </head>
 <body>
 <script>if("scrollRestoration"in history)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
@@ -1400,10 +1401,10 @@ body { padding-top: 56px; }
     var mapEl = document.getElementById('mapContainer');
     if (mapEl && typeof L !== 'undefined') {
         var map = L.map('mapContainer').setView([39.5, -98.5], 4);
-        var darkTiles = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-        var lightTiles = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+        var darkTiles = 'Dark';   // odEsri basemap kind (assets/od-basemap.js)
+        var lightTiles = 'Light';
         var tileUrl = document.body.classList.contains('light-mode') ? lightTiles : darkTiles;
-        var tileLayer = L.tileLayer(tileUrl, {
+        var tileLayer = odEsri(tileUrl, {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
             maxZoom: 18
         }).addTo(map);
@@ -1599,7 +1600,7 @@ body { padding-top: 56px; }
         // Swap map tiles
         if (window._mapRef && window._tileLayer) {
             window._mapRef.removeLayer(window._tileLayer);
-            window._tileLayer = L.tileLayer(isLight ? window._lightTiles : window._darkTiles, {
+            window._tileLayer = odEsri(isLight ? window._lightTiles : window._darkTiles, {
                 attribution: '&copy; OSM &copy; CARTO', maxZoom: 18
             }).addTo(window._mapRef);
         }

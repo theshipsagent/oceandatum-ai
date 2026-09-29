@@ -407,6 +407,7 @@
     pointer-events: none !important;
   }
 </style>
+<script src="../assets/od-basemap.js"></script>
 </head>
 <body>
 <div class="sidebar">
@@ -650,7 +651,7 @@ const map = L.map('map', {
   zoomControl: true,
 });
 
-const dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+const dark = odEsri('Dark', {
   attribution: '&copy; OSM &copy; CARTO', maxZoom: 19
 });
 const satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
