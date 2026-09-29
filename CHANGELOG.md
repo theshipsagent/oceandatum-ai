@@ -2,6 +2,10 @@
 
 Dated record of changes to oceandatum.ai. Newest first.
 
+## 2026-09-29 — Cloudflare Worker removed
+
+- Deleted the orphaned `oceandatum-auth` Cloudflare Worker (old email/password/TOTP login; source lost; unused). `/login`, `/register`, `/admin`, `/api/*`, `/test/*` now served by GitHub Pages. Empty `AUTH_KV` namespaces (0 B) left in the account.
+
 ## 2026-09-28 (late) — security cleanup
 
 - Stopped publishing `_user_notes/totp+prompt_011626_1132.md` (untracked; local copy kept; `_user_notes/` already in `.gitignore`). Note: it remains in the public repo's git history.
