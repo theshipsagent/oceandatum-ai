@@ -456,23 +456,27 @@
 
     <script>
         // Check authentication — session or remembered login
-        if (!sessionStorage.getItem('datum_auth')) {
-            const remembered = localStorage.getItem('datum_auth') === 'true';
-            const expires = parseInt(localStorage.getItem('datum_auth_expires') || '0');
-            if (remembered && Date.now() < expires) {
-                sessionStorage.setItem('datum_auth', 'true');
-            } else {
-                localStorage.removeItem('datum_auth');
-                localStorage.removeItem('datum_auth_expires');
-                window.location.href = 'login.html';
+        try {  // storage can throw when the browser blocks site data (e.g. iPhone "Block All Cookies")
+            if (!sessionStorage.getItem('datum_auth')) {
+                const remembered = localStorage.getItem('datum_auth') === 'true';
+                const expires = parseInt(localStorage.getItem('datum_auth_expires') || '0');
+                if (remembered && Date.now() < expires) {
+                    sessionStorage.setItem('datum_auth', 'true');
+                } else {
+                    localStorage.removeItem('datum_auth');
+                    localStorage.removeItem('datum_auth_expires');
+                    window.location.href = 'login.html';
+                }
             }
-        }
+        } catch (e) { /* storage unavailable: skip the check rather than break the page */ }
 
         // Logout functionality
         function doLogout(e) {
             e.preventDefault();
-            sessionStorage.removeItem('datum_auth');
-            sessionStorage.removeItem('datum_user');
+            try {
+                sessionStorage.removeItem('datum_auth');
+                sessionStorage.removeItem('datum_user');
+            } catch (err) { /* storage unavailable */ }
             window.location.href = 'index.html';
         }
         document.getElementById('logoutBtn').addEventListener('click', doLogout);

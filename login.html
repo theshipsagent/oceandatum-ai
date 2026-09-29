@@ -336,16 +336,9 @@
         const _u = atob('dGhlc2hpcHNhZ2VudA==');
         const _p = atob('eWVsbG93cm9zZQ==');
 
-        // Check if already remembered
-        if (localStorage.getItem('datum_auth') === 'true') {
-            const expires = parseInt(localStorage.getItem('datum_auth_expires') || '0');
-            if (Date.now() < expires) {
-                sessionStorage.setItem('datum_auth', 'true');
-                window.location.href = 'projects-hub.html';
-            } else {
-                localStorage.removeItem('datum_auth');
-                localStorage.removeItem('datum_auth_expires');
-            }
+        // Storage can throw when a browser blocks site data; never let that stop the login.
+        function safeStorage(fn) {
+            try { fn(); } catch (e) { /* storage unavailable: continue without it */ }
         }
 
         loginForm.addEventListener('submit', function(e) {
@@ -355,13 +348,17 @@
             const password = passwordInput.value.trim();
 
             if (username === _u && password === _p) {
-                sessionStorage.setItem('datum_auth', 'true');
-                sessionStorage.setItem('datum_user', username);
+                safeStorage(() => {
+                    sessionStorage.setItem('datum_auth', 'true');
+                    sessionStorage.setItem('datum_user', username);
+                });
 
                 // Remember for 7 days if checked
                 if (rememberMe.checked) {
-                    localStorage.setItem('datum_auth', 'true');
-                    localStorage.setItem('datum_auth_expires', String(Date.now() + 7 * 24 * 60 * 60 * 1000));
+                    safeStorage(() => {
+                        localStorage.setItem('datum_auth', 'true');
+                        localStorage.setItem('datum_auth_expires', String(Date.now() + 7 * 24 * 60 * 60 * 1000));
+                    });
                 }
 
                 window.location.href = 'projects-hub.html';
@@ -375,6 +372,22 @@
 
         usernameInput.addEventListener('input', () => { errorMessage.classList.remove('active'); });
         passwordInput.addEventListener('input', () => { errorMessage.classList.remove('active'); });
+
+        // Check if already remembered. Runs after the form is wired up, and is
+        // guarded: browsers that block site storage (e.g. iPhone "Block All
+        // Cookies") throw here, which previously killed the whole login script.
+        safeStorage(() => {
+            if (localStorage.getItem('datum_auth') === 'true') {
+                const expires = parseInt(localStorage.getItem('datum_auth_expires') || '0');
+                if (Date.now() < expires) {
+                    sessionStorage.setItem('datum_auth', 'true');
+                    window.location.href = 'projects-hub.html';
+                } else {
+                    localStorage.removeItem('datum_auth');
+                    localStorage.removeItem('datum_auth_expires');
+                }
+            }
+        });
     </script>
 
     <script>
