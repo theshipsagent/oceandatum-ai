@@ -312,14 +312,33 @@
     line-height: 1.8;
   }
 
-  .cv-header .cv-contact a {
+  .cv-header .cv-contact a,
+  .cv-body a {
     color: var(--accent);
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: all 0.3s ease;
   }
 
-  .cv-header .cv-contact a:hover { border-bottom-color: var(--accent); }
+  .cv-download {
+    display: inline-block;
+    margin-top: 1.1rem;
+    padding: 0.55rem 1.3rem;
+    font-family: var(--font);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .cv-download:hover { background: var(--accent); color: #0a0a0a; }
+  @media print { .cv-download { display: none !important; } }
+
+  .cv-header .cv-contact a:hover,
+  .cv-body a:hover { border-bottom-color: var(--accent); }
 
   .cv-header .cv-contact strong {
     color: var(--ink-secondary);
@@ -446,9 +465,12 @@
   }
 
   .cv-body ul {
-    margin-left: 1.5rem;
+    margin-left: 0;
+    padding-left: 1.1rem;
     margin-bottom: 0.8rem;
   }
+
+  .cv-body ul ul { margin-top: 0.3rem; margin-bottom: 0.3rem; }
 
   .cv-body li {
     font-family: var(--font);
@@ -472,6 +494,49 @@
     color: var(--ink-muted);
     font-weight: 300;
     font-size: 0.85rem;
+  }
+
+  /* Company / location and title / dates on one row, right-aligned */
+  .cv-body h3, .cv-body h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0 1rem;
+  }
+  .cv-body h3 .location, .cv-body h4 .dates { white-space: nowrap; }
+  .cv-body h3 .former {
+    color: var(--ink-muted);
+    font-weight: 300;
+    font-size: 0.82rem;
+    margin-left: 0.4rem;
+  }
+
+  /* Host phases: years column + description */
+  .phases { margin: 0.4rem 0 0.8rem; }
+  .phase {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0 0.8rem;
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    margin-bottom: 0.2rem;
+  }
+  .phase .dates { font-size: 0.82rem; }
+
+  .cv-body p.titles-held { font-size: 0.84rem; }
+
+  /* Sub-headings inside sections */
+  .cv-body p.subhead {
+    margin: 1.3rem 0 0.4rem;
+  }
+  .cv-body p.subhead strong {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
   }
 
   .concurrent-role {
@@ -536,6 +601,7 @@
     .print-bar { flex-direction: column; }
     .two-column { columns: 1; }
     .competencies-grid { grid-template-columns: 1fr; }
+    .phase { grid-template-columns: 5.6rem 1fr; }
 
     .hamburger-button { display: block; }
     .navbar-right { display: none; }
@@ -618,10 +684,6 @@
                 </svg>
             </a>
         </div>
-        <a href="https://whatsapp.com/channel/0029VbBE27p4IBhIrzjoRD36" target="_blank" class="navbar-link" title="WhatsApp News Feed" style="display:inline-flex;align-items:center;gap:0.4rem;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            News Feed
-        </a>
         <a href="posts.html" class="navbar-link">Blog</a>
         <a href="tools/maritime-ai-role.html" class="navbar-link">Role Brief</a>
         <a href="cv.html" class="navbar-link">CV</a>
@@ -631,7 +693,6 @@
 
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-section">
-            <div class="mobile-menu-item"><a href="https://whatsapp.com/channel/0029VbBE27p4IBhIrzjoRD36" target="_blank">News Feed</a></div>
             <div class="mobile-menu-item"><a href="posts.html">Blog</a></div>
             <div class="mobile-menu-item"><a href="tools/maritime-ai-role.html">Role Brief</a></div>
             <div class="mobile-menu-item"><a href="cv.html">CV</a></div>
@@ -663,9 +724,9 @@
 
   <div class="cv-header">
     <h1>WILLIAM S. DAVIS III</h1>
-    <p class="cv-subtitle">Maritime Operations Executive | Commercial Development | Technology Implementation</p>
+    <p class="cv-subtitle">Ship Agency &amp; Marine Terminal Development</p>
     <div class="cv-contact">
-        <strong>Chesapeake, VA</strong> | +1 (657) 477-0436 | <a href="mailto:wsd@oceandatum.ai">wsd@oceandatum.ai</a>
+        <strong>Chesapeake, Virginia</strong> | +1 (657) 477-0436 | <a href="mailto:wsd@oceandatum.ai">wsd@oceandatum.ai</a>
     </div>
     <div class="header-social">
         <a href="https://linkedin.com/in/williamsdavis" target="_blank" class="social-icon" title="LinkedIn">
@@ -680,196 +741,152 @@
         <span class="sep">|</span>
         <a href="https://oceandatum.ai" target="_blank" class="site-link">oceandatum.ai</a>
     </div>
+    <a href="assets/docs/William_S_Davis_III_Resume.pdf" download class="cv-download">Download PDF</a>
   </div>
 
 
   <div class="cv-body">
 
-    <h2>Executive Summary</h2>
-    <p>Senior operations executive with 30 years of progressive leadership experience in maritime logistics, supply chain optimization, and terminal development. Deep operational expertise in cargo handling, vessel operations, and port coordination combined with proven ability to establish new markets, integrate acquisitions, and deploy enterprise technology. Track record includes merger of 3 ship agency businesses and establishing 9 port offices across U.S. Atlantic and Gulf Coast, leading successful M&amp;A integrations with high customer retention, and supporting terminal development projects representing significant infrastructure investments. Expert in leveraging data analytics, geospatial systems, and enterprise technology to transform traditional maritime operations.</p>
+    <h2>Summary</h2>
+    <p>Ship agency and marine terminal professional with thirty years on the U.S. Atlantic and Gulf Coasts. At Host (2006&ndash;2025), a member of the small core team that took the company from family business to equity-backed firm: integrating acquired agencies, opening new offices, leading the agency division, and supporting marine terminal development. Since 2025, consulting on terminal acquisitions, supply chains, and maritime data and reporting, including through OceanDatum.ai; now Project Manager at Blue Water Shipping in New Orleans. Experience spans grain, coal, petcoke, chemical, liquid bulk, breakbulk, Ro-Ro, and passenger trades.</p>
 
     <hr>
 
     <h2>Core Competencies</h2>
     <ul class="competencies-grid">
-      <li>Executive P&amp;L Leadership (multi-location operations)</li>
-      <li>Business Development &amp; Market Expansion</li>
-      <li>M&amp;A Integration &amp; Change Management</li>
-      <li>Supply Chain Strategy &amp; Optimization</li>
-      <li>Terminal &amp; Infrastructure Development</li>
-      <li>Enterprise Systems (ERP/CRM) Implementation</li>
-      <li>Data Analytics &amp; Geospatial Intelligence</li>
-      <li>Multi-Site Operations Management</li>
+      <li>Ship Agency Operations</li>
+      <li>Acquisition Integration</li>
+      <li>Marine Terminal Development</li>
+      <li>Market &amp; Cost Modeling</li>
+      <li>Supply Chain Modeling</li>
+      <li>AI Integration &amp; Development</li>
+      <li>ERP / CRM Implementation</li>
+      <li>Geospatial &amp; Data Analysis</li>
     </ul>
 
     <hr>
 
-    <h2>Professional Experience</h2>
+    <h2>Career</h2>
 
-    <h3>T. PARKER HOST, INC. <span class="location">| Norfolk, VA</span></h3>
-
-    <h4>Vice President &amp; Business Development <span class="dates">| October 2016 &ndash; May 2025</span></h4>
-    <div class="concurrent-role">Also served as Head of Agency (November 2018 &ndash; February 2021)</div>
-    <div class="concurrent-role">West Gulf Manager &amp; Business Development (July 2012 &ndash; October 2016)</div>
-    <div class="concurrent-role">Vice President, Amelia Maritime Services (August 2009 &ndash; May 2011)</div>
-    <div class="concurrent-role">Operations Manager, Amelia Maritime Services (July 2007 &ndash; August 2009)</div>
-    <div class="concurrent-role">Agent, Amelia Maritime Services (May 2006 &ndash; July 2007)</div>
-
-    <p><strong>Executive Leadership &amp; P&amp;L Responsibility</strong></p>
+    <h3>BLUE WATER SHIPPING <span class="location">New Orleans, LA</span></h3>
+    <h4>Project Manager <span class="dates">August 2026 &ndash; Present</span></h4>
     <ul>
-      <li>Led 15-location ship agency division with 110+ employees handling 4,200+ annual port calls across US Atlantic and Gulf Coasts (New York to Brownsville, TX)</li>
-      <li>Full P&amp;L accountability for multi-location maritime services operation with ~$800 million in port expenses receivables</li>
-      <li>Served on executive committee driving corporate strategy and business development initiatives</li>
-      <li>Directed operational excellence across geographically dispersed organization</li>
+      <li>Projects spanning administrative, technology, and commercial functions</li>
     </ul>
 
-    <p><strong>Commercial &amp; Business Development Achievements</strong></p>
+    <h3>OCEANDATUM.AI <span class="location">Chesapeake, VA</span></h3>
+    <h4>Principal <span class="dates">2026 &ndash; Present</span></h4>
     <ul>
-      <li>Built and maintained relationships with traders, shippers, receivers, terminal operators, pilots, port authorities, and shipping lines across 15 US ports</li>
-      <li>Established performance metrics and KPIs resulting in measurable operational efficiency improvements</li>
-      <li>Developed crisis management protocols maintaining service continuity during COVID-19 pandemic without business or customer loss</li>
+      <li>Independent consultancy producing port, marine terminal, and commodity market reporting from public trade, vessel, and regulatory data</li>
+      <li>Designs and implements data and AI tools for maritime operations</li>
     </ul>
 
-    <p><strong>Technology &amp; Systems Leadership</strong></p>
+    <h3>SESCO CEMENT <span class="location">Houston, TX</span></h3>
+    <h4>Supply Chain Consultant <span class="dates">May 2025 &ndash; March 2026</span></h4>
     <ul>
-      <li>Facilitated digital transformation implementing NetSuite ERP and CRM systems for 100+ users</li>
-      <li>Replaced legacy systems with integrated platforms improving data visibility and operational efficiency</li>
-      <li>Deployed proprietary geospatial tracking systems for vessel monitoring and analytics</li>
-      <li>Implemented KYC due diligence platforms for compliance and regulatory requirements</li>
+      <li>Evaluated marine terminal acquisition opportunities</li>
+      <li>Optimized rail and ocean supply chains</li>
     </ul>
 
-    <p><strong>M&amp;A Leadership &amp; Integration</strong></p>
+    <h3><span>HOST<span class="former">(T. Parker Host, Inc. until 2015)</span></span> <span class="location">U.S. Atlantic &amp; Gulf Coasts</span></h3>
+    <h4>Ship agency and marine terminal roles <span class="dates">May 2006 &ndash; May 2025</span></h4>
+    <div class="phases">
+      <div class="phase"><span class="dates">2006 &ndash; 2016</span><span>Ship agency acquisitions, integration, and expansion</span></div>
+      <div class="phase"><span class="dates">2016 &ndash; 2025</span><span>Marine terminal business development, Norfolk, VA</span></div>
+      <div class="phase"><span class="dates">2018 &ndash; 2022</span><span>Head of Agency, concurrent with the terminal role</span></div>
+      <div class="phase"><span class="dates">2022 &ndash; 2025</span><span>Cross-department projects across agency and terminals</span></div>
+    </div>
+    <p class="titles-held"><strong>Titles held:</strong> Agent; Operations Manager; Vice President, Amelia Maritime Services; Regional Manager, Gulf East; Regional Manager, Gulf West; Vice President, Business Development; Head of Agency.</p>
+
+    <h3>BARWIL / WILHELMSEN SHIP SERVICES <span class="location">Norfolk, VA &amp; New Orleans, LA</span></h3>
+    <h4>Operations / Business Development <span class="dates">October 1999 &ndash; May 2006</span></h4>
+
+    <h3>T. PARKER HOST, INC. <span class="location">Baltimore, MD &amp; Norfolk, VA</span></h3>
+    <h4>Port Agent <span class="dates">November 1995 &ndash; June 1999</span></h4>
+
+    <h3>UNITED STATES ARMY <span class="location">Fort Campbell, KY</span></h3>
+    <h4>Infantryman, 101st Airborne Division <span class="dates">September 1992 &ndash; June 1995</span></h4>
     <ul>
-      <li>Directed integration of three ship agency acquisitions</li>
-      <li>Established 9 new port offices (Savannah, Jacksonville, Charleston, Mobile, Gulfport, New Orleans, Brownsville, Houston, Freeport)</li>
-      <li>Maintained 95%+ customer retention across all acquisitions through focused transition management</li>
-      <li>Integrated operations, systems, and teams across geographically dispersed locations</li>
-    </ul>
-
-    <h3>WILHELMSEN SHIP SERVICES <span class="location">| Norfolk, VA / New Orleans, LA</span></h3>
-
-    <h4>Operations / Business Development &ndash; Mississippi River <span class="dates">| October 1999 &ndash; May 2006</span></h4>
-
-    <p><strong>Regional Operations &amp; Crisis Management</strong></p>
-    <ul>
-      <li>Diverse firsthand working experience with all major grain, coal, chemical, refining, midstream, general cargo and passenger port operations in the Lower Mississippi River</li>
-      <li>Hurricane Katrina response (2005) &mdash; part of on-ground team coordinating vessel operations during and after the disaster; maintained service continuity and customer relationships</li>
-      <li>Established operations in new ports including Hampton Roads (first coal nomination on US East Coast), Baltimore, and North Carolina Ports</li>
-      <li>Developed crisis management protocols and maintained operations during major disruptions</li>
-    </ul>
-
-    <p><strong>Commercial Development &amp; Market Expansion</strong></p>
-    <ul>
-      <li>Expanded customer base across commodity trades (grain, petcoke, coal, oil, breakbulk)</li>
-      <li>Built relationships with terminal operators, pilots, port authorities, and shipping lines</li>
-      <li>Supported terminal development projects and infrastructure investments</li>
-      <li>Developed performance metrics driving operational improvements</li>
-    </ul>
-
-    <p><strong>Systems &amp; Process Innovation</strong></p>
-    <ul>
-      <li>Early adopter of digital cameras and data systems for enhanced operational transparency</li>
-      <li>Developed proforma and berth sheets with photos and maps improving customer communications</li>
-      <li>Implemented tracking systems and analytics for vessel operations</li>
-    </ul>
-
-    <h3>T. PARKER HOST, INC. <span class="location">| Baltimore, MD / Norfolk, VA</span></h3>
-
-    <h4>Port Agent <span class="dates">| November 1995 &ndash; June 1999</span></h4>
-
-    <ul>
-      <li>Attended port calls in Baltimore, Delaware River, &amp; Hampton Roads ports handling diverse cargo types and vessel operations</li>
-      <li>Coordinated with stevedores, terminal operators, customs officials, and ship&rsquo;s masters</li>
-      <li>Handled disbursement accounting and proforma estimation for entry-level employees</li>
-      <li>Export coal documentation &amp; shippers representation</li>
-      <li>Liner, Ro-Ro, and passenger vessel port operations</li>
-      <li>Gained foundational expertise in commercial business operations and customer service</li>
+      <li>Long-range surveillance unit; honorable discharge</li>
     </ul>
 
     <hr>
 
-    <h2>Military Service</h2>
+    <h2>Experience at Host</h2>
 
-    <h3>UNITED STATES ARMY <span class="location">| Fort Campbell, KY</span></h3>
-
-    <h4>Infantryman, 101st Airborne Division <span class="dates">| September 1992 &ndash; June 1995</span></h4>
-
+    <p class="subhead"><strong>Ship Agency: Acquisitions and Expansion</strong></p>
     <ul>
-      <li>Served in long-range surveillance unit at Fort Campbell, Kentucky</li>
-      <li>Developed discipline, attention to detail, and crisis management skills</li>
-      <li>Honorable discharge with valuable leadership and team coordination experience</li>
+      <li>Integrated three agency businesses into Host: Amelia Maritime Services (Fernandina Beach and Jacksonville), a Savannah agency, and a Gulf Coast agency with offices in Mobile, New Orleans, and Houston</li>
+      <li>Ground lead for opening new Gulf Coast offices at Sabine River and Corpus Christi</li>
+    </ul>
+
+    <p class="subhead"><strong>Marine Terminal Development</strong></p>
+    <ul>
+      <li>Senior analyst within business development on three large marine terminal projects: Avondale, Louisiana (primary focus); Tradepoint, Baltimore, Maryland; and United Bulk, Davant, Louisiana, where market modeling and research supported Host&rsquo;s purchase of the terminal</li>
+      <li>Contributed to roughly a dozen additional terminal proposals that did not proceed</li>
+      <li>Due diligence, market studies, cost and supply chain modeling, permit research, and pitch books</li>
+    </ul>
+
+    <p class="subhead"><strong>Head of Agency</strong> <span class="dates">October 2018 &ndash; February 2022</span></p>
+    <ul>
+      <li>Led an agency division of 15 offices, 110+ staff, and about 4,200 port calls a year, New York to Brownsville, Texas; member of the executive committee</li>
+      <li>Led the division through COVID-19 without losing a customer</li>
+    </ul>
+
+    <p class="subhead"><strong>Cross-Department Work</strong></p>
+    <ul>
+      <li>Covered operational, financial, and staffing needs across the agency and terminal businesses through the company&rsquo;s growth and leadership transitions</li>
+    </ul>
+
+    <p class="subhead"><strong>Systems</strong></p>
+    <ul>
+      <li>NetSuite ERP and CRM rollout replacing legacy systems; geospatial vessel-tracking and analytics tools; KYC due-diligence platform for compliance</li>
+    </ul>
+
+    <hr>
+
+    <h2>Earlier Career</h2>
+
+    <p class="subhead"><strong>Barwil / Wilhelmsen Ship Services</strong> <span class="dates">1999 &ndash; 2006</span></p>
+    <ul>
+      <li>Agency operations on the Lower Mississippi River across grain, coal, chemical, refining, midstream, general cargo, and passenger terminals</li>
+      <li>Part of the on-ground team that kept vessel operations running during and after Hurricane Katrina (2005)</li>
+      <li>Helped open operations at Hampton Roads, Baltimore, and North Carolina ports</li>
+      <li>Early adopter of photos and maps in proformas and berth sheets</li>
+    </ul>
+
+    <p class="subhead"><strong>T. Parker Host, Port Agent</strong> <span class="dates">1995 &ndash; 1999</span></p>
+    <ul>
+      <li>Port calls in Baltimore, the Delaware River, and Hampton Roads: export coal, liner, Ro-Ro, and passenger vessels</li>
+      <li>Worked with stevedores, terminal operators, customs officials, and masters; disbursement accounting and proformas</li>
     </ul>
 
     <hr>
 
     <h2>Education &amp; Professional Development</h2>
-
-    <p><strong>Professional Certifications &amp; Training:</strong></p>
     <ul class="two-column">
-      <li>Diploma in Ship Agency &mdash; Association of Ship Brokers and Agents (ASBA), 2021</li>
-      <li>Maritime Arbitration &mdash; Society of Maritime Arbitrators, 2021</li>
-      <li>Maritime Law Certification &mdash; ASBA, 2017</li>
-      <li>Commercial Trade Transactions &mdash; ASBA, 2016</li>
-      <li>Basic Principles of Chartering &mdash; ASBA, 2014</li>
-      <li>Maritime Transportation of Chemicals &amp; LPG &mdash; Tank Assist BV, 2015</li>
-      <li>Leadership Development Program &mdash; Center for Creative Leadership, 2013</li>
-      <li>ICS-408 Planning of Port Committees &mdash; USCG, 2009</li>
-    </ul>
-
-    <p><strong>Academic Background:</strong></p>
-    <ul>
-      <li>First Colonial High School, Virginia Beach, VA &mdash; May 1992</li>
-      <li>Extensive business management and commercial development training through industry associations</li>
+      <li>Diploma in Ship Agency &mdash; ASBA (2021)</li>
+      <li>Arbitration in the SDNY &mdash; Society of Maritime Arbitrators (2021)</li>
+      <li>Maritime Law Certification &mdash; ASBA (2017)</li>
+      <li>Commercial Trade Transactions &mdash; ASBA (2016)</li>
+      <li>Basic Principles of Chartering &mdash; ASBA (2014)</li>
+      <li>Maritime Transportation of Chemicals &amp; LPG &mdash; Tank Assist BV (2015)</li>
+      <li>Leadership Development Program &mdash; Center for Creative Leadership (2013)</li>
+      <li>ICS-408 Planning of Port Committees &mdash; USCG (2009)</li>
+      <li>First Colonial High School, Virginia Beach, VA (1992)</li>
     </ul>
 
     <hr>
 
-    <h2>Professional Trade Events &amp; Associations</h2>
-
-    <ul class="two-column">
-      <li>Connecticut Maritime Association</li>
-      <li>Society of Maritime Arbitrators</li>
-      <li>Association of Ship Brokers and Agents</li>
-      <li>Propeller Club of the United States</li>
-      <li>Virginia Maritime Association</li>
-      <li>Mississippi Valley Trade &amp; Transport Council</li>
-      <li>Jacobs Petcoke Conference</li>
-      <li>Argus Petcoke Conference</li>
-      <li>Breakbulk Americas</li>
-      <li>Southeast Fertilizer Association</li>
-      <li>US Industrial Pellet Association</li>
-      <li>Danish Shipbrokers Week</li>
-      <li>West Gulf Maritime Association</li>
-      <li>Greater Houston Port Bureau</li>
-      <li>Louisiana Maritime Association</li>
-      <li>New Orleans Board of Trade</li>
-      <li>North American Export Grain Association</li>
-      <li>National Association of Steel Pipe Distributors</li>
-      <li>Inland Rivers Ports &amp; Terminals</li>
-    </ul>
-
-    <h4>Port and Cargo Regulatory &amp; Trade Representation</h4>
-
-    <ul class="two-column">
-      <li>United States Coast Guard</li>
-      <li>US Customs &amp; Border Protection</li>
-      <li>US CBP Plant Protection &amp; Quarantine</li>
-      <li>USDA Federal Grain Inspection Service</li>
-      <li>US Army Corps of Engineers</li>
-      <li>Centers for Disease Control &amp; Prevention</li>
-      <li>Public Port Authorities &amp; Pilot Associations</li>
-
-    </ul>
+    <h2>Associations &amp; Representation</h2>
+    <p><strong>Trade associations &amp; events:</strong> Connecticut Maritime Association; Society of Maritime Arbitrators; Association of Ship Brokers and Agents; Propeller Club of the United States; Virginia Maritime Association; Mississippi Valley Trade &amp; Transport Council; West Gulf Maritime Association; Greater Houston Port Bureau; Louisiana Maritime Association; New Orleans Board of Trade; North American Export Grain Association; National Association of Steel Pipe Distributors; Inland Rivers Ports &amp; Terminals; Southeast Fertilizer Association; US Industrial Pellet Association; Jacobs and Argus Petcoke Conferences; Breakbulk Americas; Danish Shipbrokers Week.</p>
+    <p><strong>Regulatory &amp; port representation:</strong> U.S. Coast Guard; U.S. Customs &amp; Border Protection; CBP Plant Protection &amp; Quarantine; USDA Federal Grain Inspection Service; U.S. Army Corps of Engineers; Centers for Disease Control &amp; Prevention; public port authorities and pilot associations.</p>
 
     <hr>
 
     <h2>Additional Information</h2>
-
-    <p><strong>Technical Proficiencies:</strong> NetSuite ERP/CRM, Oracle NetSuite, geospatial tracking systems, data analytics platforms, Microsoft Office Suite, maritime operational software, KYC compliance platforms</p>
-
-    <p><strong>Publications &amp; Thought Leadership:</strong> Authored extensive professional library covering ship agency operations, chartering, maritime law, commodity trading, supply chain management, and specialized industry literature spanning ~500 works</p>
-
-    <p><strong>Personal Interests:</strong> Wood turning, vintage machining, maritime history, live music.</p>
+    <p><strong>Writing:</strong> Articles on maritime policy, technology, and trade at oceandatum.ai.</p>
+    <p><strong>Interests:</strong> Learning and developing AI-driven products; collecting maritime books on chartering, maritime law, port, vessel, and cargo operations, and port history (362-title bibliography); wood turning; vintage machining; live music.</p>
 
   </div>
 
@@ -902,6 +919,5 @@ if (hamburgerBtn && mobileMenu) {
 
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5169a56446ff4380ad2f1785a86804b8"}'></script>
-<script src="od-theme-pdf.js"></script>
 </body>
 </html>
