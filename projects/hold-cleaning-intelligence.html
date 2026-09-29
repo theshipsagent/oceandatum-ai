@@ -175,31 +175,10 @@ body { font-family: 'Space Grotesk', -apple-system, sans-serif; background: var(
 body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0d1520 50%, #0a0a0a 100%); z-index: -1; }
 
 /* ── NAV ── */
-.navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 2rem; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
-.navbar-brand { font-size: 0.85rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6); }
-.navbar-brand a { color: rgba(255,255,255,0.9); font-weight: 600; font-style: normal; text-decoration: none; transition: color 0.3s; }
-.navbar-brand a:hover { color: #64ffb4; }
-.navbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
-.navbar-link { font-size: 0.85rem; color: rgba(255,255,255,0.75); text-decoration: none; letter-spacing: 0.04em; padding: 0.35rem 0.75rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 5px; transition: all 0.2s; white-space: nowrap; }
-.navbar-link:hover { color: #64ffb4; border-color: rgba(100,255,180,0.4); background: rgba(100,255,180,0.05); }
+
 .social-icons { display: flex; align-items: center; gap: 0.5rem; }
 .social-icon { color: rgba(255,255,255,0.5); transition: color 0.2s; text-decoration: none; }
 .social-icon:hover { color: #64ffb4; }
-.hamburger-button { display: none; background: none; border: 2px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); font-size: 1.2rem; border-radius: 6px; cursor: pointer; transition: all 0.2s; width: 40px; height: 40px;}
-.hamburger-button:hover { border-color: #64ffb4; color: #64ffb4; }
-.mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,10,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(100,255,180,0.3); z-index: 999; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 1px solid rgba(100,255,180,0.3);}
-.mobile-menu.active { display: block; max-height: 500px; }
-.mobile-menu-section { padding: 10px 0; }
-.mobile-menu-item a { display: block; padding: 15px 20px; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.07); transition: all 0.2s; }
-.mobile-menu-item a:hover { background: rgba(100,255,180,0.08); color: #64ffb4; padding-left: 28px; }
-.mobile-menu-social { display: flex; justify-content: center; gap: 1.2rem; padding: 1rem; border-top: 1px solid rgba(255,255,255,0.08); }
-
-@media (max-width: 768px) {
-  .navbar { padding: 0.6rem 1rem; }
-  .hamburger-button { display: block; }
-  .navbar-right .social-icons, .navbar-right .navbar-link { display: none; }
-  .navbar-right { display: flex; gap: 0.5rem; }
-}
 
 /* ── PAGE LAYOUT ── */
 .content { max-width: 1100px; margin: 0 auto; padding: 5.5rem 1.5rem 4rem; }
@@ -305,10 +284,11 @@ body.light-mode .breadcrumb a { color: #0d3b66; }
 .footer-note { text-align: center; padding: 2rem 1rem; color: var(--text-3); font-size: 0.76rem; border-top: 1px solid var(--card-border); margin-top: 1rem; }
 .footer-note strong { color: var(--text-2); }
 </style>
+<link rel="stylesheet" href="../assets/od-navbar.css">
 </head>
 <body>
 
-<nav class="navbar">
+<nav class="navbar navbar-hub">
   <span class="navbar-brand">a project of <a href="../index.html">oceandatum.ai</a></span>
       <button class="hamburger-button" id="hamburgerBtn" aria-label="Menu">&#9776;</button>
     <div class="navbar-right">
@@ -325,6 +305,7 @@ body.light-mode .breadcrumb a { color: #0d3b66; }
     <a href="../projects-hub.html" class="navbar-link">Projects</a>
   </div>
 </nav>
+<script src="../assets/od-navbar.js"></script>
 
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-section">
@@ -726,12 +707,7 @@ body.light-mode .breadcrumb a { color: #0d3b66; }
 
 </div><!-- /content -->
 
-<script>
-  const hBtn = document.getElementById('hamburgerBtn');
-  const mMenu = document.getElementById('mobileMenu');
-  hBtn.addEventListener('click', function(e) { e.stopPropagation(); mMenu.classList.toggle('active'); });
-  document.addEventListener('click', function(e) { if (!mMenu.contains(e.target) && !hBtn.contains(e.target)) mMenu.classList.remove('active'); });
-</script>
+
 
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5169a56446ff4380ad2f1785a86804b8"}'></script>
 <script src="../od-theme-pdf.js"></script>

@@ -1,106 +1,118 @@
 /* oceandatum.ai — shared navbar styles
-   Source of truth for navbar appearance and behavior across the site.
-   Edit here once; every page that <link>s this file picks it up. */
+   The ONLY place navbar styling and the hamburger breakpoint live.
+   Pages keep their own nav HTML (links + path prefixes) but must not restyle
+   .navbar / .navbar-* / .hamburger-button / .mobile-menu* themselves.
+   (body.light-mode overrides and @media print rules stay on the pages that use them.)
 
+   Looks, matching what the site already had:
+     <nav class="navbar">              compact — project & tool pages (default)
+     <nav class="navbar navbar-pill">  pill buttons + "OceanDatum" brand — Tampa cement reports, login, Role Brief
+     <nav class="navbar navbar-main">  larger buttons — home, CV, blog
+     + navbar-hub   plain social icons, darker menu — projects hub, coal map, hold cleaning
+     + navbar-top   z-index 1100, above the page's own fixed panels — grain guide
+
+   Breakpoints (edit here only):
+     <= 640px  phones: hamburger + drop-down menu
+     <= 768px  tablets: full bar, tighter padding
+   Wider than 640px, od-navbar.js checks whether the bar fits on one row.
+   If it does not, it first hides the social icons (html.od-nav-no-social),
+   then falls back to the hamburger (html.od-nav-collapsed). The classes go on
+   <html> because a few pages keep #mobileMenu outside the <nav>. */
+
+/* ── Compact (default) ─────────────────────────────────── */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.5);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
     padding: 0.8rem 2rem;
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .navbar-brand {
-    font-family: 'Space Grotesk', sans-serif;
     font-size: 0.85rem;
-    font-weight: 600;
-    font-style: normal;
-    color: rgba(255,255,255,0.9);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
     text-decoration: none;
-    letter-spacing: 0.03em;
 }
-
-.navbar-brand:hover {
-    color: #64ffb4;
-}
-
 .navbar-brand a {
     color: rgba(255,255,255,0.9);
     font-weight: 600;
     font-style: normal;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: color 0.3s;
 }
-
-.navbar-brand a:hover {
-    color: #64ffb4;
-}
+.navbar-brand a:hover { color: #64ffb4; }
 
 .navbar-right {
     display: flex;
     align-items: center;
-    gap: 1rem;
-}
-
-.social-icons {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.social-icon {
-    color: rgba(255,255,255,0.7);
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-.social-icon:hover {
-    color: #64ffb4;
+    gap: 0.75rem;
+    flex-wrap: wrap;
 }
 
 .navbar-link {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.8);
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.75);
     text-decoration: none;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.35rem 0.75rem;
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 6px;
+    transition: all 0.3s;
+    white-space: nowrap;
 }
-
 .navbar-link:hover {
     color: #64ffb4;
     border-color: rgba(100,255,180,0.4);
     background: rgba(100,255,180,0.05);
 }
 
-/* Hamburger button (shown at <=1024px) */
+.navbar .social-icons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+.navbar .social-icon {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+.navbar .social-icon:hover {
+    color: #64ffb4;
+    border-color: rgba(100,255,180,0.4);
+}
+
 .hamburger-button {
     display: none;
     background: none;
     border: 2px solid rgba(255,255,255,0.3);
-    color: white;
-    font-size: 1.5rem;
+    border-radius: 6px;
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: all 0.3s;
     width: 40px;
     height: 40px;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: all 0.3s ease;
     flex-shrink: 0;
 }
-
 .hamburger-button:hover {
     border-color: #64ffb4;
     color: #64ffb4;
@@ -109,50 +121,32 @@
 
 .mobile-menu {
     display: none;
+    max-height: 0;
+    overflow: hidden;
+    background: rgba(5,15,25,0.98);
+    border-top: 1px solid rgba(100,255,180,0.3);
+    border-bottom: 1px solid rgba(100,255,180,0.3);
     position: fixed;
     top: 60px;
     left: 0;
     right: 0;
-    background: rgba(0,0,0,0.98);
-    border-top: 1px solid rgba(100,255,180,0.3);
-    border-bottom: 1px solid rgba(100,255,180,0.3);
-    z-index: 1000;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+    z-index: 999;
 }
-
-.mobile-menu.active {
-    display: block;
-    max-height: calc(100vh - 60px);
-    overflow-y: auto;
-}
-
-.mobile-menu-section {
-    padding: 10px 0;
-}
-
-.mobile-menu-item {
-    display: block;
-}
-
+.mobile-menu-section { padding: 10px 0; }
 .mobile-menu-item a {
     display: block;
     padding: 15px 20px;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255,255,255,0.8);
     text-decoration: none;
     font-size: 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    transition: all 0.3s ease;
-    cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.2s;
 }
-
 .mobile-menu-item a:hover {
     background: rgba(100,255,180,0.1);
     color: #64ffb4;
     padding-left: 30px;
 }
-
 .mobile-menu-social {
     display: flex;
     justify-content: center;
@@ -161,20 +155,184 @@
     border-top: 1px solid rgba(255,255,255,0.2);
 }
 
-/* Breakpoint raised from 768px to 1024px: avoid cramped desktop nav on narrow windows */
-@media (max-width: 1024px) {
-    .navbar {
-        padding: 0.6rem 1rem;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 0.5rem;
-    }
-
-    .hamburger-button {
-        display: block;
-    }
-
-    .navbar-right {
-        display: none;
-    }
+/* ── Pill ─────────────────────────────────────────────── */
+.navbar-pill {
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom-color: rgba(255,255,255,0.1);
 }
+.navbar-pill .navbar-brand {
+    font-family: 'Space Grotesk', -apple-system, sans-serif;
+    letter-spacing: 0.5px;
+}
+.navbar-pill .navbar-right { gap: 1rem; flex-wrap: nowrap; }
+.navbar-pill .navbar-link {
+    font-family: 'Space Grotesk', -apple-system, sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+.navbar-pill .navbar-link:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.05);
+}
+.navbar-pill .social-icons { gap: 12px; margin-right: 8px; }
+.navbar-pill .social-icon {
+    display: inline-flex;
+    width: auto;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+    font-size: inherit;
+    color: rgba(255,255,255,0.5);
+    transition: color 0.3s;
+}
+.navbar-pill .hamburger-button {
+    background: transparent;
+    font-size: 1.4rem;
+    line-height: normal;
+    border-radius: 8px;
+}
+.navbar-pill .mobile-menu {
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: max-height 0.3s ease;
+}
+.navbar-pill .mobile-menu-item a {
+    border-bottom-color: rgba(255,255,255,0.05);
+    transition: all 0.3s;
+}
+.navbar-pill .mobile-menu-item a:hover { padding-left: 20px; }
+.navbar-pill .mobile-menu-social {
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 16px 24px;
+    border-top-color: rgba(255,255,255,0.1);
+}
+
+/* ── Main ─────────────────────────────────────────────── */
+.navbar-main {
+    background: rgba(0,0,0,0.4);
+    border-bottom-color: rgba(255,255,255,0.15);
+}
+.navbar-main .navbar-brand { letter-spacing: 0.03em; }
+.navbar-main .navbar-brand a { transition: all 0.3s ease; }
+.navbar-main .navbar-right { gap: 1rem; flex-wrap: nowrap; }
+.navbar-main .social-icons { gap: 0.8rem; }
+.navbar-main .social-icon {
+    display: inline;
+    width: auto;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.7);
+    transition: all 0.3s ease;
+}
+.navbar-main .navbar-link {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-color: rgba(255,255,255,0.2);
+    white-space: normal;
+}
+.navbar-main .hamburger-button {
+    color: white;
+    font-size: 1.5rem;
+    line-height: normal;
+    transition: all 0.3s ease;
+}
+.navbar-main .mobile-menu {
+    background: rgba(0,0,0,0.98);
+    z-index: 1000;
+    transition: max-height 0.3s ease;
+}
+.navbar-main .mobile-menu-item a {
+    color: rgba(255,255,255,0.9);
+    border-bottom-color: rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+/* ── Hub: plain social icons, darker menu (projects hub, coal map, hold cleaning) ── */
+.navbar-hub .social-icons { gap: 0.5rem; }
+.navbar-hub .social-icon {
+    display: inline;
+    width: auto;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+    font-size: inherit;
+    color: rgba(255,255,255,0.5);
+    transition: color 0.2s;
+}
+.navbar-hub:not(.navbar-main) .navbar-link {
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+.navbar-hub .hamburger-button {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.2rem;
+    line-height: normal;
+    transition: all 0.2s;
+}
+.navbar-hub .hamburger-button:hover { background: none; }
+.navbar-hub ~ .mobile-menu,
+.navbar-hub .mobile-menu {
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(20px);
+    transition: max-height 0.3s ease;
+}
+.navbar-hub ~ .mobile-menu .mobile-menu-item a,
+.navbar-hub .mobile-menu-item a {
+    color: rgba(255,255,255,0.85);
+    border-bottom-color: rgba(255,255,255,0.07);
+}
+.navbar-hub ~ .mobile-menu .mobile-menu-item a:hover,
+.navbar-hub .mobile-menu-item a:hover {
+    background: rgba(100,255,180,0.08);
+    padding-left: 28px;
+}
+.navbar-hub ~ .mobile-menu .mobile-menu-social,
+.navbar-hub .mobile-menu-social {
+    gap: 1.2rem;
+    padding: 1rem;
+    border-top-color: rgba(255,255,255,0.08);
+}
+
+/* ── Top: navbar layered above a page's own fixed panels (grain guide sidebar) ── */
+.navbar-top { z-index: 1100; }
+.navbar-top .mobile-menu { z-index: 1099; }
+
+/* ── Tablets: full bar, tighter padding ───────────────── */
+@media (max-width: 768px) {
+    .navbar { padding: 0.6rem 1rem; }
+}
+
+/* ── Narrow bar that doesn't fit: drop social icons first (set by od-navbar.js) ── */
+.od-nav-no-social .navbar-right .social-icons { display: none; }
+
+/* ── Phones: hamburger + drop-down menu ───────────────── */
+@media (max-width: 640px) {
+    .hamburger-button { display: block; }
+    .navbar-right .social-icons,
+    .navbar-right .navbar-link { display: none; }
+    .navbar-right { display: flex; gap: 0.5rem; }
+    .mobile-menu.active { display: block; max-height: 500px; }
+}
+
+/* Same as phones, for a wider window where the bar still doesn't fit (set by od-navbar.js) */
+.od-nav-collapsed .hamburger-button { display: block; }
+.od-nav-collapsed .navbar-right .social-icons,
+.od-nav-collapsed .navbar-right .navbar-link { display: none; }
+.od-nav-collapsed .navbar-right { display: flex; gap: 0.5rem; }
+.od-nav-collapsed .mobile-menu.active { display: block; max-height: 500px; }
