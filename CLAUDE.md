@@ -1,6 +1,41 @@
 # CLAUDE.md
 
+> ⛔ **WRONG-PROJECT GUARD — READ FIRST.**
+> This repo is **oceandatum.ai ONLY** (William's maritime personal site).
+> **OnlyVans Panama** (Claas's van-travel demo) does **NOT** belong here.
+> A terminal sometimes opens in this dir by mistake — if your task is OnlyVans,
+> stop and `cd ~/dev/onlyvans-panama/` (deploys to `theshipsagent.com/onlyvans/`).
+> Never commit OnlyVans content to this repo.
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Current State — stopping point 2026-09-28 (tag `stable-2026-09-28b`)
+
+Read this first. It is the handoff point for any further changes.
+
+### What is live
+- **Navbar (all pages):** Home · Blog · Role Brief · CV · Contact · Projects. **News Feed (WhatsApp channel) was removed site-wide** — failed workaround, do not re-add.
+- **CV (`cv.html`):** content matches `assets/docs/William_S_Davis_III_Resume.pdf` **word for word**. The PDF is authoritative; it was produced outside this repo (Cowork). A **Download PDF** button at the top of the CV page downloads that file. The old navbar "PDF" (print) button was removed from `cv.html` only.
+- **Projects login (`login.html`):** client-side "curtain" gate, one shared username/password for everyone (see `login.html`). Works with iPhone Safari "Block All Cookies" on — all storage access is guarded (`safeStorage()` in login.html; `try/catch` around the auth check on `projects-hub.html` and the 4 gated project pages). Username is case-insensitive; password is trimmed.
+
+### How to update the CV
+1. Replace `assets/docs/William_S_Davis_III_Resume.pdf` (same filename) with the new PDF.
+2. Update `cv.html` wording to match the PDF **verbatim** — web styling stays, wording follows the PDF.
+3. Preview locally, then commit and push.
+- Tone rules for any CV/bio wording: plain facts, no adulation, no stats unless needed, no company financials.
+- `scripts/build_cv_pdf.py` can generate a white Letter PDF from `cv.html` (headless Chrome). **Parked** — the Cowork PDF is the one in use. If used: fuzzy/grey PDF text = Type 3 fonts from variable web fonts; the script uses static font files to avoid it.
+
+### Local preview
+- `.claude/launch.json` defines a preview server (port 8766) for the Claude app's browser pane. It stops when the pane closes.
+- Independent alternative: `python3 -m http.server 8770 --bind 127.0.0.1` from the repo root, then open `http://127.0.0.1:8770/`.
+- **Check the address bar:** `oceandatum.ai` = live site; `localhost` / `127.0.0.1` = local copy with unpushed changes.
+
+### Known issues / next up (not done)
+1. **Navbar breakpoint:** every page collapses to the hamburger below 768px, so a narrow desktop window loses the full bar. Wanted: hamburger on phones only. With News Feed gone the bar fits to ~600px. **Do this as the shared-navbar refactor** (`assets/od-navbar.css` / `od-navbar.js` exist but no page uses them yet) — the navbar is still inlined in ~56 pages, which is why nav fixes keep regressing.
+2. **`projects/tampa-cement.html` hamburger** is wired twice (opens then closes) — part of item 1.
+3. **SECURITY:** `_user_notes/totp+prompt_011626_1132.md` is committed and publicly served. Owner says TOTP was parked/unused. Recommended: `git rm --cached` it and add `_user_notes/` to `.gitignore` — awaiting owner OK.
+4. **Cloudflare Worker** (`/login`, `/admin`, `/api/*`) is deployed but its source was lost (/tmp wipe). Decision 2026-09-28: do not build on it; if real protection is ever needed use Cloudflare Access. Consider disabling the orphaned Worker.
+5. **Biography tab** may still carry claims the CV rewrite removed — review separately.
 
 ## Repository Overview
 
@@ -154,20 +189,8 @@ Python scripts are used **offline** to process bibliography data from Zotero CSV
 
 ## Print/PDF Functionality
 
-The cv.html page has print-optimized CSS:
-
-```css
-@media print {
-  .bib-section-content {
-    display: block !important;  /* Auto-expand all sections */
-  }
-  .expand-icon, .bib-controls {
-    display: none;  /* Hide interactive elements */
-  }
-}
-```
-
-Print button triggers `window.print()` for one-click PDF export.
+- **CV:** do not rely on printing the dark web page (browser print of the dark theme gave grey/fuzzy output for months). The CV page offers **Download PDF** (`assets/docs/William_S_Davis_III_Resume.pdf`).
+- Other pages: `od-theme-pdf.js` injects a navbar "PDF" button that calls `window.print()`; `od-lightmode.css` supplies the `@media print` rules.
 
 ## Analytics
 
@@ -210,16 +233,15 @@ Refer to cv.html:253-312 for reference implementation.
 - **No dependencies**: Site runs without npm, webpack, or any build tools
 - **No server-side code**: Pure static HTML/CSS/JavaScript
 - **No database**: All content is embedded in HTML
-- **No authentication**: Public site (previous React/TOTP app archived in `_archive_react_app/`)
+- **Authentication**: client-side curtain login only (`login.html` → `projects-hub.html`), not real security. Previous React/TOTP app archived in `_archive_react_app/`
 - **Video optimization**: Background video compressed to ~10MB for fast loading
 - **Browser support**: Modern browsers (Chrome, Firefox, Safari, mobile browsers)
 
 ## Documentation Files
 
+- `CLAUDE.md` - This file; **Current State** section at the top is the handoff point
+- `CHANGELOG.md` - Dated record of changes
 - `README.md` - User-facing documentation with site features and structure
-- `CHANGELOG.md` - Version history (semantic versioning)
-- `DEPLOYMENT_STATUS.md` - Deployment verification checklist
-- `MOBILE_NAVIGATION_FIXES.md` - Technical details on mobile navigation implementation
 
 ## Related Sites
 
